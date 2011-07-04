@@ -72,10 +72,8 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 	[self.view addSubview:self.topShadowView];
     [self.view addSubview:self.bottomShadowView];
 	[self.view addSubview:self.tabBar];
-	[self addViewAtIndex:self.tabBar.selectedIndex];
     
-    mbProgressIndicator         = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
-    [self.view addSubview:mbProgressIndicator];
+	[self addViewAtIndex:self.tabBar.selectedIndex];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -142,17 +140,6 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 //----------------------------------------------------------------------------------------------------
 - (void)dimTabAtIndex:(NSInteger)index {
     [self.tabBar dimTabAtIndex:index];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)displaySpinnerWithText:(NSString*)message {
-    mbProgressIndicator.labelText = message;
-	[mbProgressIndicator show:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)hideSpinner {
-    [mbProgressIndicator hide:YES];
 }
 
 

@@ -169,7 +169,6 @@
 		26D3CB291363C6A4007CE094 /* DWTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D3CB281363C6A4007CE094 /* DWTouch.m */; };
 		26DB36F0131B57A1004EC153 /* keyboard_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB36EE131B57A1004EC153 /* keyboard_bg.png */; };
 		26DB36F1131B57A1004EC153 /* keyboard_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26DB36EF131B57A1004EC153 /* keyboard_bg@2x.png */; };
-		26DC2E62130A877A00FC1F3A /* DWPlaceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26DC2E60130A877A00FC1F3A /* DWPlaceDetailsViewController.m */; };
 		26DC2E63130A877A00FC1F3A /* DWPlaceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26DC2E61130A877A00FC1F3A /* DWPlaceDetailsViewController.xib */; };
 		26EB0730136B7B71003FB186 /* DWProfilePicManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 26EB072F136B7B71003FB186 /* DWProfilePicManager.m */; };
 		26ECECBA136B9CFF00019A5D /* navbar_transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 26ECECB8136B9CFF00019A5D /* navbar_transparent.png */; };
@@ -426,7 +425,6 @@
 		BBF897B0135042AA00B332CA /* hr_gray_create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF897AE135042AA00B332CA /* hr_gray_create@2x.png */; };
 		BBF8983913504CF800B332CA /* pointer_mini_white.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF8983713504CF800B332CA /* pointer_mini_white.png */; };
 		BBF8983A13504CF800B332CA /* pointer_mini_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF8983813504CF800B332CA /* pointer_mini_white@2x.png */; };
-		BBF899CB13510E7800B332CA /* DWChooseLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF899C913510E7800B332CA /* DWChooseLocationViewController.m */; };
 		BBF899CC13510E7800B332CA /* DWChooseLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF899CA13510E7800B332CA /* DWChooseLocationViewController.xib */; };
 		BBF89AF71351320900B332CA /* button_new_place_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF51351320900B332CA /* button_new_place_active.png */; };
 		BBF89AF81351320900B332CA /* button_new_place_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF61351320900B332CA /* button_new_place_active@2x.png */; };
@@ -663,8 +661,6 @@
 		26D3CB281363C6A4007CE094 /* DWTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTouch.m; path = Classes/DWTouch.m; sourceTree = "<group>"; };
 		26DB36EE131B57A1004EC153 /* keyboard_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = keyboard_bg.png; path = resources/keyboard_bg.png; sourceTree = "<group>"; };
 		26DB36EF131B57A1004EC153 /* keyboard_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "keyboard_bg@2x.png"; path = "resources/keyboard_bg@2x.png"; sourceTree = "<group>"; };
-		26DC2E5F130A877A00FC1F3A /* DWPlaceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlaceDetailsViewController.h; path = Classes/DWPlaceDetailsViewController.h; sourceTree = "<group>"; };
-		26DC2E60130A877A00FC1F3A /* DWPlaceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlaceDetailsViewController.m; path = Classes/DWPlaceDetailsViewController.m; sourceTree = "<group>"; };
 		26DC2E61130A877A00FC1F3A /* DWPlaceDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DWPlaceDetailsViewController.xib; path = Classes/DWPlaceDetailsViewController.xib; sourceTree = "<group>"; };
 		26EB072E136B7B71003FB186 /* DWProfilePicManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWProfilePicManager.h; path = Classes/DWProfilePicManager.h; sourceTree = "<group>"; };
 		26EB072F136B7B71003FB186 /* DWProfilePicManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWProfilePicManager.m; path = Classes/DWProfilePicManager.m; sourceTree = "<group>"; };
@@ -1013,8 +1009,6 @@
 		BBF897AE135042AA00B332CA /* hr_gray_create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hr_gray_create@2x.png"; path = "resources/hr_gray_create@2x.png"; sourceTree = "<group>"; };
 		BBF8983713504CF800B332CA /* pointer_mini_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pointer_mini_white.png; path = resources/pointer_mini_white.png; sourceTree = "<group>"; };
 		BBF8983813504CF800B332CA /* pointer_mini_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pointer_mini_white@2x.png"; path = "resources/pointer_mini_white@2x.png"; sourceTree = "<group>"; };
-		BBF899C813510E7800B332CA /* DWChooseLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWChooseLocationViewController.h; path = Classes/DWChooseLocationViewController.h; sourceTree = "<group>"; };
-		BBF899C913510E7800B332CA /* DWChooseLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWChooseLocationViewController.m; path = Classes/DWChooseLocationViewController.m; sourceTree = "<group>"; };
 		BBF899CA13510E7800B332CA /* DWChooseLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DWChooseLocationViewController.xib; path = Classes/DWChooseLocationViewController.xib; sourceTree = "<group>"; };
 		BBF89AF51351320900B332CA /* button_new_place_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_new_place_active.png; path = resources/button_new_place_active.png; sourceTree = "<group>"; };
 		BBF89AF61351320900B332CA /* button_new_place_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_new_place_active@2x.png"; path = "resources/button_new_place_active@2x.png"; sourceTree = "<group>"; };
@@ -1530,6 +1524,7 @@
 			children = (
 				080E96DDFE201D6D7F000001 /* App Delegate */,
 				BB4D1DD813C24D0E00F8819C /* Tab Bar */,
+				BB8499C113C27AA400D9789D /* Onboarding */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
 				BBD0CC91133C0A3C003E5E7D /* Extensions */,
 				BBFD29A11388241D0077904A /* Sharing */,
@@ -1638,14 +1633,8 @@
 				26CF62D412F3E92200505A37 /* DWWebViewController.m */,
 				BB6419AA134BAE93002A2325 /* DWCreateViewController.h */,
 				BB6419AB134BAE93002A2325 /* DWCreateViewController.m */,
-				BBF899C813510E7800B332CA /* DWChooseLocationViewController.h */,
-				BBF899C913510E7800B332CA /* DWChooseLocationViewController.m */,
 				26D3CB1E1363C617007CE094 /* DWNotificationsViewController.h */,
 				26D3CB1F1363C617007CE094 /* DWNotificationsViewController.m */,
-				BB0048A11370A4740013B9A1 /* DWSplashScreenViewController.h */,
-				BB0048A21370A4750013B9A1 /* DWSplashScreenViewController.m */,
-				269767D41387978F00AB91A1 /* DWIntroPaneViewController.h */,
-				269767D51387978F00AB91A1 /* DWIntroPaneViewController.m */,
 			);
 			name = Misc;
 			sourceTree = "<group>";
@@ -1829,6 +1818,17 @@
 			name = Camera;
 			sourceTree = "<group>";
 		};
+		BB8499C113C27AA400D9789D /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				BB0048A11370A4740013B9A1 /* DWSplashScreenViewController.h */,
+				BB0048A21370A4750013B9A1 /* DWSplashScreenViewController.m */,
+				269767D41387978F00AB91A1 /* DWIntroPaneViewController.h */,
+				269767D51387978F00AB91A1 /* DWIntroPaneViewController.m */,
+			);
+			name = Onboarding;
+			sourceTree = "<group>";
+		};
 		BB9EBFFE1353F5C400D6BBF6 /* Table View Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1950,8 +1950,6 @@
 				26CAF7A412F21E110058C01E /* DWFollowedPlacesViewController.m */,
 				BBEFA04412EAA4FF004EC06A /* DWPlaceViewController.h */,
 				BBEFA04512EAA4FF004EC06A /* DWPlaceViewController.m */,
-				26DC2E5F130A877A00FC1F3A /* DWPlaceDetailsViewController.h */,
-				26DC2E60130A877A00FC1F3A /* DWPlaceDetailsViewController.m */,
 				BB641BDA134BFDEE002A2325 /* DWPlacesSearchResultsViewController.h */,
 				BB641BDB134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m */,
 			);
@@ -2480,7 +2478,6 @@
 				261C905312FBA43600D16F72 /* DWLoadingCell.m in Sources */,
 				261C90CC12FBB7BC00D16F72 /* DWMessageCell.m in Sources */,
 				BB0CFCFC1302261400F38552 /* DWPaginationCell.m in Sources */,
-				26DC2E62130A877A00FC1F3A /* DWPlaceDetailsViewController.m in Sources */,
 				26000219130DFB0100366CE3 /* KTTextView.m in Sources */,
 				BBF91BEE13274DC400AC3585 /* DWContainerViewController.m in Sources */,
 				BB3BE0B5133A9D940055FED0 /* DWRequestsManager.m in Sources */,
@@ -2520,7 +2517,6 @@
 				BBF891B5134ECDAB00B332CA /* DWCreationQueueItem.m in Sources */,
 				BBF891B8134ECE1900B332CA /* DWNewPostQueueItem.m in Sources */,
 				BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */,
-				BBF899CB13510E7800B332CA /* DWChooseLocationViewController.m in Sources */,
 				BB9EC00F1353F64F00D6BBF6 /* DWSegmentedControl.m in Sources */,
 				BB9EC16E13541A8E00D6BBF6 /* DWTabBar.m in Sources */,
 				BB9EC27713542DF000D6BBF6 /* DWTabBarController.m in Sources */,

@@ -4,13 +4,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MPMoviePlayerController.h>
-
-#import "MBProgressHUD.h"
 
 
 @class DWTabBar;
 @protocol DWTabBarControllerDelegate;
+
 
 /**
  * Custom tab bar controller
@@ -20,9 +18,7 @@
     UIImageView         *_topShadowView;
     UIImageView         *_bottomShadowView;
 	NSArray				*_subControllers;
-    
-    MBProgressHUD       *mbProgressIndicator;
-	
+    	
 	id<DWTabBarControllerDelegate> _delegate;
 }
 
@@ -81,17 +77,8 @@
  */
 - (void)dimTabAtIndex:(NSInteger)index;
 
-/**
- * Display spinner in the center of the screen freezing the UI
- */
-- (void)displaySpinnerWithText:(NSString*)message;
-
-/**
- * Hide the spinner with animation
- */
-- (void)hideSpinner;
-
 @end
+
 
 /**
  * Delegate protocol to send events about index changes
@@ -104,6 +91,7 @@
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex;
 @end
+
 
 /**
  * Declarations for select private methods

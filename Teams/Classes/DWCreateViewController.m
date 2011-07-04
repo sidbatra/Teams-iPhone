@@ -4,7 +4,6 @@
 //
 
 #import "DWCreateViewController.h"
-#import "DWChooseLocationViewController.h"
 #import "DWMemoryPool.h"
 #import "DWCreationQueue.h"
 #import "DWSession.h"
@@ -363,6 +362,7 @@ replacementString:(NSString *)string {
 	 */
 	self.newPlaceLocation = nil;//[[DWSession sharedDWSession] location];
 	
+    /*
 	DWChooseLocationViewController *chooseLocationView	= [[DWChooseLocationViewController alloc] initWithLocation:self.newPlaceLocation
 																									   andDelegate:self];
 	chooseLocationView.modalTransitionStyle				= UIModalTransitionStyleCoverVertical;
@@ -371,6 +371,7 @@ replacementString:(NSString *)string {
 							animated:NO];
 	
 	[chooseLocationView release];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

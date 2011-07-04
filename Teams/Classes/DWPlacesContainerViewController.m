@@ -6,8 +6,6 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWPopularPlacesViewController.h"
 #import "DWSearchPlacesViewController.h"
-#import "DWPlaceDetailsViewController.h"
-#import "DWSplashScreenViewController.h"
 #import "DWTabBarController.h"
 #import "DWSegmentedControl.h"
 #import "DWSession.h"
@@ -112,11 +110,6 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 		
     
 	[self loadSelectedView:self.segmentedControl.selectedIndex];
-    
-    
-    
-    if(![[DWSession sharedDWSession] isActive])
-        [self displaySignedOutState];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -124,20 +117,6 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 	NSLog(@"%@",kMsgUnload);	
     
     [self.segmentedControl removeFromSuperview];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)displaySignedOutState {
-    /*
-    DWSplashScreenViewController *splashView    = [[[DWSplashScreenViewController alloc] init] autorelease];
-    UINavigationController *splashNavigation    = [[[UINavigationController alloc] initWithRootViewController:splashView] autorelease];
-    
-    splashNavigation.navigationBarHidden        = YES;
-    splashNavigation.modalPresentationStyle     = UIModalTransitionStyleCoverVertical;
-    
-    [self.customTabBarController presentModalViewController:splashNavigation
-                                                   animated:NO];
-     */
 }
 
 

@@ -4,7 +4,6 @@
 //
 
 #import "DWPlaceViewController.h"
-#import "DWPlaceDetailsViewController.h"
 #import "DWRequestsManager.h"
 #import "DWGUIManager.h"
 #import "DWItemFeedCell.h"
@@ -257,14 +256,6 @@ static NSInteger const kTagUnfollowActionSheet              = -1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapPlaceDetailsButton:(id)sender event:(id)event {
-    DWPlaceDetailsViewController *placeDetailsViewController = [[DWPlaceDetailsViewController alloc] 
-                                                                initWithPlace:self.place
-                                                                  andDelegate:_delegate];
-    
-    [self.navigationController pushViewController:placeDetailsViewController 
-                                         animated:YES];
-    
-    [placeDetailsViewController release];
 }
 
 
