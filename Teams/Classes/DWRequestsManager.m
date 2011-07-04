@@ -150,15 +150,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)getNearbyPlaces {
-	
-	NSString *localRequestURL = [NSString stringWithFormat:kNearbyPlacesURI,
-									 [DWSession sharedDWSession].location.coordinate.latitude,
-									 [DWSession sharedDWSession].location.coordinate.longitude];
-	
-	[self createDenwenRequest:localRequestURL 
-		  successNotification:kNNearbyPlacesLoaded 
-			errorNotification:kNNearbyPlacesError 
-				requestMethod:kGet];
+
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -221,18 +213,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 //----------------------------------------------------------------------------------------------------
 - (void)createVisit {
 	
-	NSString *localRequestURL = [NSString stringWithFormat:kVisitsURI,
-									[DWSession sharedDWSession].location.coordinate.latitude,
-									[DWSession sharedDWSession].location.coordinate.longitude];
-	
-    
-    DWDenwenRequest *request = [DWDenwenRequest requestWithRequestURL:[self createDenwenRequestURL:localRequestURL]
-												  successNotification:nil
-													errorNotification:nil];
-	[request setDelegate:self];
-	[request setRequestMethod:kPost];
-	[request setShouldContinueWhenAppEntersBackground:YES];
-	[request startAsynchronous];
 }
 
 //----------------------------------------------------------------------------------------------------

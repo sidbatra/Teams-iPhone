@@ -94,6 +94,7 @@ NSString* const kKeyHashedID				= @"hashed_id";
 NSString* const kKeyFollowingsCount			= @"followings_count";
 NSString* const kKeyLatitude				= @"latitude";
 NSString* const kKeyLongitude				= @"longitude";
+NSString* const kKeyLocation				= @"location";
 NSString* const kKeyAddress					= @"address";
 NSString* const kKeyAddresses				= @"addresses";
 NSString* const kKeyShortTown				= @"short_town";
@@ -191,6 +192,7 @@ NSString* const kNImgSliceAttachmentError		= @"NImgSliceAttachmentError";
 NSString* const kNNewApplicationBadge			= @"NNewApplicationBadge"; 
 NSString* const kNTabSelectionChanged			= @"NTabSelectionChanged";
 NSString* const kNNewLocationAvailable			= @"NNewLocationAvailable";
+NSString* const kNUserRejectedLocation          = @"NUserRejectedLocation";
 NSString* const kNFacebookURLOpened				= @"NFacebookURLOpened";
 NSString* const kNDenwenURLOpened				= @"NDenwenURLOpened";
 NSString* const kNRequestTabBarIndexChange		= @"NRequestTabBarIndexChange";
@@ -275,10 +277,6 @@ NSInteger const kCameraDeviceFront          = UIImagePickerControllerCameraDevic
 NSInteger const kMaxVideoDuration           = 45;
 
 //----------------------------------------------------------------------------------------------------
-NSInteger const kLocFreshness				= 9;
-NSInteger const kLocAccuracy				= 1100;
-NSInteger const kLocRefreshDistance			= 150;
-NSInteger const kLocFailSafeDuration		= 6;
 NSInteger const kLocNearbyRadius			= 1200;
 
 //----------------------------------------------------------------------------------------------------

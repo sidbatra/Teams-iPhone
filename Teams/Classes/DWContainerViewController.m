@@ -70,6 +70,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 
 //----------------------------------------------------------------------------------------------------
 - (void)testLaunchURL {
+    /*
     NSURL *launchURL = [DWSession sharedDWSession].launchURL;
     
     if(launchURL) {
@@ -79,6 +80,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
          [self processLaunchURL:absoluteString];
          [absoluteString release];
     }
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

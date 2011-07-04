@@ -108,7 +108,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 - (void)viewDidLoad {
     [super viewDidLoad];
 		
-	self.newPlaceLocation				= [[DWSession sharedDWSession] location];
+	self.newPlaceLocation				= nil;//[[DWSession sharedDWSession] location];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
 	
 	CGRect frame						= CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
@@ -361,7 +361,7 @@ replacementString:(NSString *)string {
 	/**
 	 * Update to latest location
 	 */
-	self.newPlaceLocation = [[DWSession sharedDWSession] location];
+	self.newPlaceLocation = nil;//[[DWSession sharedDWSession] location];
 	
 	DWChooseLocationViewController *chooseLocationView	= [[DWChooseLocationViewController alloc] initWithLocation:self.newPlaceLocation
 																									   andDelegate:self];

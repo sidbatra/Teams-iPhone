@@ -4,21 +4,16 @@
 //
 
 #import "DWAppDelegate.h"
-#import "ASIDownloadCache.h"
 #import "DWTabBarController.h"
 #import "DWItemsContainerViewController.h"
 #import "DWCreateViewController.h"
 #import "DWPlacesContainerViewController.h"
-#import "DWPlacesCache.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
 #import "DWSession.h"
-#import "DWNotificationsHelper.h"
-#import "NSString+Helpers.h"
+
 
 static NSString* const kFacebookURLPrefix			= @"fb";
-static NSInteger const kLocationFreshnessThreshold	= 10;
-static NSString* const kMsgLowMemoryWarning			= @"Low memory warning recived, memory pool free memory called";
 static NSInteger const kTabBarWidth					= 320;
 static NSInteger const kTabBarHeight				= 49;
 static NSInteger const kTabBarCount					= 2;
@@ -28,9 +23,6 @@ static NSString* const kImgCreateOn					= @"tab_create_active.png";
 static NSString* const kImgCreateOff				= @"tab_create_on.png";
 static NSString* const kImgFeedOn					= @"tab_feed_on.png";
 static NSString* const kImgFeedOff					= @"tab_feed_off.png";
-static NSString* const kMsgLocErrorTitle            = @"Location Needed";
-static NSString* const kMsgLocError                 = @"To use Denwen, turn on location in your iPhone settings.";
-static NSString* const kMsgCustomButtonTitle        = @"OK";
 
 
  
@@ -40,40 +32,25 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 @implementation DWAppDelegate
 
 @synthesize window				= _window;
-@synthesize placesNavController	= _placesNavController;
+@synthesize teamsNavController	= _placesNavController;
 @synthesize itemsNavController	= _itemsNavController;
 
 @synthesize tabBarController	= _tabBarController;
 
-@synthesize locationManager		= _locationManager;
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {    
+    	    
+    //[DWNotificationsHelper sharedDWNotificationsHelper].backgroundRemoteInfo = [launchOptions objectForKey:
+    //                                                                                UIApplicationLaunchOptionsRemoteNotificationKey];
     
-	//[[ASIDownloadCache sharedCache] clearCachedResponsesForStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	
-	[DWPlacesCache sharedDWPlacesCache];
-    
-    [DWNotificationsHelper sharedDWNotificationsHelper].backgroundRemoteInfo = [launchOptions objectForKey:
-                                                                                    UIApplicationLaunchOptionsRemoteNotificationKey];
-		
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(userLogsIn:) 
 												 name:kNUserLogsIn
 											   object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(newFeedItemsLoaded:) 
-												 name:kNNewFeedItemsLoaded
-											   object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(newFeedItemsRead:) 
-												 name:kNNewFeedItemsRead
-											   object:nil];
 	
     
-    [DWSession sharedDWSession].launchURL = (NSURL*)[launchOptions valueForKey:@"UIApplicationLaunchOptionsURLKey"];
+    //[DWSession sharedDWSession].launchURL = (NSURL*)[launchOptions valueForKey:@"UIApplicationLaunchOptionsURLKey"];
 
     return YES;
 }
@@ -84,9 +61,6 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	/**
-	 * Free non critical resources when app enters background
-	 */
 	[[DWMemoryPool sharedDWMemoryPool] freeMemory];
 }
 
@@ -96,12 +70,13 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	[[DWNotificationsHelper sharedDWNotificationsHelper] handleLiveNotificationWithUserInfo:userInfo];
+	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleLiveNotificationWithUserInfo:userInfo];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
-
+    
+    /*
 	if([[url absoluteString] hasPrefix:kFacebookURLPrefix]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
 															object:url];	
@@ -110,6 +85,7 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNDenwenURLOpened 
 															object:[url absoluteString]];	
 	}
+     */
 	
 	return YES;
 }
@@ -120,7 +96,7 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 	if(self.tabBarController == nil) 
 		[self setupApplication];
 			
-	[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
+	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -132,31 +108,17 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	self.window					= nil;
-	self.placesNavController	= nil;
+	self.teamsNavController     = nil;
 	self.itemsNavController		= nil;
 	
 	self.tabBarController		= nil;
-	
-	self.locationManager		= nil;
-	
+		
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {
-	
+- (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {	
 	[[DWMemoryPool sharedDWMemoryPool] freeMemory];
-	NSLog(@"%@",kMsgLowMemoryWarning);
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setupLocationTracking {
-	self.locationManager					= [[[CLLocationManager alloc] init] autorelease];
-	self.locationManager.delegate			= self;
-	self.locationManager.desiredAccuracy	= kCLLocationAccuracyBest;
-	self.locationManager.distanceFilter		= kLocRefreshDistance;
-	
-	[self.locationManager startUpdatingLocation];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -196,14 +158,14 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 	
 	
 	self.tabBarController.subControllers    = [NSArray arrayWithObjects:
-                                               self.placesNavController,
+                                               self.teamsNavController,
                                                [[[UIViewController alloc] init] autorelease],
                                                self.itemsNavController,nil];
 	
 	[self.window addSubview:self.tabBarController.view];
 	
 	
-	((DWPlacesContainerViewController*)self.placesNavController.topViewController).customTabBarController	= self.tabBarController;
+	((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
 	((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
 }
 
@@ -213,9 +175,6 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 	
 	[self.window addSubview:self.tabBarController.view];
 	[self.window makeKeyAndVisible];
-	
-	
-	[self setupLocationTracking];
 }
 
 
@@ -228,25 +187,17 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 - (void)userLogsIn:(NSNotification*)notification {
     
 	//if(![[UIApplication sharedApplication] enabledRemoteNotificationTypes])
-	[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert];
+	[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | 
+                                                                            UIRemoteNotificationTypeSound | 
+                                                                            UIRemoteNotificationTypeAlert];
     
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)newFeedItemsLoaded:(NSNotification*)notification {
-    [self.tabBarController highlightTabAtIndex:kTabBarFeedIndex];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)newFeedItemsRead:(NSNotification*)notification {
-    [self.tabBarController dimTabAtIndex:kTabBarFeedIndex];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Push Notifiation Permission Responses
+#pragma mark Push Notification Permission Responses
 
 
 //----------------------------------------------------------------------------------------------------
@@ -258,51 +209,6 @@ static NSString* const kMsgCustomButtonTitle        = @"OK";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark CLLocationManagerDelegate
-
-
-//----------------------------------------------------------------------------------------------------
-- (void)locationManager:(CLLocationManager *)manager
-	didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-	
-	if(fabs([newLocation.timestamp timeIntervalSinceNow]) < kLocationFreshnessThreshold) {
-		
-		[DWSession sharedDWSession].location = newLocation;
-		
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNNewLocationAvailable 
-															object:nil];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    
-    if([error code] == kCLErrorDenied) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgLocErrorTitle
-														message:kMsgLocError
-													   delegate:self
-											  cancelButtonTitle:kMsgCustomButtonTitle
-											  otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-    }        
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark UIAlertViewDelegate
-//----------------------------------------------------------------------------------------------------
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    exit(0);
 }
 
 

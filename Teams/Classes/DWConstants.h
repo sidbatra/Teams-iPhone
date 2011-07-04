@@ -85,6 +85,7 @@ extern NSString* const kKeyHashedID;
 extern NSString* const kKeyFollowingsCount;
 extern NSString* const kKeyLatitude;
 extern NSString* const kKeyLongitude;
+extern NSString* const kKeyLocation;
 extern NSString* const kKeyAddress;
 extern NSString* const kKeyAddresses;
 extern NSString* const kKeyShortTown;
@@ -183,6 +184,7 @@ extern NSString* const kNImgSliceAttachmentError;
 extern NSString* const kNNewApplicationBadge;
 extern NSString* const kNTabSelectionChanged;
 extern NSString* const kNNewLocationAvailable;
+extern NSString* const kNUserRejectedLocation;
 extern NSString* const kNFacebookURLOpened;
 extern NSString* const kNDenwenURLOpened ;
 extern NSString* const kNRequestTabBarIndexChange;
@@ -283,10 +285,6 @@ NSInteger const kMaxVideoDuration;
 /**
  * Location
  */
-extern NSInteger const kLocFreshness;
-extern NSInteger const kLocAccuracy;
-extern NSInteger const kLocRefreshDistance;
-extern NSInteger const kLocFailSafeDuration;
 extern NSInteger const kLocNearbyRadius;
 
 /**

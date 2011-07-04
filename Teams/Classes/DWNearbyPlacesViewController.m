@@ -67,26 +67,6 @@ static NSInteger const kPlacesIndex					= 0;
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayPlaces {
-	if([DWPlacesCache sharedDWPlacesCache].nearbyPlacesReady && 
-       !self.view.hidden && 
-       [DWSession sharedDWSession].selectedTabIndex == kTabBarPlacesIndex) {
-        
-		
-		[_placeManager populatePreParsedPlaces:[[DWPlacesCache sharedDWPlacesCache] getNearbyPlaces]
-									   atIndex:kPlacesIndex
-									 withClear:YES];
-		
-		if([_placeManager totalPlacesAtRow:kPlacesIndex]) 
-			_tableViewUsage = kTableViewAsData;
-		else {
-			self.messageCellText	= kMsgNoPlacesNearby;
-			_tableViewUsage			= kTableViewAsMessage;
-		}
-		
-        [self finishedLoading];
-		[self markEndOfPagination];
-		[self.tableView reloadData];
-	}
 }
 
 

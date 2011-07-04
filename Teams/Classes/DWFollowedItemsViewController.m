@@ -166,13 +166,6 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
      * Search for new unread items
      */
     if(_isReloading) {
-       NSInteger newItemID = [_itemManager getItemIDNotByUserID:[DWSession sharedDWSession].currentUser.databaseID
-                                              greaterThanItemID:[DWSession sharedDWSession].lastReadItemID];
-       
-       if(newItemID)
-           [[DWSession sharedDWSession] gotoUnreadItemsMode:newItemID];
-       else
-           [[DWSession sharedDWSession] gotoReadItemsMode];
     }
        
 	

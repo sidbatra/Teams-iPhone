@@ -273,7 +273,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
         }
     }
     else if(oldSelectedIndex == kTabBarFeedIndex && selectedIndex != kTabBarFeedIndex) {
-        [[DWSession sharedDWSession] gotoReadItemsMode];
     }
 }
 
@@ -428,8 +427,8 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
          willShowViewController:viewController
                        animated:animated];
     
-    if(viewController != self && navigationController.viewControllers && [navigationController.viewControllers count] == 2)
-        [[DWSession sharedDWSession] gotoReadItemsMode];
+    //if(viewController != self && navigationController.viewControllers && [navigationController.viewControllers count] == 2)
+   
 }
 
 @end

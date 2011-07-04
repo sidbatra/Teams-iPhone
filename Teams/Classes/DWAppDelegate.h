@@ -4,28 +4,23 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
+
 
 @class DWTabBarController;
 
 /**
  * Application delegate
  */
-@interface DWAppDelegate : NSObject <UIApplicationDelegate,CLLocationManagerDelegate,UITabBarControllerDelegate> {
+@interface DWAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow				*_window;
 	
 	DWTabBarController		*_tabBarController;
 	
-	CLLocationManager		*_locationManager;
 	
-	UINavigationController	*_placesNavController;
+	UINavigationController	*_teamsNavController;
 	UINavigationController	*_itemsNavController;
 }
 
-/**
- * Used tp obtain current location of the device
- */
-@property (nonatomic,retain) CLLocationManager *locationManager;
 
 /**
  * UI Properties
@@ -37,27 +32,27 @@
  * IBOutlet properties
  */
 @property (nonatomic,retain) IBOutlet UIWindow *window;
-@property (nonatomic,retain) IBOutlet UINavigationController *placesNavController;
+@property (nonatomic,retain) IBOutlet UINavigationController *teamsNavController;
 @property (nonatomic,retain) IBOutlet UINavigationController *itemsNavController;
 
 @end
 
 
 /**
- * Declarations for select private methods
+ * Private method declarations
  */
 @interface DWAppDelegate(Private)
 
 /**
  * Init and position the UI elements that form the foundation
- * of the application. Also start services like location tracking
+ * of the application.
  */
 - (void)setupApplication;
 
 /**
- * Switches tabs to dispay the given tab index or 
- * pops controllers on an existing tab
+ * Init and position the custom tab bar controller and its children
  */
-- (void)displayNewTab:(NSInteger)newTabIndex;
+- (void)setupTabBarController;
+
 @end
 

@@ -74,11 +74,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPlacesCache);
 													 name:kNNewPlaceParsed 
 												   object:nil];
 		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(newLocationAvailable:) 
-													 name:kNNewLocationAvailable 
-												   object:nil];
-		/*
+        /*
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userPlacesLoaded:) 
 													 name:kNUserPlacesLoaded
@@ -160,23 +156,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPlacesCache);
 
 //----------------------------------------------------------------------------------------------------
 - (void)newPlaceParsed:(NSNotification*)notification {
-	DWPlace *place = (DWPlace*)[(NSDictionary*)[notification userInfo] objectForKey:kKeyPlace];
 	
-	if([[DWSession sharedDWSession].location distanceFromLocation:place.location] <= kLocNearbyRadius)	{
-		
-		[self.placesManager addPlace:place 
-							   atRow:kNearbyIndex
-						   andColumn:0];
-	}
-	
-	/*
-	[self.placesManager addPlace:place 
-						   atRow:kFollowedIndex
-					   andColumn:0];
-	 */
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNNearbyPlacesCacheUpdated
-														object:nil];	
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -199,20 +179,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPlacesCache);
 - (void)nearbyPlacesError:(NSNotification*)notification {
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)newLocationAvailable:(NSNotification*)notification {
-    
-    CLLocation *newLocation = [DWSession sharedDWSession].location;
-    
-    if(_refreshNearbyPlacesOnNextLocationUpdate ||
-       [newLocation distanceFromLocation:self.lastNearbyUpdateLocation] > kLocRefreshDistance) {
-        
-        _refreshNearbyPlacesOnNextLocationUpdate    = NO;
-        self.lastNearbyUpdateLocation               = newLocation;
-        
-        [self loadNearbyPlaces];
-    }
-}
 
 /*
 //----------------------------------------------------------------------------------------------------
