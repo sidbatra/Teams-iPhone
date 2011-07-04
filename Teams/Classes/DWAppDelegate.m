@@ -159,7 +159,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	self.tabBarController.subControllers    = [NSArray arrayWithObjects:
                                                self.teamsNavController,
                                                [[[UIViewController alloc] init] autorelease],
-                                               self.itemsNavController,nil];
+                                               self.itemsNavController,
+                                               nil];
 		
 	
 	((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;

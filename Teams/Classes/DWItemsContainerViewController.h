@@ -42,18 +42,12 @@
  */
 @property (nonatomic,retain) DWProfilePicManager *profilePicManager;
 
-
 @end
 
+
 /**
- * Declarations for select private methods
+ * Private method declarations
  */
 @interface DWItemsContainerViewController(Private)
 
-/**
- * Resets the badge value on the feeds tab
- * and uses notifications helper to reset count on the server
- * and the application icon
- */
-- (void)resetBadgeValue;
 @end

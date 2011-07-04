@@ -1821,10 +1821,10 @@
 		BB8499C113C27AA400D9789D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				BB0048A11370A4740013B9A1 /* DWSplashScreenViewController.h */,
-				BB0048A21370A4750013B9A1 /* DWSplashScreenViewController.m */,
 				269767D41387978F00AB91A1 /* DWIntroPaneViewController.h */,
 				269767D51387978F00AB91A1 /* DWIntroPaneViewController.m */,
+				BB0048A11370A4740013B9A1 /* DWSplashScreenViewController.h */,
+				BB0048A21370A4750013B9A1 /* DWSplashScreenViewController.m */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";

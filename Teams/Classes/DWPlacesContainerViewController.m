@@ -38,11 +38,6 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 	[super awakeFromNib];	
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(userLogsIn:) 
-												 name:kNUserLogsIn
-											   object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -189,11 +184,6 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark UINavigationControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)userLogsIn:(NSNotification*)notification {
-    [self.customTabBarController dismissModalViewControllerAnimated:YES];
-}
+#pragma mark Notifications
 
 @end

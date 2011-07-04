@@ -33,16 +33,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 	[super awakeFromNib];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(newApplicationBadge:) 
-												 name:kNNewApplicationBadge
-											   object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self 
-											 selector:@selector(followedItemsLoaded:) 
-												 name:kNFollowedItemsLoaded
-											   object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(tabSelectionChanged:) 
 												 name:kNTabSelectionChanged
 											   object:nil];
@@ -124,6 +114,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark View Lifecycle
+
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -205,25 +196,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private
-//----------------------------------------------------------------------------------------------------
-- (void)updateBadgeValueOnTabItem {
-
-	NSInteger unreadItems = [DWNotificationsHelper sharedDWNotificationsHelper].unreadItems;
-	
-	if(unreadItems)
-		self.tabBarItem.badgeValue = [NSString stringWithFormat:@"%d",unreadItems];
-	else
-		self.tabBarItem.badgeValue = nil;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)resetBadgeValue {
-    /*
-	self.tabBarItem.badgeValue = nil;
-	[[DWNotificationsHelper sharedDWNotificationsHelper] resetUnreadCount];
-	[followedViewController followedItemsRead];
-     */
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayNotificationsView {
@@ -239,13 +211,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Notifications
-//----------------------------------------------------------------------------------------------------
-- (void)newApplicationBadge:(NSNotification*)notification {
-	NSInteger notificationType = [[(NSDictionary*)[notification userInfo] objectForKey:kKeyNotificationType] integerValue];
-	
-	if(notificationType == kPNBackground || !followedViewController)
-		[self updateBadgeValueOnTabItem];
-}
+
 
 //----------------------------------------------------------------------------------------------------
 - (void)tabSelectionChanged:(NSNotification*)notification {
@@ -253,18 +219,11 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 	NSDictionary *info      = [notification userInfo];
 	
     NSInteger selectedIndex     = [[info objectForKey:kKeySelectedIndex] integerValue];
-    NSInteger oldSelectedIndex  = [[info objectForKey:kKeyOldSelectedIndex] integerValue];
+    //NSInteger oldSelectedIndex  = [[info objectForKey:kKeyOldSelectedIndex] integerValue];
     
     
 	if(selectedIndex == kTabBarFeedIndex)  {
 		
-        /*
-        if([DWNotificationsHelper sharedDWNotificationsHelper].unreadItems) {
-            [self.navigationController popToRootViewControllerAnimated:NO];
-            [followedViewController scrollToTop];
-        }
-         */
-        
         if([DWNotificationsHelper sharedDWNotificationsHelper].unreadNotifications) {
             if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
                 [(DWNotificationsViewController*)self.navigationController.topViewController hardRefresh];
@@ -272,13 +231,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
                 [self displayNotificationsView];
         }
     }
-    else if(oldSelectedIndex == kTabBarFeedIndex && selectedIndex != kTabBarFeedIndex) {
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)followedItemsLoaded:(NSNotification*)notification {
-	[self updateBadgeValueOnTabItem];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -426,9 +378,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     [super navigationController:navigationController
          willShowViewController:viewController
                        animated:animated];
-    
-    //if(viewController != self && navigationController.viewControllers && [navigationController.viewControllers count] == 2)
-   
 }
 
 @end
