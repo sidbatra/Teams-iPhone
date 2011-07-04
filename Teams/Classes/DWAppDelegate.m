@@ -16,7 +16,6 @@
 static NSString* const kFacebookURLPrefix			= @"fb";
 static NSInteger const kTabBarWidth					= 320;
 static NSInteger const kTabBarHeight				= 49;
-static NSInteger const kTabBarCount					= 2;
 static NSString* const kImgPlacesOn					= @"tab_places_on.png";
 static NSString* const kImgPlacesOff				= @"tab_places_off.png";
 static NSString* const kImgCreateOn					= @"tab_create_active.png";
@@ -161,9 +160,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
                                                self.teamsNavController,
                                                [[[UIViewController alloc] init] autorelease],
                                                self.itemsNavController,nil];
-	
-	[self.window addSubview:self.tabBarController.view];
-	
+		
 	
 	((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
 	((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
@@ -201,12 +198,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 	[[DWRequestsManager sharedDWRequestsManager] updateDeviceIDForCurrentUser:[NSString stringWithFormat:@"%@",deviceToken]];
 }
 
-//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
 }

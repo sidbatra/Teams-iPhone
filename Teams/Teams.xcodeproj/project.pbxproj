@@ -155,7 +155,6 @@
 		26B97C0E1318DD4700454624 /* navbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B97C0D1318DD4700454624 /* navbar.png */; };
 		26CAF7B212F21E110058C01E /* DWFollowedPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CAF7A412F21E110058C01E /* DWFollowedPlacesViewController.m */; };
 		26CAF7B412F21E110058C01E /* DWItemsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CAF7A712F21E110058C01E /* DWItemsContainerViewController.m */; };
-		26CAF7B612F21E110058C01E /* DWNearbyPlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CAF7AA12F21E110058C01E /* DWNearbyPlacesViewController.m */; };
 		26CAF7B812F21E110058C01E /* DWPlaceListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CAF7AD12F21E110058C01E /* DWPlaceListViewController.m */; };
 		26CAF7BA12F21E110058C01E /* DWPlacesContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CAF7B012F21E110058C01E /* DWPlacesContainerViewController.m */; };
 		26CF62D612F3E92200505A37 /* DWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26CF62D412F3E92200505A37 /* DWWebViewController.m */; };
@@ -275,7 +274,6 @@
 		BB6419AD134BAE93002A2325 /* DWCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6419AB134BAE93002A2325 /* DWCreateViewController.m */; };
 		BB6419AE134BAE93002A2325 /* DWCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6419AC134BAE93002A2325 /* DWCreateViewController.xib */; };
 		BB641BDC134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB641BDB134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m */; };
-		BB641C4D134D31D5002A2325 /* DWPlacesCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BB641C4C134D31D5002A2325 /* DWPlacesCache.m */; };
 		BB641C5A134D33B3002A2325 /* DWPlacesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB641C59134D33B3002A2325 /* DWPlacesManager.m */; };
 		BB641D5C134D3E20002A2325 /* DWItemsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB641D5B134D3E20002A2325 /* DWItemsManager.m */; };
 		BB641EF6134D97BB002A2325 /* DWPlaceSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB641EF5134D97BB002A2325 /* DWPlaceSearchResultCell.m */; };
@@ -644,8 +642,6 @@
 		26CAF7A412F21E110058C01E /* DWFollowedPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFollowedPlacesViewController.m; path = Classes/DWFollowedPlacesViewController.m; sourceTree = "<group>"; };
 		26CAF7A612F21E110058C01E /* DWItemsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWItemsContainerViewController.h; path = Classes/DWItemsContainerViewController.h; sourceTree = "<group>"; };
 		26CAF7A712F21E110058C01E /* DWItemsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWItemsContainerViewController.m; path = Classes/DWItemsContainerViewController.m; sourceTree = "<group>"; };
-		26CAF7A912F21E110058C01E /* DWNearbyPlacesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNearbyPlacesViewController.h; path = Classes/DWNearbyPlacesViewController.h; sourceTree = "<group>"; };
-		26CAF7AA12F21E110058C01E /* DWNearbyPlacesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNearbyPlacesViewController.m; path = Classes/DWNearbyPlacesViewController.m; sourceTree = "<group>"; };
 		26CAF7AC12F21E110058C01E /* DWPlaceListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlaceListViewController.h; path = Classes/DWPlaceListViewController.h; sourceTree = "<group>"; };
 		26CAF7AD12F21E110058C01E /* DWPlaceListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlaceListViewController.m; path = Classes/DWPlaceListViewController.m; sourceTree = "<group>"; };
 		26CAF7AF12F21E110058C01E /* DWPlacesContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlacesContainerViewController.h; path = Classes/DWPlacesContainerViewController.h; sourceTree = "<group>"; };
@@ -834,12 +830,10 @@
 		BB6419AC134BAE93002A2325 /* DWCreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DWCreateViewController.xib; path = Classes/DWCreateViewController.xib; sourceTree = "<group>"; };
 		BB641BDA134BFDEE002A2325 /* DWPlacesSearchResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlacesSearchResultsViewController.h; path = Classes/DWPlacesSearchResultsViewController.h; sourceTree = "<group>"; };
 		BB641BDB134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlacesSearchResultsViewController.m; path = Classes/DWPlacesSearchResultsViewController.m; sourceTree = "<group>"; };
-		BB641C4C134D31D5002A2325 /* DWPlacesCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlacesCache.m; path = Classes/DWPlacesCache.m; sourceTree = "<group>"; };
 		BB641C58134D33B3002A2325 /* DWPlacesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlacesManager.h; path = Classes/DWPlacesManager.h; sourceTree = "<group>"; };
 		BB641C59134D33B3002A2325 /* DWPlacesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlacesManager.m; path = Classes/DWPlacesManager.m; sourceTree = "<group>"; };
 		BB641D5A134D3E20002A2325 /* DWItemsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWItemsManager.h; path = Classes/DWItemsManager.h; sourceTree = "<group>"; };
 		BB641D5B134D3E20002A2325 /* DWItemsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWItemsManager.m; path = Classes/DWItemsManager.m; sourceTree = "<group>"; };
-		BB641D78134D439E002A2325 /* DWPlacesCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlacesCache.h; path = Classes/DWPlacesCache.h; sourceTree = "<group>"; };
 		BB641EF4134D97BB002A2325 /* DWPlaceSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlaceSearchResultCell.h; path = Classes/DWPlaceSearchResultCell.h; sourceTree = "<group>"; };
 		BB641EF5134D97BB002A2325 /* DWPlaceSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlaceSearchResultCell.m; path = Classes/DWPlaceSearchResultCell.m; sourceTree = "<group>"; };
 		BB67B77A130A538900378578 /* create_place_user_profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = create_place_user_profile.png; path = resources/create_place_user_profile.png; sourceTree = "<group>"; };
@@ -1115,13 +1109,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Delegate */ = {
+		080E96DDFE201D6D7F000001 /* App Delegate */ = {
 			isa = PBXGroup;
 			children = (
 				1D3623240D0F684500981E51 /* DWAppDelegate.h */,
 				1D3623250D0F684500981E51 /* DWAppDelegate.m */,
 			);
-			name = Delegate;
+			name = "App Delegate";
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -1534,10 +1528,9 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* Delegate */,
+				080E96DDFE201D6D7F000001 /* App Delegate */,
 				BB4D1DD813C24D0E00F8819C /* Tab Bar */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
-				BBD0C2E01346C3A000BCFB96 /* Deprecated */,
 				BBD0CC91133C0A3C003E5E7D /* Extensions */,
 				BBFD29A11388241D0077904A /* Sharing */,
 				BB3CCBC212F9368F00ADFCD7 /* Singletons */,
@@ -1726,8 +1719,6 @@
 				BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */,
 				BB3CCBC312F936E200ADFCD7 /* DWMemoryPool.h */,
 				BB3CCBC412F936E200ADFCD7 /* DWMemoryPool.m */,
-				BB641D78134D439E002A2325 /* DWPlacesCache.h */,
-				BB641C4C134D31D5002A2325 /* DWPlacesCache.m */,
 			);
 			name = Singletons;
 			sourceTree = "<group>";
@@ -1955,8 +1946,6 @@
 				BB4051D812F237AD00916688 /* DWPopularPlacesViewController.m */,
 				BB0C7FE5135811F20007D6A9 /* DWSearchPlacesViewController.h */,
 				BB0C7FE6135811F20007D6A9 /* DWSearchPlacesViewController.m */,
-				26CAF7A912F21E110058C01E /* DWNearbyPlacesViewController.h */,
-				26CAF7AA12F21E110058C01E /* DWNearbyPlacesViewController.m */,
 				26CAF7A312F21E110058C01E /* DWFollowedPlacesViewController.h */,
 				26CAF7A412F21E110058C01E /* DWFollowedPlacesViewController.m */,
 				BBEFA04412EAA4FF004EC06A /* DWPlaceViewController.h */,
@@ -1967,13 +1956,6 @@
 				BB641BDB134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m */,
 			);
 			name = Places;
-			sourceTree = "<group>";
-		};
-		BBD0C2E01346C3A000BCFB96 /* Deprecated */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Deprecated;
 			sourceTree = "<group>";
 		};
 		BBD0CC91133C0A3C003E5E7D /* Extensions */ = {
@@ -2471,7 +2453,6 @@
 				26B9789A12F180C8000F8F1F /* DWPlaceFeedCell.m in Sources */,
 				26CAF7B212F21E110058C01E /* DWFollowedPlacesViewController.m in Sources */,
 				26CAF7B412F21E110058C01E /* DWItemsContainerViewController.m in Sources */,
-				26CAF7B612F21E110058C01E /* DWNearbyPlacesViewController.m in Sources */,
 				26CAF7B812F21E110058C01E /* DWPlaceListViewController.m in Sources */,
 				26CAF7BA12F21E110058C01E /* DWPlacesContainerViewController.m in Sources */,
 				BB4051C612F2377500916688 /* DDAnnotation.m in Sources */,
@@ -2531,7 +2512,6 @@
 				BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */,
 				BB6419AD134BAE93002A2325 /* DWCreateViewController.m in Sources */,
 				BB641BDC134BFDEE002A2325 /* DWPlacesSearchResultsViewController.m in Sources */,
-				BB641C4D134D31D5002A2325 /* DWPlacesCache.m in Sources */,
 				BB641C5A134D33B3002A2325 /* DWPlacesManager.m in Sources */,
 				BB641D5C134D3E20002A2325 /* DWItemsManager.m in Sources */,
 				BB641EF6134D97BB002A2325 /* DWPlaceSearchResultCell.m in Sources */,

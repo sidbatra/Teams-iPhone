@@ -6,7 +6,6 @@
 #import "DWNewPostQueueItem.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWPlacesCache.h"
 #import "DWItem.h"
 #import "DWConstants.h"
 

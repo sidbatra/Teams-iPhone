@@ -6,7 +6,6 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWPopularPlacesViewController.h"
 #import "DWSearchPlacesViewController.h"
-#import "DWNearbyPlacesViewController.h"
 #import "DWPlaceDetailsViewController.h"
 #import "DWSplashScreenViewController.h"
 #import "DWTabBarController.h"
@@ -107,12 +106,12 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 	[self.view addSubview:searchPlacesViewController.view];
 
 	
-	if(!nearbyViewController)
-		nearbyViewController = [[DWNearbyPlacesViewController alloc] initWithDelegate:self];
-	[self.view addSubview:nearbyViewController.view];
+	//if(!nearbyViewController)
+	//	nearbyViewController = [[DWNearbyPlacesViewController alloc] initWithDelegate:self];
+	//[self.view addSubview:nearbyViewController.view];
 		
     
-	//[self loadSelectedView:self.segmentedControl.selectedIndex];
+	[self loadSelectedView:self.segmentedControl.selectedIndex];
     
     
     
@@ -129,6 +128,7 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 
 //----------------------------------------------------------------------------------------------------
 - (void)displaySignedOutState {
+    /*
     DWSplashScreenViewController *splashView    = [[[DWSplashScreenViewController alloc] init] autorelease];
     UINavigationController *splashNavigation    = [[[UINavigationController alloc] initWithRootViewController:splashView] autorelease];
     
@@ -137,6 +137,7 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
     
     [self.customTabBarController presentModalViewController:splashNavigation
                                                    animated:NO];
+     */
 }
 
 

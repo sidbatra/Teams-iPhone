@@ -4,7 +4,6 @@
 //
 
 #import "DWPlacesSearchResultsViewController.h"
-#import "DWPlacesCache.h"
 #import "DWPlaceSearchResultCell.h"
 #import "DWNewPlaceCell.h"
 #import "DWLoadingCell.h"
@@ -35,7 +34,7 @@ static NSString* const kNewPlaceCellIdentifier				= @"NewPlaceCell";
 	
 	if(self) {
 		_tableViewUsage		= kTableViewAsSpinner;
-		self.placesManager	= [DWPlacesCache sharedDWPlacesCache].placesManager;
+		//self.placesManager	= [DWPlacesCache sharedDWPlacesCache].placesManager;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(nearbyPlacesCacheUpdated:) 
@@ -95,13 +94,14 @@ static NSString* const kNewPlaceCellIdentifier				= @"NewPlaceCell";
 		return;
 	}
 	
+    /*
 	if([DWPlacesCache sharedDWPlacesCache].nearbyPlacesReady) {
 		
 		_tableViewUsage = kTableViewAsData;
 				
 		[self.placesManager filterPlacesForSearchText:self.searchText];
 		[self.tableView reloadData];
-	}
+	}*/
 	
 	self.view.hidden = NO;
 }
