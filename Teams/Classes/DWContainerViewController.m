@@ -21,7 +21,6 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 @implementation DWContainerViewController
 
 @synthesize customTabBarController  = customTabBarController;
-@synthesize sharingManager          = _sharingManager;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -133,27 +132,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareSelected:(DWItem *)item {
-    self.sharingManager             = [[[DWSharingManager alloc] init] autorelease];
-    self.sharingManager.delegate    = self;
-    
-    [self.sharingManager shareItem:item
-                     viaController:self.customTabBarController];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIViewController*)requestCustomTabBarController {
     return customTabBarController;
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWSharingManagerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)sharingFinished {
-    self.sharingManager = nil;
 }
 
 
