@@ -20,7 +20,7 @@
 - (id)init {
 	self = [super init];
 	
-	if(self != nil) {
+	if(self) {
 		_pointerCount	= 0;
 		_databaseID		= kMPDefaultDatabaseID;
 	}

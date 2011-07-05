@@ -15,6 +15,9 @@
 
 @end
 
+static int const SPINNER_HEIGHT = 20;
+
+
 @implementation DWPaginationCell
 
 

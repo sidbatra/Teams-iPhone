@@ -8,6 +8,9 @@
 
 #import "InteractiveLabel.h"
 
+static NSString * const TRANSPARENT_BUTTON_BG_IMAGE_NAME = @"trans27.png";
+
+
 @implementation InteractiveLabel
 
 @synthesize label;

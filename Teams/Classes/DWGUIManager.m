@@ -15,6 +15,12 @@ static NSString* const kImgPlaceDetailsButtonActive     = @"button_map.png";
 static NSString* const kImgCameraButton                 = @"button_camera.png";
 static NSString* const kImgCameraButtonActive           = @"button_camera.png";
 
+static float const SCREEN_WIDTH = 320.0;
+static float const SCREEN_HEIGHT = 416.0;
+static float const SCREEN_ROTATED_WIDTH = 480.0;
+static float const SCREEN_ROTATED_HEIGHT = 256.0;
+
+
 @implementation DWGUIManager
 
 
