@@ -15,6 +15,11 @@
 }
 
 /**
+ * Shared sole instance of the class
+ */
++ (DWLocationManager *)sharedDWLocationManager;
+
+/**
  * iOS location services interface
  */
 @property (nonatomic,retain) CLLocationManager *locationManager;
