@@ -17,12 +17,11 @@
  * Primary view for the Feed tab and container for followed 
  * items view
  */
-@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWProfilePicManagerDelegate> {
+@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate> {
 	DWFollowedItemsViewController	*followedViewController;
 	DWPostProgressView				*postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
     DWUserTitleView                 *_userTitleView;
-    DWProfilePicManager             *_profilePicManager;
     
     BOOL                            _isProgressBarActive;
 }
@@ -36,11 +35,6 @@
  * Subview for displaying username and following count
  */
 @property (nonatomic,retain) DWUserTitleView *userTitleView;
-
-/**
- * Profile pic manager for handling all the DWMediaPicker Events
- */
-@property (nonatomic,retain) DWProfilePicManager *profilePicManager;
 
 @end
 

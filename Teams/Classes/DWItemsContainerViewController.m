@@ -7,7 +7,6 @@
 #import "DWNotificationsViewController.h"
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
-#import "DWProfilePicViewController.h"
 #import "DWFollowedPlacesViewController.h"
 #import "DWNotificationsHelper.h"
 #import "DWSession.h"
@@ -25,7 +24,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 @synthesize smallProfilePicView     = _smallProfilePicView;
 @synthesize userTitleView           = _userTitleView;
-@synthesize profilePicManager       = _profilePicManager;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -86,21 +84,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapSmallUserImage:(id)sender event:(id)event {
-    if ([DWSession sharedDWSession].currentUser.hasPhoto) {
-        DWProfilePicViewController *profilePicViewController = [[DWProfilePicViewController alloc] 
-                                                                initWithUser:[DWSession sharedDWSession].currentUser 
-                                                                andDelegate:self];
-        
-        [self.navigationController pushViewController:profilePicViewController animated:YES];
-        [profilePicViewController release];
-    }
-    else {
-        if(!self.profilePicManager)
-            self.profilePicManager = [[[DWProfilePicManager alloc] initWithDelegate:self 
-                                                                      andPickerMode:kMediaPickerLibraryMode] autorelease];
-        
-        [self.profilePicManager presentMediaPickerControllerWithPreview:YES];
-    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -164,12 +147,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	//[self resetBadgeValue];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {		
 	NSLog(@"%@",kMsgUnload);
 }
@@ -181,7 +158,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     self.userTitleView          = nil;
 
 	[followedViewController release];
-	[postProgressView release];
     
 	[super dealloc];
 }
@@ -296,20 +272,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     [self.smallProfilePicView showNormalState];
 }
 
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWProfilePicManagerDelegate
-//----------------------------------------------------------------------------------------------------
-- (UIViewController*)requestController {
-    return [self customTabBarController];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)photoPicked {
-    [self.smallProfilePicView showProcessingState];
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
