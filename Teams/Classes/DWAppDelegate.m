@@ -96,6 +96,13 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 		[self setupApplication];
 			
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
+    
+    DWUser *user = [[DWUser alloc] init];
+    user.firstName = @"Siddharth";
+    user.lastName   = @"Batra";
+    user.smallURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg";
+    user.largeURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg";
+    user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
 }
 
 //----------------------------------------------------------------------------------------------------

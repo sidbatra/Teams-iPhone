@@ -4,7 +4,6 @@
 //
 
 #import "DWItemsContainerViewController.h"
-#import "DWNotificationsViewController.h"
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
 #import "DWFollowedPlacesViewController.h"
@@ -176,11 +175,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayNotificationsView {
-    DWNotificationsViewController *notificationsView = [[DWNotificationsViewController alloc] initWithDelegate:self];
-    
-    [self.navigationController pushViewController:notificationsView 
-                                         animated:YES];
-    [notificationsView release];
 }
 
 
@@ -202,10 +196,10 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 	if(selectedIndex == kTabBarFeedIndex)  {
 		
         if([DWNotificationsHelper sharedDWNotificationsHelper].unreadNotifications) {
-            if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
-                [(DWNotificationsViewController*)self.navigationController.topViewController hardRefresh];
-            else   
-                [self displayNotificationsView];
+           // if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
+           //     [(DWNotificationsViewController*)self.navigationController.topViewController hardRefresh];
+           // else   
+           //     [self displayNotificationsView];
         }
     }
 }

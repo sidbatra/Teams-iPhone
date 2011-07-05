@@ -13,6 +13,7 @@
 @interface DWUser : DWPoolObject {
 	NSString	*_firstName;
 	NSString	*_lastName;
+    NSString    *_byline;
 	NSString	*_email;
 	NSString	*_encryptedPassword;
 	NSString	*_smallURL;
@@ -21,7 +22,6 @@
 	NSString	*_facebookAccessToken;
 	
 	UIImage		*_smallPreviewImage;
-	UIImage		*_mediumPreviewImage;
     
     NSInteger   _followingCount;
 	
@@ -39,6 +39,11 @@
  * Last name of the user
  */
 @property (nonatomic,copy) NSString *lastName;
+
+/**
+ * Byline for the user's team
+ */
+@property (nonatomic,retain) NSString *byline;
 
 /**
  * Email used to register the account with

@@ -35,6 +35,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 
 @synthesize firstName			= _firstName;
 @synthesize lastName			= _lastName;
+@synthesize byline              = _byline;
 @synthesize email				= _email;
 @synthesize encryptedPassword	= _encryptedPassword;
 @synthesize smallURL			= _smallURL;
@@ -78,6 +79,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 		
 	self.firstName				= nil;
 	self.lastName				= nil;
+    self.byline                 = nil;
 	self.email					= nil;
 	self.encryptedPassword		= nil;
 	self.twitterXAuthToken		= nil;
