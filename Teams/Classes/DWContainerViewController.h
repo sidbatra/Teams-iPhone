@@ -7,7 +7,7 @@
 
 #import "DWItemFeedViewController.h"
 #import "DWPlaceListViewController.h"
-#import "DWSharingManager.h"
+
 
 /**
  * Base class for containers which form the root views for
@@ -15,11 +15,11 @@
  */
 @interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemFeedViewControllerDelegate,DWPlaceListViewControllerDelegate> {
     
-	UIViewController *customTabBarController;
+	UIViewController    *_customTabBarController;
 }
 
 /**
- * Non-reained reference to the custom tab bar controller
+ * Non-retained reference to the custom tab bar controller
  */
 @property (nonatomic,assign) UIViewController *customTabBarController;
 
@@ -30,12 +30,6 @@
  */
 - (BOOL)isSelectedTab;
 
-/**
- * Test for the presence launch url in the session
- */
-- (void)testLaunchURL;
-
-
 @end
 
 
@@ -43,5 +37,14 @@
  * Declarations for private methods
  */
 @interface DWContainerViewController(Private)
+
+/**
+ * Parse the launch URL and perform the appropiate action
+ */
 - (void)processLaunchURL:(NSString*)url;
+
+/**
+ * Test for the presence launch url in the session
+ */
+- (void)testLaunchURL;
 @end

@@ -11,7 +11,7 @@
 #import "DWSession.h"
 #import "NSString+Helpers.h"
 
-static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
+static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 
 
@@ -20,7 +20,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 //----------------------------------------------------------------------------------------------------
 @implementation DWContainerViewController
 
-@synthesize customTabBarController  = customTabBarController;
+@synthesize customTabBarController  = _customTabBarController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -56,7 +56,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isSelectedTab {
-    return [(DWTabBarController*)customTabBarController getSelectedController] == self.navigationController;
+    return [(DWTabBarController*)self.customTabBarController getSelectedController] == self.navigationController;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -136,7 +136,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 
 //----------------------------------------------------------------------------------------------------
 - (UIViewController*)requestCustomTabBarController {
-    return customTabBarController;
+    return self.customTabBarController;
 }
 
 
@@ -155,6 +155,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UINavigationControllerDelegate
+
 //----------------------------------------------------------------------------------------------------
 - (void)navigationController:(UINavigationController *)navigationController 
 	  willShowViewController:(UIViewController *)viewController
@@ -169,9 +170,9 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://p/";
         [viewController performSelector:@selector(willShowOnNav)];
     
     if ([viewController respondsToSelector:@selector(requiresFullScreenMode)])
-        [(DWTabBarController*)customTabBarController enableFullScreen];
+        [(DWTabBarController*)self.customTabBarController enableFullScreen];
     else
-        [(DWTabBarController*)customTabBarController disableFullScreen];
+        [(DWTabBarController*)self.customTabBarController disableFullScreen];
 }
 
 @end

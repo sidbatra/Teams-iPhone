@@ -14,11 +14,10 @@
 /**
  * Display details about a user and the items posted by them
  */
-@interface DWUserViewController : DWItemFeedViewController <DWProfilePicManagerDelegate> {
+@interface DWUserViewController : DWItemFeedViewController {
 	DWUser                  *_user;
     DWUserTitleView         *_userTitleView;
     DWSmallProfilePicView   *_smallProfilePicView;
-    DWProfilePicManager     *_profilePicManager;
 }
 
 /**
@@ -36,10 +35,6 @@
  */
 @property (nonatomic,retain) DWSmallProfilePicView *smallProfilePicView;
 
-/**
- * Profile pic manager for handling all the DWMediaPicker Events
- */
-@property (nonatomic,retain) DWProfilePicManager *profilePicManager;
 
 /**
  * Init with user whose view is being displayed and delegate

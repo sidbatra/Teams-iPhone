@@ -30,7 +30,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 @synthesize user                    = _user;
 @synthesize userTitleView           = _userTitleView;
 @synthesize smallProfilePicView     = _smallProfilePicView;
-@synthesize profilePicManager       = _profilePicManager;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUser:(DWUser*)theUser 
@@ -96,22 +95,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapSmallUserImage:(id)sender event:(id)event {
-    if (self.user.hasPhoto) {
-        DWProfilePicViewController *profilePicViewController = [[DWProfilePicViewController alloc] 
-                                                                initWithUser:self.user 
-                                                                 andDelegate:_delegate];
-    
-        [self.navigationController pushViewController:profilePicViewController animated:YES];
-        [profilePicViewController release]; 
-    }
-    else if([self.user isCurrentUser]) {
-        
-        if(!self.profilePicManager)
-            self.profilePicManager = [[[DWProfilePicManager alloc] initWithDelegate:self 
-                                                                      andPickerMode:kMediaPickerLibraryMode] autorelease];
-    
-        [self.profilePicManager presentMediaPickerControllerWithPreview:YES];
-    }
 }
 
 
@@ -168,7 +151,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 	self.user						= nil;
     self.userTitleView              = nil;
     self.smallProfilePicView        = nil;
-    self.profilePicManager          = nil;
 	
     [super dealloc];
 }
@@ -290,20 +272,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 		return;
     
     [self.smallProfilePicView showNormalState];
-}
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWProfilePicManagerDelegate
-//----------------------------------------------------------------------------------------------------
-- (UIViewController*)requestController {
-    return [_delegate requestCustomTabBarController];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)photoPicked {
-    [self.smallProfilePicView showProcessingState];
 }
 
 

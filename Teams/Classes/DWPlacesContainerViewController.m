@@ -154,7 +154,6 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 #pragma mark -
 #pragma mark DWSegmentedControlDelegate
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)selectedSegmentModifiedFrom:(NSInteger)oldSelectedIndex 
 								 to:(NSInteger)newSelectedIndex {
