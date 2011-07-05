@@ -76,6 +76,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Nav-Bar Methods
+
 //----------------------------------------------------------------------------------------------------
 - (void)setSmallUserImage:(UIImage*)smallUserImage {
     [self.smallProfilePicView setProfilePicButtonBackgroundImage:smallUserImage];
