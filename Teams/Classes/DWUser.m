@@ -19,7 +19,6 @@ static NSString* const kDiskKeyID						= @"signedin_user__id";
 static NSString* const kDiskKeyEmail					= @"signedin_user__email";
 static NSString* const kDiskKeyPassword					= @"signedin_user__password";
 static NSString* const kDiskKeySmallUrl					= @"signedin_user__smallurl";
-static NSString* const kDiskKeyMediumUrl				= @"signedin_user__mediumurl";
 static NSString* const kDiskKeyLargeUrl					= @"signedin_user__largeurl";
 static NSString* const kDiskKeyTwitterData				= @"signedin_user__twitterXAuthData";
 static NSString* const kDiskKeyFacebookData				= @"signedin_user__facebookAuthToken";
@@ -39,10 +38,8 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 @synthesize email				= _email;
 @synthesize encryptedPassword	= _encryptedPassword;
 @synthesize smallURL			= _smallURL;
-@synthesize mediumURL			= _mediumURL;
 @synthesize largeURL			= _largeURL;
 @synthesize smallPreviewImage	= _smallPreviewImage;
-@synthesize	mediumPreviewImage	= _mediumPreviewImage;
 @synthesize	hasPhoto			= _hasPhoto;
 @synthesize twitterXAuthToken	= _twitterXAuthToken;
 @synthesize	facebookAccessToken = _facebookAccessToken;
@@ -63,17 +60,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 												 selector:@selector(smallImageError:) 
 													 name:kNImgSmallUserError
 												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(mediumImageLoaded:) 
-													 name:kNImgMediumUserLoaded
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(mediumImageError:) 
-													 name:kNImgMediumUserError
-												   object:nil];
-	}
+    }
 	
 	return self;  
 }
@@ -81,7 +68,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
     self.smallPreviewImage = nil;
-    self.mediumPreviewImage = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -99,12 +85,10 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 	
 	if(_hasPhoto) {
 		self.smallURL			= nil;
-		self.mediumURL			= nil;		
         self.largeURL           = nil;
 	}
     
     self.smallPreviewImage      = nil;
-    self.mediumPreviewImage     = nil;
 	
 	[super dealloc];
 }
@@ -132,21 +116,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)applyNewMediumImage:(UIImage*)image {
-    
-    self.mediumPreviewImage = image;
-	    
-	NSDictionary *info      = [NSDictionary dictionaryWithObjectsAndKeys:
-                               [NSNumber numberWithInt:self.databaseID]		,kKeyResourceID,
-                               image										,kKeyImage,
-                               nil];
-	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNImgMediumUserLoaded
-														object:nil
-													  userInfo:info];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)populate:(NSDictionary*)user {	
 	[super populate:user];
 	
@@ -163,7 +132,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
         
         _hasPhoto               = YES;
 		self.smallURL			= [photo	objectForKey:kKeySmallURL];
-		self.mediumURL			= [photo	objectForKey:kKeyMediumURL];
         self.largeURL           = [photo    objectForKey:kKeyActualURL];
 		_isProcessed			= [[photo	objectForKey:kKeyIsProcessed] boolValue];
 	}
@@ -204,12 +172,10 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
         if(![self.smallURL isEqualToString:newSmallURL]) {
             self.smallURL		= newSmallURL;
             self.largeURL       = [photo objectForKey:kKeyActualURL];
-            self.mediumURL		= [photo objectForKey:kKeyMediumURL];
             
             _isProcessed		= [[photo objectForKey:kKeyIsProcessed] boolValue];
             
             self.smallPreviewImage	= nil;
-            self.mediumPreviewImage = nil;
         }
     }
     
@@ -219,7 +185,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 //----------------------------------------------------------------------------------------------------
 - (void)updatePreviewImages:(UIImage*)image {
 	[self applyNewSmallImage:image];
-	//[self applyNewMediumImage:image];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -243,23 +208,10 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)startMediumPreviewDownload {
-	if(_hasPhoto && !_isMediumDownloading && !self.mediumPreviewImage) {
-		_isMediumDownloading = YES;
-		
-		[[DWRequestsManager sharedDWRequestsManager] getImageAt:self.mediumURL 
-												 withResourceID:self.databaseID
-		 									successNotification:kNImgMediumUserLoaded
-											  errorNotification:kNImgMediumUserError];
-	}
-	else if(!_hasPhoto && !self.mediumPreviewImage){ 
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)updateFollowingCount:(NSInteger)delta {
 	_followingCount += delta;
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -309,7 +261,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
     
     if (standardUserDefaults) {
         [standardUserDefaults setObject:self.smallURL           forKey:kDiskKeySmallUrl];
-        [standardUserDefaults setObject:self.mediumURL          forKey:kDiskKeyMediumUrl];
         [standardUserDefaults setObject:self.largeURL           forKey:kDiskKeyLargeUrl];
 		[standardUserDefaults synchronize];        
     }
@@ -349,7 +300,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
             self.lastName               = [standardUserDefaults objectForKey:kDiskKeyLastName];
             
             self.smallURL               = [standardUserDefaults objectForKey:kDiskKeySmallUrl];
-            self.mediumURL              = [standardUserDefaults objectForKey:kDiskKeyMediumUrl];
             self.largeURL               = [standardUserDefaults objectForKey:kDiskKeyLargeUrl];
 			self.twitterXAuthToken		= [standardUserDefaults objectForKey:kDiskKeyTwitterData];
 			self.facebookAccessToken	= [standardUserDefaults objectForKey:kDiskKeyFacebookData];
@@ -389,29 +339,6 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Notifications
-
-//----------------------------------------------------------------------------------------------------
-- (void)mediumImageLoaded:(NSNotification*)notification {
-	NSDictionary *info		= [notification userInfo];
-	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
-	
-	if(resourceID != self.databaseID)
-		return;
-
-	self.mediumPreviewImage = [info objectForKey:kKeyImage];		
-	_isMediumDownloading    = NO;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)mediumImageError:(NSNotification*)notification {
-	NSDictionary *info		= [notification userInfo];
-	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
-	
-	if(resourceID != self.databaseID)
-		return;
-	
-	_isMediumDownloading = NO;
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)smallImageLoaded:(NSNotification*)notification {

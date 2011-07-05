@@ -16,7 +16,6 @@
 	NSString	*_email;
 	NSString	*_encryptedPassword;
 	NSString	*_smallURL;
-	NSString	*_mediumURL;
     NSString	*_largeURL;
 	NSData      *_twitterXAuthToken;
 	NSString	*_facebookAccessToken;
@@ -27,7 +26,6 @@
     NSInteger   _followingCount;
 	
 	BOOL		_isSmallDownloading;
-	BOOL		_isMediumDownloading;
 	BOOL		_isProcessed;
 	BOOL		_hasPhoto;
 }
@@ -58,11 +56,6 @@
 @property (nonatomic,copy) NSString *smallURL;
 
 /**
- * URL of the medium sized profile image
- */
-@property (nonatomic,copy) NSString *mediumURL;
-
-/**
  * URL of the large sized profile image
  */
 @property (nonatomic,copy) NSString *largeURL;
@@ -87,11 +80,6 @@
 @property (nonatomic,retain) UIImage *smallPreviewImage;
 
 /**
- * Image obtained from mediumURL
- */
-@property (nonatomic,retain) UIImage *mediumPreviewImage;
-
-/**
  * Whether the user has uploaded a photo or not
  */
 @property (nonatomic,readonly) BOOL hasPhoto;
@@ -111,12 +99,6 @@
  * placeholder. Image downloads are alerted via notifications
  */
 - (void)startSmallPreviewDownload;
-
-/**
- * Start downloading the medium iamge or provide a suitable
- * placeholder. Image downloads are alerted via notifications
- */
-- (void)startMediumPreviewDownload;
 
 /**
  * Update user following count
