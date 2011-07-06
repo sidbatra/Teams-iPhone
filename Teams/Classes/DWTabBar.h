@@ -18,11 +18,6 @@
 }
 
 /**
- * Array of tab bar buttons
- */
-@property (nonatomic,retain) NSMutableArray *buttons;
-
-/**
  * Currently selected tab bar button
  */
 @property (nonatomic,readonly) NSInteger selectedIndex;
@@ -46,6 +41,7 @@
 - (void)dimTabAtIndex:(NSInteger)index;
 
 @end
+
 
 /**
  * Delegate protocol for the custom tab bar

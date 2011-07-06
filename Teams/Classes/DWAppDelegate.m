@@ -204,11 +204,11 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
                                                self.itemsNavController,
                                                nil];
      */
-    self.tabBarController.subControllers    = [NSArray arrayWithObjects:
+    [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
                                                [[[UIViewController alloc] init] autorelease],
                                                [[[UIViewController alloc] init] autorelease],
                                                [[[UIViewController alloc] init] autorelease],
-                                               nil];
+                                               nil]];
 		
 	
 	//((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
@@ -264,11 +264,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex {
-		
-    DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    NSLog(@"EXTRA id - %d \n name - %@ \n ",user.databaseID,user.firstName);
     
-	if(newSelectedIndex == kTabBarCreateIndex) {
+    if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];
 		[self.tabBarController presentModalViewController:createView animated:NO];
 	}

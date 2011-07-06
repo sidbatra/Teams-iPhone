@@ -16,6 +16,39 @@ static NSString* const kImgTopShadow        = @"shadow_top.png";
 static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 
 
+/**
+ * Declarations for private methods and properties
+ */
+@interface DWTabBarController()
+
+/**
+ * Image view with a shadow just below the navigation bar
+ */
+@property (nonatomic,retain) UIImageView *topShadowView;
+
+/**
+ * Image view with a shadow just above the tab bar
+ */
+@property (nonatomic,retain) UIImageView *bottomShadowView;
+
+/**
+ * Tab bar object for managing for the buttons and their states
+ */
+@property (nonatomic,retain) DWTabBar *tabBar;
+
+/**
+ * Controllers added to the tab bar 
+ */
+@property (nonatomic,retain) NSArray *subControllers;
+
+/**
+ * Adds the view for the tabBarControllers
+ */
+- (void)addViewAtIndex:(NSInteger)index;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -84,6 +117,11 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupSubControllers:(NSArray*)controllers {
+    self.subControllers = controllers;
 }
 
 //----------------------------------------------------------------------------------------------------

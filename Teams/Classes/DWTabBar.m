@@ -10,6 +10,19 @@ static NSString* const kImgHighlight        = @"new_item_triangle.png";
 static NSInteger const kHighlightViewTag    = 3;
 
 
+/**
+ * Private method and property declarations
+ */
+@interface DWTabBar() 
+
+/**
+ * Array of tab bar buttons
+ */
+@property (nonatomic,retain) NSMutableArray *buttons;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
