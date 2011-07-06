@@ -46,6 +46,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 @synthesize	facebookAccessToken = _facebookAccessToken;
 @synthesize followingCount      = _followingCount;
 
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
 	self = [super init];
@@ -73,6 +74,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
+    NSLog(@"in user dealloc");
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	//NSLog(@"user released %d",_databaseID);
@@ -119,7 +121,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 
 //----------------------------------------------------------------------------------------------------
 - (void)populate:(NSDictionary*)user {	
-	[super populate:user];
+	//[super populate:user];
 	
 	_databaseID			= [[user objectForKey:kKeyID] integerValue];
 	
@@ -140,9 +142,8 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)update:(NSDictionary*)user {
-    if(![super update:user])
-        return NO;
+- (void)update:(NSDictionary*)user {
+    [super update:user];
 	
 	NSString *newEmail          = [user objectForKey:kKeyEmail];
     
@@ -165,6 +166,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
     if([user objectForKey:kKeyFollowingsCount])
         _followingCount         = [[user objectForKey:kKeyFollowingsCount] integerValue];
     
+    /*
     if([user objectForKey:kKeyPhoto]) {
         NSDictionary *photo		= [user objectForKey:kKeyPhoto];
         NSString *newSmallURL	= [photo objectForKey:kKeySmallURL]; 
@@ -179,9 +181,8 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
             
             self.smallPreviewImage	= nil;
         }
-    }
-    
-    return YES;
+    } 
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

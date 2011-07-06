@@ -40,9 +40,9 @@
 	
 	for(NSMutableArray *placesAtIndex in _places) {
 		
-		for(DWPlace *place in placesAtIndex)
-			[[DWMemoryPool sharedDWMemoryPool]  removeObject:place 
-													   atRow:kMPPlacesIndex];
+		//for(DWPlace *place in placesAtIndex)
+		//	[[DWMemoryPool sharedDWMemoryPool]  removeObject:place 
+		//											   atRow:kMPPlacesIndex];
 	}
 	
 	[_places			release];
@@ -105,7 +105,7 @@
 	
 	[[_places objectAtIndex:row] insertObject:place 
 									  atIndex:column];
-	place.pointerCount++;
+	//place.pointerCount++;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -125,13 +125,13 @@
 	if(clearStatus)
 		[self clearPlacesAtIndex:index];
 		
-	NSMutableArray *placesAtIndex = [_places objectAtIndex:index];
+	//NSMutableArray *placesAtIndex = [_places objectAtIndex:index];
 	
-	for(NSDictionary *place in places) {
-		DWPlace *new_place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:place 
-																					atRow:kMPPlacesIndex];
-		[placesAtIndex addObject:new_place];
-	}
+	//for(NSDictionary *place in places) {
+	//	DWPlace *new_place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:place 
+	//																				atRow:kMPPlacesIndex];
+	//	[placesAtIndex addObject:new_place];
+	//}
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -146,7 +146,7 @@
 	
 	for(DWPlace *place in places) {
 		[placesAtIndex addObject:place];
-		place.pointerCount++;
+		//place.pointerCount++;
 	}
 }
 
@@ -156,9 +156,9 @@
 	[self clearFilteredPlaces:NO];
 
 	for(NSDictionary *place in places){
-		DWPlace *new_place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:place 
-																					atRow:kMPPlacesIndex];
-		[_filteredPlaces addObject:new_place];
+		//DWPlace *new_place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:place 
+		//																			atRow:kMPPlacesIndex];
+		//[_filteredPlaces addObject:new_place];
 	}
 	
 }
@@ -208,7 +208,7 @@
 	
 	NSMutableArray *placesAtIndex = (NSMutableArray*)[_places objectAtIndex:row];
 	
-	place.pointerCount--;
+	//place.pointerCount--;
 	[placesAtIndex removeObject:place];
 }
 
@@ -223,9 +223,9 @@
 	if(_places && index < _capacity) {
 		NSMutableArray *placesAtIndex = (NSMutableArray*)[_places objectAtIndex:index];
 		
-		for(DWPlace *place in placesAtIndex)
-			[[DWMemoryPool sharedDWMemoryPool] removeObject:place 
-													  atRow:kMPPlacesIndex];
+		//for(DWPlace *place in placesAtIndex)
+		//	[[DWMemoryPool sharedDWMemoryPool] removeObject:place 
+		//											  atRow:kMPPlacesIndex];
 		
 		[placesAtIndex removeAllObjects];
 	}
@@ -244,12 +244,13 @@
 	/**
 	 * Release memory pool pointers if filtered places were obtained externally
 	 */
+    /*
 	if(!arePlacesLocal) {
 		for(DWPlace *place in _filteredPlaces)
 			[[DWMemoryPool sharedDWMemoryPool] removeObject:place 
 													  atRow:kMPPlacesIndex];
 	}
-	
+	*/
 	[_filteredPlaces removeAllObjects];
 }
 

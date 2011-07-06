@@ -240,55 +240,66 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID {
-	DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
+	/*
+    DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
 	return !item.isTouched && ![item.user isCurrentUser];
+     */
+    return NO;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)cellTouched:(NSInteger)itemID {
+    /*
 	DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
 	item.isTouched = YES;
 	
 	[[DWRequestsManager sharedDWRequestsManager] createTouch:itemID];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)placeSelectedForItemID:(NSInteger)itemID {
-
+    /*
 	DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
 	[_delegate placeSelected:item.place];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelectedForItemID:(NSInteger)itemID {
-	
+	/*
 	DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
 	[_delegate userSelected:item.user];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareSelectedForItemID:(NSInteger)itemID {
-    
+    /*
     DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
 	[_delegate shareSelected:item];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (NSString*)getVideoAttachmentURLForItemID:(NSInteger)itemID {
+    /*
     DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
     return item.attachment.fileURL;
+     */
+    return nil;
 }
 
 //----------------------------------------------------------------------------------------------------

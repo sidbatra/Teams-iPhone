@@ -296,13 +296,17 @@ extern NSInteger const kPagInitialPage;
  * Memory Pool
  */
 extern NSInteger const kMPTotalClasses;
-extern NSInteger const kMPItemsIndex;
-extern NSInteger const kMPPlacesIndex;
-extern NSInteger const kMPUsersIndex;
 extern NSInteger const kMPAttachmentsIndex;
-extern NSInteger const kMPAttachmentSlicesIndex;
-extern float     const kMPObjectUpdateInterval;
 extern NSInteger const kMPDefaultDatabaseID;
+
+typedef enum {
+    kMPItemsIndex               = 0,
+    kMPTeamsIndex               = 1,
+    kMPUsersIndex               = 2,
+    kMPAttachmentSlicesIndex    = 3,
+    kMPAttachmentLargeIndex     = 4
+} MemoryPoolIndex;
+
 
 
 /**

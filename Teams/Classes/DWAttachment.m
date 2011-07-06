@@ -82,9 +82,7 @@ static float	 const kSliceHeight						= 92;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary*)attachment {
-	[super populate:attachment];
-    
+- (void)populate:(NSDictionary*)attachment {    
 	_fileType			= [[attachment objectForKey:kKeyFileType] integerValue];
 	_databaseID			= [[attachment objectForKey:kKeyID] integerValue];
 	_isProcessed		= [[attachment objectForKey:kKeyIsProcessed] boolValue];
@@ -95,9 +93,9 @@ static float	 const kSliceHeight						= 92;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)update:(NSDictionary*)attachment {
-    if(![super update:attachment])
-        return NO;
+- (void)update:(NSDictionary*)attachment {
+    //if(![super update:attachment])
+     //   return NO;
     
     
         	
@@ -111,8 +109,6 @@ static float	 const kSliceHeight						= 92;
 			self.sliceImage		= nil;
 		}
 	}
-    
-    return YES;
 }
 
 //----------------------------------------------------------------------------------------------------							  

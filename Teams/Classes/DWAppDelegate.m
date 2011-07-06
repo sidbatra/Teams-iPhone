@@ -10,6 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
+#import "JSON.h"
 #import "DWSession.h"
 
 
@@ -97,12 +98,46 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 			
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
     
+    /*
     DWUser *user = [[DWUser alloc] init];
     user.firstName = @"Siddharth";
     user.lastName   = @"Batra";
     user.smallURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg";
     user.largeURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg";
     user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
+     */
+   
+    
+    NSString *json = @"{\"is_confirmed\":true,\"byline\":\"I get things done\",\"photo\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg\",\"is_processed\":true,\"small_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg\"},\"id\":1,\"errors\":[],\"last_name\":\"Batra\",\"followings_count\":2,\"first_name\":\"Siddharth\",\"email\":\"sid@denwen.com\"}";
+    
+    DWUser *user = [DWUser create:[json JSONValue]];
+    NSLog(@"id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    DWUser *a = [DWUser create:[json JSONValue]];
+    DWUser *b=  [DWUser create:[json JSONValue]];
+    
+    [user destroy];
+    [a destroy];
+    [b destroy];
+     
+    //user = nil;
+    //user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    //NSLog(@"id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    
+    /*
+    DWUser *user = [[DWUser alloc] init];
+    user.databaseID = 99;
+    //NSMutableDictionary *b = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *a = [[NSMutableDictionary alloc] init];
+    //[b setObject:a forKey:@"1"];
+    [a setObject:user forKey:@"1"];
+    [user release];
+    [user release];
+    //[a removeAllObjects];
+    
+    //NSLog(@"count - %d, id - %d",user.retainCount,user.databaseID);
+    NSLog(@"entry - %@",[a objectForKey:@"2"]);
+    //[a removeObjectForKey:@"1"];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -162,16 +197,22 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 																			  andTabBarInfo:tabBarInfo] autorelease];
 	
 	
-	
+	/*
 	self.tabBarController.subControllers    = [NSArray arrayWithObjects:
                                                self.teamsNavController,
                                                [[[UIViewController alloc] init] autorelease],
                                                self.itemsNavController,
                                                nil];
+     */
+    self.tabBarController.subControllers    = [NSArray arrayWithObjects:
+                                               [[[UIViewController alloc] init] autorelease],
+                                               [[[UIViewController alloc] init] autorelease],
+                                               [[[UIViewController alloc] init] autorelease],
+                                               nil];
 		
 	
-	((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
-	((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
+	//((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
+	//((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -224,6 +265,9 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex {
 		
+    DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    NSLog(@"EXTRA id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    
 	if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];
 		[self.tabBarController presentModalViewController:createView animated:NO];

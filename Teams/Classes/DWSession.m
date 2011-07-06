@@ -45,17 +45,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)read {
+    /*
 	DWUser *user = [[DWUser alloc] init];
 	
 	if([user readFromDisk]) {
 		self.currentUser = user;
         
-        [[DWMemoryPool sharedDWMemoryPool] setObject:self.currentUser
-                                               atRow:kMPUsersIndex];
+        //[[DWMemoryPool sharedDWMemoryPool] setObject:self.currentUser
+        //                                       atRow:kMPUsersIndex];
 	}
 	else {
 		[user release];
 	}
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -68,8 +70,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 - (void)destroy {
 	[self.currentUser removeFromDisk];
     
-    [[DWMemoryPool sharedDWMemoryPool] removeObject:self.currentUser
-                                              atRow:kMPUsersIndex];
+    //[[DWMemoryPool sharedDWMemoryPool] removeObject:self.currentUser
+    //                                          atRow:kMPUsersIndex];
 	self.currentUser = nil;
 }
 

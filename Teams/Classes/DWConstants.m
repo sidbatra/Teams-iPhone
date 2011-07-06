@@ -284,13 +284,13 @@ NSInteger const kPagInitialPage		= 0;
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kMPTotalClasses             = 5;
-NSInteger const kMPItemsIndex               = 0;
-NSInteger const kMPPlacesIndex              = 1;
-NSInteger const kMPUsersIndex               = 2;
+//NSInteger const kMPItemsIndex               = 0;
+//NSInteger const kMPPlacesIndex              = 1;
+//NSInteger const kMPUsersIndex               = 2;
 NSInteger const kMPAttachmentsIndex         = 3;
-NSInteger const kMPAttachmentSlicesIndex    = 4;
-float     const kMPObjectUpdateInterval     = 0.75;
+//NSInteger const kMPAttachmentSlicesIndex    = 4;
 NSInteger const kMPDefaultDatabaseID        = -1;
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kMsgNoPlacesNearby				= @"No places nearby";

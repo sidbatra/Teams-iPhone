@@ -216,8 +216,9 @@ static NSString* const kSignUpText              = @"Sign Up";
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
 		
-        DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
-                                                                                       atRow:kMPUsersIndex];        
+       // DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
+       //                                                                                atRow:kMPUsersIndex];        
+        DWUser *user = nil;
         user.encryptedPassword  = self.password;
 
 		

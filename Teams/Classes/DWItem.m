@@ -48,27 +48,27 @@
     
     if(self.attachment) {
         
-        if(_usesMemoryPool)
-            [[DWMemoryPool sharedDWMemoryPool]  removeObject:_attachment 
-                                                       atRow:kMPAttachmentsIndex];
+       // if(_usesMemoryPool)
+       //     [[DWMemoryPool sharedDWMemoryPool]  removeObject:_attachment 
+       //                                                atRow:kMPAttachmentsIndex];
         
         self.attachment = nil;
     }
 	
 	if(self.place) {
 		
-		if(_usesMemoryPool)
-			[[DWMemoryPool sharedDWMemoryPool]  removeObject:_place
-                                                       atRow:kMPPlacesIndex];
+		//if(_usesMemoryPool)
+		//	[[DWMemoryPool sharedDWMemoryPool]  removeObject:_place
+        //                                              atRow:kMPPlacesIndex];
 		
 		self.place = nil;
 	}
 	
 	if(self.user) {
 		
-		if(_usesMemoryPool)
-			[[DWMemoryPool sharedDWMemoryPool]  removeObject:_user 
-                                                       atRow:kMPUsersIndex];
+		//if(_usesMemoryPool)
+		//	[[DWMemoryPool sharedDWMemoryPool]  removeObject:_user 
+        //                                               atRow:kMPUsersIndex];
 		
 		self.user = nil;
 	}
@@ -127,8 +127,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)populate:(NSDictionary*)item {
-	[super populate:item];
-
+    
 	_databaseID				= [[item objectForKey:kKeyID] integerValue];
 	_touchesCount			= [[item objectForKey:kKeyTouchesCount] integerValue];
 	_isTouched				= ![[item objectForKey:kKeyTouchID] isKindOfClass:[NSNull class]];
@@ -138,21 +137,19 @@
 	self.data				= [item objectForKey:kKeyData];
     
 	
-	self.place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyPlace] 
-                                                                        atRow:kMPPlacesIndex];
+	//self.place = (DWPlace*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyPlace] 
+    //                                                                    atRow:kMPPlacesIndex];
 
-	self.user = (DWUser*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyUser]
-                                                                      atRow:kMPUsersIndex];
+	//self.user = (DWUser*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyUser]
+    //                                                                  atRow:kMPUsersIndex];
     
-    if ([item objectForKey:kKeyAttachment])
-        self.attachment = (DWAttachment*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyAttachment] 
-                                                                                      atRow:kMPAttachmentsIndex];
+    //if ([item objectForKey:kKeyAttachment])
+    //    self.attachment = (DWAttachment*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:[item objectForKey:kKeyAttachment] 
+    //                                                                                  atRow:kMPAttachmentsIndex];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)update:(NSDictionary*)item {
-    if(![super update:item])
-        return NO;
+- (void)update:(NSDictionary*)item {
     		
     _touchesCount	= [[item objectForKey:kKeyTouchesCount] integerValue];
     _isTouched		= ![[item objectForKey:kKeyTouchID] isKindOfClass:[NSNull class]];
@@ -163,8 +160,6 @@
             
     if(self.attachment)
         [_attachment update:[item objectForKey:kKeyAttachment]];
-    
-    return YES;
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -184,12 +184,13 @@ static NSString* const kLoginText               = @"Log In";
 - (void)sessionCreated:(NSNotification*)notification {
 	
 	NSDictionary *info = [notification userInfo];
-	NSDictionary *body = [info objectForKey:kKeyBody];
+	//NSDictionary *body = [info objectForKey:kKeyBody];
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
 
-        DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
-                                                                                       atRow:kMPUsersIndex];
+        //DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
+        //                                                                               atRow:kMPUsersIndex];
+        DWUser *user = nil;
 		user.encryptedPassword  = self.password;
 		[[DWSession sharedDWSession] create:user];
 		

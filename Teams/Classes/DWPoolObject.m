@@ -4,7 +4,38 @@
 //
 
 #import "DWPoolObject.h"
+#import "DWMemoryPool.h"
 #import "DWConstants.h"
+
+static NSString* const kMsgOverride = @"WARNING - Override method in child class of DWPoolObject";
+
+
+/**
+ * Private method and property declarations
+ */
+@interface DWPoolObject()
+
+/**
+ * Returns the name of the current class as a string
+ */
++ (NSString*)className;
+
+
+/**
+ * Similar to retain count a count of the different places
+ * the object is being used. An object is freed is the 
+ * count drop below one
+ */
+@property (nonatomic,assign) NSInteger pointerCount;
+
+
+/**
+ * Returns the unique identifier for the object as a string
+ */
+- (NSString*)objectID;
+
+@end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -14,7 +45,31 @@
 
 @synthesize pointerCount	= _pointerCount;
 @synthesize databaseID		= _databaseID;
-@synthesize updatedAt		= _updatedAt;
+
+//----------------------------------------------------------------------------------------------------
++ (id)create:(NSDictionary *)objectJSON {
+    
+    NSString* objectID      = [NSString stringWithFormat:@"%@",[objectJSON objectForKey:kKeyID]];
+    DWPoolObject *object    = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:objectID
+                                                                        forClass:[self className]];
+    
+    if(!object) {
+        object = [[[self alloc] init] autorelease];
+        [[DWMemoryPool sharedDWMemoryPool] setObject:object
+                                              withID:objectID 
+                                            forClass:[self className]];
+    }
+    
+    object.pointerCount++;
+    [object update:objectJSON];
+    
+    return object;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)className {
+    return NSStringFromClass([self class]);
+}
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -30,42 +85,31 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
+    NSLog(@"%@",kMsgOverride);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.updatedAt = nil;
-	
+- (void)destroy {
+
+	if(--self.pointerCount <= 0) {
+        [[DWMemoryPool sharedDWMemoryPool] removeObjectWithID:[self objectID]
+                                                     forClass:[[self class] className]];
+	}    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {	
 	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary *)result {
-	if(!self.updatedAt)
-		[self refreshUpdatedAt];
+- (NSString*)objectID {
+    return [NSString stringWithFormat:@"%d",self.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)update:(NSDictionary*)objectJSON {
-    
-    /*
-	float   interval        =   -[self.updatedAt timeIntervalSinceNow];
-    BOOL    updateNeeded    =   YES;
-	
-	if(interval <= kMPObjectUpdateInterval)
-        updateNeeded = NO;
-    else
-        [self refreshUpdatedAt];
-    
-    return updateNeeded;
-     */
-    
-    return YES;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)refreshUpdatedAt {
-	self.updatedAt = [NSDate dateWithTimeIntervalSinceNow:0];
+- (void)update:(NSDictionary*)objectJSON {
+    self.databaseID = [[objectJSON objectForKey:kKeyID] integerValue];
 }
 
 @end

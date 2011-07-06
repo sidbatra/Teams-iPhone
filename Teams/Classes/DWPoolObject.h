@@ -7,14 +7,18 @@
 
 /**
  * PoolObject is a mandatory base class for all
- * objects that are added to the memory pool
+ * models that are added to the memory pool
  */
 @interface DWPoolObject : NSObject {
 	NSInteger	_databaseID;
 	NSInteger	_pointerCount;
-	
-	NSDate		*_updatedAt;
 }
+
+/**
+ * Factory method for creating DWPoolObjects
+ */
++ (id)create:(NSDictionary *)objectJSON;
+
 
 /**
  * Primary key / unique id to uniquely identify the object
@@ -22,41 +26,21 @@
 @property (nonatomic,assign) NSInteger databaseID;
 
 /**
- * Similar to retain count a count of the different places
- * the object is being used. An object is freed is the 
- * count drop below zero
- */
-@property (nonatomic,assign) NSInteger pointerCount;
-
-/**
- * Date when the object was last updated to avoid
- * slow down from duplicate or too frequent updates
- */
-@property (nonatomic,retain) NSDate *updatedAt;
-
-/**
  * Stub method overriden by the children classes
- * to populate their contents via a JSON dictionary
+ * to update their contents via a JSON dictionary
  */
-- (void)populate:(NSDictionary*)objectJSON;
-
-/**
- * Stub method overriden by the children classes
- * to update their contens via a JSON dictionary
- * Returns whether an updated was made or not
- */
-- (BOOL)update:(NSDictionary*)objectJSON;
-
-/**
- * Called by the child classes to refresh the udpated
- * timestamp after a successful update
- */
-- (void)refreshUpdatedAt;
+- (void)update:(NSDictionary*)objectJSON;
 
 /**
  * Stub method overriden by the children classes to free
  * any non critical memory
  */
 - (void)freeMemory;
+
+/**
+ * Decreases the pointer count and releases the object if
+ * there are no more references left
+ */
+- (void)destroy;
 
 @end

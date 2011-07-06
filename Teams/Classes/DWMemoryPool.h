@@ -5,15 +5,12 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DWPoolObject.h"
-
 /**
- * Memory pool enables resuse of objects
- * of critical classes. Classes whose objects
- * use the memory pool must inherit from DWPoolObject
+ * DWMemoryPool abstracts a generic in-memory hash. Each class is assigned an 
+ * entry in the hash which is in-turn a hash to store objects by unique ids.
  */
 @interface DWMemoryPool : NSObject {
-	NSMutableArray *_memoryPool;
+    NSMutableDictionary    *_memoryPool;
 }
 
 /**
@@ -21,43 +18,32 @@
  */
 + (DWMemoryPool *)sharedDWMemoryPool;
 
-/**
- * Each row in the array is assigned to a mutable dictionary
- * that holds objects of a particular class indexed by their
- * primary ids
- */
-@property (nonatomic,retain) NSMutableArray *memoryPool;
 
 /**
- * Test is there is an object with the primary key of the objectJSON
- * at the given row. If not then create a new object with the given
- * objectRow at the given row.
+ * Retrieve an object belonging to a particular class
+ * with the given ID
  */
-- (DWPoolObject*)getOrSetObject:(NSDictionary*)objectJSON 
-						  atRow:(NSInteger)row;
+- (id)getObjectWithID:(NSString*)objectID 
+             forClass:(NSString*)className;
 
 /**
- * Retreive the object at the given row with the given objectID
- * return nil if not found
+ * Set the given object of a particular class
+ * with the given ID
  */
-- (DWPoolObject*)getObject:(NSInteger)objectID
-					 atRow:(NSInteger)row;
+- (void)setObject:(id)object
+           withID:(NSString*)objectID
+         forClass:(NSString*)className;
 
 /**
- * Add the given pool object to the given row
+ * Remove an object belonging to a particular class
+ * with the given ID
  */
-- (void)setObject:(DWPoolObject*)poolObject
-			atRow:(NSInteger)row;
-
-/**
- * Remove the pool object from the given row
- */
-- (void)removeObject:(DWPoolObject*)poolObject
-			   atRow:(NSInteger)row;
-
+- (void)removeObjectWithID:(NSString*)objectID 
+                  forClass:(NSString*)className;
 /**
  * Free non critical memory from all the pool objects
  */
 - (void)freeMemory;
 
 @end
+

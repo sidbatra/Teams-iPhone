@@ -28,9 +28,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
 	
-	for(DWItem *item in _items)
-		[[DWMemoryPool sharedDWMemoryPool]  removeObject:item 
-												   atRow:kMPItemsIndex];
+	//for(DWItem *item in _items)
+	//	[[DWMemoryPool sharedDWMemoryPool]  removeObject:item 
+	//											   atRow:kMPItemsIndex];
 	
     [_items release];
 	
@@ -70,9 +70,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)clearAllItems {
-	for(DWItem *item in _items)
-		[[DWMemoryPool sharedDWMemoryPool]  removeObject:item 
-												   atRow:kMPItemsIndex];
+	//for(DWItem *item in _items)
+	//	[[DWMemoryPool sharedDWMemoryPool]  removeObject:item 
+	//											   atRow:kMPItemsIndex];
 	
 	[_items removeAllObjects];
 }
@@ -87,29 +87,36 @@
 - (void)addItem:(DWItem*)item 
 		atIndex:(NSInteger)index {
 	
+    /*
 	[_items insertObject:item 
 				 atIndex:index];
 	
 	item.pointerCount++;
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)removeItemWithID:(NSInteger)itemID {
     for(DWItem *item in _items) {
+        /*
         if(item.databaseID == itemID) {
             [[DWMemoryPool sharedDWMemoryPool]  removeObject:item 
                                                        atRow:kMPItemsIndex];
             [_items removeObject:item];
             break;
         }
+         */
     }
 }
 
 //----------------------------------------------------------------------------------------------------
 -(void) populateItem:(NSDictionary*)item {
+    /*
 	DWItem *new_item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:item 
 																			 atRow:kMPItemsIndex];
+     
 	[_items addObject:new_item];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

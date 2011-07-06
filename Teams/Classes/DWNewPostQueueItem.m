@@ -256,9 +256,10 @@
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
 		
 
-		DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyItem]
-																			atRow:kMPItemsIndex];
-		item.pointerCount--;
+		//DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyItem]
+		//																	atRow:kMPItemsIndex];
+        DWItem *item = nil;
+		//item.pointerCount--;
         
         
         if(item.attachment)

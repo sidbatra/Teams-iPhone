@@ -51,8 +51,8 @@ static NSString* const kMsgFindingLocality	= @"Finding locality";
     
     
     if(self.attachment) {
-        [[DWMemoryPool sharedDWMemoryPool]  removeObject:self.attachment 
-                                                   atRow:kMPAttachmentSlicesIndex];
+        //[[DWMemoryPool sharedDWMemoryPool]  removeObject:self.attachment 
+        //                                           atRow:kMPAttachmentSlicesIndex];
         
         self.attachment = nil;
     }
@@ -78,14 +78,12 @@ static NSString* const kMsgFindingLocality	= @"Finding locality";
 
 //----------------------------------------------------------------------------------------------------
 - (void)populateAttachment:(NSDictionary*)attachment {
-    self.attachment = (DWAttachment*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:attachment 
-                                                                                  atRow:kMPAttachmentSlicesIndex];
+   // self.attachment = (DWAttachment*)[[DWMemoryPool sharedDWMemoryPool]  getOrSetObject:attachment 
+   //                                                                               atRow:kMPAttachmentSlicesIndex];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary*)place {	
-	[super populate:place];
-	
+- (void)populate:(NSDictionary*)place {		
 	_databaseID				= [[place objectForKey:kKeyID] integerValue];
 	
 	self.name				= [place objectForKey:kKeyName];
@@ -106,9 +104,7 @@ static NSString* const kMsgFindingLocality	= @"Finding locality";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)update:(NSDictionary*)place {
-    if(![super update:place])
-        return NO;
+- (void)update:(NSDictionary*)place {
 
     if(!_usesMemoryPool) 
         _databaseID = [[place objectForKey:kKeyID] integerValue];
@@ -150,7 +146,6 @@ static NSString* const kMsgFindingLocality	= @"Finding locality";
             [self populateAttachment:attachment];
     }
     
-    return YES;
 }
 
 //----------------------------------------------------------------------------------------------------

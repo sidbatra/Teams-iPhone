@@ -4,12 +4,24 @@
 //
 
 #import "DWMemoryPool.h"
-#import "DWItem.h"
-#import "DWPlace.h"
-#import "DWUser.h"
 #import "DWConstants.h"
 
 #import "SynthesizeSingleton.h"
+
+
+/**
+ * Private method and property declarations
+ */
+@interface DWMemoryPool()
+
+/**
+ * Each keys in the dictionary is a dictionary 
+ * that holds objects of a particular class indexed by their
+ * primary ids
+ */
+@property (nonatomic,retain) NSMutableDictionary *memoryPool;
+
+@end
 
 
 
@@ -27,96 +39,53 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 	self = [super init];
 	
 	if(self) {
-		self.memoryPool = [NSMutableArray arrayWithCapacity:kMPTotalClasses];
-		
-		/** 
-		 * Add a NSMutableDictionary for each class whose objects utilize the memory pool
-		 */
-		for(int i=0;i<kMPTotalClasses;i++) {
-			[self.memoryPool addObject:[NSMutableDictionary dictionary]];
-		}
+		self.memoryPool = [NSMutableDictionary dictionary];
 	}
 	
 	return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.memoryPool = nil;
-	
+- (void)dealloc {	
 	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (DWPoolObject*)getOrSetObject:(NSDictionary*)objectJSON 
-						  atRow:(NSInteger)row {
+- (id)getObjectWithID:(NSString*)objectID 
+             forClass:(NSString*)className {
 	
-	NSInteger key = objectJSON ? [[objectJSON objectForKey:kKeyID] integerValue] : 0;
-	DWPoolObject *new_object = [[DWMemoryPool sharedDWMemoryPool]  getObject:key 
-												 atRow:row];
-	
-	if(!new_object) {
-		
-		if(row == kMPItemsIndex)
-			new_object = [[DWItem alloc] init];		
-		else if(row == kMPPlacesIndex)
-			new_object = [[DWPlace alloc] init];
-		else if(row == kMPUsersIndex)
-			new_object = [[DWUser alloc] init];
-        else if(row == kMPAttachmentsIndex || row ==  kMPAttachmentSlicesIndex)
-            new_object  = [[DWAttachment alloc] init];
-        
-		
-		if(objectJSON)
-			[new_object populate:objectJSON];
-		
-		[[DWMemoryPool sharedDWMemoryPool]  setObject:new_object atRow:row];
-		[new_object release];		
-	}
-	else {
-		new_object.pointerCount++;
-		[new_object update:objectJSON];
-	}
-	
-	return new_object;
+	NSMutableDictionary *pool = [self.memoryPool objectForKey:className];
+	return [pool objectForKey:objectID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (DWPoolObject*)getObject:(NSInteger)objectID 
-					 atRow:(NSInteger)row {
-	
-	NSMutableDictionary *poolForClass = [self.memoryPool objectAtIndex:row];
-	DWPoolObject *object = [poolForClass objectForKey:[NSString stringWithFormat:@"%d",objectID]];
-	
-	return object;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setObject:(DWPoolObject*)poolObject atRow:(NSInteger)row {
-
-	NSMutableDictionary *poolForClass = [self.memoryPool objectAtIndex:row];
-	
-	[poolForClass setObject:poolObject 
-					 forKey:[NSString stringWithFormat:@"%d",poolObject.databaseID]];
-	
-	poolObject.pointerCount++;
+- (void)setObject:(id)object
+           withID:(NSString*)objectID
+         forClass:(NSString*)className {
     
-    [poolObject refreshUpdatedAt];
+	NSMutableDictionary *pool = [self.memoryPool objectForKey:className];
+    
+    if(!pool) {
+        pool = [NSMutableDictionary dictionary];
+        [self.memoryPool setObject:pool
+                            forKey:className];
+    }
+	
+	[pool setObject:object 
+             forKey:objectID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)removeObject:(DWPoolObject*)poolObject atRow:(NSInteger)row {
+- (void)removeObjectWithID:(NSString*)objectID 
+                  forClass:(NSString*)className {
 
-	poolObject.pointerCount--;
-	
-	if(poolObject.pointerCount <= 0) {
-		NSMutableDictionary *poolForClass = [self.memoryPool objectAtIndex:row];
-		[poolForClass removeObjectForKey:[NSString stringWithFormat:@"%d",poolObject.databaseID]];
-	}
+    NSMutableDictionary *pool = [self.memoryPool objectForKey:className];
+    [pool removeObjectForKey:objectID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
+    /*
 	for(int i=0;i<kMPTotalClasses;i++) {
 		NSMutableDictionary *poolForClass = [self.memoryPool objectAtIndex:i];
 	
@@ -124,6 +93,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 			[poolObject freeMemory];
 		}
 	}
+     */
 }
 
 @end
