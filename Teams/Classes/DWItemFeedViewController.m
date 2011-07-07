@@ -342,7 +342,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
 //----------------------------------------------------------------------------------------------------
 - (void)loadImagesForDataRowAtIndex:(NSIndexPath *)indexPath {
     DWItem *item = [_itemManager getItem:indexPath.row];
-    [item startRemoteImagesDownload];
+    [item startImagesDownload];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -360,11 +360,11 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
     
     cell.itemID				= item.databaseID;
     cell.itemData			= item.data;
-    cell.itemPlaceName		= item.place.name;
+    cell.itemPlaceName		= item.team.name;
     cell.itemUserName		= item.user.firstName;
     
     
-    [item startRemoteImagesDownload];
+    [item startImagesDownload];
     
     
     if (item.attachment) {
@@ -381,9 +381,10 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
         cell.attachmentType = kAttachmentNone;
     }
     
+    /*
     [cell setDetails:item.touchesCount 
         andCreatedAt:[item createdTimeAgoInWords]];
-    
+    */
     [cell reset];
     [cell redisplay];
     

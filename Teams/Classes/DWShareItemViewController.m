@@ -91,6 +91,7 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    /*
     if(self.item.attachment) {
         [self.item startRemoteImagesDownload];
         
@@ -99,7 +100,7 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
     }
     else
         [self displayTextUI];
-    
+    */
     
     [self.dataTextView becomeFirstResponder];
     

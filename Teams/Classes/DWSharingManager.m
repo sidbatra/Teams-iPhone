@@ -188,7 +188,7 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 - (NSString*)generateSharingItemText:(BOOL)withAddress {
     NSString *text          = nil;
     NSString *placeText     = [self generateSharingPlaceText:withAddress];
-    BOOL isRecentItem       = [self.item createdTimeAgoStamp] <= kRecentItemThreshold;
+    BOOL isRecentItem       = NO;//[self.item createdTimeAgoStamp] <= kRecentItemThreshold;
     BOOL isOwnItem          = YES;//[self.item.user DWTeam];
     
     
@@ -216,7 +216,7 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 - (NSString*)generateSharingURL:(BOOL)addProtocol {
     
     NSString *url = nil;
-    
+    /*
     if(addProtocol) {
         url = [NSString stringWithFormat:@"%@%@%@%@",
                 kDenwenProtocol,
@@ -230,7 +230,7 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
                 kItemShareURI,
                 self.item.hashedID];
     }
-    
+    */
     return url;
 }
 
@@ -393,8 +393,8 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
    
     NSDictionary *info = [notification userInfo];
 	
-	if([[info objectForKey:kKeyResourceID] integerValue] != self.item.place.databaseID)
-		return;
+	//if([[info objectForKey:kKeyResourceID] integerValue] != self.item.place.databaseID)
+	//	return;
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
 		
@@ -409,10 +409,10 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 //----------------------------------------------------------------------------------------------------
 - (void)addressError:(NSNotification*)notification {
     
-    NSDictionary *info = [notification userInfo];
+   // NSDictionary *info = [notification userInfo];
 	
-	if([[info objectForKey:kKeyResourceID] integerValue] != self.item.place.databaseID)
-		return;
+	//if([[info objectForKey:kKeyResourceID] integerValue] != self.item.place.databaseID)
+	//	return;
     
     [self afterAddressProcessing];
 }

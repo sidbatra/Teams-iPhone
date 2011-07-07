@@ -5,7 +5,6 @@
 
 #import "DWTeam.h"
 #import "DWAttachment.h"
-#import "DWRequestsManager.h"
 #import "DWConstants.h"
 
 

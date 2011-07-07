@@ -7,7 +7,6 @@
 #import "DWSession.h"
 #import "DWRequestsManager.h"
 #import "UIImage+ImageProcessing.h"
-#import "NSString+Helpers.h"
 #import "DWConstants.h"
 
 static NSString* const kImgProfilePicPlaceHolder		= @"profile_pic_placeholder.png";

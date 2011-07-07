@@ -50,7 +50,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)createItemWithData:(NSString*)data {
 	self.item					= [[[DWItem alloc] init] autorelease];
-	self.item.usesMemoryPool	= NO;
+	//self.item.usesMemoryPool	= NO;
 	self.item.data				= data;	
 }
 
@@ -81,7 +81,7 @@
 	
 	if(!image)
 		return;
-	
+	/*
 	DWAttachment *attachment	= [[[DWAttachment alloc] init] autorelease];
 	attachment.fileType			= kAttachmentImage;
 	attachment.largeImage		= image;
@@ -89,6 +89,7 @@
 	self.item.attachment		= attachment;
     
     self.previewImage           = image;
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -99,12 +100,12 @@
 	if(!url)
 		return;
 	
-	DWAttachment *attachment	= [[[DWAttachment alloc] init] autorelease];
-	attachment.fileType			= kAttachmentVideo;
+	//DWAttachment *attachment	= [[[DWAttachment alloc] init] autorelease];
+	//attachment.fileType			= kAttachmentVideo;
 	//attachment.orientation		= orientation;
 	//attachment.videoURL			= url;
 	
-	self.item.attachment		= attachment;
+	//self.item.attachment		= attachment;
     
     self.previewImage           = videoPreviewImage;
 }
@@ -193,11 +194,11 @@
 - (void)startPrimaryUpload {
 	[super startPrimaryUpload];
 	
-	if(self.item.place.databaseID != kMPDefaultDatabaseID) {
+	if(self.item.team.databaseID != kMPDefaultDatabaseID) {
 		
 		_primaryUploadID = [[DWRequestsManager sharedDWRequestsManager] createItemWithData:self.item.data
 																	withAttachmentFilename:self.filename
-																			 atPlaceWithID:self.item.place.databaseID];
+																			 atPlaceWithID:self.item.team.databaseID];
 	}
 	else {
 		/*
@@ -282,7 +283,7 @@
 			[[NSNotificationCenter defaultCenter] postNotificationName:kNNewPlaceParsed 
 																object:nil
 															  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-																		item.place,kKeyPlace,
+																		item.team,kKeyPlace,
 																		nil]];
 		}	
         

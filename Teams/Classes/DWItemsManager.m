@@ -58,13 +58,14 @@
     
     NSInteger itemID = 0;
     
+    /*
     for(DWItem *item in _items) {
         if(item.user.databaseID != userID && item.databaseID > pivotItemID) {
             itemID = item.databaseID;
             break;
         }
     }
-    
+    */
     return itemID;
 }
 
