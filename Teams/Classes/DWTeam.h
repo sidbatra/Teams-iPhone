@@ -56,9 +56,9 @@
 
  
 /**
- * Start downloading attachment slice images
+ * Start downloading the attachment slice image
  */
-- (void)startPreviewDownload;
+- (void)startImageDownload;
 
 @end
 

@@ -98,7 +98,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)startPreviewDownload {
+- (void)startImageDownload {
 	if(self.attachment)
 		[self.attachment startSliceDownload];
 }
