@@ -126,9 +126,27 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     NSLog(@"filetype - %d",a.fileType);
     
     [a destroy];
-     */
+    */
     
-    //DWTeam *team = [DWTeam create:nil];
+    /*
+    NSString *json = @"{\"name\":\"Denwen\",\"byline\":\"We are the team\",\"memberships_count\":1,\"id\":1,\"errors\":[],\"attachment\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4},\"timestamp\":1309474389,\"followings_count\":1}";
+    
+    
+    
+    DWTeam *team = [DWTeam create:[json JSONValue]];
+    NSLog(@"id - %d",team.databaseID);
+    NSLog(@"name - %@",team.name);
+    NSLog(@"byline - %@",team.byline);
+    NSLog(@"foll,mem,crea - %d,%d,%f",team.followingsCount,team.membersCount,team.createdAtTimestamp);
+    
+    NSLog(@"id - %d",team.attachment.databaseID);
+    NSLog(@"slice - %@",team.attachment.sliceURL);
+    NSLog(@"large - %@",team.attachment.largeURL);
+    NSLog(@"actual - %@",team.attachment.actualURL);
+    NSLog(@"filetype - %d",team.attachment.fileType);
+
+    [team destroy];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
