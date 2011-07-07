@@ -4,7 +4,6 @@
 //
 
 #import "DWFollowing.h"
-#import "DWConstants.h"
 
 
 
@@ -13,16 +12,11 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFollowing
 
-@synthesize databaseID = _databaseID;
-
-//----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary*)following {
-	_databaseID = [[following objectForKey:kKeyID] integerValue];
-}
-
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[super dealloc];
+    
+    NSLog(@"following released - %d",self.databaseID);
 }
 
 @end

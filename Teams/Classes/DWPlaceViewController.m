@@ -122,8 +122,8 @@ static NSInteger const kTagUnfollowActionSheet              = -1;
 - (void)updateFollowing:(NSDictionary*)followJSON {
 	
 	if(![followJSON isKindOfClass:[NSNull class]] && [followJSON count]) {
-		self.following = [[[DWFollowing alloc] init] autorelease];
-		[self.following populate:followJSON];
+		//self.following = [[[DWFollowing alloc] init] autorelease];
+		//[self.following populate:followJSON];
 	}
 	else {
 		self.following = nil;

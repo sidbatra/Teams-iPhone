@@ -10,6 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
+#import "DWFollowing.h"
 #import "JSON.h"
 #import "DWSession.h"
 
@@ -99,77 +100,19 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
     
     /*
-    DWUser *user = [[DWUser alloc] init];
-    user.firstName = @"Siddharth";
-    user.lastName   = @"Batra";
-    user.smallURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg";
-    user.largeURL = @"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg";
-    user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
-     */
-   
-    
     NSString *json = @"{\"is_confirmed\":true,\"byline\":\"I get things done\",\"photo\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg\",\"is_processed\":true,\"id\":1,\"small_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg\"},\"id\":1,\"errors\":[],\"last_name\":\"Batra\",\"followings_count\":2,\"first_name\":\"Siddharth\",\"email\":\"sid@denwen.com\"}";
     
     DWUser *user = [DWUser create:[json JSONValue]];
-    user.twitterXAuthToken = [@"TWITTER"  dataUsingEncoding:NSUTF8StringEncoding];
-    user.facebookAccessToken = @"FACEBOOK";
     user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
     NSLog(@"id - %d \n first name - %@ last name - %@ \n ",user.databaseID,user.firstName,user.lastName);
+    */
     
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
-    [user destroy];
-    
-    
-    user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    NSLog(@"BEFORE UNARCHIVE id - %d \n name - %@ \n ",user.databaseID,user.firstName);
-    
-    
-    DWUser *beta = (DWUser*)[NSKeyedUnarchiver unarchiveObjectWithData:data];
-    
-    if(!beta)
-        NSLog(@"BETA IS NULL");
-    NSLog(@"BETA");
-    NSLog(@"id - %d",beta.databaseID);
-    NSLog(@"first - %@",beta.firstName);
-    NSLog(@"last - %@",beta.lastName);
-    NSLog(@"byline - %@",beta.byline);
-    NSLog(@"count - %d",beta.followingCount);
-    NSLog(@"email - %@",beta.email);
-    NSLog(@"password - %@",beta.encryptedPassword);
-    NSLog(@"twitter - %@",beta.twitterXAuthToken);
-    NSLog(@"facebook - %@",beta.facebookAccessToken);
-    NSLog(@"has photo - %d",beta.hasPhoto);
-    NSLog(@"small URL - %@",beta.smallURL);
-    NSLog(@"actual url - %@",beta.largeURL);
-    NSLog(@"is current user - %d",beta.isCurrentUser);
-     
-    user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    NSLog(@"AFTER UNARCHIVE id - %d \n name - %@ \n ",user.databaseID,user.firstName);
-    
-    [beta destroy];
-    
-    //[user destroy];
-    //DWUser *user = [[[DWUser alloc] init] autorelease];
-    //user.databaseID = 9;
-    //[user mount];
-    //user = nil;
-    
-
     
     /*
-    DWUser *user = [[DWUser alloc] init];
-    user.databaseID = 99;
-    //NSMutableDictionary *b = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *a = [[NSMutableDictionary alloc] init];
-    //[b setObject:a forKey:@"1"];
-    [a setObject:user forKey:@"1"];
-    [user release];
-    [user release];
-    //[a removeAllObjects];
-    
-    //NSLog(@"count - %d, id - %d",user.retainCount,user.databaseID);
-    NSLog(@"entry - %@",[a objectForKey:@"2"]);
-    //[a removeObjectForKey:@"1"];
+    NSString *json = @"{\"id\":8,\"user_id\":3,\"errors\":[],\"team_id\":3}";
+    DWFollowing *following = [DWFollowing create:[json JSONValue]];
+    NSLog(@"following id - %d",following.databaseID);
+    [following destroy];
      */
 }
 
