@@ -366,7 +366,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
     
     
     if (item.attachment) {
-        [cell setItemImage:item.attachment.previewImage];
+        [cell setItemImage:item.attachment.largeImage];
         
         if([item.attachment isVideo])
             cell.attachmentType = kAttachmentVideo;

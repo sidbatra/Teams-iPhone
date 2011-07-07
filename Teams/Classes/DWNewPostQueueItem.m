@@ -81,7 +81,7 @@
 	
 	DWAttachment *attachment	= [[[DWAttachment alloc] init] autorelease];
 	attachment.fileType			= kAttachmentImage;
-	attachment.previewImage		= image;
+	attachment.largeImage		= image;
 	
 	self.item.attachment		= attachment;
     
@@ -98,8 +98,8 @@
 	
 	DWAttachment *attachment	= [[[DWAttachment alloc] init] autorelease];
 	attachment.fileType			= kAttachmentVideo;
-	attachment.orientation		= orientation;
-	attachment.videoURL			= url;
+	//attachment.orientation		= orientation;
+	//attachment.videoURL			= url;
 	
 	self.item.attachment		= attachment;
     
@@ -172,15 +172,17 @@
 	
 	if(self.item.attachment.fileType == kAttachmentImage) {
 		
-		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createImageWithData:self.item.attachment.previewImage
+		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createImageWithData:self.item.attachment.largeImage
 																				 toFolder:kS3ItemsFolder
 																	   withUploadDelegate:self];
 	}
 	else {
+        /*
 		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createVideoUsingURL:self.item.attachment.videoURL
 																			atOrientation:self.item.attachment.orientation
 																				 toFolder:kS3ItemsFolder
 																	   withUploadDelegate:self];
+         */
 	}
 }
 
@@ -263,7 +265,7 @@
         
         
         if(item.attachment)
-            item.attachment.previewImage = self.previewImage;
+            item.attachment.largeImage = self.previewImage;
         
         
 				

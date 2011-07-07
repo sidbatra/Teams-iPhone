@@ -8,7 +8,7 @@
 #import "UIImage+ImageProcessing.h"
 #import "DWConstants.h"
 
-static NSString* const kImgVideoPreviewPlaceholder		= @"video_placeholder.png";
+static NSString* const kImgVideolargePlaceholder		= @"video_placeholder.png";
 static NSInteger const kSliceX							= 0;
 static NSInteger const kSliceY							= 114;
 static NSInteger const kSliceWidth						= 320;
@@ -22,28 +22,26 @@ static float	 const kSliceHeight						= 92;
 @implementation DWAttachment
 
 @synthesize fileType		= _fileType;
-@synthesize fileURL			= _fileURL;
-@synthesize previewURL		= _previewURL;
+@synthesize actualURL		= _actualURL;
+@synthesize largeURL		= _largeURL;
 @synthesize sliceURL		= _sliceURL;
-@synthesize orientation		= _orientation;
-@synthesize videoURL		= _videoURL;
-@synthesize previewImage	= _previewImage;
+@synthesize largeImage      = _largeImage;
 @synthesize sliceImage		= _sliceImage;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
 	self = [super init];
 	
-	if(self != nil) {		
+	if(self) {		
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(mediumImageLoaded:) 
-													 name:kNImgMediumAttachmentLoaded
+												 selector:@selector(largeImageLoaded:) 
+													 name:kNImgLargeAttachmentLoaded
 												   object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(mediumImageError:) 
-													 name:kNImgMediumAttachmentError
+												 selector:@selector(largeImageError:) 
+													 name:kNImgLargeAttachmentError
 													object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -62,53 +60,35 @@ static float	 const kSliceHeight						= 92;
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
-	self.previewImage	= nil;
-	self.sliceImage		= nil;
+	self.largeImage	= nil;
+	self.sliceImage	= nil;
 }
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
         
-	self.fileURL		= nil;
-	self.previewURL		= nil;
+	self.actualURL		= nil;
+	self.largeURL		= nil;
 	self.sliceURL		= nil;
-	self.orientation	= nil;
-	self.videoURL		= nil;
-	self.previewImage	= nil;
+	self.largeImage     = nil;
 	self.sliceImage		= nil;
+    
+    NSLog(@"attachment released - %d",self.databaseID);
 	
 	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary*)attachment {    
+- (void)update:(NSDictionary*)attachment {
+
 	_fileType			= [[attachment objectForKey:kKeyFileType] integerValue];
 	_databaseID			= [[attachment objectForKey:kKeyID] integerValue];
 	_isProcessed		= [[attachment objectForKey:kKeyIsProcessed] boolValue];
 	
-	self.fileURL		= [attachment objectForKey:kKeyActualURL];
-	self.previewURL		= [attachment objectForKey:kKeyLargeURL];
+	self.actualURL		= [attachment objectForKey:kKeyActualURL];
+	self.largeURL		= [attachment objectForKey:kKeyLargeURL];
 	self.sliceURL		= [attachment objectForKey:kKeySliceURL];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)update:(NSDictionary*)attachment {
-    //if(![super update:attachment])
-     //   return NO;
-    
-    
-        	
-	if(!_isProcessed) {
-		_isProcessed			= [[attachment objectForKey:kKeyIsProcessed] boolValue];
-		
-		if(_isProcessed) {
-			self.previewURL		= [attachment objectForKey:kKeyLargeURL];
-			self.sliceURL		= [attachment objectForKey:kKeySliceURL];
-			self.previewImage	= nil;
-			self.sliceImage		= nil;
-		}
-	}
 }
 
 //----------------------------------------------------------------------------------------------------							  
@@ -116,21 +96,20 @@ static float	 const kSliceHeight						= 92;
 	return _fileType == kAttachmentVideo;
 }
 
-
 //----------------------------------------------------------------------------------------------------							  
 - (BOOL)isImage {
 	return _fileType == kAttachmentImage;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)appplyNewPreviewImage:(UIImage*)image {
+- (void)appplyNewlargeImage:(UIImage*)image {
 	
 	NSDictionary *info	= [NSDictionary dictionaryWithObjectsAndKeys:
 						   [NSNumber numberWithInt:self.databaseID]		,kKeyResourceID,
 						   image										,kKeyImage,
 						   nil];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNImgMediumAttachmentLoaded
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNImgLargeAttachmentLoaded
 														object:nil
 													  userInfo:info];
 }
@@ -149,20 +128,20 @@ static float	 const kSliceHeight						= 92;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)startPreviewDownload {
-	if(!_isDownloading && !self.previewImage) {
+- (void)startLargeDownload {
+	if(!_isLargeDownloading && !self.largeImage) {
 		
 		if(_isProcessed || [self isImage]) {
-			 _isDownloading = YES;
+			 _isLargeDownloading = YES;
 			
-			[[DWRequestsManager sharedDWRequestsManager] getImageAt:self.previewURL
+			[[DWRequestsManager sharedDWRequestsManager] getImageAt:self.largeURL
 													 withResourceID:self.databaseID
-												successNotification:kNImgMediumAttachmentLoaded
-												  errorNotification:kNImgMediumAttachmentError];
+												successNotification:kNImgLargeAttachmentLoaded
+												  errorNotification:kNImgLargeAttachmentError];
 			
 		}
 		else {
-			//[self appplyNewPreviewImage:[UIImage imageNamed:kImgVideoPreviewPlaceholder]];
+			//[self appplyNewlargeImage:[UIImage imageNamed:kImgVideolargePlaceholder]];
 		}
 	}
 }
@@ -189,26 +168,26 @@ static float	 const kSliceHeight						= 92;
 #pragma mark Notifications
 
 //----------------------------------------------------------------------------------------------------
-- (void)mediumImageLoaded:(NSNotification*)notification {
+- (void)largeImageLoaded:(NSNotification*)notification {
 	NSDictionary *info		= [notification userInfo];
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
 	if(resourceID != self.databaseID)
 		return;
 	
-	self.previewImage	= [info objectForKey:kKeyImage];		
-	_isDownloading		= NO;
+	self.largeImage	= [info objectForKey:kKeyImage];		
+	_isLargeDownloading		= NO;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)mediumImageError:(NSNotification*)notification {
+- (void)largeImageError:(NSNotification*)notification {
 	NSDictionary *info		= [notification userInfo];
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
 	if(resourceID != self.databaseID)
 		return;
 	
-	_isDownloading		= NO;
+	_isLargeDownloading		= NO;
 }
 
 //----------------------------------------------------------------------------------------------------

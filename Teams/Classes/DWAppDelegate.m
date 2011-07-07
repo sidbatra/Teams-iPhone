@@ -10,7 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWFollowing.h"
+#import "DWAttachment.h"
 #import "JSON.h"
 #import "DWSession.h"
 
@@ -113,6 +113,19 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     DWFollowing *following = [DWFollowing create:[json JSONValue]];
     NSLog(@"following id - %d",following.databaseID);
     [following destroy];
+     */
+    
+    /*
+    NSString *json = @"{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4}";
+    
+    DWAttachment *a = [DWAttachment create:[json JSONValue]];
+    NSLog(@"id - %d",a.databaseID);
+    NSLog(@"slice - %@",a.sliceURL);
+    NSLog(@"large - %@",a.largeURL);
+    NSLog(@"actual - %@",a.actualURL);
+    NSLog(@"filetype - %d",a.fileType);
+    
+    [a destroy];
      */
 }
 

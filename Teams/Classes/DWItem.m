@@ -165,7 +165,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)startRemoteImagesDownload {
 	if (self.attachment)
-		[self.attachment startPreviewDownload];
+		[self.attachment startLargeDownload];
 }
 
 @end

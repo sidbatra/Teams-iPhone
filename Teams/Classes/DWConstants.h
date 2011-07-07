@@ -176,7 +176,7 @@ extern NSString* const kNImgLargePlaceError;
 extern NSString* const kNImgMediumAttachmentLoaded;
 extern NSString* const kNImgMediumAttachmentError;
 extern NSString* const kNImgLargeAttachmentLoaded;
-extern NSString* const kNImgLargeUserImageError;
+extern NSString* const kNImgLargeAttachmentError;
 extern NSString* const kNImgActualUserImageLoaded;
 extern NSString* const kNImgActualUserImageError;
 extern NSString* const kNImgSliceAttachmentLoaded;

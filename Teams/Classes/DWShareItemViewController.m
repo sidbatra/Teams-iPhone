@@ -94,8 +94,8 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
     if(self.item.attachment) {
         [self.item startRemoteImagesDownload];
         
-        if(self.item.attachment.previewImage)
-            self.previewImageView.image = self.item.attachment.previewImage;
+        if(self.item.attachment.largeImage)
+            self.previewImageView.image = self.item.attachment.largeImage;
     }
     else
         [self displayTextUI];
@@ -253,7 +253,7 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
                                             caption:[self.item.place fullAddress]
                                                link:[_delegate sharingItemURL]
                                          pictureURL:self.item.attachment ? 
-                                                        self.item.attachment.previewURL : 
+                                                        self.item.attachment.largeURL : 
                                                         kEmptyString];
 }
 
