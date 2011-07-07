@@ -6,14 +6,13 @@
 #import <UIKit/UIKit.h>
 
 #import "DWItemFeedViewController.h"
-#import "DWPlaceListViewController.h"
 
 
 /**
  * Base class for containers which form the root views for
  * each of the tabs
  */
-@interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemFeedViewControllerDelegate,DWPlaceListViewControllerDelegate> {
+@interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemFeedViewControllerDelegate> {
     
 	UIViewController    *_customTabBarController;
 }

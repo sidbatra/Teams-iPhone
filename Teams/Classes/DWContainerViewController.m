@@ -5,7 +5,6 @@
 #import "DWContainerViewController.h"
 #import "DWTabBarController.h"
 #import "DWUserViewController.h"
-#import "DWPlaceViewController.h"
 #import "DWWebViewController.h"
 #import "DWSharingManager.h"
 #import "DWSession.h"
@@ -59,13 +58,6 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     return [(DWTabBarController*)self.customTabBarController getSelectedController] == self.navigationController;
 }
 
-//----------------------------------------------------------------------------------------------------
--(void)displaySelectedPlace:(DWPlace*)place {
-	DWPlaceViewController *placeView = [[DWPlaceViewController alloc] initWithPlace:place 
-																		andDelegate:self];
-	[self.navigationController pushViewController:placeView animated:YES];
-	[placeView release];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)testLaunchURL {
@@ -86,13 +78,13 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 - (void)processLaunchURL:(NSString*)url {
 	
     if([url hasPrefix:kDenwenURLPrefix]) {
-        
+        /*
         DWPlace *place          = [[[DWPlace alloc] init] autorelease];
         place.usesMemoryPool    = NO;
         place.databaseID        = [[NSDate date] timeIntervalSince1970];
         place.hashedID          = [url substringFromIndex:[kDenwenURLPrefix length]];
         
-        [self displaySelectedPlace:place];
+        [self displaySelectedPlace:place];*/
     }
 }
 
@@ -117,9 +109,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 #pragma mark ItemFeedViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
+/*
 - (void)placeSelected:(DWPlace*)place {
 	[self displaySelectedPlace:place];
 }
+ */
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {

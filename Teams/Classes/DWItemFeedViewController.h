@@ -48,7 +48,7 @@
 /**
  * Fired when a place is selected from it's name or photo
  */
-- (void)placeSelected:(DWPlace*)place;
+//- (void)placeSelected:(DWTeam*)place;
 
 /**
  * Fired when a user is selected from it's name or photo

@@ -78,10 +78,10 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
     self.baseController     = baseController;
     _cancelButtonIndex      = kCancelDefaultIndex;
     
-    if(!self.item.place.hasAddress) {
-        _waitingForAddress = YES;
-        [[DWRequestsManager sharedDWRequestsManager] getAddressForPlaceID:self.item.place.databaseID];
-    }
+    //if(!self.item.place.hasAddress) {
+     //   _waitingForAddress = YES;
+     //   [[DWRequestsManager sharedDWRequestsManager] getAddressForPlaceID:self.item.place.databaseID];
+    //}
     
     
     
@@ -174,11 +174,14 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 
 //----------------------------------------------------------------------------------------------------
 - (NSString*)generateSharingPlaceText:(BOOL)withAddress {
+   /*
     NSString *specificAddressField = [self.item.place displayAddressWithDefautMessage:NO];
     
     return [specificAddressField length] && withAddress ? 
             [NSString stringWithFormat:@"%@ (%@)",self.item.place.name,specificAddressField] : 
             [NSString stringWithString:self.item.place.name];
+    */
+    return nil;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -186,7 +189,7 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
     NSString *text          = nil;
     NSString *placeText     = [self generateSharingPlaceText:withAddress];
     BOOL isRecentItem       = [self.item createdTimeAgoStamp] <= kRecentItemThreshold;
-    BOOL isOwnItem          = [self.item.user isCurrentUser];
+    BOOL isOwnItem          = YES;//[self.item.user DWTeam];
     
     
     if(isOwnItem && isRecentItem) {
@@ -395,9 +398,9 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
 		
-		NSArray *addresses = [[info objectForKey:kKeyBody] objectForKey:kKeyAddresses];
+		//NSArray *addresses = [[info objectForKey:kKeyBody] objectForKey:kKeyAddresses];
         
-        [self.item.place updateAddress:[addresses lastObject]];
+        //[self.item.place updateAddress:[addresses lastObject]];
     }
     
     [self afterAddressProcessing];

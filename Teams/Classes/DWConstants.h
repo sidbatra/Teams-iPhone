@@ -84,6 +84,8 @@ extern NSString* const kKeyIsProcessed;
 extern NSString* const kKeyName;
 extern NSString* const kKeyHashedID;
 extern NSString* const kKeyFollowingsCount;
+extern NSString* const kKeyMembershipsCount;
+extern NSString* const kKeyTimestamp;
 extern NSString* const kKeyLatitude;
 extern NSString* const kKeyLongitude;
 extern NSString* const kKeyLocation;

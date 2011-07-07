@@ -29,10 +29,10 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showUserStateFor:(NSString*)userName andIsCurrentUser:(BOOL)isCurrentUser {
+- (void)showUserStateFor:(NSString*)userName andDWTeam:(BOOL)DWTeam {
     [self showNormalState];
     
-    if (isCurrentUser) {
+    if (DWTeam) {
         standaloneTitleLabel.text               = @"Profile Picture";
         underlayButton.enabled                  = YES;
         underlayButton.userInteractionEnabled   = NO;        

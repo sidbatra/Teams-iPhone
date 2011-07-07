@@ -6,7 +6,6 @@
 #import "DWItemsContainerViewController.h"
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
-#import "DWFollowedPlacesViewController.h"
 #import "DWNotificationsHelper.h"
 #import "DWSession.h"
 
@@ -294,13 +293,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleView {
-    DWFollowedPlacesViewController *followedView = [[DWFollowedPlacesViewController alloc] 
-                                                    initWithDelegate:self
-                                                    withUser:[DWSession sharedDWSession].currentUser];
-    
-    [self.navigationController pushViewController:followedView 
-                                         animated:YES];
-    [followedView release]; 
 }
 
 

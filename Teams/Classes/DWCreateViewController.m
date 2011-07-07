@@ -50,7 +50,6 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 @synthesize transImageView		= _transImageView;
 @synthesize placeNameTextField	= _placeNameTextField;
 @synthesize dataTextView		= _dataTextView;
-@synthesize searchResults		= _searchResults;
 @synthesize	mapButton			= _mapButton;
 @synthesize	cancelButton		= _cancelButton;
 @synthesize doneButton			= _doneButton;
@@ -93,7 +92,6 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.coverLabel				= nil;
 	self.topCoverLabel			= nil;
 	
-	self.searchResults			= nil;
 	self.selectedPlace			= nil;
 	self.newPlaceLocation		= nil;
 	self.cameraImage			= nil;
@@ -110,14 +108,16 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.newPlaceLocation				= nil;//[[DWSession sharedDWSession] location];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
 	
+    /*
 	CGRect frame						= CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
 	self.searchResults					= [[[DWPlacesSearchResultsViewController alloc] init] autorelease];
 	self.searchResults.delegate			= self;
 	self.searchResults.view.frame		= frame;
 	self.searchResults.view.hidden		= YES;
+     
 	
 	[self.view addSubview:self.searchResults.view];
-	
+	*/
 	[self.placeNameTextField becomeFirstResponder];
 	
 }
@@ -251,7 +251,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWPlacesSearchResultsViewControllerDelegate
-
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)placeSelected:(DWPlace *)place {
 	self.selectedPlace				= place;
@@ -271,6 +271,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	
 	[self enterNewPlaceMode];
 }
+ */
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isNewPlaceMode {
@@ -442,8 +443,8 @@ replacementString:(NSString *)string {
         self.placeNameTextField.text.length > 0 ? [self displayNormalUI] : [self displayMediaUI];
     
         
-    self.searchResults.searchText = self.placeNameTextField.text;
-    [self.searchResults filterPlacesBySearchText];
+    //self.searchResults.searchText = self.placeNameTextField.text;
+    //[self.searchResults filterPlacesBySearchText];
 }
 
 

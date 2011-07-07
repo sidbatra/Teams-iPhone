@@ -80,11 +80,12 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
     
     self.navigationItem.titleView           = nil;   	
 	self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:_delegate];
-    
-    if ([self.user isCurrentUser])
+    /*
+    if ([self.user DWTeam])
         self.navigationItem.rightBarButtonItem  = [DWGUIManager cameraNavButton:self];
     else
         self.navigationItem.rightBarButtonItem  = nil;
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
         
         /*
         [self.userProfileTitleView showUserStateFor:[self.user fullName] 
-                                   andIsCurrentUser:[self.user isCurrentUser]];
+                                   andDWTeam:[self.user DWTeam]];
          */
 	}
 }
@@ -129,7 +130,7 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
 	if(resourceID == _key) {
         /*
         [self.userProfileTitleView showUserStateFor:[self.user fullName] 
-                                   andIsCurrentUser:[self.user isCurrentUser]];
+                                   andDWTeam:[self.user DWTeam]];
          */
 	}
 }
@@ -139,13 +140,13 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
 	NSDictionary *info		= [notification userInfo];
     UIImage *image          = (UIImage*)[info objectForKey:kKeyUserImage];
     
-    if(![self.user isCurrentUser])
-		return;
+    //if(![self.user DWTeam])
+	//	return;
     
     if (image) 
         [(DWImageView*)self.view setupImageView:image];
     
-    [self.userProfileTitleView showNormalState];
+    //[self.userProfileTitleView showNormalState];
 }
 
 

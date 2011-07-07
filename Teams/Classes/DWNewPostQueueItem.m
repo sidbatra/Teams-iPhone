@@ -56,21 +56,24 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createPlaceWithID:(NSInteger)placeID {
+    /*
 	DWPlace *place			= [[[DWPlace alloc] init] autorelease];
 	place.databaseID		= placeID;
 	
 	self.item.place			= place;
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createPlaceWithName:(NSString*)name
 				 atLocation:(CLLocation*)location {
-	
+	/*
 	DWPlace *place			= [[[DWPlace alloc] init] autorelease];
 	place.name				= name;
 	place.location			= location;
 	
 	self.item.place			= place;
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -197,11 +200,12 @@
 																			 atPlaceWithID:self.item.place.databaseID];
 	}
 	else {
-		
+		/*
 		_primaryUploadID = [[DWRequestsManager sharedDWRequestsManager] createItemWithData:self.item.data
 																	withAttachmentFilename:self.filename
 																		   atPlaceWithName:self.item.place.name
 																				atLocation:self.item.place.location.coordinate];
+         */
 	}
 }
 

@@ -154,6 +154,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
         CGPoint swipeLocation           = [gestureRecognizer locationInView:self.tableView];
         NSIndexPath *swipedIndexPath    = [self.tableView indexPathForRowAtPoint:swipeLocation];
         
+        
         if ([[_itemManager getItem:swipedIndexPath.row].user isCurrentUser]) {
             
             UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
@@ -167,6 +168,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
             [actionSheet showInView:[_delegate requestCustomTabBarController].view];
             [actionSheet release];
         }
+         
     }
 }
 
@@ -244,7 +246,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
     DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
 																	atRow:kMPItemsIndex];
 	
-	return !item.isTouched && ![item.user isCurrentUser];
+	return !item.isTouched && ![item.user DWTeam];
      */
     return NO;
 }

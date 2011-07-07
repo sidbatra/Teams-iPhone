@@ -10,7 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWAttachment.h"
+#import "DWTeam.h"
 #import "JSON.h"
 #import "DWSession.h"
 
@@ -127,6 +127,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     
     [a destroy];
      */
+    
+    //DWTeam *team = [DWTeam create:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -255,8 +257,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 							 to:(NSInteger)newSelectedIndex {
     
     
-    DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    NSLog(@"AFTER SWITCH id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    //DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    //NSLog(@"AFTER SWITCH id - %d \n name - %@ \n ",user.databaseID,user.firstName);
     
     if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];

@@ -8,7 +8,6 @@
 #import "DWGUIManager.h"
 #import "DWMemoryPool.h"
 #import "DWSession.h"
-#import "DWFollowedPlacesViewController.h"
 #import "DWProfilePicViewController.h"
 #import "DWUserTitleView.h"
 #import "DWSmallProfilePicView.h"
@@ -91,8 +90,8 @@ static NSInteger const kActionSheetCancelIndex				= 2;
                        andFollowingCount:self.user.followingCount];
      */
     
-    if (self.user.hasPhoto || [self.user isCurrentUser]) 
-        [self.smallProfilePicView enableProfilePicButton];
+    //if (self.user.hasPhoto || [self.user DWTeam]) 
+    //    [self.smallProfilePicView enableProfilePicButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -236,12 +235,14 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 
 		_isLoadedOnce = YES;
 		
-		if([self.itemManager totalItems]==0 && [self.user isCurrentUser]) {
+        /*
+		if([self.itemManager totalItems]==0 && [self.user DWTeam]) {
 			self.messageCellText	= kMsgCurrentUserNoItems;
 			_tableViewUsage			= kTableViewAsProfileMessage;
 		}
 		else
 			_tableViewUsage = kTableViewAsData;			
+         */
 	}
 	
 	[self finishedLoading];	
@@ -270,9 +271,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 
 //----------------------------------------------------------------------------------------------------
 - (void)userProfilePicUpdated:(NSNotification*)notification {    
-    if(![self.user isCurrentUser])
-		return;
-    
     [self.smallProfilePicView showNormalState];
 }
 
@@ -283,13 +281,6 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 #pragma mark UserTitleViewDelegate
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleView {
-    DWFollowedPlacesViewController *followedView = [[DWFollowedPlacesViewController alloc] 
-                                                    initWithDelegate:_delegate
-                                                            withUser:self.user];
-    
-    [self.navigationController pushViewController:followedView 
-                                         animated:YES];
-    [followedView release]; 
 }
 
 

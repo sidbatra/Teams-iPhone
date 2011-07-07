@@ -5,8 +5,9 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import <CoreLocation/CoreLocation.h>
 
-#import "DWPlacesSearchResultsViewController.h"
+#import "DWTeam.h"
 #import "DWMediaPickerController.h"
 
 #import "KTTextView.h"
@@ -14,7 +15,7 @@
 /**
  * Facilitates creation of items and places
  */
-@interface DWCreateViewController : UIViewController<DWMediaPickerControllerDelegate,DWPlacesSearchResultsViewControllerDelegate> {
+@interface DWCreateViewController : UIViewController<DWMediaPickerControllerDelegate> {
 	
 	UILabel					*_atLabel;
 	UIImageView				*_previewImageView;
@@ -28,7 +29,7 @@
 	UILabel					*_coverLabel;
 	UILabel					*_topCoverLabel;
 	
-	DWPlace					*_selectedPlace;
+	DWTeam					*_selectedPlace;
 	CLLocation				*_newPlaceLocation;
 	
 	UIImage					*_cameraImage;
@@ -39,13 +40,12 @@
 	BOOL					_newPlaceMode;
 	BOOL					_isMediaSelected;
 	
-	DWPlacesSearchResultsViewController *_searchResults;
 }
 
 /**
  * Reference to an existing place being used to create a post
  */
-@property (nonatomic,retain) DWPlace *selectedPlace;
+@property (nonatomic,retain) DWTeam *selectedPlace;
 
 /**
  * Location of a freshly created place
@@ -66,11 +66,6 @@
  * Orientation of the video selected using mediaPicker
  */ 
 @property (nonatomic,copy) NSString *videoOrientation;
-
-/**
- * Table view controller for displaying results for a place name search
- */
-@property (nonatomic,retain) DWPlacesSearchResultsViewController *searchResults;
 
 /**
  * IBOutlet properties

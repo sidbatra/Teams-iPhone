@@ -7,7 +7,7 @@
 
 #import "DWPoolObject.h"
 #import "DWAttachment.h"
-#import "DWPlace.h"
+#import "DWTeam.h"
 #import "DWUser.h"
 
 /**
@@ -22,7 +22,7 @@
 	NSInteger		_touchesCount;
 	
 	DWAttachment	*_attachment;
-	DWPlace			*_place;
+	DWTeam			*_place;
 	DWUser			*_user;
 	
 	BOOL			_usesMemoryPool;
@@ -55,7 +55,7 @@
 /**
  * Place where the item was posted
  */
-@property (nonatomic,retain) DWPlace *place;
+@property (nonatomic,retain) DWTeam *place;
 
 /** 
  * The user who created the item

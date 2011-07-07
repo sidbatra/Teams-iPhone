@@ -81,6 +81,7 @@ static float	 const kSliceHeight						= 92;
 
 //----------------------------------------------------------------------------------------------------
 - (void)update:(NSDictionary*)attachment {
+    [super update:attachment];
 
 	_fileType			= [[attachment objectForKey:kKeyFileType] integerValue];
 	_databaseID			= [[attachment objectForKey:kKeyID] integerValue];

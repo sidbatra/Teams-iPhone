@@ -246,7 +246,7 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
 - (void)fbAuthenticated {
     [self.dataTextView becomeFirstResponder];
     [self freezeUI];
-        
+        /*
     [self.facebookConnect createWallPostWithMessage:self.dataTextView.text
                                                name:[self.item.data length] ? self.item.data : self.item.place.name
                                         description:@" " 
@@ -255,6 +255,7 @@ static NSString* const kImgDoneTWButtonActive       = @"button_blue_tweet_active
                                          pictureURL:self.item.attachment ? 
                                                         self.item.attachment.largeURL : 
                                                         kEmptyString];
+         */
 }
 
 //----------------------------------------------------------------------------------------------------

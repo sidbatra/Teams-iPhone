@@ -17,7 +17,7 @@
 /**
  * Display users name 
  */
-- (void)showUserStateFor:(NSString*)userName andIsCurrentUser:(BOOL)isCurrentUser;
+- (void)showUserStateFor:(NSString*)userName andDWTeam:(BOOL)DWTeam;
 
 /**
  * Display processing state

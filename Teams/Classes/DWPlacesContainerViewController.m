@@ -4,8 +4,6 @@
 //
 
 #import "DWPlacesContainerViewController.h"
-#import "DWPopularPlacesViewController.h"
-#import "DWSearchPlacesViewController.h"
 #import "DWTabBarController.h"
 #import "DWSegmentedControl.h"
 #import "DWSession.h"
@@ -89,14 +87,14 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 	/**
 	 * Add sub views
 	 */
-	if(!popularViewController)
-		popularViewController = [[DWPopularPlacesViewController alloc] initWithDelegate:self];
-	[self.view addSubview:popularViewController.view];
+	//if(!popularViewController)
+	//	popularViewController = [[DWPopularPlacesViewController alloc] initWithDelegate:self];
+	//[self.view addSubview:popularViewController.view];
 	
 	
-	if(!searchPlacesViewController)
-		searchPlacesViewController = [[DWSearchPlacesViewController alloc] initWithDelegate:self];
-	[self.view addSubview:searchPlacesViewController.view];
+	//if(!searchPlacesViewController)
+	//	searchPlacesViewController = [[DWSearchPlacesViewController alloc] initWithDelegate:self];
+	//[self.view addSubview:searchPlacesViewController.view];
 
 	
 	//if(!nearbyViewController)
@@ -123,6 +121,7 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 //----------------------------------------------------------------------------------------------------
 - (void)hidePreviouslySelectedView:(NSInteger)previousSelectedIndex {
 	
+    /*
 	if(previousSelectedIndex == kPopularIndex) {
 		[popularViewController viewIsDeselected];
 	}
@@ -131,12 +130,13 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 	}
 	else if(previousSelectedIndex == kNearbyIndex) {
 		[nearbyViewController viewIsDeselected];
-	}
+	}*/
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadSelectedView:(NSInteger)currentSelectedIndex {	
 	
+    /*
 	if(currentSelectedIndex == kPopularIndex) {
 		[popularViewController viewIsSelected];
 	}
@@ -146,6 +146,7 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
 	else if(currentSelectedIndex == kNearbyIndex) {
 		[nearbyViewController viewIsSelected];
 	}
+     */
 }
 
 
