@@ -10,7 +10,7 @@
 /**
  * User model represnts a user entity as defined in the database
  */
-@interface DWUser : DWPoolObject {
+@interface DWUser : DWPoolObject<NSCoding> {
 	NSString	*_firstName;
 	NSString	*_lastName;
     NSString    *_byline;
@@ -21,13 +21,14 @@
 	NSData      *_twitterXAuthToken;
 	NSString	*_facebookAccessToken;
 	
-	UIImage		*_smallPreviewImage;
+	UIImage		*_smallImage;
     
     NSInteger   _followingCount;
 	
 	BOOL		_isSmallDownloading;
 	BOOL		_isProcessed;
 	BOOL		_hasPhoto;
+    BOOL        _isCurrentUser;
 }
 
 /**
@@ -82,84 +83,34 @@
 /**
  * Image obtained from smallURL
  */
-@property (nonatomic,retain) UIImage *smallPreviewImage;
+@property (nonatomic,retain) UIImage *smallImage;
 
 /**
  * Whether the user has uploaded a photo or not
  */
-@property (nonatomic,readonly) BOOL hasPhoto;
+@property (nonatomic,assign) BOOL hasPhoto;
 
 /**
  * Number of places followed by the user
  */
-@property (nonatomic,readonly) NSInteger followingCount;
+@property (nonatomic,assign) NSInteger followingCount;
 
 /**
- * Update both the small and medium preview images
+ * If the user object is the object of the currently signed in user
  */
-- (void)updatePreviewImages:(UIImage*)image;
+@property (nonatomic,assign) BOOL isCurrentUser;
+
+
+/**
+ * Update both all the preview images
+ */
+- (void)updateImages:(UIImage*)image;
 
 /**
  * Start downloading the small image or provide a suitable
  * placeholder. Image downloads are alerted via notifications
  */
-- (void)startSmallPreviewDownload;
-
-/**
- * Update user following count
- */
-- (void)updateFollowingCount:(NSInteger)delta;
-
-/**
- * Store twitter oauth data obtained after twitter connect
- * using NSUserDefaults
- */
-- (void)storeTwitterData:(NSData*)data;
-
-/**
- * Store facebook access token obtained after facebook connect
- * using NSUserDefaults
- */
-- (void)storeFacebookToken:(NSString*)token;
-
-/**
- * Save vital information about the user to disk - only used
- * maintaining a session for the current user
- */
-- (void)saveToDisk;
-
-/**
- * Save picture information about the user to disk - used
- * for updating the images when the user changes his profile pic
- */
-- (void)savePicturesToDisk;
-
-/**
- * Save following count for the users places to disk -used
- * for showing the follow places count in feed view
- */
-- (void)saveFollowingCountToDisk;
-
-/**
- * Read current user information from the disk in a cookie-esque 
- * fashion to maintain the session
- */
-- (BOOL)readFromDisk;
-
-/**
- * Clean user information from the disk
- */
-- (void)removeFromDisk;
-
-/**
- * Returns true if it represents the current user
- */
-- (BOOL)isCurrentUser;
-
-/**
- * Returns the full name of the user
- */
-- (NSString*)fullName;
+- (void)startSmallImageDownload;
 
 @end
 

@@ -73,6 +73,7 @@ extern NSString* const kKeyNotificationType;
 extern NSString* const kKeyHasPhoto;
 extern NSString* const kKeyFirstName;
 extern NSString* const kKeyLastName;
+extern NSString* const kKeyByLine;
 extern NSString* const kKeyEmail;
 extern NSString* const kKeyPhoto;
 extern NSString* const kKeySmallURL;

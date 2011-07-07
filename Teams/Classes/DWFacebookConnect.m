@@ -112,7 +112,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbDidLogin {
-	[[DWSession sharedDWSession].currentUser storeFacebookToken:self.facebook.accessToken];
+	//[[DWSession sharedDWSession].currentUser storeFacebookToken:self.facebook.accessToken];
 	[[DWRequestsManager sharedDWRequestsManager] updateFacebookTokenForCurrentUser:self.facebook.accessToken];
     
     [_delegate fbAuthenticated];

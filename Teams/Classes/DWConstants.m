@@ -82,6 +82,7 @@ NSString* const kKeyNotificationType		= @"notificationType";
 NSString* const kKeyHasPhoto				= @"has_photo";
 NSString* const kKeyFirstName				= @"first_name";
 NSString* const kKeyLastName				= @"last_name";
+NSString* const kKeyByLine                  = @"byline";
 NSString* const kKeyEmail					= @"email";
 NSString* const kKeyPhoto					= @"photo";
 NSString* const kKeySmallURL				= @"small_url";

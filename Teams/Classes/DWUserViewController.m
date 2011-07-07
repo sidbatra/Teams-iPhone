@@ -86,8 +86,10 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateUserTitleView {
+    /*
     [self.userTitleView showUserStateFor:[self.user fullName] 
                        andFollowingCount:self.user.followingCount];
+     */
     
     if (self.user.hasPhoto || [self.user isCurrentUser]) 
         [self.smallProfilePicView enableProfilePicButton];
@@ -147,7 +149,7 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.user.smallPreviewImage     = nil;
+	self.user.smallImage            = nil;
 	self.user						= nil;
     self.userTitleView              = nil;
     self.smallProfilePicView        = nil;
@@ -227,10 +229,10 @@ static NSInteger const kActionSheetCancelIndex				= 2;
 		                
         [self updateUserTitleView];
         
-        if (!self.user.smallPreviewImage) 
-            [self.user startSmallPreviewDownload];
+        if (!self.user.smallImage) 
+            [self.user startSmallImageDownload];
         else
-            [self setSmallUserImage:self.user.smallPreviewImage];
+            [self setSmallUserImage:self.user.smallImage];
 
 		_isLoadedOnce = YES;
 		

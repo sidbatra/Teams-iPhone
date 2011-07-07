@@ -140,10 +140,10 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     [self.smallProfilePicView enableProfilePicButton];
     
-    if (![DWSession sharedDWSession].currentUser.smallPreviewImage)
-        [[DWSession sharedDWSession].currentUser startSmallPreviewDownload];
+    if (![DWSession sharedDWSession].currentUser.smallImage)
+        [[DWSession sharedDWSession].currentUser startSmallImageDownload];
     else
-        [self setSmallUserImage:[DWSession sharedDWSession].currentUser.smallPreviewImage];
+        [self setSmallUserImage:[DWSession sharedDWSession].currentUser.smallImage];
 }
 
 //----------------------------------------------------------------------------------------------------

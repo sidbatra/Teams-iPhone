@@ -25,6 +25,13 @@
  */
 @property (nonatomic,assign) NSInteger databaseID;
 
+
+/**
+ * Mount a pool object onto to the memory pool if the memory allocation
+ * wasn't done via the pool
+ */
+- (void)mount;
+
 /**
  * Stub method overriden by the children classes
  * to update their contents via a JSON dictionary

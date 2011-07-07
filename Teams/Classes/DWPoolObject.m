@@ -103,6 +103,13 @@ static NSString* const kMsgOverride = @"WARNING - Override method in child class
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)mount {
+    [[DWMemoryPool sharedDWMemoryPool] setObject:self
+                                          withID:[self objectID]
+                                        forClass:[[self class] className]];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (NSString*)objectID {
     return [NSString stringWithFormat:@"%d",self.databaseID];
 }

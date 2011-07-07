@@ -63,12 +63,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)create:(DWUser*)newUser {
 	self.currentUser = newUser;
-	[self.currentUser saveToDisk];
+	//[self.currentUser saveToDisk];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)destroy {
-	[self.currentUser removeFromDisk];
+	//[self.currentUser removeFromDisk];
     
     //[[DWMemoryPool sharedDWMemoryPool] removeObject:self.currentUser
     //                                          atRow:kMPUsersIndex];

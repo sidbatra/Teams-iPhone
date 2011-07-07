@@ -68,6 +68,7 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark View Lifecycle
+
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -113,8 +114,10 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
 	if(resourceID == _key) {
 		[(DWImageView*)self.view setupImageView:(UIImage*)[info objectForKey:kKeyImage]];
         
+        /*
         [self.userProfileTitleView showUserStateFor:[self.user fullName] 
                                    andIsCurrentUser:[self.user isCurrentUser]];
+         */
 	}
 }
 
@@ -124,8 +127,10 @@ static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
     
 	if(resourceID == _key) {
+        /*
         [self.userProfileTitleView showUserStateFor:[self.user fullName] 
                                    andIsCurrentUser:[self.user isCurrentUser]];
+         */
 	}
 }
 

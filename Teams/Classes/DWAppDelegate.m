@@ -108,20 +108,53 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
      */
    
     
-    NSString *json = @"{\"is_confirmed\":true,\"byline\":\"I get things done\",\"photo\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg\",\"is_processed\":true,\"small_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg\"},\"id\":1,\"errors\":[],\"last_name\":\"Batra\",\"followings_count\":2,\"first_name\":\"Siddharth\",\"email\":\"sid@denwen.com\"}";
+    NSString *json = @"{\"is_confirmed\":true,\"byline\":\"I get things done\",\"photo\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg\",\"is_processed\":true,\"id\":1,\"small_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg\"},\"id\":1,\"errors\":[],\"last_name\":\"Batra\",\"followings_count\":2,\"first_name\":\"Siddharth\",\"email\":\"sid@denwen.com\"}";
     
     DWUser *user = [DWUser create:[json JSONValue]];
-    NSLog(@"id - %d \n name - %@ \n ",user.databaseID,user.firstName);
-    DWUser *a = [DWUser create:[json JSONValue]];
-    DWUser *b=  [DWUser create:[json JSONValue]];
+    user.twitterXAuthToken = [@"TWITTER"  dataUsingEncoding:NSUTF8StringEncoding];
+    user.facebookAccessToken = @"FACEBOOK";
+    user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
+    NSLog(@"id - %d \n first name - %@ last name - %@ \n ",user.databaseID,user.firstName,user.lastName);
     
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:user];
     [user destroy];
-    [a destroy];
-    [b destroy];
+    
+    
+    user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    NSLog(@"BEFORE UNARCHIVE id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    
+    
+    DWUser *beta = (DWUser*)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    
+    if(!beta)
+        NSLog(@"BETA IS NULL");
+    NSLog(@"BETA");
+    NSLog(@"id - %d",beta.databaseID);
+    NSLog(@"first - %@",beta.firstName);
+    NSLog(@"last - %@",beta.lastName);
+    NSLog(@"byline - %@",beta.byline);
+    NSLog(@"count - %d",beta.followingCount);
+    NSLog(@"email - %@",beta.email);
+    NSLog(@"password - %@",beta.encryptedPassword);
+    NSLog(@"twitter - %@",beta.twitterXAuthToken);
+    NSLog(@"facebook - %@",beta.facebookAccessToken);
+    NSLog(@"has photo - %d",beta.hasPhoto);
+    NSLog(@"small URL - %@",beta.smallURL);
+    NSLog(@"actual url - %@",beta.largeURL);
+    NSLog(@"is current user - %d",beta.isCurrentUser);
      
+    user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    NSLog(@"AFTER UNARCHIVE id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    
+    [beta destroy];
+    
+    //[user destroy];
+    //DWUser *user = [[[DWUser alloc] init] autorelease];
+    //user.databaseID = 9;
+    //[user mount];
     //user = nil;
-    //user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    //NSLog(@"id - %d \n name - %@ \n ",user.databaseID,user.firstName);
+    
+
     
     /*
     DWUser *user = [[DWUser alloc] init];
@@ -264,6 +297,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex {
+    
+    
+    DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
+    NSLog(@"AFTER SWITCH id - %d \n name - %@ \n ",user.databaseID,user.firstName);
     
     if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];

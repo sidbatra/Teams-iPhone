@@ -159,8 +159,8 @@
         DWUser *user = [[DWSession sharedDWSession] currentUser];
         [user update:[body objectForKey:kKeyUser]];
         
-        [user updatePreviewImages:self.imageClone];
-        [user savePicturesToDisk];
+        //[user updatePreviewImages:self.imageClone];
+        //[user savePicturesToDisk];
         
         [self sendUserProfilePicUpdatedNotification];
         [self primaryUploadFinished];

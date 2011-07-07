@@ -18,13 +18,16 @@ static NSString* const kDiskKeySignedInUser				= @"signedin_user_";
 static NSString* const kDiskKeyID						= @"signedin_user__id";
 static NSString* const kDiskKeyEmail					= @"signedin_user__email";
 static NSString* const kDiskKeyPassword					= @"signedin_user__password";
+static NSString* const kDiskKeyHasPhoto					= @"signedin_user__hasPhoto";
 static NSString* const kDiskKeySmallUrl					= @"signedin_user__smallurl";
-static NSString* const kDiskKeyLargeUrl					= @"signedin_user__largeurl";
+static NSString* const kDiskKeylargeURL                 = @"signedin_user__largeURL";
 static NSString* const kDiskKeyTwitterData				= @"signedin_user__twitterXAuthData";
 static NSString* const kDiskKeyFacebookData				= @"signedin_user__facebookAuthToken";
 static NSString* const kDiskKeyFirstName				= @"signedin_user__firstName";
 static NSString* const kDiskKeyLastName                 = @"signedin_user__lastName";
+static NSString* const kDiskKeyByline                   = @"signedin_user__byline";
 static NSString* const kDiskKeyFollowingCount           = @"signedin_user__followingCount";
+static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCurrentUser";
 
 
 
@@ -40,12 +43,59 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 @synthesize encryptedPassword	= _encryptedPassword;
 @synthesize smallURL			= _smallURL;
 @synthesize largeURL			= _largeURL;
-@synthesize smallPreviewImage	= _smallPreviewImage;
+@synthesize smallImage          = _smallImage;
 @synthesize	hasPhoto			= _hasPhoto;
 @synthesize twitterXAuthToken	= _twitterXAuthToken;
 @synthesize	facebookAccessToken = _facebookAccessToken;
 @synthesize followingCount      = _followingCount;
+@synthesize isCurrentUser       = _isCurrentUser;
 
+
+//----------------------------------------------------------------------------------------------------
+- (id)initWithCoder:(NSCoder*)coder {
+    self = [super init];
+    
+    if(self) {
+        self.databaseID             = [[coder decodeObjectForKey:kDiskKeyID] integerValue];
+        self.firstName              = [coder decodeObjectForKey:kDiskKeyFirstName];
+        self.lastName               = [coder decodeObjectForKey:kDiskKeyLastName];
+        self.email                  = [coder decodeObjectForKey:kDiskKeyEmail];
+        self.encryptedPassword      = [coder decodeObjectForKey:kDiskKeyPassword];
+        self.byline                 = [coder decodeObjectForKey:kDiskKeyByline];
+        self.followingCount         = [[coder decodeObjectForKey:kDiskKeyFollowingCount] integerValue];
+        self.twitterXAuthToken      = [coder decodeObjectForKey:kDiskKeyTwitterData];
+        self.facebookAccessToken    = [coder decodeObjectForKey:kDiskKeyFacebookData];
+        self.hasPhoto               = [[coder decodeObjectForKey:kDiskKeyHasPhoto] boolValue];
+        self.smallURL               = [coder decodeObjectForKey:kDiskKeySmallUrl];
+        self.largeURL               = [coder decodeObjectForKey:kDiskKeylargeURL];
+        self.isCurrentUser          = [[coder decodeObjectForKey:kDiskKeyIsCurrentUser] boolValue];
+    }
+    
+    if(self.databaseID)
+        [self mount];
+    else 
+        self = nil;
+    
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)encodeWithCoder:(NSCoder*)coder {
+    
+    [coder encodeObject:[NSNumber numberWithInt:self.databaseID]    	forKey:kDiskKeyID];
+    [coder encodeObject:self.firstName                                  forKey:kDiskKeyFirstName];
+    [coder encodeObject:self.lastName                                   forKey:kDiskKeyLastName];
+    [coder encodeObject:self.email                                      forKey:kDiskKeyEmail];
+    [coder encodeObject:self.encryptedPassword                          forKey:kDiskKeyPassword];
+    [coder encodeObject:self.byline                                     forKey:kDiskKeyByline];
+    [coder encodeObject:[NSNumber numberWithInt:self.followingCount]    forKey:kDiskKeyFollowingCount];
+    [coder encodeObject:self.twitterXAuthToken                          forKey:kDiskKeyTwitterData];
+    [coder encodeObject:self.facebookAccessToken                        forKey:kDiskKeyFacebookData];
+    [coder encodeObject:[NSNumber numberWithBool:self.hasPhoto]         forKey:kDiskKeyHasPhoto];
+    [coder encodeObject:self.smallURL                                   forKey:kDiskKeySmallUrl];
+    [coder encodeObject:self.largeURL                                   forKey:kDiskKeylargeURL];
+    [coder encodeObject:[NSNumber numberWithBool:self.isCurrentUser]    forKey:kDiskKeyIsCurrentUser];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -69,15 +119,14 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
-    self.smallPreviewImage = nil;
+    self.smallImage = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
-    NSLog(@"in user dealloc");
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	//NSLog(@"user released %d",_databaseID);
+	NSLog(@"user released %d",_databaseID);
 		
 	self.firstName				= nil;
 	self.lastName				= nil;
@@ -86,28 +135,62 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 	self.encryptedPassword		= nil;
 	self.twitterXAuthToken		= nil;
 	self.facebookAccessToken	= nil;
-	
-	if(_hasPhoto) {
-		self.smallURL			= nil;
-        self.largeURL           = nil;
-	}
     
-    self.smallPreviewImage      = nil;
+    self.smallURL               = nil;
+    self.largeURL              = nil;
+    self.smallImage             = nil;
 	
 	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)isCurrentUser {
-	return [[DWSession sharedDWSession] isActive] && 
-				[DWSession sharedDWSession].currentUser.databaseID == self.databaseID;
+- (void)update:(NSDictionary*)user {
+    [super update:user];
+	
+	NSString *email             = [user objectForKey:kKeyEmail];
+    NSString *firstName         = [user objectForKey:kKeyFirstName];
+    NSString *lastName          = [user objectForKey:kKeyLastName];
+    NSString *byline            = [user objectForKey:kKeyByLine];
+    NSString *followingsCount   = [user objectForKey:kKeyFollowingsCount];
+    
+    if(email && ![self.email isEqualToString:email])
+        self.email = email;
+    
+    if(firstName && ![self.firstName isEqualToString:firstName])
+        self.firstName = firstName;
+    
+    if(lastName && ![self.lastName isEqualToString:lastName])
+        self.lastName = lastName;
+    
+    if(byline && ![self.byline isEqualToString:byline])
+        self.byline = [user objectForKey:kKeyByLine];
+    
+    if(followingsCount)
+        self.followingCount = [followingsCount integerValue];
+    
+    
+    if([user objectForKey:kKeyPhoto]) {
+        NSDictionary *photo		= [user objectForKey:kKeyPhoto];
+        NSString *smallURL      = [photo objectForKey:kKeySmallURL]; 
+        
+       _hasPhoto                = YES;
+        
+        if(![self.smallURL isEqualToString:smallURL]) {
+            self.smallURL           = smallURL;
+            self.largeURL          = [photo objectForKey:kKeyLargeURL];
+            
+            _isProcessed            = [[photo objectForKey:kKeyIsProcessed] boolValue];
+            
+            self.smallImage         = nil;
+        }
+    } 
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)applyNewSmallImage:(UIImage*)image {
     
     
-    self.smallPreviewImage  = image;
+    self.smallImage         = image;
     
 	NSDictionary *info      = [NSDictionary dictionaryWithObjectsAndKeys:
                                [NSNumber numberWithInt:self.databaseID]		,kKeyResourceID,
@@ -120,80 +203,14 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populate:(NSDictionary*)user {	
-	//[super populate:user];
-	
-	_databaseID			= [[user objectForKey:kKeyID] integerValue];
-	
-	self.firstName		= [user objectForKey:kKeyFirstName];
-	self.lastName		= [user objectForKey:kKeyLastName];
-	self.email			= [user objectForKey:kKeyEmail];
-    
-    _followingCount     = [[user objectForKey:kKeyFollowingsCount] integerValue];
-	
-	if([user objectForKey:kKeyPhoto]) {
-		NSDictionary *photo		= [user		objectForKey:kKeyPhoto];
-        
-        _hasPhoto               = YES;
-		self.smallURL			= [photo	objectForKey:kKeySmallURL];
-        self.largeURL           = [photo    objectForKey:kKeyActualURL];
-		_isProcessed			= [[photo	objectForKey:kKeyIsProcessed] boolValue];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)update:(NSDictionary*)user {
-    [super update:user];
-	
-	NSString *newEmail          = [user objectForKey:kKeyEmail];
-    
-    if(newEmail && ![self.email isEqualToString:newEmail])
-        self.email              = newEmail;
-    
-    
-    NSString *newFirstName      = [user objectForKey:kKeyFirstName];
-    
-    if(newFirstName && ![self.firstName isEqualToString:newFirstName])
-        self.firstName           = newFirstName;
-        
-
-    NSString *newLastName       = [user objectForKey:kKeyLastName];
-    
-    if(newLastName && ![self.lastName isEqualToString:newLastName])
-        self.lastName           = newLastName;
-    
-    
-    if([user objectForKey:kKeyFollowingsCount])
-        _followingCount         = [[user objectForKey:kKeyFollowingsCount] integerValue];
-    
-    /*
-    if([user objectForKey:kKeyPhoto]) {
-        NSDictionary *photo		= [user objectForKey:kKeyPhoto];
-        NSString *newSmallURL	= [photo objectForKey:kKeySmallURL]; 
-        
-       _hasPhoto               = YES;
-        
-        if(![self.smallURL isEqualToString:newSmallURL]) {
-            self.smallURL		= newSmallURL;
-            self.largeURL       = [photo objectForKey:kKeyActualURL];
-            
-            _isProcessed		= [[photo objectForKey:kKeyIsProcessed] boolValue];
-            
-            self.smallPreviewImage	= nil;
-        }
-    } 
-     */
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)updatePreviewImages:(UIImage*)image {
+- (void)updateImages:(UIImage*)image {
 	[self applyNewSmallImage:image];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)startSmallPreviewDownload {
+- (void)startSmallImageDownload {
     
-	if(_hasPhoto && !_isSmallDownloading && !self.smallPreviewImage) {
+	if(_hasPhoto && !_isSmallDownloading && !self.smallImage) {
 		_isSmallDownloading = YES;
 		
 		[[DWRequestsManager sharedDWRequestsManager] getImageAt:self.smallURL
@@ -201,140 +218,13 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 											successNotification:kNImgSmallUserLoaded
 											  errorNotification:kNImgSmallUserError];
 	}
-	else if(!_hasPhoto && !self.smallPreviewImage){ 
+	else if(!_hasPhoto && !self.smallImage){ 
         
         [self applyNewSmallImage:[UIImage imageNamed:[self isCurrentUser] ? 
                                                      kImgAddProfilePicPlaceHolder : 
                                                      kImgProfilePicPlaceHolder]];
          
 	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)updateFollowingCount:(NSInteger)delta {
-	_followingCount += delta;
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Read Write to NSUserDefaults
-
-//----------------------------------------------------------------------------------------------------
-- (void)storeTwitterData:(NSData*)data {
-	
-	self.twitterXAuthToken = data;
-	
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	
-	if(standardUserDefaults) {
-		[standardUserDefaults setObject:self.twitterXAuthToken forKey:kDiskKeyTwitterData];
-		[standardUserDefaults synchronize];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)storeFacebookToken:(NSString *)token {
-	
-	self.facebookAccessToken = token;
-	
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	
-	if(standardUserDefaults) {
-		[standardUserDefaults setObject:self.facebookAccessToken forKey:kDiskKeyFacebookData];
-		[standardUserDefaults synchronize];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)saveFollowingCountToDisk {
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];    
-    
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:[NSNumber numberWithInt:_followingCount]  
-                                 forKey:kDiskKeyFollowingCount];
-		[standardUserDefaults synchronize];        
-    } 
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)savePicturesToDisk {
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];    
-    
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:self.smallURL           forKey:kDiskKeySmallUrl];
-        [standardUserDefaults setObject:self.largeURL           forKey:kDiskKeyLargeUrl];
-		[standardUserDefaults synchronize];        
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)saveToDisk {	
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	
-	if (standardUserDefaults) {
-		[standardUserDefaults setBool:YES						forKey:kDiskKeySignedInUser];
-		[standardUserDefaults setInteger:_databaseID			forKey:kDiskKeyID];
-		[standardUserDefaults setObject:self.email				forKey:kDiskKeyEmail];
-		[standardUserDefaults setObject:self.encryptedPassword	forKey:kDiskKeyPassword];
-        [standardUserDefaults setObject:self.firstName          forKey:kDiskKeyFirstName];
-        [standardUserDefaults setObject:self.lastName           forKey:kDiskKeyLastName];
-		[standardUserDefaults synchronize];
-        
-        [self savePicturesToDisk];
-        [self saveFollowingCountToDisk];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)readFromDisk {
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	BOOL status = NO;
-	
-	if (standardUserDefaults) {
-		status = [standardUserDefaults boolForKey:kDiskKeySignedInUser];
-		
-		if(status) {			
-			_databaseID					= [standardUserDefaults	integerForKey:kDiskKeyID];
-			self.email					= [standardUserDefaults	objectForKey:kDiskKeyEmail];
-			self.encryptedPassword		= [standardUserDefaults objectForKey:kDiskKeyPassword];
-            self.firstName              = [standardUserDefaults objectForKey:kDiskKeyFirstName];
-            self.lastName               = [standardUserDefaults objectForKey:kDiskKeyLastName];
-            
-            self.smallURL               = [standardUserDefaults objectForKey:kDiskKeySmallUrl];
-            self.largeURL               = [standardUserDefaults objectForKey:kDiskKeyLargeUrl];
-			self.twitterXAuthToken		= [standardUserDefaults objectForKey:kDiskKeyTwitterData];
-			self.facebookAccessToken	= [standardUserDefaults objectForKey:kDiskKeyFacebookData];
-            
-            _hasPhoto                   = self.smallURL ? YES : NO;
-            _followingCount             = [[standardUserDefaults objectForKey:kDiskKeyFollowingCount] 
-                                           integerValue];            
-						
-			[standardUserDefaults synchronize];
-		}
-	}
-	
-	return status;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)removeFromDisk {
-	NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	
-	if (standardUserDefaults) {
-		/**
-		 * Removing the signed in user flag disables other methods from accessing the different stored fields
-		 */
-		[standardUserDefaults removeObjectForKey:kDiskKeySignedInUser];
-		[standardUserDefaults synchronize];
-	}
-	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (NSString*)fullName {
-	return [NSString stringWithFormat:@"%@ %@",self.firstName,self.lastName];
 }
 
 
@@ -351,7 +241,7 @@ static NSString* const kDiskKeyFollowingCount           = @"signedin_user__follo
 	if(resourceID != self.databaseID)
 		return;
 	
-	self.smallPreviewImage  = [info objectForKey:kKeyImage];		
+	self.smallImage         = [info objectForKey:kKeyImage];		
 	_isSmallDownloading     = NO;
 }
 
