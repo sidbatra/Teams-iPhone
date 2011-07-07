@@ -44,6 +44,7 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 @synthesize smallURL			= _smallURL;
 @synthesize largeURL			= _largeURL;
 @synthesize smallImage          = _smallImage;
+@synthesize largeImage          = _largeImage;
 @synthesize	hasPhoto			= _hasPhoto;
 @synthesize twitterXAuthToken	= _twitterXAuthToken;
 @synthesize	facebookAccessToken = _facebookAccessToken;
@@ -107,10 +108,20 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 												 selector:@selector(smallImageLoaded:) 
 													 name:kNImgSmallUserLoaded
 												   object:nil];
-		
+
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(smallImageError:) 
 													 name:kNImgSmallUserError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(largeImageLoaded:) 
+													 name:kNImgLargeUserLoaded
+												   object:nil];
+        
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(largeImageError:) 
+													 name:kNImgLargeUserError
 												   object:nil];
     }
 	
@@ -120,6 +131,7 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
     self.smallImage = nil;
+    self.largeImage = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -137,8 +149,9 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 	self.facebookAccessToken	= nil;
     
     self.smallURL               = nil;
-    self.largeURL              = nil;
+    self.largeURL               = nil;
     self.smallImage             = nil;
+    self.largeImage             = nil;
 	
 	[super dealloc];
 }
@@ -178,17 +191,15 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
         if(![self.smallURL isEqualToString:smallURL]) {
             self.smallURL           = smallURL;
             self.largeURL          = [photo objectForKey:kKeyLargeURL];
-            
-            _isProcessed            = [[photo objectForKey:kKeyIsProcessed] boolValue];
-            
+                        
             self.smallImage         = nil;
+            self.largeImage         = nil;
         }
     } 
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)applyNewSmallImage:(UIImage*)image {
-    
+- (void)applyNewSmallImage:(UIImage*)image {    
     
     self.smallImage         = image;
     
@@ -203,8 +214,25 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)applyNewLargeImage:(UIImage*)image {
+    
+    
+    self.largeImage         = image;
+    
+	NSDictionary *info      = [NSDictionary dictionaryWithObjectsAndKeys:
+                               [NSNumber numberWithInt:self.databaseID]		,kKeyResourceID,
+                               image										,kKeyImage,
+                               nil];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNImgLargeUserLoaded
+														object:nil
+													  userInfo:info];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)updateImages:(UIImage*)image {
 	[self applyNewSmallImage:image];
+    [self applyNewLargeImage:image];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -224,6 +252,26 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
                                                      kImgAddProfilePicPlaceHolder : 
                                                      kImgProfilePicPlaceHolder]];
          
+	}
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)startLargeImageDownload {
+    
+	if(_hasPhoto && !_isLargeDownloading && !self.largeImage) {
+		_isLargeDownloading = YES;
+		
+		[[DWRequestsManager sharedDWRequestsManager] getImageAt:self.largeURL
+												 withResourceID:self.databaseID
+											successNotification:kNImgLargeUserLoaded
+											  errorNotification:kNImgLargeUserError];
+	}
+	else if(!_hasPhoto && !self.largeImage){ 
+        
+        [self applyNewLargeImage:[UIImage imageNamed:self.isCurrentUser ? 
+                       kImgAddProfilePicPlaceHolder : 
+                                  kImgProfilePicPlaceHolder]];
+        
 	}
 }
 
@@ -255,5 +303,29 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 	
 	_isSmallDownloading = NO;
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)largeImageLoaded:(NSNotification*)notification {
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+	
+	if(resourceID != self.databaseID)
+		return;
+	
+	self.largeImage         = [info objectForKey:kKeyImage];		
+	_isLargeDownloading     = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)largeImageError:(NSNotification*)notification {
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+	
+	if(resourceID != self.databaseID)
+		return;
+	
+	_isLargeDownloading = NO;
+}
+
 
 @end

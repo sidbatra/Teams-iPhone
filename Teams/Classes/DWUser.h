@@ -22,10 +22,12 @@
 	NSString	*_facebookAccessToken;
 	
 	UIImage		*_smallImage;
+    UIImage     *_largeImage;
     
     NSInteger   _followingCount;
 	
 	BOOL		_isSmallDownloading;
+    BOOL		_isLargeDownloading;
 	BOOL		_isProcessed;
 	BOOL		_hasPhoto;
     BOOL        _isCurrentUser;
@@ -86,6 +88,11 @@
 @property (nonatomic,retain) UIImage *smallImage;
 
 /**
+ * Image obtained from largeURL
+ */
+@property (nonatomic,retain) UIImage *largeImage;
+
+/**
  * Whether the user has uploaded a photo or not
  */
 @property (nonatomic,assign) BOOL hasPhoto;
@@ -111,6 +118,11 @@
  * placeholder. Image downloads are alerted via notifications
  */
 - (void)startSmallImageDownload;
+
+/**
+ * Start downloading the large image or provide a suitable placeholder
+ */
+- (void)startLargeImageDownload;
 
 @end
 
