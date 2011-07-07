@@ -10,7 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWTeam.h"
+#import "DWItem.h"
 #import "JSON.h"
 #import "DWSession.h"
 
@@ -146,6 +146,16 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     NSLog(@"filetype - %d",team.attachment.fileType);
 
     [team destroy];
+     */
+    /*
+    NSString *json = @"{\"data\":\"this is  wonderful\",\"id\":6,\"user\":{\"byline\":\"I get things done\",\"id\":1,\"last_name\":\"Batra\",\"first_name\":\"Siddharth\"},\"team\":{\"name\":\"Denwen\",\"id\":1},\"errors\":[],\"touches_count\":0,\"attachment\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4},\"timestamp\":1309656129}";
+    
+    DWItem *item = [DWItem create:[json JSONValue]];
+    NSLog(@"id - %d %d %d",item.databaseID,item.team.databaseID,item.user.databaseID);
+    NSLog(@"moer - %d %d %f",item.touchesCount,item.isTouched,item.createdAtTimestamp);
+    NSLog(@"name - %@,%@,%@",item.data,item.team.name,item.user.firstName);
+    
+    [item destroy];
      */
 }
 

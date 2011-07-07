@@ -57,6 +57,7 @@
     NSString *data              = [item objectForKey:kKeyData];
     NSString *touchesCount      = [item objectForKey:kKeyTouchesCount];
     NSString *isTouched         = [item objectForKey:kKeyTouchID];
+    NSString *timestamp         = [item objectForKey:kKeyTimestamp];
     NSDictionary *attachment    = [item objectForKey:kKeyAttachment];
     NSDictionary *team          = [item objectForKey:kKeyTeam];
     NSDictionary *user          = [item objectForKey:kKeyUser];
@@ -67,6 +68,9 @@
     
     if(touchesCount)
         _touchesCount = [touchesCount integerValue];
+    
+    if(timestamp)
+        _createdAtTimestamp = [timestamp floatValue];
     
     _isTouched = ![isTouched isKindOfClass:[NSNull class]];
     
