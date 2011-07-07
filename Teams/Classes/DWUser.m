@@ -165,6 +165,7 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
     NSString *lastName          = [user objectForKey:kKeyLastName];
     NSString *byline            = [user objectForKey:kKeyByLine];
     NSString *followingsCount   = [user objectForKey:kKeyFollowingsCount];
+    NSDictionary *photo         = [user objectForKey:kKeyPhoto];
     
     if(email && ![self.email isEqualToString:email])
         self.email = email;
@@ -182,18 +183,20 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
         self.followingCount = [followingsCount integerValue];
     
     
-    if([user objectForKey:kKeyPhoto]) {
-        NSDictionary *photo		= [user objectForKey:kKeyPhoto];
+    if(photo) {
         NSString *smallURL      = [photo objectForKey:kKeySmallURL]; 
+        NSString *largeURL      = [photo objectForKey:kKeyLargeURL];
         
-       _hasPhoto                = YES;
+       _hasPhoto = YES;
         
-        if(![self.smallURL isEqualToString:smallURL]) {
-            self.smallURL           = smallURL;
-            self.largeURL          = [photo objectForKey:kKeyLargeURL];
-                        
-            self.smallImage         = nil;
-            self.largeImage         = nil;
+        if(smallURL && ![self.smallURL isEqualToString:smallURL]) {
+            self.smallURL       = smallURL;
+            self.smallImage     = nil;
+        }
+        
+        if(largeURL && ![self.largeURL isEqualToString:largeURL]) {
+            self.largeURL       = [photo objectForKey:kKeyLargeURL];
+            self.largeImage     = nil;
         }
     } 
 }

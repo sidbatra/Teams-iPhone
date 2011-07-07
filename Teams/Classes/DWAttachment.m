@@ -82,14 +82,32 @@ static float	 const kSliceHeight						= 92;
 //----------------------------------------------------------------------------------------------------
 - (void)update:(NSDictionary*)attachment {
     [super update:attachment];
+    
+    NSString *filetype      = [attachment objectForKey:kKeyFileType];
+    NSString *isProcessed   = [attachment objectForKey:kKeyIsProcessed];
+    NSString *actualURL     = [attachment objectForKey:kKeyActualURL];
+	NSString *largeURL      = [attachment objectForKey:kKeyLargeURL];
+	NSString *sliceURL      = [attachment objectForKey:kKeySliceURL];
 
-	_fileType			= [[attachment objectForKey:kKeyFileType] integerValue];
-	_databaseID			= [[attachment objectForKey:kKeyID] integerValue];
-	_isProcessed		= [[attachment objectForKey:kKeyIsProcessed] boolValue];
+    
+    if(filetype)
+        _fileType			= [filetype integerValue];
+    
+    if(isProcessed)
+        _isProcessed		= [isProcessed boolValue];
 	
-	self.actualURL		= [attachment objectForKey:kKeyActualURL];
-	self.largeURL		= [attachment objectForKey:kKeyLargeURL];
-	self.sliceURL		= [attachment objectForKey:kKeySliceURL];
+    if(actualURL && ![self.actualURL isEqualToString:actualURL])
+        self.actualURL		= [attachment objectForKey:kKeyActualURL];
+    
+    if(largeURL && ![self.largeURL isEqualToString:largeURL]) {
+        self.largeURL		= [attachment objectForKey:kKeyLargeURL];
+        self.largeImage     = nil;
+    }
+    
+    if(sliceURL && ![self.sliceURL isEqualToString:sliceURL]) {
+        self.sliceURL		= [attachment objectForKey:kKeySliceURL];
+        self.sliceImage     = nil;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------							  
