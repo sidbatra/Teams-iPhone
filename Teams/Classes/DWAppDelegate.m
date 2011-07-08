@@ -98,7 +98,6 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 		[self setupApplication];
 			
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
-
 }
 
 //----------------------------------------------------------------------------------------------------
