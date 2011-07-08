@@ -13,20 +13,20 @@ static NSString* const kImgProfilePicPlaceHolder		= @"profile_pic_placeholder.pn
 static NSString* const kImgAddProfilePicPlaceHolder		= @"add_profile_pic_placeholder.png";
 static NSString* const kImgMediumPlaceHolder			= @"user_medium_placeholder.png";
 static NSString* const kImgSignedInMediumPlaceHolder	= @"profile_button.png";
-static NSString* const kDiskKeySignedInUser				= @"signedin_user_";
-static NSString* const kDiskKeyID						= @"signedin_user__id";
-static NSString* const kDiskKeyEmail					= @"signedin_user__email";
-static NSString* const kDiskKeyPassword					= @"signedin_user__password";
-static NSString* const kDiskKeyHasPhoto					= @"signedin_user__hasPhoto";
-static NSString* const kDiskKeySmallUrl					= @"signedin_user__smallurl";
-static NSString* const kDiskKeylargeURL                 = @"signedin_user__largeURL";
-static NSString* const kDiskKeyTwitterData				= @"signedin_user__twitterXAuthData";
-static NSString* const kDiskKeyFacebookData				= @"signedin_user__facebookAuthToken";
-static NSString* const kDiskKeyFirstName				= @"signedin_user__firstName";
-static NSString* const kDiskKeyLastName                 = @"signedin_user__lastName";
-static NSString* const kDiskKeyByline                   = @"signedin_user__byline";
-static NSString* const kDiskKeyFollowingCount           = @"signedin_user__followingCount";
-static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCurrentUser";
+static NSString* const kDiskKeyID						= @"DWUser_id";
+static NSString* const kDiskKeyEmail					= @"DWUser_email";
+static NSString* const kDiskKeyPassword					= @"DWUser_password";
+static NSString* const kDiskKeyHasPhoto					= @"DWUser_hasPhoto";
+static NSString* const kDiskKeySmallUrl					= @"DWUser_smallurl";
+static NSString* const kDiskKeylargeURL                 = @"DWUser_largeURL";
+static NSString* const kDiskKeyTwitterData				= @"DWUser_twitterXAuthData";
+static NSString* const kDiskKeyFacebookData				= @"DWUser_facebookAuthToken";
+static NSString* const kDiskKeyFirstName				= @"DWUser_firstName";
+static NSString* const kDiskKeyLastName                 = @"DWUser_lastName";
+static NSString* const kDiskKeyByline                   = @"DWUser_byline";
+static NSString* const kDiskKeyFollowingCount           = @"DWUser_followingCount";
+static NSString* const kDiskKeyIsCurrentUser            = @"DWUser_isCurrentUser";
+static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
 
 
 
@@ -49,7 +49,7 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
 @synthesize	facebookAccessToken = _facebookAccessToken;
 @synthesize followingCount      = _followingCount;
 @synthesize isCurrentUser       = _isCurrentUser;
-
+@synthesize isNewUser           = _isNewUser;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithCoder:(NSCoder*)coder {
@@ -69,6 +69,7 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
         self.smallURL               = [coder decodeObjectForKey:kDiskKeySmallUrl];
         self.largeURL               = [coder decodeObjectForKey:kDiskKeylargeURL];
         self.isCurrentUser          = [[coder decodeObjectForKey:kDiskKeyIsCurrentUser] boolValue];
+        self.isNewUser              = [[coder decodeObjectForKey:kDiskKeyIsNewUser] boolValue];
     }
     
     if(self.databaseID)
@@ -95,6 +96,8 @@ static NSString* const kDiskKeyIsCurrentUser            = @"signedin_user__isCur
     [coder encodeObject:self.smallURL                                   forKey:kDiskKeySmallUrl];
     [coder encodeObject:self.largeURL                                   forKey:kDiskKeylargeURL];
     [coder encodeObject:[NSNumber numberWithBool:self.isCurrentUser]    forKey:kDiskKeyIsCurrentUser];
+    [coder encodeObject:[NSNumber numberWithBool:self.isNewUser]        forKey:kDiskKeyIsNewUser];
+
 }
 
 //----------------------------------------------------------------------------------------------------

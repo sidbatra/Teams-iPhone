@@ -31,6 +31,7 @@
 	BOOL		_isProcessed;
 	BOOL		_hasPhoto;
     BOOL        _isCurrentUser;
+    BOOL        _isNewUser;
 }
 
 /**
@@ -106,6 +107,12 @@
  * If the user object is the object of the currently signed in user
  */
 @property (nonatomic,assign) BOOL isCurrentUser;
+
+/**
+ * Indicates whether the user has used the app enough to be no longer
+ * be refered to as a new user
+ */
+@property (nonatomic,assign) BOOL isNewUser;
 
 
 /**
