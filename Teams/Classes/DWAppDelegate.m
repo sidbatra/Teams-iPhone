@@ -10,7 +10,7 @@
 #import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWItem.h"
+#import "DWMembership.h"
 #import "JSON.h"
 #import "DWSession.h"
 
@@ -156,6 +156,15 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     NSLog(@"name - %@,%@,%@",item.data,item.team.name,item.user.firstName);
     
     [item destroy];
+     */
+    
+    /*
+    NSString *json = @"{\"id\":1,\"user_id\":1,\"team\":{\"name\":\"Denwen\",\"id\":1},\"errors\":[],\"timestamp\":1309474389,\"team_id\":1}";
+    DWMembership *mem = [DWMembership create:[json JSONValue]];
+    NSLog(@"id - %d",mem.databaseID);
+    NSLog(@"time - %f",mem.createdAtTimestamp);
+    NSLog(@"team id ,name, byline - %d,%@,%@",mem.team.databaseID,mem.team.name,mem.team.byline);
+    [mem destroy];
      */
 }
 
