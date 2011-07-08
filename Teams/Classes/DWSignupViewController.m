@@ -218,6 +218,7 @@ static NSString* const kSignUpText              = @"Sign Up";
 		
        // DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
        //                                                                                atRow:kMPUsersIndex];        
+        /*
         DWUser *user = nil;
         user.encryptedPassword  = self.password;
 
@@ -226,6 +227,7 @@ static NSString* const kSignUpText              = @"Sign Up";
         
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
                                                             object:user];
+         */
 	}
 	else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle

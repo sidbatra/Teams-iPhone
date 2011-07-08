@@ -98,74 +98,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 		[self setupApplication];
 			
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
-    
-    /*
-    NSString *json = @"{\"is_confirmed\":true,\"byline\":\"I get things done\",\"photo\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/large_1304059841_22956546334152317850_photo.jpg\",\"is_processed\":true,\"id\":1,\"small_url\":\"http://s3.amazonaws.com/denwen-teams-development/user_photos/small_1304059841_22956546334152317850_photo.jpg\"},\"id\":1,\"errors\":[],\"last_name\":\"Batra\",\"followings_count\":2,\"first_name\":\"Siddharth\",\"email\":\"sid@denwen.com\"}";
-    
-    DWUser *user = [DWUser create:[json JSONValue]];
-    user.encryptedPassword = @"P0iDBj++DIPfsGZKzQd5sjS7nsPBiaXwUf2nBTGkhdU=";
-    NSLog(@"id - %d \n first name - %@ last name - %@ \n ",user.databaseID,user.firstName,user.lastName);
-    */
-    
-    
-    /*
-    NSString *json = @"{\"id\":8,\"user_id\":3,\"errors\":[],\"team_id\":3}";
-    DWFollowing *following = [DWFollowing create:[json JSONValue]];
-    NSLog(@"following id - %d",following.databaseID);
-    [following destroy];
-     */
-    
-    /*
-    NSString *json = @"{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4}";
-    
-    DWAttachment *a = [DWAttachment create:[json JSONValue]];
-    NSLog(@"id - %d",a.databaseID);
-    NSLog(@"slice - %@",a.sliceURL);
-    NSLog(@"large - %@",a.largeURL);
-    NSLog(@"actual - %@",a.actualURL);
-    NSLog(@"filetype - %d",a.fileType);
-    
-    [a destroy];
-    */
-    
-    /*
-    NSString *json = @"{\"name\":\"Denwen\",\"byline\":\"We are the team\",\"memberships_count\":1,\"id\":1,\"errors\":[],\"attachment\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4},\"timestamp\":1309474389,\"followings_count\":1}";
-    
-    
-    
-    DWTeam *team = [DWTeam create:[json JSONValue]];
-    NSLog(@"id - %d",team.databaseID);
-    NSLog(@"name - %@",team.name);
-    NSLog(@"byline - %@",team.byline);
-    NSLog(@"foll,mem,crea - %d,%d,%f",team.followingsCount,team.membersCount,team.createdAtTimestamp);
-    
-    NSLog(@"id - %d",team.attachment.databaseID);
-    NSLog(@"slice - %@",team.attachment.sliceURL);
-    NSLog(@"large - %@",team.attachment.largeURL);
-    NSLog(@"actual - %@",team.attachment.actualURL);
-    NSLog(@"filetype - %d",team.attachment.fileType);
 
-    [team destroy];
-     */
-    /*
-    NSString *json = @"{\"data\":\"this is  wonderful\",\"id\":6,\"user\":{\"byline\":\"I get things done\",\"id\":1,\"last_name\":\"Batra\",\"first_name\":\"Siddharth\"},\"team\":{\"name\":\"Denwen\",\"id\":1},\"errors\":[],\"touches_count\":0,\"attachment\":{\"large_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/large_club.jpg\",\"slice_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/slice_club.jpg\",\"filetype\":0,\"actual_url\":\"http://s3.amazonaws.com/denwen-teams-development/items/club.jpg\",\"is_processed\":true,\"id\":4},\"timestamp\":1309656129}";
-    
-    DWItem *item = [DWItem create:[json JSONValue]];
-    NSLog(@"id - %d %d %d",item.databaseID,item.team.databaseID,item.user.databaseID);
-    NSLog(@"moer - %d %d %f",item.touchesCount,item.isTouched,item.createdAtTimestamp);
-    NSLog(@"name - %@,%@,%@",item.data,item.team.name,item.user.firstName);
-    
-    [item destroy];
-     */
-    
-    /*
-    NSString *json = @"{\"id\":1,\"user_id\":1,\"team\":{\"name\":\"Denwen\",\"id\":1},\"errors\":[],\"timestamp\":1309474389,\"team_id\":1}";
-    DWMembership *mem = [DWMembership create:[json JSONValue]];
-    NSLog(@"id - %d",mem.databaseID);
-    NSLog(@"time - %f",mem.createdAtTimestamp);
-    NSLog(@"team id ,name, byline - %d,%@,%@",mem.team.databaseID,mem.team.name,mem.team.byline);
-    [mem destroy];
-     */
 }
 
 //----------------------------------------------------------------------------------------------------

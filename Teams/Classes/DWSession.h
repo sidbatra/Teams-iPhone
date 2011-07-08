@@ -12,7 +12,6 @@
  */
 @interface DWSession : NSObject {
 	DWUser			*_currentUser;
-    BOOL            _firstTimeUser;
 }
 
 /**
@@ -25,49 +24,26 @@
  */
 @property (nonatomic,retain) DWUser* currentUser;
 
-/**
- * Indicates whether its the user's first session 
- */
-@property (nonatomic,readonly) BOOL firstTimeUser;
 
+/**
+ * Create an in-memory session and store user archive on disk
+ */
+- (void)create:(NSDictionary*)user;
+
+/**
+ * Update the stored user archive on disk
+ */
+- (void)update;
+
+/**
+ * Destroy the in-memory session and remove user archive from disk
+ */
+- (void)destroy;
 
 /**
  * Test whether a user is currently signed in
  */
 - (BOOL)isActive;
-
-@end
-
-
-/**
- * Private method declarations
- */
-@interface DWSession(Private)
-
-/**
- * Read the user session from disk using NSUserDefaults
- */
-- (void)read;
-
-/**
- * Reads whether this is a first session or not
- */
-- (void)readFirstTimeUser;
-
-/**
- * Creae the user session with the given user object
- */
-- (void)create:(DWUser*)newUser;
-
-/**
- * Updates the firstTimeUser flag on disk
- */
-- (void)updateFirstTimeUser;
-
-/**
- * Destroy the user session
- */
-- (void)destroy;
 
 @end
 

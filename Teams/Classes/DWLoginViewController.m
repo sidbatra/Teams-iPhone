@@ -187,7 +187,7 @@ static NSString* const kLoginText               = @"Log In";
 	//NSDictionary *body = [info objectForKey:kKeyBody];
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
-
+        /*
         //DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
         //                                                                               atRow:kMPUsersIndex];
         DWUser *user = nil;
@@ -196,6 +196,7 @@ static NSString* const kLoginText               = @"Log In";
 		
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
                                                             object:user];
+         */
 	}
 	else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle

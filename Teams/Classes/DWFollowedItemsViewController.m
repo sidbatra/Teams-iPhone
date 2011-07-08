@@ -26,6 +26,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
 	
 	if (self) {
         
+        /*
         if([DWSession sharedDWSession].firstTimeUser) {
             
             self.onBoardingButton                                = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -39,7 +40,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
                                       action:@selector(didTouchDownOnOnBoardingButton:)				
                             forControlEvents:UIControlEventTouchDown];
         }
-
+         */
         		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(newItemParsed:) 
@@ -115,7 +116,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
     [self.onBoardingButton removeFromSuperview];
     self.onBoardingButton = nil;
     
-    [[DWSession sharedDWSession] updateFirstTimeUser];
+    //[[DWSession sharedDWSession] updateFirstTimeUser];
 }
 
 

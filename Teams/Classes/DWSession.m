@@ -9,8 +9,25 @@
 
 #import "SynthesizeSingleton.h"
 
-static NSString* const kDiskKeyLastReadItemID   = @"last_read_item_id";
-static NSString* const kDiskKeyFirstTimeUser    = @"first_time_user";
+static NSString* const kDiskKeyCurrentUser      = @"DWSession_currentUser";
+
+
+/**
+ * Private method declarations
+ */
+@interface DWSession()
+
+/**
+ * Read the user session from disk using NSUserDefaults
+ */
+- (void)read;
+
+/**
+ * Stores the current user on disk using NSUserDefaults
+ */
+- (void)storeCurrentUserOnDisk;
+
+@end
 
 
 
@@ -20,7 +37,6 @@ static NSString* const kDiskKeyFirstTimeUser    = @"first_time_user";
 @implementation DWSession
 
 @synthesize currentUser				= _currentUser;
-@synthesize firstTimeUser           = _firstTimeUser;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
@@ -30,7 +46,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 	
 	if(self) {
 		[self read];
-        [self readFirstTimeUser];
 	}
 	
 	return self;
@@ -44,58 +59,61 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)read {
-    /*
-	DWUser *user = [[DWUser alloc] init];
+- (void)storeCurrentUserOnDisk {
+    
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	
-	if([user readFromDisk]) {
-		self.currentUser = user;
+	if (standardUserDefaults) {
         
-        //[[DWMemoryPool sharedDWMemoryPool] setObject:self.currentUser
-        //                                       atRow:kMPUsersIndex];
-	}
-	else {
-		[user release];
-	}
-     */
+		NSData *userData = [NSKeyedArchiver archivedDataWithRootObject:self.currentUser]; 
+        
+        [standardUserDefaults setObject:userData
+                                 forKey:kDiskKeyCurrentUser];
+        
+        [standardUserDefaults synchronize];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)create:(DWUser*)newUser {
-	self.currentUser = newUser;
-	//[self.currentUser saveToDisk];
+- (void)read {
+    
+    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
+	
+	if (standardUserDefaults) {
+		NSData *userData = [standardUserDefaults objectForKey:kDiskKeyCurrentUser];
+
+        if(userData)
+            self.currentUser = [NSKeyedUnarchiver unarchiveObjectWithData:userData];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)create:(NSDictionary*)user {
+	
+    self.currentUser                = [DWUser create:user];
+    self.currentUser.isNewUser      = YES;
+    self.currentUser.isCurrentUser  = YES;
+        
+    [self storeCurrentUserOnDisk];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)update {
+    [self storeCurrentUserOnDisk];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)destroy {
-	//[self.currentUser removeFromDisk];
     
-    //[[DWMemoryPool sharedDWMemoryPool] removeObject:self.currentUser
-    //                                          atRow:kMPUsersIndex];
+    [self.currentUser destroy];
 	self.currentUser = nil;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)readFirstTimeUser {
-    NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
-	
-	if (standardUserDefaults) {
-        _firstTimeUser = ![standardUserDefaults	boolForKey:kDiskKeyFirstTimeUser];
-        [standardUserDefaults synchronize];
-	}
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)updateFirstTimeUser {
-    _firstTimeUser = NO;
     
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	
 	if (standardUserDefaults) {
-        [standardUserDefaults setBool:!_firstTimeUser
-                                  forKey:kDiskKeyFirstTimeUser];
+        [standardUserDefaults removeObjectForKey:kDiskKeyCurrentUser];
         [standardUserDefaults synchronize];
-	}
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
