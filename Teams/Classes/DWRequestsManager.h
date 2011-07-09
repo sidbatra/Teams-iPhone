@@ -4,7 +4,6 @@
 //	
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 
 /**
  * DWRequestsManager enables absracted access to all network operations
@@ -19,175 +18,48 @@
  */
 + (DWRequestsManager *)sharedDWRequestsManager;
 
-/**
- * Given page of the currently popular places
- */
-- (void)getPopularPlaces:(NSInteger)page;
 
 /**
- * Nearby places based on the user's current location
+ * Create a request to be sent to the app server.
+ * resourceID is bundled with the success/error notification for identification
+ * authentcate indicates the need to append the current user's email password
  */
-- (void)getNearbyPlaces;
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                      resourceID:(NSInteger)resourceID
+                    authenticate:(NSInteger)authenticate;
 
 /**
- * Places followed by a specific user
+ * Overloaded method for createDenwenRequest. Generates a unique
+ * resourceID.
  */
-- (void)getUserPlaces:(NSInteger)userID;
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                    authenticate:(BOOL)authenticate;
 
 /**
- * Search query on the places table
+ * Overloaded method for createDenwenRequest. Generates a unique
+ * resourceID and authentication is on by default
  */
-- (void)getSearchPlaces:(NSString*)query;
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod;
 
-/**
- * Place view with page representing items pagination
- */
-- (void)getPlaceWithHashedID:(NSString*)hashedID 
-			  withDatabaseID:(NSInteger)placeID
-              withLastItemID:(NSInteger)lastID;
-
-/**
- * Update the background photo for a place
- */
-- (void)updatePhotoForPlaceWithID:(NSInteger)placeID
-				  toPhotoFilename:(NSString*)photoFilename;
-
-/**
- * Create a new visit
- */
-- (void)createVisit;
-
-/**
- * Create a new place
- */
-- (void)createPlaceNamed:(NSString*)name
-				 atLocation:(CLLocationCoordinate2D)location
-				  withPhoto:(NSString*)photoFilename;
-
-/**
- * Create a new following for a place
- */
-- (void)createFollowing:(NSInteger)placeID;
-
-/**
- * Destroy an existing following for a place
- */
-- (void)destroyFollowing:(NSInteger)followingID 
-		   ofPlaceWithID:(NSInteger)placeID;
-
-/**
- * Create a new touch interaction
- */
-- (void)createTouch:(NSInteger)itemID;
-
-/**
- * Retrieve touches on items of the current user
- */
-- (void)getTouchesForCurrentUser:(NSInteger)lastID;
-
-/**
- * User profile with page representing items pagination
- */
-- (void)getUserWithID:(NSInteger)userID
-       fromLastItemID:(NSInteger)lastID;
-
-/**
- * Update the display picture for a user
- */
-- (NSInteger)updatePhotoForUserWithID:(NSInteger)userID
-                    withPhotoFilename:(NSString*)photoFilename;
-
-/**
- * Update twitter token and secret for the logged in user
- */
-- (void)updateTwitterDataForCurrentUser:(NSString*)twitterToken
-                          twitterSecret:(NSString*)twitterSecret;
-
-/**
- * Update facebook token for the logged in user
- */
-- (void)updateFacebookTokenForCurrentUser:(NSString*)facebookToken;
-
-/** 
- * Update iphone device id for the logged in user
- */
-- (void)updateDeviceIDForCurrentUser:(NSString*)deviceID;
-
-/** 
- * Update the unread count for the logged in user by reducing it
- * by the given amount
- */
-- (void)updateUnreadCountForCurrentUserBy:(NSInteger)subtrahend;
-
-/**
- * Recent items from the places followed by the current user
- * lastID provides pagination
- */
-- (void)getFollowedItemsFromLastID:(NSInteger)lastID;
-
-/**
- * Delete your item
- */
-- (void)deleteItemWithID:(NSInteger)itemID;
-
-/**
- * Get address for the given place ID
- */
-- (void)getAddressForPlaceID:(NSInteger)placeID;
-
-/**
- * Create a new item
- */
-- (NSInteger)createItemWithData:(NSString*)data 
-		 withAttachmentFilename:(NSString*)filename
-				  atPlaceWithID:(NSInteger)placeID;
-
-/**
- * Create a new item along with a new place
- */
-- (NSInteger)createItemWithData:(NSString*)data 
-		 withAttachmentFilename:(NSString*)filename
-				atPlaceWithName:(NSString*)name
-					 atLocation:(CLLocationCoordinate2D)location;
-
-/**
- * Create a new user
- */
-- (void)createUserWithFirstName:(NSString*)firstName
-                   withLastName:(NSString*)lastName
-                      withEmail:(NSString*)email
-                   withPassword:(NSString*)password
-              withPhotoFilename:(NSString*)photoFilename;
-
-/**
- * Create a new session
- */
-- (void)createSessionWithEmail:(NSString*)email
-				  withPassword:(NSString*)password;
-
-
-/**
- * Create a new share for the given item
- */
-- (void)createShareForItemWithID:(NSInteger)itemID
-                        withData:(NSString*)data
-                          sentTo:(NSInteger)sentTo;
-
-/** 
- * Create a new share for the given place
- */
-- (void)createShareForPlaceWithID:(NSInteger)placeID
-						 withData:(NSString*)data
-						   sentTo:(NSInteger)sentTo;
 
 /**
  * Download the image from the given URL and fire the given
  * notifications
  */
-- (void)getImageAt:(NSString*)url 
-	withResourceID:(NSInteger)resourceID
-successNotification:(NSString*)theSuccessNotification
- errorNotification:(NSString*)theErrorNotification;
+- (NSInteger)getImageAt:(NSString*)url 
+         withResourceID:(NSInteger)resourceID
+    successNotification:(NSString*)theSuccessNotification
+      errorNotification:(NSString*)theErrorNotification;
+
 
 /**
  * Upload an image to a S3 folder. Method returns
@@ -209,3 +81,4 @@ successNotification:(NSString*)theSuccessNotification
 			  withUploadDelegate:(id)uploadDelegate;
 
 @end
+

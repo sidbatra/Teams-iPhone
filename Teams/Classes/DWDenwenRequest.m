@@ -8,8 +8,6 @@
 #import "JSON.h"
 #import "DWConstants.h"
 
-static NSInteger const kRandomStringBase = 100000000;
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -18,25 +16,26 @@ static NSInteger const kRandomStringBase = 100000000;
 @implementation DWDenwenRequest
 
 //----------------------------------------------------------------------------------------------------
-- (void)generateResourceID {
-	_resourceID = [[NSDate date] timeIntervalSince1970] + arc4random() % kRandomStringBase;
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {
-	/**
-	 * Parse fixed fields in the Denwen response and package them into a notification object
-	 */
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
-									[NSNumber numberWithInt:self.resourceID]				,kKeyResourceID,
-									[[responseString JSONValue] objectForKey:kKeyStatus]	,kKeyStatus,
-									[[responseString JSONValue] objectForKey:kKeyBody]		,kKeyBody,
-									[[responseString JSONValue] objectForKey:kKeyMessage]	,kKeyMessage,
-									nil];
-
-	[[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
-														object:nil
-													  userInfo:info];
+    
+    NSDictionary *response      = [responseString JSONValue];
+    NSDictionary *errorInfo     = [response objectForKey:kKeyError];
+    
+    if(errorInfo) {
+        [self processError:[NSError errorWithDomain:[errorInfo objectForKey:kKeyMessage]
+                                               code:-1
+                                           userInfo:nil]];
+    }
+    else {
+        NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                              [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
+                              response                                  ,kKeyBody,
+                              nil];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
+                                                            object:nil
+                                                          userInfo:info];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -52,6 +51,10 @@ static NSInteger const kRandomStringBase = 100000000;
 													  userInfo:info];
 }
 
-
+/*
+ [request setDownloadCache:[ASIDownloadCache sharedCache]];
+ [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+ [request setSecondsToCache:1000000];
+ */
 
 @end

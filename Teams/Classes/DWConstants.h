@@ -7,7 +7,12 @@
 
 extern NSString* const kVersion;
 extern NSString* const kDenwenProtocol;
+extern NSString* const kGet;
+extern NSString* const kPost;
+extern NSString* const kPut;
+extern NSString* const kDelete;
 extern NSString* const kDenwenServer;
+
 
 /**
  * Configuration for uploading to Amazon S3

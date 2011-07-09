@@ -84,8 +84,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWNotificationsHelper);
 - (void)resetUnreadCount {
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
-	if(self.unreadItems)
-		[[DWRequestsManager sharedDWRequestsManager] updateUnreadCountForCurrentUserBy:self.unreadItems];
+	//if(self.unreadItems)
+	//	[[DWRequestsManager sharedDWRequestsManager] updateUnreadCountForCurrentUserBy:self.unreadItems];
 	
 	self.unreadItems = 0;
 }

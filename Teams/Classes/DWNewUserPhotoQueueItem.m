@@ -98,8 +98,8 @@
 - (void)startPrimaryUpload {
 	[super startPrimaryUpload];
 
-	_primaryUploadID = [[DWRequestsManager sharedDWRequestsManager] updatePhotoForUserWithID:_userID
-                                                                           withPhotoFilename:self.filename];
+	//_primaryUploadID = [[DWRequestsManager sharedDWRequestsManager] updatePhotoForUserWithID:_userID
+     //                                                                      withPhotoFilename:self.filename];
 }
 
 //----------------------------------------------------------------------------------------------------

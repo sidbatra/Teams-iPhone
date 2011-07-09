@@ -9,6 +9,7 @@
 #import "DWConstants.h"
 
 static NSInteger const kPersistenceTimeout	= 120;
+static NSInteger const kRandomStringBase    = 100000000;
 
 
 
@@ -31,7 +32,7 @@ static NSInteger const kPersistenceTimeout	= 120;
 	
 	self = [super initWithURL:tempURL];
 	
-	if(self != nil) {
+	if(self) {
 		self.successNotification	= theSuccessNotification;
 		self.errorNotification		= theErrorNotification;
 		
@@ -40,6 +41,11 @@ static NSInteger const kPersistenceTimeout	= 120;
 	}
 	
 	return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)generateResourceID {
+	_resourceID = [[NSDate date] timeIntervalSince1970] + arc4random() % kRandomStringBase;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -73,10 +79,14 @@ static NSInteger const kPersistenceTimeout	= 120;
 		successNotification:(NSString*)theSuccessNotification
 		  errorNotification:(NSString*)theErrorNotification {
 	
-	return [[[self alloc] initWithRequestURL:requestURL
-						 successNotification:theSuccessNotification
-						   errorNotification:theErrorNotification] 
-			autorelease];
+	DWRequest *request =  [[[self alloc] initWithRequestURL:requestURL
+                                        successNotification:theSuccessNotification
+                                          errorNotification:theErrorNotification] 
+                           autorelease];
+    
+    [request generateResourceID];
+    
+    return request;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -88,6 +98,7 @@ static NSInteger const kPersistenceTimeout	= 120;
 	DWRequest *request	= [self requestWithRequestURL:requestURL 
 								successNotification:theSuccessNotification 
 								  errorNotification:theErrorNotification];
+    
 	request.resourceID	= theResourceID;
 	
 	return request;

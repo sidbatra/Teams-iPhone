@@ -153,12 +153,13 @@ static NSString* const kSignUpText              = @"Sign Up";
 			_signupInitiated    = NO;
 			self.password       = [[self.passwordTextField.text encrypt] stringByEncodingHTMLCharacters];
 			
-            
+           /* 
 			[[DWRequestsManager sharedDWRequestsManager] createUserWithFirstName:self.firstNameTextField.text 
                                                                     withLastName:self.lastNameTextField.text
                                                                        withEmail:self.emailTextField.text
                                                                     withPassword:self.password
                                                                withPhotoFilename:kEmptyString];
+            */
              
 		}
 		else

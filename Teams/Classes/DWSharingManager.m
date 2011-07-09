@@ -108,9 +108,11 @@ static NSString* const kMsgSMSBlurb             = @"Download Denwen for iPhone h
 
 //----------------------------------------------------------------------------------------------------
 - (void)finishedWithSharingUsingText:(NSString*)sharingText {
+    /*
     [[DWRequestsManager sharedDWRequestsManager] createShareForItemWithID:self.item.databaseID
                                                                  withData:sharingText
                                                                    sentTo:pow(2,_sharingType)];
+     */
     [_delegate sharingFinished];
 }
 

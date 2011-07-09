@@ -195,10 +195,11 @@
 	[super startPrimaryUpload];
 	
 	if(self.item.team.databaseID != kMPDefaultDatabaseID) {
-		
+		/*
 		_primaryUploadID = [[DWRequestsManager sharedDWRequestsManager] createItemWithData:self.item.data
 																	withAttachmentFilename:self.filename
 																			 atPlaceWithID:self.item.team.databaseID];
+         */
 	}
 	else {
 		/*

@@ -140,8 +140,8 @@ static NSString* const kLoginText               = @"Log In";
 		
 		self.password = [[self.passwordTextField.text encrypt] stringByEncodingHTMLCharacters];
         
-		[[DWRequestsManager sharedDWRequestsManager] createSessionWithEmail:self.emailTextField.text 
-															   withPassword:self.password];
+		//[[DWRequestsManager sharedDWRequestsManager] createSessionWithEmail:self.emailTextField.text 
+		//													   withPassword:self.password];
 	}
 }
 

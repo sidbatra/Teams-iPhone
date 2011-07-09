@@ -192,7 +192,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadData {
-	[[DWRequestsManager sharedDWRequestsManager] getFollowedItemsFromLastID:_lastID];
+	//[[DWRequestsManager sharedDWRequestsManager] getFollowedItemsFromLastID:_lastID];
 }
 
 

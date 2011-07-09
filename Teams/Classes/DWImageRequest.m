@@ -54,7 +54,6 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 #pragma mark -
 #pragma mark Static
 
-
 //----------------------------------------------------------------------------------------------------
 + (id)requestWithRequestURL:(NSString*)requestURL 
 				 resourceID:(NSInteger)theResourceID

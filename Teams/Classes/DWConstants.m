@@ -9,8 +9,12 @@
 #import "DWConstants.h"
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"3.1";
+NSString* const kVersion            = @"1.0";
 NSString* const kDenwenProtocol     = @"http://";
+NSString* const kGet				= @"GET";
+NSString* const kPost               = @"POST";
+NSString* const kPut				= @"PUT";
+NSString* const kDelete				= @"DELETE";
 
 
 #ifdef PRODUCTION

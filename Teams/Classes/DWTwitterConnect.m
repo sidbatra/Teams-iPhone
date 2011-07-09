@@ -210,8 +210,8 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     
    // [[DWSession sharedDWSession].currentUser storeTwitterData:[NSKeyedArchiver archivedDataWithRootObject:token]];
     
-    [[DWRequestsManager sharedDWRequestsManager] updateTwitterDataForCurrentUser:token.token
-                                                                   twitterSecret:token.secret];
+   // [[DWRequestsManager sharedDWRequestsManager] updateTwitterDataForCurrentUser:token.token
+   //                                                                twitterSecret:token.secret];
     
     [_delegate twAuthenticated];
 }

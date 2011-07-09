@@ -77,7 +77,6 @@ static NSString* const kS3SuccessResponse	= @"";
 	[super dealloc];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {	
 	/**
@@ -158,6 +157,5 @@ static NSString* const kS3SuccessResponse	= @"";
 	
 	return s3Request;
 }
-
 
 @end

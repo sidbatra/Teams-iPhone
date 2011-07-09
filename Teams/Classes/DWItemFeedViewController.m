@@ -182,7 +182,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
 	if (buttonIndex == 0) {
         
-        [[DWRequestsManager sharedDWRequestsManager] deleteItemWithID:actionSheet.tag];        
+        //[[DWRequestsManager sharedDWRequestsManager] deleteItemWithID:actionSheet.tag];        
         
         NSDictionary *info	= [NSDictionary dictionaryWithObjectsAndKeys:
                                [NSNumber numberWithInt:actionSheet.tag]	,kKeyResourceID,
