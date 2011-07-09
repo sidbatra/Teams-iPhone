@@ -213,8 +213,6 @@
 		BB379DF112ED51310071CE08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379DF012ED51310071CE08 /* SystemConfiguration.framework */; };
 		BB379DF712ED513B0071CE08 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */; };
 		BB379E0412ED51B50071CE08 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */; };
-		BB3BE0B5133A9D940055FED0 /* DWRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE0B4133A9D940055FED0 /* DWRequestsManager.m */; };
-		BB3BE173133AB49A0055FED0 /* DWDenwenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE172133AB49A0055FED0 /* DWDenwenRequest.m */; };
 		BB3BE1CE133AB65F0055FED0 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */; };
 		BB3BE1CF133AB65F0055FED0 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE183133AB65F0055FED0 /* ASIDataCompressor.m */; };
 		BB3BE1D0133AB65F0055FED0 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE185133AB65F0055FED0 /* ASIDataDecompressor.m */; };
@@ -346,10 +344,8 @@
 		BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0BFDA1344487C00BCFB96 /* DWConstants.m */; };
 		BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */; };
 		BBD0CC97133C0AA1003E5E7D /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0CC96133C0AA1003E5E7D /* NSString+Helpers.m */; };
-		BBD0CD27133C225D003E5E7D /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0CD26133C225D003E5E7D /* DWImageRequest.m */; };
 		BBD0CEAC133C5EA1003E5E7D /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0CEAB133C5EA1003E5E7D /* NSData+Crypto.m */; };
 		BBD0D0641340026C003E5E7D /* UIImage+ImageProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D0631340026C003E5E7D /* UIImage+ImageProcessing.m */; };
-		BBD0D2141340576A003E5E7D /* DWS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D2131340576A003E5E7D /* DWS3Request.m */; };
 		BBD1EAD512EC1218003C1BC7 /* DWSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD1EAD312EC1218003C1BC7 /* DWSignupViewController.m */; };
 		BBD1EAD612EC1218003C1BC7 /* DWSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD1EAD412EC1218003C1BC7 /* DWSignupViewController.xib */; };
 		BBD8374A1363BD3C00326E1F /* DWTouchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD837491363BD3B00326E1F /* DWTouchCell.m */; };
@@ -371,7 +367,6 @@
 		BBE70D9F135D10C2001D83CC /* DWPostProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE70D9E135D10C2001D83CC /* DWPostProgressView.m */; };
 		BBEA39C1136A06400021619A /* halo.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEA39BF136A06400021619A /* halo.png */; };
 		BBEA39C2136A06400021619A /* halo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEA39C0136A06400021619A /* halo@2x.png */; };
-		BBEB947C133AEA9C005AEA64 /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEB947B133AEA9C005AEA64 /* DWRequest.m */; };
 		BBF890E9134E53D500B332CA /* DWNewPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF890E8134E53D500B332CA /* DWNewPlaceCell.m */; };
 		BBF8913A134E885B00B332CA /* DWCreationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF89139134E885B00B332CA /* DWCreationQueue.m */; };
 		BBF891B5134ECDAB00B332CA /* DWCreationQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF891B4134ECDAB00B332CA /* DWCreationQueueItem.m */; };
@@ -415,6 +410,11 @@
 		BBF8987213C6B45500D5C5FB /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8986F13C6B45500D5C5FB /* DWTabBar.m */; };
 		BBF8987313C6B45500D5C5FB /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8987113C6B45500D5C5FB /* DWTabBarController.m */; };
 		BBF8987713C6B47300D5C5FB /* DWSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8987613C6B47300D5C5FB /* DWSession.m */; };
+		BBF8988B13C901F900D5C5FB /* DWDenwenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988213C901F900D5C5FB /* DWDenwenRequest.m */; };
+		BBF8988C13C901F900D5C5FB /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988413C901F900D5C5FB /* DWImageRequest.m */; };
+		BBF8988D13C901F900D5C5FB /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988613C901F900D5C5FB /* DWRequest.m */; };
+		BBF8988E13C901F900D5C5FB /* DWRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988813C901F900D5C5FB /* DWRequestsManager.m */; };
+		BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988A13C901F900D5C5FB /* DWS3Request.m */; };
 		BBF89AF71351320900B332CA /* button_new_place_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF51351320900B332CA /* button_new_place_active.png */; };
 		BBF89AF81351320900B332CA /* button_new_place_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF61351320900B332CA /* button_new_place_active@2x.png */; };
 		BBF89C151352739800B332CA /* video_slice_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89C141352739800B332CA /* video_slice_placeholder.png */; };
@@ -702,10 +702,6 @@
 		BB379DF012ED51310071CE08 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
-		BB3BE0B3133A9D940055FED0 /* DWRequestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWRequestsManager.h; path = Classes/DWRequestsManager.h; sourceTree = "<group>"; };
-		BB3BE0B4133A9D940055FED0 /* DWRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWRequestsManager.m; path = Classes/DWRequestsManager.m; sourceTree = "<group>"; };
-		BB3BE171133AB49A0055FED0 /* DWDenwenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWDenwenRequest.h; path = Classes/DWDenwenRequest.h; sourceTree = "<group>"; };
-		BB3BE172133AB49A0055FED0 /* DWDenwenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWDenwenRequest.m; path = Classes/DWDenwenRequest.m; sourceTree = "<group>"; };
 		BB3BE17F133AB65F0055FED0 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BB3BE181133AB65F0055FED0 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -893,14 +889,10 @@
 		BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNotificationsHelper.m; path = Classes/DWNotificationsHelper.m; sourceTree = "<group>"; };
 		BBD0CC95133C0AA1003E5E7D /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Helpers.h"; path = "Classes/NSString+Helpers.h"; sourceTree = "<group>"; };
 		BBD0CC96133C0AA1003E5E7D /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Helpers.m"; path = "Classes/NSString+Helpers.m"; sourceTree = "<group>"; };
-		BBD0CD25133C225D003E5E7D /* DWImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWImageRequest.h; path = Classes/DWImageRequest.h; sourceTree = "<group>"; };
-		BBD0CD26133C225D003E5E7D /* DWImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWImageRequest.m; path = Classes/DWImageRequest.m; sourceTree = "<group>"; };
 		BBD0CEAA133C5EA1003E5E7D /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Crypto.h"; path = "Classes/NSData+Crypto.h"; sourceTree = "<group>"; };
 		BBD0CEAB133C5EA1003E5E7D /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Crypto.m"; path = "Classes/NSData+Crypto.m"; sourceTree = "<group>"; };
 		BBD0D0621340026C003E5E7D /* UIImage+ImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageProcessing.h"; path = "Classes/UIImage+ImageProcessing.h"; sourceTree = "<group>"; };
 		BBD0D0631340026C003E5E7D /* UIImage+ImageProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageProcessing.m"; path = "Classes/UIImage+ImageProcessing.m"; sourceTree = "<group>"; };
-		BBD0D2121340576A003E5E7D /* DWS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWS3Request.h; path = Classes/DWS3Request.h; sourceTree = "<group>"; };
-		BBD0D2131340576A003E5E7D /* DWS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWS3Request.m; path = Classes/DWS3Request.m; sourceTree = "<group>"; };
 		BBD1EAD212EC1218003C1BC7 /* DWSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSignupViewController.h; path = Classes/DWSignupViewController.h; sourceTree = "<group>"; };
 		BBD1EAD312EC1218003C1BC7 /* DWSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSignupViewController.m; path = Classes/DWSignupViewController.m; sourceTree = "<group>"; };
 		BBD1EAD412EC1218003C1BC7 /* DWSignupViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = DWSignupViewController.xib; path = Classes/DWSignupViewController.xib; sourceTree = "<group>"; };
@@ -926,8 +918,6 @@
 		BBE70D9E135D10C2001D83CC /* DWPostProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPostProgressView.m; path = Classes/DWPostProgressView.m; sourceTree = "<group>"; };
 		BBEA39BF136A06400021619A /* halo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = halo.png; path = resources/halo.png; sourceTree = "<group>"; };
 		BBEA39C0136A06400021619A /* halo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "halo@2x.png"; path = "resources/halo@2x.png"; sourceTree = "<group>"; };
-		BBEB947A133AEA9C005AEA64 /* DWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWRequest.h; path = Classes/DWRequest.h; sourceTree = "<group>"; };
-		BBEB947B133AEA9C005AEA64 /* DWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWRequest.m; path = Classes/DWRequest.m; sourceTree = "<group>"; };
 		BBF890E7134E53D500B332CA /* DWNewPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNewPlaceCell.h; path = Classes/DWNewPlaceCell.h; sourceTree = "<group>"; };
 		BBF890E8134E53D500B332CA /* DWNewPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNewPlaceCell.m; path = Classes/DWNewPlaceCell.m; sourceTree = "<group>"; };
 		BBF89138134E885B00B332CA /* DWCreationQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreationQueue.h; path = Classes/DWCreationQueue.h; sourceTree = "<group>"; };
@@ -979,6 +969,16 @@
 		BBF8987113C6B45500D5C5FB /* DWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTabBarController.m; sourceTree = "<group>"; };
 		BBF8987513C6B47300D5C5FB /* DWSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSession.h; sourceTree = "<group>"; };
 		BBF8987613C6B47300D5C5FB /* DWSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSession.m; sourceTree = "<group>"; };
+		BBF8988113C901F900D5C5FB /* DWDenwenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDenwenRequest.h; sourceTree = "<group>"; };
+		BBF8988213C901F900D5C5FB /* DWDenwenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDenwenRequest.m; sourceTree = "<group>"; };
+		BBF8988313C901F900D5C5FB /* DWImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWImageRequest.h; sourceTree = "<group>"; };
+		BBF8988413C901F900D5C5FB /* DWImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageRequest.m; sourceTree = "<group>"; };
+		BBF8988513C901F900D5C5FB /* DWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequest.h; sourceTree = "<group>"; };
+		BBF8988613C901F900D5C5FB /* DWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequest.m; sourceTree = "<group>"; };
+		BBF8988713C901F900D5C5FB /* DWRequestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestsManager.h; sourceTree = "<group>"; };
+		BBF8988813C901F900D5C5FB /* DWRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestsManager.m; sourceTree = "<group>"; };
+		BBF8988913C901F900D5C5FB /* DWS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWS3Request.h; sourceTree = "<group>"; };
+		BBF8988A13C901F900D5C5FB /* DWS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWS3Request.m; sourceTree = "<group>"; };
 		BBF89AF51351320900B332CA /* button_new_place_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_new_place_active.png; path = resources/button_new_place_active.png; sourceTree = "<group>"; };
 		BBF89AF61351320900B332CA /* button_new_place_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_new_place_active@2x.png"; path = "resources/button_new_place_active@2x.png"; sourceTree = "<group>"; };
 		BBF89C141352739800B332CA /* video_slice_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_slice_placeholder.png; path = resources/video_slice_placeholder.png; sourceTree = "<group>"; };
@@ -1475,7 +1475,7 @@
 				BBF8986D13C6B45500D5C5FB /* TabBar */,
 				BB8499D513C6B08A00D9789D /* Models */,
 				BB8499E813C6B1B600D9789D /* MemoryPool */,
-				BBB51A0712F9FB080024086F /* Networking */,
+				BBF8988013C901F900D5C5FB /* Networking */,
 				BB8499C113C27AA400D9789D /* Onboarding */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
 				BBD0CC91133C0A3C003E5E7D /* Extensions */,
@@ -1814,23 +1814,6 @@
 			name = "Table View Cells";
 			sourceTree = "<group>";
 		};
-		BBB51A0712F9FB080024086F /* Networking */ = {
-			isa = PBXGroup;
-			children = (
-				BB3BE0B3133A9D940055FED0 /* DWRequestsManager.h */,
-				BB3BE0B4133A9D940055FED0 /* DWRequestsManager.m */,
-				BBEB947A133AEA9C005AEA64 /* DWRequest.h */,
-				BBEB947B133AEA9C005AEA64 /* DWRequest.m */,
-				BB3BE171133AB49A0055FED0 /* DWDenwenRequest.h */,
-				BB3BE172133AB49A0055FED0 /* DWDenwenRequest.m */,
-				BBD0CD25133C225D003E5E7D /* DWImageRequest.h */,
-				BBD0CD26133C225D003E5E7D /* DWImageRequest.m */,
-				BBD0D2121340576A003E5E7D /* DWS3Request.h */,
-				BBD0D2131340576A003E5E7D /* DWS3Request.m */,
-			);
-			name = Networking;
-			sourceTree = "<group>";
-		};
 		BBB51A0812F9FB490024086F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1959,6 +1942,24 @@
 			);
 			name = Session;
 			path = Classes/Session;
+			sourceTree = "<group>";
+		};
+		BBF8988013C901F900D5C5FB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				BBF8988713C901F900D5C5FB /* DWRequestsManager.h */,
+				BBF8988813C901F900D5C5FB /* DWRequestsManager.m */,
+				BBF8988513C901F900D5C5FB /* DWRequest.h */,
+				BBF8988613C901F900D5C5FB /* DWRequest.m */,
+				BBF8988113C901F900D5C5FB /* DWDenwenRequest.h */,
+				BBF8988213C901F900D5C5FB /* DWDenwenRequest.m */,
+				BBF8988313C901F900D5C5FB /* DWImageRequest.h */,
+				BBF8988413C901F900D5C5FB /* DWImageRequest.m */,
+				BBF8988913C901F900D5C5FB /* DWS3Request.h */,
+				BBF8988A13C901F900D5C5FB /* DWS3Request.m */,
+			);
+			name = Networking;
+			path = Classes/Networking;
 			sourceTree = "<group>";
 		};
 		BBFD298F1387A7190077904A /* Facebook */ = {
@@ -2435,8 +2436,6 @@
 				BB0CFCFC1302261400F38552 /* DWPaginationCell.m in Sources */,
 				26000219130DFB0100366CE3 /* KTTextView.m in Sources */,
 				BBF91BEE13274DC400AC3585 /* DWContainerViewController.m in Sources */,
-				BB3BE0B5133A9D940055FED0 /* DWRequestsManager.m in Sources */,
-				BB3BE173133AB49A0055FED0 /* DWDenwenRequest.m in Sources */,
 				BB3BE1CE133AB65F0055FED0 /* ASIAuthenticationDialog.m in Sources */,
 				BB3BE1CF133AB65F0055FED0 /* ASIDataCompressor.m in Sources */,
 				BB3BE1D0133AB65F0055FED0 /* ASIDataDecompressor.m in Sources */,
@@ -2453,12 +2452,9 @@
 				BB3BE1E2133AB65F0055FED0 /* ASIS3Request.m in Sources */,
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
-				BBEB947C133AEA9C005AEA64 /* DWRequest.m in Sources */,
 				BBD0CC97133C0AA1003E5E7D /* NSString+Helpers.m in Sources */,
-				BBD0CD27133C225D003E5E7D /* DWImageRequest.m in Sources */,
 				BBD0CEAC133C5EA1003E5E7D /* NSData+Crypto.m in Sources */,
 				BBD0D0641340026C003E5E7D /* UIImage+ImageProcessing.m in Sources */,
-				BBD0D2141340576A003E5E7D /* DWS3Request.m in Sources */,
 				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
 				BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */,
 				BB6419AD134BAE93002A2325 /* DWCreateViewController.m in Sources */,
@@ -2515,6 +2511,11 @@
 				BBF8987213C6B45500D5C5FB /* DWTabBar.m in Sources */,
 				BBF8987313C6B45500D5C5FB /* DWTabBarController.m in Sources */,
 				BBF8987713C6B47300D5C5FB /* DWSession.m in Sources */,
+				BBF8988B13C901F900D5C5FB /* DWDenwenRequest.m in Sources */,
+				BBF8988C13C901F900D5C5FB /* DWImageRequest.m in Sources */,
+				BBF8988D13C901F900D5C5FB /* DWRequest.m in Sources */,
+				BBF8988E13C901F900D5C5FB /* DWRequestsManager.m in Sources */,
+				BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
