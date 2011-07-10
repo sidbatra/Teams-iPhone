@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DWPoolObject.h"
+#import "DWTeam.h"
 
 /**
  * User model represnts a user entity as defined in the database
@@ -20,6 +21,8 @@
     NSString	*_largeURL;
 	NSData      *_twitterXAuthToken;
 	NSString	*_facebookAccessToken;
+    
+    DWTeam      *_team;
 	
 	UIImage		*_smallImage;
     UIImage     *_largeImage;
@@ -82,6 +85,11 @@
  * session for future usage
  */
 @property (nonatomic,copy) NSString *facebookAccessToken;
+
+/**
+ * The team to which the user currently belongs
+ */
+@property (nonatomic,retain) DWTeam *team;
 
 /**
  * Image obtained from smallURL

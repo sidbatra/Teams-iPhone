@@ -7,6 +7,9 @@
 #import "DWAttachment.h"
 #import "DWConstants.h"
 
+static NSString* const kDiskKeyID			= @"DWTeam_id";
+static NSString* const kDiskKeyName			= @"DWTeam_name";
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -20,6 +23,30 @@
 @synthesize membersCount        = _membersCount;
 @synthesize createdAtTimestamp  = _createdAtTimestamp;
 @synthesize attachment          = _attachment;
+
+//----------------------------------------------------------------------------------------------------
+- (id)initWithCoder:(NSCoder*)coder {
+    self = [super init];
+    
+    if(self) {
+        self.databaseID             = [[coder decodeObjectForKey:kDiskKeyID] integerValue];
+        self.name                   = [coder decodeObjectForKey:kDiskKeyName];
+    }
+    
+    if(self.databaseID)
+        [self mount];
+    else 
+        self = nil;
+    
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)encodeWithCoder:(NSCoder*)coder {
+    
+    [coder encodeObject:[NSNumber numberWithInt:self.databaseID]    	forKey:kDiskKeyID];
+    [coder encodeObject:self.name                                       forKey:kDiskKeyName];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {

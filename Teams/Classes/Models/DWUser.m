@@ -27,6 +27,7 @@ static NSString* const kDiskKeyByline                   = @"DWUser_byline";
 static NSString* const kDiskKeyFollowingCount           = @"DWUser_followingCount";
 static NSString* const kDiskKeyIsCurrentUser            = @"DWUser_isCurrentUser";
 static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
+static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 
 
 
@@ -50,6 +51,7 @@ static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
 @synthesize followingCount      = _followingCount;
 @synthesize isCurrentUser       = _isCurrentUser;
 @synthesize isNewUser           = _isNewUser;
+@synthesize team                = _team;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithCoder:(NSCoder*)coder {
@@ -70,6 +72,7 @@ static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
         self.largeURL               = [coder decodeObjectForKey:kDiskKeylargeURL];
         self.isCurrentUser          = [[coder decodeObjectForKey:kDiskKeyIsCurrentUser] boolValue];
         self.isNewUser              = [[coder decodeObjectForKey:kDiskKeyIsNewUser] boolValue];
+        self.team                   = [coder decodeObjectForKey:kDiskKeyTeam];
     }
     
     if(self.databaseID)
@@ -97,6 +100,7 @@ static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
     [coder encodeObject:self.largeURL                                   forKey:kDiskKeylargeURL];
     [coder encodeObject:[NSNumber numberWithBool:self.isCurrentUser]    forKey:kDiskKeyIsCurrentUser];
     [coder encodeObject:[NSNumber numberWithBool:self.isNewUser]        forKey:kDiskKeyIsNewUser];
+    [coder encodeObject:self.team                                       forKey:kDiskKeyTeam];
 
 }
 
@@ -154,6 +158,9 @@ static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
     self.largeURL               = nil;
     self.smallImage             = nil;
     self.largeImage             = nil;
+    
+    [self.team destroy];
+    self.team                   = nil;
 	
 	[super dealloc];
 }

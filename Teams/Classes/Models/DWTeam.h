@@ -12,7 +12,7 @@
 /**
  * Team model representing a group of user's who work together
  */
-@interface DWTeam : DWPoolObject {
+@interface DWTeam : DWPoolObject<NSCoding> {
 	NSString		*_name;
     NSString		*_byline;
 	
