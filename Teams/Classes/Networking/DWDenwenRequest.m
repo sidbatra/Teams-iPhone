@@ -29,7 +29,7 @@
     else {
         NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
-                              response                                  ,kKeyBody,
+                              [response objectForKey:kKeyData]          ,kKeyData,
                               nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 

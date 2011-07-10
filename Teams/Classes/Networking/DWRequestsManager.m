@@ -58,7 +58,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
     if(authenticate && [[DWSession sharedDWSession] isActive])
         [url appendFormat:@"&email=%@&password=%@",
          [[DWSession sharedDWSession].currentUser.email stringByEncodingHTMLCharacters],
-         [DWSession sharedDWSession].currentUser.encryptedPassword];
+         [[DWSession sharedDWSession].currentUser.encryptedPassword stringByEncodingHTMLCharacters]];
     
                             
 	return	[NSString stringWithString:url];

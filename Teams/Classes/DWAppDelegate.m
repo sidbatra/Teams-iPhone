@@ -11,6 +11,7 @@
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
 #import "DWMembership.h"
+#import "DWItemsController.h"
 #import "JSON.h"
 #import "DWSession.h"
 

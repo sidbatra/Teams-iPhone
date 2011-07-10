@@ -41,7 +41,8 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
                             forControlEvents:UIControlEventTouchDown];
         }
          */
-        		
+        
+		/*
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(newItemParsed:) 
 													 name:kNNewItemParsed 
@@ -56,6 +57,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
 												 selector:@selector(itemsError:) 
 													 name:kNFollowedItemsError
 												   object:nil];
+         
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(followingModified:) 
@@ -66,6 +68,7 @@ static NSString* const kImgOnBoarding   = @"onboarding.png";
 												 selector:@selector(followingModified:) 
 													 name:kNFollowingDestroyed
 												   object:nil];
+         */
 	}
 	return self;
 }
