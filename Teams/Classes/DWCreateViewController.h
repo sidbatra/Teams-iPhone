@@ -5,9 +5,7 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import <CoreLocation/CoreLocation.h>
 
-#import "DWTeam.h"
 #import "DWMediaPickerController.h"
 
 #import "KTTextView.h"
@@ -17,40 +15,21 @@
  */
 @interface DWCreateViewController : UIViewController<DWMediaPickerControllerDelegate> {
 	
-	UILabel					*_atLabel;
-	UIImageView				*_previewImageView;
-	UIImageView				*_transImageView;
-	UITextField				*_placeNameTextField;
-	KTTextView				*_dataTextView;
-	UIButton				*_mapButton;
-	UIButton				*_cancelButton;
-	UIButton				*_doneButton;
-	UIButton				*_cameraButton;
-	UILabel					*_coverLabel;
-	UILabel					*_topCoverLabel;
+	UIImageView			*_previewImageView;
+	UIImageView			*_transImageView;
+	KTTextView			*_dataTextView;
+	UIButton			*_cancelButton;
+	UIButton			*_doneButton;
+	UIButton			*_cameraButton;
+	UILabel				*_coverLabel;
+    UILabel             *_bylineLabel;
 	
-	DWTeam					*_selectedPlace;
-	CLLocation				*_newPlaceLocation;
-	
-	UIImage					*_cameraImage;
-	NSURL					*_videoURL;
-	NSString				*_videoOrientation;
-	NSInteger				_attachmentType;
-	
-	BOOL					_newPlaceMode;
-	BOOL					_isMediaSelected;
-	
+	UIImage				*_cameraImage;
+	NSURL				*_videoURL;
+	NSString			*_videoOrientation;
+    
+	NSInteger			_attachmentType;
 }
-
-/**
- * Reference to an existing place being used to create a post
- */
-@property (nonatomic,retain) DWTeam *selectedPlace;
-
-/**
- * Location of a freshly created place
- */
-@property (nonatomic,retain) CLLocation *newPlaceLocation;
 
 /**
  * Image selected using mediaPicker
@@ -67,30 +46,26 @@
  */ 
 @property (nonatomic,copy) NSString *videoOrientation;
 
+
 /**
  * IBOutlet properties
  */
 
-@property (nonatomic, retain) IBOutlet UILabel *atLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *previewImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *transImageView;
-@property (nonatomic, retain) IBOutlet UITextField *placeNameTextField;
 @property (nonatomic, retain) IBOutlet KTTextView *dataTextView;
-@property (nonatomic, retain) IBOutlet UIButton *mapButton;
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
 @property (nonatomic, retain) IBOutlet UIButton *cameraButton;
 @property (nonatomic, retain) IBOutlet UILabel *coverLabel;
-@property (nonatomic, retain) IBOutlet UILabel *topCoverLabel;
+@property (nonatomic, retain) IBOutlet UILabel *bylineLabel;
+
 
 /**
  * IBActions
  */
 - (IBAction)cancelButtonClicked:(id)sender;
 - (IBAction)cameraButtonClicked:(id)sender;
-- (IBAction)mapButtonClicked:(id)sender;
 - (IBAction)doneButtonClicked:(id)sender;
-- (IBAction)placeNameTextFieldEditingChanged:(id)sender;
-
 
 @end

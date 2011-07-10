@@ -415,6 +415,7 @@
 		BBF8988D13C901F900D5C5FB /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988613C901F900D5C5FB /* DWRequest.m */; };
 		BBF8988E13C901F900D5C5FB /* DWRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988813C901F900D5C5FB /* DWRequestsManager.m */; };
 		BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988A13C901F900D5C5FB /* DWS3Request.m */; };
+		BBF8989813CA306600D5C5FB /* DWUsersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8989713CA306600D5C5FB /* DWUsersHelper.m */; };
 		BBF89AF71351320900B332CA /* button_new_place_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF51351320900B332CA /* button_new_place_active.png */; };
 		BBF89AF81351320900B332CA /* button_new_place_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF61351320900B332CA /* button_new_place_active@2x.png */; };
 		BBF89C151352739800B332CA /* video_slice_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89C141352739800B332CA /* video_slice_placeholder.png */; };
@@ -979,6 +980,8 @@
 		BBF8988813C901F900D5C5FB /* DWRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestsManager.m; sourceTree = "<group>"; };
 		BBF8988913C901F900D5C5FB /* DWS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWS3Request.h; sourceTree = "<group>"; };
 		BBF8988A13C901F900D5C5FB /* DWS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWS3Request.m; sourceTree = "<group>"; };
+		BBF8989613CA306600D5C5FB /* DWUsersHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersHelper.h; sourceTree = "<group>"; };
+		BBF8989713CA306600D5C5FB /* DWUsersHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersHelper.m; sourceTree = "<group>"; };
 		BBF89AF51351320900B332CA /* button_new_place_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_new_place_active.png; path = resources/button_new_place_active.png; sourceTree = "<group>"; };
 		BBF89AF61351320900B332CA /* button_new_place_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_new_place_active@2x.png"; path = "resources/button_new_place_active@2x.png"; sourceTree = "<group>"; };
 		BBF89C141352739800B332CA /* video_slice_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_slice_placeholder.png; path = resources/video_slice_placeholder.png; sourceTree = "<group>"; };
@@ -1473,8 +1476,9 @@
 				080E96DDFE201D6D7F000001 /* App Delegate */,
 				BBF8987413C6B47300D5C5FB /* Session */,
 				BBF8986D13C6B45500D5C5FB /* TabBar */,
-				BB8499D513C6B08A00D9789D /* Models */,
 				BB8499E813C6B1B600D9789D /* MemoryPool */,
+				BB8499D513C6B08A00D9789D /* Models */,
+				BBF8989513CA305400D5C5FB /* Helpers */,
 				BBF8988013C901F900D5C5FB /* Networking */,
 				BB8499C113C27AA400D9789D /* Onboarding */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
@@ -1960,6 +1964,16 @@
 			);
 			name = Networking;
 			path = Classes/Networking;
+			sourceTree = "<group>";
+		};
+		BBF8989513CA305400D5C5FB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				BBF8989613CA306600D5C5FB /* DWUsersHelper.h */,
+				BBF8989713CA306600D5C5FB /* DWUsersHelper.m */,
+			);
+			name = Helpers;
+			path = Classes/Helpers;
 			sourceTree = "<group>";
 		};
 		BBFD298F1387A7190077904A /* Facebook */ = {
@@ -2516,6 +2530,7 @@
 				BBF8988D13C901F900D5C5FB /* DWRequest.m in Sources */,
 				BBF8988E13C901F900D5C5FB /* DWRequestsManager.m in Sources */,
 				BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */,
+				BBF8989813CA306600D5C5FB /* DWUsersHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2537,8 +2552,8 @@
 				INFOPLIST_FILE = "Teams-Info.plist";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = Teams;
-				PROVISIONING_PROFILE = "EAB2D597-BAF8-4376-9960-21A2501FB508";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EAB2D597-BAF8-4376-9960-21A2501FB508";
+				PROVISIONING_PROFILE = "9B2D304E-658F-42BA-9BA2-3FCB524BC8CD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9B2D304E-658F-42BA-9BA2-3FCB524BC8CD";
 				SDKROOT = iphoneos;
 				WARNING_CFLAGS = "";
 			};
@@ -2567,7 +2582,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siddharth Batra (HPSAL66ESR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Batra";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2576,7 +2591,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9B2D304E-658F-42BA-9BA2-3FCB524BC8CD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4BAD23BD-EB37-4A16-8403-5874930C2D24";
 				SDKROOT = iphoneos;
 			};
@@ -2608,7 +2623,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siddharth Batra (HPSAL66ESR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Siddharth Batra (HPSAL66ESR)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2616,7 +2631,7 @@
 				HEADER_SEARCH_PATHS = "$SDKROOT/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9B2D304E-658F-42BA-9BA2-3FCB524BC8CD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EAB2D597-BAF8-4376-9960-21A2501FB508";
 				SDKROOT = iphoneos;
 			};
@@ -2626,7 +2641,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Siddharth Batra (HPSAL66ESR)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Siddharth Batra (HPSAL66ESR)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2635,7 +2650,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "9B2D304E-658F-42BA-9BA2-3FCB524BC8CD";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EAB2D597-BAF8-4376-9960-21A2501FB508";
 				SDKROOT = iphoneos;
 			};

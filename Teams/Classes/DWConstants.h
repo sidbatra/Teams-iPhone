@@ -28,9 +28,12 @@ extern NSString* const kS3ItemsFolder;
 /**
  * Atachment types
  */
-extern NSInteger const kAttachmentNone;
-extern NSInteger const kAttachmentImage;
-extern NSInteger const kAttachmentVideo;
+
+typedef enum {
+    kAttachmentNone     = -1,
+    kAttachmentImage    = 0,
+    kAttachmentVideo    = 1
+} kAttacmentType;
 
 /**
  * Reset types
@@ -304,18 +307,7 @@ extern NSInteger const kPagInitialPage;
 /**
  * Memory Pool
  */
-extern NSInteger const kMPTotalClasses;
-extern NSInteger const kMPAttachmentsIndex;
 extern NSInteger const kMPDefaultDatabaseID;
-
-typedef enum {
-    kMPItemsIndex               = 0,
-    kMPTeamsIndex               = 1,
-    kMPUsersIndex               = 2,
-    kMPAttachmentSlicesIndex    = 3,
-    kMPAttachmentLargeIndex     = 4
-} MemoryPoolIndex;
-
 
 
 /**

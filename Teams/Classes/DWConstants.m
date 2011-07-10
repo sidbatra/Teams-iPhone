@@ -43,11 +43,6 @@ NSString* const kS3ItemsFolder	= @"items";
 
 
 //----------------------------------------------------------------------------------------------------
-NSInteger const kAttachmentNone			= -1;
-NSInteger const kAttachmentImage		= 0;
-NSInteger const kAttachmentVideo		= 1;
-
-//----------------------------------------------------------------------------------------------------
 NSInteger const kResetNone              = -1;
 NSInteger const kResetHard              = 0;
 NSInteger const kResetSoft              = 1;

@@ -4,38 +4,24 @@
 //
 
 #import "DWCreateViewController.h"
-#import "DWMemoryPool.h"
-#import "DWCreationQueue.h"
+#import "DWUsersHelper.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
-static NSString* const kTabTitle							= @"Create";
-static NSString* const kImgTab								= @"profile.png";
-static NSString* const kMsgDataTextViewPlaceholder			= @"What's happening here?";
+static NSString* const kMsgDataTextViewPlaceholder			= @"What you're upto?";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
 static NSInteger const kTableViewHeight						= 200;
 static NSInteger const kMaxPlaceNameLength					= 32;
 static NSInteger const kMaxPostLength						= 140;
-static NSString* const kMsgImageUploadErrorTitle			= @"Error";
-static NSString* const kMsgImageUploadErrorText				= @"Image uploading failed. Please try again";
-static NSString* const kMsgImageUploadErrorCancelButton		= @"OK";
-static NSInteger const kActionSheetCancelIndex				= 2;
 static NSString* const kImgLightBackgroundButton			= @"button_gray_light.png";
 static NSString* const kImgDarkBackgroundCancelButton		= @"button_gray_dark_cancel.png";
 static NSString* const kImgDarkBackgroundCancelButtonActive	= @"button_gray_dark_cancel_active.png";
 static NSString* const kImgLightCameraButton				= @"camera_white.png";
 static NSString* const kImgCheckedLightCameraButton			= @"camera_white_checked.png";
 static NSString* const kImgCheckedBlueCameraButton			= @"camera_blue_checked.png";
-static NSString* const kImgCheckedLightVideoButton			= @"video_white_checked.png";
-static NSString* const kImgCheckedBlueVideoButton			= @"video_blue_checked.png";
-static NSString* const kImgLightMapButton					= @"pointer_gray_dark.png";
-static NSString* const kImgLightMapButtonActive				= @"pointer_gray_dark_active.png";
-static NSString* const kImgDarkMapButton					= @"pointer_gray_light.png";
-static NSString* const kImgDarkMapButtonActive				= @"pointer_gray_light_active.png";
 static NSString* const kMsgMissingFieldsTitle				= @"Incomplete";
-static NSString* const kMsgPlaceMissing						= @"Add where you are";
 static NSString* const kMsgDataMissing						= @"Add an update using text, photo and video";
 
 
@@ -45,20 +31,15 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreateViewController
 
-@synthesize atLabel				= _atLabel;
 @synthesize previewImageView	= _previewImageView;
 @synthesize transImageView		= _transImageView;
-@synthesize placeNameTextField	= _placeNameTextField;
 @synthesize dataTextView		= _dataTextView;
-@synthesize	mapButton			= _mapButton;
 @synthesize	cancelButton		= _cancelButton;
 @synthesize doneButton			= _doneButton;
 @synthesize cameraButton		= _cameraButton;
 @synthesize coverLabel			= _coverLabel;
-@synthesize topCoverLabel		= _topCoverLabel;
+@synthesize bylineLabel         = _bylineLabel;
 
-@synthesize selectedPlace		= _selectedPlace;
-@synthesize newPlaceLocation	= _newPlaceLocation;
 @synthesize cameraImage			= _cameraImage;
 @synthesize videoURL			= _videoURL;
 @synthesize videoOrientation	= _videoOrientation;
@@ -68,7 +49,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self = [super init];
 	
 	if (self) {
-		_attachmentType = kAttachmentImage;
+		_attachmentType = kAttachmentNone;
 	}
     
 	return self;
@@ -76,24 +57,18 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:kStatusBarStyle];
 	
-	self.atLabel				= nil;
 	self.previewImageView		= nil;
 	self.transImageView			= nil;
-	self.placeNameTextField		= nil;
 	self.dataTextView			= nil;
-	self.mapButton				= nil;
 	self.cancelButton			= nil;
 	self.doneButton				= nil;
 	self.cameraButton			= nil;
 	self.coverLabel				= nil;
-	self.topCoverLabel			= nil;
+    self.bylineLabel            = nil;
 	
-	self.selectedPlace			= nil;
-	self.newPlaceLocation		= nil;
 	self.cameraImage			= nil;
 	self.videoURL				= nil;
 	self.videoOrientation		= nil;
@@ -104,22 +79,11 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
-		
-	self.newPlaceLocation				= nil;//[[DWSession sharedDWSession] location];
+    
+    self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
-	
-    /*
-	CGRect frame						= CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
-	self.searchResults					= [[[DWPlacesSearchResultsViewController alloc] init] autorelease];
-	self.searchResults.delegate			= self;
-	self.searchResults.view.frame		= frame;
-	self.searchResults.view.hidden		= YES;
-     
-	
-	[self.view addSubview:self.searchResults.view];
-	*/
-	[self.placeNameTextField becomeFirstResponder];
-	
+    
+    [self.dataTextView becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -142,17 +106,11 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)viewWillDisappear:(BOOL)animated {
-	//[[UIApplication sharedApplication] setStatusBarStyle:kStatusBarStyle];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)displayMediaUI {
 	/**
 	 * Revamp the entire UI when media is selected
 	 */
 	self.coverLabel.backgroundColor		= [UIColor blackColor];
-	self.topCoverLabel.hidden			= NO;
 	
 	self.previewImageView.hidden		= NO;
 	self.transImageView.hidden			= NO;
@@ -162,54 +120,13 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	[self.cancelButton setBackgroundImage:[UIImage imageNamed:kImgDarkBackgroundCancelButtonActive]
 								 forState:UIControlStateHighlighted];
 	
-	[self.mapButton setBackgroundImage:[UIImage imageNamed:kImgLightMapButton]
-								 forState:UIControlStateNormal];
-    
-    [self.mapButton setBackgroundImage:[UIImage imageNamed:kImgLightMapButtonActive]
-                              forState:UIControlStateHighlighted];
-	
 	[self.cameraButton setBackgroundImage:[UIImage imageNamed:kImgLightCameraButton]
 								 forState:UIControlStateNormal];
 
 	self.dataTextView.placeholderColor		= [UIColor clearColor];
 	[self.dataTextView setNeedsDisplay];
 	
-	
-	self.placeNameTextField.textColor				= [UIColor whiteColor];
-	self.dataTextView.textColor						= [UIColor whiteColor];
-	self.atLabel.textColor							= [UIColor whiteColor];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)displayNormalUI {
-	
-	self.coverLabel.backgroundColor		= [UIColor whiteColor];
-	self.topCoverLabel.hidden			= YES;
-	
-	self.previewImageView.hidden		= YES;
-	self.transImageView.hidden			= YES;
-	
-	[self.mapButton setBackgroundImage:[UIImage imageNamed:kImgDarkMapButton]
-							  forState:UIControlStateNormal];
-    
-    [self.mapButton setBackgroundImage:[UIImage imageNamed:kImgDarkMapButtonActive]
-							  forState:UIControlStateHighlighted];
-	
-	self.placeNameTextField.textColor	= [UIColor colorWithRed:.498 green:.498 blue:.498 alpha:1.0];		
-	self.atLabel.textColor				= [UIColor colorWithRed:0.7019 green:0.7019 blue:0.7019 alpha:1.0];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)enterNewPlaceMode {
-    _newPlaceMode			= YES;
-	self.mapButton.hidden	= NO;   
-    self.selectedPlace      = nil;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)exitNewPlaceMode {
-    _newPlaceMode			= NO;
-	self.mapButton.hidden	= YES;
+    self.dataTextView.textColor						= [UIColor whiteColor];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -217,20 +134,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	
 	BOOL status = YES;
 	
-	if(!(self.selectedPlace || (_newPlaceMode && self.placeNameTextField.text.length > 0))) {
-		
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgMissingFieldsTitle
-														message:kMsgPlaceMissing
-													   delegate:nil 
-											  cancelButtonTitle:@"OK" 
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
-		
-		status = NO;
-	}
-	
-	if(status && !(self.dataTextView.text.length > 0 || self.cameraImage || self.videoURL)) {
+    if(!(self.dataTextView.text.length > 0 || self.cameraImage || self.videoURL)) {
 
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgMissingFieldsTitle
 														message:kMsgDataMissing
@@ -242,77 +146,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 		
 		status = NO;
 	}
-
+    
 	return status;
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWPlacesSearchResultsViewControllerDelegate
-/*
-//----------------------------------------------------------------------------------------------------
-- (void)placeSelected:(DWPlace *)place {
-	self.selectedPlace				= place;
-	self.placeNameTextField.text	= self.selectedPlace.name;
-	
-	if(_isMediaSelected)
-		[self displayMediaUI];
-	
-	[self.dataTextView becomeFirstResponder];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)newPlaceSelected {
-	
-	if(_isMediaSelected)
-		[self displayMediaUI];
-	
-	[self enterNewPlaceMode];
-}
- */
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)isNewPlaceMode {
-    return _newPlaceMode;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)isPlaceSelected {
-    return self.selectedPlace ? YES : NO;
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Notifications
-
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark UITextFieldDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range
-replacementString:(NSString *)string {
-	
-	NSUInteger newLength = [self.placeNameTextField.text length] + [string length] - range.length;
-    return (newLength > kMaxPlaceNameLength) ? NO : YES;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	
-	if(textField == self.placeNameTextField && _newPlaceMode) {
-		[self.placeNameTextField resignFirstResponder];
-		[self.dataTextView becomeFirstResponder];
-	}
-
-	return NO;
 }
 
 
@@ -333,12 +168,13 @@ replacementString:(NSString *)string {
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 -(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {
-    [[DWMemoryPool sharedDWMemoryPool] freeMemory];
+    //[[DWMemoryPool sharedDWMemoryPool] freeMemory];
     
     DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] autorelease];
     [picker prepareForMediaWithPickerMode:pickerMode];
     [self presentModalViewController:picker animated:NO];   
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -356,95 +192,43 @@ replacementString:(NSString *)string {
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)mapButtonClicked:(id)sender {
-	
-	/**
-	 * Update to latest location
-	 */
-	self.newPlaceLocation = nil;//[[DWSession sharedDWSession] location];
-	
-    /*
-	DWChooseLocationViewController *chooseLocationView	= [[DWChooseLocationViewController alloc] initWithLocation:self.newPlaceLocation
-																									   andDelegate:self];
-	chooseLocationView.modalTransitionStyle				= UIModalTransitionStyleCoverVertical;
-	
-	[self presentModalViewController:chooseLocationView 
-							animated:NO];
-	
-	[chooseLocationView release];
-     */
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)doneButtonClicked:(id)sender {
 	
 	if(![self isValidPost])
 		return;
 	
-	if(_newPlaceMode) {
-		
-		if(_attachmentType == kAttachmentImage) {
-			
-			[[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
-														   withAttachmentImage:self.cameraImage
-																   toPlaceName:self.placeNameTextField.text
-																	atLocation:self.newPlaceLocation];
-		}
-		else if(_attachmentType == kAttachmentVideo) {
-			
-			[[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
-																  withVideoURL:self.videoURL
-                                                              withVideoPreview:self.previewImageView.image
-																 atOrientation:self.videoOrientation
-																   toPlaceName:self.placeNameTextField.text
-																	atLocation:self.newPlaceLocation];
-		}
-	}
-	else {
-		
-		if(_attachmentType == kAttachmentImage) {
-			
-			[[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
-														   withAttachmentImage:self.cameraImage
-																	 toPlaceID:self.selectedPlace.databaseID];
-		}
-		else if(_attachmentType == kAttachmentVideo) {			
-			
-			[[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
-																  withVideoURL:self.videoURL
-                                                              withVideoPreview:self.previewImageView.image
-																 atOrientation:self.videoOrientation
-																	 toPlaceID:self.selectedPlace.databaseID];
-		}
-	}
     
+    if(_attachmentType == kAttachmentNone) {
+        
+    }
+    else if(_attachmentType == kAttachmentImage) {
+        /*
+        [[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
+                                                       withAttachmentImage:self.cameraImage
+                                                                 toPlaceID:self.selectedPlace.databaseID];
+         */
+    }
+    else if(_attachmentType == kAttachmentVideo) {			
+        
+        /*
+        [[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
+                                                              withVideoURL:self.videoURL
+                                                          withVideoPreview:self.previewImageView.image
+                                                             atOrientation:self.videoOrientation
+                                                                 toPlaceID:self.selectedPlace.databaseID];
+         */
+    }
+    
+    /*
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                 [NSNumber numberWithInteger:kTabBarFeedIndex],kKeyTabIndex,
                                                                 [NSNumber numberWithInteger:kResetHard],kKeyResetType,
                                                                 nil]];
+	*/
 	
-	[self.parentViewController dismissModalViewControllerAnimated:NO];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (IBAction)placeNameTextFieldEditingChanged:(id)sender {
-	
-	if(_newPlaceMode && [self.placeNameTextField.text isEqualToString:kEmptyString])
-        [self exitNewPlaceMode];
-    else if(_newPlaceMode)
-        return;
-    
-    if(self.selectedPlace && ![self.selectedPlace.name isEqualToString:self.placeNameTextField.text])
-        self.selectedPlace = nil;
-		
-    if(_isMediaSelected)
-        self.placeNameTextField.text.length > 0 ? [self displayNormalUI] : [self displayMediaUI];
-    
-        
-    //self.searchResults.searchText = self.placeNameTextField.text;
-    //[self.searchResults filterPlacesBySearchText];
+    [self.parentViewController dismissModalViewControllerAnimated:NO];
 }
 
 
@@ -458,7 +242,6 @@ replacementString:(NSString *)string {
 				  andEditedTo:(UIImage*)editedImage {
 		
 	_attachmentType		= kAttachmentImage;
-	_isMediaSelected	= YES;
 	
 	/**
 	 * Free memory from a previously selected video
@@ -480,7 +263,6 @@ replacementString:(NSString *)string {
 						andPreview:(UIImage*)image {
 	
 	_attachmentType		= kAttachmentVideo;
-	_isMediaSelected	= YES;
 
 	/**
 	 * Free memory from a previously selected image
@@ -510,18 +292,5 @@ replacementString:(NSString *)string {
     [self dismissModalViewControllerAnimated:NO];
     [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
 }
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWChooseLocationViewControllerDeleagate
-//----------------------------------------------------------------------------------------------------
-- (void)chooseLocationFinishedWithLocation:(CLLocation*)location {
-	self.newPlaceLocation = location;
-	
-	[self dismissModalViewControllerAnimated:NO];
-}
-
 
 @end
