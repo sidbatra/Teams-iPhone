@@ -56,9 +56,9 @@
 	
 	[[_delegate requestController] dismissModalViewControllerAnimated:NO];
         
-    [[DWCreationQueue sharedDWCreationQueue] 
-            addNewUpdateUserPhotoToQueueWithUserID:[DWSession sharedDWSession].currentUser.databaseID
-                                          andImage:editedImage];
+    //[[DWCreationQueue sharedDWCreationQueue] 
+    //        addNewUpdateUserPhotoToQueueWithUserID:[DWSession sharedDWSession].currentUser.databaseID
+    //                                      andImage:editedImage];
     
     [_delegate photoPicked];
 }

@@ -4,11 +4,13 @@
 //
 
 #import "DWCreateViewController.h"
+#import "DWItemsController.h"
 #import "DWUsersHelper.h"
+#import "DWLocationManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
-static NSString* const kMsgDataTextViewPlaceholder			= @"What you're upto?";
+static NSString* const kMsgDataTextViewPlaceholder			= @"What are you upto?";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
@@ -44,12 +46,15 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 @synthesize videoURL			= _videoURL;
 @synthesize videoOrientation	= _videoOrientation;
 
+@synthesize itemsController     = _itemsController;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
 	self = [super init];
 	
 	if (self) {
-		_attachmentType = kAttachmentNone;
+		_attachmentType         = kAttachmentNone;
+        self.itemsController    = [[[DWItemsController alloc] init] autorelease];
 	}
     
 	return self;
@@ -59,6 +64,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 - (void)dealloc {
 	
 	[[UIApplication sharedApplication] setStatusBarStyle:kStatusBarStyle];
+    
+    [[DWLocationManager sharedDWLocationManager] stopLocationTracking];
 	
 	self.previewImageView		= nil;
 	self.transImageView			= nil;
@@ -72,6 +79,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.cameraImage			= nil;
 	self.videoURL				= nil;
 	self.videoOrientation		= nil;
+    
+    self.itemsController        = nil;
 	
     [super dealloc];
 }
@@ -84,6 +93,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
     
     [self.dataTextView becomeFirstResponder];
+    
+    [[DWLocationManager sharedDWLocationManager] startLocationTracking];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -123,10 +134,10 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	[self.cameraButton setBackgroundImage:[UIImage imageNamed:kImgLightCameraButton]
 								 forState:UIControlStateNormal];
 
-	self.dataTextView.placeholderColor		= [UIColor clearColor];
+	self.dataTextView.placeholderColor = [UIColor clearColor];
 	[self.dataTextView setNeedsDisplay];
 	
-    self.dataTextView.textColor						= [UIColor whiteColor];
+    self.dataTextView.textColor	= [UIColor whiteColor];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -198,7 +209,10 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 		return;
 	
     
-    if(_attachmentType == kAttachmentNone) {
+    if(_attachmentType == kAttachmentNone) {        
+        [self.itemsController postWithData:self.dataTextView.text
+                                atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]
+                                   onQueue:YES];
         
     }
     else if(_attachmentType == kAttachmentImage) {

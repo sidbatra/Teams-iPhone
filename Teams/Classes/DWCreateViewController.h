@@ -10,6 +10,8 @@
 
 #import "KTTextView.h"
 
+@class DWItemsController;
+
 /**
  * Facilitates creation of items and places
  */
@@ -29,6 +31,8 @@
 	NSString			*_videoOrientation;
     
 	NSInteger			_attachmentType;
+    
+    DWItemsController   *_itemsController;
 }
 
 /**
@@ -45,6 +49,11 @@
  * Orientation of the video selected using mediaPicker
  */ 
 @property (nonatomic,copy) NSString *videoOrientation;
+
+/**
+ * Interface to the items service on the app server
+ */
+@property (nonatomic,retain) DWItemsController *itemsController;
 
 
 /**

@@ -147,10 +147,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userPhotoUpdated:(NSNotification*)notification {
     NSDictionary *info		= [notification userInfo];
-	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+	//NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
-	if(_primaryUploadID != resourceID)
-		return;
+	//if(_primaryUploadID != resourceID)
+	//	return;
 	
 	NSDictionary *body = [info objectForKey:kKeyBody];
 	
@@ -175,11 +175,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userPhotoUpdateError:(NSNotification*)notification {
-    NSDictionary *info		= [notification userInfo];
-	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    //NSDictionary *info		= [notification userInfo];
+	//NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
-	if(_primaryUploadID != resourceID)
-		return;
+	//if(_primaryUploadID != resourceID)
+	//	return;
 	    
     [self primaryUploadError];
     

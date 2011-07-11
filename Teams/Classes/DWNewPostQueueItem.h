@@ -6,22 +6,45 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "DWItemsController.h"
 #import "DWCreationQueueItem.h"
 
-@class DWItem;
 
 /**
  * Queue item for creating a new post
  */
-@interface DWNewPostQueueItem : DWCreationQueueItem {
-	DWItem      *_item;
-    UIImage     *_previewImage;
+@interface DWNewPostQueueItem : DWCreationQueueItem<DWItemsControllerDelegate> {
+    NSString            *_data;
+    NSString            *_videoURL;
+    CLLocation          *_location;
+    
+    UIImage             *_image;
+    UIImage             *_previewImage;
+    
+    NSTimeInterval      _createdAt;
+    
+    DWItemsController   *_itemsController;
 }
 
 /**
- * The item object being posted
+ * The text being posted
  */
-@property (nonatomic,retain) DWItem *item;
+@property (nonatomic,copy) NSString *data;
+
+/**
+ * URL on disk of the video attachment
+ */
+@property (nonatomic,copy) NSString *videoURL;
+
+/**
+ * Geo location from which the item is being posted
+ */
+@property (nonatomic,retain) CLLocation *location;
+
+/**
+ * UIImage for an image attachment
+ */
+@property (nonatomic,retain) UIImage *image;
 
 /**
  * Preview image to be hooked to the attachment of
@@ -29,42 +52,17 @@
  */
 @property (nonatomic,retain) UIImage *previewImage;
 
+/**
+ * Interface to the items service on the app server
+ */
+@property (nonatomic,retain) DWItemsController *itemsController;
+
 
 /**
- * Post item with optional image to an existing place
+ * Post item without an attachment
  */
-- (void)postWithItemData:(NSString*)data
-	 withAttachmentImage:(UIImage*)image
-			   toPlaceID:(NSInteger)placeID;
-
-/**
- * Post item with optonal video and orientation to an 
- * existing place
- */
-- (void)postWithItemData:(NSString*)data
-			withVideoURL:(NSURL*)url
-        withVideoPreview:(UIImage*)videoPreviewImage
-		  andOrientation:(NSString*)orientation 
-			   toPlaceID:(NSInteger)placeID;
-
-/**
- * Post item with optional image to a new place
- */
-- (void)postWithItemData:(NSString*)data
-	 withAttachmentImage:(UIImage*)image
-			 toPlaceName:(NSString*)name
-			  atLocation:(CLLocation*)location;
-
-/**
- * Post item with optional video and orientation to a
- * new place
- */
-- (void)postWithItemData:(NSString*)data
-			withVideoURL:(NSURL*)url
-        withVideoPreview:(UIImage*)videoPreviewImage
-		  andOrientation:(NSString*)orientation
-			 toPlaceName:(NSString*)name
-			  atLocation:(CLLocation*)location;
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location;
 
 @end
 

@@ -6,6 +6,8 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class DWCreationQueueItem;
+
 /**
  * Queue for managing asynchronous creation
  */
@@ -24,47 +26,11 @@
  */
 @property (nonatomic,retain) NSMutableArray *queue;
 
-/**
- * Create a new post with an optional image to an existing place
- */
-- (void)addNewPostToQueueWithData:(NSString*)data 
-			  withAttachmentImage:(UIImage*)image
-						toPlaceID:(NSInteger)placeID;
 
 /**
- * Create a new post with an optional video and orientation 
- * to an existing place
+ * Add a new item onto the queue and start processing it
  */
-- (void)addNewPostToQueueWithData:(NSString*)data
-					 withVideoURL:(NSURL*)url
-                 withVideoPreview:(UIImage*)videoPreviewImage
-					atOrientation:(NSString*)orientation
-						toPlaceID:(NSInteger)placeID;
-
-/**
- * Create a new post with an optional image to a new place
- */
-- (void)addNewPostToQueueWithData:(NSString*)data
-			  withAttachmentImage:(UIImage*)image
-					  toPlaceName:(NSString*)name
-					   atLocation:(CLLocation*)location;
-
-/**
- * Create a new post with an optional video and orientation
- * to a new place
- */
-- (void)addNewPostToQueueWithData:(NSString*)data
-					 withVideoURL:(NSURL*)url
-                 withVideoPreview:(UIImage*)videoPreviewImage
-					atOrientation:(NSString*)orientation
-					  toPlaceName:(NSString*)name
-					   atLocation:(CLLocation*)location;
-
-/**
- * Update the profile photo of the current user
- */
-- (void)addNewUpdateUserPhotoToQueueWithUserID:(NSInteger)userID
-                                      andImage:(UIImage*)theImage;
+- (void)addQueueItem:(DWCreationQueueItem*)queueItem;
 
 /**
  * Delete all failed requests from the queue

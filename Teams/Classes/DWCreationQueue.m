@@ -54,6 +54,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWCreationQueue);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)addQueueItem:(DWCreationQueueItem*)queueItem {
+    [self.queue addObject:queueItem];
+    [queueItem start];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)postUpdate {
 	NSInteger	totalActive		= 0;
 	NSInteger	totalFailed		= 0;
@@ -78,86 +84,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWCreationQueue);
 																[NSNumber numberWithInt:totalFailed],kKeyTotalFailed,
 																[NSNumber numberWithFloat:totalProgress],kKeyTotalProgress,
 																 nil]];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)addNewPostToQueueWithData:(NSString*)data 
-			  withAttachmentImage:(UIImage*)image
-						toPlaceID:(NSInteger)placeID {
-	
-	DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
-	
-	[self.queue addObject:queueItem];
-
-	[queueItem postWithItemData:data
-			withAttachmentImage:image
-					  toPlaceID:placeID];	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)addNewPostToQueueWithData:(NSString*)data
-					 withVideoURL:(NSURL*)url
-                 withVideoPreview:(UIImage*)videoPreviewImage
-					atOrientation:(NSString*)orientation
-						toPlaceID:(NSInteger)placeID {
-	
-	DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
-	
-	[self.queue addObject:queueItem];
-
-	[queueItem postWithItemData:data 
-				   withVideoURL:url
-               withVideoPreview:videoPreviewImage
-				 andOrientation:orientation
-					  toPlaceID:placeID];	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)addNewPostToQueueWithData:(NSString*)data
-			  withAttachmentImage:(UIImage*)image
-					  toPlaceName:(NSString*)name
-					   atLocation:(CLLocation*)location {
-	
-	DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
-	
-	[self.queue addObject:queueItem];
-
-	[queueItem postWithItemData:data 
-			withAttachmentImage:image
-					toPlaceName:name
-					 atLocation:location];	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)addNewPostToQueueWithData:(NSString*)data
-					 withVideoURL:(NSURL*)url
-                 withVideoPreview:(UIImage*)videoPreviewImage
-					atOrientation:(NSString*)orientation
-					  toPlaceName:(NSString*)name
-					   atLocation:(CLLocation*)location {
-	
-	DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
-	
-	[self.queue addObject:queueItem];
-
-	[queueItem postWithItemData:data 
-				   withVideoURL:url
-               withVideoPreview:videoPreviewImage
-				 andOrientation:orientation 
-					toPlaceName:name
-					 atLocation:location];	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)addNewUpdateUserPhotoToQueueWithUserID:(NSInteger)userID
-                                      andImage:(UIImage*)theImage {
-    
-    DWNewUserPhotoQueueItem *queueItem = [[[DWNewUserPhotoQueueItem alloc] init] autorelease];
-    
-    [self.queue addObject:queueItem];
-    
-    [queueItem updatePhotoForUserWithID:userID
-                               toImage:theImage];
 }
 
 //----------------------------------------------------------------------------------------------------
