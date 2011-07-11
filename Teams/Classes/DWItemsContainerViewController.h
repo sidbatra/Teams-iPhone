@@ -6,7 +6,6 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-#import "DWFollowedItemsViewController.h"
 #import "DWContainerViewController.h"
 #import "DWSmallProfilePicView.h"
 #import "DWProfilePicManager.h"
@@ -18,7 +17,7 @@
  * items view
  */
 @interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate> {
-	DWFollowedItemsViewController	*followedViewController;
+	//DWFollowedItemsViewController	*followedViewController;
 	DWPostProgressView				*postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
     DWUserTitleView                 *_userTitleView;

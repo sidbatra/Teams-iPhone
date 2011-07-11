@@ -117,9 +117,9 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     self.navigationItem.leftBarButtonItem   = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 
-	if(!followedViewController)
-		followedViewController = [[DWFollowedItemsViewController alloc] initWithDelegate:self];
-	[self.view addSubview:followedViewController.view];
+	//if(!followedViewController)
+	//	followedViewController = [[DWFollowedItemsViewController alloc] initWithDelegate:self];
+	//[self.view addSubview:followedViewController.view];
     
     
     if (!self.userTitleView)
@@ -156,14 +156,14 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     self.smallProfilePicView    = nil;
     self.userTitleView          = nil;
 
-	[followedViewController release];
+	//[followedViewController release];
     
 	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)scrollToTop {
-    [followedViewController scrollToTop];
+    //[followedViewController scrollToTop];
 }
 
 
@@ -211,8 +211,8 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------                                       
 - (void)applicationEnteringForeground:(NSNotification*)notification {
-    if(followedViewController)
-        [followedViewController loadNewItems];
+   // if(followedViewController)
+   //     [followedViewController loadNewItems];
 }
 
 //----------------------------------------------------------------------------------------------------

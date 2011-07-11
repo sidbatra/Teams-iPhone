@@ -7,7 +7,7 @@
 #import "DWTabBarController.h"
 #import "DWItemsContainerViewController.h"
 #import "DWCreateViewController.h"
-#import "DWPlacesContainerViewController.h"
+//#import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
 #import "DWMembership.h"

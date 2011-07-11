@@ -4,7 +4,6 @@
 //
 #import "DWContainerViewController.h"
 #import "DWTabBarController.h"
-#import "DWUserViewController.h"
 #import "DWWebViewController.h"
 #import "DWSharingManager.h"
 #import "DWSession.h"
@@ -117,11 +116,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
-	DWUserViewController *userView = [[DWUserViewController alloc] initWithUser:user
-																	  andDelegate:self];
-	[self.navigationController pushViewController:userView 
-										 animated:YES];
-	[userView release];
+	//DWUserViewController *userView = [[DWUserViewController alloc] initWithUser:user
+	//																  andDelegate:self];
+	//[self.navigationController pushViewController:userView 
+	//									 animated:YES];
+	//[userView release];
 }
 
 //----------------------------------------------------------------------------------------------------
