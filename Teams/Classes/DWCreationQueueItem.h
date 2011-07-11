@@ -39,13 +39,13 @@
  * Generic filename, mainly used for storing filenames
  * of media attachments
  */
-@property (nonatomic,retain) NSString* filename;
+@property (nonatomic,copy) NSString* filename;
 
 /**
  * Error message optionally specifies the reason
  * for a media or primary upload failure
  */ 
-@property (nonatomic,retain) NSString* errorMessage;
+@property (nonatomic,copy) NSString* errorMessage;
 
 /**
  * YES if either of the upload is in progress

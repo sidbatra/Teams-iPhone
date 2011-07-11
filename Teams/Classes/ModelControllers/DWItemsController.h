@@ -56,6 +56,16 @@
             withImage:(UIImage*)image;
 
 /**
+ * Add creation of item with a video attachment
+ * to the content creation queue
+ */
+- (void)queueWithData:(NSString*)data
+           atLocation:(CLLocation*)location
+         withVideoURL:(NSURL*)videoURL
+  andVideoOrientation:(NSString*)videoOrientation
+     withPreviewImage:(UIImage*)image;
+
+/**
  * Fetch and parse items in the feed of the current user
  */
 - (void)getFollowedItems;

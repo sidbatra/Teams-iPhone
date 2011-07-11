@@ -15,7 +15,8 @@
  */
 @interface DWNewPostQueueItem : DWCreationQueueItem<DWItemsControllerDelegate> {
     NSString            *_data;
-    NSString            *_videoURL;
+    NSURL               *_videoURL;
+    NSString            *_videoOrientation;
     CLLocation          *_location;
     
     UIImage             *_image;
@@ -34,7 +35,12 @@
 /**
  * URL on disk of the video attachment
  */
-@property (nonatomic,copy) NSString *videoURL;
+@property (nonatomic,retain) NSURL *videoURL;
+
+/**
+ * Orientation at which the video was recorded
+ */
+@property (nonatomic,copy) NSString *videoOrietation;
 
 /**
  * Geo location from which the item is being posted
@@ -59,16 +65,26 @@
 
 
 /**
- * Create an item with an image attachment
- */
-- (void)postWithItemWithData:(NSString*)data
-                  atLocation:(CLLocation*)location
-                   withImage:(UIImage*)image;
-/**
  * Post item without an attachment
  */
 - (void)postWithItemWithData:(NSString*)data
                   atLocation:(CLLocation*)location;
+
+/**
+ * Post item with an image attachment
+ */
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location
+                   withImage:(UIImage*)image;
+
+/**
+ * Post item with a video attachment
+ */
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location
+                withVideoURL:(NSURL*)videoURL
+        withVideoOrientation:(NSString*)videoOrientation
+            withPreviewImage:(UIImage*)image;
 
 @end
 

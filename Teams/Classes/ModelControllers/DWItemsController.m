@@ -116,6 +116,24 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)queueWithData:(NSString*)data
+           atLocation:(CLLocation*)location
+         withVideoURL:(NSURL*)videoURL
+  andVideoOrientation:(NSString*)videoOrientation
+     withPreviewImage:(UIImage*)image {
+    
+    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    
+    [queueItem postWithItemWithData:data
+                         atLocation:location
+                       withVideoURL:videoURL
+               withVideoOrientation:videoOrientation
+                   withPreviewImage:image];
+    
+    [[DWCreationQueue sharedDWCreationQueue] addQueueItem:queueItem];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)getFollowedItems {
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:kFollowedItemsURI
@@ -146,9 +164,6 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
         UIImage *preview = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:[NSString stringWithFormat:@"%d",resourceID]
                                                                      forClass:[UIImage className]];
         item.attachment.largeImage  = preview;
-        
-        if(preview)
-            NSLog(@"preview set!!");
     }
     
     [_delegate itemCreated:item

@@ -17,6 +17,7 @@
 
 @synthesize data                = _data;
 @synthesize videoURL            = _videoURL;
+@synthesize videoOrietation     = _videoOrientation;
 @synthesize location            = _location;
 @synthesize image               = _image;
 @synthesize previewImage        = _previewImage;
@@ -38,6 +39,7 @@
 - (void)dealloc {
 	self.data               = nil;
     self.videoURL           = nil;
+    self.videoOrietation    = nil;
     self.location           = nil;
     self.image              = nil;
     self.previewImage       = nil;
@@ -67,6 +69,22 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location
+                withVideoURL:(NSURL*)videoURL
+        withVideoOrientation:(NSString*)videoOrientation
+            withPreviewImage:(UIImage*)image {
+    
+    [self postWithItemWithData:data
+                    atLocation:location];
+    
+    self.videoURL           = videoURL;
+    self.videoOrietation    = videoOrientation;
+    
+    self.previewImage       = image;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)startMediaUpload {
 	[super startMediaUpload];
 	
@@ -77,12 +95,12 @@
 																	   withUploadDelegate:self];
 	}
 	else {
-        /*
-		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createVideoUsingURL:self.
-																			atOrientation:self.item.attachment.orientation
+        
+		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createVideoUsingURL:self.videoURL
+																			atOrientation:self.videoOrietation
 																				 toFolder:kS3ItemsFolder
 																	   withUploadDelegate:self];
-         */
+         
 	}
 }
 
@@ -109,7 +127,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)mediaUploadFinished:(NSString*)theFilename {
 	[super mediaUploadFinished:theFilename];
-		
+    
 	self.image      = nil;
     self.videoURL   = nil;
 		
