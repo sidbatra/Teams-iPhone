@@ -21,21 +21,21 @@ NSString* const kDelete				= @"DELETE";
 	NSString* const kDenwenServer	= @"teams.denwen.com";
 	
 	//----------------------------------------------------------------------------------------------------
-	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDItMDlUMDU6MDI6MzcuMDAwWicsCiAgICAgICAgJ2NvbmRpdGlvbnMnOiBbCiAgICAgICAgICB7J2J1Y2tldCc6ICdkZW53ZW4nfSwKICAgICAgICAgIHsnYWNsJzogJ3B1YmxpYy1yZWFkJ30sCiAgICAgICAgICBbJ2NvbnRlbnQtbGVuZ3RoLXJhbmdlJywgMCwgNTI0Mjg4MDBdLAogICAgICAgICAgWydzdGFydHMtd2l0aCcsICcka2V5JywgJyddLAogICAgICAgICAgWydzdGFydHMtd2l0aCcsICcnLCAnJ10KICAgICAgICBdCiAgICAgIH0=";
-	NSString* const kS3Signature	= @"PG1k3sSsZe6FsxfcnqPobBWHKwc=";
+	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDctMTFUMDU6MTk6NDQuMDAwWicsCiAgICAgICAgICdjb25kaXRpb25zJzogWwogICAgICAgICAgIHsnYnVja2V0JzogJ2Rlbndlbi10ZWFtcy1wcm9kdWN0aW9uJ30sCiAgICAgICAgICAgeydhY2wnOiAncHVibGljLXJlYWQnfSwKICAgICAgICAgICBbJ2NvbnRlbnQtbGVuZ3RoLXJhbmdlJywgMCwgNTI0Mjg4MDBdLAogICAgICAgICAgIFsnc3RhcnRzLXdpdGgnLCAnJGtleScsICcnXSwKICAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJycsICcnXQogICAgICAgICBdCiAgICAgICB9";
+	NSString* const kS3Signature	= @"FaLHUtAQZ/ZiJeNUeV1M18Y6puo=";
 	NSString* const kS3AccessID		= @"AKIAJWYCAWDPAAKLNKSQ";
 	NSString* const kS3ACL			= @"public-read";
-	NSString* const kS3Server		= @"http://denwen.s3.amazonaws.com/";
+	NSString* const kS3Server		= @"http://denwen-teams-production.s3.amazonaws.com/";
 #else
     //NSString* const kDenwenServer	= @"ec2-50-19-68-158.compute-1.amazonaws.com";//@"sbat.denwen.com";
     NSString* const kDenwenServer	= @"teams.denwen.com";
 	
 	//----------------------------------------------------------------------------------------------------
-	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDEtMjRUMDQ6MjA6MjguMDAwWicsCiAgICAgICAgJ2NvbmRpdGlvbnMnOiBbCiAgICAgICAgICB7J2J1Y2tldCc6ICd0ZW53ZW4nfSwKICAgICAgICAgIHsnYWNsJzogJ3B1YmxpYy1yZWFkJ30sCiAgICAgICAgICBbJ2NvbnRlbnQtbGVuZ3RoLXJhbmdlJywgMCwgNTI0Mjg4MDBdLAogICAgICAgICAgWydzdGFydHMtd2l0aCcsICcka2V5JywgJyddLAogICAgICAgICAgWydzdGFydHMtd2l0aCcsICcnLCAnJ10KICAgICAgICBdCiAgICAgIH0=";
-	NSString* const kS3Signature	= @"a5XAsCN6H/t4cv5MZ9/vuUOnc5s=";
+	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDctMTFUMDU6MDg6NDEuMDAwWicsCiAgICAgICAgICdjb25kaXRpb25zJzogWwogICAgICAgICAgIHsnYnVja2V0JzogJ2Rlbndlbi10ZWFtcy1kZXZlbG9wbWVudCd9LAogICAgICAgICAgIHsnYWNsJzogJ3B1YmxpYy1yZWFkJ30sCiAgICAgICAgICAgWydjb250ZW50LWxlbmd0aC1yYW5nZScsIDAsIDUyNDI4ODAwXSwKICAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJyRrZXknLCAnJ10sCiAgICAgICAgICAgWydzdGFydHMtd2l0aCcsICcnLCAnJ10KICAgICAgICAgXQogICAgICAgfQ==";
+	NSString* const kS3Signature	= @"SMlfxOXSCcIxURBcr5v1YN6FApY=";
 	NSString* const kS3AccessID		= @"AKIAJWYCAWDPAAKLNKSQ";
 	NSString* const kS3ACL			= @"public-read";
-	NSString* const kS3Server		= @"http://tenwen.s3.amazonaws.com/";
+	NSString* const kS3Server		= @"http://denwen-teams-development.s3.amazonaws.com/";
 #endif
 
 NSString* const kS3UsersFolder	= @"user_photos";

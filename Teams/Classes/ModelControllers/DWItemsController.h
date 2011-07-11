@@ -30,13 +30,30 @@
 
 
 /**
- * Create a new item posted by the current user.
- * queue indicates whether the request should be posted directly
- * or via the global content creation queue
+ * Post a new item created at the given location
+ * with a attachment filename. Blank represents no attachment
+ * previewImage is the video thumbnail or image preview cached
+ * for instant display
  */
-- (void)postWithData:(NSString*)data
-          atLocation:(CLLocation*)location
-             onQueue:(BOOL)queue;
+- (void)postWithData:(NSString *)data
+          atLocation:(CLLocation *)location
+        withFilename:(NSString*)filename
+     andPreviewImage:(UIImage*)image;
+
+/**
+ * Add creation of item without an attachment
+ * to the content creation queue
+ */
+- (void)queueWithData:(NSString*)data
+           atLocation:(CLLocation*)location;
+
+/**
+ * Add creation of item with an image attachment 
+ * to the content creation queue
+ */
+- (void)queueWithData:(NSString *)data
+           atLocation:(CLLocation *)location
+            withImage:(UIImage*)image;
 
 /**
  * Fetch and parse items in the feed of the current user

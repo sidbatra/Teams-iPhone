@@ -59,6 +59,12 @@
 
 
 /**
+ * Create an item with an image attachment
+ */
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location
+                   withImage:(UIImage*)image;
+/**
  * Post item without an attachment
  */
 - (void)postWithItemWithData:(NSString*)data

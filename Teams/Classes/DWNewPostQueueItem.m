@@ -48,10 +48,22 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)postWithItemWithData:(NSString*)data
-                  atLocation:(CLLocation*)location; {
+                  atLocation:(CLLocation*)location {
 	
     self.data       = data;
     self.location   = location;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)postWithItemWithData:(NSString*)data
+                  atLocation:(CLLocation*)location
+                   withImage:(UIImage*)image {
+	
+    [self postWithItemWithData:data
+                    atLocation:location];
+    
+    self.image          = image;
+    self.previewImage   = image;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -80,7 +92,8 @@
     
     [self.itemsController postWithData:self.data
                             atLocation:self.location
-                               onQueue:NO];
+                          withFilename:self.filename
+                       andPreviewImage:self.previewImage];
 }
 
 //----------------------------------------------------------------------------------------------------

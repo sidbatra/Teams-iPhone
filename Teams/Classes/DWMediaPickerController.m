@@ -14,7 +14,7 @@ static NSString* const kRot180                  = @"180";
 static NSString* const kRot270                  = @"270";
 static NSString* const kRot0                    = @"0";
 static NSInteger const kThumbnailTimestamp      = 1;
-static float     const kCroppedImageDimension   = 320.0;
+static float     const kCroppedImageDimension   = 640.0;
 
 
 //----------------------------------------------------------------------------------------------------

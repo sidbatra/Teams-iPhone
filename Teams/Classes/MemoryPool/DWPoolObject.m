@@ -5,6 +5,7 @@
 
 #import "DWPoolObject.h"
 #import "DWMemoryPool.h"
+#import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
 static NSString* const kMsgOverride = @"WARNING - Override method in child class of DWPoolObject";
@@ -14,12 +15,6 @@ static NSString* const kMsgOverride = @"WARNING - Override method in child class
  * Private method and property declarations
  */
 @interface DWPoolObject()
-
-/**
- * Returns the name of the current class as a string
- */
-+ (NSString*)className;
-
 
 /**
  * Similar to retain count a count of the different places
@@ -64,11 +59,6 @@ static NSString* const kMsgOverride = @"WARNING - Override method in child class
     [object update:objectJSON];
     
     return object;
-}
-
-//----------------------------------------------------------------------------------------------------
-+ (NSString*)className {
-    return NSStringFromClass([self class]);
 }
 
 //----------------------------------------------------------------------------------------------------

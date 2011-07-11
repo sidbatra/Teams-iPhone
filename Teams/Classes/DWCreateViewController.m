@@ -210,17 +210,15 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	
     
     if(_attachmentType == kAttachmentNone) {        
-        [self.itemsController postWithData:self.dataTextView.text
-                                atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]
-                                   onQueue:YES];
+        [self.itemsController queueWithData:self.dataTextView.text
+                                atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]];
         
     }
     else if(_attachmentType == kAttachmentImage) {
-        /*
-        [[DWCreationQueue sharedDWCreationQueue] addNewPostToQueueWithData:self.dataTextView.text
-                                                       withAttachmentImage:self.cameraImage
-                                                                 toPlaceID:self.selectedPlace.databaseID];
-         */
+        
+        [self.itemsController queueWithData:self.dataTextView.text
+                                 atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]
+                                  withImage:self.cameraImage];
     }
     else if(_attachmentType == kAttachmentVideo) {			
         

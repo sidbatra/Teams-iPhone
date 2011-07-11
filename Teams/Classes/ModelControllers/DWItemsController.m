@@ -6,9 +6,11 @@
 #import "DWItemsController.h"
 #import "DWItem.h"
 #import "DWRequestsManager.h"
+#import "DWMemoryPool.h"
 #import "DWCreationQueue.h"
 #import "DWNewPostQueueItem.h"
 #import "NSString+Helpers.h"
+#import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
 static NSString* const kFollowedItemsURI    = @"/followed/items.json?";
@@ -64,30 +66,53 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)postWithData:(NSString*)data
-          atLocation:(CLLocation*)location
-             onQueue:(BOOL)queue {
+- (void)postWithData:(NSString *)data
+          atLocation:(CLLocation *)location
+        withFilename:(NSString*)filename
+     andPreviewImage:(UIImage*)image {
     
-    if(queue) {
-        DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
-        
-        [queueItem postWithItemWithData:data
-                             atLocation:location];
-        
-        [[DWCreationQueue sharedDWCreationQueue] addQueueItem:queueItem];
+    NSString *localURL = [NSString stringWithFormat:kCreateItemURI,
+                          [data stringByEncodingHTMLCharacters],
+                          location.coordinate.latitude,
+                          location.coordinate.longitude,
+                          filename];
+    
+    _createResourceID = [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                                     successNotification:kNNewItemCreated
+                                                                       errorNotification:kNNewItemError
+                                                                           requestMethod:kPost];
+    
+    if(image) {
+        [[DWMemoryPool sharedDWMemoryPool] setObject:image
+                                              withID:[NSString stringWithFormat:@"%d",_createResourceID]
+                                            forClass:[UIImage className]];
     }
-    else {
-        NSString *localURL = [NSString stringWithFormat:kCreateItemURI,
-                              [data stringByEncodingHTMLCharacters],
-                              location.coordinate.latitude,
-                              location.coordinate.longitude,
-                              kEmptyString];
-        
-        _createResourceID = [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
-                                                                         successNotification:kNNewItemCreated
-                                                                           errorNotification:kNNewItemError
-                                                                               requestMethod:kPost];
-    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)queueWithData:(NSString*)data
+          atLocation:(CLLocation*)location {
+    
+    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    
+    [queueItem postWithItemWithData:data
+                         atLocation:location];
+    
+    [[DWCreationQueue sharedDWCreationQueue] addQueueItem:queueItem];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)queueWithData:(NSString*)data
+          atLocation:(CLLocation*)location
+           withImage:(UIImage*)image {    
+    
+    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    
+    [queueItem postWithItemWithData:data
+                         atLocation:location
+                          withImage:image];
+    
+    [[DWCreationQueue sharedDWCreationQueue] addQueueItem:queueItem];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -110,13 +135,24 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 	NSDictionary *info		= [notification userInfo];
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
-	if(![self.delegate respondsToSelector:@selector(itemCreated:fromResourceID:)] || _createResourceID != resourceID)
+	if(![self.delegate respondsToSelector:@selector(itemCreated:fromResourceID:)])
 		return;
 	
-    NSDictionary *data = [info objectForKey:kKeyData];
     
-    [_delegate itemCreated:[DWItem create:data] 
-            fromResourceID:_createResourceID];
+    NSDictionary *data  = [info objectForKey:kKeyData];
+    DWItem *item        = [DWItem create:data];
+    
+    if(item.attachment) {    
+        UIImage *preview = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:[NSString stringWithFormat:@"%d",resourceID]
+                                                                     forClass:[UIImage className]];
+        item.attachment.largeImage  = preview;
+        
+        if(preview)
+            NSLog(@"preview set!!");
+    }
+    
+    [_delegate itemCreated:item
+            fromResourceID:resourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -125,12 +161,13 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 	NSDictionary *info		= [notification userInfo];
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
 	
-    if(![self.delegate respondsToSelector:@selector(itemCreationError:fromResourceID:)] || _createResourceID != resourceID)
+    if(![self.delegate respondsToSelector:@selector(itemCreationError:fromResourceID:)])
 		return;
+    
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
     [self.delegate itemCreationError:[error localizedDescription] 
-                      fromResourceID:_createResourceID];
+                      fromResourceID:resourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -155,6 +192,7 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
     
     if(![self.delegate respondsToSelector:@selector(followedItemsError:)])
         return;
+    
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
     [self.delegate followedItemsError:[error localizedDescription]];
