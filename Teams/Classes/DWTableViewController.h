@@ -34,4 +34,12 @@
 
 @end
 
-
+@interface DWTableViewController ()
+/**
+ * Pass the newly available resource to all visible cells to check
+ * for possible UI updates
+ */
+- (void)provideResourceToVisibleCells:(NSInteger)resourceType
+                             resource:(id)resource
+                           resourceID:(NSInteger)resourceID;
+@end

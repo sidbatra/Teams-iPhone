@@ -41,6 +41,14 @@ typedef enum {
  */
 extern NSInteger const kDefaultStyle;
 
+
+/**
+ * Types of resources flowing through the application
+ */
+typedef enum {
+    kResoureTypeLargeAttachmentImage = 0
+} DWResourceType;
+
 /**
  * Reset types
  */

@@ -8,7 +8,6 @@
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
-
 static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
 
@@ -113,6 +112,31 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)provideResourceToVisibleCells:(NSInteger)resourceType
+                             resource:(id)resource
+                           resourceID:(NSInteger)resourceID {
+    
+    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+	
+	for (NSIndexPath *indexPath in visiblePaths) {            
+        
+        id object = [[self getDataSource] objectAtIndex:indexPath.row
+                                             forSection:indexPath.section];
+        
+        NSString *className     = [[object class] className];
+        id cell                 = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+        
+        [modelPresenter updateCell:cell
+                          ofObject:object
+                   withNewResource:resource
+                  havingResourceID:resourceID
+                            ofType:resourceType];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return nil;
 }
@@ -208,15 +232,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	[self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-	
-    //if (!decelerate && _tableViewUsage == kTableViewAsData)
-	//	[self loadImagesForOnscreenRows];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	//if(_tableViewUsage == kTableViewAsData)
-	//	[self loadImagesForOnscreenRows];
 }
 
 
