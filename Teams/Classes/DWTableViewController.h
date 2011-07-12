@@ -5,13 +5,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWTableViewDataSource.h"
+
 #import "EGORefreshTableHeaderView.h"
 
 /**
  * Customized version of UITableViewController which forms the base 
  * for every table view controller in the app
  */
-@interface DWTableViewController : UITableViewController<EGORefreshTableHeaderDelegate> {
+@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate,EGORefreshTableHeaderDelegate> {
     
     NSMutableDictionary         *_modelPresentationStyle;
     

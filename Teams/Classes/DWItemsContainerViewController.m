@@ -4,6 +4,7 @@
 //
 
 #import "DWItemsContainerViewController.h"
+#import "DWFollowedItemsViewController.h"
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
 #import "DWNotificationsHelper.h"
@@ -20,6 +21,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWItemsContainerViewController
 
+@synthesize followedViewController  = _followedViewController;
 @synthesize smallProfilePicView     = _smallProfilePicView;
 @synthesize userTitleView           = _userTitleView;
 
@@ -117,9 +119,10 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     self.navigationItem.leftBarButtonItem   = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 
-	//if(!followedViewController)
-	//	followedViewController = [[DWFollowedItemsViewController alloc] initWithDelegate:self];
-	//[self.view addSubview:followedViewController.view];
+    if(!self.followedViewController)
+        self.followedViewController = [[[DWFollowedItemsViewController alloc] init] autorelease];
+        
+    [self.view addSubview:self.followedViewController.view];
     
     
     if (!self.userTitleView)
@@ -153,10 +156,10 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.followedViewController = nil;
     self.smallProfilePicView    = nil;
     self.userTitleView          = nil;
-
-	//[followedViewController release];
     
 	[super dealloc];
 }

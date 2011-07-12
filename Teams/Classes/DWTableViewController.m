@@ -5,7 +5,6 @@
 
 #import "DWTableViewController.h"
 #import "DWModelPresenter.h"
-#import "DWTableViewDataSource.h"
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
@@ -40,6 +39,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (NSString*)identifierForClassName:(NSString*)className;
 
 @end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -96,6 +96,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                                                                  alpha:1.0]];
     
 	[self.tableView addSubview:self.refreshHeaderView];
+    
+    [self getDataSource].delegate   = self;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -216,6 +218,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	//	[self loadImagesForOnscreenRows];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTableViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)reloadTableView {
+    [self.tableView reloadData];
+}
 
 
 //----------------------------------------------------------------------------------------------------

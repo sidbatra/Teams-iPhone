@@ -168,7 +168,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
                                                [[[UIViewController alloc] init] autorelease],
                                                [[[UIViewController alloc] init] autorelease],
-                                               [[[UIViewController alloc] init] autorelease],
+                                               self.itemsNavController,
                                                nil]];
 		
 	

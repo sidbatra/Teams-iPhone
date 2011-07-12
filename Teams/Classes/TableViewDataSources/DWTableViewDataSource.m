@@ -14,7 +14,8 @@ static NSInteger const kDefaultSections = 1;
 //----------------------------------------------------------------------------------------------------
 @implementation DWTableViewDataSource
 
-@synthesize objects    = _objects;
+@synthesize objects     = _objects;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
