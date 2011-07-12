@@ -4,17 +4,42 @@
 //
 
 #import "DWTableViewController.h"
-#import "DWPaginationCell.h"
-#import "DWLoadingCell.h"
-#import "DWMessageCell.h"
+#import "DWModelPresenter.h"
+#import "DWTableViewDataSource.h"
+#import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
-static NSInteger const kDefaultSections				= 1;
-static NSInteger const kMessageCellIndex			= 0;
-static NSInteger const kSpinnerCellIndex			= 0;
-static NSInteger const kInitialLastID               = 0;
+
+static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
 
+
+/**
+ * Private method and property declarations
+ */
+@interface DWTableViewController()
+
+/**
+ * Get the data source object for the table view controller
+ */
+- (DWTableViewDataSource*)getDataSource;
+
+/**
+ * Get an object of the presenter class for the given className
+ */
+- (Class)presenterClassForClassName:(NSString*)className;
+
+/**
+ * Get the presentation style for the given class name
+ */
+- (NSInteger)presentationStyleForClassName:(NSString*)className;
+
+/**
+ * Generate and return the identifier for the given class name
+ */
+- (NSString*)identifierForClassName:(NSString*)className;
+
+@end
 
 
 //----------------------------------------------------------------------------------------------------
@@ -22,32 +47,25 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 @implementation DWTableViewController
 
-@synthesize messageCellText     = _messageCellText;
-@synthesize refreshHeaderView   = _refreshHeaderView;
+@synthesize modelPresentationStyle  = _modelPresentationStyle;
+@synthesize refreshHeaderView       = _refreshHeaderView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if (self) {
-        
-        _dataSourceDelegate     = self;
-        _tableViewUsage			= kTableViewAsSpinner;
-		_isReloading			= YES;
-        _isLoadingPage          = NO;
-        _lastID                 = kInitialLastID;
-		
-		[self resetPagination];
+        self.modelPresentationStyle = [NSMutableDictionary dictionary];
     }
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.tableView          = nil;
+    self.tableView                  = nil;
     
-    self.messageCellText	= nil;
-	self.refreshHeaderView	= nil;
+    self.modelPresentationStyle     = nil;
+	self.refreshHeaderView          = nil;
     
     [super dealloc];
 }
@@ -60,6 +78,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                                                                green:0.2588 
                                                                 blue:0.2627
                                                                alpha:1.0];
+    
 	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;
     
     self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
@@ -92,84 +111,24 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)resetPagination {
-	_currentPage            = kPagInitialPage;
-    _lastID                 = kInitialLastID;
-	_paginationCellStatus   = 1;
+- (DWTableViewDataSource*)getDataSource {
+    return nil;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)markEndOfPagination {
-	_paginationCellStatus = 0;
+- (Class)presenterClassForClassName:(NSString*)className {
+    return NSClassFromString([NSString stringWithFormat:@"%@%@",className,kPresenterClassSuffix]);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadImagesForOnscreenRows {
-    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
-	
-	for (NSIndexPath *indexPath in visiblePaths)
-        [_dataSourceDelegate loadImagesForDataRowAtIndex:indexPath];
+- (NSInteger)presentationStyleForClassName:(NSString*)className {
+    NSString *style = [self.modelPresentationStyle objectForKey:className];
+    return style ? [style integerValue] : kDefaultStyle;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadNextPage {
-	_prePaginationCellCount = [_dataSourceDelegate numberOfDataRows];
-    _lastID                 = [_dataSourceDelegate idForLastDataRow];
-    _isLoadingPage          = YES;
-    _currentPage++;
-	
-    [_dataSourceDelegate loadData];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)finishedLoading {
-	[self.refreshHeaderView refreshLastUpdatedDate];
-	
-	if([_dataSourceDelegate numberOfDataRows] < [_dataSourceDelegate numberOfDataRowsPerPage] || 
-	   ([_dataSourceDelegate numberOfDataRows] - _prePaginationCellCount < [_dataSourceDelegate numberOfDataRowsPerPage] &&
-        !_isReloading)) { 
-           
-           /**
-            * Mark end of pagination is no new rows are found
-            */
-           _prePaginationCellCount = 0;
-           [self markEndOfPagination];
-       }
-    
-	if(_isReloading) {
-		[self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-		_isReloading = NO;
-	}
-    
-    _isLoadingPage = NO;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)finishedLoadingWithError {
-    
-    if(_isReloading) {
-		[self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-		_isReloading = NO;
-	}
-    
-    if(_tableViewUsage == kTableViewAsSpinner) {
-        _tableViewUsage         = kTableViewAsMessage;
-        self.messageCellText    = kMsgNetworkError;
-        [self.tableView reloadData];
-    }
-    
-    _isLoadingPage = NO;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)hardRefresh {
-    [self resetPagination];
-    
-    _isReloading		= YES;
-    _tableViewUsage     = kTableViewAsSpinner;
-	
-    [self.tableView reloadData];
-    [_dataSourceDelegate loadData];
+- (NSString*)identifierForClassName:(NSString *)className {
+    return className;
 }
 
 
@@ -180,100 +139,46 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return kDefaultSections;
+    return [[self getDataSource] getTotalSections];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    
-	NSInteger rows = 0;
-	
-	if(_tableViewUsage == kTableViewAsData)
-		rows = [_dataSourceDelegate  numberOfDataRows] + _paginationCellStatus;
-	else
-		rows = kTVLoadingCellCount;
-    
-	return rows;
+	return [[self getDataSource] getTotalObjectsForSection:section];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-	CGFloat height = 0;
-	
-	if(_tableViewUsage == kTableViewAsData && indexPath.row < [_dataSourceDelegate numberOfDataRows])
-		height = [_dataSourceDelegate heightForDataRows];
-	
-	else if(_tableViewUsage == kTableViewAsData && indexPath.row == [_dataSourceDelegate numberOfDataRows])
-		height = kPaginationCellHeight;
-	else
-		height = kTVLoadingCellHeight;
-	
-	return height;
+    id object = [[self getDataSource] getObjectAtIndex:indexPath.row
+                                                      forSection:indexPath.section];
+    
+    NSString *className = [[object class] className];
+
+    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    
+	return [modelPresenter heightForObject:object
+                     withPresentationStyle:[self presentationStyleForClassName:className]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = nil;
+    id object = [[self getDataSource] getObjectAtIndex:indexPath.row
+                                            forSection:indexPath.section];
     
-    if(_tableViewUsage == kTableViewAsData && indexPath.row < [_dataSourceDelegate numberOfDataRows]) {
-        return  [_dataSourceDelegate cellForDataRowAt:indexPath
-                                          inTableView:tableView];
-    }
-    if(_tableViewUsage == kTableViewAsData && indexPath.row == [_dataSourceDelegate numberOfDataRows]) {
-		
-		DWPaginationCell *cell = (DWPaginationCell*)[tableView dequeueReusableCellWithIdentifier:kTVPaginationCellIdentifier];
-		
-		if(!cell)
-			cell = [[DWPaginationCell alloc] initWithStyle:UITableViewStylePlain 
-										   reuseIdentifier:kTVPaginationCellIdentifier];
-		
-        [cell displayProcessingState];
-        if (!_isLoadingPage) 
-            [self loadNextPage];
-		
-		return cell;
-	}
-	
-	else if(_tableViewUsage == kTableViewAsSpinner && indexPath.row == kSpinnerCellIndex) {
-		
-		DWLoadingCell *cell = (DWLoadingCell*)[tableView dequeueReusableCellWithIdentifier:kTVLoadingCellIdentifier];
-		
-		if (!cell) 
-			cell = [[[DWLoadingCell alloc] initWithStyle:UITableViewCellStyleDefault 
-										 reuseIdentifier:kTVLoadingCellIdentifier] autorelease];
-		
-		[cell.spinner startAnimating];
-		
-		return cell;
-	}
-	else if(_tableViewUsage == kTableViewAsMessage && indexPath.row == kMessageCellIndex) {
-		
-		DWMessageCell *cell = (DWMessageCell*)[tableView dequeueReusableCellWithIdentifier:kTVMessageCellIdentifier];
-		
-		if (!cell) 
-			cell = [[[DWMessageCell alloc] initWithStyle:UITableViewCellStyleDefault 
-										 reuseIdentifier:kTVMessageCellIdentifier] autorelease];
-		
-		cell.messageLabel.text = self.messageCellText;
-		
-		return cell;
-	}
-	else {
-        cell = [tableView dequeueReusableCellWithIdentifier:kTVDefaultCellIdentifier];
-		
-		if (!cell) 
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault 
-										   reuseIdentifier:kTVDefaultCellIdentifier] autorelease];
-		
-		cell.selectionStyle					= UITableViewCellSelectionStyleNone;
-		cell.contentView.backgroundColor	= [UIColor blackColor];
-		
-		return cell;
-	}
-	
-	return cell;	
+    NSString *className     = [[object class] className];
+    NSString* identifier    = [self identifierForClassName:className];
+    
+    id cell                 = [tableView dequeueReusableCellWithIdentifier:identifier];
+    
+    
+    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    
+	return [modelPresenter cellForObject:object
+                            withBaseCell:cell
+                      withCellIdentifier:identifier
+                    andPresentationStyle:[self presentationStyleForClassName:className]];
 }
 
 
@@ -284,11 +189,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    if(indexPath.row < [_dataSourceDelegate numberOfDataRows]) {
-        [_dataSourceDelegate didSelectDataRowAt:indexPath
-                                    inTableView:tableView];
-    }
 }
 
 
@@ -306,14 +206,14 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
 	[self.refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 	
-    if (!decelerate && _tableViewUsage == kTableViewAsData)
-		[self loadImagesForOnscreenRows];
+    //if (!decelerate && _tableViewUsage == kTableViewAsData)
+	//	[self loadImagesForOnscreenRows];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-	if(_tableViewUsage == kTableViewAsData)
-		[self loadImagesForOnscreenRows];
+	//if(_tableViewUsage == kTableViewAsData)
+	//	[self loadImagesForOnscreenRows];
 }
 
 
@@ -325,71 +225,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
-    
-    if(_isReloading)
-        return;
-    
-    [self resetPagination];
-    
-    _isReloading = YES;
-    [_dataSourceDelegate loadData];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view {
-	return _isReloading; 
+	return NO;//return _isReloading; 
 }
 
 //----------------------------------------------------------------------------------------------------
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
 	return nil;
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWTableViewDataSourceDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (NSInteger)numberOfDataRows {
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (NSInteger)numberOfDataRowsPerPage {
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (CGFloat)heightForDataRows {
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)loadData {
-}
-
-//----------------------------------------------------------------------------------------------------
-- (NSInteger)idForLastDataRow {
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)loadImagesForDataRowAtIndex:(NSIndexPath *)indexPath {
-    
-}
-
-//----------------------------------------------------------------------------------------------------
-- (UITableViewCell*)cellForDataRowAt:(NSIndexPath *)indexPath
-                         inTableView:(UITableView*)tableView {
-    return nil;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)didSelectDataRowAt:(NSIndexPath*)indexPath
-               inTableView:(UITableView*)tableView {
-    
 }
 
 @end

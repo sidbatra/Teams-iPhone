@@ -35,6 +35,12 @@ typedef enum {
     kAttachmentVideo    = 1
 } kAttacmentType;
 
+
+/**
+ * Presentation styles for different models
+ */
+extern NSInteger const kDefaultStyle;
+
 /**
  * Reset types
  */

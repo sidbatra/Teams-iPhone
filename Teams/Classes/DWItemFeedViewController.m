@@ -101,7 +101,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
 //----------------------------------------------------------------------------------------------------
 - (void)addNewItem:(DWItem *)item 
 		   atIndex:(NSInteger)index {
-        
+    /*    
     if(_tableViewUsage != kTableViewAsData) {
         _tableViewUsage = kTableViewAsData;
         [self.tableView reloadData];
@@ -116,6 +116,7 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
     
     [self.tableView insertRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationTop];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -202,8 +203,8 @@ static NSString* const kMsgActionSheetDelete		= @"Delete";
 //----------------------------------------------------------------------------------------------------
 - (void)mediumAttachmentLoaded:(NSNotification*)notification {
 	
-	if(_tableViewUsage != kTableViewAsData || ![_itemManager totalItems])
-		return;
+	//if(_tableViewUsage != kTableViewAsData || ![_itemManager totalItems])
+	//	return;
 	
 	NSDictionary *info		= [notification userInfo];
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];

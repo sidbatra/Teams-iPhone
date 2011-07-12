@@ -413,6 +413,7 @@
 		BBF898B013CAC5A700D5C5FB /* DWCreationQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF898AA13CAC5A700D5C5FB /* DWCreationQueueItem.m */; };
 		BBF898B113CAC5A700D5C5FB /* DWNewPostQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF898AC13CAC5A700D5C5FB /* DWNewPostQueueItem.m */; };
 		BBF898B213CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF898AE13CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.m */; };
+		BBF8994913CBC48A00D5C5FB /* DWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8994813CBC48900D5C5FB /* DWTableViewDataSource.m */; };
 		BBF89AF71351320900B332CA /* button_new_place_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF51351320900B332CA /* button_new_place_active.png */; };
 		BBF89AF81351320900B332CA /* button_new_place_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89AF61351320900B332CA /* button_new_place_active@2x.png */; };
 		BBF89C151352739800B332CA /* video_slice_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89C141352739800B332CA /* video_slice_placeholder.png */; };
@@ -974,6 +975,9 @@
 		BBF898AC13CAC5A700D5C5FB /* DWNewPostQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNewPostQueueItem.m; sourceTree = "<group>"; };
 		BBF898AD13CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNewUserPhotoQueueItem.h; sourceTree = "<group>"; };
 		BBF898AE13CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNewUserPhotoQueueItem.m; sourceTree = "<group>"; };
+		BBF8994713CBC48900D5C5FB /* DWTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTableViewDataSource.h; path = Classes/DWTableViewDataSource.h; sourceTree = "<group>"; };
+		BBF8994813CBC48900D5C5FB /* DWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTableViewDataSource.m; path = Classes/DWTableViewDataSource.m; sourceTree = "<group>"; };
+		BBF8994A13CBF02900D5C5FB /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWModelPresenter.h; path = Classes/DWModelPresenter.h; sourceTree = "<group>"; };
 		BBF89AF51351320900B332CA /* button_new_place_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_new_place_active.png; path = resources/button_new_place_active.png; sourceTree = "<group>"; };
 		BBF89AF61351320900B332CA /* button_new_place_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_new_place_active@2x.png"; path = "resources/button_new_place_active@2x.png"; sourceTree = "<group>"; };
 		BBF89C141352739800B332CA /* video_slice_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_slice_placeholder.png; path = resources/video_slice_placeholder.png; sourceTree = "<group>"; };
@@ -1880,6 +1884,9 @@
 		BBD837471363BCFD00326E1F /* Table  */ = {
 			isa = PBXGroup;
 			children = (
+				BBF8994A13CBF02900D5C5FB /* DWModelPresenter.h */,
+				BBF8994713CBC48900D5C5FB /* DWTableViewDataSource.h */,
+				BBF8994813CBC48900D5C5FB /* DWTableViewDataSource.m */,
 				26D3CB211363C656007CE094 /* DWTableViewController.h */,
 				26D3CB221363C656007CE094 /* DWTableViewController.m */,
 			);
@@ -2525,6 +2532,7 @@
 				BBF898B013CAC5A700D5C5FB /* DWCreationQueueItem.m in Sources */,
 				BBF898B113CAC5A700D5C5FB /* DWNewPostQueueItem.m in Sources */,
 				BBF898B213CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.m in Sources */,
+				BBF8994913CBC48A00D5C5FB /* DWTableViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
