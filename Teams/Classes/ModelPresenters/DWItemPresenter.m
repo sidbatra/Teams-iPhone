@@ -38,7 +38,7 @@ static CGFloat const kCellHeight  = 320;
     cell.itemUserName		= item.user.firstName;
     
     
-    //[item startImagesDownload];
+    [item startImagesDownload];
     
     
     if (item.attachment) {
@@ -69,6 +69,24 @@ static CGFloat const kCellHeight  = 320;
      withPresentationStyle:(NSInteger)style {
     
     return kCellHeight;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)updateCell:(id)base
+          ofObject:(id)object
+   withNewResource:(id)resource
+  havingResourceID:(NSInteger)resourceID
+            ofType:(NSInteger)resourceType {
+    
+    DWItem *item = object;
+
+    if(resourceType == kResoureTypeLargeAttachmentImage && item.attachment && item.attachment.databaseID == resourceID) {
+        
+        DWItemFeedCell *cell	= base;
+        
+        [cell setItemImage:(UIImage*)resource];
+        [cell redisplay];
+    }
 }
 
 @end

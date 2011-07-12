@@ -21,6 +21,12 @@
     
     if(self) {
         self.itemsDataSource = [[[DWItemsDataSource alloc] init] autorelease];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(largeAttachmentLoaded:) 
+													 name:kNImgLargeAttachmentLoaded
+												   object:nil];
     }
     
     return self;
@@ -28,6 +34,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.itemsDataSource  = nil;
     
@@ -51,6 +58,26 @@
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return self.itemsDataSource;
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)largeAttachmentLoaded:(NSNotification*)notification {
+	
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    id resource             = [info objectForKey:kKeyImage];
+        
+    [self provideResourceToVisibleCells:kResoureTypeLargeAttachmentImage
+                               resource:resource
+                             resourceID:resourceID];
 }
 
 
