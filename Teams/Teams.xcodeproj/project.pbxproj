@@ -331,6 +331,7 @@
 		BBC0C6EB12F4C57800291C33 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0C6EA12F4C57800291C33 /* EGORefreshTableHeaderView.m */; };
 		BBC7CCCB13664BF80003CE02 /* DWVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC7CCCA13664BF80003CE02 /* DWVideoView.m */; };
 		BBC8D8EE13CC1B9000A224F5 /* DWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8ED13CC1B9000A224F5 /* DWTableViewDataSource.m */; };
+		BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */; };
 		BBCE3A65131CC38D008BDA82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A63131CC38D008BDA82 /* Default.png */; };
 		BBCE3A66131CC38D008BDA82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A64131CC38D008BDA82 /* Default@2x.png */; };
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
@@ -868,6 +869,8 @@
 		BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenter.h; sourceTree = "<group>"; };
 		BBC8D8EC13CC1B9000A224F5 /* DWTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewDataSource.h; sourceTree = "<group>"; };
 		BBC8D8ED13CC1B9000A224F5 /* DWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewDataSource.m; sourceTree = "<group>"; };
+		BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemPresenter.h; sourceTree = "<group>"; };
+		BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemPresenter.m; sourceTree = "<group>"; };
 		BBCE3A63131CC38D008BDA82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resources/Default.png; sourceTree = "<group>"; };
 		BBCE3A64131CC38D008BDA82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/Default@2x.png"; sourceTree = "<group>"; };
 		BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = resources/iTunesArtwork; sourceTree = "<group>"; };
@@ -1872,6 +1875,8 @@
 			isa = PBXGroup;
 			children = (
 				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
+				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
+				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2551,6 +2556,7 @@
 				BBF898B113CAC5A700D5C5FB /* DWNewPostQueueItem.m in Sources */,
 				BBF898B213CAC5A700D5C5FB /* DWNewUserPhotoQueueItem.m in Sources */,
 				BBC8D8EE13CC1B9000A224F5 /* DWTableViewDataSource.m in Sources */,
+				BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
