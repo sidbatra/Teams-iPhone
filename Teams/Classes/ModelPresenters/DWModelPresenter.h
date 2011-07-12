@@ -29,10 +29,11 @@
 /**
  * Update the cell when a new resource is made available
  */
-+ (void)updateCell:(id)base
-          ofObject:(id)object
-   withNewResource:(id)resource
-  havingResourceID:(NSInteger)resourceID
-            ofType:(NSInteger)resourceType;
++ (void)updatePresentationForCell:(id)base
+                         ofObject:(id)object
+            withPresentationStyle:(NSInteger)style
+                  withNewResource:(id)resource
+                 havingResourceID:(NSInteger)resourceID
+                           ofType:(NSInteger)resourceType;
 
 @end

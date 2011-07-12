@@ -128,11 +128,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
         
         Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
         
-        [modelPresenter updateCell:cell
-                          ofObject:object
-                   withNewResource:resource
-                  havingResourceID:resourceID
-                            ofType:resourceType];
+        [modelPresenter updatePresentationForCell:cell
+                                         ofObject:object
+                            withPresentationStyle:[self presentationStyleForClassName:className]
+                                  withNewResource:resource
+                                 havingResourceID:resourceID
+                                           ofType:resourceType];
     }
 }
 
