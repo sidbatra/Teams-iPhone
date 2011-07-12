@@ -1886,7 +1886,7 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>332195303.59515399</real>
+		<real>332195577.12159199</real>
 		<string>{0, 791}</string>
 		<string>{646, 0}</string>
 		<string>@interface DWCreateViewController</string>
@@ -8052,7 +8052,7 @@
 				</dict>
 			</array>
 		</dict>
-		<real>332195303.59181303</real>
+		<real>332195577.117809</real>
 		<string>{0, 791}</string>
 		<string>{646, 0}</string>
 		<dict>
@@ -10273,7 +10273,7 @@
 				</dict>
 				<dict>
 					<key>CF$UID</key>
-					<integer>811</integer>
+					<integer>101</integer>
 				</dict>
 			</array>
 		</dict>
@@ -10527,7 +10527,7 @@
 				<integer>827</integer>
 			</dict>
 			<key>NS.time</key>
-			<real>332195288.49779099</real>
+			<real>332195554.00816298</real>
 		</dict>
 		<dict>
 			<key>$classes</key>
@@ -10538,7 +10538,7 @@
 			<key>$classname</key>
 			<string>NSDate</string>
 		</dict>
-		<string>Today at 1:28 PM</string>
+		<string>Today at 1:32 PM</string>
 		<integer>106</integer>
 		<dict>
 			<key>$class</key>
