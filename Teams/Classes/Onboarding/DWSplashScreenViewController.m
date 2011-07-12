@@ -4,8 +4,6 @@
 //
 
 #import "DWSplashScreenViewController.h"
-#import "DWLoginViewController.h"
-#import "DWSignupViewController.h"
 #import "DWIntroPaneViewController.h"
 #import "DWConstants.h"
 
@@ -30,11 +28,12 @@ static NSInteger kNumberOfPages = 4;
 @synthesize viewControllers = _viewControllers;
 
 //----------------------------------------------------------------------------------------------------
-- (id)init {
+- (id)initWithDelegate:(id)theDelegate {
     self = [super init];
     
     if(self) {
-
+        _delegate = theDelegate;
+        
         NSMutableArray *controllers = [[NSMutableArray alloc] init];
         for (unsigned i = 0; i < kNumberOfPages; i++) 
             [controllers addObject:[NSNull null]];
@@ -154,18 +153,12 @@ static NSInteger kNumberOfPages = 4;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loginButtonClicked:(id)sender {
-    DWLoginViewController *loginView    = [[[DWLoginViewController alloc] init] autorelease];
-    
-    [self.navigationController pushViewController:loginView
-										 animated:YES];
+    [_delegate loginInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)signupButtonClicked:(id)sender {
-    DWSignupViewController *signupView  = [[[DWSignupViewController alloc] init] autorelease];
-    
-    [self.navigationController pushViewController:signupView
-										 animated:YES];
+    [_delegate signupInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
