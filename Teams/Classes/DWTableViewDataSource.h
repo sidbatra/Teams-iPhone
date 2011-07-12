@@ -23,17 +23,17 @@
 /**
  * Get the total number of sections 
  */
-- (NSInteger)getTotalSections;
+- (NSInteger)totalSections;
 
 /**
  * Fetch the total number of objects for the given section
  */
-- (NSInteger)getTotalObjectsForSection:(NSInteger)section;
+- (NSInteger)totalObjectsForSection:(NSInteger)section;
 
 /**
  * Fetch the object at the given index
  */
-- (NSObject*)getObjectAtIndex:(NSInteger)index 
-                   forSection:(NSInteger)section;
+- (id)objectAtIndex:(NSInteger)index 
+         forSection:(NSInteger)section;
 
 @end

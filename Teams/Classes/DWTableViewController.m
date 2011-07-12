@@ -139,19 +139,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [[self getDataSource] getTotalSections];
+    return [[self getDataSource] totalSections];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [[self getDataSource] getTotalObjectsForSection:section];
+	return [[self getDataSource] totalObjectsForSection:section];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
-    id object = [[self getDataSource] getObjectAtIndex:indexPath.row
-                                                      forSection:indexPath.section];
+    id object = [[self getDataSource] objectAtIndex:indexPath.row
+                                         forSection:indexPath.section];
     
     NSString *className = [[object class] className];
 
@@ -164,8 +164,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    id object = [[self getDataSource] getObjectAtIndex:indexPath.row
-                                            forSection:indexPath.section];
+    id object = [[self getDataSource] objectAtIndex:indexPath.row
+                                         forSection:indexPath.section];
     
     NSString *className     = [[object class] className];
     NSString* identifier    = [self identifierForClassName:className];

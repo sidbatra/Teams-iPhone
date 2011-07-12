@@ -5,7 +5,7 @@
 
 #import "DWTableViewDataSource.h"
 
-static NSInteger const kDefaultSections     = 1;
+static NSInteger const kDefaultSections = 1;
 
 
 
@@ -17,20 +17,46 @@ static NSInteger const kDefaultSections     = 1;
 @synthesize objects    = _objects;
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)getTotalSections {
+- (id)init {
+    self = [super init];
+    
+    if(self) {
+        self.objects = [NSMutableArray array];
+    }
+    
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    
+    SEL destroySelector = @selector(destroy);
+    
+    for(id object in self.objects) {
+        if([object respondsToSelector:destroySelector])
+            [object performSelector:destroySelector];
+    }
+    
+    self.objects = nil;
+    
+    [super dealloc];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)totalSections {
     return kDefaultSections;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)getTotalObjectsForSection:(NSInteger)section {
-    return [_objects count];
+- (NSInteger)totalObjectsForSection:(NSInteger)section {
+    return [self.objects count];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (NSObject*)getObjectAtIndex:(NSInteger)index 
-                   forSection:(NSInteger)section {
+- (id)objectAtIndex:(NSInteger)index 
+         forSection:(NSInteger)section {
     
-    return index < [_objects count] ? [_objects objectAtIndex:index] : nil;
+    return index < [self.objects count] ? [self.objects objectAtIndex:index] : nil;
 }
 
 @end
