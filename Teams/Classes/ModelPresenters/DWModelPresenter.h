@@ -13,6 +13,7 @@
 + (UITableViewCell*)cellForObject:(id)object
                      withBaseCell:(id)base
                withCellIdentifier:(NSString*)identifier
+                     withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style;
 
 + (CGFloat)heightForObject:(id)object 

@@ -19,6 +19,11 @@
  */
 + (id)create:(NSDictionary *)objectJSON;
 
+/**
+ * Fetch the object of the current class with the given objectID
+ */
++ (id)fetch:(NSInteger)objectID;
+
 
 /**
  * Primary key / unique id to uniquely identify the object
