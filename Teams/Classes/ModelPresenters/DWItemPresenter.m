@@ -19,6 +19,7 @@ static CGFloat const kCellHeight  = 320;
 + (UITableViewCell*)cellForObject:(id)object
                      withBaseCell:(id)base
                withCellIdentifier:(NSString*)identifier
+                     withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
     
     DWItem *item			= object;
@@ -29,7 +30,7 @@ static CGFloat const kCellHeight  = 320;
                                       reuseIdentifier:identifier] autorelease];
     
 	
-    //cell.delegate			= self;
+    cell.delegate			= delegate;
     
     cell.itemID				= item.databaseID;
     cell.itemData			= item.data;

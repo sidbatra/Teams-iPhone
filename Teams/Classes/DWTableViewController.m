@@ -180,6 +180,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	return [modelPresenter cellForObject:object
                             withBaseCell:cell
                       withCellIdentifier:identifier
+                            withDelegate:self
                     andPresentationStyle:[self presentationStyleForClassName:className]];
 }
 

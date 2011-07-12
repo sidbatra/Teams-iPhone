@@ -333,8 +333,8 @@
 		BBC8D8EE13CC1B9000A224F5 /* DWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8ED13CC1B9000A224F5 /* DWTableViewDataSource.m */; };
 		BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */; };
 		BBC8D8F413CCB8A200A224F5 /* DWItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F313CCB8A200A224F5 /* DWItemsDataSource.m */; };
-		BBC8D8F713CCBE6200A224F5 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F613CCBE6200A224F5 /* DWItemsViewController.m */; };
 		BBC8D8FA13CCBFB400A224F5 /* DWFollowedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F913CCBFB300A224F5 /* DWFollowedItemsViewController.m */; };
+		BBC8D8FD13CCCEB200A224F5 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8FC13CCCEB100A224F5 /* DWItemsViewController.m */; };
 		BBCE3A65131CC38D008BDA82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A63131CC38D008BDA82 /* Default.png */; };
 		BBCE3A66131CC38D008BDA82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A64131CC38D008BDA82 /* Default@2x.png */; };
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
@@ -876,10 +876,10 @@
 		BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemPresenter.m; sourceTree = "<group>"; };
 		BBC8D8F213CCB8A200A224F5 /* DWItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsDataSource.h; sourceTree = "<group>"; };
 		BBC8D8F313CCB8A200A224F5 /* DWItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsDataSource.m; sourceTree = "<group>"; };
-		BBC8D8F513CCBE6200A224F5 /* DWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsViewController.h; sourceTree = "<group>"; };
-		BBC8D8F613CCBE6200A224F5 /* DWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsViewController.m; sourceTree = "<group>"; };
 		BBC8D8F813CCBFB300A224F5 /* DWFollowedItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFollowedItemsViewController.h; path = Classes/DWFollowedItemsViewController.h; sourceTree = "<group>"; };
 		BBC8D8F913CCBFB300A224F5 /* DWFollowedItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFollowedItemsViewController.m; path = Classes/DWFollowedItemsViewController.m; sourceTree = "<group>"; };
+		BBC8D8FB13CCCEB100A224F5 /* DWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWItemsViewController.h; path = Classes/DWItemsViewController.h; sourceTree = "<group>"; };
+		BBC8D8FC13CCCEB100A224F5 /* DWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWItemsViewController.m; path = Classes/DWItemsViewController.m; sourceTree = "<group>"; };
 		BBCE3A63131CC38D008BDA82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resources/Default.png; sourceTree = "<group>"; };
 		BBCE3A64131CC38D008BDA82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/Default@2x.png"; sourceTree = "<group>"; };
 		BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = resources/iTunesArtwork; sourceTree = "<group>"; };
@@ -1923,8 +1923,8 @@
 			children = (
 				26D3CB211363C656007CE094 /* DWTableViewController.h */,
 				26D3CB221363C656007CE094 /* DWTableViewController.m */,
-				BBC8D8F513CCBE6200A224F5 /* DWItemsViewController.h */,
-				BBC8D8F613CCBE6200A224F5 /* DWItemsViewController.m */,
+				BBC8D8FB13CCCEB100A224F5 /* DWItemsViewController.h */,
+				BBC8D8FC13CCCEB100A224F5 /* DWItemsViewController.m */,
 				BBC8D8F813CCBFB300A224F5 /* DWFollowedItemsViewController.h */,
 				BBC8D8F913CCBFB300A224F5 /* DWFollowedItemsViewController.m */,
 			);
@@ -2573,8 +2573,8 @@
 				BBC8D8EE13CC1B9000A224F5 /* DWTableViewDataSource.m in Sources */,
 				BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */,
 				BBC8D8F413CCB8A200A224F5 /* DWItemsDataSource.m in Sources */,
-				BBC8D8F713CCBE6200A224F5 /* DWItemsViewController.m in Sources */,
 				BBC8D8FA13CCBFB400A224F5 /* DWFollowedItemsViewController.m in Sources */,
+				BBC8D8FD13CCCEB200A224F5 /* DWItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
