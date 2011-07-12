@@ -214,7 +214,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 #pragma mark Notifications
 //----------------------------------------------------------------------------------------------------
 - (void)userCreated:(NSNotification*)notification {
-	
+	/*
 	NSDictionary *info = [notification userInfo];
 	NSDictionary *body = [info objectForKey:kKeyBody];
 	
@@ -241,7 +241,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 		
 		[self unfreezeUI];
 	}
-	
+	*/
 }
 
 //----------------------------------------------------------------------------------------------------

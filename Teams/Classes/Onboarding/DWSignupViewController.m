@@ -30,7 +30,7 @@ static NSString* const kRightNavBarButtonText           = @"Next";
     if (self) {
         
         _delegate = theDelegate;
-        
+        /*
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userCreated:) 
 													 name:kNNewUserCreated
@@ -49,7 +49,7 @@ static NSString* const kRightNavBarButtonText           = @"Next";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(teamError:) 
 													 name:kNTeamError
-												   object:nil];	
+												   object:nil];	*/
     }
     return self;
 }

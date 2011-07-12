@@ -9,7 +9,6 @@
 #import "MBProgressHUD.h"
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
-#import "DWUserProfileView.h"
 
 @protocol DWLoginViewControllerDelegate;
 

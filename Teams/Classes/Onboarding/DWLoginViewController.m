@@ -157,8 +157,8 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 		
 		self.password = [[self.passwordTextField.text encrypt] stringByEncodingHTMLCharacters];
         
-		[[DWRequestsManager sharedDWRequestsManager] createSessionWithEmail:self.emailTextField.text 
-															   withPassword:self.password];
+		/*[[DWRequestsManager sharedDWRequestsManager] createSessionWithEmail:self.emailTextField.text 
+															   withPassword:self.password];*/
 	}
 }
 
@@ -195,12 +195,12 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (void)sessionCreated:(NSNotification*)notification {
-	
+	/*
 	NSDictionary *info = [notification userInfo];
 	NSDictionary *body = [info objectForKey:kKeyBody];
 	
 	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
-
+        /*
         DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
                                                                                        atRow:kMPUsersIndex];
 		user.encryptedPassword  = self.password;
@@ -219,7 +219,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 		[alert release];
 		
 		[self unfreezeUI];
-	}
+	}*/
 }
 
 //----------------------------------------------------------------------------------------------------
