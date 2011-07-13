@@ -9,6 +9,7 @@
 #import "DWConstants.h"
 
 
+static NSString* const kDWErrorDomain		= @"DWError";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -22,9 +23,10 @@
     NSDictionary *errorInfo     = [response objectForKey:kKeyError];
     
     if(errorInfo) {
-        [self processError:[NSError errorWithDomain:[errorInfo objectForKey:kKeyMessage]
+        [self processError:[NSError errorWithDomain:kDWErrorDomain
                                                code:-1
-                                           userInfo:nil]];
+                                           userInfo:[NSDictionary dictionaryWithObject:[errorInfo objectForKey:kKeyMessage] 
+                                                                                forKey:NSLocalizedDescriptionKey]]];
     }
     else {
         NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
