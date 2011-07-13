@@ -70,7 +70,7 @@
         _touchesCount = [touchesCount integerValue];
     
     if(timestamp)
-        _createdAtTimestamp = [timestamp floatValue];
+        _createdAtTimestamp = [timestamp integerValue];
     
     _isTouched = ![isTouched isKindOfClass:[NSNull class]];
     

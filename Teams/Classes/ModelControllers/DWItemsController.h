@@ -10,10 +10,36 @@
 @class DWItem;
 
 /**
+ * Enumeration for the types of roles under
+ * which multiple items can be fetched from the
+ * items service
+ */
+typedef enum {
+    kItemsControllerRoleFollowed  = 0,
+    kItemsControllerRoleUser      = 1,
+    kItemsControllerRoleTeam      = 2,
+    kItemsControllerRoleNone      = 3 
+} DWItemsControllerRole;
+
+/**
+ * Different pagination options for requests
+ */
+typedef enum {
+    kPaginationTypeNone     = 0,
+    kPaginationTypeOlder    = 1
+} DWPaginationType;
+
+
+/**
  * Interface to the Items service on the app server
  */
 @interface DWItemsController : NSObject {
-    NSInteger   _createResourceID;
+    NSInteger               _createResourceID;
+    
+    NSTimeInterval          _oldestTimestamp;
+    
+    DWItemsControllerRole   _role;
+    DWPaginationType        _paginationType;
     
     id<DWItemsControllerDelegate,NSObject> _delegate;
 }
@@ -28,6 +54,11 @@
  */
 @property (nonatomic,assign) id<DWItemsControllerDelegate,NSObject> delegate;
 
+
+/**
+ * Init with a specific role if using it for loading a list of items
+ */
+- (id)initWithRole:(DWItemsControllerRole)role;
 
 /**
  * Post a new item created at the given location
@@ -66,10 +97,14 @@
      withPreviewImage:(UIImage*)image;
 
 /**
- * Fetch and parse items in the feed of the current user
+ * Load the first page of items based on the specified role
  */
-- (void)getFollowedItems;
+- (void)getItems;
 
+/**
+ * Load the next page of items
+ */
+- (void)getMoreItems;
 
 @end
 
@@ -95,12 +130,17 @@
            fromResourceID:(NSInteger)resourceID;
 
 /**
- * Array of parsed DWItem objects
+ * Array of parsed DWItem objects prepared based on the role specified
  */
-- (void)followedItemsLoaded:(NSMutableArray*)items;
+- (void)itemsLoaded:(NSMutableArray*)items;
 
 /**
- * Error message encountered
+ * Next page of parsed DWItem objects based on the role specified
  */
-- (void)followedItemsError:(NSString*)message;
+- (void)moreItemsLoaded:(NSMutableArray*)items;
+
+/**
+ * Error message encountered while loading items
+ */
+- (void)itemsError:(NSString*)message;
 @end

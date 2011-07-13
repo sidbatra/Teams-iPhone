@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DWPagination.h"
+
 @protocol DWTableViewDataSourceDelegate;
 
 
@@ -45,6 +47,19 @@
  */
 - (id)objectAtIndex:(NSInteger)index 
          forSection:(NSInteger)section;
+
+@end
+
+
+/**
+ * Select private methods and properties
+ */
+@interface DWTableViewDataSource()
+
+/**
+ * Optionally destroy and release all objects
+ */
+- (void)clean;
 
 @end
 

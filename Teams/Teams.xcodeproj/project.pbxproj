@@ -229,6 +229,8 @@
 		BB379DF112ED51310071CE08 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379DF012ED51310071CE08 /* SystemConfiguration.framework */; };
 		BB379DF712ED513B0071CE08 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */; };
 		BB379E0412ED51B50071CE08 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */; };
+		BB3A43BF13CD3B2900316EE6 /* DWPagination.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3A43BE13CD3B2900316EE6 /* DWPagination.m */; };
+		BB3A43C313CD3B8700316EE6 /* DWPaginationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */; };
 		BB3BE1CE133AB65F0055FED0 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */; };
 		BB3BE1CF133AB65F0055FED0 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE183133AB65F0055FED0 /* ASIDataCompressor.m */; };
 		BB3BE1D0133AB65F0055FED0 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE185133AB65F0055FED0 /* ASIDataDecompressor.m */; };
@@ -748,6 +750,10 @@
 		BB379DF012ED51310071CE08 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		BB3A43BD13CD3B2900316EE6 /* DWPagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPagination.h; sourceTree = "<group>"; };
+		BB3A43BE13CD3B2900316EE6 /* DWPagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPagination.m; sourceTree = "<group>"; };
+		BB3A43C113CD3B8700316EE6 /* DWPaginationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationPresenter.h; sourceTree = "<group>"; };
+		BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationPresenter.m; sourceTree = "<group>"; };
 		BB3BE17F133AB65F0055FED0 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BB3BE181133AB65F0055FED0 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1869,6 +1875,8 @@
 				BB8499DF13C6B09E00D9789D /* DWTeam.m */,
 				BB8499E013C6B09E00D9789D /* DWUser.h */,
 				BB8499E113C6B09E00D9789D /* DWUser.m */,
+				BB3A43BD13CD3B2900316EE6 /* DWPagination.h */,
+				BB3A43BE13CD3B2900316EE6 /* DWPagination.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -1975,6 +1983,8 @@
 				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
 				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
+				BB3A43C113CD3B8700316EE6 /* DWPaginationPresenter.h */,
+				BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2682,6 +2692,8 @@
 				2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */,
 				2632E5AD13CCE39B005B1B1E /* ABGroup.m in Sources */,
 				2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */,
+				BB3A43BF13CD3B2900316EE6 /* DWPagination.m in Sources */,
+				BB3A43C313CD3B8700316EE6 /* DWPaginationPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

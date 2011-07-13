@@ -100,7 +100,7 @@ static NSString* const kDiskKeyName			= @"DWTeam_name";
        self.byline = byline;
        
     if(timestamp)
-        _createdAtTimestamp = [timestamp floatValue];
+        _createdAtTimestamp = [timestamp integerValue];
     
     if(followingsCount)
         _followersCount = [followingsCount integerValue];

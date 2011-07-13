@@ -49,6 +49,7 @@ typedef enum {
     kResoureTypeLargeAttachmentImage = 0
 } DWResourceType;
 
+
 /**
  * Reset types
  */
@@ -225,6 +226,7 @@ extern NSString* const kNItemDeleted;
 extern NSString* const kNNewFeedItemsLoaded;
 extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
+extern NSString* const kNPaginationCellReached;
 
 /**
  * Nav bar title view dimensions

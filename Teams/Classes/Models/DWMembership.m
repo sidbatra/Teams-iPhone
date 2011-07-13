@@ -47,7 +47,7 @@
     
     
     if(timestamp)
-        _createdAtTimestamp = [timestamp floatValue];
+        _createdAtTimestamp = [timestamp integerValue];
     
     if(team) {
         if(self.team)

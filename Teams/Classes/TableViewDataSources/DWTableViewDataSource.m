@@ -29,8 +29,7 @@ static NSInteger const kDefaultSections = 1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
+- (void)clean {
     SEL destroySelector = @selector(destroy);
     
     for(id object in self.objects) {
@@ -39,6 +38,12 @@ static NSInteger const kDefaultSections = 1;
     }
     
     self.objects = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    
+    [self clean];
     
     [super dealloc];
 }
