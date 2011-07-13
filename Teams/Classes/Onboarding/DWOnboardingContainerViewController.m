@@ -5,6 +5,7 @@
 
 #import "DWOnboardingContainerViewController.h"
 #import "DWGUIManager.h"
+#import "DWSession.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -62,16 +63,6 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark IBActions
-//----------------------------------------------------------------------------------------------------
-- (void)didTapBackButton:(id)sender event:(id)event {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWSplashScreenViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -105,8 +96,9 @@
 #pragma mark DWLoginViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userLoggedIn {
-    
+- (void)userLoggedIn:(DWUser*)user {
+    [[DWSession sharedDWSession] create:user];    
+    [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 
 
