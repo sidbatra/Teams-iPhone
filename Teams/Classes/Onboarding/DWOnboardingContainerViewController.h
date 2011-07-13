@@ -13,8 +13,7 @@
 #import "DWInvitePeopleViewController.h"
 
 /**
- * Primary view and container for handling all the 
- * events and logic for onboarding
+ * Container for handling all events and logic for onboarding
  */
 @interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateNewTeamViewControllerDelegate,DWCreateUserProfileViewControllerDelegate, DWAddPeopleViewControllerDelegate> {
     

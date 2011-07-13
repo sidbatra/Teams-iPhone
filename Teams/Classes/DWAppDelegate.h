@@ -19,6 +19,7 @@
 	
 	UINavigationController	*_teamsNavController;
 	UINavigationController	*_itemsNavController;
+	UINavigationController	*_onboardingNavController;    
 }
 
 
@@ -34,6 +35,7 @@
 @property (nonatomic,retain) IBOutlet UIWindow *window;
 @property (nonatomic,retain) IBOutlet UINavigationController *teamsNavController;
 @property (nonatomic,retain) IBOutlet UINavigationController *itemsNavController;
+@property (nonatomic,retain) IBOutlet UINavigationController *onboardingNavController;
 
 @end
 

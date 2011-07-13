@@ -33,11 +33,12 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWAppDelegate
 
-@synthesize window				= _window;
-@synthesize teamsNavController	= _placesNavController;
-@synthesize itemsNavController	= _itemsNavController;
+@synthesize window                      = _window;
+@synthesize teamsNavController          = _placesNavController;
+@synthesize itemsNavController          = _itemsNavController;
+@synthesize onboardingNavController     = _onboardingNavController;
 
-@synthesize tabBarController	= _tabBarController;
+@synthesize tabBarController            = _tabBarController;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -109,11 +110,12 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.window					= nil;
-	self.teamsNavController     = nil;
-	self.itemsNavController		= nil;
+	self.window                     = nil;
+	self.teamsNavController         = nil;
+	self.itemsNavController         = nil;
+    self.onboardingNavController    = nil; 
 	
-	self.tabBarController		= nil;
+	self.tabBarController           = nil;
 		
     [super dealloc];
 }
@@ -182,6 +184,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	
 	[self.window addSubview:self.tabBarController.view];
 	[self.window makeKeyAndVisible];
+    
+    if(![[DWSession sharedDWSession] isActive])
+        [self.tabBarController presentModalViewController:self.onboardingNavController
+                                                 animated:NO];
 }
 
 

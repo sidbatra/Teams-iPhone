@@ -106,12 +106,8 @@
 		2632E57413CCDFCA005B1B1E /* DWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56013CCDFCA005B1B1E /* DWLoginViewController.m */; };
 		2632E57513CCDFCA005B1B1E /* DWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E56113CCDFCA005B1B1E /* DWLoginViewController.xib */; };
 		2632E57613CCDFCA005B1B1E /* DWOnboardingContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */; };
-		2632E57713CCDFCA005B1B1E /* DWOnboardingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56513CCDFCA005B1B1E /* DWOnboardingViewController.m */; };
-		2632E57813CCDFCA005B1B1E /* DWOnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E56613CCDFCA005B1B1E /* DWOnboardingViewController.xib */; };
 		2632E57913CCDFCA005B1B1E /* DWSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */; };
 		2632E57A13CCDFCA005B1B1E /* DWSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */; };
-		2632E57B13CCDFCA005B1B1E /* DWSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56B13CCDFCA005B1B1E /* DWSplashScreenViewController.m */; };
-		2632E57C13CCDFCA005B1B1E /* DWSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E56C13CCDFCA005B1B1E /* DWSplashScreenViewController.xib */; };
 		2632E58113CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E57F13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m */; };
 		2632E58213CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E58013CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib */; };
 		2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E58513CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m */; };
@@ -144,6 +140,8 @@
 		266BBFCE1363D5EF00EBF1AD /* user_photo_gloss@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266BBFCC1363D5EF00EBF1AD /* user_photo_gloss@2x.png */; };
 		2672240D131B3F9600654D88 /* modalview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2672240B131B3F9600654D88 /* modalview_bg.png */; };
 		2672240E131B3F9600654D88 /* modalview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2672240C131B3F9600654D88 /* modalview_bg@2x.png */; };
+		2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */; };
+		2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */; };
 		26885A821367A46900C3511F /* profile_pic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 26885A801367A46900C3511F /* profile_pic_placeholder.png */; };
 		26885A831367A46900C3511F /* profile_pic_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26885A811367A46900C3511F /* profile_pic_placeholder@2x.png */; };
 		268B56831356682800BB43DC /* DWCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268B56811356682800BB43DC /* DWCameraOverlayViewController.m */; };
@@ -599,15 +597,9 @@
 		2632E56113CCDFCA005B1B1E /* DWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWLoginViewController.xib; path = Classes/Onboarding/DWLoginViewController.xib; sourceTree = "<group>"; };
 		2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWOnboardingContainerViewController.h; path = Classes/Onboarding/DWOnboardingContainerViewController.h; sourceTree = "<group>"; };
 		2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWOnboardingContainerViewController.m; path = Classes/Onboarding/DWOnboardingContainerViewController.m; sourceTree = "<group>"; };
-		2632E56413CCDFCA005B1B1E /* DWOnboardingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWOnboardingViewController.h; path = Classes/Onboarding/DWOnboardingViewController.h; sourceTree = "<group>"; };
-		2632E56513CCDFCA005B1B1E /* DWOnboardingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWOnboardingViewController.m; path = Classes/Onboarding/DWOnboardingViewController.m; sourceTree = "<group>"; };
-		2632E56613CCDFCA005B1B1E /* DWOnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWOnboardingViewController.xib; path = Classes/Onboarding/DWOnboardingViewController.xib; sourceTree = "<group>"; };
 		2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSignupViewController.h; path = Classes/Onboarding/DWSignupViewController.h; sourceTree = "<group>"; };
 		2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSignupViewController.m; path = Classes/Onboarding/DWSignupViewController.m; sourceTree = "<group>"; };
 		2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSignupViewController.xib; path = Classes/Onboarding/DWSignupViewController.xib; sourceTree = "<group>"; };
-		2632E56A13CCDFCA005B1B1E /* DWSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSplashScreenViewController.h; path = Classes/Onboarding/DWSplashScreenViewController.h; sourceTree = "<group>"; };
-		2632E56B13CCDFCA005B1B1E /* DWSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSplashScreenViewController.m; path = Classes/Onboarding/DWSplashScreenViewController.m; sourceTree = "<group>"; };
-		2632E56C13CCDFCA005B1B1E /* DWSplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSplashScreenViewController.xib; path = Classes/Onboarding/DWSplashScreenViewController.xib; sourceTree = "<group>"; };
 		2632E57E13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUpdateUserDetailsViewController.h; path = Classes/DWUpdateUserDetailsViewController.h; sourceTree = "<group>"; };
 		2632E57F13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUpdateUserDetailsViewController.m; path = Classes/DWUpdateUserDetailsViewController.m; sourceTree = "<group>"; };
 		2632E58013CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWUpdateUserDetailsViewController.xib; path = Classes/DWUpdateUserDetailsViewController.xib; sourceTree = "<group>"; };
@@ -649,6 +641,9 @@
 		266BBFCC1363D5EF00EBF1AD /* user_photo_gloss@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_photo_gloss@2x.png"; path = "resources/user_photo_gloss@2x.png"; sourceTree = "<group>"; };
 		2672240B131B3F9600654D88 /* modalview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = modalview_bg.png; path = resources/modalview_bg.png; sourceTree = "<group>"; };
 		2672240C131B3F9600654D88 /* modalview_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "modalview_bg@2x.png"; path = "resources/modalview_bg@2x.png"; sourceTree = "<group>"; };
+		2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSplashScreenViewController.h; path = Classes/Onboarding/DWSplashScreenViewController.h; sourceTree = "<group>"; };
+		2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSplashScreenViewController.m; path = Classes/Onboarding/DWSplashScreenViewController.m; sourceTree = "<group>"; };
+		2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSplashScreenViewController.xib; path = Classes/Onboarding/DWSplashScreenViewController.xib; sourceTree = "<group>"; };
 		26885A801367A46900C3511F /* profile_pic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = profile_pic_placeholder.png; path = resources/profile_pic_placeholder.png; sourceTree = "<group>"; };
 		26885A811367A46900C3511F /* profile_pic_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile_pic_placeholder@2x.png"; path = "resources/profile_pic_placeholder@2x.png"; sourceTree = "<group>"; };
 		268B56801356682800BB43DC /* DWCameraOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCameraOverlayViewController.h; path = Classes/DWCameraOverlayViewController.h; sourceTree = "<group>"; };
@@ -1189,10 +1184,10 @@
 		265CBE1B1366324E00CC2C83 /* Title Views */ = {
 			isa = PBXGroup;
 			children = (
-				2632E59413CCE177005B1B1E /* DWNavRightBarButtonView.h */,
-				2632E59513CCE177005B1B1E /* DWNavRightBarButtonView.m */,
 				2632E59613CCE177005B1B1E /* DWNavTitleView.h */,
 				2632E59713CCE177005B1B1E /* DWNavTitleView.m */,
+				2632E59413CCE177005B1B1E /* DWNavRightBarButtonView.h */,
+				2632E59513CCE177005B1B1E /* DWNavRightBarButtonView.m */,
 				BB33CB6E135FA93C00BDBE98 /* DWTitleView.h */,
 				BB33CB6F135FA93C00BDBE98 /* DWTitleView.m */,
 				2612D6241362556D005AE9E5 /* DWPlaceTitleView.h */,
@@ -1833,31 +1828,28 @@
 		BB8499C113C27AA400D9789D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */,
+				2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */,
+				2632E55A13CCDFCA005B1B1E /* DWIntroPaneViewController.h */,
+				2632E55B13CCDFCA005B1B1E /* DWIntroPaneViewController.m */,
+				2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */,
+				2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */,
+				2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */,
+				2632E55F13CCDFCA005B1B1E /* DWLoginViewController.h */,
+				2632E56013CCDFCA005B1B1E /* DWLoginViewController.m */,
+				2632E56113CCDFCA005B1B1E /* DWLoginViewController.xib */,
+				2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */,
+				2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */,
+				2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */,
 				2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */,
 				2632E55513CCDFCA005B1B1E /* DWCreateTeamViewController.h */,
 				2632E55613CCDFCA005B1B1E /* DWCreateTeamViewController.m */,
 				2632E55713CCDFCA005B1B1E /* DWCreateUserViewController.h */,
 				2632E55813CCDFCA005B1B1E /* DWCreateUserViewController.m */,
 				2632E55913CCDFCA005B1B1E /* DWCreateUserViewController.xib */,
-				2632E55A13CCDFCA005B1B1E /* DWIntroPaneViewController.h */,
-				2632E55B13CCDFCA005B1B1E /* DWIntroPaneViewController.m */,
 				2632E55C13CCDFCA005B1B1E /* DWInvitePeopleViewController.xib */,
 				2632E55D13CCDFCA005B1B1E /* DWInvitePeopleViewController.h */,
 				2632E55E13CCDFCA005B1B1E /* DWInvitePeopleViewController.m */,
-				2632E55F13CCDFCA005B1B1E /* DWLoginViewController.h */,
-				2632E56013CCDFCA005B1B1E /* DWLoginViewController.m */,
-				2632E56113CCDFCA005B1B1E /* DWLoginViewController.xib */,
-				2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */,
-				2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */,
-				2632E56413CCDFCA005B1B1E /* DWOnboardingViewController.h */,
-				2632E56513CCDFCA005B1B1E /* DWOnboardingViewController.m */,
-				2632E56613CCDFCA005B1B1E /* DWOnboardingViewController.xib */,
-				2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */,
-				2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */,
-				2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */,
-				2632E56A13CCDFCA005B1B1E /* DWSplashScreenViewController.h */,
-				2632E56B13CCDFCA005B1B1E /* DWSplashScreenViewController.m */,
-				2632E56C13CCDFCA005B1B1E /* DWSplashScreenViewController.xib */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -2551,11 +2543,10 @@
 				2632E57013CCDFCA005B1B1E /* DWCreateUserViewController.xib in Resources */,
 				2632E57213CCDFCA005B1B1E /* DWInvitePeopleViewController.xib in Resources */,
 				2632E57513CCDFCA005B1B1E /* DWLoginViewController.xib in Resources */,
-				2632E57813CCDFCA005B1B1E /* DWOnboardingViewController.xib in Resources */,
 				2632E57A13CCDFCA005B1B1E /* DWSignupViewController.xib in Resources */,
-				2632E57C13CCDFCA005B1B1E /* DWSplashScreenViewController.xib in Resources */,
 				2632E58213CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib in Resources */,
 				2632E58813CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib in Resources */,
+				2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2681,9 +2672,7 @@
 				2632E57313CCDFCA005B1B1E /* DWInvitePeopleViewController.m in Sources */,
 				2632E57413CCDFCA005B1B1E /* DWLoginViewController.m in Sources */,
 				2632E57613CCDFCA005B1B1E /* DWOnboardingContainerViewController.m in Sources */,
-				2632E57713CCDFCA005B1B1E /* DWOnboardingViewController.m in Sources */,
 				2632E57913CCDFCA005B1B1E /* DWSignupViewController.m in Sources */,
-				2632E57B13CCDFCA005B1B1E /* DWSplashScreenViewController.m in Sources */,
 				2632E58113CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m in Sources */,
 				2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */,
 				2632E59313CCE0D7005B1B1E /* DWUsersController.m in Sources */,
@@ -2692,6 +2681,7 @@
 				2632E5AB13CCE39B005B1B1E /* ABContact.m in Sources */,
 				2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */,
 				2632E5AD13CCE39B005B1B1E /* ABGroup.m in Sources */,
+				2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
