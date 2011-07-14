@@ -1,5 +1,5 @@
 //
-//  DWPlaceFeedCell.h
+//  DWTeamFeedCell.h
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
@@ -43,9 +43,9 @@
 	
 	BOOL							_highlighted;
     BOOL                            _isTouching;
-	BOOL							_placeButtonPressed;
+	BOOL							_teamButtonPressed;
 	BOOL							_userButtonPressed;
-    BOOL                            _placeButtonDisabled;
+    BOOL                            _teamButtonDisabled;
     BOOL                            _userButtonDisabled;
 	
 	NSInteger						_itemID;
@@ -53,7 +53,7 @@
 	NSInteger						_attachmentType;
 	
 	NSString						*_itemData;
-	NSString						*_itemPlaceName;
+	NSString						*_itemTeamName;
 	NSString						*_itemUserName;
 	NSString						*_itemCreatedAt;
 	NSString						*_itemDetails;
@@ -63,13 +63,13 @@
 
 	CGRect							_userNameRect;
 	CGRect							_atRect;
-	CGRect							_placeNameRect;
+	CGRect							_teamNameRect;
 	CGRect							_dataRect;
     CGRect                          _touchesCountRect;
     CGRect                          _createdAtRect;
 
 	
-	UIButton						*placeButton;
+	UIButton						*teamButton;
 	UIButton						*userButton;
 	UIButton						*shareButton;
     
@@ -82,15 +82,15 @@
 @property (nonatomic,assign) NSInteger itemID;
 @property (nonatomic,assign) NSInteger attachmentType;
 
-@property (nonatomic,readonly) BOOL placeButtonPressed;
+@property (nonatomic,readonly) BOOL teamButtonPressed;
 @property (nonatomic,readonly) BOOL userButtonPressed;
 @property (nonatomic,readonly) BOOL isTouching;
-@property (nonatomic,readonly) BOOL placeButtonDisabled;
+@property (nonatomic,readonly) BOOL teamButtonDisabled;
 @property (nonatomic,readonly) BOOL userButtonDisabled;
 
 
 @property (nonatomic,copy) NSString* itemData;
-@property (nonatomic,copy) NSString* itemPlaceName;
+@property (nonatomic,copy) NSString* itemTeamName;
 @property (nonatomic,copy) NSString* itemUserName;
 @property (nonatomic,copy) NSString* itemCreatedAt;
 @property (nonatomic,copy) NSString* itemDetails;
@@ -100,7 +100,7 @@
 
 @property (nonatomic,readonly) CGRect userNameRect;
 @property (nonatomic,readonly) CGRect atRect;
-@property (nonatomic,readonly) CGRect placeNameRect;
+@property (nonatomic,readonly) CGRect teamNameRect;
 @property (nonatomic,readonly) CGRect dataRect;
 @property (nonatomic,readonly) CGRect touchesCountRect;
 @property (nonatomic,readonly) CGRect createdAtRect;
@@ -132,9 +132,9 @@
 - (void)setUserButtonAsDisabled;
 
 /**
- * Display the UI and events for the place button
+ * Display the UI and events for the team button
  */
-- (void)setPlaceButtonAsDisabled;
+- (void)setTeamButtonAsDisabled;
 
 /**
  * Sets the cell to be rerendered
@@ -161,7 +161,7 @@
 @protocol DWItemFeedCellDelegate
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID;
 - (void)cellTouched:(NSInteger)itemID;
-- (void)placeSelectedForItemID:(NSInteger)itemID;
+- (void)teamSelectedForItemID:(NSInteger)itemID;
 - (void)userSelectedForItemID:(NSInteger)itemID;
 - (void)shareSelectedForItemID:(NSInteger)itemID;
 - (NSString*)getVideoAttachmentURLForItemID:(NSInteger)itemID;

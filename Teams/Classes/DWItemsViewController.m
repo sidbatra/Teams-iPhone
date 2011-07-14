@@ -96,9 +96,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)placeSelectedForItemID:(NSInteger)itemID {
+- (void)teamSelectedForItemID:(NSInteger)itemID {
     
-	NSLog(@"place selected for item ID - %d",itemID);
+	NSLog(@"team selected for item ID - %d",itemID);
 	
 	//[_delegate placeSelected:item.place];
 }
