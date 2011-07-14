@@ -7,7 +7,7 @@
 #import "DWNavRightBarButtonView.h"
 #import "DWNavTitleView.h"
 #import "DWUsersController.h"
-
+#import "DWTeamsController.h"
 
 @protocol DWSignupViewControllerDelegate;
 
@@ -15,21 +15,30 @@
 /*
  * Signup view controller to begin the step by step onboarding process
  */
-@interface DWSignupViewController : UIViewController <DWUserControllerDelegate> {
+@interface DWSignupViewController : UIViewController <DWUsersControllerDelegate,DWTeamsControllerDelegate> {
     UITextField                 *_emailTextField;
+    
+	NSString                    *_password;    
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
     
     DWUsersController           *_usersController;
+    DWTeamsController           *_teamsController;
     
     id <DWSignupViewControllerDelegate>     _delegate;
 }
 
+
 /**
- * Controller for handling user requests
+ * IBOutlets
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic, retain) IBOutlet UITextField *emailTextField;
+
+/**
+ * Encrypted user password
+ */
+@property (nonatomic,copy) NSString *password;
 
 /**
  * Custom subviews for navigation bar
@@ -38,9 +47,12 @@
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
- * IBOutlets
+ * Model Controllers
  */
-@property (nonatomic, retain) IBOutlet UITextField *emailTextField;
+@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic,retain) DWTeamsController *teamsController;
+
+
 
 /*
  * Custom init with delegate

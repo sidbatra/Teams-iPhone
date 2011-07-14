@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 @class DWUser;
-@protocol DWUserControllerDelegate;
+@protocol DWUsersControllerDelegate;
 
 
 /**
@@ -14,13 +14,13 @@
  */
 @interface DWUsersController : NSObject {
     
-    id<DWUserControllerDelegate,NSObject>     _delegate;
+    id<DWUsersControllerDelegate,NSObject>     _delegate;
 }
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWUserControllerDelegate,NSObject> delegate;
+@property (nonatomic,assign) id<DWUsersControllerDelegate,NSObject> delegate;
 
 /**
  * Create a new user
@@ -35,7 +35,7 @@
  * Protocol for the UserController delegate. Fires 
  * messages about the success and failure of requests
  */
-@protocol DWUserControllerDelegate
+@protocol DWUsersControllerDelegate
 
 @optional
 

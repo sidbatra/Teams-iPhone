@@ -170,6 +170,7 @@
 		26A200BF137106B100B698CE /* login_hr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A200BD137106B100B698CE /* login_hr@2x.png */; };
 		26A200C21371082B00B698CE /* login_vr.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A200C01371082B00B698CE /* login_vr.png */; };
 		26A200C31371082B00B698CE /* login_vr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A200C11371082B00B698CE /* login_vr@2x.png */; };
+		26A25B1B13CF62C300AF87B4 /* DWTeamsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A25B1A13CF62C300AF87B4 /* DWTeamsController.m */; };
 		26B973CC12F0BED9000F8F1F /* DWItemFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B973CB12F0BED9000F8F1F /* DWItemFeedCell.m */; };
 		26B977C412F16511000F8F1F /* libicucore.A.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B977C312F16511000F8F1F /* libicucore.A.dylib */; };
 		26B9789A12F180C8000F8F1F /* DWPlaceFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B9789912F180C8000F8F1F /* DWPlaceFeedCell.m */; };
@@ -678,6 +679,8 @@
 		26A200BD137106B100B698CE /* login_hr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login_hr@2x.png"; path = "resources/login_hr@2x.png"; sourceTree = "<group>"; };
 		26A200C01371082B00B698CE /* login_vr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_vr.png; path = resources/login_vr.png; sourceTree = "<group>"; };
 		26A200C11371082B00B698CE /* login_vr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "login_vr@2x.png"; path = "resources/login_vr@2x.png"; sourceTree = "<group>"; };
+		26A25B1913CF62C300AF87B4 /* DWTeamsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsController.h; sourceTree = "<group>"; };
+		26A25B1A13CF62C300AF87B4 /* DWTeamsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsController.m; sourceTree = "<group>"; };
 		26B973CA12F0BED9000F8F1F /* DWItemFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWItemFeedCell.h; path = Classes/DWItemFeedCell.h; sourceTree = "<group>"; };
 		26B973CB12F0BED9000F8F1F /* DWItemFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWItemFeedCell.m; path = Classes/DWItemFeedCell.m; sourceTree = "<group>"; };
 		26B977C312F16511000F8F1F /* libicucore.A.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.A.dylib; path = usr/lib/libicucore.A.dylib; sourceTree = SDKROOT; };
@@ -2102,6 +2105,8 @@
 				BBF8989B13CA3F2800D5C5FB /* DWItemsController.m */,
 				BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */,
 				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
+				26A25B1913CF62C300AF87B4 /* DWTeamsController.h */,
+				26A25B1A13CF62C300AF87B4 /* DWTeamsController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -2712,6 +2717,7 @@
 				BBEE2E5113CE720A00AEAC83 /* DWSessionController.m in Sources */,
 				BBEE2E5C13CE8AFE00AEAC83 /* DWTouchesController.m in Sources */,
 				BBEE2E5F13CE8B8500AEAC83 /* DWTouch.m in Sources */,
+				26A25B1B13CF62C300AF87B4 /* DWTeamsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

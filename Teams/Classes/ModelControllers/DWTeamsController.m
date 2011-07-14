@@ -1,21 +1,22 @@
 //
-//  DWUsersController.m
+//  DWTeamsController.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWUsersController.h"
+#import "DWTeamsController.h"
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
-#import "DWUser.h"
+#import "DWTeam.h"
 
-static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[password]=%@";
+
+static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWUsersController
+@implementation DWTeamsController
 
 @synthesize delegate        = _delegate;
 
@@ -26,37 +27,35 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
     if(self) {
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userCreated:) 
-													 name:kNNewUserCreated
+												 selector:@selector(teamLoaded:) 
+													 name:kNTeamLoaded
 												   object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userCreationError:) 
-													 name:kNNewUserError
+												 selector:@selector(teamLoadError:) 
+													 name:kNTeamLoadError
 												   object:nil];
     }
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUserWithEmail:(NSString*)email andPassword:(NSString*)password {
-    
-    NSString *localURL = [NSString stringWithFormat:kNewUserURI,
-                          [email stringByEncodingHTMLCharacters],
-                          [password stringByEncodingHTMLCharacters]];
+- (void)getTeamFromDomain:(NSString*)domain {
+    NSLog(@"domain is %@",domain);
+    NSString *localURL = [NSString stringWithFormat:kTeamURI,
+                          [@"ZGVud2VuLmNvbQ=q" stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
-                                                 successNotification:kNNewUserCreated
-                                                   errorNotification:kNNewUserError
-                                                       requestMethod:kPost 
-                                                        authenticate:NO];
+                                                 successNotification:kNTeamLoaded
+                                                   errorNotification:kNTeamLoadError
+                                                       requestMethod:kGet];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Users controller released");
+    NSLog(@"Teams controller released");
     
     [super dealloc];
 }
@@ -68,41 +67,27 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
 #pragma mark Notifications
 
 //----------------------------------------------------------------------------------------------------
-- (void)userCreated:(NSNotification*)notification {
-    
-    SEL sel = @selector(userCreated:);
+- (void)teamLoaded:(NSNotification*)notification {
+    NSLog(@"team loaded");
+    SEL sel = @selector(teamLoaded:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
+    NSLog(@"%@",data);
+    //DWUser *user        = [DWUser create:data];
     
-    NSArray *errorInfo = [data objectForKey:kKeyErrors];
-    
-    if ([errorInfo count] ) {
-        NSArray *errors     = [errorInfo objectAtIndex:0];
-        NSString *errorMsg  = @"";
-        
-        for(id error in errors) {
-            errorMsg = [errorMsg stringByAppendingFormat:@"%@ ",error];
-        }
-        
-        [self.delegate userCreationError:[errorMsg stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                           withString:[[errorMsg substringToIndex:1] 
-                                                                                       uppercaseString]]];
-        return;
-    }
-    
-    DWUser *user    = [DWUser create:data];    
-    [self.delegate performSelector:sel 
-                        withObject:user];
+    //[self.delegate performSelector:sel 
+    //                    withObject:user];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userCreationError:(NSNotification*)notification {
-    
-    SEL sel = @selector(userCreationError:);
+- (void)teamLoadError:(NSNotification*)notification {
+    NSLog(@"error in loading team");
+	
+    SEL sel = @selector(teamLoadError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -111,5 +96,6 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
     [self.delegate performSelector:sel 
                         withObject:[error localizedDescription]];
 }
+
 
 @end

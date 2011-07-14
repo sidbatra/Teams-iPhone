@@ -6,8 +6,9 @@
 #import "DWSignupViewController.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
-#import "DWRequestsManager.h"
 #import "NSString+Helpers.h"
+#import "DWSession.h"
+#import "DWUser.h"
 
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kRightNavBarButtonText           = @"Next";
@@ -24,10 +25,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 @synthesize emailTextField              = _emailTextField;
 
+@synthesize password                    = _password;
+
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
 @synthesize usersController             = _usersController;
+@synthesize teamsController             = _teamsController;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -45,10 +49,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)dealloc {    
     self.emailTextField             = nil;
     
+    self.password                   = nil;
+    
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
     
     self.usersController            = nil;
+    self.teamsController            = nil;
     
     [super dealloc];
 }
@@ -110,12 +117,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         //TODO Freeze UI and show a spinner in workEmail
         //TODO Random generator for the password
         
-        NSString *password              = [@"password" encrypt];
+        self.password                   = [@"password" encrypt];
         self.usersController            = [[DWUsersController alloc] init];        
         self.usersController.delegate   = self;
         
         [self.usersController createUserWithEmail:self.emailTextField.text 
-                                      andPassword:password];	
+                                      andPassword:self.password];	
     }
 }
 
@@ -130,17 +137,36 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     [self createNewUser];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+	if(textField == self.emailTextField) {
+		[self createNewUser];
+	}
+    
+	return YES;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUserController Delegate
+#pragma mark DWUsersController Delegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)userCreated:(DWUser*)user {    
+    
+    user.encryptedPassword  = self.password;    
+    //[[DWSession sharedDWSession] create:user];        
+    
+    
     NSString *domain = [self.emailTextField.text substringFromIndex:[self.emailTextField.text 
                                                                      rangeOfString:@"@"].location + 1];
     
+    self.teamsController            = [[DWTeamsController alloc] init];
+    self.teamsController.delegate   = self;
+    
+    [self.teamsController getTeamFromDomain:domain];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -154,14 +180,19 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 	[alert release];
 }
 
-//TODO MOVE TO DELEGATES FROM NOTIFICATION LISTENERS
+
 //----------------------------------------------------------------------------------------------------
-- (void)teamLoaded:(NSNotification*)notification {
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamsController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamLoaded:(DWTeam*)team {
     //[_delegate teamInformationRetrieved];
 }
 
-- (void)teamError:(NSNotification*)notification {
-    //unfreeze the UI
+- (void)teamLoadError:(NSString*)error {
+    //TODO unfreeze the UI
 }
 
 
