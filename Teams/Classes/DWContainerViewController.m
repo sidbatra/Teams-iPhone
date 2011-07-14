@@ -4,8 +4,8 @@
 //
 #import "DWContainerViewController.h"
 #import "DWTabBarController.h"
-#import "DWWebViewController.h"
 #import "DWSharingManager.h"
+#import "DWItem.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 #import "NSString+Helpers.h"
@@ -139,11 +139,13 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 #pragma mark ItemsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamSelected:(DWUser*)user {
+- (void)teamSelected:(DWTeam*)team {
+    NSLog(@"team selected - %d",team.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
+    NSLog(@"user selected - %d",user.databaseID);
 	//DWUserViewController *userView = [[DWUserViewController alloc] initWithUser:user
 	//																  andDelegate:self];
 	//[self.navigationController pushViewController:userView 
@@ -153,12 +155,13 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareSelectedForItem:(DWItem*)item {
+    NSLog(@"item sharing selecred - %d",item.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (UIViewController*)requestCustomTabBarController {
-    return self.customTabBarController;
-}
+//- (UIViewController*)requestCustomTabBarController {
+//    return self.customTabBarController;
+//}
 
 
 //----------------------------------------------------------------------------------------------------

@@ -4,8 +4,10 @@
 //
 
 #import "DWItemsViewController.h"
-#import "DWItem.h"
 #import "DWTouchesController.h"
+#import "DWItem.h"
+#import "DWTeam.h"
+#import "DWUser.h"
 
 
 
@@ -15,6 +17,7 @@
 @implementation DWItemsViewController
 
 @synthesize touchesController   = _touchesController;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -38,6 +41,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.touchesController  = nil;
+    self.delegate           = nil;
         
     [super dealloc];
 }
@@ -101,34 +105,55 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamSelectedForItemID:(NSInteger)itemID {
-    
-	NSLog(@"team selected for item ID - %d",itemID);
-	
-	//[_delegate placeSelected:item.place];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)userSelectedForItemID:(NSInteger)itemID {
-	
-    NSLog(@"user selected for item ID - %d",itemID);
-    
-	//[_delegate userSelected:item.user];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)shareSelectedForItemID:(NSInteger)itemID {
-    
-    NSLog(@"share selected for item ID - %d",itemID);
-    
-	//[_delegate shareSelected:item];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (NSString*)getVideoAttachmentURLForItemID:(NSInteger)itemID {
 	DWItem *item = [DWItem fetch:itemID];
     return item.attachment.actualURL;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)teamSelectedForItemID:(NSInteger)itemID {
+    
+    SEL sel = @selector(teamSelected:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+        
+    DWItem *item  = [DWItem fetch:itemID];
+    
+    [self.delegate performSelector:sel
+                        withObject:item.team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSelectedForItemID:(NSInteger)itemID {
+	
+    SEL sel = @selector(userSelected:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWItem *item  = [DWItem fetch:itemID];
+    
+    [self.delegate performSelector:sel
+                        withObject:item.user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareSelectedForItemID:(NSInteger)itemID {
+    
+    SEL sel = @selector(shareSelectedForItem:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWItem *item  = [DWItem fetch:itemID];
+    
+    [self.delegate performSelector:sel
+                        withObject:item];
+}
 
 @end
+

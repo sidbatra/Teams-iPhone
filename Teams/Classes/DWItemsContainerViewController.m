@@ -4,7 +4,6 @@
 //
 
 #import "DWItemsContainerViewController.h"
-#import "DWFollowedItemsViewController.h"
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
 #import "DWNotificationsHelper.h"
@@ -119,8 +118,10 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     self.navigationItem.leftBarButtonItem   = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 
-    if(!self.followedViewController)
-        self.followedViewController = [[[DWFollowedItemsViewController alloc] init] autorelease];
+    if(!self.followedViewController) {
+        self.followedViewController             = [[[DWFollowedItemsViewController alloc] init] autorelease];
+        self.followedViewController.delegate    = self;
+    }
         
     [self.view addSubview:self.followedViewController.view];
     
