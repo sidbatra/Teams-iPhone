@@ -7,7 +7,7 @@
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
-#import "DWSession.h"
+#import "DWTeam.h"
 #import "DWUser.h"
 
 static NSString* const kSignupText                      = @"Sign Up";
@@ -118,7 +118,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         //TODO Random generator for the password
         
         self.password                   = [@"password" encrypt];
-        self.usersController            = [[DWUsersController alloc] init];        
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
         self.usersController.delegate   = self;
         
         [self.usersController createUserWithEmail:self.emailTextField.text 
@@ -140,10 +140,9 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-	if(textField == self.emailTextField) {
+	if(textField == self.emailTextField)
 		[self createNewUser];
-	}
-    
+
 	return YES;
 }
 
@@ -156,14 +155,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)userCreated:(DWUser*)user {    
     
-    user.encryptedPassword  = self.password;    
-    //[[DWSession sharedDWSession] create:user];        
+    user.encryptedPassword  = self.password;                
+    [_delegate userCreated:user];
     
+    NSString *domain                = [user getDomainFromEmail];
     
-    NSString *domain = [self.emailTextField.text substringFromIndex:[self.emailTextField.text 
-                                                                     rangeOfString:@"@"].location + 1];
-    
-    self.teamsController            = [[DWTeamsController alloc] init];
+    self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
     self.teamsController.delegate   = self;
     
     [self.teamsController getTeamFromDomain:domain];
@@ -188,11 +185,18 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam*)team {
-    //[_delegate teamInformationRetrieved];
+    [_delegate teamLoaded:team];
 }
 
+//----------------------------------------------------------------------------------------------------
 - (void)teamLoadError:(NSString*)error {
-    //TODO unfreeze the UI
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 

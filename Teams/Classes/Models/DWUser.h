@@ -139,5 +139,10 @@
  */
 - (void)startLargeImageDownload;
 
+/**
+ * Extract domain from email
+ */
+- (NSString*)getDomainFromEmail;
+
 @end
 

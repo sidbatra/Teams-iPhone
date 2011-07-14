@@ -9,6 +9,8 @@
 #import "DWUsersController.h"
 #import "DWTeamsController.h"
 
+@class DWTeam;
+@class DWUser;
 @protocol DWSignupViewControllerDelegate;
 
 
@@ -53,7 +55,6 @@
 @property (nonatomic,retain) DWTeamsController *teamsController;
 
 
-
 /*
  * Custom init with delegate
  */
@@ -69,9 +70,14 @@
 @protocol DWSignupViewControllerDelegate
 
 /*
- * Fired when the information about a team is retrieved 
- * from the work email.
+ * Fired when a user is created
  */
-- (void)teamInfoRetrieved;
+- (void)userCreated:(DWUser*)created;
+
+/*
+ * Fired when information about a team is fetched
+ * from the server
+ */
+- (void)teamLoaded:(DWTeam*)team;
 
 @end

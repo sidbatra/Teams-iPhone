@@ -4,10 +4,7 @@
 //
 
 #import "DWLoginViewController.h"
-#import "DWMemoryPool.h"
 #import "DWUser.h"
-#import "DWRequestsManager.h"
-#import "DWSession.h"
 #import "DWGUIManager.h"
 #import "NSString+Helpers.h"
 #import "DWConstants.h"
@@ -139,7 +136,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 		[self freezeUI];
 		
 		self.password                   = [self.passwordTextField.text encrypt];        
-        self.sessionController          = [[DWSessionController alloc] init];
+        self.sessionController          = [[[DWSessionController alloc] init] autorelease];
         self.sessionController.delegate = self;
         
         [self.sessionController createSessionWithEmail:self.emailTextField.text

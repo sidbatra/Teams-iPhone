@@ -41,9 +41,10 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 
 //----------------------------------------------------------------------------------------------------
 - (void)getTeamFromDomain:(NSString*)domain {
-    NSLog(@"domain is %@",domain);
-    NSString *localURL = [NSString stringWithFormat:kTeamURI,
-                          [@"ZGVud2VuLmNvbQ=q" stringByEncodingHTMLCharacters]];
+    
+    NSData *domainData  = [domain dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *localURL  = [NSString stringWithFormat:kTeamURI,
+                           [[domainData base64Encoding] stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNTeamLoaded
@@ -68,7 +69,7 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(NSNotification*)notification {
-    NSLog(@"team loaded");
+
     SEL sel = @selector(teamLoaded:);
     
     if(![self.delegate respondsToSelector:sel])
@@ -76,16 +77,18 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
-    NSLog(@"%@",data);
-    //DWUser *user        = [DWUser create:data];
+
+    DWTeam *team = nil;
     
-    //[self.delegate performSelector:sel 
-    //                    withObject:user];
+    if (![data isKindOfClass:[NSNull class]]) 
+        team = [DWTeam create:data];
+    
+    [self.delegate performSelector:sel 
+                        withObject:team];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoadError:(NSNotification*)notification {
-    NSLog(@"error in loading team");
 	
     SEL sel = @selector(teamLoadError:);
     
