@@ -108,10 +108,10 @@
 - (void)startPrimaryUpload {
 	[super startPrimaryUpload];
     
-    [self.itemsController postWithData:self.data
-                            atLocation:self.location
-                          withFilename:self.filename
-                       andPreviewImage:self.previewImage];
+    _primaryUploadID = [self.itemsController postWithData:self.data
+                                               atLocation:self.location
+                                             withFilename:self.filename
+                                          andPreviewImage:self.previewImage];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -144,7 +144,7 @@
 - (void)itemCreated:(DWItem*)item 
      fromResourceID:(NSInteger)resourceID {
     
-    if(resourceID != self.itemsController.createResourceID)
+    if(resourceID != _primaryUploadID)
         return;
     
     NSLog(@"new item with id - %d",item.databaseID);
@@ -155,7 +155,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)itemCreationError:(NSString *)error 
            fromResourceID:(NSInteger)resourceID {
-    if(resourceID != self.itemsController.createResourceID)
+    
+    if(resourceID != _primaryUploadID)
         return;
     
     NSLog(@"ERROR - %@",error);

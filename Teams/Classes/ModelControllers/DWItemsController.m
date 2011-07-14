@@ -31,7 +31,6 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 //----------------------------------------------------------------------------------------------------
 @implementation DWItemsController
 
-@synthesize createResourceID    = _createResourceID;
 @synthesize delegate            = _delegate;
 
 
@@ -69,7 +68,7 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Items controller released %d",_createResourceID);
+    NSLog(@"Items controller released");
 
     [super dealloc];
 }
@@ -81,10 +80,10 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 #pragma mark Create
 
 //----------------------------------------------------------------------------------------------------
-- (void)postWithData:(NSString *)data
-          atLocation:(CLLocation *)location
-        withFilename:(NSString*)filename
-     andPreviewImage:(UIImage*)image {
+- (NSInteger)postWithData:(NSString *)data
+               atLocation:(CLLocation *)location
+             withFilename:(NSString*)filename
+          andPreviewImage:(UIImage*)image {
     
     NSString *localURL = [NSString stringWithFormat:kCreateItemURI,
                           [data stringByEncodingHTMLCharacters],
@@ -92,16 +91,18 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
                           location.coordinate.longitude,
                           filename];
     
-    _createResourceID = [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
-                                                                     successNotification:kNNewItemCreated
-                                                                       errorNotification:kNNewItemError
-                                                                           requestMethod:kPost];
+    NSInteger resourceID = [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                                        successNotification:kNNewItemCreated
+                                                                          errorNotification:kNNewItemError
+                                                                              requestMethod:kPost];
     
     if(image) {
         [[DWMemoryPool sharedDWMemoryPool] setObject:image
-                                              withID:[NSString stringWithFormat:@"%d",_createResourceID]
+                                              withID:[NSString stringWithFormat:@"%d",resourceID]
                                             forClass:[UIImage className]];
     }
+    
+    return resourceID;
 }
 
 //----------------------------------------------------------------------------------------------------
