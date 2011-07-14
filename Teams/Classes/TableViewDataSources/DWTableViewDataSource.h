@@ -48,6 +48,11 @@
 - (id)objectAtIndex:(NSInteger)index 
          forSection:(NSInteger)section;
 
+/**
+ * Fired when a user generated or automated refresh is initiated
+ */
+- (void)refreshInitiated;
+
 @end
 
 

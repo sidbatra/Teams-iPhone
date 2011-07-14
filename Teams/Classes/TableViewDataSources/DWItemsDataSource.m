@@ -78,6 +78,19 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)refreshInitiated {
+    _oldestTimestamp = 0;
+    
+    id lastObject   = [self.objects lastObject];
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        [self.objects removeLastObject];
+    }
+    
+    [self loadItems];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)paginate {
     [self loadItems];
 }
