@@ -205,6 +205,8 @@
 		BB0CFCFC1302261400F38552 /* DWPaginationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0CFCFB1302261400F38552 /* DWPaginationCell.m */; };
 		BB1DD32F136D189C0033D69B /* add_profile_pic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1DD32D136D189C0033D69B /* add_profile_pic_placeholder.png */; };
 		BB1DD330136D189C0033D69B /* add_profile_pic_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1DD32E136D189C0033D69B /* add_profile_pic_placeholder@2x.png */; };
+		BB272B2213CF91CA00FDACA1 /* DWUserItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2113CF91C900FDACA1 /* DWUserItemsDataSource.m */; };
+		BB272B2513CF95AB00FDACA1 /* DWUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2413CF95AA00FDACA1 /* DWUserItemsViewController.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -726,6 +728,10 @@
 		BB0CFE721302703A00F38552 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = resources/Entitlements.plist; sourceTree = "<group>"; };
 		BB1DD32D136D189C0033D69B /* add_profile_pic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_profile_pic_placeholder.png; path = resources/add_profile_pic_placeholder.png; sourceTree = "<group>"; };
 		BB1DD32E136D189C0033D69B /* add_profile_pic_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add_profile_pic_placeholder@2x.png"; path = "resources/add_profile_pic_placeholder@2x.png"; sourceTree = "<group>"; };
+		BB272B2013CF91C900FDACA1 /* DWUserItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserItemsDataSource.h; sourceTree = "<group>"; };
+		BB272B2113CF91C900FDACA1 /* DWUserItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserItemsDataSource.m; sourceTree = "<group>"; };
+		BB272B2313CF95AA00FDACA1 /* DWUserItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUserItemsViewController.h; path = Classes/DWUserItemsViewController.h; sourceTree = "<group>"; };
+		BB272B2413CF95AA00FDACA1 /* DWUserItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUserItemsViewController.m; path = Classes/DWUserItemsViewController.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -2005,12 +2011,14 @@
 		BBC8D8EB13CC1B9000A224F5 /* TableViewDataSources */ = {
 			isa = PBXGroup;
 			children = (
-				BBEE2E4B13CE71E500AEAC83 /* DWFollowedItemsDataSource.h */,
-				BBEE2E4C13CE71E500AEAC83 /* DWFollowedItemsDataSource.m */,
 				BBC8D8EC13CC1B9000A224F5 /* DWTableViewDataSource.h */,
 				BBC8D8ED13CC1B9000A224F5 /* DWTableViewDataSource.m */,
 				BBC8D8F213CCB8A200A224F5 /* DWItemsDataSource.h */,
 				BBC8D8F313CCB8A200A224F5 /* DWItemsDataSource.m */,
+				BBEE2E4B13CE71E500AEAC83 /* DWFollowedItemsDataSource.h */,
+				BBEE2E4C13CE71E500AEAC83 /* DWFollowedItemsDataSource.m */,
+				BB272B2013CF91C900FDACA1 /* DWUserItemsDataSource.h */,
+				BB272B2113CF91C900FDACA1 /* DWUserItemsDataSource.m */,
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
@@ -2040,6 +2048,8 @@
 				BBC8D8FC13CCCEB100A224F5 /* DWItemsViewController.m */,
 				BBC8D8F813CCBFB300A224F5 /* DWFollowedItemsViewController.h */,
 				BBC8D8F913CCBFB300A224F5 /* DWFollowedItemsViewController.m */,
+				BB272B2313CF95AA00FDACA1 /* DWUserItemsViewController.h */,
+				BB272B2413CF95AA00FDACA1 /* DWUserItemsViewController.m */,
 			);
 			name = "Table ";
 			sourceTree = "<group>";
@@ -2718,6 +2728,8 @@
 				BBEE2E5C13CE8AFE00AEAC83 /* DWTouchesController.m in Sources */,
 				BBEE2E5F13CE8B8500AEAC83 /* DWTouch.m in Sources */,
 				26A25B1B13CF62C300AF87B4 /* DWTeamsController.m in Sources */,
+				BB272B2213CF91CA00FDACA1 /* DWUserItemsDataSource.m in Sources */,
+				BB272B2513CF95AB00FDACA1 /* DWUserItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

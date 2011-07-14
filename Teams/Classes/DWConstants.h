@@ -175,6 +175,8 @@ extern NSString* const kNUserUpdateError;
 extern NSString* const kNUserLogsIn;
 extern NSString* const kNFollowedItemsLoaded;
 extern NSString* const kNFollowedItemsError;
+extern NSString* const kNUserItemsLoaded;
+extern NSString* const kNUserItemsError;
 extern NSString* const kNNewTouchCreated;
 extern NSString* const kNNewTouchError;
 extern NSString* const kNTouchesLoaded;

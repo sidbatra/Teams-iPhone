@@ -45,7 +45,7 @@ static NSString* const kCreateTouchURI       = @"/touches/items/%d.json?";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Items controller released");
+    NSLog(@"Touches controller released");
     
     [super dealloc];
 }
