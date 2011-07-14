@@ -17,7 +17,7 @@
 /*
  * Signup view controller to begin the step by step onboarding process
  */
-@interface DWSignupViewController : UIViewController <DWUsersControllerDelegate,DWTeamsControllerDelegate> {
+@interface DWSignupViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate,DWTeamsControllerDelegate> {
     UITextField                 *_emailTextField;
     
 	NSString                    *_password;    

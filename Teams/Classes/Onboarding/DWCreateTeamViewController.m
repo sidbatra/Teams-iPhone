@@ -70,9 +70,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
                                                        kNavTitleViewHeight) 
                                 andDelegate:self] autorelease];
     
-    //[self.navTitleView displayTitle:kCreateTeamText];    
-    [self.navTitleView displayActiveButtonWithTitle:kCreateTeamText 
-                                        andSubTitle:@"Eg. The Twitter Team"];
+    [self.navTitleView displayTitle:kCreateTeamText];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
@@ -88,18 +86,6 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     [super viewDidUnload];
 }
 
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWNavTitleViewDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)didTapTitleView {
-    //[self.navTitleView displayPassiveButtonWithTitle:kCreateTeamText 
-    //                                    andSubTitle:@"Twitter Team Created"];
-    
-    [self.navTitleView displaySpinner];
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
