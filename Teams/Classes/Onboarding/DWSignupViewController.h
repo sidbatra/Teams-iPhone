@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "DWNavRightBarButtonView.h"
 #import "DWNavTitleView.h"
+#import "DWUsersController.h"
 
 
 @protocol DWSignupViewControllerDelegate;
@@ -14,14 +15,21 @@
 /*
  * Signup view controller to begin the step by step onboarding process
  */
-@interface DWSignupViewController : UIViewController {
+@interface DWSignupViewController : UIViewController <DWUserControllerDelegate> {
     UITextField                 *_emailTextField;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
     
+    DWUsersController           *_usersController;
+    
     id <DWSignupViewControllerDelegate>     _delegate;
 }
+
+/**
+ * Controller for handling user requests
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
 
 /**
  * Custom subviews for navigation bar

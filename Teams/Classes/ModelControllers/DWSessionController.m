@@ -8,8 +8,6 @@
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
 #import "DWRequestsManager.h"
-#import "DWMemoryPool.h"
-#import "DWSession.h"
 #import "DWUser.h"
 
 
@@ -21,12 +19,13 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
 //----------------------------------------------------------------------------------------------------
 @implementation DWSessionController
 
+@synthesize delegate        = _delegate;
+
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
     self = [super init];
     
     if(self) {
-        _delegate   = theDelegate;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(sessionCreated:) 
@@ -34,7 +33,7 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
 												   object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(sessionError:) 
+												 selector:@selector(sessionCreationError:) 
 													 name:kNNewSessionError
 												   object:nil];
     }
@@ -42,7 +41,7 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createSessionWithEmail:(NSString*)email withPassword:(NSString*)password {
+- (void)createSessionWithEmail:(NSString*)email andPassword:(NSString*)password {
     
     NSString *localURL = [NSString stringWithFormat:kNewSessionURI,
                             [email stringByEncodingHTMLCharacters],
@@ -55,6 +54,15 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
                                                         authenticate:NO];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    NSLog(@"Session controller released");
+    
+    [super dealloc];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -64,24 +72,30 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
 //----------------------------------------------------------------------------------------------------
 - (void)sessionCreated:(NSNotification*)notification {
 
-	if(![_delegate respondsToSelector:@selector(sessionCreatedForUser:)])
-		return;
+    SEL sel = @selector(sessionCreatedForUser:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
 
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
     DWUser *user        = [DWUser create:data];
     
-    [_delegate sessionCreatedForUser:user];
+    [self.delegate performSelector:sel 
+                        withObject:user];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)sessionError:(NSNotification*)notification {
+- (void)sessionCreationError:(NSNotification*)notification {
 	
-    if(![_delegate respondsToSelector:@selector(sessionCreationError:)])
-		return;
+    SEL sel = @selector(sessionCreationError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
         
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
-    [_delegate sessionCreationError:[error localizedDescription]];
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
 }
 
 

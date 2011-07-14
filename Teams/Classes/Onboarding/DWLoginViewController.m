@@ -138,11 +138,12 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 	else {
 		[self freezeUI];
 		
-		self.password = [self.passwordTextField.text encrypt];        
-        self.sessionController = [[DWSessionController alloc] initWithDelegate:self];
+		self.password                   = [self.passwordTextField.text encrypt];        
+        self.sessionController          = [[DWSessionController alloc] init];
+        self.sessionController.delegate = self;
         
-        [self.sessionController createSessionWithEmail:self.emailTextField.text 
-                                          withPassword:self.password];
+        [self.sessionController createSessionWithEmail:self.emailTextField.text
+                                           andPassword:self.password];
 	}
 }
 

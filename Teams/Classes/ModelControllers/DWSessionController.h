@@ -10,7 +10,7 @@
 
 
 /**
- * Handles requests for the session lifecycle
+ * Interface to Session service on the app server
  */
 @interface DWSessionController : NSObject {
     
@@ -19,15 +19,15 @@
 
 
 /**
- * Custom init with delegate
+ * Delegate to send updates to
  */
-- (id)initWithDelegate:(id)theDelegate;
+@property (nonatomic,assign) id<DWSessionControllerDelegate,NSObject> delegate;
 
 /**
  * Create a new session
  */
 - (void)createSessionWithEmail:(NSString*)email
-				  withPassword:(NSString*)password;
+                   andPassword:(NSString*)password;
 
 @end
 

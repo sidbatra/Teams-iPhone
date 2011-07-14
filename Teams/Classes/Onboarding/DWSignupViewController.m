@@ -11,6 +11,10 @@
 
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kRightNavBarButtonText           = @"Next";
+static NSString* const kMsgIncompleteTitle              = @"Incomplete";
+static NSString* const kMsgIncomplete                   = @"Enter your work email";
+static NSString* const kMsgErrorTitle                   = @"Error";
+static NSString* const kMsgCancelTitle                  = @"OK";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -23,34 +27,17 @@ static NSString* const kRightNavBarButtonText           = @"Next";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
+@synthesize usersController             = _usersController;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithDelegate:(id)theDelegate {
     self = [super init];
+    
     if (self) {
-        
         _delegate = theDelegate;
-        /*
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userCreated:) 
-													 name:kNNewUserCreated
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userError:) 
-													 name:kNNewUserError
-												   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(teamLoaded:) 
-													 name:kNTeamLoaded
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(teamError:) 
-													 name:kNTeamError
-												   object:nil];	*/
     }
+    
     return self;
 }
 
@@ -60,6 +47,8 @@ static NSString* const kRightNavBarButtonText           = @"Next";
     
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
+    
+    self.usersController            = nil;
     
     [super dealloc];
 }
@@ -105,10 +94,9 @@ static NSString* const kRightNavBarButtonText           = @"Next";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
-//----------------------------------------------------------------------------------------------------
+
 //----------------------------------------------------------------------------------------------------
 - (void)createNewUser {	
-    /*
 	if (self.emailTextField.text.length == 0) {        
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
 														message:kMsgIncomplete
@@ -122,10 +110,13 @@ static NSString* const kRightNavBarButtonText           = @"Next";
         //TODO Freeze UI and show a spinner in workEmail
         //TODO Random generator for the password
         
-        NSString *password = [[@"password" encrypt] stringByEncodingHTMLCharacters];        
-        [[DWRequestsManager sharedDWRequestsManager] createUserWithEmail:self.emailTextField.text
-                                                             andPassword:password];
-	}*/
+        NSString *password              = [@"password" encrypt];
+        self.usersController            = [[DWUsersController alloc] init];        
+        self.usersController.delegate   = self;
+        
+        [self.usersController createUserWithEmail:self.emailTextField.text 
+                                      andPassword:password];	
+    }
 }
 
 
@@ -133,29 +124,37 @@ static NSString* const kRightNavBarButtonText           = @"Next";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark IBActions
+
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {    
-    [_delegate teamInfoRetrieved];
+    [self createNewUser];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Notifications
+#pragma mark DWUserController Delegate
+
 //----------------------------------------------------------------------------------------------------
-- (void)userCreated:(NSNotification*)notification {
-    /*NSString *domain = [self.emailTextField.text substringFromIndex:[self.emailTextField.text 
-                                                                         rangeOfString:@"@"].location + 1];*/
+- (void)userCreated:(DWUser*)user {    
+    NSString *domain = [self.emailTextField.text substringFromIndex:[self.emailTextField.text 
+                                                                     rangeOfString:@"@"].location + 1];
     
-    //Logic for joining/creating a team after the user has been created
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userError:(NSNotification*)notification {
-    //unfreeze the UI
+- (void)userCreationError:(NSString*)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
+//TODO MOVE TO DELEGATES FROM NOTIFICATION LISTENERS
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(NSNotification*)notification {
     //[_delegate teamInformationRetrieved];

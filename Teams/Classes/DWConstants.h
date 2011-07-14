@@ -78,6 +78,7 @@ extern NSString* const kKeyStatus;
 extern NSString* const kKeyMessage;
 extern NSString* const kKeyBody;
 extern NSString* const kKeySuccess;
+extern NSString* const kKeyErrors;
 extern NSString* const kKeyError;
 extern NSString* const kKeyErrorMessage;
 extern NSString* const kKeyErrorMessages;

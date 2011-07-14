@@ -17,7 +17,7 @@
 /**
  * Login view controller for giving access to existing users
  */
-@interface DWLoginViewController : UIViewController<UITextFieldDelegate> {
+@interface DWLoginViewController : UIViewController<UITextFieldDelegate,DWSessionControllerDelegate> {
 	UIView                      *_loginFieldsContainerView;
 	UITextField                 *_emailTextField;
 	UITextField                 *_passwordTextField;
