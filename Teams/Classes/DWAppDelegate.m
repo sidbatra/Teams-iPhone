@@ -176,7 +176,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 		
 	
 	//((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
-	//((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
+	((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
 }
 
 //----------------------------------------------------------------------------------------------------

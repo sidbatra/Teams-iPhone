@@ -13,6 +13,30 @@
 static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 
+/**
+ * Declarations for private methods
+ */
+@interface DWContainerViewController()
+
+/**
+ * Parse the launch URL and perform the appropiate action
+ */
+//- (void)processLaunchURL:(NSString*)url;
+
+/**
+ * Test for the presence launch url in the session
+ */
+//- (void)testLaunchURL;
+
+/**
+ * Indicates if the container child is on the currently
+ * selected tab
+ */
+- (BOOL)isSelectedTab;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -24,10 +48,12 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 	
+    /*
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(denwenURLOpened:) 
 												 name:kNDenwenURLOpened
 											   object:nil];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -55,13 +81,13 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isSelectedTab {
-    return [(DWTabBarController*)self.customTabBarController getSelectedController] == self.navigationController;
+    return [self.customTabBarController getSelectedController] == self.navigationController;
 }
 
-
 //----------------------------------------------------------------------------------------------------
+/*
 - (void)testLaunchURL {
-    /*
+
     NSURL *launchURL = [DWSession sharedDWSession].launchURL;
     
     if(launchURL) {
@@ -71,23 +97,25 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
          [self processLaunchURL:absoluteString];
          [absoluteString release];
     }
-     */
 }
+*/
 
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)processLaunchURL:(NSString*)url {
 	
     if([url hasPrefix:kDenwenURLPrefix]) {
-        /*
+        
         DWPlace *place          = [[[DWPlace alloc] init] autorelease];
         place.usesMemoryPool    = NO;
         place.databaseID        = [[NSDate date] timeIntervalSince1970];
         place.hashedID          = [url substringFromIndex:[kDenwenURLPrefix length]];
         
-        [self displaySelectedPlace:place];*/
+        [self displaySelectedPlace:place];
     }
 }
-
+*/
+        
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -95,25 +123,24 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 #pragma mark Notifications
 
 //----------------------------------------------------------------------------------------------------
+/*
 - (void)denwenURLOpened:(NSNotification*)notification {
 	if([self isSelectedTab]) {
 		NSString *url = (NSString*)[notification object];
 		[self processLaunchURL:url];
 	}
 }
+ */
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark ItemFeedViewControllerDelegate
+#pragma mark ItemsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-/*
-- (void)placeSelected:(DWPlace*)place {
-	[self displaySelectedPlace:place];
+- (void)teamSelected:(DWUser*)user {
 }
- */
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
@@ -125,7 +152,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)shareSelected:(DWItem *)item {
+- (void)shareSelectedForItem:(DWItem*)item {
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -164,9 +191,9 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
         [viewController performSelector:@selector(willShowOnNav)];
     
     if ([viewController respondsToSelector:@selector(requiresFullScreenMode)])
-        [(DWTabBarController*)self.customTabBarController enableFullScreen];
+        [self.customTabBarController enableFullScreen];
     else
-        [(DWTabBarController*)self.customTabBarController disableFullScreen];
+        [self.customTabBarController disableFullScreen];
 }
 
 @end

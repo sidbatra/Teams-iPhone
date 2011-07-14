@@ -314,7 +314,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     [self.navigationController.navigationBar addSubview:self.smallProfilePicView];
     
-    [super testLaunchURL];
+   // [super testLaunchURL];
 }
 
 
@@ -322,6 +322,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UINavigationControllerDelegate
+
 //----------------------------------------------------------------------------------------------------
 - (void)navigationController:(UINavigationController *)navigationController 
 	  willShowViewController:(UIViewController *)viewController

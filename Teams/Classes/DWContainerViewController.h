@@ -5,6 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class DWTabBarController;
 
 /**
  * Base class for containers which form the root views for
@@ -12,36 +13,12 @@
  */
 @interface DWContainerViewController : UIViewController <UINavigationControllerDelegate> {
     
-	UIViewController    *_customTabBarController;
+	DWTabBarController    *_customTabBarController;
 }
 
 /**
  * Non-retained reference to the custom tab bar controller
  */
-@property (nonatomic,assign) UIViewController *customTabBarController;
+@property (nonatomic,assign) DWTabBarController *customTabBarController;
 
-
-/**
- * Indicates if the container child is on the currently
- * selected tab
- */
-- (BOOL)isSelectedTab;
-
-@end
-
-
-/**
- * Declarations for private methods
- */
-@interface DWContainerViewController(Private)
-
-/**
- * Parse the launch URL and perform the appropiate action
- */
-- (void)processLaunchURL:(NSString*)url;
-
-/**
- * Test for the presence launch url in the session
- */
-- (void)testLaunchURL;
 @end
