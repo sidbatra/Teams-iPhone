@@ -43,9 +43,6 @@ NSString* const kS3ItemsFolder	= @"items";
 
 
 //----------------------------------------------------------------------------------------------------
-NSInteger const kDefaultStyle           = 0;
-
-//----------------------------------------------------------------------------------------------------
 NSInteger const kResetNone              = -1;
 NSInteger const kResetHard              = 0;
 NSInteger const kResetSoft              = 1;

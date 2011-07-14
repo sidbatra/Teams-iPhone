@@ -150,7 +150,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)presentationStyleForClassName:(NSString*)className {
     NSString *style = [self.modelPresentationStyle objectForKey:className];
-    return style ? [style integerValue] : kDefaultStyle;
+    return style ? [style integerValue] : kPresentationStyleDefault;
 }
 
 //----------------------------------------------------------------------------------------------------

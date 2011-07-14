@@ -4,7 +4,9 @@
 //
 
 #import "DWUserItemsViewController.h"
+#import "DWItem.h"
 #import "DWUser.h"
+#import "NSObject+Helpers.h"
 
 
 
@@ -24,6 +26,9 @@
     if(self) {
         self.userItemsDataSource        = [[[DWUserItemsDataSource alloc] init] autorelease];
         self.userItemsDataSource.userID = user.databaseID;
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleUserItems]
+                                                                forKey:[[DWItem class] className]];
     }
     
     return self;

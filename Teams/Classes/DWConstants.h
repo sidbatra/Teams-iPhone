@@ -37,9 +37,19 @@ typedef enum {
 
 
 /**
- * Presentation styles for different models
+ * Default presentation style for all model presenters
  */
-extern NSInteger const kDefaultStyle;
+enum {
+    kPresentationStyleDefault   = 0,
+};
+
+/**
+ * Presentation styles for the item presenter
+ */
+typedef enum {
+    kItemPresenterStyleUserItems = 1,
+    kItemPresenterStyleTeamItems = 2
+} DWItemPresenterStyle;
 
 
 /**

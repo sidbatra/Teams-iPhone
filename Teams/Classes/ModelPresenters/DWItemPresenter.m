@@ -63,6 +63,16 @@ static CGFloat const kCellHeight  = 320;
     [cell reset];
     [cell redisplay];
     
+    
+    switch(style) {
+        case kItemPresenterStyleUserItems:
+            [cell setUserButtonAsDisabled];
+            break;
+        case kItemPresenterStyleTeamItems:
+            [cell setTeamButtonAsDisabled];
+            break;
+    }
+    
     return cell;
 }
 
