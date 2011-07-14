@@ -268,6 +268,11 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSString*)getDomainFromEmail {
+   return [self.email substringFromIndex:[self.email rangeOfString:@"@"].location + 1];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)startLargeImageDownload {
     
 	if(_hasPhoto && !_isLargeDownloading && !self.largeImage) {

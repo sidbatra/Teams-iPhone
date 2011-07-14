@@ -13,7 +13,7 @@
 /**
  * Provides an interface for creating a new team.
  */
-@interface DWCreateTeamViewController : UIViewController<DWNavTitleViewDelegate> {
+@interface DWCreateTeamViewController : UIViewController<UITextFieldDelegate> {
     UITextField                 *_teamNameTextField;
 	UITextField                 *_teamBylineTextField;
     

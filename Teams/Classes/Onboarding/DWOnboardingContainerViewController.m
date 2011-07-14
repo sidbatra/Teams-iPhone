@@ -81,24 +81,34 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWSignupViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)teamInfoRetrieved {
-    DWCreateTeamViewController *createNewTeamController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:createNewTeamController animated:YES];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWLoginViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
     [[DWSession sharedDWSession] create:user];    
     [self.parentViewController dismissModalViewControllerAnimated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWSignupViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCreated:(DWUser*)user {
+    [[DWSession sharedDWSession] create:user];     
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamLoaded:(DWTeam*)team {
+    if (team) {
+        NSLog(@"team already exist");
+    }
+    else {
+        DWCreateTeamViewController *createNewTeamController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
+        [self.navigationController pushViewController:createNewTeamController animated:YES];        
+    }
 }
 
 

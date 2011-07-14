@@ -64,6 +64,8 @@
  */
 @protocol DWNavTitleViewDelegate 
 
+@optional
+
 -(void)didTapTitleView;
 
 @end
