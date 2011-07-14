@@ -12,16 +12,9 @@
 /**
  * Interface to the Items service on the app server
  */
-@interface DWItemsController : NSObject {
-    NSInteger               _createResourceID;
-    
+@interface DWItemsController : NSObject {    
     id<DWItemsControllerDelegate,NSObject> _delegate;
 }
-
-/**
- * resourceID used for the last create item request
- */
-@property (nonatomic,readonly) NSInteger createResourceID;
 
 /**
  * Delegate to send updates to
@@ -35,10 +28,10 @@
  * previewImage is the video thumbnail or image preview cached
  * for instant display
  */
-- (void)postWithData:(NSString *)data
-          atLocation:(CLLocation *)location
-        withFilename:(NSString*)filename
-     andPreviewImage:(UIImage*)image;
+- (NSInteger)postWithData:(NSString *)data
+               atLocation:(CLLocation *)location
+             withFilename:(NSString*)filename
+          andPreviewImage:(UIImage*)image;
 
 /**
  * Add creation of item without an attachment

@@ -17,6 +17,8 @@
     
     NSMutableDictionary         *_modelPresentationStyle;
     
+    BOOL                        _isPullToRefreshActive;
+    
 	EGORefreshTableHeaderView   *_refreshHeaderView;
 }
 

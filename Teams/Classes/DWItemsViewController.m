@@ -5,6 +5,7 @@
 
 #import "DWItemsViewController.h"
 #import "DWItem.h"
+#import "DWTouchesController.h"
 
 
 
@@ -13,11 +14,15 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWItemsViewController
 
+@synthesize touchesController   = _touchesController;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {        
+        
+        self.touchesController  = [[[DWTouchesController alloc] init] autorelease];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(largeAttachmentLoaded:) 
@@ -31,6 +36,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    self.touchesController  = nil;
         
     [super dealloc];
 }
@@ -76,29 +83,27 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID {
-	//DWItem *item = [DWItem fetch:itemID];
 	
-	return YES;//!item.isTouched && ![item.user isCurrentUser];
+    DWItem *item = [DWItem fetch:itemID];
+    
+    return !item.isTouched;
+	//return YES;
+    //!item.isTouched && ![item.user isCurrentUser];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)cellTouched:(NSInteger)itemID {
     
-    NSLog(@"cel touched with item id - %d",itemID);
-    /*
-	DWItem *item = (DWItem*)[[DWMemoryPool sharedDWMemoryPool]  getObject:itemID
-																	atRow:kMPItemsIndex];
-	
-	item.isTouched = YES;
-	
-	[[DWRequestsManager sharedDWRequestsManager] createTouch:itemID];
-     */
+    DWItem *item    = [DWItem fetch:itemID];
+    item.isTouched  = YES;
+    
+    [self.touchesController postWithItemID:item.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)placeSelectedForItemID:(NSInteger)itemID {
+- (void)teamSelectedForItemID:(NSInteger)itemID {
     
-	NSLog(@"place selected for item ID - %d",itemID);
+	NSLog(@"team selected for item ID - %d",itemID);
 	
 	//[_delegate placeSelected:item.place];
 }

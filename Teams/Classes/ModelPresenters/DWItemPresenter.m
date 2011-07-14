@@ -36,7 +36,7 @@ static CGFloat const kCellHeight  = 320;
     
     cell.itemID				= item.databaseID;
     cell.itemData			= item.data;
-    cell.itemPlaceName		= item.team.name;
+    cell.itemTeamName		= item.team.name;
     cell.itemUserName		= item.user.firstName;
     
     

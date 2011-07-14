@@ -247,6 +247,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)reloadTableView {
+    _isPullToRefreshActive = NO;
+    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     [self.tableView reloadData];
 }
 
@@ -258,11 +260,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view {
+    _isPullToRefreshActive = YES;
+    [[self getDataSource] refreshInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view {
-	return NO;//return _isReloading; 
+	return _isPullToRefreshActive; 
 }
 
 //----------------------------------------------------------------------------------------------------

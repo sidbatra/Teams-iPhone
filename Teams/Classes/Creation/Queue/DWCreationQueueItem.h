@@ -10,6 +10,7 @@
  * creation queue
  */
 @interface DWCreationQueueItem : NSObject {
+    NSInteger   _primaryUploadID;
 	NSInteger	_mediaUploadID;
 	
 	float		_progress;

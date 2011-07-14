@@ -14,7 +14,7 @@
 #define kImgShare                           @"share.png"
 #define kImgShare230                        @"share_text.png"
 #define kImgHalo                            @"halo.png"
-#define kImgSeparator                       @"hr_place_list.png"
+#define kImgSeparator                       @"hr_team_list.png"
 #define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
 #define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
@@ -26,8 +26,8 @@
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kFontItemPlaceName                  [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
-#define kFontItemPlaceNameDisabled          [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define kFontItemTeamName                  [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
+#define kFontItemTeamNameDisabled          [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemData                       [UIFont fontWithName:@"HelveticaNeue" size:23]
 #define kFontItemCreatedAt                  [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTouchesCount               [UIFont fontWithName:@"HelveticaNeue" size:15]
@@ -37,8 +37,8 @@
 #define kUnderlineHeight                    0.75
 #define kAtXOffset                          5
 #define kAtWidth                            13
-#define kPlaceNameXOffset                   5
-#define kMaxPlaceNameWidth                  305
+#define kTeamNameXOffset                   5
+#define kMaxTeamNameWidth                  305
 #define kItemDataX                          30
 #define kItemDataXSubTitleOffset            10
 #define kItemDataY                          40
@@ -80,7 +80,7 @@
 //----------------------------------------------------------------------------------------------------
 - (id<CAAction>)actionForKey:(NSString *)key {
 	
-	if([key isEqualToString:@"contents"] && (itemCell.userButtonPressed || itemCell.placeButtonPressed))
+	if([key isEqualToString:@"contents"] && (itemCell.userButtonPressed || itemCell.teamButtonPressed))
         return nil;
     
 	return [super actionForKey:key];
@@ -123,21 +123,21 @@
 		
 		
 		//----------------------------------	
-        CGColorRef placeColor = itemCell.placeButtonPressed ? 
+        CGColorRef teamColor = itemCell.teamButtonPressed ? 
                                 (isTextOnly ? kColorLinkPressedNoAttachment : kColorLinkPressedWithAttachment) : 
                                 textColor;
         
-		CGContextSetFillColorWithColor(context,placeColor);
+		CGContextSetFillColorWithColor(context,teamColor);
 		
 		
-		[itemCell.itemPlaceName drawInRect:itemCell.placeNameRect
-								  withFont:itemCell.placeButtonDisabled ? kFontItemPlaceNameDisabled : kFontItemPlaceName
+		[itemCell.itemTeamName drawInRect:itemCell.teamNameRect
+								  withFont:itemCell.teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
 							 lineBreakMode:UILineBreakModeTailTruncation];
 		
-        if(![itemCell placeButtonDisabled])
-            CGContextFillRect(context,CGRectMake(itemCell.placeNameRect.origin.x,
-                                                 itemCell.placeNameRect.origin.y+kUnderlineYOffset,
-                                                 itemCell.placeNameRect.size.width,
+        if(![itemCell teamButtonDisabled])
+            CGContextFillRect(context,CGRectMake(itemCell.teamNameRect.origin.x,
+                                                 itemCell.teamNameRect.origin.y+kUnderlineYOffset,
+                                                 itemCell.teamNameRect.size.width,
                                                  kUnderlineHeight));
 		
 
@@ -189,13 +189,13 @@
 @implementation DWItemFeedCell
 
 @synthesize itemID					= _itemID;
-@synthesize placeButtonPressed		= _placeButtonPressed;
+@synthesize teamButtonPressed		= _teamButtonPressed;
 @synthesize userButtonPressed		= _userButtonPressed;
 @synthesize isTouching              = _isTouching;
-@synthesize placeButtonDisabled     = _placeButtonDisabled;
+@synthesize teamButtonDisabled     = _teamButtonDisabled;
 @synthesize userButtonDisabled      = _userButtonDisabled;
 @synthesize itemData				= _itemData;
-@synthesize itemPlaceName			= _itemPlaceName;
+@synthesize itemTeamName			= _itemTeamName;
 @synthesize itemUserName			= _itemUserName;
 @synthesize itemCreatedAt			= _itemCreatedAt;
 @synthesize itemDetails				= _itemDetails;
@@ -203,7 +203,7 @@
 @synthesize highlightedAt			= _highlightedAt;
 @synthesize userNameRect			= _userNameRect;
 @synthesize atRect					= _atRect;
-@synthesize placeNameRect			= _placeNameRect;
+@synthesize teamNameRect			= _teamNameRect;
 @synthesize dataRect				= _dataRect;
 @synthesize touchesCountRect        = _touchesCountRect;
 @synthesize createdAtRect           = _createdAtRect;
@@ -306,26 +306,26 @@
 		
 		
 		
-		placeButton						= [[[UIButton alloc] init] autorelease];
-        //placeButton.backgroundColor		= [UIColor greenColor];
+		teamButton						= [[[UIButton alloc] init] autorelease];
+        //teamButton.backgroundColor		= [UIColor greenColor];
 		
-		[placeButton addTarget:self
-						action:@selector(didTouchDownOnPlaceButton:) 
+		[teamButton addTarget:self
+						action:@selector(didTouchDownOnTeamButton:) 
 				forControlEvents:UIControlEventTouchDown];
 		
-		[placeButton addTarget:self
-						action:@selector(didTouchUpOnPlaceButton:) 
+		[teamButton addTarget:self
+						action:@selector(didTouchUpOnTeamButton:) 
 			  forControlEvents:UIControlEventTouchUpInside];
 		
-		[placeButton addTarget:self
-						action:@selector(didDragOutsidePlaceButton:) 
+		[teamButton addTarget:self
+						action:@selector(didDragOutsideTeamButton:) 
 			  forControlEvents:UIControlEventTouchDragOutside];
 		
-		[placeButton addTarget:self
-						action:@selector(didDragInsidePlaceButton:) 
+		[teamButton addTarget:self
+						action:@selector(didDragInsideTeamButton:) 
 			  forControlEvents:UIControlEventTouchDragInside];
 		
-		[self.contentView addSubview:placeButton];
+		[self.contentView addSubview:teamButton];
 		
 		
 		
@@ -380,7 +380,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
 	self.itemData               = nil;
-	self.itemPlaceName          = nil;
+	self.itemTeamName          = nil;
 	self.itemUserName           = nil;
 	self.itemCreatedAt          = nil;
 	self.itemDetails            = nil;
@@ -407,15 +407,15 @@
     
 	
 	
-	CGSize placeNameSize		= [self.itemPlaceName sizeWithFont:_placeButtonDisabled ? kFontItemPlaceNameDisabled : kFontItemPlaceName
-										   constrainedToSize:CGSizeMake(kMaxPlaceNameWidth-(_atRect.origin.x + _atRect.size.width),
+	CGSize teamNameSize		= [self.itemTeamName sizeWithFont:_teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
+										   constrainedToSize:CGSizeMake(kMaxTeamNameWidth-(_atRect.origin.x + _atRect.size.width),
 																		kDefaultTextHeight)
 											   lineBreakMode:UILineBreakModeTailTruncation];
 	
-	_placeNameRect				= CGRectMake(_atRect.origin.x + _atRect.size.width + kPlaceNameXOffset,
+	_teamNameRect				= CGRectMake(_atRect.origin.x + _atRect.size.width + kTeamNameXOffset,
 											 kItemUserNameY,
-											 placeNameSize.width,
-											 placeNameSize.height);
+											 teamNameSize.width,
+											 teamNameSize.height);
 
 }
 
@@ -463,9 +463,9 @@
 - (void)reset {
 	_highlighted				= NO;
     _isTouching                 = NO;
-	_placeButtonPressed			= NO;
+	_teamButtonPressed			= NO;
 	_userButtonPressed			= NO;
-    _placeButtonDisabled        = NO;
+    _teamButtonDisabled        = NO;
     _userButtonDisabled         = NO;
     
 		
@@ -501,11 +501,11 @@
 											 _userNameRect.size.height+27);
     userButton.enabled          = YES;
 	
-	placeButton.frame			= CGRectMake(_placeNameRect.origin.x-4,
-											 _placeNameRect.origin.y-11,
-											 _placeNameRect.size.width+8,
-											 _placeNameRect.size.height+27);
-    placeButton.enabled         = YES;
+	teamButton.frame			= CGRectMake(_teamNameRect.origin.x-4,
+											 _teamNameRect.origin.y-11,
+											 _teamNameRect.size.width+8,
+											 _teamNameRect.size.height+27);
+    teamButton.enabled         = YES;
 	
 	
 	[CATransaction begin];
@@ -579,9 +579,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setPlaceButtonAsDisabled {
-    _placeButtonDisabled    = YES;
-    placeButton.enabled     = NO;
+- (void)setTeamButtonAsDisabled {
+    _teamButtonDisabled    = YES;
+    teamButton.enabled     = NO;
     
     [self resetItemNavigation];
     
@@ -651,7 +651,7 @@
         _isTouching = YES;
     
     userButton.enabled      = NO;
-    placeButton.enabled     = NO;
+    teamButton.enabled     = NO;
     shareButton.enabled     = NO;
 	
 	[CATransaction begin];
@@ -706,19 +706,19 @@
 	[CATransaction commit];
     
     userButton.enabled      = YES;
-    placeButton.enabled     = YES;
+    teamButton.enabled     = YES;
     shareButton.enabled     = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)highlightPlaceButton {
-	_placeButtonPressed = YES;
+- (void)highlightTeamButton {
+	_teamButtonPressed = YES;
 	[self redisplay];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)fadePlaceButton {
-	_placeButtonPressed = NO;
+- (void)fadeTeamButton {
+	_teamButtonPressed = NO;
 	[self redisplay];
 }
 
@@ -741,28 +741,28 @@
 #pragma mark UIControlEventTouches
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTouchDownOnPlaceButton:(UIButton*)button {
-	[self highlightPlaceButton];
+- (void)didTouchDownOnTeamButton:(UIButton*)button {
+	[self highlightTeamButton];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTouchUpOnPlaceButton:(UIButton*)button {
+- (void)didTouchUpOnTeamButton:(UIButton*)button {
 	
-	[self performSelector:@selector(fadePlaceButton) 
+	[self performSelector:@selector(fadeTeamButton) 
 			   withObject:nil
 			   afterDelay:kSelectionDelay];
 	
-	[_delegate placeSelectedForItemID:_itemID];
+	[_delegate teamSelectedForItemID:_itemID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didDragOutsidePlaceButton:(UIButton*)button {
-	[self fadePlaceButton];
+- (void)didDragOutsideTeamButton:(UIButton*)button {
+	[self fadeTeamButton];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didDragInsidePlaceButton:(UIButton*)button {
-	[self highlightPlaceButton];
+- (void)didDragInsideTeamButton:(UIButton*)button {
+	[self highlightTeamButton];
 }
 
 
