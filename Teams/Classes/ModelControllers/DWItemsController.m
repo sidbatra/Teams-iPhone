@@ -14,7 +14,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d&after=%d";
+static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
 static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[lat]=%f&item[lon]=%f&item[filename]=%@";
 
 
@@ -22,7 +22,6 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
  * Private method and property declarations
  */
 @interface DWItemsController()
-    - (void)getFollowedItems;
 @end
 
 
@@ -35,24 +34,12 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 @synthesize createResourceID    = _createResourceID;
 @synthesize delegate            = _delegate;
 
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {
-        _role = kItemsControllerRoleFollowed;
-    }
-    
-    return self;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (id)initWithRole:(DWItemsControllerRole)role {
-    self = [super init];
-    
-    if(self) {
-        
-        _role = role;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(itemCreated:) 
@@ -63,23 +50,16 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 												 selector:@selector(itemCreationError:) 
 													 name:kNNewItemError
 												   object:nil];
+                
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(followedItemsLoaded:) 
+                                                     name:kNFollowedItemsLoaded
+                                                   object:nil];
         
-        switch(_role) {
-            case kItemsControllerRoleFollowed:
-                
-                [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                         selector:@selector(itemsLoaded:) 
-                                                             name:kNFollowedItemsLoaded
-                                                           object:nil];
-                
-                [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                         selector:@selector(itemsError:) 
-                                                             name:kNFollowedItemsError
-                                                           object:nil];	
-                break;
-            default:
-                break;
-        }
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(followedItemsError:) 
+                                                     name:kNFollowedItemsError
+                                                   object:nil];	
     }
     
     return self;
@@ -93,6 +73,12 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 
     [super dealloc];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Create
 
 //----------------------------------------------------------------------------------------------------
 - (void)postWithData:(NSString *)data
@@ -162,52 +148,21 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
     [[DWCreationQueue sharedDWCreationQueue] addQueueItem:queueItem];
 }
 
+
 //----------------------------------------------------------------------------------------------------
-- (void)getFollowedItems {
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Index
+
+//----------------------------------------------------------------------------------------------------
+- (void)getFollowedItemsBefore:(NSInteger)before {
     
-    NSTimeInterval before   = 0;
-    NSTimeInterval after    = 0;
-    
-    switch(_paginationType) {
-        case kPaginationTypeOlder:
-            before = _oldestTimestamp;
-            break;
-        default:
-            break;
-    }
-    
-    NSString *localURL = [NSString stringWithFormat:kFollowedItemsURI,(NSInteger)before,(NSInteger)after];
+    NSString *localURL = [NSString stringWithFormat:kFollowedItemsURI,before];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNFollowedItemsLoaded
                                                    errorNotification:kNFollowedItemsError
                                                        requestMethod:kGet];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)getItems {
-    
-    _paginationType = kPaginationTypeNone;
-    
-    switch(_role) {
-        case kItemsControllerRoleFollowed:
-            [self getFollowedItems];
-        default:
-            break;
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)getMoreItems {
-    
-    _paginationType = kPaginationTypeOlder;
-    
-    switch(_role) {
-        case kItemsControllerRoleFollowed:
-            [self getFollowedItems];
-        default:
-            break;
-    }
 }
 
 
@@ -254,9 +209,11 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)itemsLoaded:(NSNotification*)notification {
+- (void)followedItemsLoaded:(NSNotification*)notification {
     
-    if(![self.delegate respondsToSelector:@selector(itemsLoaded:)])
+    SEL sel = @selector(followedItemsLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
         return;
         
     
@@ -267,29 +224,22 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
         [items addObject:[DWItem create:item]];
     }
     
-    _oldestTimestamp = ((DWItem*)[items lastObject]).createdAtTimestamp;
-    
-    switch (_paginationType) {
-        case kPaginationTypeNone:
-            [self.delegate itemsLoaded:items];
-            break;
-        case kPaginationTypeOlder:
-            if([self.delegate respondsToSelector:@selector(moreItemsLoaded:)])
-                [self.delegate moreItemsLoaded:items];
-        default:
-            break;
-    }
+    [self.delegate performSelector:sel 
+                        withObject:items];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)itemsError:(NSNotification*)notification {
+- (void)followedItemsError:(NSNotification*)notification {
     
-    if(![self.delegate respondsToSelector:@selector(itemsError:)])
+    SEL sel = @selector(followedItemsError:);
+
+    if(![self.delegate respondsToSelector:sel])
         return;
     
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
-    [self.delegate itemsError:[error localizedDescription]];
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
 }
 
 @end

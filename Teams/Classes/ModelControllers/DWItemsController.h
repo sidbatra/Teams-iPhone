@@ -10,36 +10,10 @@
 @class DWItem;
 
 /**
- * Enumeration for the types of roles under
- * which multiple items can be fetched from the
- * items service
- */
-typedef enum {
-    kItemsControllerRoleFollowed  = 0,
-    kItemsControllerRoleUser      = 1,
-    kItemsControllerRoleTeam      = 2,
-    kItemsControllerRoleNone      = 3 
-} DWItemsControllerRole;
-
-/**
- * Different pagination options for requests
- */
-typedef enum {
-    kPaginationTypeNone     = 0,
-    kPaginationTypeOlder    = 1
-} DWPaginationType;
-
-
-/**
  * Interface to the Items service on the app server
  */
 @interface DWItemsController : NSObject {
     NSInteger               _createResourceID;
-    
-    NSTimeInterval          _oldestTimestamp;
-    
-    DWItemsControllerRole   _role;
-    DWPaginationType        _paginationType;
     
     id<DWItemsControllerDelegate,NSObject> _delegate;
 }
@@ -54,11 +28,6 @@ typedef enum {
  */
 @property (nonatomic,assign) id<DWItemsControllerDelegate,NSObject> delegate;
 
-
-/**
- * Init with a specific role if using it for loading a list of items
- */
-- (id)initWithRole:(DWItemsControllerRole)role;
 
 /**
  * Post a new item created at the given location
@@ -97,14 +66,9 @@ typedef enum {
      withPreviewImage:(UIImage*)image;
 
 /**
- * Load the first page of items based on the specified role
+ * Get items followed by the current user. Use before for pagination.
  */
-- (void)getItems;
-
-/**
- * Load the next page of items
- */
-- (void)getMoreItems;
+- (void)getFollowedItemsBefore:(NSInteger)before;
 
 @end
 
@@ -132,15 +96,10 @@ typedef enum {
 /**
  * Array of parsed DWItem objects prepared based on the role specified
  */
-- (void)itemsLoaded:(NSMutableArray*)items;
-
-/**
- * Next page of parsed DWItem objects based on the role specified
- */
-- (void)moreItemsLoaded:(NSMutableArray*)items;
+- (void)followedItemsLoaded:(NSMutableArray*)items;
 
 /**
  * Error message encountered while loading items
  */
-- (void)itemsError:(NSString*)message;
+- (void)followedItemsError:(NSString*)message;
 @end

@@ -12,7 +12,9 @@
  * Datasource for table views that contain item model objects
  */
 @interface DWItemsDataSource : DWTableViewDataSource<DWItemsControllerDelegate> {
-    DWItemsController *_itemsController;
+    DWItemsController   *_itemsController;
+    
+    NSTimeInterval      _oldestTimestamp;
 }
 
 /**
@@ -22,8 +24,13 @@
 
 
 /**
+ * Populate items into in the objects array and handle pagination
+ */
+- (void)populateItems:(NSMutableArray*)items;
+
+/**
  * Load followed items into the table view
  */
-- (void)loadFollowedItems;
+- (void)loadItems;
 
 @end

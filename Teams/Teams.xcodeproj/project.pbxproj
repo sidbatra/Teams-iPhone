@@ -231,6 +231,7 @@
 		BB379E0412ED51B50071CE08 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */; };
 		BB3A43BF13CD3B2900316EE6 /* DWPagination.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3A43BE13CD3B2900316EE6 /* DWPagination.m */; };
 		BB3A43C313CD3B8700316EE6 /* DWPaginationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */; };
+		BB3A446213CE67BF00316EE6 /* DWFollowedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3A446113CE67BE00316EE6 /* DWFollowedItemsDataSource.m */; };
 		BB3BE1CE133AB65F0055FED0 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */; };
 		BB3BE1CF133AB65F0055FED0 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE183133AB65F0055FED0 /* ASIDataCompressor.m */; };
 		BB3BE1D0133AB65F0055FED0 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE185133AB65F0055FED0 /* ASIDataDecompressor.m */; };
@@ -754,6 +755,8 @@
 		BB3A43BE13CD3B2900316EE6 /* DWPagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPagination.m; sourceTree = "<group>"; };
 		BB3A43C113CD3B8700316EE6 /* DWPaginationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationPresenter.h; sourceTree = "<group>"; };
 		BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationPresenter.m; sourceTree = "<group>"; };
+		BB3A446013CE67BE00316EE6 /* DWFollowedItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowedItemsDataSource.h; sourceTree = "<group>"; };
+		BB3A446113CE67BE00316EE6 /* DWFollowedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowedItemsDataSource.m; sourceTree = "<group>"; };
 		BB3BE17F133AB65F0055FED0 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BB3BE180133AB65F0055FED0 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BB3BE181133AB65F0055FED0 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -1997,6 +2000,8 @@
 				BBC8D8ED13CC1B9000A224F5 /* DWTableViewDataSource.m */,
 				BBC8D8F213CCB8A200A224F5 /* DWItemsDataSource.h */,
 				BBC8D8F313CCB8A200A224F5 /* DWItemsDataSource.m */,
+				BB3A446013CE67BE00316EE6 /* DWFollowedItemsDataSource.h */,
+				BB3A446113CE67BE00316EE6 /* DWFollowedItemsDataSource.m */,
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
@@ -2694,6 +2699,7 @@
 				2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */,
 				BB3A43BF13CD3B2900316EE6 /* DWPagination.m in Sources */,
 				BB3A43C313CD3B8700316EE6 /* DWPaginationPresenter.m in Sources */,
+				BB3A446213CE67BF00316EE6 /* DWFollowedItemsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

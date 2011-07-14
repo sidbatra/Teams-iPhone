@@ -4,6 +4,7 @@
 //
 
 #import "DWTableViewDataSource.h"
+#import "DWConstants.h"
 
 static NSInteger const kDefaultSections = 1;
 
@@ -23,6 +24,11 @@ static NSInteger const kDefaultSections = 1;
     
     if(self) {
         self.objects = [NSMutableArray array];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(paginationCellReached:) 
+													 name:kNPaginationCellReached
+												   object:nil];
     }
     
     return self;
@@ -42,7 +48,8 @@ static NSInteger const kDefaultSections = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     [self clean];
     
     [super dealloc];
@@ -63,6 +70,23 @@ static NSInteger const kDefaultSections = 1;
          forSection:(NSInteger)section {
     
     return index < [self.objects count] ? [self.objects objectAtIndex:index] : nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginate {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginationCellReached:(NSNotification*)notification {
+    if([notification object] == self) {
+        [self paginate];
+    }
 }
 
 @end

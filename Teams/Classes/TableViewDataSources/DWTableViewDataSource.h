@@ -57,9 +57,14 @@
 @interface DWTableViewDataSource()
 
 /**
- * Optionally destroy and release all objects
+ * Destroy and release all objects
  */
 - (void)clean;
+
+/**
+ * Load the next page of objects
+ */
+- (void)paginate;
 
 @end
 

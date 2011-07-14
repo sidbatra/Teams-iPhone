@@ -12,12 +12,6 @@
  * Base class for all table views that display a list of items
  */
 @interface DWItemsViewController : DWTableViewController {
-    DWItemsDataSource   *_itemsDataSource;
 }
-
-/**
- * Data source for populating items into the table view
- */
-@property (nonatomic,retain) DWItemsDataSource *itemsDataSource;
 
 @end

@@ -13,15 +13,11 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWItemsViewController
 
-@synthesize itemsDataSource = _itemsDataSource;
-
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
-    if(self) {
-        self.itemsDataSource = [[[DWItemsDataSource alloc] init] autorelease];
-        
+    if(self) {        
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(largeAttachmentLoaded:) 
@@ -35,9 +31,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    self.itemsDataSource  = nil;
-    
+        
     [super dealloc];
 }
 
@@ -54,13 +48,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];  
 }
-
-//----------------------------------------------------------------------------------------------------
-- (DWTableViewDataSource*)getDataSource {
-    return self.itemsDataSource;
-}
-
-
 
 
 //----------------------------------------------------------------------------------------------------

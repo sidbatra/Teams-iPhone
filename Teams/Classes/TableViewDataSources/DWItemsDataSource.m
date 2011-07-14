@@ -4,7 +4,8 @@
 //
 
 #import "DWItemsDataSource.h"
-#import "DWConstants.h"
+#import "DWItem.h"
+#import "DWPagination.h"
 
 
 
@@ -20,10 +21,8 @@
     self = [super init];
     
     if(self) {
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(paginationCellReached:) 
-													 name:kNPaginationCellReached
-												   object:nil];
+        self.itemsController            = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController.delegate   = self;
     }
     
     return self;
@@ -36,6 +35,38 @@
     [super dealloc];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)populateItems:(NSMutableArray*)items {
+    
+    id lastObject   = [self.objects lastObject];
+    BOOL paginate   = NO;
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        paginate = YES;
+    }
+    
+    if(!paginate) {
+        [self clean];
+        self.objects = items;
+    }
+    else {
+        [self.objects removeLastObject];
+        [self.objects addObjectsFromArray:items];
+    }
+    
+    if([items count]) {
+        
+        _oldestTimestamp            = ((DWItem*)[items lastObject]).createdAtTimestamp;
+        
+        DWPagination *pagination    = [[[DWPagination alloc] init] autorelease];
+        pagination.owner            = self;
+        [self.objects addObject:pagination];
+    }
+    
+    
+    [self.delegate reloadTableView];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -43,73 +74,14 @@
 #pragma mark Data requests
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadFollowedItems {
-    self.itemsController            = [[DWItemsController alloc] initWithRole:kItemsControllerRoleFollowed];
-    self.itemsController.delegate   = self;
-    
-    [self.itemsController getItems];
-    
-    
-    //[self.itemsController performSelector:@selector(getMoreItems) withObject:nil afterDelay:2.0];
-    /*[self.itemsController performSelector:@selector(getMoreItems) withObject:nil afterDelay:5.0];
-    [self.itemsController performSelector:@selector(getMoreItems) withObject:nil afterDelay:8.0];
-    [self.itemsController performSelector:@selector(getItems) withObject:nil afterDelay:10.0];
-     */
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWItemsControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)itemsLoaded:(NSMutableArray *)items {
-    [self clean];
-    self.objects = items;
-    
-    if([items count]) {
-        DWPagination *pagination = [[[DWPagination alloc] init] autorelease];
-        pagination.owner = self;
-        [self.objects addObject:pagination];
-    }
-        
-    
-    [self.delegate reloadTableView];
+- (void)loadItems {
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)moreItemsLoaded:(NSMutableArray *)items {
-    [self.objects removeLastObject];
-    [self.objects addObjectsFromArray:items];
-    
-    if([items count]) {
-        DWPagination *pagination = [[[DWPagination alloc] init] autorelease];
-        pagination.owner = self;
-        [self.objects addObject:pagination];
-    }
-    
-    [self.delegate reloadTableView];
+- (void)paginate {
+    [self loadItems];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)itemsError:(NSString *)message {
-    NSLog(@"ERROR - %@",message);
-}
-
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Notifications
-
-//----------------------------------------------------------------------------------------------------
-- (void)paginationCellReached:(NSNotification*)notification {
-    if([notification object] == self) {
-        NSLog(@"pagination cell reached");
-        [self.itemsController getMoreItems];
-    }
-}
 
 @end
+
