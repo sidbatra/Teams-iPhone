@@ -16,8 +16,6 @@ static NSString* const kMsgProgressIndicator    = @"Logging In";
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
 static NSString* const kMsgIncomplete           = @"Enter email and password";
 static NSString* const kMsgErrorTitle           = @"Error";
-static NSString* const kMsgErrorLogin           = @"Incorrect email or password";
-static NSString* const kMsgErrorNetwork         = @"Please make sure you have network connectivity and try again";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kLoginText               = @"Log In";
 static NSString* const kRightNavBarButtonText   = @"Done";
@@ -38,24 +36,15 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
+@synthesize sessionController           = _sessionController;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithDelegate:(id)theDelegate {
 	self = [super init];
 	
 	if(self) {
-		
         _delegate = theDelegate;
-        
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(sessionCreated:) 
-													 name:kNNewSessionCreated
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(sessionError:) 
-													 name:kNNewSessionError
-												   object:nil];	
 	}
     
 	return self;
@@ -73,6 +62,8 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     
     self.navTitleView               = nil;
 	self.navRightBarButtonView      = nil;
+    
+    self.sessionController          = nil;
 	
     [super dealloc];
 }
@@ -109,11 +100,6 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     mbProgressIndicator         = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
     mbProgressIndicator.yOffset = -87;
 	[self.view addSubview:mbProgressIndicator];
-    
-    /*DWUserProfileView *profileView = [[DWUserProfileView alloc] initWithFrame:CGRectMake(0, 0, 320, 200)];
-    [profileView loadMyNibFile];
-    [self.view addSubview:profileView.customView]; //customView.view is the IBOutlet you created
-    [profileView release];*/
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -127,10 +113,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)freezeUI {
-	//[self.emailTextField resignFirstResponder];
-	//[self.passwordTextField resignFirstResponder];
-	
+- (void)freezeUI {	
 	mbProgressIndicator.labelText = kMsgProgressIndicator;
 	[mbProgressIndicator show:YES];
 }
@@ -155,10 +138,11 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 	else {
 		[self freezeUI];
 		
-		self.password = [[self.passwordTextField.text encrypt] stringByEncodingHTMLCharacters];
+		self.password = [self.passwordTextField.text encrypt];        
+        self.sessionController = [[DWSessionController alloc] initWithDelegate:self];
         
-		/*[[DWRequestsManager sharedDWRequestsManager] createSessionWithEmail:self.emailTextField.text 
-															   withPassword:self.password];*/
+        [self.sessionController createSessionWithEmail:self.emailTextField.text 
+                                          withPassword:self.password];
 	}
 }
 
@@ -191,42 +175,18 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Notifications
+#pragma mark DWSessionController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)sessionCreated:(NSNotification*)notification {
-	/*
-	NSDictionary *info = [notification userInfo];
-	NSDictionary *body = [info objectForKey:kKeyBody];
-	
-	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
-        /*
-        DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
-                                                                                       atRow:kMPUsersIndex];
-		user.encryptedPassword  = self.password;
-		[[DWSession sharedDWSession] create:user];
-		
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
-                                                            object:user];
-	}
-	else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-														message:kMsgErrorLogin
-													   delegate:nil 
-											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
-		
-		[self unfreezeUI];
-	}*/
+- (void)sessionCreatedForUser:(DWUser*)user {    
+    user.encryptedPassword  = self.password;    
+    [_delegate userLoggedIn:user];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)sessionError:(NSNotification*)notification {
-	
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-													message:kMsgErrorNetwork
+- (void)sessionCreationError:(NSString*)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
 												   delegate:nil 
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles: nil];

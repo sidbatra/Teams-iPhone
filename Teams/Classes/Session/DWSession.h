@@ -28,7 +28,7 @@
 /**
  * Create an in-memory session and store user archive on disk
  */
-- (void)create:(NSDictionary*)user;
+- (void)create:(DWUser*)user;
 
 /**
  * Update the stored user archive on disk

@@ -88,9 +88,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)create:(NSDictionary*)user {
+- (void)create:(DWUser*)user {
 	
-    self.currentUser                = [DWUser create:user];
+    self.currentUser                = user;
     self.currentUser.isNewUser      = YES;
     self.currentUser.isCurrentUser  = YES;
         

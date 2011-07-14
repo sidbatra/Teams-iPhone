@@ -9,7 +9,9 @@
 #import "MBProgressHUD.h"
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
+#import "DWSessionController.h"
 
+@class DWUser;
 @protocol DWLoginViewControllerDelegate;
 
 /**
@@ -26,6 +28,8 @@
     DWNavRightBarButtonView     *_navRightBarButtonView;
 	MBProgressHUD               *mbProgressIndicator;
     
+    DWSessionController         *_sessionController;
+    
     id <DWLoginViewControllerDelegate>      _delegate;
 }
 
@@ -33,6 +37,11 @@
  * Encrypted user password
  */
 @property (nonatomic,copy) NSString *password;
+
+/**
+ * Controller for handling session requests
+ */
+@property (nonatomic,retain) DWSessionController *sessionController;
 
 /**
  * Custom subviews for navigation bar
@@ -65,7 +74,7 @@
 /*
  * Fired when the user logs in.
  */
-- (void)userLoggedIn;
+- (void)userLoggedIn:(DWUser*)user;
 
 @end
 
