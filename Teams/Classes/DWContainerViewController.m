@@ -6,6 +6,7 @@
 #import "DWTabBarController.h"
 #import "DWWebViewController.h"
 #import "DWSharingManager.h"
+#import "DWConstants.h"
 #import "DWSession.h"
 #import "NSString+Helpers.h"
 

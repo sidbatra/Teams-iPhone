@@ -13,6 +13,7 @@
 #import "DWMembership.h"
 #import "DWItemsController.h"
 #import "JSON.h"
+#import "DWConstants.h"
 #import "DWSession.h"
 
 

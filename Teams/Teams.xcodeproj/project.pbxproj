@@ -384,6 +384,8 @@
 		BBEA39C2136A06400021619A /* halo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEA39C0136A06400021619A /* halo@2x.png */; };
 		BBEE2E4D13CE71E500AEAC83 /* DWFollowedItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E4C13CE71E500AEAC83 /* DWFollowedItemsDataSource.m */; };
 		BBEE2E5113CE720A00AEAC83 /* DWSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5013CE720A00AEAC83 /* DWSessionController.m */; };
+		BBEE2E5C13CE8AFE00AEAC83 /* DWTouchesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */; };
+		BBEE2E5F13CE8B8500AEAC83 /* DWTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */; };
 		BBF890E9134E53D500B332CA /* DWNewPlaceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF890E8134E53D500B332CA /* DWNewPlaceCell.m */; };
 		BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */; };
 		BBF89636135022BA00B332CA /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89623135022BA00B332CA /* button_blue.png */; };
@@ -972,6 +974,10 @@
 		BBEE2E4C13CE71E500AEAC83 /* DWFollowedItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowedItemsDataSource.m; sourceTree = "<group>"; };
 		BBEE2E4F13CE720A00AEAC83 /* DWSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSessionController.h; sourceTree = "<group>"; };
 		BBEE2E5013CE720A00AEAC83 /* DWSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSessionController.m; sourceTree = "<group>"; };
+		BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchesController.h; sourceTree = "<group>"; };
+		BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchesController.m; sourceTree = "<group>"; };
+		BBEE2E5D13CE8B8500AEAC83 /* DWTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouch.h; sourceTree = "<group>"; };
+		BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouch.m; sourceTree = "<group>"; };
 		BBF890E7134E53D500B332CA /* DWNewPlaceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNewPlaceCell.h; path = Classes/DWNewPlaceCell.h; sourceTree = "<group>"; };
 		BBF890E8134E53D500B332CA /* DWNewPlaceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNewPlaceCell.m; path = Classes/DWNewPlaceCell.m; sourceTree = "<group>"; };
 		BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWMediaPickerController.h; path = Classes/DWMediaPickerController.h; sourceTree = "<group>"; };
@@ -1878,6 +1884,8 @@
 				BB8499DF13C6B09E00D9789D /* DWTeam.m */,
 				BB8499E013C6B09E00D9789D /* DWUser.h */,
 				BB8499E113C6B09E00D9789D /* DWUser.m */,
+				BBEE2E5D13CE8B8500AEAC83 /* DWTouch.h */,
+				BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */,
 				BB3A43BD13CD3B2900316EE6 /* DWPagination.h */,
 				BB3A43BE13CD3B2900316EE6 /* DWPagination.m */,
 			);
@@ -2092,6 +2100,8 @@
 				2632E59213CCE0D7005B1B1E /* DWUsersController.m */,
 				BBF8989A13CA3F2800D5C5FB /* DWItemsController.h */,
 				BBF8989B13CA3F2800D5C5FB /* DWItemsController.m */,
+				BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */,
+				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -2700,6 +2710,8 @@
 				BB3A43C313CD3B8700316EE6 /* DWPaginationPresenter.m in Sources */,
 				BBEE2E4D13CE71E500AEAC83 /* DWFollowedItemsDataSource.m in Sources */,
 				BBEE2E5113CE720A00AEAC83 /* DWSessionController.m in Sources */,
+				BBEE2E5C13CE8AFE00AEAC83 /* DWTouchesController.m in Sources */,
+				BBEE2E5F13CE8B8500AEAC83 /* DWTouch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
