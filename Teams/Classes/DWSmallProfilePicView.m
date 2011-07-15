@@ -51,6 +51,7 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
         [self addSubview:spinner];	
         [spinner release];
     }
+    
     return self;
 }
 

@@ -18,10 +18,11 @@
  * items view
  */
 @interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWItemsViewControllerDelegate> {
+    
 	DWFollowedItemsViewController	*_followedViewController;
-	DWPostProgressView				*postProgressView;
+    
+	DWPostProgressView				*_postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
-    DWUserTitleView                 *_userTitleView;
     
     BOOL                            _isProgressBarActive;
 }
@@ -32,21 +33,13 @@
 @property (nonatomic,retain) DWFollowedItemsViewController *followedViewController;
 
 /**
+ * Progress bar view for displaying the progress of the creation queue
+ */
+@property (nonatomic,retain) DWPostProgressView *postProgressView;
+
+/**
  * Subview for displaying small profile picture
  */
 @property (nonatomic,retain) DWSmallProfilePicView *smallProfilePicView;
-
-/**
- * Subview for displaying username and following count
- */
-@property (nonatomic,retain) DWUserTitleView *userTitleView;
-
-@end
-
-
-/**
- * Private method declarations
- */
-@interface DWItemsContainerViewController(Private)
 
 @end
