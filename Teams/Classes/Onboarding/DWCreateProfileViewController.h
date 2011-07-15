@@ -6,19 +6,17 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "DWMediaPickerController.h"
-#import "MBProgressHUD.h"
 #import "DWNavigationBar.h"
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
 
-@protocol DWCreateUserProfileViewControllerDelegate;
+@protocol DWCreateProfileViewControllerDelegate;
 
 
 /**
  * Provides an interface for creating user profiles.
  */
-@interface DWCreateUserViewController : UIViewController<UITextFieldDelegate> {
+@interface DWCreateProfileViewController : UIViewController<UITextFieldDelegate> {
 	
 	UIView                      *_profileDetailsContainerView;
 	UITextField                 *_firstNameTextField;
@@ -36,7 +34,7 @@
     
 	NSInteger                   _uploadID;
     
-    id <DWCreateUserProfileViewControllerDelegate>  _delegate;
+    id <DWCreateProfileViewControllerDelegate>  _delegate;
 }
 
 /**
@@ -73,12 +71,12 @@
  * Delegate protocol to receive events during 
  * the create user profile lifecycle
  */
-@protocol DWCreateUserProfileViewControllerDelegate
+@protocol DWCreateProfileViewControllerDelegate
 
 /*
  * Fired when a user profile is created.
  */
-- (void)userProfileCreated;
+- (void)profileCreated;
 
 @end
 

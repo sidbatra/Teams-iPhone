@@ -35,6 +35,7 @@
 	BOOL		_hasPhoto;
     BOOL        _isCurrentUser;
     BOOL        _isNewUser;
+    BOOL        _hasInvitedPeople;
 }
 
 /**
@@ -121,6 +122,11 @@
  * be refered to as a new user
  */
 @property (nonatomic,assign) BOOL isNewUser;
+
+/**
+ * Indicates whether the user has invited people to the app
+ */
+@property (nonatomic,assign) BOOL hasInvitedPeople;
 
 
 /**

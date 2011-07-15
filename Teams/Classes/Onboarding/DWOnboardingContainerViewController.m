@@ -8,12 +8,25 @@
 #import "DWSession.h"
 
 
+/**
+ * Private methods
+ */
+@interface DWOnboardingContainerViewController()
+
+- (void) displaySplashScreen;
+- (void) displayLoginView;
+- (void) displaySignUpView;
+- (void) displayCreateTeamView;
+- (void) displayCreateProfileView;
+- (void) displayInvitePeopleView;
+    
+@end
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWOnboardingContainerViewController
 
-@synthesize splashScreenViewController      = _splashScreenViewController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -22,8 +35,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.splashScreenViewController = nil;
-    
     [super dealloc];
 }
 
@@ -38,6 +49,46 @@
 #pragma mark -
 #pragma mark Private Methods
 
+//----------------------------------------------------------------------------------------------------
+- (void) displaySplashScreen {
+    NSLog(@"splash screen");
+    self.navigationController.navigationBarHidden = YES;
+    
+    DWSplashScreenViewController *splashScreen = [[[DWSplashScreenViewController alloc] initWithDelegate:self] autorelease];
+    [self.view addSubview:splashScreen.view];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void) displayLoginView {
+    DWLoginViewController *loginViewController = [[[DWLoginViewController alloc] initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:loginViewController animated:YES];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void) displaySignUpView {
+    DWSignupViewController *signupViewController = [[[DWSignupViewController alloc] initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:signupViewController animated:YES];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void) displayCreateTeamView {
+    DWCreateTeamViewController *createTeamViewController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:createTeamViewController animated:YES];      
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void) displayCreateProfileView {
+    DWCreateProfileViewController *createProfileViewController = [[[DWCreateProfileViewController alloc] 
+                                                                   initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:createProfileViewController animated:YES];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void) displayInvitePeopleView {
+    DWInvitePeopleViewController *invitePeopleViewController = [[DWInvitePeopleViewController alloc] initWithDelegate:self];
+    [self.navigationController pushViewController:invitePeopleViewController animated:YES];    
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -48,10 +99,29 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = YES;
-    
-    self.splashScreenViewController = [[[DWSplashScreenViewController alloc] initWithDelegate:self] autorelease];
-    [self.view addSubview:self.splashScreenViewController.view];
+    /*
+    switch ([[DWSession sharedDWSession] state])
+	{
+		case kSessionStateEmpty: 
+            [self displaySplashScreen];
+            break;
+            
+		case kSessionStateTillUserEmail: 
+            [self displaySignUpView];
+            break;
+            
+		case kSessionStateTillTeamDetails: 
+            [self displayCreateProfileView];
+            break; 
+            
+		case kSessionStateTillUserDetails: 
+            [self displayInvitePeopleView];
+            break;             
+            
+		default: 
+            break;
+	}*/
+    [self displaySplashScreen];
 }
     
 //----------------------------------------------------------------------------------------------------
@@ -67,14 +137,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loginInitiated {
-    DWLoginViewController *loginViewController = [[[DWLoginViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    [self displayLoginView];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)signupInitiated {
-    DWSignupViewController *signupViewController = [[[DWSignupViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:signupViewController animated:YES];
+    [self displaySignUpView];
 }
 
 
@@ -104,10 +172,10 @@
 - (void)teamLoaded:(DWTeam*)team {
     if (team) {
         NSLog(@"team already exist");
+        //[self displayJoinTeamView];
     }
     else {
-        DWCreateTeamViewController *createNewTeamController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
-        [self.navigationController pushViewController:createNewTeamController animated:YES];        
+        [self displayCreateTeamView];
     }
 }
 
@@ -115,35 +183,32 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateNewTeamViewControllerDelegate
+#pragma mark DWCreateTeamViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)newTeamCreated {
-    DWCreateUserViewController *createUserProfileController = [[[DWCreateUserViewController alloc] 
-                                                                       initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:createUserProfileController animated:YES];
+- (void)teamCreated {
+    [self displayCreateProfileView];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateUserProfileViewControllerDelegate
+#pragma mark DWCreateProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userProfileCreated {
-    DWInvitePeopleViewController *addPeopleViewController = [[DWInvitePeopleViewController alloc] initWithDelegate:self];
-    [self.navigationController pushViewController:addPeopleViewController animated:YES];
+- (void)profileCreated {
+    [self displayInvitePeopleView];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateUserProfileViewControllerDelegate
+#pragma mark DWInvitePeopleViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)peopleAdded {
+- (void)peopleInvited {
     //TODO
 }
 

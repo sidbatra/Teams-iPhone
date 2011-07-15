@@ -117,8 +117,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSInteger)state {
+    
+    NSInteger state;
+    
+    if (self.currentUser.hasInvitedPeople)
+        state = kSessionStateComplete;
+
+    else if (self.currentUser.firstName) 
+        state = kSessionStateTillUserDetails;
+
+    else if(self.currentUser.team) 
+        state = kSessionStateTillTeamDetails;
+    
+    else if(self.currentUser.email) 
+        state = kSessionStateTillUserEmail;
+    
+    else 
+        state = kSessionStateEmpty;
+    
+    return state;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)isActive {
-	return self.currentUser != nil;
+    return [self state] == kSessionStateComplete;
 }
 
 

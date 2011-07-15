@@ -9,20 +9,14 @@
 #import "DWSignupViewController.h"
 #import "DWLoginViewController.h"
 #import "DWCreateTeamViewController.h"
-#import "DWCreateUserViewController.h"
+#import "DWCreateProfileViewController.h"
 #import "DWInvitePeopleViewController.h"
 
 /**
  * Container for handling all events and logic for onboarding
  */
-@interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateNewTeamViewControllerDelegate,DWCreateUserProfileViewControllerDelegate, DWAddPeopleViewControllerDelegate> {
+@interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateTeamViewControllerDelegate,DWCreateProfileViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
     
-    DWSplashScreenViewController    *_splashScreenViewController;
 }
-
-/**
- * SplashScreenViewController object to retain the splash screen
- */
-@property (nonatomic,retain) DWSplashScreenViewController *splashScreenViewController;
 
 @end

@@ -37,6 +37,18 @@ typedef enum {
 
 
 /**
+ * Session States
+ */
+typedef enum {
+    kSessionStateEmpty              = -1,     
+    kSessionStateTillUserEmail      = 0, 
+    kSessionStateTillTeamDetails    = 1,
+    kSessionStateTillUserDetails    = 2,
+    kSessionStateComplete           = 3
+} DWSessionState;
+
+
+/**
  * Presentation styles for different models
  */
 extern NSInteger const kDefaultStyle;

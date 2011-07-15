@@ -3,7 +3,7 @@
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWCreateUserViewController.h"
+#import "DWCreateProfileViewController.h"
 #import "DWUser.h"
 #import "DWRequestsManager.h"
 #import "NSString+Helpers.h"
@@ -27,7 +27,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWCreateUserViewController
+@implementation DWCreateProfileViewController
 
 @synthesize password                        = _password;
 
@@ -181,7 +181,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [_delegate userProfileCreated];
+    [_delegate profileCreated];
 	//[self createNewUser];
 }
 

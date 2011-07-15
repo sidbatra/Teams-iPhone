@@ -78,7 +78,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                                andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kSignupText];
     
@@ -168,6 +168,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userCreationError:(NSString*)error {
+    NSLog(@"user error");
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 

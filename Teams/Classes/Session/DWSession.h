@@ -45,6 +45,11 @@
  */
 - (BOOL)isActive;
 
+/**
+ * Session state which is the indicator of the onboarding process
+ */
+- (NSInteger)state;
+
 @end
 
 

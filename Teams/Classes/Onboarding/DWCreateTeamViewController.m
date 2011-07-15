@@ -94,7 +94,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [_delegate newTeamCreated];
+    [_delegate teamCreated];
 }
 
 
