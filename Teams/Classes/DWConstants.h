@@ -188,6 +188,8 @@ extern NSString* const kNTeamLoaded;
 extern NSString* const kNTeamLoadError;
 extern NSString* const kNPopularTeamsLoaded;
 extern NSString* const kNPopularTeamsError;
+extern NSString* const kNRecentTeamsLoaded;
+extern NSString* const kNRecentTeamsError;
 extern NSString* const kNPlaceUpdated;
 extern NSString* const kNPlaceUpdateError;
 extern NSString* const kNNewPlaceCreated;

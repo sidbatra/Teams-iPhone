@@ -32,6 +32,11 @@
  */
 - (void)getPopularTeams;
 
+/**
+ * Get a list of recently created teams
+ */
+- (void)getRecentTeams;
+
 @end
 
 
@@ -62,5 +67,15 @@
  * Error message encountered while loading popular teams
  */
 - (void)popularTeamsError:(NSString*)message;
+
+/**
+ * Array of parsed DWTeam objects which have been recently created
+ */
+- (void)recentTeamsLoaded:(NSMutableArray*)teams;
+
+/**
+ * Error message encountered while loading recent teams
+ */
+- (void)recentTeamsError:(NSString*)message;
 
 @end
