@@ -116,11 +116,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam*)team {
+    
     if (team) {
         NSLog(@"team already exist");
     }
     else {
-        DWCreateTeamViewController *createTeamViewController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
+        DWCreateTeamViewController *createTeamViewController    = [[[DWCreateTeamViewController alloc] init] autorelease];
+        createTeamViewController.delegate                       = self;
+        
         [self.navigationController pushViewController:createTeamViewController 
                                              animated:YES];        
     }
@@ -134,7 +137,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated {
-    DWCreateProfileViewController *createProfileViewController = [[[DWCreateProfileViewController alloc] initWithDelegate:self] autorelease];
+    
+    DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
+    createProfileViewController.delegate                        = self;
+    
     [self.navigationController pushViewController:createProfileViewController 
                                          animated:YES];
 }
@@ -147,7 +153,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileCreated {
-    DWInvitePeopleViewController *invitePeopleViewController = [[[DWInvitePeopleViewController alloc] initWithDelegate:self] autorelease];
+    
+    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    invitePeopleViewController.delegate                         = self;
+    
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];
 }

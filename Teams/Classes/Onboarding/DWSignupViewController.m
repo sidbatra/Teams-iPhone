@@ -73,7 +73,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.leftBarButtonItem   =   [DWGUIManager customBackButton:_delegate];
+    self.navigationItem.leftBarButtonItem   =   [DWGUIManager customBackButton:self.delegate];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 

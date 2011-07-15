@@ -1,5 +1,5 @@
 //
-//  DWCreateUserViewController.m
+//  DWCreateProfileViewController.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
@@ -29,25 +29,25 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreateProfileViewController
 
-@synthesize password                        = _password;
-
 @synthesize profileDetailsContainerView     = _profileDetailsContainerView;
 @synthesize firstNameTextField              = _firstNameTextField;
 @synthesize lastNameTextField               = _lastNameTextField;
 @synthesize byLineTextField                 = _byLineTextField;
 @synthesize passwordTextField               = _passwordTextField;
 
+@synthesize password                        = _password;
+
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
 
+@synthesize delegate                        = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
 	self = [super init];
 	
-	if(self) {
-        _delegate = theDelegate;
-        
+	if(self) {        
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userCreated:) 
 													 name:kNNewUserCreated
@@ -66,13 +66,13 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 - (void)dealloc {	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.password                       = nil;
-    
     self.profileDetailsContainerView    = nil;
 	self.firstNameTextField             = nil;
     self.lastNameTextField              = nil;
 	self.byLineTextField                = nil;
 	self.passwordTextField              = nil;
+    
+    self.password                       = nil;    
     
     self.navTitleView                   = nil;
 	self.navRightBarButtonView          = nil;
@@ -84,7 +84,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:_delegate];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -181,7 +181,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [_delegate profileCreated];
+    [self.delegate profileCreated];
 	//[self createNewUser];
 }
 

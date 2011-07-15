@@ -1,5 +1,5 @@
 //
-//  DWCreateUserViewController.h
+//  DWCreateProfileViewController.h
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
@@ -23,19 +23,27 @@
     UITextField                 *_lastNameTextField;
 	UITextField                 *_byLineTextField;
 	UITextField                 *_passwordTextField;
+    
+	NSString                    *_password;    
+	BOOL                        _isUploading;
+	BOOL                        _signupInitiated;
+	NSInteger                   _uploadID;    
 			  	
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
-																				
-	NSString                    *_password;
-	
-	BOOL                        _isUploading;
-	BOOL                        _signupInitiated;
-    
-	NSInteger                   _uploadID;
-    
+																				    
     id <DWCreateProfileViewControllerDelegate>  _delegate;
 }
+
+
+/**
+ * IBOutlet properties
+ */
+@property (nonatomic, retain) IBOutlet UIView *profileDetailsContainerView;
+@property (nonatomic, retain) IBOutlet UITextField *firstNameTextField;
+@property (nonatomic, retain) IBOutlet UITextField *lastNameTextField;
+@property (nonatomic, retain) IBOutlet UITextField *byLineTextField;
+@property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
 
 /**
  * Encrypted password for the current user
@@ -48,21 +56,10 @@
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
-
 /**
- * IBOutlet properties
+ * Delegate to send updates to
  */
-@property (nonatomic, retain) IBOutlet UIView *profileDetailsContainerView;
-@property (nonatomic, retain) IBOutlet UITextField *firstNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *lastNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *byLineTextField;
-@property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
-
-
-/*
- * Custom init with delegate
- */
-- (id)initWithDelegate:(id)theDelegate;
+@property (nonatomic,assign) id<DWCreateProfileViewControllerDelegate> delegate;
 
 @end
 
