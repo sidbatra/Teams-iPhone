@@ -37,6 +37,7 @@ typedef enum {
 
 
 /**
+<<<<<<< HEAD
  * Session States
  */
 typedef enum {
@@ -50,8 +51,21 @@ typedef enum {
 
 /**
  * Presentation styles for different models
+=======
+ * Default presentation style for all model presenters
+>>>>>>> d2c2288f0f5aa371cbb966d69b78ebd0b1fedc63
  */
-extern NSInteger const kDefaultStyle;
+enum {
+    kPresentationStyleDefault   = 0,
+};
+
+/**
+ * Presentation styles for the item presenter
+ */
+typedef enum {
+    kItemPresenterStyleUserItems = 1,
+    kItemPresenterStyleTeamItems = 2
+} DWItemPresenterStyle;
 
 
 /**
@@ -187,6 +201,8 @@ extern NSString* const kNUserUpdateError;
 extern NSString* const kNUserLogsIn;
 extern NSString* const kNFollowedItemsLoaded;
 extern NSString* const kNFollowedItemsError;
+extern NSString* const kNUserItemsLoaded;
+extern NSString* const kNUserItemsError;
 extern NSString* const kNNewTouchCreated;
 extern NSString* const kNNewTouchError;
 extern NSString* const kNTouchesLoaded;

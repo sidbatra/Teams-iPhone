@@ -126,6 +126,21 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
              successNotification:(NSString*)successNotification
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
+                      resourceID:(NSInteger)resourceID {
+    
+    return [self createDenwenRequest:localRequestURL
+                 successNotification:successNotification
+                   errorNotification:errorNotification
+                       requestMethod:requestMethod
+                          resourceID:resourceID
+                        authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
                     authenticate:(BOOL)authenticate {
     
     return [self createDenwenRequest:localRequestURL

@@ -93,7 +93,7 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
                                                                                        uppercaseString]]];
         return;
     }
-    NSLog(@"user created in dwusercontroller");
+    
     DWUser *user    = [DWUser create:data];    
     [self.delegate performSelector:sel 
                         withObject:user];

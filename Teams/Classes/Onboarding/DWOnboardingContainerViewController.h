@@ -17,6 +17,12 @@
  */
 @interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateTeamViewControllerDelegate,DWCreateProfileViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
     
+    DWSplashScreenViewController    *_splashScreenViewController;
 }
+
+/**
+ * SplashScreenViewController object to retain the splash screen
+ */
+@property (nonatomic,retain) DWSplashScreenViewController *splashScreenViewController;
 
 @end

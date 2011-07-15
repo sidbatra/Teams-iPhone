@@ -14,14 +14,21 @@
 #import "DWConstants.h"
 
 
-static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
 static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[lat]=%f&item[lon]=%f&item[filename]=%@";
+static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
+static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
 
 
 /**
  * Private method and property declarations
  */
 @interface DWItemsController()
+
+/**
+ * Populate a mutable items array from the given items JSON array
+ */
+- (NSMutableArray*)populateItemsArrayFromJSON:(NSArray*)data;
+
 @end
 
 
@@ -39,7 +46,7 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
     self = [super init];
     
     if(self) {
-        
+                
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(itemCreated:) 
 													 name:kNNewItemCreated
@@ -58,7 +65,17 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(followedItemsError:) 
                                                      name:kNFollowedItemsError
-                                                   object:nil];	
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(userItemsLoaded:) 
+                                                     name:kNUserItemsLoaded
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(userItemsError:) 
+                                                     name:kNUserItemsError
+                                                   object:nil];
     }
     
     return self;
@@ -156,6 +173,18 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 #pragma mark Index
 
 //----------------------------------------------------------------------------------------------------
+- (NSMutableArray*)populateItemsArrayFromJSON:(NSArray*)data {
+    
+    NSMutableArray *items   = [NSMutableArray arrayWithCapacity:[data count]];
+    
+    for(NSDictionary *item in data) {
+        [items addObject:[DWItem create:item]];
+    }
+    
+    return items;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)getFollowedItemsBefore:(NSInteger)before {
     
     NSString *localURL = [NSString stringWithFormat:kFollowedItemsURI,before];
@@ -164,6 +193,21 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
                                                  successNotification:kNFollowedItemsLoaded
                                                    errorNotification:kNFollowedItemsError
                                                        requestMethod:kGet];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUserItemsForUserID:(NSInteger)userID
+                       before:(NSInteger)before {
+    
+    NSString *localURL = [NSString stringWithFormat:kUserItemsURI,
+                          userID,
+                          before];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserItemsLoaded
+                                                   errorNotification:kNUserItemsError
+                                                       requestMethod:kGet
+                                                          resourceID:userID];
 }
 
 
@@ -219,11 +263,7 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
         
     
     NSArray *data           = [[notification userInfo] objectForKey:kKeyData];
-    NSMutableArray *items   = [NSMutableArray arrayWithCapacity:[data count]];
-    
-    for(NSDictionary *item in data) {
-        [items addObject:[DWItem create:item]];
-    }
+    NSMutableArray *items   = [self populateItemsArrayFromJSON:data];
     
     [self.delegate performSelector:sel 
                         withObject:items];
@@ -239,8 +279,57 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
     
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
     [self.delegate performSelector:sel 
                         withObject:[error localizedDescription]];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)userItemsLoaded:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL itemsSel = @selector(userItemsLoaded:);
+    
+    if(![self.delegate respondsToSelector:itemsSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+        
+    
+    NSArray *data           = [userInfo objectForKey:kKeyData];
+    NSMutableArray *items   = [self populateItemsArrayFromJSON:data];
+    
+    [self.delegate performSelector:itemsSel
+                        withObject:items];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userItemsError:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL errorSel = @selector(userItemsError:);
+    
+    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:errorSel
+                        withObject:[error localizedDescription]];
+}
+
 
 @end

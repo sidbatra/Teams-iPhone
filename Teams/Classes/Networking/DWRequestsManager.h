@@ -42,6 +42,16 @@
                     authenticate:(BOOL)authenticate;
 
 /**
+ * Overloaded method for createDenwenRequest. Authentication defaults
+ * to YES
+ */
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                      resourceID:(NSInteger)resourceID;
+
+/**
  * Overloaded method for createDenwenRequest. Generates a unique
  * resourceID and authentication is on by default
  */

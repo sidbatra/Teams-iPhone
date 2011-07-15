@@ -95,6 +95,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     self.currentUser.isCurrentUser  = YES;
         
     [self storeCurrentUserOnDisk];
+    
+    NSLog(@"session created");
+    NSLog(@"%@",self.currentUser.encryptedPassword);
+    NSLog(@"%@",self.currentUser.email);    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -136,11 +140,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     else 
         state = kSessionStateEmpty;
     
+    NSLog(@"the state is %d",state);
     return state;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isActive {
+	return self.currentUser != nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)isExhaustive {
     return [self state] == kSessionStateComplete;
 }
 

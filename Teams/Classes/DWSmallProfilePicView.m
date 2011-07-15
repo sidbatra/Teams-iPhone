@@ -16,15 +16,17 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
 //----------------------------------------------------------------------------------------------------
 @implementation DWSmallProfilePicView
 
+@synthesize delegate = _delegate;
+
 //----------------------------------------------------------------------------------------------------
-- (id)initWithFrame:(CGRect)frame andTarget:(id)target {
+- (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
         profilePicButton           = [UIButton buttonWithType:UIButtonTypeCustom];
         profilePicButton.alpha     = kProfileButtonAlpha;
         
-        [profilePicButton addTarget:target 
+        [profilePicButton addTarget:self 
                              action:@selector(didTapSmallUserImage:event:) 
                    forControlEvents:UIControlEventTouchUpInside];
         
@@ -51,11 +53,14 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
         [self addSubview:spinner];	
         [spinner release];
     }
+    
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.delegate = nil;
+    
     [super dealloc];
 }
 
@@ -88,10 +93,23 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
     [spinner stopAnimating];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapSmallUserImage:(id)sender event:(id)event {
+    [self.delegate profilePictureTouched];
+}
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Nav Stack Selectors
+
 //----------------------------------------------------------------------------------------------------
 - (void)shouldBeRemovedFromNav {
     

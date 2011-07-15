@@ -63,6 +63,12 @@
  */
 - (void)getFollowedItemsBefore:(NSInteger)before;
 
+/**
+ * Get items created by the given userID. Use before for pagination.
+ */
+- (void)getUserItemsForUserID:(NSInteger)userID
+                       before:(NSInteger)before;
+
 @end
 
 
@@ -87,12 +93,29 @@
            fromResourceID:(NSInteger)resourceID;
 
 /**
- * Array of parsed DWItem objects prepared based on the role specified
+ * Used for pinging delegates of the objects waiting for the right resourceID
+ */
+- (NSInteger)itemsResourceID;
+
+/**
+ * Array of parsed DWItem objects followed by the current user
  */
 - (void)followedItemsLoaded:(NSMutableArray*)items;
 
 /**
- * Error message encountered while loading items
+ * Error message encountered while loading followed items
  */
 - (void)followedItemsError:(NSString*)message;
+
+/**
+ * Array of parsed DWItem objects created by a specific user
+ */
+- (void)userItemsLoaded:(NSMutableArray*)items;
+
+/**
+ * Error message encountered while loading a user's items
+ */
+- (void)userItemsError:(NSString*)message;
+
+
 @end

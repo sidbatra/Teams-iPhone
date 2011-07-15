@@ -43,9 +43,6 @@ NSString* const kS3ItemsFolder	= @"items";
 
 
 //----------------------------------------------------------------------------------------------------
-NSInteger const kDefaultStyle           = 0;
-
-//----------------------------------------------------------------------------------------------------
 NSInteger const kResetNone              = -1;
 NSInteger const kResetHard              = 0;
 NSInteger const kResetSoft              = 1;
@@ -162,6 +159,8 @@ NSString* const kNUserUpdateError				= @"NUserUpdateError";
 NSString* const kNUserLogsIn					= @"NUserLogsIn";
 NSString* const kNFollowedItemsLoaded			= @"NFollowedItemsLoaded";
 NSString* const kNFollowedItemsError			= @"NFollowedItemsError";
+NSString* const kNUserItemsLoaded               = @"NUserItemsLoaded";
+NSString* const kNUserItemsError                = @"NUserItemsError";
 NSString* const kNNewTouchCreated               = @"NNewTouchCreated";
 NSString* const kNNewTouchError                 = @"NNewTouchError";
 NSString* const kNTouchesLoaded                 = @"NTouchesLoaded";

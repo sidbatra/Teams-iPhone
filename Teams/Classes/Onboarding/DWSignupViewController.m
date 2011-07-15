@@ -168,7 +168,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userCreationError:(NSString*)error {
-    NSLog(@"user error");
+
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 
