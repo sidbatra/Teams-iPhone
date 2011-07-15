@@ -4,20 +4,18 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreLocation/CoreLocation.h>
 
 #import "DWContainerViewController.h"
 #import "DWFollowedItemsViewController.h"
 #import "DWSmallProfilePicView.h"
-#import "DWProfilePicManager.h"
 #import "DWPostProgressView.h"
-#import "DWUserTitleView.h"
+
 
 /**
  * Primary view for the Feed tab and container for followed 
  * items view
  */
-@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWItemsViewControllerDelegate> {
+@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWItemsViewControllerDelegate,DWSmallProfilePicViewDelegate> {
     
 	DWFollowedItemsViewController	*_followedViewController;
     

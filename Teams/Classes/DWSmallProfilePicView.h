@@ -5,6 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DWSmallProfilePicViewDelegate;
 
 /**
  * Custom small user image view for userviewcontroller nav bar
@@ -13,13 +14,20 @@
     UIButton                    *profilePicButton;
     UIImageView                 *profilePicOverlay;
     UIActivityIndicatorView     *spinner;
+    
+    id<DWSmallProfilePicViewDelegate> _delegate;
 }
+
+/**
+ * Delegate to receive events about user interactions
+ */
+@property (nonatomic,assign) id<DWSmallProfilePicViewDelegate> delegate;
 
 
 /**
  * Custom init to specify the target for button events
  */
-- (id)initWithFrame:(CGRect)frame andTarget:(id)target;
+- (id)initWithFrame:(CGRect)frame;
 
 /**
  * Set the background image for the user image button
@@ -42,4 +50,16 @@
  */
 - (void)showNormalState;
 
+@end
+
+
+/**
+ * Delegate protocol for replaying user interaction events 
+ */
+@protocol DWSmallProfilePicViewDelegate
+
+/**
+ * Fired when the user clicks the profile picture
+ */
+- (void)profilePictureTouched;
 @end

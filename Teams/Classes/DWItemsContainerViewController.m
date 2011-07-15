@@ -140,11 +140,12 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 - (void)loadProfilePicView {
     
-    if (!self.smallProfilePicView)
+    if (!self.smallProfilePicView) {
         self.smallProfilePicView = [[[DWSmallProfilePicView alloc] 
                                      initWithFrame:CGRectMake(260, 0, 
-                                                              kNavTitleViewWidth,kNavTitleViewHeight) 
-                                     andTarget:self] autorelease];
+                                                              kNavTitleViewWidth,kNavTitleViewHeight)] autorelease];
+        self.smallProfilePicView.delegate = self;
+    }
     
     [self.smallProfilePicView enableProfilePicButton];
     
@@ -155,16 +156,6 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
         [self setProfilePicture:userImage];
     else
         [[DWSession sharedDWSession].currentUser startSmallImageDownload];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Nav-Bar Methods
-
-//----------------------------------------------------------------------------------------------------
-- (void)didTapSmallUserImage:(id)sender event:(id)event {
 }
 
 
@@ -215,7 +206,19 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWSmallProfilePicViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)profilePictureTouched {
+    NSLog(@"profile picture touched");
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWPostProgressViewDelegate
+
 //----------------------------------------------------------------------------------------------------
 - (void)deleteButtonPressed {
 	[[DWCreationQueue sharedDWCreationQueue] deleteRequests];
@@ -233,6 +236,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
+    NSLog(@"notification button touched");
 }
 
 
