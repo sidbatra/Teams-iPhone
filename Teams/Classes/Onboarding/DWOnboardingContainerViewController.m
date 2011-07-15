@@ -49,9 +49,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden   = YES;
     
-    self.splashScreenViewController = [[[DWSplashScreenViewController alloc] initWithDelegate:self] autorelease];
+    self.splashScreenViewController                 = [[[DWSplashScreenViewController alloc] init] autorelease];
+    self.splashScreenViewController.delegate    	= self;
+    
     [self.view addSubview:self.splashScreenViewController.view];
 }
 
@@ -68,8 +70,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loginInitiated {
-    DWLoginViewController *loginViewController = [[[DWLoginViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:loginViewController animated:YES];
+    
+    DWLoginViewController *loginViewController  = [[[DWLoginViewController alloc] init] autorelease];
+    loginViewController.delegate                = self;
+    
+    [self.navigationController pushViewController:loginViewController 
+                                         animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -78,7 +84,8 @@
     DWSignupViewController *signupViewController    = [[[DWSignupViewController alloc] init] autorelease];
     signupViewController.delegate                   = self;
     
-    [self.navigationController pushViewController:signupViewController animated:YES];
+    [self.navigationController pushViewController:signupViewController 
+                                         animated:YES];
     
     if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserEmail) 
         [signupViewController populateViewWithEmail:[DWSession sharedDWSession].currentUser.email];
@@ -114,7 +121,8 @@
     }
     else {
         DWCreateTeamViewController *createTeamViewController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
-        [self.navigationController pushViewController:createTeamViewController animated:YES];        
+        [self.navigationController pushViewController:createTeamViewController 
+                                             animated:YES];        
     }
 }
 
@@ -127,7 +135,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated {
     DWCreateProfileViewController *createProfileViewController = [[[DWCreateProfileViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:createProfileViewController animated:YES];
+    [self.navigationController pushViewController:createProfileViewController 
+                                         animated:YES];
 }
 
 
@@ -139,7 +148,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)profileCreated {
     DWInvitePeopleViewController *invitePeopleViewController = [[[DWInvitePeopleViewController alloc] initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:invitePeopleViewController animated:YES];
+    [self.navigationController pushViewController:invitePeopleViewController 
+                                         animated:YES];
 }
 
 
@@ -161,7 +171,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [self.navigationController setNavigationBarHidden:YES 
+                                             animated:YES];
 }
 
 @end

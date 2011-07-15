@@ -35,13 +35,15 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 @synthesize sessionController           = _sessionController;
 
+@synthesize delegate                    = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
 	self = [super init];
 	
 	if(self) {
-        _delegate = theDelegate;
+        //Custom initialization
 	}
     
 	return self;

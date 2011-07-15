@@ -25,15 +25,17 @@ static NSInteger kNumberOfPages = 4;
 
 @synthesize scrollView      = _scrollView;
 @synthesize pageControl     = _pageControl;
+
 @synthesize viewControllers = _viewControllers;
 
+@synthesize delegate        = _delegate;
+
+
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
     self = [super init];
     
-    if(self) {
-        _delegate = theDelegate;
-        
+    if(self) {        
         NSMutableArray *controllers = [[NSMutableArray alloc] init];
         for (unsigned i = 0; i < kNumberOfPages; i++) 
             [controllers addObject:[NSNull null]];
@@ -51,6 +53,7 @@ static NSInteger kNumberOfPages = 4;
     
     self.scrollView         = nil;
     self.pageControl        = nil;
+    
     self.viewControllers    = nil;
     
     [super dealloc];
@@ -153,12 +156,12 @@ static NSInteger kNumberOfPages = 4;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loginButtonClicked:(id)sender {
-    [_delegate loginInitiated];
+    [self.delegate loginInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)signupButtonClicked:(id)sender {
-    [_delegate signupInitiated];
+    [self.delegate signupInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------

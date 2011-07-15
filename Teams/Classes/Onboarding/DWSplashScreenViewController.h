@@ -13,6 +13,7 @@
 @interface DWSplashScreenViewController : UIViewController <UIScrollViewDelegate> {
     UIScrollView    *_scrollView;
     UIPageControl   *_pageControl;
+        
     NSMutableArray  *_viewControllers;
     
     BOOL            _pageControlUsed;
@@ -20,10 +21,6 @@
     id<DWSplashScreenViewControllerDelegate>    _delegate;
 }
 
-/**
- * Mutable array for view controllers having the splash screen images
- */
-@property (nonatomic, retain) NSMutableArray *viewControllers;
 
 /**
  * IBOutlets
@@ -32,16 +29,22 @@
 @property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
 
 /**
+ * Mutable array for view controllers having the splash screen images
+ */
+@property (nonatomic, retain) NSMutableArray *viewControllers;
+
+/**
+ * Delegate to send updates to
+ */
+@property (nonatomic,assign) id<DWSplashScreenViewControllerDelegate> delegate;
+
+
+/**
  * IBAction methods
  */
 - (IBAction)loginButtonClicked:(id)sender;
 - (IBAction)signupButtonClicked:(id)sender;
 - (IBAction)changePage:(id)sender;
-
-/*
- * Custom init with delegate
- */
-- (id)initWithDelegate:(id)theDelegate;
 
 
 @end
