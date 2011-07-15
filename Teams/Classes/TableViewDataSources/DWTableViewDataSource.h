@@ -90,4 +90,10 @@
  */
 - (void)displayError:(NSString*)message;
 
+/**
+ * Inserts a new row into the table view
+ * with animation
+ */
+- (void)insertRowAtIndex:(NSInteger)index;
+
 @end

@@ -93,7 +93,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 	if(self.tabBarController == nil) 
 		[self setupApplication];
-			
+    
 	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
 }
 

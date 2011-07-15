@@ -330,6 +330,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)insertRowAtIndex:(NSInteger)index {
+    
+    NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
+                                                     inSection:0];
+    NSArray *indexPaths		= [NSArray arrayWithObjects:indexPath,nil];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths
+                          withRowAnimation:UITableViewRowAnimationTop];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
