@@ -23,11 +23,6 @@
     id<DWCreateTeamViewControllerDelegate>   _delegate;
 }
 
-/**
- * Custom subviews for navigation bar
- */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
  * IBOutlets
@@ -35,10 +30,17 @@
 @property (nonatomic, retain) IBOutlet UITextField *teamNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
 
-/*
- * Custom init with delegate
+/**
+ * Custom subviews for navigation bar
  */
-- (id)initWithDelegate:(id)theDelegate;
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Delegate to send updates to
+ */
+@property (nonatomic,assign) id<DWCreateTeamViewControllerDelegate> delegate;
+
 
 @end
 

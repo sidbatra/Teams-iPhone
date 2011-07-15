@@ -31,20 +31,21 @@
 @property (nonatomic, retain) IBOutlet UILabel *resultsLabel;
 
 /**
- * IBActions
- */
-- (IBAction)searchContactsTextFieldEditingChanged:(id)sender;
-
-/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
-/*
- * Custom init with delegate
+/**
+ * Delegate to send updates to
  */
-- (id)initWithDelegate:(id)theDelegate;
+@property (nonatomic,assign) id<DWInvitePeopleViewControllerDelegate> delegate;
+
+
+/**
+ * IBActions
+ */
+- (IBAction)searchContactsTextFieldEditingChanged:(id)sender;
 
 @end
 

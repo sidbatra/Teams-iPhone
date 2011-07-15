@@ -24,24 +24,26 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 //----------------------------------------------------------------------------------------------------
 @implementation DWLoginViewController
 
-@synthesize password                    = _password;
-
 @synthesize loginFieldsContainerView    = _loginFieldsContainerView;
 @synthesize emailTextField              = _emailTextField;
 @synthesize passwordTextField           = _passwordTextField;
+
+@synthesize password                    = _password;
 
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
 @synthesize sessionController           = _sessionController;
 
+@synthesize delegate                    = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
 	self = [super init];
 	
 	if(self) {
-        _delegate = theDelegate;
+        //Custom initialization
 	}
     
 	return self;
@@ -51,11 +53,11 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 - (void)dealloc {	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.password                   = nil;
-    
     self.loginFieldsContainerView   = nil;
 	self.emailTextField             = nil;
 	self.passwordTextField          = nil;
+    
+	self.password                   = nil;
     
     self.navTitleView               = nil;
 	self.navRightBarButtonView      = nil;
@@ -71,7 +73,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:_delegate];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
 
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -178,7 +180,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 //----------------------------------------------------------------------------------------------------
 - (void)sessionCreatedForUser:(DWUser*)user {    
     user.encryptedPassword  = self.password;    
-    [_delegate userLoggedIn:user];
+    [self.delegate userLoggedIn:user];
 }
 
 //----------------------------------------------------------------------------------------------------

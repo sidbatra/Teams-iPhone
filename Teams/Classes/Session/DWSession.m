@@ -94,10 +94,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     self.currentUser.isCurrentUser  = YES;
         
     [self storeCurrentUserOnDisk];
-    
-    NSLog(@"session created");
-    NSLog(@"%@",self.currentUser.encryptedPassword);
-    NSLog(@"%@",self.currentUser.email);    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -124,12 +120,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     
     NSInteger state;
     
-    if (self.currentUser.hasInvitedPeople)
+    if (!self.currentUser) 
+        return kSessionStateEmpty;
+    
+    if (self.currentUser.hasInvitedPeople) 
         state = kSessionStateComplete;
 
-    else if (self.currentUser.firstName) 
+    else if (![self.currentUser.firstName isKindOfClass:[NSNull class]])
         state = kSessionStateTillUserDetails;
-
+    
     else if(self.currentUser.team) 
         state = kSessionStateTillTeamDetails;
     
@@ -139,7 +138,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     else 
         state = kSessionStateEmpty;
     
-    NSLog(@"the state is %d",state);
     return state;
 }
 

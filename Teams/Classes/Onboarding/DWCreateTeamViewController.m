@@ -24,13 +24,15 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
+@synthesize delegate                    = _delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)initWithDelegate:(id)theDelegate {
     
     self = [super init];
     
     if (self) {
-        _delegate   = theDelegate;
+        //Custom initialization
     }
     return self;
 }
@@ -62,7 +64,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:_delegate];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc]
@@ -95,7 +97,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [_delegate teamCreated];
+    [self.delegate teamCreated];
 }
 
 

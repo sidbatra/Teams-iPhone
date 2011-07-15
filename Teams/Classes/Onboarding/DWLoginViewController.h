@@ -33,22 +33,6 @@
     id <DWLoginViewControllerDelegate>      _delegate;
 }
 
-/**
- * Encrypted user password
- */
-@property (nonatomic,copy) NSString *password;
-
-/**
- * Controller for handling session requests
- */
-@property (nonatomic,retain) DWSessionController *sessionController;
-
-/**
- * Custom subviews for navigation bar
- */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
-
 
 /**
  * IBOutlets
@@ -57,10 +41,27 @@
 @property (nonatomic, retain) IBOutlet UITextField *emailTextField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
 
-/*
- * Custom init with delegate
+/**
+ * Encrypted user password
  */
-- (id)initWithDelegate:(id)theDelegate;
+@property (nonatomic,copy) NSString *password;
+
+/**
+ * Custom subviews for navigation bar
+ */
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Controller for handling session requests
+ */
+@property (nonatomic,retain) DWSessionController *sessionController;
+
+/**
+ * Delegate to send updates to
+ */
+@property (nonatomic,assign) id<DWLoginViewControllerDelegate> delegate;
+
 
 @end
 
