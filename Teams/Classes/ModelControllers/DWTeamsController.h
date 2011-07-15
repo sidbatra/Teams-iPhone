@@ -48,4 +48,14 @@
  */
 - (void)teamLoadError:(NSString*)error;
 
+/**
+ * Array of parsed DWTeam objects which are currently popular
+ */
+- (void)popularTeamsLoaded:(NSMutableArray*)teams;
+
+/**
+ * Error message encountered while loading popular teams
+ */
+- (void)popularTeamsError:(NSString*)message;
+
 @end

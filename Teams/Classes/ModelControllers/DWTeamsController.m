@@ -10,7 +10,21 @@
 #import "DWTeam.h"
 
 
-static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
+static NSString* const kTeamURI             = @"/teams/domain/%@.json?";
+static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
+
+/**
+ * Private method and property declarations
+ */
+@interface DWTeamsController()
+
+/**
+ * Populate a mutable teams array from the given teams JSON array
+ */
+- (NSMutableArray*)populateTeamsArrayFromJSON:(NSArray*)data;
+
+@end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -35,14 +49,42 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 												 selector:@selector(teamLoadError:) 
 													 name:kNTeamLoadError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(popularTeamsLoaded:) 
+													 name:kNPopularTeamsLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(popularTeamsError:) 
+													 name:kNPopularTeamsError
+												   object:nil];
     }
     return self;
 }
 
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    NSLog(@"Teams controller released");
+    
+    [super dealloc];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Show
+
 //----------------------------------------------------------------------------------------------------
 - (void)getTeamFromDomain:(NSString*)domain {
-
+    
     NSData *domainData  = [domain dataUsingEncoding:NSUTF8StringEncoding];
+    
     NSString *localURL  = [NSString stringWithFormat:kTeamURI,
                            [[domainData base64Encoding] stringByEncodingHTMLCharacters]];
     
@@ -52,13 +94,31 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
                                                        requestMethod:kGet];
 }
 
+
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Index
+
+//----------------------------------------------------------------------------------------------------
+- (NSMutableArray*)populateTeamsArrayFromJSON:(NSArray*)data {
     
-    NSLog(@"Teams controller released");
+    NSMutableArray *teams   = [NSMutableArray arrayWithCapacity:[data count]];
     
-    [super dealloc];
+    for(NSDictionary *team in data) {
+        [teams addObject:[DWTeam create:team]];
+    }
+    
+    return teams;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getPopularTeams {
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:kPopularTeamsURI
+                                                 successNotification:kNPopularTeamsLoaded
+                                                   errorNotification:kNPopularTeamsError
+                                                       requestMethod:kGet];
 }
 
 
@@ -100,5 +160,35 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
                         withObject:[error localizedDescription]];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)popularTeamsLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(popularTeamsLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSArray *data           = [[notification userInfo] objectForKey:kKeyData];
+    NSMutableArray *teams   = [self populateTeamsArrayFromJSON:data];
+    
+    [self.delegate performSelector:sel 
+                        withObject:teams];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)popularTeamsError:(NSNotification*)notification {
+    
+    SEL sel = @selector(popularTeamsError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
 
 @end

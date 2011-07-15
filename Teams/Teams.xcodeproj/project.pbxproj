@@ -2150,10 +2150,10 @@
 				2632E59213CCE0D7005B1B1E /* DWUsersController.m */,
 				BBF8989A13CA3F2800D5C5FB /* DWItemsController.h */,
 				BBF8989B13CA3F2800D5C5FB /* DWItemsController.m */,
-				BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */,
-				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
 				26A25B1913CF62C300AF87B4 /* DWTeamsController.h */,
 				26A25B1A13CF62C300AF87B4 /* DWTeamsController.m */,
+				BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */,
+				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
