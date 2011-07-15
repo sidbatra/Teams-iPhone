@@ -4,10 +4,12 @@
 //
 
 #import "DWUserItemsViewController.h"
-#import "DWUserItemsDataSource.h"
+#import "DWUserItemsDataSource.h"  
+
 #import "DWItem.h"
 #import "DWUser.h"
 #import "NSObject+Helpers.h"
+#import "DWGUIManager.h"
 
 
 
@@ -61,6 +63,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self.userItemsDataSource loadItems];
 }

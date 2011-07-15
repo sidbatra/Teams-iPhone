@@ -5,6 +5,7 @@
 
 #import "DWInvitePeopleViewController.h"
 #import "ABContactsHelper.h"
+#import "DWConstants.h"
 #import "DWGUIManager.h"
 
 static NSString* const kAddPeopleText           = @"Add People";
