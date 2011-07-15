@@ -227,14 +227,14 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
                            withPreviewImage:self.previewImageView.image];
     }
     
-    /*
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                 [NSNumber numberWithInteger:kTabBarFeedIndex],kKeyTabIndex,
                                                                 [NSNumber numberWithInteger:kResetHard],kKeyResetType,
                                                                 nil]];
-	*/
+	
 	
     [self.parentViewController dismissModalViewControllerAnimated:NO];
 }

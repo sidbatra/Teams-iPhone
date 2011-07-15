@@ -147,6 +147,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)scrollToTop {
+    [self.tableView scrollRectToVisible:CGRectMake(0,0,1,1) 
+                               animated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)provideResourceToVisibleCells:(NSInteger)resourceType
                              resource:(id)resource
                            resourceID:(NSInteger)resourceID {
@@ -319,8 +325,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.errorView performSelector:sel
                          withObject:message];
     
-    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) 
-                               animated:NO];
+    [self scrollToTop];
     
     self.loadingView.hidden         = YES;
     self.errorView.hidden           = NO;
