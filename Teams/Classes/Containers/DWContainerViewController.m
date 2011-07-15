@@ -5,6 +5,7 @@
 #import "DWContainerViewController.h"
 #import "DWTabBarController.h"
 #import "DWUserItemsViewController.h"
+#import "DWTeamItemsViewController.h"
 #import "DWSharingManager.h"
 #import "DWItem.h"
 #import "DWConstants.h"
@@ -141,7 +142,15 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamSelected:(DWTeam*)team {
-    NSLog(@"team selected - %d",team.databaseID);
+    
+    DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
+                                                       initWithTeam:team]
+                                                      autorelease];
+    
+    teamItemsController.delegate                    = (id)self;
+    
+    [self.navigationController pushViewController:teamItemsController
+                                         animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------

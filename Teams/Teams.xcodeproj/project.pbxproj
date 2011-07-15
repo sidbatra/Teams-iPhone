@@ -218,6 +218,7 @@
 		BB272BF613CFE10D00FDACA1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BF513CFE10B00FDACA1 /* DWLoadingView.m */; };
 		BB272BF913CFF0CA00FDACA1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BF813CFF0C200FDACA1 /* DWErrorView.m */; };
 		BB272BFC13CFFA7800FDACA1 /* DWTeamItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BFB13CFFA7600FDACA1 /* DWTeamItemsDataSource.m */; };
+		BB272BFF13CFFB6B00FDACA1 /* DWTeamItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BFE13CFFB6600FDACA1 /* DWTeamItemsViewController.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -755,6 +756,8 @@
 		BB272BF813CFF0C200FDACA1 /* DWErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWErrorView.m; path = Classes/DWErrorView.m; sourceTree = "<group>"; };
 		BB272BFA13CFFA7400FDACA1 /* DWTeamItemsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamItemsDataSource.h; sourceTree = "<group>"; };
 		BB272BFB13CFFA7600FDACA1 /* DWTeamItemsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamItemsDataSource.m; sourceTree = "<group>"; };
+		BB272BFD13CFFB6400FDACA1 /* DWTeamItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamItemsViewController.h; sourceTree = "<group>"; };
+		BB272BFE13CFFB6600FDACA1 /* DWTeamItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamItemsViewController.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -1696,6 +1699,8 @@
 				BB272B2D13CFCCBE00FDACA1 /* DWFollowedItemsViewController.m */,
 				BB272B3013CFCCBE00FDACA1 /* DWUserItemsViewController.h */,
 				BB272B3113CFCCBE00FDACA1 /* DWUserItemsViewController.m */,
+				BB272BFD13CFFB6400FDACA1 /* DWTeamItemsViewController.h */,
+				BB272BFE13CFFB6600FDACA1 /* DWTeamItemsViewController.m */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -2756,6 +2761,7 @@
 				BB272BF613CFE10D00FDACA1 /* DWLoadingView.m in Sources */,
 				BB272BF913CFF0CA00FDACA1 /* DWErrorView.m in Sources */,
 				BB272BFC13CFFA7800FDACA1 /* DWTeamItemsDataSource.m in Sources */,
+				BB272BFF13CFFB6B00FDACA1 /* DWTeamItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
