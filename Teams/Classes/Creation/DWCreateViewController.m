@@ -178,9 +178,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
--(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {
-    //[[DWMemoryPool sharedDWMemoryPool] freeMemory];
-    
+-(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
     DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] autorelease];
     [picker prepareForMediaWithPickerMode:pickerMode];
     [self presentModalViewController:picker animated:NO];   

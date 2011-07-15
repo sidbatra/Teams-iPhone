@@ -244,6 +244,7 @@ extern NSString* const kNNewFeedItemsLoaded;
 extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
 extern NSString* const kNPaginationCellReached;
+extern NSString* const kNEnteringLowMemoryState;
 
 /**
  * Nav bar title view dimensions

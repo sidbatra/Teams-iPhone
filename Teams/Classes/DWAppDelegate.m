@@ -6,8 +6,6 @@
 #import "DWAppDelegate.h"
 #import "DWContainerViewController.h"
 #import "DWCreateViewController.h"
-#import "DWRequestsManager.h"
-#import "DWMemoryPool.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 
@@ -60,7 +58,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-	[[DWMemoryPool sharedDWMemoryPool] freeMemory];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNEnteringLowMemoryState
+                                                        object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -118,7 +117,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationDidReceiveMemoryWarning:(UIApplication *)application {	
-	[[DWMemoryPool sharedDWMemoryPool] freeMemory];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNEnteringLowMemoryState
+                                                        object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------

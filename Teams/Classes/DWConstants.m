@@ -218,6 +218,7 @@ NSString* const kNNewFeedItemsLoaded            = @"NNewFeedItemsLoaded";
 NSString* const kNNewFeedItemsRead              = @"NNewFeedItemsRead";
 NSString* const kNUserProfilePicUpdated         = @"NUserProfilePicUpdated";
 NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
+NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
 
 
 
