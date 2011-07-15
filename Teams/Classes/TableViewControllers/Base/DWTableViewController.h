@@ -20,6 +20,7 @@
     BOOL                        _isPullToRefreshActive;
     
 	EGORefreshTableHeaderView   *_refreshHeaderView;
+    UIView                      *_loadingView;
 }
 
 /**
@@ -32,6 +33,11 @@
  * View for pull to refresh added above the table view
  */
 @property (nonatomic,retain) EGORefreshTableHeaderView *refreshHeaderView;
+
+/**
+ * View displayed when results are being fetched from the server
+ */
+@property (nonatomic,retain) UIView *loadingView;
 
 
 @end

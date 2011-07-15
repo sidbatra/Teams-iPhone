@@ -5,6 +5,7 @@
 
 #import "DWTableViewController.h"
 #import "DWModelPresenter.h"
+#import "DWLoadingView.h"
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
@@ -17,6 +18,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  */
 @interface DWTableViewController()
 
+/**
+ * Get a UIView which is displayed while the data is being loaded
+ */
+- (UIView*)getLoadingView;
+   
 /**
  * Get the data source object for the table view controller
  */
@@ -48,6 +54,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 @synthesize modelPresentationStyle  = _modelPresentationStyle;
 @synthesize refreshHeaderView       = _refreshHeaderView;
+@synthesize loadingView             = _loadingView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -65,6 +72,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     self.modelPresentationStyle     = nil;
 	self.refreshHeaderView          = nil;
+    self.loadingView                = nil;
     
     [super dealloc];
 }
@@ -72,6 +80,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGRect frame		= self.view.frame;
+	frame.origin.y		= 0; 
+	self.view.frame		= frame;
+    
+    self.tableView.scrollEnabled = NO;
     
     self.tableView.backgroundColor          =  [UIColor colorWithRed:0.2588
                                                                green:0.2588 
@@ -97,6 +111,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	[self.tableView addSubview:self.refreshHeaderView];
     
     [self getDataSource].delegate   = self;
+    
+
+    
+    if(!self.loadingView)
+        self.loadingView = [self getLoadingView];
+    
+    [self.view addSubview:self.loadingView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -140,6 +161,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getLoadingView {
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -247,7 +273,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)reloadTableView {
-    _isPullToRefreshActive = NO;
+    self.tableView.scrollEnabled    = YES;
+    self.loadingView.hidden         = YES;
+    _isPullToRefreshActive          = NO;
+    
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     [self.tableView reloadData];
 }

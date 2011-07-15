@@ -215,6 +215,7 @@
 		BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */; };
 		BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */; };
 		BB272B5C13CFCE5A00FDACA1 /* UIImage+ImageProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5813CFCE5A00FDACA1 /* UIImage+ImageProcessing.m */; };
+		BB272BF613CFE10D00FDACA1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BF513CFE10B00FDACA1 /* DWLoadingView.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -746,6 +747,8 @@
 		BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
 		BB272B5713CFCE5A00FDACA1 /* UIImage+ImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageProcessing.h"; sourceTree = "<group>"; };
 		BB272B5813CFCE5A00FDACA1 /* UIImage+ImageProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageProcessing.m"; sourceTree = "<group>"; };
+		BB272BF413CFE10A00FDACA1 /* DWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLoadingView.h; path = Classes/DWLoadingView.h; sourceTree = "<group>"; };
+		BB272BF513CFE10B00FDACA1 /* DWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWLoadingView.m; path = Classes/DWLoadingView.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -1562,6 +1565,8 @@
 				BBE70D9E135D10C2001D83CC /* DWPostProgressView.m */,
 				BB33130512F25F3E00B713F9 /* DWImageView.h */,
 				BB33130612F25F3E00B713F9 /* DWImageView.m */,
+				BB272BF413CFE10A00FDACA1 /* DWLoadingView.h */,
+				BB272BF513CFE10B00FDACA1 /* DWLoadingView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -2738,6 +2743,7 @@
 				BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */,
 				BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */,
 				BB272B5C13CFCE5A00FDACA1 /* UIImage+ImageProcessing.m in Sources */,
+				BB272BF613CFE10D00FDACA1 /* DWLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
