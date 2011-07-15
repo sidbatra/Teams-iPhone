@@ -39,6 +39,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userItemsError:(NSString *)message {
     NSLog(@"User items error - %@",message);
+    [self.delegate displayError:message];
 }
 
 

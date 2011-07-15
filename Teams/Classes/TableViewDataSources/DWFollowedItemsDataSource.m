@@ -31,6 +31,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)followedItemsError:(NSString *)message {
     NSLog(@"Followed items error - %@",message);
+    [self.delegate displayError:message];
 }
 
 

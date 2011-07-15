@@ -6,6 +6,7 @@
 #import "DWTableViewController.h"
 #import "DWModelPresenter.h"
 #import "DWLoadingView.h"
+#import "DWErrorView.h"
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
@@ -21,7 +22,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 /**
  * Get a UIView which is displayed while the data is being loaded
  */
-- (UIView*)getLoadingView;
+- (UIView*)getTableLoadingView;
+
+/**
+ * Get a UIView which is displayed when an error occurs
+ */
+- (UIView*)getTableErrorView;
    
 /**
  * Get the data source object for the table view controller
@@ -55,6 +61,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 @synthesize modelPresentationStyle  = _modelPresentationStyle;
 @synthesize refreshHeaderView       = _refreshHeaderView;
 @synthesize loadingView             = _loadingView;
+@synthesize errorView               = _errorView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -73,6 +80,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self.modelPresentationStyle     = nil;
 	self.refreshHeaderView          = nil;
     self.loadingView                = nil;
+    self.errorView                  = nil;
     
     [super dealloc];
 }
@@ -115,9 +123,15 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
     
     if(!self.loadingView)
-        self.loadingView = [self getLoadingView];
+        self.loadingView = [self getTableLoadingView];
     
     [self.view addSubview:self.loadingView];
+    
+    
+    if(!self.errorView)
+        self.errorView  = [self getTableErrorView];
+    
+    [self.view addSubview:self.errorView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -164,8 +178,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
-- (UIView*)getLoadingView {
+- (UIView*)getTableLoadingView {
     return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getTableErrorView {
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+    errorView.delegate      = self;
+    errorView.hidden        = YES;
+    
+    return errorView;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -275,10 +298,30 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)reloadTableView {
     self.tableView.scrollEnabled    = YES;
     self.loadingView.hidden         = YES;
+    self.errorView.hidden           = YES;
+    
     _isPullToRefreshActive          = NO;
     
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
     [self.tableView reloadData];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayError:(NSString *)message {
+    SEL sel = @selector(setErrorMessage:);
+    
+    if(![self.errorView respondsToSelector:sel])
+        return;
+    
+    [self.errorView performSelector:sel
+                         withObject:message];
+    
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) 
+                               animated:NO];
+    
+    self.loadingView.hidden         = YES;
+    self.errorView.hidden           = NO;
+    self.tableView.scrollEnabled    = NO;
 }
 
 
@@ -301,6 +344,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
 	return nil;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Error view delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)errorViewTouched {
+    self.loadingView.hidden = NO;
+    self.errorView.hidden   = YES;
+    [[self getDataSource] refreshInitiated];
 }
 
 @end

@@ -21,6 +21,7 @@
     
 	EGORefreshTableHeaderView   *_refreshHeaderView;
     UIView                      *_loadingView;
+    UIView                      *_errorView;
 }
 
 /**
@@ -38,6 +39,11 @@
  * View displayed when results are being fetched from the server
  */
 @property (nonatomic,retain) UIView *loadingView;
+
+/**
+ * View displayed when an error occurs
+ */
+@property (nonatomic,retain) UIView *errorView;
 
 
 @end
