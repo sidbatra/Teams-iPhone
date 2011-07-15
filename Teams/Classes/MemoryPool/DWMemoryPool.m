@@ -85,15 +85,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
-    /*
-	for(int i=0;i<kMPTotalClasses;i++) {
-		NSMutableDictionary *poolForClass = [self.memoryPool objectAtIndex:i];
-	
-		for(DWPoolObject *poolObject in [poolForClass allValues]) {
-			[poolObject freeMemory];
-		}
-	}
-     */
+    
+    SEL sel = @selector(freeMemory);
+    
+    for(NSMutableDictionary *pool in [self.memoryPool allValues]) {
+        
+        for(id<NSObject> object in [pool allValues]) {
+            
+            if([object respondsToSelector:sel])
+                [object performSelector:sel];
+        }
+    }
 }
 
 @end
