@@ -20,4 +20,15 @@
  */
 @property (nonatomic,retain) DWTeamsController *teamsController;
 
+
+/**
+ * Populate teams into the objects array
+ */
+- (void)populateTeams:(NSMutableArray*)teams;
+
+/**
+ * Stub method overriden by base class to start the loading of teams into the table view
+ */
+- (void)loadTeams;
+
 @end

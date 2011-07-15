@@ -29,7 +29,7 @@
 - (void)populateItems:(NSMutableArray*)items;
 
 /**
- * Load followed items into the table view
+ * Stub method overriden by base class to start the loading of items into the table view
  */
 - (void)loadItems;
 

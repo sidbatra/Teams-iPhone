@@ -27,6 +27,11 @@
  */
 - (void)getTeamFromDomain:(NSString*)domain;
 
+/**
+ * Get a list of popular teams
+ */
+- (void)getPopularTeams;
+
 @end
 
 

@@ -223,6 +223,7 @@
 		BB272C2813D0F71E00FDACA1 /* DWTeamFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2713D0F71E00FDACA1 /* DWTeamFeedCell.m */; };
 		BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */; };
 		BB272C2E13D1003300FDACA1 /* DWTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2D13D1003000FDACA1 /* DWTeamsDataSource.m */; };
+		BB272C3113D101D400FDACA1 /* DWPopularTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -767,6 +768,8 @@
 		BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamPresenter.m; sourceTree = "<group>"; };
 		BB272C2C13D1002F00FDACA1 /* DWTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsDataSource.h; sourceTree = "<group>"; };
 		BB272C2D13D1003000FDACA1 /* DWTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsDataSource.m; sourceTree = "<group>"; };
+		BB272C2F13D101CB00FDACA1 /* DWPopularTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPopularTeamsDataSource.h; sourceTree = "<group>"; };
+		BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPopularTeamsDataSource.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -2091,6 +2094,8 @@
 				BB272BFB13CFFA7600FDACA1 /* DWTeamItemsDataSource.m */,
 				BB272C2C13D1002F00FDACA1 /* DWTeamsDataSource.h */,
 				BB272C2D13D1003000FDACA1 /* DWTeamsDataSource.m */,
+				BB272C2F13D101CB00FDACA1 /* DWPopularTeamsDataSource.h */,
+				BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */,
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
@@ -2774,6 +2779,7 @@
 				BB272C2813D0F71E00FDACA1 /* DWTeamFeedCell.m in Sources */,
 				BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */,
 				BB272C2E13D1003300FDACA1 /* DWTeamsDataSource.m in Sources */,
+				BB272C3113D101D400FDACA1 /* DWPopularTeamsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
