@@ -27,10 +27,8 @@
 - (void)itemCreated:(DWItem *)item 
      fromResourceID:(NSInteger)resourceID {
     
-    [self.objects insertObject:item
-                       atIndex:0];
-    
-    [self.delegate insertRowAtIndex:0];
+    [self addObject:item
+            atIndex:0];
 }
 
 //----------------------------------------------------------------------------------------------------

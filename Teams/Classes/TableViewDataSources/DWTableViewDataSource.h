@@ -71,6 +71,13 @@
  */
 - (void)paginate;
 
+/**
+ * Add the given object into the given index
+ * and instruct table view to display it with animation
+ */
+- (void)addObject:(id)object
+          atIndex:(NSInteger)index;
+
 @end
 
 
