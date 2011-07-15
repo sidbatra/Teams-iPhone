@@ -218,6 +218,7 @@
 		BB272BFF13CFFB6B00FDACA1 /* DWTeamItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272BFE13CFFB6600FDACA1 /* DWTeamItemsViewController.m */; };
 		BB272C0813D0AEC200FDACA1 /* DWNavBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C0513D0AEC200FDACA1 /* DWNavBarBackButton.m */; };
 		BB272C0913D0AEC200FDACA1 /* DWNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C0713D0AEC200FDACA1 /* DWNavigationBar.m */; };
+		BB272C0C13D0B41900FDACA1 /* DWTeamsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C0B13D0B41800FDACA1 /* DWTeamsContainerViewController.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -753,6 +754,8 @@
 		BB272C0513D0AEC200FDACA1 /* DWNavBarBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavBarBackButton.m; sourceTree = "<group>"; };
 		BB272C0613D0AEC200FDACA1 /* DWNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBar.h; sourceTree = "<group>"; };
 		BB272C0713D0AEC200FDACA1 /* DWNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationBar.m; sourceTree = "<group>"; };
+		BB272C0A13D0B41700FDACA1 /* DWTeamsContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsContainerViewController.h; sourceTree = "<group>"; };
+		BB272C0B13D0B41800FDACA1 /* DWTeamsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsContainerViewController.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -1697,6 +1700,8 @@
 				BB272B3813CFCD4500FDACA1 /* DWContainerViewController.m */,
 				BB272B3913CFCD4500FDACA1 /* DWItemsContainerViewController.h */,
 				BB272B3A13CFCD4500FDACA1 /* DWItemsContainerViewController.m */,
+				BB272C0A13D0B41700FDACA1 /* DWTeamsContainerViewController.h */,
+				BB272C0B13D0B41800FDACA1 /* DWTeamsContainerViewController.m */,
 			);
 			name = Containers;
 			path = Classes/Containers;
@@ -2741,6 +2746,7 @@
 				BB272BFF13CFFB6B00FDACA1 /* DWTeamItemsViewController.m in Sources */,
 				BB272C0813D0AEC200FDACA1 /* DWNavBarBackButton.m in Sources */,
 				BB272C0913D0AEC200FDACA1 /* DWNavigationBar.m in Sources */,
+				BB272C0C13D0B41900FDACA1 /* DWTeamsContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
