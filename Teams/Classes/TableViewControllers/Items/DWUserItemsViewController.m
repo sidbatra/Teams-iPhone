@@ -4,6 +4,7 @@
 //
 
 #import "DWUserItemsViewController.h"
+#import "DWUserItemsDataSource.h"
 #import "DWItem.h"
 #import "DWUser.h"
 #import "NSObject+Helpers.h"

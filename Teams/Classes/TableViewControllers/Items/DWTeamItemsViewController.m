@@ -5,6 +5,7 @@
 
 #import "DWTeamItemsViewController.h"
 #import "DWTeamItemsDataSource.h"
+#import "DWItem.h"
 #import "DWTeam.h"
 #import "NSObject+Helpers.h"
 
@@ -26,7 +27,7 @@
         self.teamItemsDataSource.teamID = team.databaseID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
-                                        forKey:[[DWTeam class] className]];
+                                        forKey:[[DWItem class] className]];
     }
     
     return self;
