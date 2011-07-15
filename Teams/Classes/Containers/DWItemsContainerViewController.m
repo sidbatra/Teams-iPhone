@@ -9,7 +9,6 @@
 #import "DWNotificationsHelper.h"
 #import "DWSession.h"
 
-static NSString* const kTabTitle                = @"Feed";
 static NSString* const kMsgUnload               = @"Unload called on items container";
 static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
@@ -83,7 +82,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];    
-    
+
     [self loadNotificationsButton];
     [self loadProgressView];
     [self loadFollowedView];
@@ -92,6 +91,8 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {		
+    [super viewDidUnload];
+    
 	NSLog(@"%@",kMsgUnload);
 }
 

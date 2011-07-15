@@ -6,9 +6,9 @@
 #import <Foundation/Foundation.h>
 
 #import "DWItemsViewController.h"
-#import "DWUserItemsDataSource.h"
 
 @class DWUser;
+@class DWUserItemsDataSource;
 
 /**
  * Table view for the items created by a user

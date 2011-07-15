@@ -5,7 +5,6 @@
 
 #import "DWTabBarController.h"
 #import "DWCreateViewController.h"
-#import "DWTabBar.h"
 #import "DWConstants.h"
 
 #define kApplicationFrame	CGRectMake(0,20,320,460)
@@ -59,20 +58,19 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 @synthesize topShadowView           = _topShadowView;
 @synthesize bottomShadowView        = _bottomShadowView;
 @synthesize subControllers          = _subControllers;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate 
-	   withTabBarFrame:(CGRect)tabBarFrame
-		 andTabBarInfo:(NSArray*)tabBarInfo {
+- (id)initWithTabBarFrame:(CGRect)tabBarFrame
+            andTabBarInfo:(NSArray*)tabBarInfo {
 	
 	self = [super init];
 	
 	if(self) {
 		
-        _delegate                       = theDelegate;
 		self.tabBar                     = [[[DWTabBar alloc] initWithFrame:tabBarFrame
-                                                                  withInfo:tabBarInfo 
-                                                               andDelegate:self] autorelease];
+                                                                  withInfo:tabBarInfo] autorelease];
+        self.tabBar.delegate            = self;
         
         self.topShadowView              = [[[UIImageView alloc] initWithImage:
                                             [UIImage imageNamed:kImgTopShadow]] autorelease];
@@ -94,6 +92,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
     self.topShadowView      = nil;
     self.bottomShadowView   = nil;
 	self.subControllers     = nil;
+    self.delegate           = nil;
 	
     [super dealloc];
 }

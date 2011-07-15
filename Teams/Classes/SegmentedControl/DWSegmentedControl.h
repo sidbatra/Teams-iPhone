@@ -28,15 +28,21 @@
 @property (nonatomic,readonly) NSInteger selectedIndex;
 
 /**
+ * Delegate received events about changes in segment selection
+ */
+@property (nonatomic,assign) id<DWSegmentedControlDelegate> delegate;
+
+
+/**
  * Init with a frame, delegate to receive index change events
  * and an array of dictionaries to provide width, selection
  * status, state images and other properties of each segment
  */
 - (id)initWithFrame:(CGRect)frame 
-   withSegmentsInfo:(NSArray*)segmentsInfo
-		andDelegate:(id)theDelegate;
+   withSegmentsInfo:(NSArray*)segmentsInfo;
 
 @end
+
 
 /**
  * Delegate protocol for the custom segmented control 

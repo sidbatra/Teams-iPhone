@@ -24,13 +24,14 @@
 #pragma mark DWItemsControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)followedItemsLoaded:(NSMutableArray *)items {  
+- (void)followedItemsLoaded:(NSMutableArray *)items { 
     [self populateItems:items];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)followedItemsError:(NSString *)message {
     NSLog(@"Followed items error - %@",message);
+    [self.delegate displayError:message];
 }
 
 

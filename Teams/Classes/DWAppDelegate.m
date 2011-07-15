@@ -4,15 +4,10 @@
 //
 
 #import "DWAppDelegate.h"
-#import "DWTabBarController.h"
-#import "DWItemsContainerViewController.h"
+#import "DWContainerViewController.h"
 #import "DWCreateViewController.h"
-//#import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWMembership.h"
-#import "DWItemsController.h"
-#import "JSON.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 
@@ -156,27 +151,20 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 							nil],
 						   nil];
 	
-	self.tabBarController					= [[[DWTabBarController alloc] initWithDelegate:self 
-																			withTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
-																			  andTabBarInfo:tabBarInfo] autorelease];
+	self.tabBarController	= [[[DWTabBarController alloc] initWithTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
+                                                                 andTabBarInfo:tabBarInfo] autorelease];
+    
+    self.tabBarController.delegate = self;
 	
-	
-	/*
-	self.tabBarController.subControllers    = [NSArray arrayWithObjects:
+    [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
                                                self.teamsNavController,
                                                [[[UIViewController alloc] init] autorelease],
                                                self.itemsNavController,
-                                               nil];
-     */
-    [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
-                                               [[[UIViewController alloc] init] autorelease],
-                                               [[[UIViewController alloc] init] autorelease],
-                                               self.itemsNavController,
                                                nil]];
-		
+    
 	
-	//((DWPlacesContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
-	((DWItemsContainerViewController*)self.itemsNavController.topViewController).customTabBarController		= self.tabBarController;
+	((DWContainerViewController*)self.teamsNavController.topViewController).customTabBarController	= self.tabBarController;
+	((DWContainerViewController*)self.itemsNavController.topViewController).customTabBarController	= self.tabBarController;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -213,7 +201,6 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 #pragma mark -
 #pragma mark Push Notification Permission Responses
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 	//[[DWRequestsManager sharedDWRequestsManager] updateDeviceIDForCurrentUser:[NSString stringWithFormat:@"%@",deviceToken]];
@@ -233,13 +220,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex {
     
-    
-    //DWUser *user = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:@"1" forClass:@"DWUser"];
-    //NSLog(@"AFTER SWITCH id - %d \n name - %@ \n ",user.databaseID,user.firstName);
-    
     if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];
-		[self.tabBarController presentModalViewController:createView animated:NO];
+		[self.tabBarController presentModalViewController:createView 
+                                                 animated:NO];
 	}
 }
 

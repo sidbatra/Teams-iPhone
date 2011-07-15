@@ -1,33 +1,28 @@
 //
 //  DWGUIManager.h
-//  Denwen
-//
-//  Created by Deepak Rao on 1/23/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Denwen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
-#import "DWConstants.h"
-
+/**
+ * Interface for generic GUI related factory and management methods
+ */
 @interface DWGUIManager : NSObject {
 	
 }
 
-// Screen orientation and size helpers
-+ (CGSize)currentScreenSize:(UIInterfaceOrientation)toInterfaceOrientation;
-+ (CGSize)currentScreenSize;
-+ (UIInterfaceOrientation)getCurrentOrientation;
-
+/**
+ * Deprecated. See navBarBackButtonForNavController
+ */
 + (UIBarButtonItem*)customBackButton:(id)target;
-+ (UIBarButtonItem*)placeDetailsButton:(id)target;
-+ (UIBarButtonItem*)cameraNavButton:(id)target;
-+ (UILabel*)customTitleWithText:(NSString*)text;
 
+/**
+ * Create a back button for the given navigation controller. Upon click
+ * the button pops the given navigation controller. No references are retained.
+ */
++ (UIBarButtonItem*)navBarBackButtonForNavController:(UINavigationController*)navController;
 
-//Spinner methods
-+ (void)showSpinnerInNav:(id)target;
-+ (void)hideSpinnnerInNav:(id)target;
 
 @end

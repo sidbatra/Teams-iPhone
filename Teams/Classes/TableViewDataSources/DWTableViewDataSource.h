@@ -84,4 +84,10 @@
  * Request a full reload
  */
 - (void)reloadTableView;
+
+/**
+ * Display an error message
+ */
+- (void)displayError:(NSString*)message;
+
 @end

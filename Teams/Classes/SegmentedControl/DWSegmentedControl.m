@@ -12,20 +12,19 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWSegmentedControl
 
-@synthesize buttons         =   _buttons;
-@synthesize selectedIndex   =   _selectedIndex;
+@synthesize buttons         = _buttons;
+@synthesize selectedIndex   = _selectedIndex;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame 
-   withSegmentsInfo:(NSArray*)segmentsInfo
-		andDelegate:(id)theDelegate {
+   withSegmentsInfo:(NSArray*)segmentsInfo {
 	
     self = [super initWithFrame:frame];
     
 	if (self) {
 		
 		self.buttons			= [NSMutableArray array];
-		_delegate				= theDelegate;
 		
 		NSInteger index			= 0;
 		NSInteger nextTabX		= 0;
@@ -83,7 +82,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-	self.buttons = nil;
+	self.buttons    = nil;
+    self.delegate   = nil;
 	
     [super dealloc];
 }
@@ -119,8 +119,8 @@
 	_selectedIndex		= [self selectButton:button];
 	
 	if(_selectedIndex != oldIndex)
-		[_delegate selectedSegmentModifiedFrom:oldIndex 
-											to:_selectedIndex];
+		[self.delegate selectedSegmentModifiedFrom:oldIndex 
+                                                to:_selectedIndex];
 }
 
 //----------------------------------------------------------------------------------------------------

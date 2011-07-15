@@ -69,6 +69,12 @@
 - (void)getUserItemsForUserID:(NSInteger)userID
                        before:(NSInteger)before;
 
+/**
+ * Get items created by the given teamID. Use before for pagination.
+ */
+- (void)getTeamItemsForTeamID:(NSInteger)teamID
+                       before:(NSInteger)before;
+
 @end
 
 
@@ -117,5 +123,14 @@
  */
 - (void)userItemsError:(NSString*)message;
 
+/**
+ * Array of parsed DWItem objects created by a specific team
+ */
+- (void)teamItemsLoaded:(NSMutableArray*)items;
+
+/**
+ * Error message encountered while loading a teams's items
+ */
+- (void)teamItemsError:(NSString*)message;
 
 @end

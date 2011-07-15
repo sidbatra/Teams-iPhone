@@ -5,11 +5,13 @@
 
 #import "DWInvitePeopleViewController.h"
 #import "ABContactsHelper.h"
+#import "DWConstants.h"
 #import "DWGUIManager.h"
 
 static NSString* const kAddPeopleText           = @"Add People";
 static NSString* const kAddPeopleSubText        = @"to the %@ Team";
 static NSString* const kRightNavBarButtonText   = @"Done";
+
 
 
 //----------------------------------------------------------------------------------------------------

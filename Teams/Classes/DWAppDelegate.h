@@ -5,13 +5,12 @@
 
 #import <UIKit/UIKit.h>
 
-
-@class DWTabBarController;
+#import "DWTabBarController.h"
 
 /**
  * Application delegate
  */
-@interface DWAppDelegate : NSObject <UIApplicationDelegate> {
+@interface DWAppDelegate : NSObject <UIApplicationDelegate,DWTabBarControllerDelegate> {
     UIWindow				*_window;
 	
 	DWTabBarController		*_tabBarController;

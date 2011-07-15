@@ -1,22 +1,22 @@
 //
-//  DWUserItemsDataSource.m
+//  DWTeamItemsDataSource.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWUserItemsDataSource.h"
+#import "DWTeamItemsDataSource.h"
 
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWUserItemsDataSource
+@implementation DWTeamItemsDataSource
 
-@synthesize userID = _userID;
+@synthesize teamID  = _teamID;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadItems {
-    [self.itemsController getUserItemsForUserID:_userID
+    [self.itemsController getTeamItemsForTeamID:_teamID
                                          before:_oldestTimestamp];
 }
 
@@ -28,19 +28,20 @@
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)itemsResourceID {
-    return _userID;
+    return _teamID;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userItemsLoaded:(NSMutableArray *)items {  
+- (void)teamItemsLoaded:(NSMutableArray *)items {  
     [self populateItems:items];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userItemsError:(NSString *)message {
-    NSLog(@"User items error - %@",message);
+- (void)teamItemsError:(NSString *)message {
+    NSLog(@"Team items error - %@",message);
     [self.delegate displayError:message];
 }
+
 
 
 @end

@@ -1,13 +1,12 @@
 //
-//  DWUserItemsViewController.m
+//  DWTeamItemsViewController.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWUserItemsViewController.h"
-#import "DWUserItemsDataSource.h"  
-
+#import "DWTeamItemsViewController.h"
+#import "DWTeamItemsDataSource.h"
 #import "DWItem.h"
-#import "DWUser.h"
+#import "DWTeam.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
 
@@ -16,22 +15,20 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWUserItemsViewController
+@implementation DWTeamItemsViewController
 
-@synthesize userItemsDataSource = _userItemsDataSource;
+@synthesize teamItemsDataSource = _teamItemsDataSource;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithUser:(DWUser*)user 
-         andIgnore:(BOOL)ignore {
-    
-    self = [super init];
+- (id)initWithTeam:(DWTeam*)team {
+    self =  [super init];
     
     if(self) {
-        self.userItemsDataSource        = [[[DWUserItemsDataSource alloc] init] autorelease];
-        self.userItemsDataSource.userID = user.databaseID;
+        self.teamItemsDataSource        = [[[DWTeamItemsDataSource alloc] init] autorelease];
+        self.teamItemsDataSource.teamID = team.databaseID;
         
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleUserItems]
-                                                                forKey:[[DWItem class] className]];
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
+                                        forKey:[[DWItem class] className]];
     }
     
     return self;
@@ -42,7 +39,7 @@
     self = [super init];
     
     if(self) {
-        self.userItemsDataSource        = [[[DWUserItemsDataSource alloc] init] autorelease];
+        self.teamItemsDataSource = [[[DWTeamItemsDataSource alloc] init] autorelease];
     }
     
     return self;
@@ -50,23 +47,23 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
-    self.userItemsDataSource  = nil;
+    self.teamItemsDataSource  = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
-    return self.userItemsDataSource;
+    return self.teamItemsDataSource;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-        
+    
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
-    [self.userItemsDataSource loadItems];
+    [self.teamItemsDataSource loadItems];
 }
 
 @end

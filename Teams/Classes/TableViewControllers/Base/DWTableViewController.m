@@ -5,6 +5,8 @@
 
 #import "DWTableViewController.h"
 #import "DWModelPresenter.h"
+#import "DWLoadingView.h"
+#import "DWErrorView.h"
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
@@ -17,6 +19,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  */
 @interface DWTableViewController()
 
+/**
+ * Get a UIView which is displayed while the data is being loaded
+ */
+- (UIView*)getTableLoadingView;
+
+/**
+ * Get a UIView which is displayed when an error occurs
+ */
+- (UIView*)getTableErrorView;
+   
 /**
  * Get the data source object for the table view controller
  */
@@ -48,6 +60,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 @synthesize modelPresentationStyle  = _modelPresentationStyle;
 @synthesize refreshHeaderView       = _refreshHeaderView;
+@synthesize loadingView             = _loadingView;
+@synthesize errorView               = _errorView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -65,6 +79,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     self.modelPresentationStyle     = nil;
 	self.refreshHeaderView          = nil;
+    self.loadingView                = nil;
+    self.errorView                  = nil;
     
     [super dealloc];
 }
@@ -72,6 +88,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    CGRect frame		= self.view.frame;
+	frame.origin.y		= 0; 
+	self.view.frame		= frame;
+    
+    self.tableView.scrollEnabled = NO;
     
     self.tableView.backgroundColor          =  [UIColor colorWithRed:0.2588
                                                                green:0.2588 
@@ -97,6 +119,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	[self.tableView addSubview:self.refreshHeaderView];
     
     [self getDataSource].delegate   = self;
+    
+
+    
+    if(!self.loadingView)
+        self.loadingView = [self getTableLoadingView];
+    
+    [self.view addSubview:self.loadingView];
+    
+    
+    if(!self.errorView)
+        self.errorView  = [self getTableErrorView];
+    
+    [self.view addSubview:self.errorView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -116,8 +151,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                              resource:(id)resource
                            resourceID:(NSInteger)resourceID {
     
+    if(![self isViewLoaded])
+        return;
+    
     NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
-	
+
 	for (NSIndexPath *indexPath in visiblePaths) {            
         
         id object = [[self getDataSource] objectAtIndex:indexPath.row
@@ -140,6 +178,20 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getTableLoadingView {
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getTableErrorView {
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+    errorView.delegate      = self;
+    errorView.hidden        = YES;
+    
+    return errorView;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -247,9 +299,35 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)reloadTableView {
-    _isPullToRefreshActive = NO;
+    self.tableView.scrollEnabled    = YES;
+    self.loadingView.hidden         = YES;
+    self.errorView.hidden           = YES;
+    
+    _isPullToRefreshActive          = NO;
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    
     [self.tableView reloadData];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayError:(NSString *)message {
+    SEL sel = @selector(setErrorMessage:);
+    
+    if(![self.errorView respondsToSelector:sel])
+        return;
+    
+    [self.errorView performSelector:sel
+                         withObject:message];
+    
+    [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) 
+                               animated:NO];
+    
+    self.loadingView.hidden         = YES;
+    self.errorView.hidden           = NO;
+    self.tableView.scrollEnabled    = NO;
+    
+    _isPullToRefreshActive          = NO;
+    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 
@@ -272,6 +350,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
 	return nil;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Error view delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)errorViewTouched {
+    self.loadingView.hidden = NO;
+    self.errorView.hidden   = YES;
+    [[self getDataSource] refreshInitiated];
 }
 
 @end
