@@ -82,7 +82,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];    
-    
+
     [self loadNotificationsButton];
     [self loadProgressView];
     [self loadFollowedView];

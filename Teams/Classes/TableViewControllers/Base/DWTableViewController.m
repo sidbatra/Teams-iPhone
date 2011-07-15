@@ -151,8 +151,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                              resource:(id)resource
                            resourceID:(NSInteger)resourceID {
     
+    if(![self isViewLoaded])
+        return;
+    
     NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
-	
+
 	for (NSIndexPath *indexPath in visiblePaths) {            
         
         id object = [[self getDataSource] objectAtIndex:indexPath.row

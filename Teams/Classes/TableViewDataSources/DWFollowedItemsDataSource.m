@@ -24,7 +24,7 @@
 #pragma mark DWItemsControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)followedItemsLoaded:(NSMutableArray *)items {  
+- (void)followedItemsLoaded:(NSMutableArray *)items { 
     [self populateItems:items];
 }
 
