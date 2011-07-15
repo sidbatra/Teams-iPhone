@@ -22,16 +22,18 @@
 	id<DWTabBarControllerDelegate> _delegate;
 }
 
+/**
+ * Delegate receives updates about tab bar selection changes
+ */
+@property (nonatomic,assign) id<DWTabBarControllerDelegate> delegate;
 
 
 /**
- * Init with delegate to receive events about tab bar clicks,
- * frame for drawing the tab bar
+ * Init with frame for drawing the tab bar
  * and tab bar info for creating the buttons in the tab bar
  */
-- (id)initWithDelegate:(id)theDelegate 
-	   withTabBarFrame:(CGRect)tabBarFrame
-		 andTabBarInfo:(NSArray*)tabBarInfo;
+- (id)initWithTabBarFrame:(CGRect)tabBarFrame
+            andTabBarInfo:(NSArray*)tabBarInfo;
 
 /**
  * Setup the sub controllers on each of the tabs

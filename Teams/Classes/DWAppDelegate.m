@@ -4,15 +4,10 @@
 //
 
 #import "DWAppDelegate.h"
-#import "DWTabBarController.h"
-#import "DWItemsContainerViewController.h"
+#import "DWContainerViewController.h"
 #import "DWCreateViewController.h"
-//#import "DWPlacesContainerViewController.h"
 #import "DWRequestsManager.h"
 #import "DWMemoryPool.h"
-#import "DWMembership.h"
-#import "DWItemsController.h"
-#import "JSON.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 
@@ -156,9 +151,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 							nil],
 						   nil];
 	
-	self.tabBarController	= [[[DWTabBarController alloc] initWithDelegate:self 
-                                                            withTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
-                                                              andTabBarInfo:tabBarInfo] autorelease];
+	self.tabBarController	= [[[DWTabBarController alloc] initWithTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
+                                                                 andTabBarInfo:tabBarInfo] autorelease];
+    
+    self.tabBarController.delegate = self;
 	
     [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
                                                self.teamsNavController,

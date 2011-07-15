@@ -58,17 +58,16 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 @synthesize topShadowView           = _topShadowView;
 @synthesize bottomShadowView        = _bottomShadowView;
 @synthesize subControllers          = _subControllers;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate 
-	   withTabBarFrame:(CGRect)tabBarFrame
-		 andTabBarInfo:(NSArray*)tabBarInfo {
+- (id)initWithTabBarFrame:(CGRect)tabBarFrame
+            andTabBarInfo:(NSArray*)tabBarInfo {
 	
 	self = [super init];
 	
 	if(self) {
 		
-        _delegate                       = theDelegate;
 		self.tabBar                     = [[[DWTabBar alloc] initWithFrame:tabBarFrame
                                                                   withInfo:tabBarInfo] autorelease];
         self.tabBar.delegate            = self;
@@ -93,6 +92,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
     self.topShadowView      = nil;
     self.bottomShadowView   = nil;
 	self.subControllers     = nil;
+    self.delegate           = nil;
 	
     [super dealloc];
 }
