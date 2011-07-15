@@ -17,6 +17,8 @@
 static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[lat]=%f&item[lon]=%f&item[filename]=%@";
 static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
 static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
+static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
+
 
 
 /**
@@ -75,6 +77,16 @@ static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(userItemsError:) 
                                                      name:kNUserItemsError
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(teamItemsLoaded:) 
+                                                     name:kNTeamItemsLoaded
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(teamItemsError:) 
+                                                     name:kNTeamItemsError
                                                    object:nil];
     }
     
@@ -210,6 +222,21 @@ static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
                                                           resourceID:userID];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)getTeamItemsForTeamID:(NSInteger)teamID
+                       before:(NSInteger)before {
+    
+    NSString *localURL = [NSString stringWithFormat:kTeamItemsURI,
+                          teamID,
+                          before];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNTeamItemsLoaded
+                                                   errorNotification:kNTeamItemsError
+                                                       requestMethod:kGet
+                                                          resourceID:teamID];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -313,6 +340,54 @@ static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
     
     SEL idSel    = @selector(itemsResourceID);
     SEL errorSel = @selector(userItemsError:);
+    
+    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:errorSel
+                        withObject:[error localizedDescription]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamItemsLoaded:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL itemsSel = @selector(teamItemsLoaded:);
+    
+    if(![self.delegate respondsToSelector:itemsSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSArray *data           = [userInfo objectForKey:kKeyData];
+    NSMutableArray *items   = [self populateItemsArrayFromJSON:data];
+    
+    [self.delegate performSelector:itemsSel
+                        withObject:items];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamItemsError:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL errorSel = @selector(teamItemsError:);
     
     if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
         return;
