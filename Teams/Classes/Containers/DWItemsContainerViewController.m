@@ -9,7 +9,6 @@
 #import "DWNotificationsHelper.h"
 #import "DWSession.h"
 
-static NSString* const kTabTitle                = @"Feed";
 static NSString* const kMsgUnload               = @"Unload called on items container";
 static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
