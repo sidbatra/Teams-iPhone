@@ -11,12 +11,14 @@
 @interface DWSegmentedController()
 
 /**
- * Remove the sub controller view at the given index from view
+ * Remove the sub controller view at the given index from 
+ * parent for sub controllers
  */
 - (void)removeViewAtIndex:(NSInteger)index;
 
 /**
- * Add the sub controller view at the given index to view
+ * Add the sub controller view at the given index to
+ * parent for sub controllers
  */
 - (void)addViewAtIndex:(NSInteger)index;
 
@@ -54,6 +56,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.segmentedControl           = nil;
+    self.subControllers             = nil;
+    self.parentForSubControllers    = nil;
+    
     [super dealloc];
 }
 
@@ -100,7 +106,6 @@
 - (void)selectedSegmentModifiedFrom:(NSInteger)oldSelectedIndex 
                                  to:(NSInteger)newSelectedIndex {
     
-    NSLog(@"selection changed from %d to %d",oldSelectedIndex,newSelectedIndex);
     [self removeViewAtIndex:oldSelectedIndex];
     [self addViewAtIndex:newSelectedIndex];
 }

@@ -12,6 +12,7 @@
  */
 @interface DWSegmentedController : UIViewController<DWSegmentedControlDelegate> {
     DWSegmentedControl	*_segmentedControl;
+    
 	NSArray				*_subControllers;
     
     UIViewController    *_parentForSubControllers;
@@ -27,7 +28,8 @@
 
 /**
  * The sub controllers corresponding to the segmentedControl. They
- * are hidden and displayed as the user interacts with the segmentedControl
+ * are added and removed from the parentForSubController
+ * as the user interacts with the segmentedControl
  */
 @property (nonatomic,retain) NSArray *subControllers;
 
