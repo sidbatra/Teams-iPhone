@@ -72,7 +72,8 @@ typedef enum {
  * Types of resources flowing through the application
  */
 typedef enum {
-    kResoureTypeLargeAttachmentImage = 0
+    kResoureTypeLargeAttachmentImage = 0,
+    kResoureTypeSliceAttachmentImage = 1
 } DWResourceType;
 
 
