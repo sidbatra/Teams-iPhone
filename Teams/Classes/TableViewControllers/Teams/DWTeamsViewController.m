@@ -20,7 +20,7 @@
                 
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(sliceAttachmentLoaded:) 
-													 name:kNImgSliceAttachmentLoaded
+													 name:kNImgSliceAttachmentFinalized
 												   object:nil];
     }
     
