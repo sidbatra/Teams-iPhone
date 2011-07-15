@@ -45,6 +45,17 @@
  */
 - (BOOL)isActive;
 
+/**
+ * Test if the user has completed the onboarding process
+ * and the session is in its completed state
+ */
+- (BOOL)isExhaustive;
+
+/**
+ * Session state which is the indicator of the onboarding process
+ */
+- (NSInteger)state;
+
 @end
 
 

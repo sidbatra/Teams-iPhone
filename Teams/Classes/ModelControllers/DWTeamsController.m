@@ -41,7 +41,7 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 
 //----------------------------------------------------------------------------------------------------
 - (void)getTeamFromDomain:(NSString*)domain {
-    
+
     NSData *domainData  = [domain dataUsingEncoding:NSUTF8StringEncoding];
     NSString *localURL  = [NSString stringWithFormat:kTeamURI,
                            [[domainData base64Encoding] stringByEncodingHTMLCharacters]];
@@ -69,7 +69,7 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(NSNotification*)notification {
-
+    
     SEL sel = @selector(teamLoaded:);
     
     if(![self.delegate respondsToSelector:sel])
@@ -77,7 +77,7 @@ static NSString* const kTeamURI       = @"/teams/domain/%@.json?";
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
-
+    
     DWTeam *team = nil;
     
     if (![data isKindOfClass:[NSNull class]]) 

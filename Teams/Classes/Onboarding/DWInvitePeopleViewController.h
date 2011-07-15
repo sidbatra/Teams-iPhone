@@ -9,7 +9,7 @@
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
 
-@protocol DWAddPeopleViewControllerDelegate;
+@protocol DWInvitePeopleViewControllerDelegate;
 
 /**
  * View for adding people throughout the app.
@@ -21,7 +21,7 @@
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
     
-    id <DWAddPeopleViewControllerDelegate>  _delegate;
+    id <DWInvitePeopleViewControllerDelegate>  _delegate;
 }
 
 /**
@@ -53,11 +53,11 @@
  * Delegate protocol to receive events during 
  * the add people view lifecycle
  */
-@protocol DWAddPeopleViewControllerDelegate
+@protocol DWInvitePeopleViewControllerDelegate
 
 /*
- * Fired when people are added.
+ * Fired when people are invited.
  */
-- (void)peopleAdded;
+- (void)peopleInvited;
 
 @end

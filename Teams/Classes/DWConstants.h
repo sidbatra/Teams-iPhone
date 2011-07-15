@@ -37,7 +37,23 @@ typedef enum {
 
 
 /**
+<<<<<<< HEAD
+ * Session States
+ */
+typedef enum {
+    kSessionStateEmpty              = -1,     
+    kSessionStateTillUserEmail      = 0, 
+    kSessionStateTillTeamDetails    = 1,
+    kSessionStateTillUserDetails    = 2,
+    kSessionStateComplete           = 3
+} DWSessionState;
+
+
+/**
+ * Presentation styles for different models
+=======
  * Default presentation style for all model presenters
+>>>>>>> d2c2288f0f5aa371cbb966d69b78ebd0b1fedc63
  */
 enum {
     kPresentationStyleDefault   = 0,

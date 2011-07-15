@@ -96,8 +96,8 @@
 		262D652B131A527100B7A885 /* user_profile_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262D6529131A527100B7A885 /* user_profile_bg@2x.png */; };
 		2632E56D13CCDFCA005B1B1E /* DWCreateTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */; };
 		2632E56E13CCDFCA005B1B1E /* DWCreateTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E55613CCDFCA005B1B1E /* DWCreateTeamViewController.m */; };
-		2632E56F13CCDFCA005B1B1E /* DWCreateUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E55813CCDFCA005B1B1E /* DWCreateUserViewController.m */; };
-		2632E57013CCDFCA005B1B1E /* DWCreateUserViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E55913CCDFCA005B1B1E /* DWCreateUserViewController.xib */; };
+		2632E56F13CCDFCA005B1B1E /* DWCreateProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E55813CCDFCA005B1B1E /* DWCreateProfileViewController.m */; };
+		2632E57013CCDFCA005B1B1E /* DWCreateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E55913CCDFCA005B1B1E /* DWCreateProfileViewController.xib */; };
 		2632E57113CCDFCA005B1B1E /* DWIntroPaneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E55B13CCDFCA005B1B1E /* DWIntroPaneViewController.m */; };
 		2632E57213CCDFCA005B1B1E /* DWInvitePeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E55C13CCDFCA005B1B1E /* DWInvitePeopleViewController.xib */; };
 		2632E57313CCDFCA005B1B1E /* DWInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E55E13CCDFCA005B1B1E /* DWInvitePeopleViewController.m */; };
@@ -588,9 +588,9 @@
 		2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreateTeamViewController.xib; path = Classes/Onboarding/DWCreateTeamViewController.xib; sourceTree = "<group>"; };
 		2632E55513CCDFCA005B1B1E /* DWCreateTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreateTeamViewController.h; path = Classes/Onboarding/DWCreateTeamViewController.h; sourceTree = "<group>"; };
 		2632E55613CCDFCA005B1B1E /* DWCreateTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreateTeamViewController.m; path = Classes/Onboarding/DWCreateTeamViewController.m; sourceTree = "<group>"; };
-		2632E55713CCDFCA005B1B1E /* DWCreateUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreateUserViewController.h; path = Classes/Onboarding/DWCreateUserViewController.h; sourceTree = "<group>"; };
-		2632E55813CCDFCA005B1B1E /* DWCreateUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreateUserViewController.m; path = Classes/Onboarding/DWCreateUserViewController.m; sourceTree = "<group>"; };
-		2632E55913CCDFCA005B1B1E /* DWCreateUserViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreateUserViewController.xib; path = Classes/Onboarding/DWCreateUserViewController.xib; sourceTree = "<group>"; };
+		2632E55713CCDFCA005B1B1E /* DWCreateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = DWCreateProfileViewController.h; path = Classes/Onboarding/DWCreateProfileViewController.h; sourceTree = "<group>"; };
+		2632E55813CCDFCA005B1B1E /* DWCreateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreateProfileViewController.m; path = Classes/Onboarding/DWCreateProfileViewController.m; sourceTree = "<group>"; };
+		2632E55913CCDFCA005B1B1E /* DWCreateProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreateProfileViewController.xib; path = Classes/Onboarding/DWCreateProfileViewController.xib; sourceTree = "<group>"; };
 		2632E55A13CCDFCA005B1B1E /* DWIntroPaneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWIntroPaneViewController.h; path = Classes/Onboarding/DWIntroPaneViewController.h; sourceTree = "<group>"; };
 		2632E55B13CCDFCA005B1B1E /* DWIntroPaneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWIntroPaneViewController.m; path = Classes/Onboarding/DWIntroPaneViewController.m; sourceTree = "<group>"; };
 		2632E55C13CCDFCA005B1B1E /* DWInvitePeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWInvitePeopleViewController.xib; path = Classes/Onboarding/DWInvitePeopleViewController.xib; sourceTree = "<group>"; };
@@ -1961,15 +1961,15 @@
 				2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */,
 				2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */,
 				2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */,
-				2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */,
 				2632E55513CCDFCA005B1B1E /* DWCreateTeamViewController.h */,
 				2632E55613CCDFCA005B1B1E /* DWCreateTeamViewController.m */,
-				2632E55713CCDFCA005B1B1E /* DWCreateUserViewController.h */,
-				2632E55813CCDFCA005B1B1E /* DWCreateUserViewController.m */,
-				2632E55913CCDFCA005B1B1E /* DWCreateUserViewController.xib */,
-				2632E55C13CCDFCA005B1B1E /* DWInvitePeopleViewController.xib */,
+				2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */,
+				2632E55713CCDFCA005B1B1E /* DWCreateProfileViewController.h */,
+				2632E55813CCDFCA005B1B1E /* DWCreateProfileViewController.m */,
+				2632E55913CCDFCA005B1B1E /* DWCreateProfileViewController.xib */,
 				2632E55D13CCDFCA005B1B1E /* DWInvitePeopleViewController.h */,
 				2632E55E13CCDFCA005B1B1E /* DWInvitePeopleViewController.m */,
+				2632E55C13CCDFCA005B1B1E /* DWInvitePeopleViewController.xib */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -2611,7 +2611,7 @@
 				BB348717138A4779003802D1 /* share_text@2x.png in Resources */,
 				BBF898A513CAC56D00D5C5FB /* DWCreateViewController.xib in Resources */,
 				2632E56D13CCDFCA005B1B1E /* DWCreateTeamViewController.xib in Resources */,
-				2632E57013CCDFCA005B1B1E /* DWCreateUserViewController.xib in Resources */,
+				2632E57013CCDFCA005B1B1E /* DWCreateProfileViewController.xib in Resources */,
 				2632E57213CCDFCA005B1B1E /* DWInvitePeopleViewController.xib in Resources */,
 				2632E57513CCDFCA005B1B1E /* DWLoginViewController.xib in Resources */,
 				2632E57A13CCDFCA005B1B1E /* DWSignupViewController.xib in Resources */,
@@ -2714,7 +2714,7 @@
 				BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */,
 				BBC8D8F413CCB8A200A224F5 /* DWItemsDataSource.m in Sources */,
 				2632E56E13CCDFCA005B1B1E /* DWCreateTeamViewController.m in Sources */,
-				2632E56F13CCDFCA005B1B1E /* DWCreateUserViewController.m in Sources */,
+				2632E56F13CCDFCA005B1B1E /* DWCreateProfileViewController.m in Sources */,
 				2632E57113CCDFCA005B1B1E /* DWIntroPaneViewController.m in Sources */,
 				2632E57313CCDFCA005B1B1E /* DWInvitePeopleViewController.m in Sources */,
 				2632E57413CCDFCA005B1B1E /* DWLoginViewController.m in Sources */,

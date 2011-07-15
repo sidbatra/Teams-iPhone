@@ -27,6 +27,7 @@ static NSString* const kDiskKeyByline                   = @"DWUser_byline";
 static NSString* const kDiskKeyFollowingCount           = @"DWUser_followingCount";
 static NSString* const kDiskKeyIsCurrentUser            = @"DWUser_isCurrentUser";
 static NSString* const kDiskKeyIsNewUser                = @"DWUser_isNewUser";
+static NSString* const kDiskKeyHasInvitedPeople         = @"DWUser_hasInvitedPeople";
 static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 
 
@@ -51,6 +52,7 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 @synthesize followingCount      = _followingCount;
 @synthesize isCurrentUser       = _isCurrentUser;
 @synthesize isNewUser           = _isNewUser;
+@synthesize hasInvitedPeople    = _hasInvitedPeople;
 @synthesize team                = _team;
 
 //----------------------------------------------------------------------------------------------------
@@ -72,6 +74,7 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
         self.largeURL               = [coder decodeObjectForKey:kDiskKeylargeURL];
         self.isCurrentUser          = [[coder decodeObjectForKey:kDiskKeyIsCurrentUser] boolValue];
         self.isNewUser              = [[coder decodeObjectForKey:kDiskKeyIsNewUser] boolValue];
+        self.hasInvitedPeople       = [[coder decodeObjectForKey:kDiskKeyHasInvitedPeople] boolValue];        
         self.team                   = [coder decodeObjectForKey:kDiskKeyTeam];
     }
     
@@ -100,6 +103,7 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     [coder encodeObject:self.largeURL                                   forKey:kDiskKeylargeURL];
     [coder encodeObject:[NSNumber numberWithBool:self.isCurrentUser]    forKey:kDiskKeyIsCurrentUser];
     [coder encodeObject:[NSNumber numberWithBool:self.isNewUser]        forKey:kDiskKeyIsNewUser];
+    [coder encodeObject:[NSNumber numberWithBool:self.hasInvitedPeople] forKey:kDiskKeyHasInvitedPeople];    
     [coder encodeObject:self.team                                       forKey:kDiskKeyTeam];
 
 }

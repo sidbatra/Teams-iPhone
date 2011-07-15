@@ -7,7 +7,7 @@
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
 
-@protocol DWCreateNewTeamViewControllerDelegate;
+@protocol DWCreateTeamViewControllerDelegate;
 
 
 /**
@@ -20,7 +20,7 @@
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
     
-    id<DWCreateNewTeamViewControllerDelegate>   _delegate;
+    id<DWCreateTeamViewControllerDelegate>   _delegate;
 }
 
 /**
@@ -47,11 +47,11 @@
  * Delegate protocol to receive events during 
  * the create new team lifecycle
  */
-@protocol DWCreateNewTeamViewControllerDelegate
+@protocol DWCreateTeamViewControllerDelegate
 
 /*
  * Fired when a new team is created.
  */
-- (void)newTeamCreated;
+- (void)teamCreated;
 
 @end

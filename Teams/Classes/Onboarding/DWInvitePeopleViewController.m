@@ -114,7 +114,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [_delegate peopleAdded];
+    [_delegate peopleInvited];
 }
 
 

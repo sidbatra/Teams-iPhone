@@ -78,8 +78,6 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
     
-    NSLog(@"%@",data);
-    
     NSArray *errorInfo = [data objectForKey:kKeyErrors];
     
     if ([errorInfo count] ) {

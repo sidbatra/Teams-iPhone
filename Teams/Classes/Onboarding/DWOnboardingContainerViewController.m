@@ -53,7 +53,7 @@
     self.splashScreenViewController = [[[DWSplashScreenViewController alloc] initWithDelegate:self] autorelease];
     [self.view addSubview:self.splashScreenViewController.view];
 }
-    
+
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
@@ -106,8 +106,8 @@
         NSLog(@"team already exist");
     }
     else {
-        DWCreateTeamViewController *createNewTeamController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
-        [self.navigationController pushViewController:createNewTeamController animated:YES];        
+        DWCreateTeamViewController *createTeamViewController = [[[DWCreateTeamViewController alloc] initWithDelegate:self] autorelease];
+        [self.navigationController pushViewController:createTeamViewController animated:YES];        
     }
 }
 
@@ -118,10 +118,9 @@
 #pragma mark DWCreateNewTeamViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)newTeamCreated {
-    DWCreateUserViewController *createUserProfileController = [[[DWCreateUserViewController alloc] 
-                                                                       initWithDelegate:self] autorelease];
-    [self.navigationController pushViewController:createUserProfileController animated:YES];
+- (void)teamCreated {
+    DWCreateProfileViewController *createProfileViewController = [[[DWCreateProfileViewController alloc] initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:createProfileViewController animated:YES];
 }
 
 
@@ -131,9 +130,9 @@
 #pragma mark DWCreateUserProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userProfileCreated {
-    DWInvitePeopleViewController *addPeopleViewController = [[DWInvitePeopleViewController alloc] initWithDelegate:self];
-    [self.navigationController pushViewController:addPeopleViewController animated:YES];
+- (void)profileCreated {
+    DWInvitePeopleViewController *invitePeopleViewController = [[[DWInvitePeopleViewController alloc] initWithDelegate:self] autorelease];
+    [self.navigationController pushViewController:invitePeopleViewController animated:YES];
 }
 
 
@@ -143,7 +142,7 @@
 #pragma mark DWCreateUserProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)peopleAdded {
+- (void)peopleInvited {
     //TODO
 }
 
