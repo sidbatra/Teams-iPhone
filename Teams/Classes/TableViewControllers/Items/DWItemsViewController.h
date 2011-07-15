@@ -16,7 +16,7 @@
 @protocol DWItemsViewControllerDelegate;
 
 /**
- * Base class for all table views that display a list of items
+ * Base class for table views that display a list of items
  */
 @interface DWItemsViewController : DWTableViewController<DWTouchesControllerDelegate> {
     DWTouchesController     *_touchesController;
