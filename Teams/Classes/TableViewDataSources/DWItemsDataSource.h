@@ -9,7 +9,7 @@
 #import "DWItemsController.h"
 
 /**
- * Datasource for table views that contain item model objects
+ * Datasource for table views that contain a list of items
  */
 @interface DWItemsDataSource : DWTableViewDataSource<DWItemsControllerDelegate> {
     DWItemsController   *_itemsController;
