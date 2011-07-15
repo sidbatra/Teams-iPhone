@@ -211,6 +211,10 @@
 		BB272B4D13CFCDFF00FDACA1 /* DWPlaceFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4513CFCDFF00FDACA1 /* DWPlaceFeedCell.m */; };
 		BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */; };
 		BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */; };
+		BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */; };
+		BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */; };
+		BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */; };
+		BB272B5C13CFCE5A00FDACA1 /* UIImage+ImageProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5813CFCE5A00FDACA1 /* UIImage+ImageProcessing.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -364,9 +368,6 @@
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
 		BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0BFDA1344487C00BCFB96 /* DWConstants.m */; };
 		BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */; };
-		BBD0CC97133C0AA1003E5E7D /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0CC96133C0AA1003E5E7D /* NSString+Helpers.m */; };
-		BBD0CEAC133C5EA1003E5E7D /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0CEAB133C5EA1003E5E7D /* NSData+Crypto.m */; };
-		BBD0D0641340026C003E5E7D /* UIImage+ImageProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0D0631340026C003E5E7D /* UIImage+ImageProcessing.m */; };
 		BBD837641363D86C00326E1F /* DWSmallProfilePicView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD837631363D86C00326E1F /* DWSmallProfilePicView.m */; };
 		BBD837671363D88700326E1F /* button_notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837651363D88700326E1F /* button_notifications.png */; };
 		BBD837681363D88700326E1F /* button_notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837661363D88700326E1F /* button_notifications@2x.png */; };
@@ -435,7 +436,6 @@
 		BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8988A13C901F900D5C5FB /* DWS3Request.m */; };
 		BBF8989813CA306600D5C5FB /* DWUsersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8989713CA306600D5C5FB /* DWUsersHelper.m */; };
 		BBF8989C13CA3F2800D5C5FB /* DWItemsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8989B13CA3F2800D5C5FB /* DWItemsController.m */; };
-		BBF8989F13CAB61900D5C5FB /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF8989E13CAB61900D5C5FB /* NSObject+Helpers.m */; };
 		BBF898A413CAC56D00D5C5FB /* DWCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF898A213CAC56D00D5C5FB /* DWCreateViewController.m */; };
 		BBF898A513CAC56D00D5C5FB /* DWCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF898A313CAC56D00D5C5FB /* DWCreateViewController.xib */; };
 		BBF898AF13CAC5A700D5C5FB /* DWCreationQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF898A813CAC5A700D5C5FB /* DWCreationQueue.m */; };
@@ -738,6 +738,14 @@
 		BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPlaceSearchResultCell.m; sourceTree = "<group>"; };
 		BB272B4813CFCDFF00FDACA1 /* DWTouchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchCell.h; sourceTree = "<group>"; };
 		BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchCell.m; sourceTree = "<group>"; };
+		BB272B5113CFCE5A00FDACA1 /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
+		BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
+		BB272B5313CFCE5A00FDACA1 /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helpers.h"; sourceTree = "<group>"; };
+		BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helpers.m"; sourceTree = "<group>"; };
+		BB272B5513CFCE5A00FDACA1 /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
+		BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
+		BB272B5713CFCE5A00FDACA1 /* UIImage+ImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageProcessing.h"; sourceTree = "<group>"; };
+		BB272B5813CFCE5A00FDACA1 /* UIImage+ImageProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageProcessing.m"; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -951,12 +959,6 @@
 		BBD0BFDA1344487C00BCFB96 /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWConstants.m; path = Classes/DWConstants.m; sourceTree = "<group>"; };
 		BBD0C3701346E2D700BCFB96 /* DWNotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNotificationsHelper.h; path = Classes/DWNotificationsHelper.h; sourceTree = "<group>"; };
 		BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNotificationsHelper.m; path = Classes/DWNotificationsHelper.m; sourceTree = "<group>"; };
-		BBD0CC95133C0AA1003E5E7D /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Helpers.h"; path = "Classes/NSString+Helpers.h"; sourceTree = "<group>"; };
-		BBD0CC96133C0AA1003E5E7D /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Helpers.m"; path = "Classes/NSString+Helpers.m"; sourceTree = "<group>"; };
-		BBD0CEAA133C5EA1003E5E7D /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Crypto.h"; path = "Classes/NSData+Crypto.h"; sourceTree = "<group>"; };
-		BBD0CEAB133C5EA1003E5E7D /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Crypto.m"; path = "Classes/NSData+Crypto.m"; sourceTree = "<group>"; };
-		BBD0D0621340026C003E5E7D /* UIImage+ImageProcessing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageProcessing.h"; path = "Classes/UIImage+ImageProcessing.h"; sourceTree = "<group>"; };
-		BBD0D0631340026C003E5E7D /* UIImage+ImageProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageProcessing.m"; path = "Classes/UIImage+ImageProcessing.m"; sourceTree = "<group>"; };
 		BBD837621363D86C00326E1F /* DWSmallProfilePicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSmallProfilePicView.h; path = Classes/DWSmallProfilePicView.h; sourceTree = "<group>"; };
 		BBD837631363D86C00326E1F /* DWSmallProfilePicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSmallProfilePicView.m; path = Classes/DWSmallProfilePicView.m; sourceTree = "<group>"; };
 		BBD837651363D88700326E1F /* button_notifications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_notifications.png; path = resources/button_notifications.png; sourceTree = "<group>"; };
@@ -1042,8 +1044,6 @@
 		BBF8989713CA306600D5C5FB /* DWUsersHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersHelper.m; sourceTree = "<group>"; };
 		BBF8989A13CA3F2800D5C5FB /* DWItemsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsController.h; sourceTree = "<group>"; };
 		BBF8989B13CA3F2800D5C5FB /* DWItemsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsController.m; sourceTree = "<group>"; };
-		BBF8989D13CAB61800D5C5FB /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+Helpers.h"; path = "Classes/NSObject+Helpers.h"; sourceTree = "<group>"; };
-		BBF8989E13CAB61900D5C5FB /* NSObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+Helpers.m"; path = "Classes/NSObject+Helpers.m"; sourceTree = "<group>"; };
 		BBF898A113CAC56D00D5C5FB /* DWCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCreateViewController.h; sourceTree = "<group>"; };
 		BBF898A213CAC56D00D5C5FB /* DWCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCreateViewController.m; sourceTree = "<group>"; };
 		BBF898A313CAC56D00D5C5FB /* DWCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWCreateViewController.xib; sourceTree = "<group>"; };
@@ -1570,6 +1570,7 @@
 			isa = PBXGroup;
 			children = (
 				080E96DDFE201D6D7F000001 /* App Delegate */,
+				BB272B5013CFCE3400FDACA1 /* Extensions */,
 				BBF8987413C6B47300D5C5FB /* Session */,
 				BBF8986D13C6B45500D5C5FB /* TabBar */,
 				BB8499E813C6B1B600D9789D /* MemoryPool */,
@@ -1584,7 +1585,6 @@
 				BB272B2713CFCC4E00FDACA1 /* TableViewControllers */,
 				BB8499C113C27AA400D9789D /* Onboarding */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
-				BBD0CC91133C0A3C003E5E7D /* Extensions */,
 				BBFD29A11388241D0077904A /* Sharing */,
 				BB3CCBC212F9368F00ADFCD7 /* Singletons */,
 				BB641D7E134D446F002A2325 /* Camera */,
@@ -1717,6 +1717,22 @@
 			);
 			name = TableViewCells;
 			path = Classes/TableViewCells;
+			sourceTree = "<group>";
+		};
+		BB272B5013CFCE3400FDACA1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				BB272B5113CFCE5A00FDACA1 /* NSData+Crypto.h */,
+				BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */,
+				BB272B5313CFCE5A00FDACA1 /* NSObject+Helpers.h */,
+				BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */,
+				BB272B5513CFCE5A00FDACA1 /* NSString+Helpers.h */,
+				BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */,
+				BB272B5713CFCE5A00FDACA1 /* UIImage+ImageProcessing.h */,
+				BB272B5813CFCE5A00FDACA1 /* UIImage+ImageProcessing.m */,
+			);
+			name = Extensions;
+			path = Classes/Extensions;
 			sourceTree = "<group>";
 		};
 		BB3311F412F24A2600B713F9 /* Users */ = {
@@ -2046,21 +2062,6 @@
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
-			sourceTree = "<group>";
-		};
-		BBD0CC91133C0A3C003E5E7D /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				BBD0CC95133C0AA1003E5E7D /* NSString+Helpers.h */,
-				BBD0CC96133C0AA1003E5E7D /* NSString+Helpers.m */,
-				BBD0CEAA133C5EA1003E5E7D /* NSData+Crypto.h */,
-				BBD0CEAB133C5EA1003E5E7D /* NSData+Crypto.m */,
-				BBD0D0621340026C003E5E7D /* UIImage+ImageProcessing.h */,
-				BBD0D0631340026C003E5E7D /* UIImage+ImageProcessing.m */,
-				BBF8989D13CAB61800D5C5FB /* NSObject+Helpers.h */,
-				BBF8989E13CAB61900D5C5FB /* NSObject+Helpers.m */,
-			);
-			name = Extensions;
 			sourceTree = "<group>";
 		};
 		BBF8986D13C6B45500D5C5FB /* TabBar */ = {
@@ -2641,9 +2642,6 @@
 				BB3BE1E2133AB65F0055FED0 /* ASIS3Request.m in Sources */,
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
-				BBD0CC97133C0AA1003E5E7D /* NSString+Helpers.m in Sources */,
-				BBD0CEAC133C5EA1003E5E7D /* NSData+Crypto.m in Sources */,
-				BBD0D0641340026C003E5E7D /* UIImage+ImageProcessing.m in Sources */,
 				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
 				BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */,
 				BB641D5C134D3E20002A2325 /* DWItemsManager.m in Sources */,
@@ -2692,7 +2690,6 @@
 				BBF8988F13C901F900D5C5FB /* DWS3Request.m in Sources */,
 				BBF8989813CA306600D5C5FB /* DWUsersHelper.m in Sources */,
 				BBF8989C13CA3F2800D5C5FB /* DWItemsController.m in Sources */,
-				BBF8989F13CAB61900D5C5FB /* NSObject+Helpers.m in Sources */,
 				BBF898A413CAC56D00D5C5FB /* DWCreateViewController.m in Sources */,
 				BBF898AF13CAC5A700D5C5FB /* DWCreationQueue.m in Sources */,
 				BBF898B013CAC5A700D5C5FB /* DWCreationQueueItem.m in Sources */,
@@ -2737,6 +2734,10 @@
 				BB272B4D13CFCDFF00FDACA1 /* DWPlaceFeedCell.m in Sources */,
 				BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */,
 				BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */,
+				BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */,
+				BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */,
+				BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */,
+				BB272B5C13CFCE5A00FDACA1 /* UIImage+ImageProcessing.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
