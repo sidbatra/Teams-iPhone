@@ -91,6 +91,8 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {		
+    [super viewDidUnload];
+    
 	NSLog(@"%@",kMsgUnload);
 }
 

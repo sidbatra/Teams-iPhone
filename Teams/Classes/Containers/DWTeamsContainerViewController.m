@@ -15,7 +15,7 @@ static NSString* const kImgSegmentedViewSearchOn	= @"search_on.png";
 static NSString* const kImgSegmentedViewSearchOff	= @"search_off.png";
 static NSString* const kImgSegmentedViewNearbyOn	= @"nearby_on.png";
 static NSString* const kImgSegmentedViewNearbyOff	= @"nearby_off.png";
-static NSString* const kMsgUnload					= @"Unload called on places container";
+static NSString* const kMsgUnload					= @"Unload called on teams container";
 
 
 
@@ -90,6 +90,8 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
     [super viewDidUnload];
     
     NSLog(@"%@",kMsgUnload);
+    
+    [self.segmentedController.view removeFromSuperview];
 }
 
 
