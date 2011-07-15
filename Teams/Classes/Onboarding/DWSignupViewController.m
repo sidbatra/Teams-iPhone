@@ -33,13 +33,15 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize usersController             = _usersController;
 @synthesize teamsController             = _teamsController;
 
+@synthesize delegate                    = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
     self = [super init];
     
     if (self) {
-        _delegate = theDelegate;
+        _hasCreatedUser = NO;
     }
     
     return self;
@@ -96,6 +98,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     [super viewDidUnload];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)populateViewWithEmail:(NSString*)email {
+    
+    self.emailTextField.text    = email;
+    _hasCreatedUser             = YES;
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -103,7 +111,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)createNewUser {	
+- (void)createUser {	
 	if (self.emailTextField.text.length == 0) {        
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
 														message:kMsgIncomplete
@@ -126,6 +134,19 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)updateUser {
+    NSLog(@"user needs to be updated");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createOrUdateUser {
+    if (!_hasCreatedUser)
+        [self createUser];
+    else
+        [self updateUser];    
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -133,15 +154,15 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {    
-    [self createNewUser];
+- (void)didTapDoneButton:(id)sender event:(id)event {
+    [self createOrUdateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
 	if(textField == self.emailTextField)
-		[self createNewUser];
+		[self createOrUdateUser];
 
 	return YES;
 }
@@ -156,13 +177,14 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)userCreated:(DWUser*)user {    
     
     user.encryptedPassword  = self.password;                
-    [_delegate userCreated:user];
+    _hasCreatedUser         = YES;
     
-    NSString *domain                = [user getDomainFromEmail];
+    [self.delegate userCreated:user];
     
     self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
     self.teamsController.delegate   = self;
     
+    NSString *domain                = [user getDomainFromEmail];
     [self.teamsController getTeamFromDomain:domain];
 }
 
@@ -185,8 +207,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWTeamsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamLoaded:(DWTeam*)team {
-    [_delegate teamLoaded:team];
+- (void)teamLoaded:(DWTeam*)team {    
+    [self.delegate teamLoaded:team];
 }
 
 //----------------------------------------------------------------------------------------------------

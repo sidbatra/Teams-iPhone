@@ -177,6 +177,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     if(![[DWSession sharedDWSession] isExhaustive])
         [self.tabBarController presentModalViewController:self.onboardingNavController
                                                  animated:NO];
+    
+    NSLog(@"state is %d", [[DWSession sharedDWSession] state]);
 }
 
 

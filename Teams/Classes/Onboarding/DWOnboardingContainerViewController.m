@@ -6,6 +6,7 @@
 #import "DWOnboardingContainerViewController.h"
 #import "DWGUIManager.h"
 #import "DWSession.h"
+#import "DWConstants.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -73,8 +74,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)signupInitiated {
-    DWSignupViewController *signupViewController = [[[DWSignupViewController alloc] initWithDelegate:self] autorelease];
+    
+    DWSignupViewController *signupViewController    = [[[DWSignupViewController alloc] init] autorelease];
+    signupViewController.delegate                   = self;
+    
     [self.navigationController pushViewController:signupViewController animated:YES];
+    
+    if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserEmail) 
+        [signupViewController populateViewWithEmail:[DWSession sharedDWSession].currentUser.email];
 }
 
 

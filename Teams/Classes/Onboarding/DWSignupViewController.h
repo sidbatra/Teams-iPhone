@@ -21,6 +21,7 @@
     UITextField                 *_emailTextField;
     
 	NSString                    *_password;    
+    BOOL                        _hasCreatedUser;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
@@ -43,22 +44,29 @@
 @property (nonatomic,copy) NSString *password;
 
 /**
+ * Model Controllers
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic,retain) DWTeamsController *teamsController;
+
+/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
- * Model Controllers
+ * Delegate to send updates to
  */
-@property (nonatomic,retain) DWUsersController *usersController;
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic,assign) id<DWSignupViewControllerDelegate> delegate;
 
 
-/*
- * Custom init with delegate
+/**
+ * Prepopulate the signup view from session data to 
+ * keep state persistence.
  */
-- (id)initWithDelegate:(id)theDelegate;
+- (void)populateViewWithEmail:(NSString*)email;
+
 
 @end
 
