@@ -23,12 +23,17 @@
 @property (nonatomic,readonly) NSInteger selectedIndex;
 
 /**
+ * Delegate receives updates about changes in tab selection
+ */
+@property (nonatomic,assign) id<DWTabBarDelegate> delegate;
+
+
+/**
  * Init with frame for the tab bar, tab bar info for each tab
  * and delegate to receive events on tab bar clicks
  */
 - (id)initWithFrame:(CGRect)frame 
-		   withInfo:(NSArray*)tabsInfo
-		andDelegate:(id)theDelegate;
+		   withInfo:(NSArray*)tabsInfo;
 
 /**
  * Highlights the tab at the given index

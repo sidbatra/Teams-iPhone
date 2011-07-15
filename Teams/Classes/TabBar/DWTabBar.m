@@ -31,16 +31,15 @@ static NSInteger const kHighlightViewTag    = 3;
 
 @synthesize buttons			= _buttons;
 @synthesize selectedIndex	= _selectedIndex;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame 
-		   withInfo:(NSArray*)tabsInfo
-		andDelegate:(id)theDelegate {
+		   withInfo:(NSArray*)tabsInfo {
 	
     self = [super initWithFrame:frame];
     
 	if (self) {		
-		_delegate				= theDelegate;
 		
 		self.buttons			= [NSMutableArray array];
 		NSInteger index			= 0;
@@ -108,6 +107,9 @@ static NSInteger const kHighlightViewTag    = 3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.buttons    = nil;
+    self.delegate   = nil;
+    
     [super dealloc];
 }
 

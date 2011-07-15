@@ -5,15 +5,15 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWTabBar.h"
 
-@class DWTabBar;
 @protocol DWTabBarControllerDelegate;
 
 
 /**
  * Custom tab bar controller
  */
-@interface DWTabBarController : UIViewController {
+@interface DWTabBarController : UIViewController<DWTabBarDelegate> {
 	DWTabBar			*_tabBar;
     UIImageView         *_topShadowView;
     UIImageView         *_bottomShadowView;

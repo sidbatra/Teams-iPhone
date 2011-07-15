@@ -5,7 +5,6 @@
 
 #import "DWTabBarController.h"
 #import "DWCreateViewController.h"
-#import "DWTabBar.h"
 #import "DWConstants.h"
 
 #define kApplicationFrame	CGRectMake(0,20,320,460)
@@ -71,8 +70,8 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 		
         _delegate                       = theDelegate;
 		self.tabBar                     = [[[DWTabBar alloc] initWithFrame:tabBarFrame
-                                                                  withInfo:tabBarInfo 
-                                                               andDelegate:self] autorelease];
+                                                                  withInfo:tabBarInfo] autorelease];
+        self.tabBar.delegate            = self;
         
         self.topShadowView              = [[[UIImageView alloc] initWithImage:
                                             [UIImage imageNamed:kImgTopShadow]] autorelease];
