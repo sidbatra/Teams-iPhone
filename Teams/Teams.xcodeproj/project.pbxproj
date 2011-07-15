@@ -227,6 +227,7 @@
 		BB272C3513D1037F00FDACA1 /* DWTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3413D1037F00FDACA1 /* DWTeamsViewController.m */; };
 		BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */; };
 		BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */; };
+		BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -779,6 +780,8 @@
 		BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPopularTeamsViewController.m; sourceTree = "<group>"; };
 		BB272C3913D107BB00FDACA1 /* DWRecentTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRecentTeamsDataSource.h; sourceTree = "<group>"; };
 		BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRecentTeamsDataSource.m; sourceTree = "<group>"; };
+		BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRecentTeamsViewController.h; sourceTree = "<group>"; };
+		BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRecentTeamsViewController.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -1795,6 +1798,8 @@
 				BB272C3413D1037F00FDACA1 /* DWTeamsViewController.m */,
 				BB272C3613D1046C00FDACA1 /* DWPopularTeamsViewController.h */,
 				BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */,
+				BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */,
+				BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -2806,6 +2811,7 @@
 				BB272C3513D1037F00FDACA1 /* DWTeamsViewController.m in Sources */,
 				BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */,
 				BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */,
+				BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
