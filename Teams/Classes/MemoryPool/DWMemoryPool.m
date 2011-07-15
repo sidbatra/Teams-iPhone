@@ -40,6 +40,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 	
 	if(self) {
 		self.memoryPool = [NSMutableDictionary dictionary];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(lowMemoryState:) 
+													 name:kNEnteringLowMemoryState
+												   object:nil];
 	}
 	
 	return self;
@@ -47,6 +53,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 	[super dealloc];
 }
 
@@ -96,6 +104,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
                 [object performSelector:sel];
         }
     }
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)lowMemoryState:(NSNotification*)notification {
+    [self freeMemory];
 }
 
 @end

@@ -46,6 +46,11 @@
 @property (nonatomic,retain) UIView *errorView;
 
 
+/**
+ * Scroll the table view to the top
+ */
+- (void)scrollToTop;
+
 @end
 
 @interface DWTableViewController ()

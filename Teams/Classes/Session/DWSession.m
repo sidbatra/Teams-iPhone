@@ -4,7 +4,6 @@
 //
 
 #import "DWSession.h"
-#import "DWMemoryPool.h"
 #import "DWConstants.h"
 
 #import "SynthesizeSingleton.h"

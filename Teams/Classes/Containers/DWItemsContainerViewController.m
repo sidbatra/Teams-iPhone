@@ -71,7 +71,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)scrollToTop {
-    //[followedViewController scrollToTop];
+    [self.followedViewController scrollToTop];
 }
 
 //----------------------------------------------------------------------------------------------------

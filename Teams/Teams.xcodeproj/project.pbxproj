@@ -205,7 +205,6 @@
 		BB272B4A13CFCDFF00FDACA1 /* DWItemFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3F13CFCDFF00FDACA1 /* DWItemFeedCell.m */; };
 		BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */; };
 		BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */; };
-		BB272B4D13CFCDFF00FDACA1 /* DWPlaceFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4513CFCDFF00FDACA1 /* DWPlaceFeedCell.m */; };
 		BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */; };
 		BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */; };
 		BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */; };
@@ -221,6 +220,8 @@
 		BB272C1013D0B7D700FDACA1 /* DWSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C0F13D0B7D700FDACA1 /* DWSegmentedControl.m */; };
 		BB272C1613D0BC7000FDACA1 /* DWSegmentedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C1513D0BC6F00FDACA1 /* DWSegmentedController.m */; };
 		BB272C1813D0BC9A00FDACA1 /* DWTeamsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C1713D0BC9A00FDACA1 /* DWTeamsContainerViewController.m */; };
+		BB272C2813D0F71E00FDACA1 /* DWTeamFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2713D0F71E00FDACA1 /* DWTeamFeedCell.m */; };
+		BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -588,7 +589,7 @@
 		2632E55413CCDFCA005B1B1E /* DWCreateTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreateTeamViewController.xib; path = Classes/Onboarding/DWCreateTeamViewController.xib; sourceTree = "<group>"; };
 		2632E55513CCDFCA005B1B1E /* DWCreateTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreateTeamViewController.h; path = Classes/Onboarding/DWCreateTeamViewController.h; sourceTree = "<group>"; };
 		2632E55613CCDFCA005B1B1E /* DWCreateTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreateTeamViewController.m; path = Classes/Onboarding/DWCreateTeamViewController.m; sourceTree = "<group>"; };
-		2632E55713CCDFCA005B1B1E /* DWCreateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; name = DWCreateProfileViewController.h; path = Classes/Onboarding/DWCreateProfileViewController.h; sourceTree = "<group>"; };
+		2632E55713CCDFCA005B1B1E /* DWCreateProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreateProfileViewController.h; path = Classes/Onboarding/DWCreateProfileViewController.h; sourceTree = "<group>"; };
 		2632E55813CCDFCA005B1B1E /* DWCreateProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreateProfileViewController.m; path = Classes/Onboarding/DWCreateProfileViewController.m; sourceTree = "<group>"; };
 		2632E55913CCDFCA005B1B1E /* DWCreateProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreateProfileViewController.xib; path = Classes/Onboarding/DWCreateProfileViewController.xib; sourceTree = "<group>"; };
 		2632E55A13CCDFCA005B1B1E /* DWIntroPaneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWIntroPaneViewController.h; path = Classes/Onboarding/DWIntroPaneViewController.h; sourceTree = "<group>"; };
@@ -729,8 +730,6 @@
 		BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessageCell.m; sourceTree = "<group>"; };
 		BB272B4213CFCDFF00FDACA1 /* DWPaginationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationCell.h; sourceTree = "<group>"; };
 		BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationCell.m; sourceTree = "<group>"; };
-		BB272B4413CFCDFF00FDACA1 /* DWPlaceFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPlaceFeedCell.h; sourceTree = "<group>"; };
-		BB272B4513CFCDFF00FDACA1 /* DWPlaceFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPlaceFeedCell.m; sourceTree = "<group>"; };
 		BB272B4613CFCDFF00FDACA1 /* DWPlaceSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPlaceSearchResultCell.h; sourceTree = "<group>"; };
 		BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPlaceSearchResultCell.m; sourceTree = "<group>"; };
 		BB272B4813CFCDFF00FDACA1 /* DWTouchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchCell.h; sourceTree = "<group>"; };
@@ -761,6 +760,10 @@
 		BB272C1413D0BC6F00FDACA1 /* DWSegmentedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSegmentedController.h; sourceTree = "<group>"; };
 		BB272C1513D0BC6F00FDACA1 /* DWSegmentedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSegmentedController.m; sourceTree = "<group>"; };
 		BB272C1713D0BC9A00FDACA1 /* DWTeamsContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsContainerViewController.m; sourceTree = "<group>"; };
+		BB272C2613D0F71E00FDACA1 /* DWTeamFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamFeedCell.h; sourceTree = "<group>"; };
+		BB272C2713D0F71E00FDACA1 /* DWTeamFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamFeedCell.m; sourceTree = "<group>"; };
+		BB272C2913D0F84100FDACA1 /* DWTeamPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamPresenter.h; sourceTree = "<group>"; };
+		BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamPresenter.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -1714,12 +1717,12 @@
 			children = (
 				BB272B3E13CFCDFF00FDACA1 /* DWItemFeedCell.h */,
 				BB272B3F13CFCDFF00FDACA1 /* DWItemFeedCell.m */,
+				BB272C2613D0F71E00FDACA1 /* DWTeamFeedCell.h */,
+				BB272C2713D0F71E00FDACA1 /* DWTeamFeedCell.m */,
 				BB272B4013CFCDFF00FDACA1 /* DWMessageCell.h */,
 				BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */,
 				BB272B4213CFCDFF00FDACA1 /* DWPaginationCell.h */,
 				BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */,
-				BB272B4413CFCDFF00FDACA1 /* DWPlaceFeedCell.h */,
-				BB272B4513CFCDFF00FDACA1 /* DWPlaceFeedCell.m */,
 				BB272B4613CFCDFF00FDACA1 /* DWPlaceSearchResultCell.h */,
 				BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */,
 				BB272B4813CFCDFF00FDACA1 /* DWTouchCell.h */,
@@ -2061,6 +2064,8 @@
 				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
 				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
+				BB272C2913D0F84100FDACA1 /* DWTeamPresenter.h */,
+				BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */,
 				BB3A43C113CD3B8700316EE6 /* DWPaginationPresenter.h */,
 				BB3A43C213CD3B8700316EE6 /* DWPaginationPresenter.m */,
 			);
@@ -2746,7 +2751,6 @@
 				BB272B4A13CFCDFF00FDACA1 /* DWItemFeedCell.m in Sources */,
 				BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */,
 				BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */,
-				BB272B4D13CFCDFF00FDACA1 /* DWPlaceFeedCell.m in Sources */,
 				BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */,
 				BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */,
 				BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */,
@@ -2762,6 +2766,8 @@
 				BB272C1013D0B7D700FDACA1 /* DWSegmentedControl.m in Sources */,
 				BB272C1613D0BC7000FDACA1 /* DWSegmentedController.m in Sources */,
 				BB272C1813D0BC9A00FDACA1 /* DWTeamsContainerViewController.m in Sources */,
+				BB272C2813D0F71E00FDACA1 /* DWTeamFeedCell.m in Sources */,
+				BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

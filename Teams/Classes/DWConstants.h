@@ -72,7 +72,8 @@ typedef enum {
  * Types of resources flowing through the application
  */
 typedef enum {
-    kResoureTypeLargeAttachmentImage = 0
+    kResoureTypeLargeAttachmentImage = 0,
+    kResoureTypeSliceAttachmentImage = 1
 } DWResourceType;
 
 
@@ -260,6 +261,7 @@ extern NSString* const kNNewFeedItemsLoaded;
 extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
 extern NSString* const kNPaginationCellReached;
+extern NSString* const kNEnteringLowMemoryState;
 
 /**
  * Nav bar title view dimensions

@@ -24,6 +24,14 @@
 #pragma mark DWItemsControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)itemCreated:(DWItem *)item 
+     fromResourceID:(NSInteger)resourceID {
+    
+    [self addObject:item
+            atIndex:0];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)followedItemsLoaded:(NSMutableArray *)items { 
     [self populateItems:items];
 }

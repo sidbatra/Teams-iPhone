@@ -81,6 +81,16 @@ static NSInteger const kDefaultSections = 1;
 - (void)paginate {
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)addObject:(id)object 
+          atIndex:(NSInteger)index {
+    
+    [self.objects insertObject:object
+                       atIndex:index];
+    
+    [self.delegate insertRowAtIndex:index];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

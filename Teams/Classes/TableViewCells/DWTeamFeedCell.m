@@ -1,11 +1,11 @@
 //
-//  DWPlaceFeedCell.m
+//  DWTeamFeedCell.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWPlaceFeedCell.h"
+#import "DWTeamFeedCell.h"
 
-static NSString* const kImgSeparator	= @"hr_place_list.png";
+static NSString* const kImgSeparator	= @"hr_team_list.png";
 static NSString* const kImgChevron		= @"chevron.png";
 
 #define kAnimationDuration              0.05
@@ -23,16 +23,16 @@ static NSString* const kImgChevron		= @"chevron.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWPlaceFeedCellDrawingLayer
+@implementation DWTeamFeedCellDrawingLayer
 
-@synthesize placeCell;
+@synthesize teamCell;
 
 //----------------------------------------------------------------------------------------------------
 - (void)drawInContext:(CGContextRef)context {
 	
 	UIGraphicsPushContext(context);
 	
-	if([placeCell isHighlighted] && !placeCell.hasAttachment)
+	if([teamCell isHighlighted] && !teamCell.hasAttachment)
         CGContextSetFillColorWithColor(context,[UIColor colorWithRed:0.9019
                                                                green:0.9019 
                                                                 blue:0.9019
@@ -40,12 +40,12 @@ static NSString* const kImgChevron		= @"chevron.png";
     else
         CGContextSetFillColorWithColor(context,[UIColor whiteColor].CGColor);	 
 	
-	[placeCell.placeName drawInRect:CGRectMake(20,21,280,28) 
+	[teamCell.teamName drawInRect:CGRectMake(20,21,280,28) 
 						   withFont:[UIFont fontWithName:@"HelveticaNeue" size:22]
 					  lineBreakMode:UILineBreakModeTailTruncation
 						  alignment:UITextAlignmentLeft];
 	 
-	[placeCell.placeDetails drawInRect:CGRectMake(20,49,280,20)
+	[teamCell.teamDetails drawInRect:CGRectMake(20,49,280,20)
 							  withFont:[UIFont fontWithName:@"HelveticaNeue" size:15] 
 						 lineBreakMode:UILineBreakModeTailTruncation
 							 alignment:UITextAlignmentLeft];
@@ -60,11 +60,11 @@ static NSString* const kImgChevron		= @"chevron.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWPlaceFeedCell
+@implementation DWTeamFeedCell
 
-@synthesize placeName			= _placeName;
-@synthesize placeData			= _placeData;
-@synthesize placeDetails		= _placeDetails;
+@synthesize teamName			= _teamName;
+@synthesize teamData			= _teamData;
+@synthesize teamDetails		= _teamDetails;
 @synthesize hasAttachment       = _hasAttachment;
 
 //----------------------------------------------------------------------------------------------------
@@ -78,16 +78,16 @@ static NSString* const kImgChevron		= @"chevron.png";
         
 		CGRect frame = CGRectMake(0,0,320,92);
 		
-		placeImageLayer					= [CALayer layer];
-		placeImageLayer.frame			= frame;
-		placeImageLayer.contentsScale	= [[UIScreen mainScreen] scale];
-		placeImageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
+		teamImageLayer					= [CALayer layer];
+		teamImageLayer.frame			= frame;
+		teamImageLayer.contentsScale	= [[UIScreen mainScreen] scale];
+		teamImageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
 										   [NSNull null], @"contents",
 										   nil];
-		[[self layer] addSublayer:placeImageLayer];
+		[[self layer] addSublayer:teamImageLayer];
 		
-		drawingLayer					= [DWPlaceFeedCellDrawingLayer layer];
-		drawingLayer.placeCell			= self;
+		drawingLayer					= [DWTeamFeedCellDrawingLayer layer];
+		drawingLayer.teamCell			= self;
 		drawingLayer.frame				= frame;
 		drawingLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		drawingLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -117,9 +117,9 @@ static NSString* const kImgChevron		= @"chevron.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-	self.placeName		= nil;
-	self.placeDetails	= nil;
-	self.placeData		= nil;
+	self.teamName		= nil;
+	self.teamDetails	= nil;
+	self.teamData		= nil;
 	
     [super dealloc];
 }
@@ -132,8 +132,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 	[CATransaction setValue:[NSNumber numberWithFloat:kNoAnimationDuration]
 					 forKey:kCATransactionAnimationDuration];		
     
-	placeImageLayer.opacity         = _hasAttachment ? kNormalAlpha : kNormalNoAttachmentAlpha;
-    placeImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentBg;
+	teamImageLayer.opacity         = _hasAttachment ? kNormalAlpha : kNormalNoAttachmentAlpha;
+    teamImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentBg;
     
 	[CATransaction commit];
 }
@@ -160,8 +160,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setPlaceImage:(UIImage*)placeImage {
-	placeImageLayer.contents = (id)placeImage.CGImage;
+- (void)setTeamImage:(UIImage*)teamImage {
+	teamImageLayer.contents = (id)teamImage.CGImage;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -176,8 +176,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 	[CATransaction begin];
 	[CATransaction setValue:[NSNumber numberWithFloat:kAnimationDuration]
 					 forKey:kCATransactionAnimationDuration];		
-	placeImageLayer.opacity         = _hasAttachment ? kHighlightAlpha : kNormalNoAttachmentAlpha;
-    placeImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentHighlightBg;
+	teamImageLayer.opacity         = _hasAttachment ? kHighlightAlpha : kNormalNoAttachmentAlpha;
+    teamImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentHighlightBg;
     [self redisplay];
 	[CATransaction commit];
 }
@@ -189,8 +189,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 	[CATransaction begin];
 	[CATransaction setValue:[NSNumber numberWithFloat:kAnimationDuration]
 					 forKey:kCATransactionAnimationDuration];		
-	placeImageLayer.opacity         = _hasAttachment ? kNormalAlpha : kNormalNoAttachmentAlpha;
-    placeImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentBg;
+	teamImageLayer.opacity         = _hasAttachment ? kNormalAlpha : kNormalNoAttachmentAlpha;
+    teamImageLayer.backgroundColor = _hasAttachment ? kColorNormalBg : kColorNoAttachmentBg;
     [self redisplay];
 	[CATransaction commit];
 }
