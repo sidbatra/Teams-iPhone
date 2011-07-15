@@ -11,6 +11,7 @@
  * 
  */
 @interface DWSegmentedController : UIViewController<DWSegmentedControlDelegate> {
+    
     DWSegmentedControl	*_segmentedControl;
     
 	NSArray				*_subControllers;

@@ -4,10 +4,7 @@
 //
 
 #import "DWTeamsContainerViewController.h"
-#import "DWFollowedItemsViewController.h"
-#import "DWUserItemsViewController.h"
 #import "DWSegmentedController.h"
-#import "DWSession.h"
 #import "DWConstants.h"
 
 static NSInteger const kSegmentedPlacesViewWidth	= 320;
@@ -68,25 +65,31 @@ static NSString* const kMsgUnload					= @"Unload called on places container";
                                     kImgSegmentedViewNearbyOff		,kKeyNormalImageName,
                                     nil],
                                    nil];
-    
+        
         self.segmentedController = [[[DWSegmentedController alloc] initWithFrame:CGRectMake(0,0,320,44)
                                                                  andSegmentsInfo:segmentsInfo] autorelease];
         self.segmentedController.parentForSubControllers   = self;
         
-        DWFollowedItemsViewController *a = [[[DWFollowedItemsViewController alloc] init] autorelease];
-        a.delegate = (id)self;
-        DWUserItemsViewController *b = [[[DWUserItemsViewController alloc] initWithUser:[DWSession sharedDWSession].currentUser
-                                                                             andIgnore:YES] autorelease];
-        b.delegate = (id)self;
+        UIViewController *a = [[[UIViewController alloc] init] autorelease];
+        a.view.backgroundColor = [UIColor redColor];
+        UIViewController *b = [[[UIViewController alloc] init] autorelease];
+        b.view.backgroundColor = [UIColor greenColor];
         UIViewController *c = [[[UIViewController alloc] init] autorelease];
         c.view.backgroundColor = [UIColor blueColor];
         
-        self.segmentedController.subControllers = [NSArray arrayWithObjects:b,a,c,nil];
+        self.segmentedController.subControllers = [NSArray arrayWithObjects:a,b,c,nil];
     }
     
     [self.navigationController.navigationBar addSubview:self.segmentedController.view];
     
 	self.navigationItem.titleView = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidUnload {
+    [super viewDidUnload];
+    
+    NSLog(@"%@",kMsgUnload);
 }
 
 
