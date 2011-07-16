@@ -44,6 +44,14 @@
                     byline:(NSString*)byline 
                  andDomain:(NSString*)domain;
 
+/**
+ * Update an existing team
+ */
+- (void)updateTeamHavingID:(NSInteger)teamID
+                  withName:(NSString*)name
+                    byline:(NSString*)byline 
+                 andDomain:(NSString*)domain;
+
 @end
 
 
@@ -94,5 +102,15 @@
  * Error message while creating a team
  */
 - (void)teamCreationError:(NSString*)error;
+
+/**
+ * Fired when a team is updated
+ */
+- (void)teamUpdated:(DWTeam*)team;
+
+/**
+ * Error message while updating a team
+ */
+- (void)teamUpdateError:(NSString*)error;
 
 @end

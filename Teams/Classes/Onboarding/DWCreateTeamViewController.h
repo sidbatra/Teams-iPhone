@@ -20,7 +20,8 @@
 	UITextField                 *_teamBylineTextField;
     
 	NSString                    *_domain;    
-    BOOL                        _hasCreatedTeam;        
+    BOOL                        _hasCreatedTeam;
+    NSInteger                   _teamID;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;

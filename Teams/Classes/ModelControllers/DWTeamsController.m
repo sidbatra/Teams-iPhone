@@ -14,6 +14,7 @@ static NSString* const kTeamURI             = @"/teams/domain/%@.json?";
 static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
 static NSString* const kRecentTeamsURI      = @"/recent/teams.json?";
 static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
+static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
 
 
 /**
@@ -82,6 +83,16 @@ static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=
 												 selector:@selector(teamCreationError:) 
 													 name:kNNewTeamError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(teamUpdated:) 
+													 name:kNTeamUpdated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(teamUpdateError:) 
+													 name:kNTeamUpdateError
+												   object:nil];        
     }
     return self;
 }
@@ -172,6 +183,28 @@ static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=
                                                    errorNotification:kNNewTeamError
                                                        requestMethod:kPost];
 }
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Update
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateTeamHavingID:(NSInteger)teamID withName:(NSString*)name 
+                    byline:(NSString*)byline andDomain:(NSString *)domain {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateTeamURI,
+                          teamID,
+                          [name stringByEncodingHTMLCharacters],
+                          [byline stringByEncodingHTMLCharacters],
+                          [domain stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNTeamUpdated
+                                                   errorNotification:kNTeamUpdateError
+                                                       requestMethod:kPut];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -311,6 +344,53 @@ static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=
 - (void)teamCreationError:(NSNotification*)notification {
     
     SEL sel = @selector(teamCreationError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated:(NSNotification*)notification {
+    
+    SEL sel = @selector(teamUpdated:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *info	= [notification userInfo];
+    NSDictionary *data  = [info objectForKey:kKeyData];
+    
+    NSLog(@"%@",data);
+    
+    NSArray *errorInfo = [data objectForKey:kKeyErrors];
+    
+    if ([errorInfo count] ) {
+        NSArray *errors     = [errorInfo objectAtIndex:0];
+        NSString *errorMsg  = @"";
+        
+        for(id error in errors) {
+            errorMsg = [errorMsg stringByAppendingFormat:@"%@ ",error];
+        }
+        
+        [self.delegate teamUpdateError:[errorMsg stringByReplacingCharactersInRange:NSMakeRange(0,1)
+                                                                         withString:[[errorMsg substringToIndex:1]
+                                                                                     uppercaseString]]];
+        return;
+    }
+    
+    DWTeam *team    = [DWTeam create:data]; 
+    [self.delegate performSelector:sel 
+                        withObject:team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdateError:(NSNotification*)notification {
+    
+    SEL sel = @selector(teamUpdateError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;

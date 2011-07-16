@@ -137,6 +137,28 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)updateTeam {
     NSLog(@"team needs to be updated");
+    if (self.teamNameTextField.text.length == 0 || 
+        self.teamBylineTextField.text.length == 0) {
+        
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+														message:kMsgIncomplete
+													   delegate:nil 
+											  cancelButtonTitle:kMsgCancelTitle
+											  otherButtonTitles: nil];
+		[alert show];
+		[alert release];
+	}
+	else {
+        if(!self.teamsController)
+            self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
+        
+        self.teamsController.delegate   = self;
+        
+        [self.teamsController updateTeamHavingID:_teamID 
+                                        withName:self.teamNameTextField.text 
+                                          byline:self.teamBylineTextField.text 
+                                       andDomain:self.domain];        
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -166,7 +188,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team { 
-    _hasCreatedTeam = YES;    
+    
+    _hasCreatedTeam = YES;
+    _teamID         = team.databaseID;
+    
     [self.delegate teamCreated:team];
 }
 
@@ -180,6 +205,24 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 	[alert show];
 	[alert release];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated:(DWTeam*)team { 
+    _hasCreatedTeam = YES;    
+    [self.delegate teamCreated:team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdateError:(NSString*)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
 
 
 //----------------------------------------------------------------------------------------------------
