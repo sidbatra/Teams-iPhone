@@ -73,10 +73,11 @@ static NSString* const kMsgUnload					= @"Unload called on teams container";
         self.segmentedController.parentForSubControllers   = self;
         
         DWPopularTeamsViewController *popularTeamsController = [[[DWPopularTeamsViewController alloc] init] autorelease];
-        popularTeamsController.delegate                         = (id)self;
+        [popularTeamsController setDelegate:(id)self];
         
         DWRecentTeamsViewController *recentTeamsController = [[[DWRecentTeamsViewController alloc] init] autorelease];
-        recentTeamsController.delegate                          = (id)self;
+        [recentTeamsController setDelegate:(id)self];
+        
         
         UIViewController *b = [[[UIViewController alloc] init] autorelease];
         b.view.backgroundColor = [UIColor blueColor];
