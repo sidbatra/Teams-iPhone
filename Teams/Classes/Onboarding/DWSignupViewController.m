@@ -100,7 +100,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)prePopulateViewWithEmail:(NSString*)email {
-    
     self.emailTextField.text    = email;
     _hasCreatedUser             = YES;
 }
@@ -111,22 +110,27 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayEmptyFieldsError {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+                                                    message:kMsgIncomplete
+                                                   delegate:nil 
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createUser {	
 	if (self.emailTextField.text.length == 0) {        
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
-														message:kMsgIncomplete
-													   delegate:nil 
-											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
+        [self displayEmptyFieldsError];
 	}
 	else {			
-        //TODO Freeze UI and show a spinner in workEmail
-        //TODO Random generator for the password
-        
         self.password                   = [@"password" encrypt];
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
+        
+        if (!self.usersController)
+            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
+        
         self.usersController.delegate   = self;
         
         [self.usersController createUserWithEmail:self.emailTextField.text 

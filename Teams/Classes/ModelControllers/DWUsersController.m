@@ -7,6 +7,7 @@
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
+#import "DWRequestHelper.h"
 #import "DWUser.h"
 
 static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[password]=%@";
@@ -78,19 +79,16 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
     
-    NSArray *errorInfo = [data objectForKey:kKeyErrors];
+    NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    if ([errorInfo count] ) {
-        NSArray *errors     = [errorInfo objectAtIndex:0];
-        NSString *errorMsg  = @"";
+    if ([errors count] ) {
+        SEL sel = @selector(userCreationError:);
         
-        for(id error in errors) {
-            errorMsg = [errorMsg stringByAppendingFormat:@"%@ ",error];
-        }
+        if(![self.delegate respondsToSelector:sel])
+            return;
         
-        [self.delegate userCreationError:[errorMsg stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                           withString:[[errorMsg substringToIndex:1] 
-                                                                                       uppercaseString]]];
+        [self.delegate performSelector:sel 
+                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
         return;
     }
     

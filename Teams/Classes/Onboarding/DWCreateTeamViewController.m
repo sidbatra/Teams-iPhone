@@ -64,10 +64,11 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)prePopulateViewWithName:(NSString*)name andByline:(NSString*)byline {    
+- (void)prePopulateViewWithName:(NSString*)name byline:(NSString*)byline andDatabaseID:(NSInteger)teamID {
     self.teamNameTextField.text         = name;
     self.teamBylineTextField.text       = byline;
     
+    _teamID                             = teamID;
     _hasCreatedTeam                     = YES;
 }
 
@@ -112,20 +113,25 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayEmptyFieldsError {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+                                                    message:kMsgIncomplete
+                                                   delegate:nil 
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createTeam {
-    if (self.teamNameTextField.text.length == 0 || 
-        self.teamBylineTextField.text.length == 0) {
-        
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
-														message:kMsgIncomplete
-													   delegate:nil 
-											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
+    if (self.teamNameTextField.text.length == 0 || self.teamBylineTextField.text.length == 0) {
+        [self displayEmptyFieldsError];
 	}
 	else {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        if (!self.teamsController) 
+            self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
+        
         self.teamsController.delegate   = self;
         
         [self.teamsController createTeamWithName:self.teamNameTextField.text 
@@ -136,23 +142,14 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateTeam {
-    NSLog(@"team needs to be updated");
-    if (self.teamNameTextField.text.length == 0 || 
-        self.teamBylineTextField.text.length == 0) {
-        
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
-														message:kMsgIncomplete
-													   delegate:nil 
-											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
+    if (self.teamNameTextField.text.length == 0 ||  self.teamBylineTextField.text.length == 0) {
+        [self displayEmptyFieldsError];
 	}
 	else {
         if(!self.teamsController)
             self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
         
-        self.teamsController.delegate   = self;
+        self.teamsController.delegate   = self;     
         
         [self.teamsController updateTeamHavingID:_teamID 
                                         withName:self.teamNameTextField.text 
@@ -187,8 +184,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWTeamsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamCreated:(DWTeam*)team { 
-    
+- (void)teamCreated:(DWTeam*)team {     
     _hasCreatedTeam = YES;
     _teamID         = team.databaseID;
     

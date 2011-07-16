@@ -130,7 +130,8 @@
         
         if ([[DWSession sharedDWSession] state] >= kSessionStateTillTeamDetails) 
             [createTeamViewController prePopulateViewWithName:[DWSession sharedDWSession].currentUser.team.name
-                                                    andByline:[DWSession sharedDWSession].currentUser.team.byline];
+                                                       byline:[DWSession sharedDWSession].currentUser.team.byline
+                                                andDatabaseID:[DWSession sharedDWSession].currentUser.team.databaseID];
     }
 }
 

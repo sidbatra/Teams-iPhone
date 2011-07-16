@@ -7,6 +7,7 @@
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
+#import "DWRequestHelper.h"
 #import "DWTeam.h"
 
 
@@ -316,26 +317,20 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
+    NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    NSLog(@"%@",data);
-    
-    NSArray *errorInfo = [data objectForKey:kKeyErrors];
-    
-    if ([errorInfo count] ) {
-        NSArray *errors     = [errorInfo objectAtIndex:0];
-        NSString *errorMsg  = @"";
+    if ([errors count] ) {
+        SEL errorSel = @selector(teamCreationError:);
         
-        for(id error in errors) {
-            errorMsg = [errorMsg stringByAppendingFormat:@"%@ ",error];
-        }
+        if(![self.delegate respondsToSelector:errorSel])
+            return;
         
-        [self.delegate teamCreationError:[errorMsg stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                           withString:[[errorMsg substringToIndex:1] 
-                                                                                       uppercaseString]]];
+        [self.delegate performSelector:errorSel 
+                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
         return;
     }
     
-    DWTeam *team    = [DWTeam create:data]; 
+    DWTeam *team = [DWTeam create:data]; 
     [self.delegate performSelector:sel 
                         withObject:team];
 }
@@ -363,26 +358,20 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
+    NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    NSLog(@"%@",data);
-    
-    NSArray *errorInfo = [data objectForKey:kKeyErrors];
-    
-    if ([errorInfo count] ) {
-        NSArray *errors     = [errorInfo objectAtIndex:0];
-        NSString *errorMsg  = @"";
+    if ([errors count] ) {
+        SEL errorSel = @selector(teamUpdateError:);
         
-        for(id error in errors) {
-            errorMsg = [errorMsg stringByAppendingFormat:@"%@ ",error];
-        }
+        if(![self.delegate respondsToSelector:errorSel])
+            return;
         
-        [self.delegate teamUpdateError:[errorMsg stringByReplacingCharactersInRange:NSMakeRange(0,1)
-                                                                         withString:[[errorMsg substringToIndex:1]
-                                                                                     uppercaseString]]];
+        [self.delegate performSelector:errorSel 
+                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
         return;
     }
     
-    DWTeam *team    = [DWTeam create:data]; 
+    DWTeam *team = [DWTeam create:data]; 
     [self.delegate performSelector:sel 
                         withObject:team];
 }

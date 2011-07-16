@@ -64,7 +64,8 @@
  * keep state persistence.
  */
 - (void)prePopulateViewWithName:(NSString*)name 
-                      andByline:(NSString*)byline;
+                         byline:(NSString*)byline 
+                  andDatabaseID:(NSInteger)teamID;
 
 
 @end

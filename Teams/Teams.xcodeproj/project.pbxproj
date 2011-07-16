@@ -14,6 +14,7 @@
 		2612D62913637E46005AE9E5 /* DWUserTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612D62813637E44005AE9E5 /* DWUserTitleView.m */; };
 		2612D62C13639610005AE9E5 /* static_button_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62A13639610005AE9E5 /* static_button_active.png */; };
 		2612D62D13639610005AE9E5 /* static_button_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62B13639610005AE9E5 /* static_button_active@2x.png */; };
+		262415F213D21F1E00474D4B /* DWRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 262415F113D21F1E00474D4B /* DWRequestHelper.m */; };
 		26254CF613029E6F00D83345 /* button_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CD013029E6F00D83345 /* button_bg.png */; };
 		26254CF713029E6F00D83345 /* button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CD113029E6F00D83345 /* button_bg@2x.png */; };
 		26254CF813029E6F00D83345 /* camera_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CD213029E6F00D83345 /* camera_button.png */; };
@@ -512,6 +513,8 @@
 		2612D62813637E44005AE9E5 /* DWUserTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUserTitleView.m; path = Classes/DWUserTitleView.m; sourceTree = "<group>"; };
 		2612D62A13639610005AE9E5 /* static_button_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = static_button_active.png; path = resources/static_button_active.png; sourceTree = "<group>"; };
 		2612D62B13639610005AE9E5 /* static_button_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "static_button_active@2x.png"; path = "resources/static_button_active@2x.png"; sourceTree = "<group>"; };
+		262415F013D21F1E00474D4B /* DWRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestHelper.h; sourceTree = "<group>"; };
+		262415F113D21F1E00474D4B /* DWRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestHelper.m; sourceTree = "<group>"; };
 		26254CD013029E6F00D83345 /* button_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_bg.png; path = resources/button_bg.png; sourceTree = "<group>"; };
 		26254CD113029E6F00D83345 /* button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_bg@2x.png"; path = "resources/button_bg@2x.png"; sourceTree = "<group>"; };
 		26254CD213029E6F00D83345 /* camera_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera_button.png; path = resources/camera_button.png; sourceTree = "<group>"; };
@@ -2174,6 +2177,8 @@
 			children = (
 				BBF8989613CA306600D5C5FB /* DWUsersHelper.h */,
 				BBF8989713CA306600D5C5FB /* DWUsersHelper.m */,
+				262415F013D21F1E00474D4B /* DWRequestHelper.h */,
+				262415F113D21F1E00474D4B /* DWRequestHelper.m */,
 			);
 			name = Helpers;
 			path = Classes/Helpers;
@@ -2812,6 +2817,7 @@
 				BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */,
 				BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */,
 				BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */,
+				262415F213D21F1E00474D4B /* DWRequestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
