@@ -1,83 +1,68 @@
 //
 //  DWPaginationCell.m
-//  Denwen
-//
-//  Created by Siddharth Batra on 2/8/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Denwen. All rights reserved.
 //
 
 #import "DWPaginationCell.h"
+#import "DWConstants.h"
 
+static NSInteger const kSpinnerSize             = 20;
+
+/**
+ * Private method and property declarations
+ */
 @interface DWPaginationCell() 
 
+/**
+ * Create the spinner inside the cell
+ */
 - (void) createSpinner;
-- (void) drawCellItems;
 
 @end
 
-static int const SPINNER_HEIGHT = 20;
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 @implementation DWPaginationCell
 
-
-#pragma mark -
-#pragma mark Cell Lifecycle 
-
-
-// Override the init method
-//
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+//----------------------------------------------------------------------------------------------------
+- (id)initWithStyle:(UITableViewCellStyle)style 
+    reuseIdentifier:(NSString *)reuseIdentifier {
     
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    self = [super initWithStyle:style
+                reuseIdentifier:reuseIdentifier];
+    
     if (self) {
-        [self drawCellItems];
+        [self createSpinner];
+        
         self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
     return self;
 }
 
-
-#pragma mark -
-#pragma mark Cell Creation 
-
-
-// Creates a button which is used to display the spinner in the loading cell
-//
-- (void) createSpinner {
-	CGRect rect     = CGRectMake((self.contentView.frame.size.width - SPINNER_HEIGHT)/2, 
-                                 (kPaginationCellHeight-SPINNER_HEIGHT)/2, SPINNER_HEIGHT, SPINNER_HEIGHT); 
-	spinner         = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    spinner.alpha   = 0.5;
-	spinner.frame   = rect;
-	
-	[self.contentView addSubview:spinner];	
-	[spinner release];
-}
-
-// Create a customized wireframe of the loading cell.
-//
-- (void) drawCellItems {
-	[self createSpinner];	
-}
-
-
-// Display the spinner and hide the message
-//
-- (void)displayProcessingState {
-	[spinner startAnimating];
-}
-
-
-#pragma mark -
-#pragma mark Memory Management 
-
-
-// The ususal memory cleanup
-//
+//----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     [super dealloc];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void) createSpinner {
+
+    UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] 
+                                           autorelease];
+    spinner.alpha   = 0.5;
+	spinner.frame	= CGRectMake((self.contentView.frame.size.width - kSpinnerSize)/2,
+                                 (60 - kSpinnerSize)/2,
+                                 kSpinnerSize,
+                                 kSpinnerSize);
+    
+    [spinner startAnimating];
+	
+	[self.contentView addSubview:spinner];	
+}
 
 @end

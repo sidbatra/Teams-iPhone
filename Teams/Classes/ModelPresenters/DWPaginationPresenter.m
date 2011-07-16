@@ -8,8 +8,6 @@
 #import "DWPaginationCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 60;
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -31,9 +29,6 @@ static CGFloat const kCellHeight  = 60;
         cell = [[[DWPaginationCell alloc] initWithStyle:UITableViewStylePlain 
                                        reuseIdentifier:identifier] autorelease];
     
-    [cell displayProcessingState];
-    
-    
     if(!pagination.isTriggered) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kNPaginationCellReached
@@ -50,7 +45,7 @@ static CGFloat const kCellHeight  = 60;
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return kPaginationCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------
