@@ -147,7 +147,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
                                                        initWithTeam:team]
                                                       autorelease];
     
-    //teamItemsController.delegate                    = (id)self;
+    [teamItemsController setDelegate:(id)self];
     
     [self.navigationController pushViewController:teamItemsController
                                          animated:YES];
