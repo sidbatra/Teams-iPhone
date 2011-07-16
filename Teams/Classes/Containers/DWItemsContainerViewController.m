@@ -7,11 +7,10 @@
 #import "DWCreationQueue.h"
 #import "DWPostProgressView.h"
 #import "DWNotificationsHelper.h"
+#import "DWGUIManager.h"
 #import "DWSession.h"
 
 static NSString* const kMsgUnload               = @"Unload called on items container";
-static NSString* const kImgNotificationsButton  = @"button_notifications.png";
-
 
 /**
  * Private method and property declarations
@@ -103,19 +102,11 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNotificationsButton {
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgNotificationsButton] 
-                      forState:UIControlStateNormal];
+    UIBarButtonItem *button = [DWGUIManager navBarDetailsButtonWithTarget:self
+                                                              andSelector:@selector(didTapNotificationsButton:)];
     
-	[button addTarget:self 
-               action:@selector(didTapNotificationsButton:) 
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0,0,55,44)];
-    
-    
-    self.navigationItem.leftBarButtonItem   = [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+    self.navigationItem.leftBarButtonItem   = button;
 }
 
 //----------------------------------------------------------------------------------------------------

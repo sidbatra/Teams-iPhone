@@ -6,7 +6,8 @@
 #import "DWGUIManager.h"
 #import "DWNavBarBackButton.h"
 
-static NSString* const kImgBackButton                   = @"button_back.png";
+static NSString* const kImgBackButton               = @"button_back.png";
+static NSString* const kImgNotificationsButton      = @"button_notifications.png";
 
 
 
@@ -18,6 +19,8 @@ static NSString* const kImgBackButton                   = @"button_back.png";
 //----------------------------------------------------------------------------------------------------
 + (UIBarButtonItem*)customBackButton:(id)target {
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    NSLog(@"DWGUIManager customBackButton deprecated. See navBarBackButtonForNavController");
     
     [button setBackgroundImage:[UIImage imageNamed:kImgBackButton] 
                       forState:UIControlStateNormal];
@@ -42,6 +45,27 @@ static NSString* const kImgBackButton                   = @"button_back.png";
 	
 	return [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
 }
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarDetailsButtonWithTarget:(id)target
+                                      andSelector:(SEL)sel {
+
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgNotificationsButton] 
+                      forState:UIControlStateNormal];
+    
+	[button addTarget:target
+               action:sel
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,55,44)];
+    
+    
+    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+}
+
+
 
 @end
 
