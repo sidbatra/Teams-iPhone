@@ -6,19 +6,25 @@
 #import <UIKit/UIKit.h>
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
+#import "DWTeamsController.h"
 
+@class DWTeam;
 @protocol DWCreateTeamViewControllerDelegate;
 
 
 /**
  * Provides an interface for creating a new team.
  */
-@interface DWCreateTeamViewController : UIViewController<UITextFieldDelegate> {
+@interface DWCreateTeamViewController : UIViewController<UITextFieldDelegate,DWTeamsControllerDelegate> {
     UITextField                 *_teamNameTextField;
 	UITextField                 *_teamBylineTextField;
     
+    BOOL                        _hasCreatedTeam;
+    
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    
+    DWTeamsController           *_teamsController;
     
     id<DWCreateTeamViewControllerDelegate>   _delegate;
 }
@@ -35,6 +41,11 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Controller for handling teams requests
+ */
+@property (nonatomic,retain) DWTeamsController *teamsController;
 
 /**
  * Delegate to send updates to

@@ -8,9 +8,12 @@
 #import "DWConstants.h"
 
 
-static NSString* const kCreateTeamText          = @"Create New Team";
-static NSString* const kRightNavBarButtonText   = @"Next";
-
+static NSString* const kCreateTeamText                  = @"Create New Team";
+static NSString* const kRightNavBarButtonText           = @"Next";
+static NSString* const kMsgIncompleteTitle              = @"Incomplete";
+static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
+static NSString* const kMsgErrorTitle                   = @"Error";
+static NSString* const kMsgCancelTitle                  = @"OK";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -24,6 +27,8 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
 
+@synthesize teamsController             = _teamsController;
+
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -32,7 +37,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     self = [super init];
     
     if (self) {
-        //Custom initialization
+        _hasCreatedTeam = NO;
     }
     return self;
 }
@@ -89,6 +94,41 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     [super viewDidUnload];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)createTeam {
+    if (self.teamNameTextField.text.length == 0 || 
+        self.teamBylineTextField.text.length == 0) {
+        
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+														message:kMsgIncomplete
+													   delegate:nil 
+											  cancelButtonTitle:kMsgCancelTitle
+											  otherButtonTitles: nil];
+		[alert show];
+		[alert release];
+	}
+	else {
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate   = self;
+        
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateTeam {
+    NSLog(@"team needs to be updated");
+}
+
+//----------------------------------------------------------------------------------------------------
+-(void)createOrUpdateTeam {
+    
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -97,7 +137,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [self.delegate teamCreated];
+    //[self.delegate teamCreated];
 }
 
 
