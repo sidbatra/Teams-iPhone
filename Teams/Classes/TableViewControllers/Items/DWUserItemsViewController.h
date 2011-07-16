@@ -5,7 +5,9 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DWTableViewController.h"
 #import "DWItemsViewController.h"
+
 
 @class DWUser;
 @class DWUserItemsDataSource;
@@ -13,7 +15,7 @@
 /**
  * Table view for the items created by a user
  */
-@interface DWUserItemsViewController : DWItemsViewController {
+@interface DWUserItemsViewController : DWTableViewController {
     DWUserItemsDataSource   *_userItemsDataSource;
 }
 

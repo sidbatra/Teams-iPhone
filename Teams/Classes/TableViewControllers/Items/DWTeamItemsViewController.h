@@ -6,7 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DWItemsViewController.h"
-
+#import "DWTableViewController.h"
 
 @class DWTeam;
 @class DWTeamItemsDataSource;
@@ -14,7 +14,7 @@
 /**
  * Table view for the items crated by a team
  */
-@interface DWTeamItemsViewController : DWItemsViewController {
+@interface DWTeamItemsViewController : DWTableViewController {
     DWTeamItemsDataSource   *_teamItemsDataSource;
 }
 

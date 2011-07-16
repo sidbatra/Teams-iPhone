@@ -5,24 +5,31 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DWTableViewController.h"
 #import "DWItemsDataSource.h"
 #import "DWTouchesController.h"
 
-@class DWTouchesController;
 @class DWItem;
 @class DWTeam;
 @class DWUser;
+@class DWTouchesController;
+@class DWTableViewController;
 @protocol DWItemsViewControllerDelegate;
 
 /**
  * Base class for table views that display a list of items
  */
-@interface DWItemsViewController : DWTableViewController<DWTouchesControllerDelegate> {
+@interface DWItemsViewController : NSObject<DWTouchesControllerDelegate> {
     DWTouchesController     *_touchesController;
+    DWTableViewController   *_tableViewController;
+
     
     id<DWItemsViewControllerDelegate,NSObject> _delegate;
 }
+
+/**
+ * The table view controller which contains the items view controller object
+ */
+@property (nonatomic,assign) DWTableViewController *tableViewController;
 
 /**
  * Record the touches made on items by the current user

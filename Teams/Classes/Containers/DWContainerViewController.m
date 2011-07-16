@@ -147,7 +147,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
                                                        initWithTeam:team]
                                                       autorelease];
     
-    teamItemsController.delegate                    = (id)self;
+    //teamItemsController.delegate                    = (id)self;
     
     [self.navigationController pushViewController:teamItemsController
                                          animated:YES];
@@ -158,7 +158,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
     DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
                                                                                              andIgnore:YES] autorelease];
-    userItemsController.delegate                    = (id)self;
+   // userItemsController.delegate                    = (id)self;
     
     [self.navigationController pushViewController:userItemsController
                                          animated:YES];
