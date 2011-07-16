@@ -22,6 +22,7 @@
     
 	NSString                    *_password;    
     BOOL                        _hasCreatedUser;
+    NSInteger                   _userID;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
@@ -65,7 +66,8 @@
  * Prepopulate the signup view from session data to 
  * keep state persistence.
  */
-- (void)prePopulateViewWithEmail:(NSString*)email;
+- (void)prePopulateViewWithEmail:(NSString*)email 
+                       andUserID:(NSInteger)userID;
 
 
 @end

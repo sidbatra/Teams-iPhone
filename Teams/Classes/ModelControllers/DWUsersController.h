@@ -28,6 +28,12 @@
 - (void)createUserWithEmail:(NSString*)email
                 andPassword:(NSString*)password;
 
+/**
+ * Update the user's email
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+                 withEmail:(NSString*)email;
+
 @end
 
 
@@ -48,5 +54,15 @@
  * Error message while creating a user
  */
 - (void)userCreationError:(NSString*)error;
+
+/**
+ * Fired when a user is updated
+ */
+- (void)userUpdated:(DWUser*)user;
+
+/**
+ * Error message while updating a user
+ */
+- (void)userUpdateError:(NSString*)error;
 
 @end
