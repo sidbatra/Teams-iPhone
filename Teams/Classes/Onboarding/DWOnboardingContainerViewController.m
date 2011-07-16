@@ -88,7 +88,7 @@
                                          animated:YES];
     
     if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserEmail) 
-        [signupViewController populateViewWithEmail:[DWSession sharedDWSession].currentUser.email];
+        [signupViewController prePopulateViewWithEmail:[DWSession sharedDWSession].currentUser.email];
 }
 
 
@@ -123,9 +123,14 @@
     else {
         DWCreateTeamViewController *createTeamViewController    = [[[DWCreateTeamViewController alloc] init] autorelease];
         createTeamViewController.delegate                       = self;
+        createTeamViewController.domain                         = [[DWSession sharedDWSession].currentUser getDomainFromEmail];
         
         [self.navigationController pushViewController:createTeamViewController 
                                              animated:YES];        
+        
+        if ([[DWSession sharedDWSession] state] >= kSessionStateTillTeamDetails) 
+            [createTeamViewController prePopulateViewWithName:[DWSession sharedDWSession].currentUser.team.name
+                                                    andByline:[DWSession sharedDWSession].currentUser.team.byline];
     }
 }
 
@@ -136,7 +141,10 @@
 #pragma mark DWCreateNewTeamViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamCreated {
+- (void)teamCreated:(DWTeam*)team {
+    
+    [DWSession sharedDWSession].currentUser.team = team;
+    [[DWSession sharedDWSession] update];
     
     DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
     createProfileViewController.delegate                        = self;

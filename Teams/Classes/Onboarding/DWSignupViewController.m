@@ -99,7 +99,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populateViewWithEmail:(NSString*)email {
+- (void)prePopulateViewWithEmail:(NSString*)email {
     
     self.emailTextField.text    = email;
     _hasCreatedUser             = YES;
@@ -137,6 +137,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)updateUser {
     NSLog(@"user needs to be updated");
+    [self.delegate teamLoaded:nil];    
 }
 
 //----------------------------------------------------------------------------------------------------

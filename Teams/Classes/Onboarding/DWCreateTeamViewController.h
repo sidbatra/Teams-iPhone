@@ -19,7 +19,8 @@
     UITextField                 *_teamNameTextField;
 	UITextField                 *_teamBylineTextField;
     
-    BOOL                        _hasCreatedTeam;
+	NSString                    *_domain;    
+    BOOL                        _hasCreatedTeam;        
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
@@ -37,6 +38,11 @@
 @property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
 
 /**
+ * Team domain from the user email
+ */
+@property (nonatomic,copy) NSString *domain;
+
+/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
@@ -52,6 +58,13 @@
  */
 @property (nonatomic,assign) id<DWCreateTeamViewControllerDelegate> delegate;
 
+/**
+ * Prepopulate the create team view from session data to 
+ * keep state persistence.
+ */
+- (void)prePopulateViewWithName:(NSString*)name 
+                      andByline:(NSString*)byline;
+
 
 @end
 
@@ -65,6 +78,6 @@
 /*
  * Fired when a new team is created.
  */
-- (void)teamCreated;
+- (void)teamCreated:(DWTeam*)team;
 
 @end
