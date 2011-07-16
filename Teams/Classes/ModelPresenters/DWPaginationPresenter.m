@@ -62,4 +62,10 @@ static CGFloat const kCellHeight  = 60;
                            ofType:(NSInteger)resourceType {    
 }
 
+//----------------------------------------------------------------------------------------------------
++ (void)cellClickedForObject:(id)object
+                withDelegate:(id)delegate {
+    
+}
+
 @end
