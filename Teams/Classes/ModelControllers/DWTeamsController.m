@@ -138,7 +138,8 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNTeamLoaded
                                                    errorNotification:kNTeamLoadError
-                                                       requestMethod:kGet];
+                                                       requestMethod:kGet
+                                                          resourceID:teamID];
 }
 
 
@@ -232,10 +233,19 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(NSNotification*)notification {
     
-    SEL sel = @selector(teamLoaded:);
+    SEL idSel       = @selector(teamResourceID);
+    SEL teamSel     = @selector(teamLoaded:);
     
-    if(![self.delegate respondsToSelector:sel])
+    if(![self.delegate respondsToSelector:teamSel] || ![self.delegate respondsToSelector:idSel])
         return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
     
     NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
@@ -245,20 +255,29 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     if (![data isKindOfClass:[NSNull class]]) 
         team = [DWTeam create:data];
     
-    [self.delegate performSelector:sel 
+    [self.delegate performSelector:teamSel
                         withObject:team];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoadError:(NSNotification*)notification {
 	
-    SEL sel = @selector(teamLoadError:);
+    SEL idSel       = @selector(teamResourceID);
+    SEL errorSel    = @selector(teamLoadError:);
     
-    if(![self.delegate respondsToSelector:sel])
+    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
         return;
     
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
-    [self.delegate performSelector:sel 
+    [self.delegate performSelector:errorSel 
                         withObject:[error localizedDescription]];
 }
 

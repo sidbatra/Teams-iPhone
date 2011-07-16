@@ -70,6 +70,11 @@
 @optional
 
 /**
+ * Used for pinging delegates of the object waiting for the right resourceID
+ */
+- (NSInteger)teamResourceID;
+
+/**
  * Fired when information for a team is loaded
  */
 - (void)teamLoaded:(DWTeam*)team;
