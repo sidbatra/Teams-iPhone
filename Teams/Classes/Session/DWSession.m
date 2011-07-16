@@ -126,7 +126,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     if (self.currentUser.hasInvitedPeople) 
         state = kSessionStateComplete;
 
-    else if (self.currentUser.firstName && ![self.currentUser.firstName isKindOfClass:[NSNull class]]) {
+    else if (self.currentUser.firstName) {
         state = kSessionStateTillUserDetails;
     }
     
