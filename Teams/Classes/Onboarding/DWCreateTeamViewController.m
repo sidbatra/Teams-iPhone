@@ -6,11 +6,14 @@
 #import "DWCreateTeamViewController.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
+#import "DWTeam.h"
 
-
-static NSString* const kCreateTeamText          = @"Create New Team";
-static NSString* const kRightNavBarButtonText   = @"Next";
-
+static NSString* const kCreateTeamText                  = @"Create New Team";
+static NSString* const kRightNavBarButtonText           = @"Next";
+static NSString* const kMsgIncompleteTitle              = @"Incomplete";
+static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
+static NSString* const kMsgErrorTitle                   = @"Error";
+static NSString* const kMsgCancelTitle                  = @"OK";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -21,8 +24,12 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 @synthesize teamNameTextField           = _teamNameTextField;
 @synthesize teamBylineTextField         = _teamBylineTextField;
 
+@synthesize domain                      = _domain;
+
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
+
+@synthesize teamsController             = _teamsController;
 
 @synthesize delegate                    = _delegate;
 
@@ -32,7 +39,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     self = [super init];
     
     if (self) {
-        //Custom initialization
+        _hasCreatedTeam = NO;
     }
     return self;
 }
@@ -43,6 +50,8 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     self.teamNameTextField          = nil;
     self.teamBylineTextField        = nil;
     
+    self.domain                     = nil;
+    
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
     
@@ -52,6 +61,14 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)prePopulateViewWithName:(NSString*)name andByline:(NSString*)byline {    
+    self.teamNameTextField.text         = name;
+    self.teamBylineTextField.text       = byline;
+    
+    _hasCreatedTeam                     = YES;
 }
 
 
@@ -89,6 +106,47 @@ static NSString* const kRightNavBarButtonText   = @"Next";
     [super viewDidUnload];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)createTeam {
+    if (self.teamNameTextField.text.length == 0 || 
+        self.teamBylineTextField.text.length == 0) {
+        
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+														message:kMsgIncomplete
+													   delegate:nil 
+											  cancelButtonTitle:kMsgCancelTitle
+											  otherButtonTitles: nil];
+		[alert show];
+		[alert release];
+	}
+	else {
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate   = self;
+        
+        [self.teamsController createTeamWithName:self.teamNameTextField.text 
+                                          byline:self.teamBylineTextField.text 
+                                       andDomain:self.domain];        
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateTeam {
+    NSLog(@"team needs to be updated");
+}
+
+//----------------------------------------------------------------------------------------------------
+-(void)createOrUpdateTeam {
+    if (!_hasCreatedTeam)
+        [self createTeam];
+    else
+        [self updateTeam];       
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -97,7 +155,30 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [self.delegate teamCreated];
+    [self createOrUpdateTeam];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamsController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamCreated:(DWTeam*)team { 
+    _hasCreatedTeam = YES;    
+    [self.delegate teamCreated:team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamCreationError:(NSString*)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 

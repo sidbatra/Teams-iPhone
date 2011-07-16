@@ -37,6 +37,13 @@
  */
 - (void)getRecentTeams;
 
+/**
+ * Create a new team
+ */
+- (void)createTeamWithName:(NSString*)name
+                    byline:(NSString*)byline 
+                 andDomain:(NSString*)domain;
+
 @end
 
 
@@ -77,5 +84,15 @@
  * Error message encountered while loading recent teams
  */
 - (void)recentTeamsError:(NSString*)message;
+
+/**
+ * Fired when a team is created
+ */
+- (void)teamCreated:(DWTeam*)team;
+
+/**
+ * Error message while creating a team
+ */
+- (void)teamCreationError:(NSString*)error;
 
 @end

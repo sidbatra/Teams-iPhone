@@ -65,7 +65,7 @@
  * Prepopulate the signup view from session data to 
  * keep state persistence.
  */
-- (void)populateViewWithEmail:(NSString*)email;
+- (void)prePopulateViewWithEmail:(NSString*)email;
 
 
 @end
