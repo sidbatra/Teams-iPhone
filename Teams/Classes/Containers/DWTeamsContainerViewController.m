@@ -6,6 +6,7 @@
 #import "DWTeamsContainerViewController.h"
 #import "DWSegmentedController.h"
 #import "DWPopularTeamsViewController.h"
+#import "DWRecentTeamsViewController.h"
 #import "DWConstants.h"
 
 static NSInteger const kSegmentedPlacesViewWidth	= 320;
@@ -72,15 +73,16 @@ static NSString* const kMsgUnload					= @"Unload called on teams container";
         self.segmentedController.parentForSubControllers   = self;
         
         DWPopularTeamsViewController *popularTeamsController = [[[DWPopularTeamsViewController alloc] init] autorelease];
+        DWRecentTeamsViewController *recentTeamsController = [[[DWRecentTeamsViewController alloc] init] autorelease];
         
         UIViewController *b = [[[UIViewController alloc] init] autorelease];
-        b.view.backgroundColor = [UIColor greenColor];
-        UIViewController *c = [[[UIViewController alloc] init] autorelease];
-        c.view.backgroundColor = [UIColor blueColor];
+        b.view.backgroundColor = [UIColor blueColor];
         
         self.segmentedController.subControllers = [NSArray arrayWithObjects:
                                                    popularTeamsController,
-                                                   b,c,nil];
+                                                   b,
+                                                   recentTeamsController
+                                                   ,nil];
     }
     
     [self.navigationController.navigationBar addSubview:self.segmentedController.view];

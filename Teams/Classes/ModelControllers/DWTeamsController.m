@@ -12,6 +12,8 @@
 
 static NSString* const kTeamURI             = @"/teams/domain/%@.json?";
 static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
+static NSString* const kRecentTeamsURI      = @"/recent/teams.json?";
+
 
 /**
  * Private method and property declarations
@@ -58,6 +60,16 @@ static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(popularTeamsError:) 
 													 name:kNPopularTeamsError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(recentTeamsLoaded:) 
+													 name:kNRecentTeamsLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(recentTeamsError:) 
+													 name:kNRecentTeamsError
 												   object:nil];
     }
     return self;
@@ -121,6 +133,15 @@ static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
                                                        requestMethod:kGet];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)getRecentTeams {
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:kRecentTeamsURI
+                                                 successNotification:kNRecentTeamsLoaded
+                                                   errorNotification:kNRecentTeamsError
+                                                       requestMethod:kGet];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -180,6 +201,37 @@ static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
 - (void)popularTeamsError:(NSNotification*)notification {
     
     SEL sel = @selector(popularTeamsError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)recentTeamsLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(recentTeamsLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSArray *data           = [[notification userInfo] objectForKey:kKeyData];
+    NSMutableArray *teams   = [self populateTeamsArrayFromJSON:data];
+    
+    [self.delegate performSelector:sel 
+                        withObject:teams];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)recentTeamsError:(NSNotification*)notification {
+    
+    SEL sel = @selector(recentTeamsError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
