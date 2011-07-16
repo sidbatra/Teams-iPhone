@@ -12,6 +12,7 @@
 
 
 static NSString* const kTeamURI             = @"/teams/domain/%@.json?";
+static NSString* const kTeamShowURI         = @"/teams/%d.json?";
 static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
 static NSString* const kRecentTeamsURI      = @"/recent/teams.json?";
 static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
@@ -129,6 +130,17 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
                                                        requestMethod:kGet];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)getTeamWithID:(NSInteger)teamID {
+    
+    NSString *localURL = [NSString stringWithFormat:kTeamShowURI,teamID];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNTeamLoaded
+                                                   errorNotification:kNTeamLoadError
+                                                       requestMethod:kGet];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -172,7 +184,9 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
 #pragma mark Create
 
 //----------------------------------------------------------------------------------------------------
-- (void)createTeamWithName:(NSString*)name byline:(NSString*)byline andDomain:(NSString *)domain {
+- (void)createTeamWithName:(NSString*)name 
+                    byline:(NSString*)byline
+                 andDomain:(NSString *)domain {
     
     NSString *localURL = [NSString stringWithFormat:kNewTeamURI,
                           [name stringByEncodingHTMLCharacters],
@@ -185,14 +199,17 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
                                                        requestMethod:kPost];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Update
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateTeamHavingID:(NSInteger)teamID withName:(NSString*)name 
-                    byline:(NSString*)byline andDomain:(NSString *)domain {
+- (void)updateTeamHavingID:(NSInteger)teamID 
+                  withName:(NSString*)name 
+                    byline:(NSString*)byline
+                 andDomain:(NSString *)domain {
     
     NSString *localURL = [NSString stringWithFormat:kUpdateTeamURI,
                           teamID,
@@ -319,7 +336,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     NSDictionary *data  = [info objectForKey:kKeyData];
     NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    if ([errors count] ) {
+    if ([errors count]) {
         SEL errorSel = @selector(teamCreationError:);
         
         if(![self.delegate respondsToSelector:errorSel])
@@ -360,7 +377,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     NSDictionary *data  = [info objectForKey:kKeyData];
     NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    if ([errors count] ) {
+    if ([errors count]) {
         SEL errorSel = @selector(teamUpdateError:);
         
         if(![self.delegate respondsToSelector:errorSel])
