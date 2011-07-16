@@ -40,6 +40,6 @@
 /**
  * Set a items view controller delegate
  */
-- (void)setDelegate:(id<DWItemsViewControllerDelegate>)delegate;
+- (void)setItemsDelegate:(id<DWItemsViewControllerDelegate>)delegate;
 
 @end

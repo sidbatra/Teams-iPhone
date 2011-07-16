@@ -5,7 +5,7 @@
 
 #import "DWPopularTeamsViewController.h"
 #import "DWPopularTeamsDataSource.h"
-#import "DWteam.h"
+#import "DWTeam.h"
 #import "NSObject+Helpers.h"
 
 

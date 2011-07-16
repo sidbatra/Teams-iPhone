@@ -4,6 +4,7 @@
 //
 
 #import "DWTeamItemsViewController.h"
+#import "DWTeamViewController.h"
 #import "DWTeamItemsDataSource.h"
 #import "DWItem.h"
 #import "DWTeam.h"
@@ -63,7 +64,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setDelegate:(id<DWItemsViewControllerDelegate,NSObject>)delegate {
+- (void)setItemsDelegate:(id<DWItemsViewControllerDelegate,NSObject>)delegate {
     self.itemsViewController.delegate = delegate;
 }
 
@@ -95,8 +96,7 @@
 #pragma mark -
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDetailsButton:(UIButton*)button {
-    NSLog(@"details button touched");
+- (void)didTapDetailsButton:(UIButton*)button {    
 }
 
 @end

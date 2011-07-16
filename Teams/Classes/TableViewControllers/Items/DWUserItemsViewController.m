@@ -68,7 +68,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setDelegate:(id<DWItemsViewControllerDelegate,NSObject>)delegate {
+- (void)setItemsDelegate:(id<DWItemsViewControllerDelegate,NSObject>)delegate {
     self.itemsViewController.delegate = delegate;
 }
 
