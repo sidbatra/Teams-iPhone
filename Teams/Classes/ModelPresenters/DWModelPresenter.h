@@ -36,4 +36,11 @@
                  havingResourceID:(NSInteger)resourceID
                            ofType:(NSInteger)resourceType;
 
+/**
+ * Send messages to the delegate when the cell is clicked for the
+ * given object
+ */
++ (void)cellClickedForObject:(id)object
+                withDelegate:(id)delegate;
+
 @end

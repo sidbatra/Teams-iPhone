@@ -275,6 +275,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+        
+    id object = [[self getDataSource] objectAtIndex:indexPath.row
+                                         forSection:indexPath.section];
+    
+    NSString *className     = [[object class] className];
+    
+    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    
+    [modelPresenter cellClickedForObject:object
+                            withDelegate:self];
 }
 
 

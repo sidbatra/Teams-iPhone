@@ -76,4 +76,20 @@ static CGFloat const kCellHeight  = 92;
     }
 }
 
+//----------------------------------------------------------------------------------------------------
++ (void)cellClickedForObject:(id)object
+                withDelegate:(id)delegate {
+    
+    SEL sel = @selector(teamSelected:);
+    
+    if(![delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWTeam *team = object;
+    
+    [delegate performSelector:sel
+                   withObject:team];
+}
+
 @end

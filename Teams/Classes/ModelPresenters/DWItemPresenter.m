@@ -102,4 +102,10 @@ static CGFloat const kCellHeight  = 320;
     }
 }
 
+//----------------------------------------------------------------------------------------------------
++ (void)cellClickedForObject:(id)object
+                withDelegate:(id)delegate {
+    
+}
+
 @end
