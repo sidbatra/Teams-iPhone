@@ -223,7 +223,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {    
     
-    //[self.delegate userUp:user];
+    [self.delegate userUpdated:user];
     
     if(!self.teamsController)
         self.teamsController        = [[[DWTeamsController alloc] init] autorelease];

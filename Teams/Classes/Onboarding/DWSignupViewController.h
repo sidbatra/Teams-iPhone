@@ -82,7 +82,12 @@
 /*
  * Fired when a user is created
  */
-- (void)userCreated:(DWUser*)created;
+- (void)userCreated:(DWUser*)user;
+
+/*
+ * Fired when a user is updated
+ */
+- (void)userUpdated:(DWUser*)user;
 
 /*
  * Fired when information about a team is fetched

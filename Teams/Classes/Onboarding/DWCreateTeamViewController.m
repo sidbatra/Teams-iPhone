@@ -55,6 +55,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
     
+    self.teamsController            = nil;
+    
     [super dealloc];
 }
 

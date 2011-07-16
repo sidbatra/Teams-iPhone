@@ -158,8 +158,6 @@ static NSString* const kUpdateUserURI       = @"/users/@%d.json?user[email]=%@";
     NSDictionary *data  = [info objectForKey:kKeyData];
     NSArray *errors     = [data objectForKey:kKeyErrors];
     
-    NSLog(@"%@",data);
-    
     if ([errors count] ) {
         SEL errorSel = @selector(userUpdateError:);
         
