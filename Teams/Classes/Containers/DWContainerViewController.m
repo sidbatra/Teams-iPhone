@@ -158,7 +158,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
     DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
                                                                                              andIgnore:YES] autorelease];
-   // userItemsController.delegate                    = (id)self;
+    [userItemsController setDelegate:(id)self];
     
     [self.navigationController pushViewController:userItemsController
                                          animated:YES];
