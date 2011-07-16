@@ -99,9 +99,11 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)prePopulateViewWithEmail:(NSString*)email {
+- (void)prePopulateViewWithEmail:(NSString*)email andUserID:(NSInteger)userID {
     self.emailTextField.text    = email;
+    
     _hasCreatedUser             = YES;
+    _userID                     = userID;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -140,8 +142,18 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateUser {
-    NSLog(@"user needs to be updated");
-    [self.delegate teamLoaded:nil];    
+	if (self.emailTextField.text.length == 0) {        
+        [self displayEmptyFieldsError];
+	}
+	else {			
+        if (!self.usersController)
+            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
+        
+        self.usersController.delegate   = self;
+        
+        [self.usersController updateUserHavingID:_userID 
+                                       withEmail:self.emailTextField.text];
+    }    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -183,10 +195,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     user.encryptedPassword  = self.password;                
     _hasCreatedUser         = YES;
+    _userID                 = user.databaseID;
     
     [self.delegate userCreated:user];
     
-    self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+    if(!self.teamsController)
+        self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
+    
     self.teamsController.delegate   = self;
     
     NSString *domain                = [user getDomainFromEmail];
@@ -196,6 +211,32 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)userCreationError:(NSString*)error {
 
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {    
+    
+    //[self.delegate userUp:user];
+    
+    if(!self.teamsController)
+        self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
+    
+    self.teamsController.delegate   = self;
+    
+    NSString *domain                = [user getDomainFromEmail];
+    [self.teamsController getTeamFromDomain:domain];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString *)error {
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 
