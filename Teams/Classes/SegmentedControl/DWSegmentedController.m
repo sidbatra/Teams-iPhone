@@ -92,7 +92,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)addViewAtIndex:(NSInteger)index {
+    
 	UIViewController *controller = [self.subControllers objectAtIndex:index];
+    
+    controller.view.frame = CGRectMake(0,0,
+									   self.parentForSubControllers.view.frame.size.width,
+									   self.parentForSubControllers.view.frame.size.height);
+	
+
     [self.parentForSubControllers.view addSubview:controller.view];
 }
 
@@ -106,7 +113,7 @@
 - (void)selectedSegmentModifiedFrom:(NSInteger)oldSelectedIndex 
                                  to:(NSInteger)newSelectedIndex {
     
-    [self removeViewAtIndex:oldSelectedIndex];
+    [self removeViewAtIndex:oldSelectedIndex];    
     [self addViewAtIndex:newSelectedIndex];
 }
 

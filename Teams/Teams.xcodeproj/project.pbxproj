@@ -1782,10 +1782,10 @@
 		BB272C0D13D0B77300FDACA1 /* SegmentedControl */ = {
 			isa = PBXGroup;
 			children = (
-				BB272C1413D0BC6F00FDACA1 /* DWSegmentedController.h */,
-				BB272C1513D0BC6F00FDACA1 /* DWSegmentedController.m */,
 				BB272C0E13D0B7D700FDACA1 /* DWSegmentedControl.h */,
 				BB272C0F13D0B7D700FDACA1 /* DWSegmentedControl.m */,
+				BB272C1413D0BC6F00FDACA1 /* DWSegmentedController.h */,
+				BB272C1513D0BC6F00FDACA1 /* DWSegmentedController.m */,
 			);
 			name = SegmentedControl;
 			path = Classes/SegmentedControl;
