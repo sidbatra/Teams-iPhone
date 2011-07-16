@@ -183,13 +183,13 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     if(email && ![self.email isEqualToString:email])
         self.email = email;
     
-    if(firstName && ![self.firstName isEqualToString:firstName])
+    if(firstName && self.firstName && ![self.firstName isEqualToString:firstName])
         self.firstName = firstName;
     
-    if(lastName && ![self.lastName isEqualToString:lastName])
+    if(lastName && self.lastName && ![self.lastName isEqualToString:lastName])
         self.lastName = lastName;
     
-    if(byline && ![self.byline isEqualToString:byline])
+    if(byline && self.byline && ![self.byline isEqualToString:byline])
         self.byline = [user objectForKey:kKeyByLine];
     
     if(followingsCount)

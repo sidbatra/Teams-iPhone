@@ -179,6 +179,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
                                                  animated:NO];
     
     NSLog(@"state is %d", [[DWSession sharedDWSession] state]);
+    NSLog(@"name is %@", [DWSession sharedDWSession].currentUser.firstName);  
 }
 
 

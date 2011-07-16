@@ -88,7 +88,8 @@
                                          animated:YES];
     
     if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserEmail) 
-        [signupViewController prePopulateViewWithEmail:[DWSession sharedDWSession].currentUser.email];
+        [signupViewController prePopulateViewWithEmail:[DWSession sharedDWSession].currentUser.email 
+                                             andUserID:[DWSession sharedDWSession].currentUser.databaseID];
 }
 
 
@@ -111,6 +112,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userCreated:(DWUser*)user {
+    [[DWSession sharedDWSession] create:user];     
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
     [[DWSession sharedDWSession] create:user];     
 }
 
