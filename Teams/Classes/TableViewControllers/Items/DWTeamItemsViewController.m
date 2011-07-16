@@ -83,8 +83,20 @@
 	[super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDetailsButtonWithTarget:self
+                                                                              andSelector:@selector(didTapDetailsButton:)];
     
     [self.teamItemsDataSource loadItems];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITouchEvents
+//----------------------------------------------------------------------------------------------------
+- (void)didTapDetailsButton:(UIButton*)button {
+    NSLog(@"details button touched");
 }
 
 @end
