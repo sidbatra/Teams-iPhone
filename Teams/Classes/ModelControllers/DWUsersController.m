@@ -88,7 +88,7 @@ static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[passwor
             return;
         
         [self.delegate performSelector:sel 
-                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
+                            withObject:[DWRequestHelper generateErrorMessageFrom:errors]];
         return;
     }
     
