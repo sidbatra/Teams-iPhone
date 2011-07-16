@@ -61,4 +61,10 @@
 - (void)provideResourceToVisibleCells:(NSInteger)resourceType
                              resource:(id)resource
                            resourceID:(NSInteger)resourceID;
+
+/**
+ * Return a delegate object for the given class name. Default implementation
+ * returns the table view itself.
+ */
+- (id)getDelegateForClassName:(NSString*)className;
 @end

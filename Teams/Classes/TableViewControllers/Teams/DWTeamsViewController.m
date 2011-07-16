@@ -4,7 +4,10 @@
 //
 
 #import "DWTeamsViewController.h"
+#import "DWTableViewController.h"
+#import "DWConstants.h"
 #import "DWTeam.h"
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -12,7 +15,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWTeamsViewController
 
-@synthesize delegate    = _delegate;
+@synthesize tableViewController     = _tableViewController;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -33,20 +37,12 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.delegate   = nil;
+    self.tableViewController    = nil;
+    self.delegate               = nil;
     
     [super dealloc];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];  
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -71,9 +67,9 @@
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
     id resource             = [info objectForKey:kKeyImage];
     
-    [self provideResourceToVisibleCells:kResoureTypeSliceAttachmentImage
-                               resource:resource
-                             resourceID:resourceID];
+    [self.tableViewController provideResourceToVisibleCells:kResoureTypeSliceAttachmentImage
+                                                   resource:resource
+                                                 resourceID:resourceID];
 }
 
 

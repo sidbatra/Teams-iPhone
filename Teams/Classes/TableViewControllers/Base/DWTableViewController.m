@@ -201,6 +201,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
+- (id)getDelegateForClassName:(NSString*)className {
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (Class)presenterClassForClassName:(NSString*)className {
     return NSClassFromString([NSString stringWithFormat:@"%@%@",className,kPresenterClassSuffix]);
 }
@@ -263,7 +268,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	return [modelPresenter cellForObject:object
                             withBaseCell:cell
                       withCellIdentifier:identifier
-                            withDelegate:self
+                            withDelegate:[self getDelegateForClassName:className]
                     andPresentationStyle:[self presentationStyleForClassName:className]];
 }
 
@@ -284,7 +289,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
     
     [modelPresenter cellClickedForObject:object
-                            withDelegate:self];
+                            withDelegate:[self getDelegateForClassName:className]];
 }
 
 

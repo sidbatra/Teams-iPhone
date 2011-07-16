@@ -5,17 +5,23 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DWTableViewController.h"
-
 @class DWTeam;
+@class DWTableViewController;
 @protocol DWTeamsViewControllerDelegate;
 
 /**
  * Base table views that display a list of teams
  */
-@interface DWTeamsViewController : DWTableViewController {
+@interface DWTeamsViewController : NSObject {
+    DWTableViewController   *_tableViewController;
+    
     id <DWTeamsViewControllerDelegate> _delegate;
 }
+
+/**
+ * The table view controller which contains the teams view controller object
+ */
+@property (nonatomic,assign) DWTableViewController *tableViewController;
 
 /**
  * Delegate receives events based on the DWTeamsViewControllerDelegate

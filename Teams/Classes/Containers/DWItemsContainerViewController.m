@@ -132,7 +132,7 @@ static NSString* const kImgNotificationsButton  = @"button_notifications.png";
     
     if(!self.followedViewController) {
         self.followedViewController             = [[[DWFollowedItemsViewController alloc] init] autorelease];
-        self.followedViewController.delegate    = self;
+        [self.followedViewController setDelegate:self];
     }
     
     [self.view addSubview:self.followedViewController.view];

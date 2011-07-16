@@ -4,6 +4,7 @@
 //
 
 #import "DWItemsViewController.h"
+#import "DWTableViewController.h"
 #import "DWTouchesController.h"
 #import "DWItem.h"
 #import "DWTeam.h"
@@ -16,8 +17,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWItemsViewController
 
-@synthesize touchesController   = _touchesController;
-@synthesize delegate            = _delegate;
+@synthesize touchesController       = _touchesController;
+@synthesize tableViewController     = _tableViewController;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -40,20 +42,11 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.touchesController  = nil;
-    self.delegate           = nil;
+    self.touchesController      = nil;
+    self.tableViewController    = nil;
+    self.delegate               = nil;
         
     [super dealloc];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-	[super viewDidLoad];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];  
 }
 
 
@@ -69,17 +62,16 @@
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
     id resource             = [info objectForKey:kKeyImage];
         
-    [self provideResourceToVisibleCells:kResoureTypeLargeAttachmentImage
-                               resource:resource
-                             resourceID:resourceID];
+    [self.tableViewController provideResourceToVisibleCells:kResoureTypeLargeAttachmentImage
+                                                   resource:resource
+                                                 resourceID:resourceID];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWItemFeedCellDelegate
-
+#pragma mark DWItemFeedCellDelegate (Implemented via DWItemPresenter)
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID {
