@@ -29,6 +29,11 @@
 - (void)getTeamFromDomain:(NSString*)domain;
 
 /**
+ * Get team details for the given teamID
+ */
+- (void)getTeamWithID:(NSInteger)teamID;
+
+/**
  * Get a list of popular teams
  */
 - (void)getPopularTeams;
