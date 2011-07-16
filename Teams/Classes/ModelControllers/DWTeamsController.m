@@ -326,7 +326,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
             return;
         
         [self.delegate performSelector:errorSel 
-                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
+                            withObject:[DWRequestHelper generateErrorMessageFrom:errors]];
         return;
     }
     
@@ -367,7 +367,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
             return;
         
         [self.delegate performSelector:errorSel 
-                            withObject:[DWRequestHelper generateErrorMessageFromJSON:errors]];
+                            withObject:[DWRequestHelper generateErrorMessageFrom:errors]];
         return;
     }
     

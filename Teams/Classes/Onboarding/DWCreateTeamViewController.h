@@ -65,7 +65,7 @@
  */
 - (void)prePopulateViewWithName:(NSString*)name 
                          byline:(NSString*)byline 
-                  andDatabaseID:(NSInteger)teamID;
+                  andTeamID:(NSInteger)teamID;
 
 
 @end

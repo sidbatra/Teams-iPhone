@@ -64,7 +64,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)prePopulateViewWithName:(NSString*)name byline:(NSString*)byline andDatabaseID:(NSInteger)teamID {
+- (void)prePopulateViewWithName:(NSString*)name byline:(NSString*)byline andTeamID:(NSInteger)teamID {
     self.teamNameTextField.text         = name;
     self.teamBylineTextField.text       = byline;
     

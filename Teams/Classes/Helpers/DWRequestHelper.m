@@ -11,7 +11,7 @@
 @implementation DWRequestHelper
 
 //----------------------------------------------------------------------------------------------------
-+ (NSString*)generateErrorMessageFromJSON:(NSArray*)errors {
++ (NSString*)generateErrorMessageFrom:(NSArray*)errors {
 
     NSMutableString *errorMsg = [[[NSMutableString alloc] initWithString:@""] autorelease];
     

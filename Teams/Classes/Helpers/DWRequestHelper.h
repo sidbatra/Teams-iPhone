@@ -14,9 +14,10 @@
 
 
 /**
- * Generates an error message from JSON
+ * Generates an error message from the JSON returned
+ * from a DWDenwenRequest
  */
-+ (NSString*)generateErrorMessageFromJSON:(NSArray*)errors;
++ (NSString*)generateErrorMessageFrom:(NSArray*)errors;
 
 
 @end
