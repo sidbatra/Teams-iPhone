@@ -31,7 +31,8 @@
         self.teamViewDataSource.teamID      = team.databaseID;
         
         self.teamsLogicController           = [[[DWTeamsLogicController alloc] init] autorelease];
-        self.teamsLogicController.tableViewController = self;
+        self.teamsLogicController.tableViewController   = self;
+        self.teamsLogicController.navigationEnabled     = NO;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleNavigationDisabled]
                                         forKey:[[DWTeam class] className]];

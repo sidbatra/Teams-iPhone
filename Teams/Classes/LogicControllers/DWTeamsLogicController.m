@@ -16,6 +16,7 @@
 @implementation DWTeamsLogicController
 
 @synthesize tableViewController     = _tableViewController;
+@synthesize navigationEnabled       = _navigationEnabled;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -23,6 +24,8 @@
     self = [super init];
     
     if(self) {        
+        
+        _navigationEnabled  = YES;
                 
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(sliceAttachmentLoaded:) 
@@ -51,6 +54,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamSelected:(DWTeam*)team {
+    
+    if(!self.navigationEnabled)
+        return;
+    
     [self.delegate teamsLogicTeamSelected:team];
 }
 
