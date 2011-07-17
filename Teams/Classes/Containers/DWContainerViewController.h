@@ -7,6 +7,7 @@
 
 #import "DWItemsLogicController.h"
 #import "DWTeamsLogicController.h"
+#import "DWTeamItemsViewController.h"
 
 @class DWTabBarController;
 
@@ -14,7 +15,8 @@
  * Base class for containers which form the root views for
  * each of the tabs
  */
-@interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemsLogicControllerDelegate,DWTeamsLogicControllerDelegate> {
+@interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemsLogicControllerDelegate,
+DWTeamsLogicControllerDelegate,DWTeamItemsViewControllerDelegate> {
     
 	DWTabBarController    *_customTabBarController;
 }

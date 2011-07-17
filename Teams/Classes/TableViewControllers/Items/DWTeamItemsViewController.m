@@ -19,6 +19,7 @@
 @implementation DWTeamItemsViewController
 
 @synthesize teamItemsDataSource     = _teamItemsDataSource;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithTeam:(DWTeam*)team {
@@ -49,6 +50,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
     self.teamItemsDataSource    = nil;
+    self.delegate               = nil;
     
     [super dealloc];
 }
@@ -75,7 +77,9 @@
 #pragma mark -
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDetailsButton:(UIButton*)button {    
+- (void)didTapDetailsButton:(UIButton*)button {  
+    DWTeam *team = [DWTeam fetch:self.teamItemsDataSource.teamID];
+    [self.delegate teamDetailsSelected:team];
 }
 
 @end

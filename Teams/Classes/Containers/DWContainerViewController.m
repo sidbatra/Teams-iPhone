@@ -3,9 +3,12 @@
 //  Copyright 2011 Denwen. All rights reserved.
 //
 #import "DWContainerViewController.h"
+
 #import "DWTabBarController.h"
 #import "DWUserItemsViewController.h"
 #import "DWTeamItemsViewController.h"
+#import "DWTeamViewController.h"
+
 #import "DWSharingManager.h"
 #import "DWItem.h"
 #import "DWConstants.h"
@@ -102,7 +105,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
                                                        initWithTeam:team]
                                                       autorelease];
-    
+    teamItemsController.delegate = self;
     [teamItemsController setItemsDelegate:self];
     
     [self.navigationController pushViewController:teamItemsController
@@ -206,12 +209,20 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark TeamsLogicControllerDelegate
 
+//----------------------------------------------------------------------------------------------------
+- (void)teamDetailsSelected:(DWTeam *)team {
+    
+    DWTeamViewController *teamViewController = [[[DWTeamViewController alloc] initWithTeam:team] autorelease];
+    [teamViewController setTeamsDelegate:self];
+    
+    [self.navigationController pushViewController:teamViewController
+                                         animated:YES];
+}
 
 
 //----------------------------------------------------------------------------------------------------
