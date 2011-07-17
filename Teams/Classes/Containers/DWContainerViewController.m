@@ -36,6 +36,16 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
  */
 - (BOOL)isSelectedTab;
 
+/**
+ * Displays the designated view controller for a team whenever one is selected
+ */
+- (void)teamSelected:(DWTeam*)team;
+
+/**
+ * Displays the designated view controller for a user whenever one is selected
+ */
+- (void)userSelected:(DWUser*)user;
+
 @end
 
 
@@ -84,6 +94,30 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isSelectedTab {
     return [self.customTabBarController getSelectedController] == self.navigationController;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamSelected:(DWTeam*)team {
+    
+    DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
+                                                       initWithTeam:team]
+                                                      autorelease];
+    
+    [teamItemsController setItemsDelegate:(id)self];
+    
+    [self.navigationController pushViewController:teamItemsController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSelected:(DWUser*)user {
+    
+    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
+                                                                                             andIgnore:YES] autorelease];
+    [userItemsController setItemsDelegate:(id)self];
+    
+    [self.navigationController pushViewController:userItemsController
+                                         animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -138,34 +172,20 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark ItemsViewControllerDelegate
+#pragma mark ItemsLogicControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamSelected:(DWTeam*)team {
-    
-    DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
-                                                       initWithTeam:team]
-                                                      autorelease];
-    
-    [teamItemsController setItemsDelegate:(id)self];
-    
-    [self.navigationController pushViewController:teamItemsController
-                                         animated:YES];
+- (void)itemsLogicTeamSelected:(DWTeam*)team {
+    [self teamSelected:team];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userSelected:(DWUser*)user {
-
-    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
-                                                                                             andIgnore:YES] autorelease];
-    [userItemsController setItemsDelegate:(id)self];
-    
-    [self.navigationController pushViewController:userItemsController
-                                         animated:YES];
+- (void)itemsLogicUserSelected:(DWUser*)user {
+    [self userSelected:user];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)shareSelectedForItem:(DWItem*)item {
+- (void)itemsLogicShareSelectedForItem:(DWItem*)item {
     NSLog(@"item sharing selecred - %d",item.databaseID);
 }
 
@@ -173,6 +193,13 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //- (UIViewController*)requestCustomTabBarController {
 //    return self.customTabBarController;
 //}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark TeamsLogicControllerDelegate
+
 
 
 //----------------------------------------------------------------------------------------------------

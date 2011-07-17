@@ -19,7 +19,6 @@
 @implementation DWTeamItemsViewController
 
 @synthesize teamItemsDataSource     = _teamItemsDataSource;
-@synthesize itemsViewController     = _itemsViewController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithTeam:(DWTeam*)team {
@@ -28,9 +27,6 @@
     if(self) {
         self.teamItemsDataSource        = [[[DWTeamItemsDataSource alloc] init] autorelease];
         self.teamItemsDataSource.teamID = team.databaseID;
-        
-        self.itemsViewController        = [[[DWItemsViewController alloc] init] autorelease];
-        self.itemsViewController.tableViewController    = self;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
                                         forKey:[[DWItem class] className]];
@@ -53,7 +49,6 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
     self.teamItemsDataSource    = nil;
-    self.itemsViewController    = nil;
     
     [super dealloc];
 }
@@ -61,22 +56,6 @@
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return self.teamItemsDataSource;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setItemsDelegate:(id<DWItemsViewControllerDelegate,NSObject>)delegate {
-    self.itemsViewController.delegate = delegate;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (id)getDelegateForClassName:(NSString *)className {
-    
-    id delegate = nil;
-    
-    if([className isEqualToString:[[DWItem class] className]])
-        delegate = self.itemsViewController;
-    
-    return delegate;
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -4,8 +4,8 @@
 //
 
 #import "DWItemsContainerViewController.h"
+#import "DWFollowedItemsViewController.h"
 #import "DWCreationQueue.h"
-#import "DWPostProgressView.h"
 #import "DWNotificationsHelper.h"
 #import "DWGUIManager.h"
 #import "DWSession.h"
@@ -123,7 +123,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     if(!self.followedViewController) {
         self.followedViewController             = [[[DWFollowedItemsViewController alloc] init] autorelease];
-        [self.followedViewController setDelegate:self];
+        [self.followedViewController setItemsDelegate:(id)self];
     }
     
     [self.view addSubview:self.followedViewController.view];

@@ -199,7 +199,6 @@
 		BB272B2213CF91CA00FDACA1 /* DWUserItemsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2113CF91C900FDACA1 /* DWUserItemsDataSource.m */; };
 		BB272B3213CFCCBE00FDACA1 /* DWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2A13CFCCBE00FDACA1 /* DWTableViewController.m */; };
 		BB272B3313CFCCBE00FDACA1 /* DWFollowedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2D13CFCCBE00FDACA1 /* DWFollowedItemsViewController.m */; };
-		BB272B3413CFCCBE00FDACA1 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2F13CFCCBE00FDACA1 /* DWItemsViewController.m */; };
 		BB272B3513CFCCBE00FDACA1 /* DWUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3113CFCCBE00FDACA1 /* DWUserItemsViewController.m */; };
 		BB272B3B13CFCD4500FDACA1 /* DWContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3813CFCD4500FDACA1 /* DWContainerViewController.m */; };
 		BB272B3C13CFCD4500FDACA1 /* DWItemsContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3A13CFCD4500FDACA1 /* DWItemsContainerViewController.m */; };
@@ -229,6 +228,8 @@
 		BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */; };
 		BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */; };
 		BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */; };
+		BB272C5513D2418A00FDACA1 /* DWTeamViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C5413D2418A00FDACA1 /* DWTeamViewDataSource.m */; };
+		BB272C5913D248A800FDACA1 /* DWTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C5813D248A800FDACA1 /* DWTeamViewController.m */; };
 		BB28E013135FF30600FF4566 /* post_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E00F135FF30600FF4566 /* post_cancel.png */; };
 		BB28E014135FF30600FF4566 /* post_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E010135FF30600FF4566 /* post_cancel@2x.png */; };
 		BB28E015135FF30600FF4566 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E011135FF30600FF4566 /* post_retry.png */; };
@@ -287,6 +288,8 @@
 		BB4051D212F2377500916688 /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */; };
 		BB4D1DDC13C24DAB00F8819C /* DWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D1DDB13C24DAB00F8819C /* DWLocationManager.m */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
+		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
+		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
 		BB5E67D1133182C3006D0C66 /* video_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67CF133182C3006D0C66 /* video_attach.png */; };
 		BB5E67D2133182C3006D0C66 /* video_attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67D0133182C3006D0C66 /* video_attach@2x.png */; };
 		BB5E67DE13318438006D0C66 /* video_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67DC13318438006D0C66 /* video_placeholder.png */; };
@@ -725,8 +728,6 @@
 		BB272B2A13CFCCBE00FDACA1 /* DWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewController.m; sourceTree = "<group>"; };
 		BB272B2C13CFCCBE00FDACA1 /* DWFollowedItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowedItemsViewController.h; sourceTree = "<group>"; };
 		BB272B2D13CFCCBE00FDACA1 /* DWFollowedItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowedItemsViewController.m; sourceTree = "<group>"; };
-		BB272B2E13CFCCBE00FDACA1 /* DWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsViewController.h; sourceTree = "<group>"; };
-		BB272B2F13CFCCBE00FDACA1 /* DWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsViewController.m; sourceTree = "<group>"; };
 		BB272B3013CFCCBE00FDACA1 /* DWUserItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserItemsViewController.h; sourceTree = "<group>"; };
 		BB272B3113CFCCBE00FDACA1 /* DWUserItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserItemsViewController.m; sourceTree = "<group>"; };
 		BB272B3713CFCD4400FDACA1 /* DWContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContainerViewController.h; sourceTree = "<group>"; };
@@ -785,6 +786,10 @@
 		BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRecentTeamsDataSource.m; sourceTree = "<group>"; };
 		BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRecentTeamsViewController.h; sourceTree = "<group>"; };
 		BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRecentTeamsViewController.m; sourceTree = "<group>"; };
+		BB272C5313D2418900FDACA1 /* DWTeamViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamViewDataSource.h; sourceTree = "<group>"; };
+		BB272C5413D2418A00FDACA1 /* DWTeamViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamViewDataSource.m; sourceTree = "<group>"; };
+		BB272C5713D248A800FDACA1 /* DWTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamViewController.h; sourceTree = "<group>"; };
+		BB272C5813D248A800FDACA1 /* DWTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamViewController.m; sourceTree = "<group>"; };
 		BB28E00F135FF30600FF4566 /* post_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_cancel.png; path = resources/post_cancel.png; sourceTree = "<group>"; };
 		BB28E010135FF30600FF4566 /* post_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "post_cancel@2x.png"; path = "resources/post_cancel@2x.png"; sourceTree = "<group>"; };
 		BB28E011135FF30600FF4566 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = post_retry.png; path = resources/post_retry.png; sourceTree = "<group>"; };
@@ -882,6 +887,10 @@
 		BB4D1DDA13C24DAB00F8819C /* DWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLocationManager.h; path = Classes/DWLocationManager.h; sourceTree = "<group>"; };
 		BB4D1DDB13C24DAB00F8819C /* DWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWLocationManager.m; path = Classes/DWLocationManager.m; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
+		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
+		BB572A0A13D25C860060A351 /* DWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsViewController.h; sourceTree = "<group>"; };
+		BB572A0B13D25C860060A351 /* DWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsViewController.m; sourceTree = "<group>"; };
 		BB5E67CF133182C3006D0C66 /* video_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_attach.png; path = resources/video_attach.png; sourceTree = "<group>"; };
 		BB5E67D0133182C3006D0C66 /* video_attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video_attach@2x.png"; path = "resources/video_attach@2x.png"; sourceTree = "<group>"; };
 		BB5E67DC13318438006D0C66 /* video_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_placeholder.png; path = resources/video_placeholder.png; sourceTree = "<group>"; };
@@ -1603,6 +1612,7 @@
 				BBF898A013CAC53400D5C5FB /* Creation */,
 				BB272B5013CFCE3400FDACA1 /* Extensions */,
 				BBF8989513CA305400D5C5FB /* Helpers */,
+				BB572A0513D25C020060A351 /* LogicControllers */,
 				BBB51A0812F9FB490024086F /* Managers */,
 				BB8499E813C6B1B600D9789D /* MemoryPool */,
 				BB8499D513C6B08A00D9789D /* Models */,
@@ -1708,8 +1718,8 @@
 		BB272B2B13CFCCBE00FDACA1 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				BB272B2E13CFCCBE00FDACA1 /* DWItemsViewController.h */,
-				BB272B2F13CFCCBE00FDACA1 /* DWItemsViewController.m */,
+				BB572A0A13D25C860060A351 /* DWItemsViewController.h */,
+				BB572A0B13D25C860060A351 /* DWItemsViewController.m */,
 				BB272B2C13CFCCBE00FDACA1 /* DWFollowedItemsViewController.h */,
 				BB272B2D13CFCCBE00FDACA1 /* DWFollowedItemsViewController.m */,
 				BB272B3013CFCCBE00FDACA1 /* DWUserItemsViewController.h */,
@@ -1803,6 +1813,8 @@
 				BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */,
 				BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */,
 				BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */,
+				BB272C5713D248A800FDACA1 /* DWTeamViewController.h */,
+				BB272C5813D248A800FDACA1 /* DWTeamViewController.m */,
 			);
 			path = Teams;
 			sourceTree = "<group>";
@@ -1971,6 +1983,16 @@
 			path = External/REGEXKIT;
 			sourceTree = "<group>";
 		};
+		BB572A0513D25C020060A351 /* LogicControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB572A0713D25C390060A351 /* DWItemsLogicController.h */,
+				BB572A0813D25C390060A351 /* DWItemsLogicController.m */,
+			);
+			name = LogicControllers;
+			path = Classes/LogicControllers;
+			sourceTree = "<group>";
+		};
 		BB641D7E134D446F002A2325 /* Camera */ = {
 			isa = PBXGroup;
 			children = (
@@ -2127,6 +2149,8 @@
 				BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */,
 				BB272C3913D107BB00FDACA1 /* DWRecentTeamsDataSource.h */,
 				BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */,
+				BB272C5313D2418900FDACA1 /* DWTeamViewDataSource.h */,
+				BB272C5413D2418A00FDACA1 /* DWTeamViewDataSource.m */,
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
@@ -2787,7 +2811,6 @@
 				BB272B2213CF91CA00FDACA1 /* DWUserItemsDataSource.m in Sources */,
 				BB272B3213CFCCBE00FDACA1 /* DWTableViewController.m in Sources */,
 				BB272B3313CFCCBE00FDACA1 /* DWFollowedItemsViewController.m in Sources */,
-				BB272B3413CFCCBE00FDACA1 /* DWItemsViewController.m in Sources */,
 				BB272B3513CFCCBE00FDACA1 /* DWUserItemsViewController.m in Sources */,
 				BB272B3B13CFCD4500FDACA1 /* DWContainerViewController.m in Sources */,
 				BB272B3C13CFCD4500FDACA1 /* DWItemsContainerViewController.m in Sources */,
@@ -2818,6 +2841,10 @@
 				BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */,
 				BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */,
 				262415F213D21F1E00474D4B /* DWRequestHelper.m in Sources */,
+				BB272C5513D2418A00FDACA1 /* DWTeamViewDataSource.m in Sources */,
+				BB272C5913D248A800FDACA1 /* DWTeamViewController.m in Sources */,
+				BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */,
+				BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

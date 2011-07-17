@@ -6,16 +6,16 @@
 #import <UIKit/UIKit.h>
 
 #import "DWContainerViewController.h"
-#import "DWFollowedItemsViewController.h"
 #import "DWSmallProfilePicView.h"
 #import "DWPostProgressView.h"
 
+@class DWFollowedItemsViewController;
 
 /**
  * Primary view for the Feed tab and container for followed 
  * items view
  */
-@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWItemsViewControllerDelegate,DWSmallProfilePicViewDelegate> {
+@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWSmallProfilePicViewDelegate> {
     
 	DWFollowedItemsViewController	*_followedViewController;
     
