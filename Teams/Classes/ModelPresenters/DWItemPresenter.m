@@ -93,7 +93,7 @@ static CGFloat const kCellHeight  = 320;
     
     DWItem *item = object;
 
-    if(resourceType == kResoureTypeLargeAttachmentImage && item.attachment && item.attachment.databaseID == resourceID) {
+    if(resourceType == kResourceTypeLargeAttachmentImage && item.attachment && item.attachment.databaseID == resourceID) {
         
         DWItemFeedCell *cell	= base;
         

@@ -1,22 +1,21 @@
 //
-//  DWTeamPresenter.m
+//  DWResourcePresenter.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWTeamPresenter.h"
-#import "DWTeam.h"
-#import "DWAttachment.h"
-#import "DWTeamFeedCell.h"
+#import "DWResourcePresenter.h"
+#import "DWResource.h"
+#import "DWSlimCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 92;
+static CGFloat const kCellHeight  = 60;
 
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWTeamPresenter
+@implementation DWResourcePresenter
 
 //----------------------------------------------------------------------------------------------------
 + (UITableViewCell*)cellForObject:(id)object
@@ -25,29 +24,16 @@ static CGFloat const kCellHeight  = 92;
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
     
-    DWTeam *team			= object;
-    DWTeamFeedCell *cell	= base;
+    DWResource *resource        = object;
+    DWSlimCell *cell            = base;
     
-    if(!cell) 
-        cell = [[[DWTeamFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                                   reuseIdentifier:identifier] autorelease];
+    if(!cell)
+        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewStylePlain 
+                                  reuseIdentifier:identifier] autorelease];
     
-	    
-    cell.teamName       = team.name;
-    cell.teamDetails    = team.byline;
-    cell.hasAttachment  = team.attachment ? YES : NO;
+    cell.boldText   = resource.text;
     
-    if (team.attachment && team.attachment.sliceImage)
-        [cell setTeamImage:team.attachment.sliceImage];
-    else{
-        [cell setTeamImage:nil];
-        [team startImageDownload];
-    }	
-    
-    if(style == kTeamPresenterStyleNavigationDisabled) {
-        [cell hideChevron];
-        [cell disableAnimation];
-    }
+    [cell setImage:resource.image];
     
     [cell reset];
     [cell redisplay];
@@ -68,15 +54,17 @@ static CGFloat const kCellHeight  = 92;
             withPresentationStyle:(NSInteger)style
                   withNewResource:(id)resource
                  havingResourceID:(NSInteger)resourceID
-                           ofType:(NSInteger)resourceType {
+                           ofType:(NSInteger)resourceType {    
     
-    DWTeam *team = object;
+    DWResource *resourceObject      = object;
     
-    if(resourceType == kResourceTypeSliceAttachmentImage && team.attachment && team.attachment.databaseID == resourceID) {
-        
-        DWTeamFeedCell *cell = base;
-        
-        [cell setTeamImage:(UIImage*)resource];
+    if(resourceType != resourceObject.imageResourceType || resourceID != resourceObject.imageResourceID)
+        return;
+    
+    DWSlimCell *cell                = base;
+    
+    if([resource isKindOfClass:[UIImage class]]) {
+        [cell setImage:resource];
         [cell redisplay];
     }
 }
@@ -85,16 +73,14 @@ static CGFloat const kCellHeight  = 92;
 + (void)cellClickedForObject:(id)object
                 withDelegate:(id)delegate {
     
-    SEL sel = @selector(teamSelected:);
+    SEL sel = @selector(resourceClicked:);
     
     if(![delegate respondsToSelector:sel])
         return;
+        
     
-    
-    DWTeam *team = object;
-    
-    [delegate performSelector:sel
-                   withObject:team];
+    [delegate performSelector:sel 
+                   withObject:object];
 }
 
 @end

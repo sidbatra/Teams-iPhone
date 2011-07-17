@@ -22,4 +22,14 @@
     return [NSString stringWithFormat:@"Team started %@",[dateFormat stringFromDate:teamCreatedAt]];
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)totalWatchersLineForTeam:(DWTeam*)team {
+    return [NSString stringWithFormat:@"%d Watching this Team",team.followingsCount];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)totalMembersLineForTeam:(DWTeam*)team {
+    return [NSString stringWithFormat:@"%d People on the Team",team.membersCount];    
+}
+
 @end

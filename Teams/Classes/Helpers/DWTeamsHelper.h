@@ -20,4 +20,14 @@
  */
 + (NSString*)createdAtLineForTeam:(DWTeam*)team;
 
+/**
+ * Generate a total number of watchers byline
+ */
++ (NSString*)totalWatchersLineForTeam:(DWTeam*)team;
+
+/**
+ * Generate a total members of members byline
+ */
++ (NSString*)totalMembersLineForTeam:(DWTeam*)team;
+
 @end

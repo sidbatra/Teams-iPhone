@@ -74,7 +74,7 @@
 	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
     id resource             = [info objectForKey:kKeyImage];
     
-    [self.tableViewController provideResourceToVisibleCells:kResoureTypeSliceAttachmentImage
+    [self.tableViewController provideResourceToVisibleCells:kResourceTypeSliceAttachmentImage
                                                    resource:resource
                                                  resourceID:resourceID];
 }
