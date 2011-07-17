@@ -12,4 +12,9 @@
 	UILabel		*messageLabel;
 }
 
+/**
+ * Set a new message on to the message label
+ */
+- (void)setMessage:(NSString*)message;
+
 @end

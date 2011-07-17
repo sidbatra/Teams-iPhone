@@ -42,6 +42,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [super dealloc];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
     messageLabel					= [[[UILabel alloc] initWithFrame:self.contentView.frame] autorelease];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
@@ -53,8 +58,8 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
+- (void)setMessage:(NSString*)message {
+    messageLabel.text = message;
 }
 
 @end

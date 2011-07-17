@@ -9,12 +9,12 @@
  * Message model used to inject a message cell into table views
  */
 @interface DWMessage : NSObject {
-    NSString    *_message;
+    NSString    *_content;
 }
 
 /**
  * Message held by the object
  */
-@property (nonatomic,copy) NSString* message;
+@property (nonatomic,copy) NSString* content;
 
 @end

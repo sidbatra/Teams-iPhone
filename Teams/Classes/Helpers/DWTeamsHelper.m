@@ -1,37 +1,25 @@
 //
-//  DWMessage.m
+//  DWTeamsHelper.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWMessage.h"
-
+#import "DWTeamsHelper.h"
+#import "DWTeam.h"
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWMessage
-
-@synthesize content = _content;
+@implementation DWTeamsHelper
 
 //----------------------------------------------------------------------------------------------------
-- (id)init {
-    self = [super init];
++ (NSString*)createdAtLineForTeam:(DWTeam*)team {
+    NSDate *teamCreatedAt       = [NSDate dateWithTimeIntervalSince1970:team.createdAtTimestamp];
+    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
     
-    if(self) {
-    }
+    [dateFormat setDateFormat:@"MMM d, yyyy"];
     
-    return self;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    NSLog(@"message released");
-    
-    self.content = nil;
-    
-    [super dealloc];
+    return [NSString stringWithFormat:@"Team started %@",[dateFormat stringFromDate:teamCreatedAt]];
 }
 
 @end

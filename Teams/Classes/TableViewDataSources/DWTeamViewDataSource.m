@@ -4,6 +4,8 @@
 //
 
 #import "DWTeamViewDataSource.h"
+#import "DWTeamsHelper.h"
+#import "DWMessage.h"
 
 
 
@@ -67,8 +69,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam *)team {
             
-    [self.objects insertObject:team 
-                       atIndex:0];
+    [self.objects addObject:team];
+    
+    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    message.content     = [DWTeamsHelper createdAtLineForTeam:team];
+    [self.objects addObject:message];
     
     [self.delegate reloadTableView];
 }
