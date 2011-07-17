@@ -37,7 +37,6 @@ typedef enum {
 
 
 /**
-<<<<<<< HEAD
  * Session States
  */
 typedef enum {
@@ -51,9 +50,7 @@ typedef enum {
 
 /**
  * Presentation styles for different models
-=======
  * Default presentation style for all model presenters
->>>>>>> d2c2288f0f5aa371cbb966d69b78ebd0b1fedc63
  */
 enum {
     kPresentationStyleDefault   = 0,
@@ -66,6 +63,14 @@ typedef enum {
     kItemPresenterStyleUserItems = 1,
     kItemPresenterStyleTeamItems = 2
 } DWItemPresenterStyle;
+
+/**
+ * Presentation styles for the team presenter
+ */
+typedef enum {
+    kTeamPresenterStyleNavigationDisabled = 1,
+} DWTeamPresenterStyle;
+
 
 
 /**
