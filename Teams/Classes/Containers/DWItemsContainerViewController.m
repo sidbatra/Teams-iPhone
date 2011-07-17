@@ -123,7 +123,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     if(!self.followedViewController) {
         self.followedViewController             = [[[DWFollowedItemsViewController alloc] init] autorelease];
-        [self.followedViewController setItemsDelegate:(id)self];
+        [self.followedViewController setItemsDelegate:self];
     }
     
     [self.view addSubview:self.followedViewController.view];
