@@ -85,8 +85,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
-
+    DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
+    
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:team.name];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    
     [self.teamViewDataSource loadData];
 }
 
