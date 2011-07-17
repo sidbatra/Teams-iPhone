@@ -206,7 +206,6 @@
 		BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */; };
 		BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */; };
 		BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */; };
-		BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */; };
 		BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */; };
 		BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */; };
 		BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */; };
@@ -294,6 +293,7 @@
 		BB572A1D13D36E2C0060A351 /* DWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A1C13D36E2C0060A351 /* DWMessage.m */; };
 		BB572A2013D36F930060A351 /* DWMessagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A1F13D36F930060A351 /* DWMessagePresenter.m */; };
 		BB572A2313D371D00060A351 /* DWTeamsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A2213D371D00060A351 /* DWTeamsHelper.m */; };
+		BB572A2613D379690060A351 /* DWSlimCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A2513D379680060A351 /* DWSlimCell.m */; };
 		BB5E67D1133182C3006D0C66 /* video_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67CF133182C3006D0C66 /* video_attach.png */; };
 		BB5E67D2133182C3006D0C66 /* video_attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67D0133182C3006D0C66 /* video_attach@2x.png */; };
 		BB5E67DE13318438006D0C66 /* video_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67DC13318438006D0C66 /* video_placeholder.png */; };
@@ -746,8 +746,6 @@
 		BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationCell.m; sourceTree = "<group>"; };
 		BB272B4613CFCDFF00FDACA1 /* DWPlaceSearchResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPlaceSearchResultCell.h; sourceTree = "<group>"; };
 		BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPlaceSearchResultCell.m; sourceTree = "<group>"; };
-		BB272B4813CFCDFF00FDACA1 /* DWTouchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchCell.h; sourceTree = "<group>"; };
-		BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchCell.m; sourceTree = "<group>"; };
 		BB272B5113CFCE5A00FDACA1 /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
 		BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
 		BB272B5313CFCE5A00FDACA1 /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helpers.h"; sourceTree = "<group>"; };
@@ -903,6 +901,8 @@
 		BB572A1F13D36F930060A351 /* DWMessagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessagePresenter.m; sourceTree = "<group>"; };
 		BB572A2113D371D00060A351 /* DWTeamsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsHelper.h; sourceTree = "<group>"; };
 		BB572A2213D371D00060A351 /* DWTeamsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsHelper.m; sourceTree = "<group>"; };
+		BB572A2413D379680060A351 /* DWSlimCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSlimCell.h; sourceTree = "<group>"; };
+		BB572A2513D379680060A351 /* DWSlimCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSlimCell.m; sourceTree = "<group>"; };
 		BB5E67CF133182C3006D0C66 /* video_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_attach.png; path = resources/video_attach.png; sourceTree = "<group>"; };
 		BB5E67D0133182C3006D0C66 /* video_attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video_attach@2x.png"; path = "resources/video_attach@2x.png"; sourceTree = "<group>"; };
 		BB5E67DC13318438006D0C66 /* video_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_placeholder.png; path = resources/video_placeholder.png; sourceTree = "<group>"; };
@@ -1763,14 +1763,14 @@
 				BB272B3F13CFCDFF00FDACA1 /* DWItemFeedCell.m */,
 				BB272C2613D0F71E00FDACA1 /* DWTeamFeedCell.h */,
 				BB272C2713D0F71E00FDACA1 /* DWTeamFeedCell.m */,
+				BB572A2413D379680060A351 /* DWSlimCell.h */,
+				BB572A2513D379680060A351 /* DWSlimCell.m */,
 				BB272B4013CFCDFF00FDACA1 /* DWMessageCell.h */,
 				BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */,
 				BB272B4213CFCDFF00FDACA1 /* DWPaginationCell.h */,
 				BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */,
 				BB272B4613CFCDFF00FDACA1 /* DWPlaceSearchResultCell.h */,
 				BB272B4713CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m */,
-				BB272B4813CFCDFF00FDACA1 /* DWTouchCell.h */,
-				BB272B4913CFCDFF00FDACA1 /* DWTouchCell.m */,
 			);
 			name = TableViewCells;
 			path = Classes/TableViewCells;
@@ -2838,7 +2838,6 @@
 				BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */,
 				BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */,
 				BB272B4E13CFCDFF00FDACA1 /* DWPlaceSearchResultCell.m in Sources */,
-				BB272B4F13CFCDFF00FDACA1 /* DWTouchCell.m in Sources */,
 				BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */,
 				BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */,
 				BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */,
@@ -2869,6 +2868,7 @@
 				BB572A1D13D36E2C0060A351 /* DWMessage.m in Sources */,
 				BB572A2013D36F930060A351 /* DWMessagePresenter.m in Sources */,
 				BB572A2313D371D00060A351 /* DWTeamsHelper.m in Sources */,
+				BB572A2613D379690060A351 /* DWSlimCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
