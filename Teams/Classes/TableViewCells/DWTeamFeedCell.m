@@ -77,6 +77,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 	if (self) {
         
 		CGRect frame = CGRectMake(0,0,320,92);
+        _animationEnabled = YES;
 		
 		teamImageLayer					= [CALayer layer];
 		teamImageLayer.frame			= frame;
@@ -95,7 +96,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 										   nil];
         [[self layer] addSublayer:drawingLayer];
 		
-		CALayer *chevronLayer			= [CALayer layer];
+		chevronLayer                    = [CALayer layer];
 		chevronLayer.frame				= CGRectMake(307,41,6,11);
 		chevronLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		chevronLayer.contents			= (id)[UIImage imageNamed:kImgChevron].CGImage;
@@ -142,6 +143,9 @@ static NSString* const kImgChevron		= @"chevron.png";
 - (void)setHighlighted:(BOOL)highlighted 
 			  animated:(BOOL)animated {
 	
+    if(!_animationEnabled)
+        return;
+    
 	if(highlighted && !_highlighted) {
 		[self highlightCell];
 	}
@@ -167,6 +171,16 @@ static NSString* const kImgChevron		= @"chevron.png";
 //----------------------------------------------------------------------------------------------------
 - (void)redisplay {
 	[drawingLayer setNeedsDisplay];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideChevron {
+    chevronLayer.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disableAnimation {
+    _animationEnabled = NO;
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -30,10 +30,12 @@
 @interface DWTeamFeedCell : UITableViewCell {	
 	
 	CALayer							*teamImageLayer;
+    CALayer                         *chevronLayer;
 	DWTeamFeedCellDrawingLayer		*drawingLayer;
 	
 	BOOL							_highlighted;
     BOOL                            _hasAttachment;
+    BOOL                            _animationEnabled;
 	
 	NSString						*_teamName;
 	NSString						*_teamData;
@@ -76,7 +78,18 @@
  */
 - (void)redisplay;
 
+/**
+ * Hides the tiny chevron icon on the cell
+ */
+- (void)hideChevron;
+
+/**
+ * Disable the fade animation when the cell is clicked
+ */
+- (void)disableAnimation;
+
 @end
+
 
 /**
  * Declarations for select private methods
