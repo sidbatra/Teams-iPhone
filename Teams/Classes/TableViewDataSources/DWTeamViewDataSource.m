@@ -16,6 +16,7 @@
 @implementation DWTeamViewDataSource
 
 @synthesize teamsController     = _teamsController;
+@synthesize usersController     = _usersController;
 @synthesize teamID              = _teamID;
 
 //----------------------------------------------------------------------------------------------------
@@ -25,6 +26,9 @@
     if(self) {
         self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
         self.teamsController.delegate   = self;
+        
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
     }
     
     return self;
@@ -33,6 +37,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.teamsController    = nil;
+    self.usersController    = nil;
     
     [super dealloc];
 }
@@ -49,6 +54,8 @@
     self.objects = [NSMutableArray array];
     
     [self.teamsController getTeamWithID:self.teamID];
+    [self.usersController getLastFollowerOfTeam:self.teamID];
+    [self.usersController getLastMemberOfTeam:self.teamID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -92,6 +99,39 @@
 - (void)teamLoadError:(NSString *)error {
     NSLog(@"Team load error - %@",error);
     [self.delegate displayError:error];        
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)usersResourceID {
+    return self.teamID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamFollowersLoaded:(NSMutableArray *)users {
+    NSLog(@"team followers loaded %d",[users count]);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamFollowersError:(NSString *)error {
+    NSLog(@"Team followers load error - %@",error);
+    [self.delegate displayError:error];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamMembersLoaded:(NSMutableArray *)users {
+    NSLog(@"team member loaded %d",[users count]);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamMembersError:(NSString *)error {
+    NSLog(@"Team memb ers load error - %@",error);
+    [self.delegate displayError:error];
 }
 
 @end

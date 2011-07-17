@@ -7,12 +7,16 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWTeamsController.h"
+#import "DWUsersController.h"
 
 /**
  * Datasource for the team view data source
  */
-@interface DWTeamViewDataSource : DWTableViewDataSource<DWTeamsControllerDelegate> {
+@interface DWTeamViewDataSource : DWTableViewDataSource<DWTeamsControllerDelegate,DWUsersControllerDelegate> {
+    
     DWTeamsController   *_teamsController;
+    DWUsersController   *_usersController;
+    
     NSInteger           _teamID;
 }
 
@@ -20,6 +24,11 @@
  * Interface to the teams service
  */
 @property (nonatomic,retain) DWTeamsController *teamsController;
+
+/**
+ * Interface to the users service
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
 
 /**
  * TeamID for the team being displayed
