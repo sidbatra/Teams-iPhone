@@ -71,7 +71,7 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWItemFeedCellDelegate (Implemented via DWItemPresenter)
+#pragma mark DWItemFeedCellDelegate (Implemented via selectors)
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID {
