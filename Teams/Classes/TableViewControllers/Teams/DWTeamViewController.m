@@ -5,9 +5,11 @@
 
 #import "DWTeamViewController.h"
 #import "DWTeamsLogicController.h"
+
 #import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
 #import "NSObject+Helpers.h"
+#import "DWGUIManager.h"
 
 
 
@@ -30,6 +32,9 @@
         
         self.teamsLogicController           = [[[DWTeamsLogicController alloc] init] autorelease];
         self.teamsLogicController.tableViewController = self;
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleNavigationDisabled]
+                                        forKey:[[DWTeam class] className]];
     }
     
     return self;
@@ -79,6 +84,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+
     [self.teamViewDataSource loadData];
 }
 

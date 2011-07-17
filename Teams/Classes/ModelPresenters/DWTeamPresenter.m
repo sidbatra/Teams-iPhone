@@ -44,6 +44,11 @@ static CGFloat const kCellHeight  = 92;
         [team startImageDownload];
     }	
     
+    if(style == kTeamPresenterStyleNavigationDisabled) {
+        [cell hideChevron];
+        [cell disableAnimation];
+    }
+    
     [cell reset];
     [cell redisplay];
     
@@ -69,7 +74,7 @@ static CGFloat const kCellHeight  = 92;
     
     if(resourceType == kResoureTypeSliceAttachmentImage && team.attachment && team.attachment.databaseID == resourceID) {
         
-        DWTeamFeedCell *cell	= base;
+        DWTeamFeedCell *cell = base;
         
         [cell setTeamImage:(UIImage*)resource];
         [cell redisplay];
