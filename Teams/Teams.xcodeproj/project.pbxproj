@@ -291,6 +291,7 @@
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
 		BB572A0F13D266B10060A351 /* DWTeamsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0E13D266B10060A351 /* DWTeamsLogicController.m */; };
 		BB572A1213D267210060A351 /* DWTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A1113D267210060A351 /* DWTeamsViewController.m */; };
+		BB572A1D13D36E2C0060A351 /* DWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A1C13D36E2C0060A351 /* DWMessage.m */; };
 		BB5E67D1133182C3006D0C66 /* video_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67CF133182C3006D0C66 /* video_attach.png */; };
 		BB5E67D2133182C3006D0C66 /* video_attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67D0133182C3006D0C66 /* video_attach@2x.png */; };
 		BB5E67DE13318438006D0C66 /* video_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67DC13318438006D0C66 /* video_placeholder.png */; };
@@ -894,6 +895,8 @@
 		BB572A0E13D266B10060A351 /* DWTeamsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsLogicController.m; sourceTree = "<group>"; };
 		BB572A1013D267210060A351 /* DWTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsViewController.h; sourceTree = "<group>"; };
 		BB572A1113D267210060A351 /* DWTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsViewController.m; sourceTree = "<group>"; };
+		BB572A1B13D36E2C0060A351 /* DWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMessage.h; sourceTree = "<group>"; };
+		BB572A1C13D36E2C0060A351 /* DWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessage.m; sourceTree = "<group>"; };
 		BB5E67CF133182C3006D0C66 /* video_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_attach.png; path = resources/video_attach.png; sourceTree = "<group>"; };
 		BB5E67D0133182C3006D0C66 /* video_attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video_attach@2x.png"; path = "resources/video_attach@2x.png"; sourceTree = "<group>"; };
 		BB5E67DC13318438006D0C66 /* video_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_placeholder.png; path = resources/video_placeholder.png; sourceTree = "<group>"; };
@@ -2058,6 +2061,8 @@
 				BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */,
 				BB3A43BD13CD3B2900316EE6 /* DWPagination.h */,
 				BB3A43BE13CD3B2900316EE6 /* DWPagination.m */,
+				BB572A1B13D36E2C0060A351 /* DWMessage.h */,
+				BB572A1C13D36E2C0060A351 /* DWMessage.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -2851,6 +2856,7 @@
 				BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */,
 				BB572A0F13D266B10060A351 /* DWTeamsLogicController.m in Sources */,
 				BB572A1213D267210060A351 /* DWTeamsViewController.m in Sources */,
+				BB572A1D13D36E2C0060A351 /* DWMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
