@@ -49,7 +49,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
     messageLabel					= [[[UILabel alloc] initWithFrame:self.contentView.frame] autorelease];
-    messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
+    messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
     messageLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
     messageLabel.backgroundColor	= [UIColor clearColor];
     messageLabel.textAlignment		= UITextAlignmentCenter;

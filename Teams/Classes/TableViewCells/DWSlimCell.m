@@ -9,17 +9,18 @@
 static NSString* const kImgSeparator	= @"hr_place_list.png";
 static NSString* const kImgChevron		= @"chevron.png";
 
+
 #define kAnimationDuration          0.05
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
-#define kColorNormalBg              [UIColor colorWithRed:0.3490 green:0.3490 blue:0.3490 alpha:1.0].CGColor
+#define kColorNormalBg              [UIColor colorWithRed:0.2588 green:0.2588 blue:0.2627 alpha:1.0].CGColor
 #define kColorHighlightBg           [UIColor colorWithRed:0.2784 green:0.2784 blue:0.2784 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:0.9019 green:0.9019 blue:0.9019 alpha:1.0].CGColor
-#define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:13]
-#define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:13]
-#define kTextX                      74
-#define kTextY                      11
+#define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
+#define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define kTextX                      65
+#define kTextY                      19
 
 
 
@@ -82,7 +83,6 @@ static NSString* const kImgChevron		= @"chevron.png";
         imageLayer					= [CALayer layer];
 		imageLayer.frame			= CGRectMake(0,0,60,60);
 		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
-		imageLayer.backgroundColor	= [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor;
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
 										   [NSNull null], @"contents",
 										   nil];
