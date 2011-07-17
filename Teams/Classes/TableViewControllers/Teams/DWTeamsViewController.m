@@ -4,9 +4,9 @@
 //
 
 #import "DWTeamsViewController.h"
-#import "DWTableViewController.h"
-#import "DWConstants.h"
+#import "DWTeamsLogicController.h"
 #import "DWTeam.h"
+#import "NSObject+Helpers.h"
 
 
 
@@ -15,62 +15,41 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWTeamsViewController
 
-@synthesize tableViewController     = _tableViewController;
-@synthesize delegate                = _delegate;
+@synthesize teamsLogicController = _teamsLogicController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {        
-                
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(sliceAttachmentLoaded:) 
-													 name:kNImgSliceAttachmentFinalized
-												   object:nil];
+        self.teamsLogicController    = [[[DWTeamsLogicController alloc] init] autorelease];
+        self.teamsLogicController.tableViewController = self;
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-    
-    self.tableViewController    = nil;
-    self.delegate               = nil;
+- (void)dealloc {    
+    self.teamsLogicController        = nil;
     
     [super dealloc];
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWTeamPresenterDelegate (implemented via selectors)
-
-//----------------------------------------------------------------------------------------------------
-- (void)teamSelected:(DWTeam*)team {
-    [self.delegate teamSelected:team];
+- (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate {
+    self.teamsLogicController.delegate = delegate;
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Notifications
-
-//----------------------------------------------------------------------------------------------------
-- (void)sliceAttachmentLoaded:(NSNotification*)notification {
-	
-	NSDictionary *info		= [notification userInfo];
-	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
-    id resource             = [info objectForKey:kKeyImage];
+- (id)getDelegateForClassName:(NSString *)className {
     
-    [self.tableViewController provideResourceToVisibleCells:kResoureTypeSliceAttachmentImage
-                                                   resource:resource
-                                                 resourceID:resourceID];
+    id delegate = nil;
+    
+    if([className isEqualToString:[[DWTeam class] className]])
+        delegate = self.teamsLogicController;
+    
+    return delegate;
 }
-
 
 @end

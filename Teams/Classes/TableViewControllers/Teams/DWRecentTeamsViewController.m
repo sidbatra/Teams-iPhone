@@ -16,8 +16,6 @@
 @implementation DWRecentTeamsViewController
 
 @synthesize recentTeamsDataSource   = _recentTeamsDataSource;
-@synthesize teamsViewController     = _teamsViewController;
-
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -25,9 +23,6 @@
     
     if(self) {
         self.recentTeamsDataSource = [[[DWRecentTeamsDataSource alloc] init] autorelease];
-        
-        self.teamsViewController    = [[[DWTeamsViewController alloc] init] autorelease];
-        self.teamsViewController.tableViewController = self;
     }
     
     return self;
@@ -36,26 +31,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
     self.recentTeamsDataSource      = nil;
-    self.teamsViewController        = nil;
-
     
     [super dealloc];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setDelegate:(id<DWTeamsViewControllerDelegate>)delegate {
-    self.teamsViewController.delegate = delegate;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (id)getDelegateForClassName:(NSString *)className {
-    
-    id delegate = nil;
-    
-    if([className isEqualToString:[[DWTeam class] className]])
-        delegate = self.teamsViewController;
-    
-    return delegate;
 }
 
 //----------------------------------------------------------------------------------------------------

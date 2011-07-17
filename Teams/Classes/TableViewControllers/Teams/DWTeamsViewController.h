@@ -5,40 +5,28 @@
 
 #import <Foundation/Foundation.h>
 
-@class DWTeam;
-@class DWTableViewController;
-@protocol DWTeamsViewControllerDelegate;
+#import "DWTableViewController.h"
+
+@class DWTeamsLogicController;
+@protocol DWTeamsLogicControllerDelegate;
 
 /**
- * Base table views that display a list of teams
+ * Base class for all table view that implement only a list of teams
  */
-@interface DWTeamsViewController : NSObject {
-    DWTableViewController   *_tableViewController;
-    
-    id <DWTeamsViewControllerDelegate> _delegate;
+@interface DWTeamsViewController : DWTableViewController {
+    DWTeamsLogicController       *_teamsLogicController;
 }
 
 /**
- * The table view controller which contains the teams view controller object
+ * Teams view controller encapsulates the common display and interaction 
+ * functionality needed to display one or more teams
  */
-@property (nonatomic,assign) DWTableViewController *tableViewController;
-
-/**
- * Delegate receives events based on the DWTeamsViewControllerDelegate
- */
-@property (nonatomic,assign) id<DWTeamsViewControllerDelegate> delegate;
-
-@end
+@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
 
 
 /**
- * Delegate protocol for the DWTeamsViewController
+ * Set a teams logic controller delegate
  */
-@protocol DWTeamsViewControllerDelegate
-
-/**
- * Fired when the user selects a team
- */
-- (void)teamSelected:(DWTeam*)team;
+- (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate;
 
 @end

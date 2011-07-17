@@ -224,7 +224,6 @@
 		BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2A13D0F84100FDACA1 /* DWTeamPresenter.m */; };
 		BB272C2E13D1003300FDACA1 /* DWTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C2D13D1003000FDACA1 /* DWTeamsDataSource.m */; };
 		BB272C3113D101D400FDACA1 /* DWPopularTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */; };
-		BB272C3513D1037F00FDACA1 /* DWTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3413D1037F00FDACA1 /* DWTeamsViewController.m */; };
 		BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */; };
 		BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */; };
 		BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */; };
@@ -290,6 +289,8 @@
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
+		BB572A0F13D266B10060A351 /* DWTeamsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0E13D266B10060A351 /* DWTeamsLogicController.m */; };
+		BB572A1213D267210060A351 /* DWTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A1113D267210060A351 /* DWTeamsViewController.m */; };
 		BB5E67D1133182C3006D0C66 /* video_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67CF133182C3006D0C66 /* video_attach.png */; };
 		BB5E67D2133182C3006D0C66 /* video_attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67D0133182C3006D0C66 /* video_attach@2x.png */; };
 		BB5E67DE13318438006D0C66 /* video_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67DC13318438006D0C66 /* video_placeholder.png */; };
@@ -778,8 +779,6 @@
 		BB272C2D13D1003000FDACA1 /* DWTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsDataSource.m; sourceTree = "<group>"; };
 		BB272C2F13D101CB00FDACA1 /* DWPopularTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPopularTeamsDataSource.h; sourceTree = "<group>"; };
 		BB272C3013D101CF00FDACA1 /* DWPopularTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPopularTeamsDataSource.m; sourceTree = "<group>"; };
-		BB272C3313D1037F00FDACA1 /* DWTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsViewController.h; sourceTree = "<group>"; };
-		BB272C3413D1037F00FDACA1 /* DWTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsViewController.m; sourceTree = "<group>"; };
 		BB272C3613D1046C00FDACA1 /* DWPopularTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPopularTeamsViewController.h; sourceTree = "<group>"; };
 		BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPopularTeamsViewController.m; sourceTree = "<group>"; };
 		BB272C3913D107BB00FDACA1 /* DWRecentTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRecentTeamsDataSource.h; sourceTree = "<group>"; };
@@ -891,6 +890,10 @@
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
 		BB572A0A13D25C860060A351 /* DWItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsViewController.h; sourceTree = "<group>"; };
 		BB572A0B13D25C860060A351 /* DWItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsViewController.m; sourceTree = "<group>"; };
+		BB572A0D13D266B10060A351 /* DWTeamsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsLogicController.h; sourceTree = "<group>"; };
+		BB572A0E13D266B10060A351 /* DWTeamsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsLogicController.m; sourceTree = "<group>"; };
+		BB572A1013D267210060A351 /* DWTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTeamsViewController.h; sourceTree = "<group>"; };
+		BB572A1113D267210060A351 /* DWTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTeamsViewController.m; sourceTree = "<group>"; };
 		BB5E67CF133182C3006D0C66 /* video_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_attach.png; path = resources/video_attach.png; sourceTree = "<group>"; };
 		BB5E67D0133182C3006D0C66 /* video_attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video_attach@2x.png"; path = "resources/video_attach@2x.png"; sourceTree = "<group>"; };
 		BB5E67DC13318438006D0C66 /* video_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_placeholder.png; path = resources/video_placeholder.png; sourceTree = "<group>"; };
@@ -1807,8 +1810,8 @@
 		BB272C3213D1034500FDACA1 /* Teams */ = {
 			isa = PBXGroup;
 			children = (
-				BB272C3313D1037F00FDACA1 /* DWTeamsViewController.h */,
-				BB272C3413D1037F00FDACA1 /* DWTeamsViewController.m */,
+				BB572A1013D267210060A351 /* DWTeamsViewController.h */,
+				BB572A1113D267210060A351 /* DWTeamsViewController.m */,
 				BB272C3613D1046C00FDACA1 /* DWPopularTeamsViewController.h */,
 				BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */,
 				BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */,
@@ -1988,6 +1991,8 @@
 			children = (
 				BB572A0713D25C390060A351 /* DWItemsLogicController.h */,
 				BB572A0813D25C390060A351 /* DWItemsLogicController.m */,
+				BB572A0D13D266B10060A351 /* DWTeamsLogicController.h */,
+				BB572A0E13D266B10060A351 /* DWTeamsLogicController.m */,
 			);
 			name = LogicControllers;
 			path = Classes/LogicControllers;
@@ -2836,7 +2841,6 @@
 				BB272C2B13D0F84100FDACA1 /* DWTeamPresenter.m in Sources */,
 				BB272C2E13D1003300FDACA1 /* DWTeamsDataSource.m in Sources */,
 				BB272C3113D101D400FDACA1 /* DWPopularTeamsDataSource.m in Sources */,
-				BB272C3513D1037F00FDACA1 /* DWTeamsViewController.m in Sources */,
 				BB272C3813D1046E00FDACA1 /* DWPopularTeamsViewController.m in Sources */,
 				BB272C3B13D107C900FDACA1 /* DWRecentTeamsDataSource.m in Sources */,
 				BB272C3E13D10A6D00FDACA1 /* DWRecentTeamsViewController.m in Sources */,
@@ -2845,6 +2849,8 @@
 				BB272C5913D248A800FDACA1 /* DWTeamViewController.m in Sources */,
 				BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */,
 				BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */,
+				BB572A0F13D266B10060A351 /* DWTeamsLogicController.m in Sources */,
+				BB572A1213D267210060A351 /* DWTeamsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
