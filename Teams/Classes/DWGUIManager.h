@@ -31,4 +31,10 @@
  */
 + (UIBarButtonItem*)navBarDetailsButtonWithTarget:(id)target
                                       andSelector:(SEL)sel;
+
+/**
+ * Creates a UILabel to act as the title view for the navigation bar
+ */
++ (UILabel*)navBarTitleViewForText:(NSString*)text;
+
 @end

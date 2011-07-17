@@ -65,7 +65,19 @@ static NSString* const kImgNotificationsButton      = @"button_notifications.png
     return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
 }
 
-
+//----------------------------------------------------------------------------------------------------
++ (UILabel*)navBarTitleViewForText:(NSString*)text {
+    
+    UILabel *titleLabel            = [[[UILabel alloc] initWithFrame:CGRectMake(10,4,180,18)] autorelease];
+    titleLabel.textColor           = [UIColor whiteColor];
+    titleLabel.textAlignment       = UITextAlignmentCenter;
+    titleLabel.backgroundColor     = [UIColor clearColor];
+    titleLabel.font                = [UIFont fontWithName:@"HelveticaNeue-Bold" 
+                                                              size:17];
+    titleLabel.text                = text;
+    
+    return titleLabel;
+}
 
 @end
 
