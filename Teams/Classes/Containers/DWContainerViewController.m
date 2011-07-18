@@ -216,8 +216,9 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)teamDetailsSelected:(DWTeam *)team {
     
-    DWTeamViewController *teamViewController = [[[DWTeamViewController alloc] initWithTeam:team] autorelease];
-    teamViewController.delegate = self;              
+    DWTeamViewController *teamViewController    = [[[DWTeamViewController alloc] initWithTeam:team] autorelease];
+    teamViewController.delegate                 = self;              
+    
     [teamViewController setTeamsDelegate:self];
     
     [self.navigationController pushViewController:teamViewController
