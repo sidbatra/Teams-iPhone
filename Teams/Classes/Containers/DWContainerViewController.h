@@ -7,6 +7,7 @@
 
 #import "DWItemsLogicController.h"
 #import "DWTeamsLogicController.h"
+#import "DWUsersLogicController.h"
 #import "DWTeamItemsViewController.h"
 #import "DWTeamViewController.h"
 
@@ -17,7 +18,8 @@
  * each of the tabs
  */
 @interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemsLogicControllerDelegate,
-DWTeamsLogicControllerDelegate,DWTeamItemsViewControllerDelegate,DWTeamViewControllerDelegate> {
+DWTeamsLogicControllerDelegate,DWUsersLogicControllerDelegate,DWTeamItemsViewControllerDelegate,
+DWTeamViewControllerDelegate> {
     
 	DWTabBarController    *_customTabBarController;
 }

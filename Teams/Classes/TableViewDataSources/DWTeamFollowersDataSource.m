@@ -15,7 +15,7 @@
 @synthesize teamID  = _teamID;
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadTeams {
+- (void)loadUsers {
     [self.usersController getFollowersOfTeam:self.teamID];
 }
 
@@ -24,6 +24,11 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)usersResourceID {
+    return self.teamID;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamFollowersLoaded:(NSMutableArray *)users {

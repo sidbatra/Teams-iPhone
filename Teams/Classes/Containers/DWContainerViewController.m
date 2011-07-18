@@ -7,6 +7,8 @@
 #import "DWTabBarController.h"
 #import "DWUserItemsViewController.h"
 #import "DWTeamItemsViewController.h"
+#import "DWTeamMembersViewController.h"
+#import "DWTeamFollowersViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -211,7 +213,18 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark TeamsLogicControllerDelegate
+#pragma mark UsersLogicControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)usersLogicUserSelected:(DWUser *)user {
+    [self userSelected:user];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark TeamsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamDetailsSelected:(DWTeam *)team {
@@ -233,12 +246,24 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)showMembersOfTeam:(DWTeam*)team {
-    NSLog(@"display members of team");
+    DWTeamMembersViewController *teamMembersViewController = [[[DWTeamMembersViewController alloc]
+                                                               initWithTeam:team] autorelease];
+    
+    [teamMembersViewController setUsersDelegate:self];
+    
+    [self.navigationController pushViewController:teamMembersViewController
+                                         animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)showFollowersOfTeam:(DWTeam*)team {
-    NSLog(@"display followers of team");    
+    DWTeamFollowersViewController *teamFollowersViewController = [[[DWTeamFollowersViewController alloc] 
+                                                                   initWithTeam:team] autorelease];
+    
+    [teamFollowersViewController setUsersDelegate:self];
+    
+    [self.navigationController pushViewController:teamFollowersViewController
+                                         animated:YES];
 }
 
 
