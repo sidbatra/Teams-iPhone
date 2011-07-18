@@ -31,6 +31,19 @@ static NSString* const kDiskKeyHasInvitedPeople         = @"DWUser_hasInvitedPeo
 static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 
 
+/**
+ * Private method and property declarations
+ */
+@interface DWUser()
+
+/**
+ * Attach observers to receive notifications
+ */
+- (void)attachObservers;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -83,6 +96,8 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     else 
         self = nil;
     
+    [self attachObservers];
+    
     return self;
 }
 
@@ -112,30 +127,35 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 - (id)init {
 	self = [super init];
 	
-	if(self) {
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(smallImageLoaded:) 
-													 name:kNImgSmallUserLoaded
-												   object:nil];
-
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(smallImageError:) 
-													 name:kNImgSmallUserError
-												   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(largeImageLoaded:) 
-													 name:kNImgLargeUserLoaded
-												   object:nil];
-        
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(largeImageError:) 
-													 name:kNImgLargeUserError
-												   object:nil];
+	if(self) {  
+        [self attachObservers];
     }
 	
 	return self;  
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)attachObservers {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(smallImageLoaded:) 
+                                                 name:kNImgSmallUserLoaded
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(smallImageError:) 
+                                                 name:kNImgSmallUserError
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(largeImageLoaded:) 
+                                                 name:kNImgLargeUserLoaded
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(largeImageError:) 
+                                                 name:kNImgLargeUserError
+                                               object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
