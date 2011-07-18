@@ -23,22 +23,26 @@
 #define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorTextNoAttachment              [UIColor colorWithRed:0.4000 green:0.4000 blue:0.4000 alpha:1.0].CGColor
 #define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
+#define kColorByLine                        [UIColor colorWithRed:0.2000 green:0.2000 blue:0.2000 alpha:1.0].CGColor
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kFontItemTeamName                  [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
-#define kFontItemTeamNameDisabled          [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define kFontItemTeamName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
+#define kFontItemTeamNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define kFontByline                         [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemData                       [UIFont fontWithName:@"HelveticaNeue" size:23]
 #define kFontItemCreatedAt                  [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTouchesCount               [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kItemUserNameX                      20
 #define kItemUserNameY                      13
+#define kBylineY                            13
 #define kUnderlineYOffset                   17
 #define kUnderlineHeight                    0.75
 #define kAtXOffset                          7
 #define kAtWidth                            7
-#define kTeamNameXOffset                   5
-#define kMaxTeamNameWidth                  305
+#define kByLineXOffset                      6
+#define kTeamNameXOffset                    5
+#define kMaxTeamNameWidth                   305
 #define kItemDataX                          30
 #define kItemDataXSubTitleOffset            10
 #define kItemDataY                          40
@@ -124,6 +128,14 @@
             [@"/" drawInRect:itemCell.atRect
                      withFont:kFontAt];
             
+        }
+        else {
+            
+            CGContextSetFillColorWithColor(context,kColorByLine);
+            
+            [itemCell.byline drawInRect:itemCell.bylineRect
+                               withFont:kFontByline
+                          lineBreakMode:UILineBreakModeTailTruncation];
         }
 		
 		
@@ -314,8 +326,8 @@
 		
 		
 		teamButton						= [[[UIButton alloc] init] autorelease];
-        teamButton.layer.opacity        = 0.2;
-        teamButton.backgroundColor		= [UIColor greenColor];
+        //teamButton.layer.opacity        = 0.2;
+        //teamButton.backgroundColor		= [UIColor greenColor];
 		
 		[teamButton addTarget:self
 						action:@selector(didTouchDownOnTeamButton:) 
@@ -338,8 +350,8 @@
 		
 		
 		userButton						= [[[UIButton alloc] init] autorelease];
-        userButton.layer.opacity        = 0.2;
-		userButton.backgroundColor		= [UIColor redColor];
+        //userButton.layer.opacity        = 0.2;
+		//userButton.backgroundColor		= [UIColor redColor];
 		
 		[userButton addTarget:self
 					   action:@selector(didTouchDownOnUserButton:)				
@@ -446,6 +458,15 @@
                                                  _teamNameRect.origin.y-11,
                                                  _teamNameRect.size.width+8,
                                                  _teamNameRect.size.height+27);
+        
+        CGSize bylineSize            = [self.byline sizeWithFont:kFontByline
+                                               constrainedToSize:CGSizeMake(kMaxTeamNameWidth - kByLineXOffset - (_teamNameRect.origin.x+_teamNameRect.size.width), kDefaultTextHeight)
+                                                   lineBreakMode:UILineBreakModeTailTruncation];
+        
+        _bylineRect                     = CGRectMake(_teamNameRect.origin.x + _teamNameRect.size.width + kByLineXOffset,
+                                                     kBylineY,
+                                                     bylineSize.width,
+                                                     bylineSize.height);
          
     }
 }
@@ -622,7 +643,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupBylineMode:(NSString*)byline {
-    _bylineMode  = YES;
+    _bylineMode     = YES;
+    self.byline     = byline;
     
     [self resetItemNavigation];
     [self redisplay];
