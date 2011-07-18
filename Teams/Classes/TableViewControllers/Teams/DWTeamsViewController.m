@@ -48,6 +48,8 @@
     
     if([className isEqualToString:[[DWTeam class] className]])
         delegate = self.teamsLogicController;
+    else
+        delegate = [super getDelegateForClassName:className];
     
     return delegate;
 }

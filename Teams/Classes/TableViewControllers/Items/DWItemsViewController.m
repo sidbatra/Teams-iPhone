@@ -48,6 +48,8 @@
     
     if([className isEqualToString:[[DWItem class] className]])
         delegate = self.itemsLogicController;
+    else
+        delegate = [super getDelegateForClassName:className];
     
     return delegate;
 }

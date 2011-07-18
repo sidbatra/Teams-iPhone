@@ -81,6 +81,8 @@
     
     if([className isEqualToString:[[DWTeam class] className]])
         delegate = self.teamsLogicController;
+    else
+        delegate = [super getDelegateForClassName:className];
     
     return delegate;
 }
@@ -118,6 +120,21 @@
     [self provideResourceToVisibleCells:kResourceTypeSmallUserImage
                                resource:resource
                              resourceID:resourceID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWResourcePresenterDelegate (Implemented via selectors)
+
+//----------------------------------------------------------------------------------------------------
+- (void)resourceClicked:(id)resource {
+    
+    if(resource == self.teamViewDataSource.members)
+        NSLog(@"member resource clicked");
+    else if(resource == self.teamViewDataSource.followers)
+        NSLog(@"follower resource clicked");
 }
 
 @end
