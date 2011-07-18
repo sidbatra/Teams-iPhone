@@ -10,10 +10,10 @@
 #import "DWRequestHelper.h"
 #import "DWUser.h"
 
-static NSString* const kNewUserURI			= @"/users.json?user[email]=%@&user[password]=%@";
-static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@";
+static NSString* const kNewUserURI          = @"/users.json?user[email]=%@&user[password]=%@";
 static NSString* const kTeamFollowersURI    = @"/teams/%d/followers.json?limit=%d";
 static NSString* const kTeamMembersURI      = @"/teams/%d/members.json?limit=%d";
+static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
 
 
 /**
@@ -140,7 +140,29 @@ static NSString* const kTeamMembersURI      = @"/teams/%d/members.json?limit=%d"
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
                           userID,
-                          [email stringByEncodingHTMLCharacters]];
+                          [email stringByEncodingHTMLCharacters],
+                          kEmptyString,
+                          kEmptyString,
+                          kEmptyString,
+                          kEmptyString];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName byline:(NSString*)byline andPassword:(NSString*)password {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
+                          userID,
+                          kEmptyString,
+                          [firstName stringByEncodingHTMLCharacters],
+                          [lastName stringByEncodingHTMLCharacters],
+                          [byline stringByEncodingHTMLCharacters],
+                          [password stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated

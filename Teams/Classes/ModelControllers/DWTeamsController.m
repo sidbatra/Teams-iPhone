@@ -117,7 +117,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
 #pragma mark Show
 
 //----------------------------------------------------------------------------------------------------
-- (void)getTeamFromDomain:(NSString*)domain {
+- (void)getTeamFromDomain:(NSString*)domain andResourceID:(NSInteger)resourceID {
     
     NSData *domainData  = [domain dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -127,7 +127,8 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNTeamLoaded
                                                    errorNotification:kNTeamLoadError
-                                                       requestMethod:kGet];
+                                                       requestMethod:kGet
+                                                          resourceID:resourceID];
 }
 
 //----------------------------------------------------------------------------------------------------

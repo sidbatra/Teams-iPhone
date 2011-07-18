@@ -42,6 +42,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     if (self) {
         _hasCreatedUser = NO;
+        _teamResourceID     = [[NSDate date] timeIntervalSince1970];
     }
     
     return self;
@@ -205,7 +206,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.teamsController.delegate   = self;
     
     NSString *domain                = [user getDomainFromEmail];
-    [self.teamsController getTeamFromDomain:domain];
+    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -222,8 +223,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {    
-    
-    [self.delegate userUpdated:user];
+        
+    if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"]) {
+
+    [self.delegate userEmailUpdated:user];
     
     if(!self.teamsController)
         self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
@@ -231,7 +234,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.teamsController.delegate   = self;
     
     NSString *domain                = [user getDomainFromEmail];
-    [self.teamsController getTeamFromDomain:domain];
+    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -253,7 +257,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWTeamsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamLoaded:(DWTeam*)team {    
+- (NSInteger)teamResourceID {
+    return _teamResourceID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamLoaded:(DWTeam*)team {
     [self.delegate teamLoaded:team];
 }
 
