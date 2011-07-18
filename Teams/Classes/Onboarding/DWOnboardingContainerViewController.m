@@ -124,7 +124,13 @@
 - (void)teamLoaded:(DWTeam*)team {
     
     if (team) {
-        NSLog(@"team already exist");
+        DWJoinTeamViewController *joinTeamViewController        = [[[DWJoinTeamViewController alloc] init] autorelease];
+        joinTeamViewController.delegate                         = self;
+        joinTeamViewController.teamName                         = team.name;
+        joinTeamViewController.teamMembersCount                 = team.membersCount;
+        
+        [self.navigationController pushViewController:joinTeamViewController 
+                                             animated:YES];
     }
     else {
         DWCreateTeamViewController *createTeamViewController    = [[[DWCreateTeamViewController alloc] init] autorelease];
@@ -156,7 +162,7 @@
     DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
     createProfileViewController.delegate                        = self;
     createProfileViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID;
-    createProfileViewController.team                            = [DWSession sharedDWSession].currentUser.team.name;
+    createProfileViewController.teamName                        = [DWSession sharedDWSession].currentUser.team.name;
     
     [self.navigationController pushViewController:createProfileViewController 
                                          animated:YES];
@@ -169,6 +175,15 @@
 
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWJoinTeamViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamJoined:(DWTeam*)team {
+    
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

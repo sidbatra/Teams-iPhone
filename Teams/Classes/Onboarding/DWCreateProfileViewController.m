@@ -36,7 +36,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 @synthesize passwordTextField               = _passwordTextField;
 
 @synthesize password                        = _password;
-@synthesize team                            = _teamName;
+@synthesize teamName                        = _teamName;
 @synthesize userID                          = _userID;
 
 @synthesize navTitleView                    = _navTitleView;
@@ -69,7 +69,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 	self.passwordTextField              = nil;
     
     self.password                       = nil;    
-    self.team                           = nil;
+    self.teamName                           = nil;
     
     self.navTitleView                   = nil;
 	self.navRightBarButtonView          = nil;
@@ -93,7 +93,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
                                 andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kCreateProfileText 
-                        andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.team]];
+                        andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.teamName]];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
