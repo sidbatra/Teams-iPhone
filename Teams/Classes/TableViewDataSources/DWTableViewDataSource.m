@@ -73,6 +73,11 @@ static NSInteger const kDefaultSections = 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSInteger)indexForObject:(id)object {
+    return [self.objects indexOfObject:object];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
     
 }

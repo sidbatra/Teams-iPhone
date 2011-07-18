@@ -15,10 +15,27 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
+@interface DWTeamViewDataSource()
+
+/**
+ * Sets up either members or followers resource with the corresponding
+ * user object
+ */
+- (void)setupMemberResource:(DWResource*)resource 
+                   withUser:(DWUser*)user;
+@end
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 @implementation DWTeamViewDataSource
 
 @synthesize teamsController     = _teamsController;
 @synthesize usersController     = _usersController;
+@synthesize followers           = _followers;
+@synthesize members             = _members;
 @synthesize teamID              = _teamID;
 
 //----------------------------------------------------------------------------------------------------
@@ -41,8 +58,25 @@
     
     self.teamsController    = nil;
     self.usersController    = nil;
+    self.followers          = nil;
+    self.members            = nil;
     
     [super dealloc];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupMemberResource:(DWResource*)resource 
+                   withUser:(DWUser*)user {
+    
+    resource.imageResourceType    = kResourceTypeSmallUserImage;
+    resource.imageResourceID      = user.databaseID;
+    
+    [user startSmallImageDownload];
+    
+    if(user.smallImage) {
+        resource.image = user.smallImage;
+        [self.delegate reloadRowAtIndex:[self indexForObject:resource]];
+    }
 }
 
 
@@ -53,9 +87,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadData {
-    [self clean];
-    self.objects = [NSMutableArray array];
-    
     [self.teamsController getTeamWithID:self.teamID];
     [self.usersController getLastFollowerOfTeam:self.teamID];
     [self.usersController getLastMemberOfTeam:self.teamID];
@@ -80,15 +111,25 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam *)team {
             
+    [self clean];
+    self.objects = [NSMutableArray array];
+    
     [self.objects addObject:team];
     
-    _members                = [[[DWResource alloc] init] autorelease];
-    _members.text           = [DWTeamsHelper totalMembersLineForTeam:team];
-    [self.objects addObject:_members];
     
-    _followers              = [[[DWResource alloc] init] autorelease];
-    _followers.text         = [DWTeamsHelper totalWatchersLineForTeam:team];
-    [self.objects addObject:_followers];
+    if(!self.members)
+        self.members                = [[[DWResource alloc] init] autorelease];
+    
+    self.members.text               = [DWTeamsHelper totalMembersLineForTeam:team];
+    [self.objects addObject:self.members];
+    
+    
+    if(!self.followers)
+        self.followers              = [[[DWResource alloc] init] autorelease];
+    
+    self.followers.text             = [DWTeamsHelper totalWatchersLineForTeam:team];
+    [self.objects addObject:self.followers];
+    
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
     message.content     = [DWTeamsHelper createdAtLineForTeam:team];
@@ -119,14 +160,8 @@
 - (void)teamFollowersLoaded:(NSMutableArray *)users {
     DWUser *user = [users objectAtIndex:0];
     
-    _followers.imageResourceType    = kResourceTypeSmallUserImage;
-    _followers.imageResourceID      = user.databaseID;
-    
-    [user startSmallImageDownload];
-    
-    if(user.smallImage) {
-        _followers.image = user.smallImage;
-    }
+    [self setupMemberResource:self.followers
+                     withUser:user];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -139,14 +174,8 @@
 - (void)teamMembersLoaded:(NSMutableArray *)users {
     DWUser *user = [users objectAtIndex:0];
     
-    _members.imageResourceType    = kResourceTypeSmallUserImage;
-    _members.imageResourceID      = user.databaseID;
-    
-    [user startSmallImageDownload];
-    
-    if(user.smallImage) {
-        _members.image = user.smallImage;
-    }
+    [self setupMemberResource:self.members
+                     withUser:user];
 }
 
 //----------------------------------------------------------------------------------------------------

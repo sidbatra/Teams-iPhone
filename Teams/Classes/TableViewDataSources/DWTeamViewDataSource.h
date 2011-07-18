@@ -36,6 +36,16 @@
 @property (nonatomic,retain) DWUsersController *usersController;
 
 /**
+ * Resource object representing the followers cell
+ */
+@property (nonatomic,retain) DWResource *followers;
+
+/**
+ * Resource object representing the members cell
+ */
+@property (nonatomic,retain) DWResource *members;
+
+/**
  * TeamID for the team being displayed
  */
 @property (nonatomic,assign) NSInteger teamID;

@@ -49,6 +49,11 @@
          forSection:(NSInteger)section;
 
 /**
+ * Returns the index in the objects array for the given object. NSNotFound if not found.
+ */
+- (NSInteger)indexForObject:(id)object;
+
+/**
  * Fired when a user generated or automated refresh is initiated
  */
 - (void)refreshInitiated;
@@ -102,5 +107,10 @@
  * with animation
  */
 - (void)insertRowAtIndex:(NSInteger)index;
+
+/**
+ * Reload the cell at the given index
+ */
+- (void)reloadRowAtIndex:(NSInteger)index;
 
 @end
