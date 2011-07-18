@@ -57,7 +57,7 @@
 /**
  * Team which the user belongs to
  */
-@property (nonatomic,copy) NSString *team;
+@property (nonatomic,copy) NSString *teamName;
 
 /**
  * Database ID for the user

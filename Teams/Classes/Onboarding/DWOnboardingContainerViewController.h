@@ -9,13 +9,15 @@
 #import "DWSignupViewController.h"
 #import "DWLoginViewController.h"
 #import "DWCreateTeamViewController.h"
+#import "DWJoinTeamViewController.h"
 #import "DWCreateProfileViewController.h"
 #import "DWInvitePeopleViewController.h"
+
 
 /**
  * Container for handling all events and logic for onboarding
  */
-@interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateTeamViewControllerDelegate,DWCreateProfileViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
+@interface DWOnboardingContainerViewController : DWContainerViewController<DWSplashScreenViewControllerDelegate,DWSignupViewControllerDelegate,DWLoginViewControllerDelegate,DWCreateTeamViewControllerDelegate,DWJoinTeamViewControllerDelegate, DWCreateProfileViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
     
     DWSplashScreenViewController    *_splashScreenViewController;
 }
