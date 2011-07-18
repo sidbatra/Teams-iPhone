@@ -66,6 +66,8 @@ static CGFloat const kCellHeight  = 60;
     if([resource isKindOfClass:[UIImage class]]) {
         [cell setImage:resource];
         [cell redisplay];
+        
+        resourceObject.image = resource;
     }
 }
 

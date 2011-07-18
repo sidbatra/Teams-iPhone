@@ -9,6 +9,8 @@
 #import "DWTeamsController.h"
 #import "DWUsersController.h"
 
+@class DWResource;
+
 /**
  * Datasource for the team view data source
  */
@@ -16,6 +18,9 @@
     
     DWTeamsController   *_teamsController;
     DWUsersController   *_usersController;
+    
+    DWResource          *_followers;
+    DWResource          *_members;
     
     NSInteger           _teamID;
 }

@@ -34,8 +34,15 @@
         self.teamsLogicController.tableViewController   = self;
         self.teamsLogicController.navigationEnabled     = NO;
         
+        
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleNavigationDisabled]
                                         forKey:[[DWTeam class] className]];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(smallUserImageLoaded:) 
+													 name:kNImgSmallUserLoaded
+												   object:nil];
     }
     
     return self;
@@ -54,6 +61,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
     
@@ -93,5 +102,22 @@
     [self.teamViewDataSource loadData];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)smallUserImageLoaded:(NSNotification*)notification {
+	
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    id resource             = [info objectForKey:kKeyImage];
+        
+    [self provideResourceToVisibleCells:kResourceTypeSmallUserImage
+                               resource:resource
+                             resourceID:resourceID];
+}
 
 @end

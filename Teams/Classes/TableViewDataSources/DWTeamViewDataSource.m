@@ -7,6 +7,8 @@
 #import "DWTeamsHelper.h"
 #import "DWResource.h"
 #import "DWMessage.h"
+#import "DWUser.h"
+#import "DWConstants.h"
 
 
 
@@ -36,6 +38,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    
     self.teamsController    = nil;
     self.usersController    = nil;
     
@@ -79,18 +82,18 @@
             
     [self.objects addObject:team];
     
-    DWResource *resource    = [[[DWResource alloc] init] autorelease];
-    resource.text           = [DWTeamsHelper totalMembersLineForTeam:team];
-    [self.objects addObject:resource];
+    _members                = [[[DWResource alloc] init] autorelease];
+    _members.text           = [DWTeamsHelper totalMembersLineForTeam:team];
+    [self.objects addObject:_members];
     
-    resource                = [[[DWResource alloc] init] autorelease];
-    resource.text           = [DWTeamsHelper totalWatchersLineForTeam:team];
-    [self.objects addObject:resource];
+    _followers              = [[[DWResource alloc] init] autorelease];
+    _followers.text         = [DWTeamsHelper totalWatchersLineForTeam:team];
+    [self.objects addObject:_followers];
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
     message.content     = [DWTeamsHelper createdAtLineForTeam:team];
     [self.objects addObject:message];
-
+    
     
     [self.delegate reloadTableView];
 }
@@ -114,7 +117,16 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamFollowersLoaded:(NSMutableArray *)users {
-    NSLog(@"team followers loaded %d",[users count]);
+    DWUser *user = [users objectAtIndex:0];
+    
+    _followers.imageResourceType    = kResourceTypeSmallUserImage;
+    _followers.imageResourceID      = user.databaseID;
+    
+    [user startSmallImageDownload];
+    
+    if(user.smallImage) {
+        _followers.image = user.smallImage;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -125,12 +137,21 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamMembersLoaded:(NSMutableArray *)users {
-    NSLog(@"team member loaded %d",[users count]);
+    DWUser *user = [users objectAtIndex:0];
+    
+    _members.imageResourceType    = kResourceTypeSmallUserImage;
+    _members.imageResourceID      = user.databaseID;
+    
+    [user startSmallImageDownload];
+    
+    if(user.smallImage) {
+        _members.image = user.smallImage;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamMembersError:(NSString *)error {
-    NSLog(@"Team memb ers load error - %@",error);
+    NSLog(@"Team members load error - %@",error);
     [self.delegate displayError:error];
 }
 
