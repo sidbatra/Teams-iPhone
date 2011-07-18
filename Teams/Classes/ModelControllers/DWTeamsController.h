@@ -26,7 +26,8 @@
 /**
  * Get information about a team from the domain
  */
-- (void)getTeamFromDomain:(NSString*)domain;
+- (void)getTeamFromDomain:(NSString*)domain 
+            andResourceID:(NSInteger)resourceID;
 
 /**
  * Get team details for the given teamID

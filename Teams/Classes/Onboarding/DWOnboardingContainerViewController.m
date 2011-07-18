@@ -116,7 +116,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdated:(DWUser*)user {
+- (void)userEmailUpdated:(DWUser*)user {
     [[DWSession sharedDWSession] create:user];     
 }
 
@@ -145,7 +145,7 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateNewTeamViewControllerDelegate
+#pragma mark DWCreateTeamViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
@@ -155,19 +155,30 @@
     
     DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
     createProfileViewController.delegate                        = self;
+    createProfileViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID;
+    createProfileViewController.team                            = [DWSession sharedDWSession].currentUser.team.name;
     
     [self.navigationController pushViewController:createProfileViewController 
                                          animated:YES];
+    
+    if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserDetails) 
+        [createProfileViewController prePopulateViewWithFirstName:[DWSession sharedDWSession].currentUser.firstName 
+                                                         lastName:[DWSession sharedDWSession].currentUser.lastName  
+                                                           byLine:[DWSession sharedDWSession].currentUser.byline  
+                                                      andPassword:[DWSession sharedDWSession].currentUser.encryptedPassword]; 
+
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateUserProfileViewControllerDelegate
+#pragma mark DWCreateProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)profileCreated {
+//----------------------------------------------------------------------------------------------------
+- (void)userDetailsUpdated:(DWUser*)user {
+    [[DWSession sharedDWSession] create:user];     
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
     invitePeopleViewController.delegate                         = self;

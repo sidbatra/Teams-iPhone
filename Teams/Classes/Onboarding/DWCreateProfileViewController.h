@@ -9,14 +9,16 @@
 #import "DWNavigationBar.h"
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
+#import "DWUsersDataSource.h"
 
+@class DWUser;
 @protocol DWCreateProfileViewControllerDelegate;
 
 
 /**
  * Provides an interface for creating user profiles.
  */
-@interface DWCreateProfileViewController : UIViewController<UITextFieldDelegate> {
+@interface DWCreateProfileViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate> {
 	
 	UIView                      *_profileDetailsContainerView;
 	UITextField                 *_firstNameTextField;
@@ -24,13 +26,15 @@
 	UITextField                 *_byLineTextField;
 	UITextField                 *_passwordTextField;
     
-	NSString                    *_password;    
-	BOOL                        _isUploading;
-	BOOL                        _signupInitiated;
-	NSInteger                   _uploadID;    
+	NSString                    *_password; 
+    NSString                    *_teamName;
+	NSInteger                   _userID;    
+    BOOL                        _hasPasswordChanged;
 			  	
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    
+    DWUsersController           *_usersController;
 																				    
     id <DWCreateProfileViewControllerDelegate>  _delegate;
 }
@@ -51,15 +55,39 @@
 @property (nonatomic,copy) NSString *password;
 
 /**
+ * Team which the user belongs to
+ */
+@property (nonatomic,copy) NSString *team;
+
+/**
+ * Database ID for the user
+ */
+@property (nonatomic,assign) NSInteger userID;
+
+/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
+ * Controller for handling user requests
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+
+/**
  * Delegate to send updates to
  */
 @property (nonatomic,assign) id<DWCreateProfileViewControllerDelegate> delegate;
+
+
+/**
+ * Prepopulate the user details
+ */
+- (void)prePopulateViewWithFirstName:(NSString*)firstName 
+                            lastName:(NSString*)lastName 
+                              byLine:(NSString*)byLine 
+                         andPassword:(NSString*)password;
 
 @end
 
@@ -71,9 +99,9 @@
 @protocol DWCreateProfileViewControllerDelegate
 
 /*
- * Fired when a user profile is created.
+ * Fired when user details are updated.
  */
-- (void)profileCreated;
+- (void)userDetailsUpdated:(DWUser*)user;
 
 @end
 

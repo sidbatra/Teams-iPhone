@@ -36,9 +36,13 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 @synthesize passwordTextField               = _passwordTextField;
 
 @synthesize password                        = _password;
+@synthesize team                            = _teamName;
+@synthesize userID                          = _userID;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
+
+@synthesize usersController                 = _usersController;
 
 @synthesize delegate                        = _delegate;
 
@@ -48,15 +52,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 	self = [super init];
 	
 	if(self) {        
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userCreated:) 
-													 name:kNNewUserCreated
-												   object:nil];
-		
-		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(userError:) 
-													 name:kNNewUserError
-												   object:nil];
+        _hasPasswordChanged = NO;
 	}
     
 	return self;
@@ -73,9 +69,12 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 	self.passwordTextField              = nil;
     
     self.password                       = nil;    
+    self.team                           = nil;
     
     self.navTitleView                   = nil;
 	self.navRightBarButtonView          = nil;
+    
+    self.usersController                = nil;
 	
     [super dealloc];
 }
@@ -94,7 +93,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
                                 andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kCreateProfileText 
-                        andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,@"Twitter"]];
+                        andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.team]];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
@@ -115,25 +114,28 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
-    //[super didReceiveMemoryWarning];
+    [super didReceiveMemoryWarning];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)freezeUI {
-	//[self.firstNameTextField resignFirstResponder];
-    //[self.lastNameTextField resignFirstResponder];
-	//[self.emailTextField resignFirstResponder];
-	//[self.passwordTextField resignFirstResponder];
+- (void)prePopulateViewWithFirstName:(NSString*)firstName lastName:(NSString*)lastName 
+                              byLine:(NSString*)byLine andPassword:(NSString*)password {
+    
+    self.firstNameTextField.text        = firstName;
+    self.lastNameTextField.text         = lastName;
+    self.byLineTextField.text           = byLine;
+    self.passwordTextField.text         = @"random";
+    self.password                       = password;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)unfreezeUI {
-	[self.firstNameTextField becomeFirstResponder];
-}
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)createNewUser {
-	
+- (void)updateUser {
+
 	if (self.byLineTextField.text.length == 0 || 
         self.firstNameTextField.text.length == 0 ||
         self.lastNameTextField.text.length == 0 ||
@@ -143,29 +145,24 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 														message:kMsgIncomplete
 													   delegate:nil 
 											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
+											  otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 	}
 	else {			
-		if(!_signupInitiated)
-			[self freezeUI];
-		
-		if(!_isUploading) {
-			
-			_signupInitiated    = NO;
-			self.password       = [[self.passwordTextField.text encrypt] stringByEncodingHTMLCharacters];
-			
-            /*
-			[[DWRequestsManager sharedDWRequestsManager] createUserWithFirstName:self.firstNameTextField.text 
-                                                                    withLastName:self.lastNameTextField.text
-                                                                       withEmail:self.emailTextField.text
-                                                                    withPassword:self.password
-                                                               withPhotoFilename:kEmptyString];*/
-             
-		}
-		else
-			_signupInitiated    = YES;
+        if(_hasPasswordChanged)
+            self.password = [self.passwordTextField.text encrypt];
+        
+        if (!self.usersController)
+            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
+        
+        self.usersController.delegate   = self;
+        
+        [self.usersController updateUserHavingID:self.userID 
+                                   withFirstName:self.firstNameTextField.text 
+                                        lastName:self.lastNameTextField.text 
+                                          byline:self.byLineTextField.text 
+                                     andPassword:self.password];                                  
 	}
 }
 
@@ -174,15 +171,10 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark IBAction methods
-//----------------------------------------------------------------------------------------------------
-- (void)didTapBackButton:(id)sender event:(id)event {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [self.delegate profileCreated];
-	//[self createNewUser];
+	[self updateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -201,60 +193,45 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 		[self.passwordTextField becomeFirstResponder];
 	}
 	else if(textField == self.passwordTextField) {
-		[self createNewUser];
+		[self updateUser];
 	}
 	
 	return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    if (textField == self.passwordTextField) {
+        
+        self.passwordTextField.text = kEmptyString;
+        _hasPasswordChanged         = YES;
+    }
+    
+    return YES;
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Notifications
-//----------------------------------------------------------------------------------------------------
-- (void)userCreated:(NSNotification*)notification {
-	/*
-	NSDictionary *info = [notification userInfo];
-	NSDictionary *body = [info objectForKey:kKeyBody];
-	
-	if([[info objectForKey:kKeyStatus] isEqualToString:kKeySuccess]) {
-		
-        DWUser *user            = (DWUser*)[[DWMemoryPool sharedDWMemoryPool] getOrSetObject:[body objectForKey:kKeyUser]
-                                                                                       atRow:kMPUsersIndex];        
-        user.encryptedPassword  = self.password;
+#pragma mark DWUsersController Delegate
 
-		
-		[[DWSession sharedDWSession] create:user];
-        
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
-                                                            object:user];
-	}
-	else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-														message:[[body objectForKey:kKeyUser] objectForKey:kKeyErrorMessages]
-													   delegate:nil 
-											  cancelButtonTitle:kMsgCancelTitle
-											  otherButtonTitles: nil];
-		[alert show];
-		[alert release];
-		
-		[self unfreezeUI];
-	}
-	*/
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    user.encryptedPassword  = self.password;
+    [self.delegate userDetailsUpdated:user];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userError:(NSNotification*)notification {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-													message:kMsgErrorNetwork
+- (void)userUpdateError:(NSString *)error {
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
 												   delegate:nil 
 										  cancelButtonTitle:kMsgCancelTitle
-										  otherButtonTitles: nil];
+										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
-	
-	[self unfreezeUI];	
 }
 
 
@@ -265,6 +242,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
+    [self.firstNameTextField becomeFirstResponder];    
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
 }

@@ -21,8 +21,9 @@
     UITextField                 *_emailTextField;
     
 	NSString                    *_password;    
-    BOOL                        _hasCreatedUser;
     NSInteger                   _userID;
+    NSInteger                   _teamResourceID;
+    BOOL                        _hasCreatedUser;    
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
@@ -87,7 +88,7 @@
 /*
  * Fired when a user is updated
  */
-- (void)userUpdated:(DWUser*)user;
+- (void)userEmailUpdated:(DWUser*)user;
 
 /*
  * Fired when information about a team is fetched

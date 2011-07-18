@@ -35,6 +35,15 @@
                  withEmail:(NSString*)email;
 
 /**
+ * Update the user's detail
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+             withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName  
+                    byline:(NSString*)byline 
+               andPassword:(NSString*)password;
+
+/**
  * Get all the followers of the given teamID
  */
 - (void)getFollowersOfTeam:(NSInteger)teamID;
