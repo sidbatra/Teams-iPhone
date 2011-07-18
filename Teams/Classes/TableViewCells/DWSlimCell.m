@@ -79,14 +79,6 @@ static NSString* const kImgChevron		= @"chevron.png";
         
         self.clipsToBounds  = YES;
 		CGRect frame        = CGRectMake(0,0,320,60);
-
-        imageLayer					= [CALayer layer];
-		imageLayer.frame			= CGRectMake(0,0,60,60);
-		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
-		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
-										   [NSNull null], @"contents",
-										   nil];
-		[[self layer] addSublayer:imageLayer];
 		
 		drawingLayer					= [DWSlimCellDrawingLayer layer];
 		drawingLayer.slimCell			= self;
@@ -96,6 +88,14 @@ static NSString* const kImgChevron		= @"chevron.png";
 										   [NSNull null], @"contents",
 										   nil];
         [[self layer] addSublayer:drawingLayer];
+        
+        imageLayer					= [CALayer layer];
+		imageLayer.frame			= CGRectMake(0,0,60,60);
+		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
+		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                       [NSNull null], @"contents",
+                                       nil];
+		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
 		chevronLayer.frame				= CGRectMake(308,24,6,11);
@@ -178,7 +178,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setImage:(UIImage *)image {
+- (void)setImage:(UIImage*)image {
 	imageLayer.contents = (id)image.CGImage;
 }
 
