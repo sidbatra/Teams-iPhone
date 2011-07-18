@@ -7,7 +7,6 @@
 #import "DWTabBarController.h"
 #import "DWUserItemsViewController.h"
 #import "DWTeamItemsViewController.h"
-#import "DWTeamViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -218,10 +217,27 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 - (void)teamDetailsSelected:(DWTeam *)team {
     
     DWTeamViewController *teamViewController = [[[DWTeamViewController alloc] initWithTeam:team] autorelease];
+    teamViewController.delegate = self;              
     [teamViewController setTeamsDelegate:self];
     
     [self.navigationController pushViewController:teamViewController
                                          animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark TeamViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)showMembersOfTeam:(DWTeam*)team {
+    NSLog(@"display members of team");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showFollowersOfTeam:(DWTeam*)team {
+    NSLog(@"display followers of team");    
 }
 
 

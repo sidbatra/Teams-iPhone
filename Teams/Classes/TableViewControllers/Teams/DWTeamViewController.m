@@ -20,6 +20,7 @@
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
 @synthesize teamsLogicController    = _teamsLogicController;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithTeam:(DWTeam*)team {
@@ -65,6 +66,7 @@
 
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
+    self.delegate                   = nil;
     
     [super dealloc];
 }
@@ -131,10 +133,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)resourceClicked:(id)resource {
     
+    DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
+    
     if(resource == self.teamViewDataSource.members)
-        NSLog(@"member resource clicked");
+        [self.delegate showMembersOfTeam:team];
     else if(resource == self.teamViewDataSource.followers)
-        NSLog(@"follower resource clicked");
+        [self.delegate showFollowersOfTeam:team];
 }
 
 @end
+
