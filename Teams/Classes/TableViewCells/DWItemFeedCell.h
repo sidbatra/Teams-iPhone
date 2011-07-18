@@ -47,6 +47,7 @@
 	BOOL							_userButtonPressed;
     BOOL                            _teamButtonDisabled;
     BOOL                            _userButtonDisabled;
+    BOOL                            _bylineMode;
 	
 	NSInteger						_itemID;
 	NSInteger						_itemTouchesCount;
@@ -58,6 +59,7 @@
 	NSString						*_itemCreatedAt;
 	NSString						*_itemDetails;
     NSString                        *_itemTouchesCountString;
+    NSString                        *_byline;
 	
 	NSDate							*_highlightedAt;
 
@@ -67,6 +69,7 @@
 	CGRect							_dataRect;
     CGRect                          _touchesCountRect;
     CGRect                          _createdAtRect;
+    CGRect                          _bylineRect;
 
 	
 	UIButton						*teamButton;
@@ -87,7 +90,7 @@
 @property (nonatomic,readonly) BOOL isTouching;
 @property (nonatomic,readonly) BOOL teamButtonDisabled;
 @property (nonatomic,readonly) BOOL userButtonDisabled;
-
+@property (nonatomic,readonly) BOOL bylineMode;
 
 @property (nonatomic,copy) NSString* itemData;
 @property (nonatomic,copy) NSString* itemTeamName;
@@ -95,6 +98,7 @@
 @property (nonatomic,copy) NSString* itemCreatedAt;
 @property (nonatomic,copy) NSString* itemDetails;
 @property (nonatomic,copy) NSString* itemTouchesCountString;
+@property (nonatomic,copy) NSString* byline;
 
 @property (nonatomic,retain) NSDate* highlightedAt;
 
@@ -104,6 +108,7 @@
 @property (nonatomic,readonly) CGRect dataRect;
 @property (nonatomic,readonly) CGRect touchesCountRect;
 @property (nonatomic,readonly) CGRect createdAtRect;
+@property (nonatomic,readonly) CGRect bylineRect;
 
 
 
@@ -135,6 +140,11 @@
  * Display the UI and events for the team button
  */
 - (void)setTeamButtonAsDisabled;
+
+/**
+ * Convert the cell into byline mode
+ */
+- (void)setupBylineMode:(NSString*)byline;
 
 /**
  * Sets the cell to be rerendered

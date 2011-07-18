@@ -66,10 +66,10 @@ static CGFloat const kCellHeight  = 320;
     
     switch(style) {
         case kItemPresenterStyleUserItems:
-            [cell setUserButtonAsDisabled];
+            [cell setTeamButtonAsDisabled];
             break;
         case kItemPresenterStyleTeamItems:
-            [cell setTeamButtonAsDisabled];
+            [cell setupBylineMode:item.user.byline];
             break;
     }
     

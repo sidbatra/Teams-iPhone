@@ -98,28 +98,33 @@
 	
 	if(![itemCell isHighlighted]) {
 		
-		//----------------------------------
-        CGColorRef userColor = itemCell.userButtonPressed ? 
-                                (isTextOnly ? kColorLinkPressedNoAttachment : kColorLinkPressedWithAttachment) : 
-                                textColor;
         
-		CGContextSetFillColorWithColor(context,userColor);
-		
-		[itemCell.itemUserName drawInRect:itemCell.userNameRect 
-								 withFont:itemCell.userButtonDisabled ? kFontItemUserNameDisabled : kFontItemUserName];
-		
-        if(![itemCell userButtonDisabled])
-            CGContextFillRect(context,CGRectMake(itemCell.userNameRect.origin.x,
-                                                 itemCell.userNameRect.origin.y+kUnderlineYOffset,
-                                                 itemCell.userNameRect.size.width,
-                                                 kUnderlineHeight));
-		
-		
-		//----------------------------------
-		CGContextSetFillColorWithColor(context,textColor);
-		
-		[@"/" drawInRect:itemCell.atRect
-				 withFont:kFontAt];
+        if(!itemCell.bylineMode) {
+        
+            //----------------------------------
+            CGColorRef userColor = itemCell.userButtonPressed ? 
+                                    (isTextOnly ? kColorLinkPressedNoAttachment : kColorLinkPressedWithAttachment) : 
+                                    textColor;
+            
+            CGContextSetFillColorWithColor(context,userColor);
+            
+            [itemCell.itemUserName drawInRect:itemCell.userNameRect 
+                                     withFont:itemCell.userButtonDisabled ? kFontItemUserNameDisabled : kFontItemUserName];
+            
+            if(![itemCell userButtonDisabled])
+                CGContextFillRect(context,CGRectMake(itemCell.userNameRect.origin.x,
+                                                     itemCell.userNameRect.origin.y+kUnderlineYOffset,
+                                                     itemCell.userNameRect.size.width,
+                                                     kUnderlineHeight));
+            
+            
+            //----------------------------------
+            CGContextSetFillColorWithColor(context,textColor);
+            
+            [@"/" drawInRect:itemCell.atRect
+                     withFont:kFontAt];
+            
+        }
 		
 		
 		//----------------------------------	
@@ -131,8 +136,7 @@
 		
 		
 		[itemCell.itemTeamName drawInRect:itemCell.teamNameRect
-								  withFont:itemCell.teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
-							 lineBreakMode:UILineBreakModeTailTruncation];
+								  withFont:itemCell.teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName];
 		
         if(![itemCell teamButtonDisabled])
             CGContextFillRect(context,CGRectMake(itemCell.teamNameRect.origin.x,
@@ -192,14 +196,16 @@
 @synthesize teamButtonPressed		= _teamButtonPressed;
 @synthesize userButtonPressed		= _userButtonPressed;
 @synthesize isTouching              = _isTouching;
-@synthesize teamButtonDisabled     = _teamButtonDisabled;
+@synthesize teamButtonDisabled      = _teamButtonDisabled;
 @synthesize userButtonDisabled      = _userButtonDisabled;
+@synthesize bylineMode              = _bylineMode;
 @synthesize itemData				= _itemData;
 @synthesize itemTeamName			= _itemTeamName;
 @synthesize itemUserName			= _itemUserName;
 @synthesize itemCreatedAt			= _itemCreatedAt;
 @synthesize itemDetails				= _itemDetails;
 @synthesize itemTouchesCountString  = _itemTouchesCountString;
+@synthesize byline                  = _byline;
 @synthesize highlightedAt			= _highlightedAt;
 @synthesize userNameRect			= _userNameRect;
 @synthesize atRect					= _atRect;
@@ -207,6 +213,7 @@
 @synthesize dataRect				= _dataRect;
 @synthesize touchesCountRect        = _touchesCountRect;
 @synthesize createdAtRect           = _createdAtRect;
+@synthesize bylineRect              = _bylineRect;
 @synthesize delegate				= _delegate;
 @synthesize attachmentType			= _attachmentType;
 
@@ -307,7 +314,8 @@
 		
 		
 		teamButton						= [[[UIButton alloc] init] autorelease];
-        //teamButton.backgroundColor		= [UIColor greenColor];
+        teamButton.layer.opacity        = 0.2;
+        teamButton.backgroundColor		= [UIColor greenColor];
 		
 		[teamButton addTarget:self
 						action:@selector(didTouchDownOnTeamButton:) 
@@ -330,7 +338,8 @@
 		
 		
 		userButton						= [[[UIButton alloc] init] autorelease];
-		//userButton.backgroundColor		= [UIColor greenColor];
+        userButton.layer.opacity        = 0.2;
+		userButton.backgroundColor		= [UIColor redColor];
 		
 		[userButton addTarget:self
 					   action:@selector(didTouchDownOnUserButton:)				
@@ -380,11 +389,12 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
 	self.itemData               = nil;
-	self.itemTeamName          = nil;
+	self.itemTeamName           = nil;
 	self.itemUserName           = nil;
 	self.itemCreatedAt          = nil;
 	self.itemDetails            = nil;
 	self.highlightedAt          = nil;
+    self.byline                 = nil;
     self.itemTouchesCountString = nil;
 	
     [super dealloc];
@@ -392,31 +402,52 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)resetItemNavigation {
-    CGSize userNameSize			= [self.itemUserName sizeWithFont:_userButtonDisabled ? kFontItemUserNameDisabled : kFontItemUserName];
-	
-	_userNameRect				= CGRectMake(kItemUserNameX,
-											 kItemUserNameY,
-											 userNameSize.width,
-											 userNameSize.height);
-	
-	
-	_atRect						= CGRectMake(_userNameRect.origin.x + _userNameRect.size.width + kAtXOffset,
-											 kItemUserNameY,
-											 kAtWidth,
-											 kDefaultTextHeight);
     
-	
-	
-	CGSize teamNameSize		= [self.itemTeamName sizeWithFont:_teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
-										   constrainedToSize:CGSizeMake(kMaxTeamNameWidth-(_atRect.origin.x + _atRect.size.width),
-																		kDefaultTextHeight)
-											   lineBreakMode:UILineBreakModeTailTruncation];
-	
-	_teamNameRect				= CGRectMake(_atRect.origin.x + _atRect.size.width + kTeamNameXOffset,
-											 kItemUserNameY,
-											 teamNameSize.width,
-											 teamNameSize.height);
-
+    if(!_bylineMode) {
+        
+        CGSize userNameSize			= [self.itemUserName sizeWithFont:_userButtonDisabled ? kFontItemUserNameDisabled : kFontItemUserName];
+        
+        _userNameRect				= CGRectMake(kItemUserNameX,
+                                                 kItemUserNameY,
+                                                 userNameSize.width,
+                                                 userNameSize.height);
+        
+        
+        _atRect						= CGRectMake(_userNameRect.origin.x + _userNameRect.size.width + kAtXOffset,
+                                                 kItemUserNameY,
+                                                 kAtWidth,
+                                                 kDefaultTextHeight);
+        
+        
+        
+        CGSize teamNameSize		= [self.itemTeamName sizeWithFont:_teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
+                                               constrainedToSize:CGSizeMake(kMaxTeamNameWidth-(_atRect.origin.x + _atRect.size.width),
+                                                                            kDefaultTextHeight)
+                                                   lineBreakMode:UILineBreakModeTailTruncation];
+        
+        _teamNameRect				= CGRectMake(_atRect.origin.x + _atRect.size.width + kTeamNameXOffset,
+                                                 kItemUserNameY,
+                                                 teamNameSize.width,
+                                                 teamNameSize.height);
+    }
+    else {
+        
+        CGSize teamNameSize         = [self.itemTeamName sizeWithFont:kFontItemTeamName];
+        
+        _teamNameRect				= CGRectMake(kItemUserNameX,
+                                                 kItemUserNameY,
+                                                 teamNameSize.width,
+                                                 teamNameSize.height);
+        
+        userButton.enabled          = NO;
+        _userButtonDisabled         = YES;
+        
+        teamButton.frame			= CGRectMake(_teamNameRect.origin.x-4,
+                                                 _teamNameRect.origin.y-11,
+                                                 _teamNameRect.size.width+8,
+                                                 _teamNameRect.size.height+27);
+         
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -465,8 +496,9 @@
     _isTouching                 = NO;
 	_teamButtonPressed			= NO;
 	_userButtonPressed			= NO;
-    _teamButtonDisabled        = NO;
+    _teamButtonDisabled         = NO;
     _userButtonDisabled         = NO;
+    _bylineMode                 = NO;
     
 		
 	[self resetItemNavigation];	
@@ -580,8 +612,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)setTeamButtonAsDisabled {
-    _userButtonDisabled     = YES;
-    userButton.enabled      = NO;
+    _teamButtonDisabled    = YES;
+    teamButton.enabled     = NO;
     
     [self resetItemNavigation];
     
@@ -589,9 +621,17 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)setupBylineMode:(NSString*)byline {
+    _bylineMode  = YES;
+    
+    [self resetItemNavigation];
+    [self redisplay];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserButtonAsDisabled {
-    _teamButtonDisabled    = YES;
-    teamButton.enabled     = NO;
+    _userButtonDisabled     = YES;
+    userButton.enabled      = NO;
     
     [self resetItemNavigation];
     
@@ -706,8 +746,8 @@
 	[CATransaction commit];
     
     userButton.enabled      = YES;
-    teamButton.enabled     = YES;
-    shareButton.enabled     = YES;
+    teamButton.enabled     = !_teamButtonDisabled;
+    shareButton.enabled     = !_userButtonDisabled;
 }
 
 //----------------------------------------------------------------------------------------------------
