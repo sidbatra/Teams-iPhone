@@ -19,8 +19,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kColorTextPlain             [UIColor colorWithRed:0.9019 green:0.9019 blue:0.9019 alpha:1.0].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kTextX                      65
-#define kTextY                      19
+#define kTextX                      70
+#define kTextY                      21
 
 
 
