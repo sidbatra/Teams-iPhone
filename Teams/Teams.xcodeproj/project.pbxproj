@@ -141,6 +141,7 @@
 		2672240E131B3F9600654D88 /* modalview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2672240C131B3F9600654D88 /* modalview_bg@2x.png */; };
 		267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */; };
 		267690B913D4DFB500D328A6 /* DWJoinTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267690B713D4DFB400D328A6 /* DWJoinTeamViewController.xib */; };
+		267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */; };
 		2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */; };
 		2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */; };
 		26885A821367A46900C3511F /* profile_pic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 26885A801367A46900C3511F /* profile_pic_placeholder.png */; };
@@ -677,6 +678,8 @@
 		267690B513D4DFB200D328A6 /* DWJoinTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWJoinTeamViewController.h; path = Classes/Onboarding/DWJoinTeamViewController.h; sourceTree = "<group>"; };
 		267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWJoinTeamViewController.m; path = Classes/Onboarding/DWJoinTeamViewController.m; sourceTree = "<group>"; };
 		267690B713D4DFB400D328A6 /* DWJoinTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWJoinTeamViewController.xib; path = Classes/Onboarding/DWJoinTeamViewController.xib; sourceTree = "<group>"; };
+		267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMembershipsController.h; sourceTree = "<group>"; };
+		267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMembershipsController.m; sourceTree = "<group>"; };
 		2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSplashScreenViewController.h; path = Classes/Onboarding/DWSplashScreenViewController.h; sourceTree = "<group>"; };
 		2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSplashScreenViewController.m; path = Classes/Onboarding/DWSplashScreenViewController.m; sourceTree = "<group>"; };
 		2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSplashScreenViewController.xib; path = Classes/Onboarding/DWSplashScreenViewController.xib; sourceTree = "<group>"; };
@@ -2307,6 +2310,8 @@
 				26A25B1A13CF62C300AF87B4 /* DWTeamsController.m */,
 				BBEE2E5A13CE8AFD00AEAC83 /* DWTouchesController.h */,
 				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
+				267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */,
+				267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -2947,6 +2952,7 @@
 				BB572A4B13D40E300060A351 /* DWTeamFollowersViewController.m in Sources */,
 				BB572A4E13D40F6A0060A351 /* DWTeamMembersViewController.m in Sources */,
 				267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */,
+				267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

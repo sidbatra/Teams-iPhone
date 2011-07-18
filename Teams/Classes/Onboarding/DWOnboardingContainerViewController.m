@@ -39,6 +39,24 @@
 #pragma mark -
 #pragma mark Private Methods
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayCreateProfileView:(DWTeam*)team {
+    
+    DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
+    createProfileViewController.delegate                        = self;
+    createProfileViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID;
+    createProfileViewController.teamName                        = [DWSession sharedDWSession].currentUser.team.name;
+    
+    [self.navigationController pushViewController:createProfileViewController 
+                                         animated:YES];
+    
+    if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserDetails) 
+        [createProfileViewController prePopulateViewWithFirstName:[DWSession sharedDWSession].currentUser.firstName 
+                                                         lastName:[DWSession sharedDWSession].currentUser.lastName  
+                                                           byLine:[DWSession sharedDWSession].currentUser.byline  
+                                                      andPassword:[DWSession sharedDWSession].currentUser.encryptedPassword]; 
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -155,24 +173,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
-    
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];
     
-    DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
-    createProfileViewController.delegate                        = self;
-    createProfileViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID;
-    createProfileViewController.teamName                        = [DWSession sharedDWSession].currentUser.team.name;
-    
-    [self.navigationController pushViewController:createProfileViewController 
-                                         animated:YES];
-    
-    if ([[DWSession sharedDWSession] state] >= kSessionStateTillUserDetails) 
-        [createProfileViewController prePopulateViewWithFirstName:[DWSession sharedDWSession].currentUser.firstName 
-                                                         lastName:[DWSession sharedDWSession].currentUser.lastName  
-                                                           byLine:[DWSession sharedDWSession].currentUser.byline  
-                                                      andPassword:[DWSession sharedDWSession].currentUser.encryptedPassword]; 
-
+    [self displayCreateProfileView:team];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -182,7 +186,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamJoined:(DWTeam*)team {
+    [DWSession sharedDWSession].currentUser.team = team;
+    [[DWSession sharedDWSession] update];    
     
+    [self displayCreateProfileView:team];
 }
 
 //----------------------------------------------------------------------------------------------------

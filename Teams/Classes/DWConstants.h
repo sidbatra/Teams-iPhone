@@ -236,6 +236,8 @@ extern NSString* const kNTeamMembersLoaded;
 extern NSString* const kNTeamMembersError;	
 extern NSString* const kNNewSessionCreated;
 extern NSString* const kNNewSessionError;
+extern NSString* const kNNewMembershipCreated;
+extern NSString* const kNNewMembershipError;
 extern NSString* const kNS3UploadDone;
 extern NSString* const kNS3UploadError;
 extern NSString* const kNImgSmallUserLoaded;

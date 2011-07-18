@@ -136,29 +136,12 @@ static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@&us
 #pragma mark Update
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateUserHavingID:(NSInteger)userID withEmail:(NSString*)email {
-    
-    NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
-                          userID,
-                          [email stringByEncodingHTMLCharacters],
-                          kEmptyString,
-                          kEmptyString,
-                          kEmptyString,
-                          kEmptyString];
-    
-    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
-                                                 successNotification:kNUserUpdated
-                                                   errorNotification:kNUserUpdateError
-                                                       requestMethod:kPut];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)updateUserHavingID:(NSInteger)userID withFirstName:(NSString*)firstName 
+- (void)updateUserHavingID:(NSInteger)userID withEmail:(NSString*)email andFirstName:(NSString*)firstName 
                   lastName:(NSString*)lastName byline:(NSString*)byline andPassword:(NSString*)password {
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
                           userID,
-                          kEmptyString,
+                          [email stringByEncodingHTMLCharacters],
                           [firstName stringByEncodingHTMLCharacters],
                           [lastName stringByEncodingHTMLCharacters],
                           [byline stringByEncodingHTMLCharacters],
@@ -168,6 +151,30 @@ static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@&us
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
                                                        requestMethod:kPut];
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID withEmail:(NSString*)email {
+    
+    [self updateUserHavingID:userID 
+                   withEmail:email 
+                andFirstName:kEmptyString 
+                    lastName:kEmptyString 
+                      byline:kEmptyString 
+                 andPassword:kEmptyString];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName byline:(NSString*)byline andPassword:(NSString*)password {
+    
+    [self updateUserHavingID:userID 
+                   withEmail:kEmptyString 
+                andFirstName:firstName 
+                    lastName:lastName 
+                      byline:byline     
+                 andPassword:password];
 }
 
 //----------------------------------------------------------------------------------------------------
