@@ -36,8 +36,8 @@ static CGFloat const kCellHeight  = 320;
     
     cell.itemID				= item.databaseID;
     cell.itemData			= item.data;
-    cell.itemTeamName		= item.team.name;
-    cell.itemUserName		= item.user.firstName;
+    cell.itemTeamName		= item.user.firstName;
+    cell.itemUserName		= item.team.name;
     
     
     [item startImagesDownload];

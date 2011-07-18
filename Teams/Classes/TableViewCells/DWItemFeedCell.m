@@ -35,8 +35,8 @@
 #define kItemUserNameY                      13
 #define kUnderlineYOffset                   17
 #define kUnderlineHeight                    0.75
-#define kAtXOffset                          5
-#define kAtWidth                            13
+#define kAtXOffset                          7
+#define kAtWidth                            7
 #define kTeamNameXOffset                   5
 #define kMaxTeamNameWidth                  305
 #define kItemDataX                          30
@@ -118,7 +118,7 @@
 		//----------------------------------
 		CGContextSetFillColorWithColor(context,textColor);
 		
-		[@"at" drawInRect:itemCell.atRect
+		[@"/" drawInRect:itemCell.atRect
 				 withFont:kFontAt];
 		
 		
@@ -580,8 +580,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)setTeamButtonAsDisabled {
-    _teamButtonDisabled    = YES;
-    teamButton.enabled     = NO;
+    _userButtonDisabled     = YES;
+    userButton.enabled      = NO;
     
     [self resetItemNavigation];
     
@@ -590,8 +590,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUserButtonAsDisabled {
-    _userButtonDisabled     = YES;
-    userButton.enabled      = NO;
+    _teamButtonDisabled    = YES;
+    teamButton.enabled     = NO;
     
     [self resetItemNavigation];
     
@@ -751,8 +751,8 @@
 	[self performSelector:@selector(fadeTeamButton) 
 			   withObject:nil
 			   afterDelay:kSelectionDelay];
-	
-	[_delegate teamSelectedForItemID:_itemID];
+    
+    [_delegate userSelectedForItemID:_itemID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -764,7 +764,6 @@
 - (void)didDragInsideTeamButton:(UIButton*)button {
 	[self highlightTeamButton];
 }
-
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchDownOnUserButton:(UIButton*)button {
@@ -778,7 +777,7 @@
 			   withObject:nil
 			   afterDelay:kSelectionDelay];
 	
-	[_delegate userSelectedForItemID:_itemID];
+    [_delegate teamSelectedForItemID:_itemID];
 }
 
 //----------------------------------------------------------------------------------------------------
