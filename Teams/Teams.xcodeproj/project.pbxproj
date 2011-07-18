@@ -298,6 +298,7 @@
 		BB572A2C13D395200060A351 /* DWResourcePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A2B13D3951E0060A351 /* DWResourcePresenter.m */; };
 		BB572A3713D405A00060A351 /* DWUsersLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A3613D4059F0060A351 /* DWUsersLogicController.m */; };
 		BB572A3B13D406F80060A351 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A3A13D406F80060A351 /* DWUserPresenter.m */; };
+		BB572A3E13D408F20060A351 /* DWUsersDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A3D13D408EF0060A351 /* DWUsersDataSource.m */; };
 		BB5E67D1133182C3006D0C66 /* video_attach.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67CF133182C3006D0C66 /* video_attach.png */; };
 		BB5E67D2133182C3006D0C66 /* video_attach@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67D0133182C3006D0C66 /* video_attach@2x.png */; };
 		BB5E67DE13318438006D0C66 /* video_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5E67DC13318438006D0C66 /* video_placeholder.png */; };
@@ -915,6 +916,8 @@
 		BB572A3613D4059F0060A351 /* DWUsersLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersLogicController.m; sourceTree = "<group>"; };
 		BB572A3913D406F80060A351 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB572A3A13D406F80060A351 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
+		BB572A3C13D408EE0060A351 /* DWUsersDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersDataSource.h; sourceTree = "<group>"; };
+		BB572A3D13D408EF0060A351 /* DWUsersDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersDataSource.m; sourceTree = "<group>"; };
 		BB5E67CF133182C3006D0C66 /* video_attach.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_attach.png; path = resources/video_attach.png; sourceTree = "<group>"; };
 		BB5E67D0133182C3006D0C66 /* video_attach@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "video_attach@2x.png"; path = "resources/video_attach@2x.png"; sourceTree = "<group>"; };
 		BB5E67DC13318438006D0C66 /* video_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = video_placeholder.png; path = resources/video_placeholder.png; sourceTree = "<group>"; };
@@ -2189,6 +2192,8 @@
 				BB272C3A13D107C200FDACA1 /* DWRecentTeamsDataSource.m */,
 				BB272C5313D2418900FDACA1 /* DWTeamViewDataSource.h */,
 				BB272C5413D2418A00FDACA1 /* DWTeamViewDataSource.m */,
+				BB572A3C13D408EE0060A351 /* DWUsersDataSource.h */,
+				BB572A3D13D408EF0060A351 /* DWUsersDataSource.m */,
 			);
 			name = TableViewDataSources;
 			path = Classes/TableViewDataSources;
@@ -2893,6 +2898,7 @@
 				BB572A2C13D395200060A351 /* DWResourcePresenter.m in Sources */,
 				BB572A3713D405A00060A351 /* DWUsersLogicController.m in Sources */,
 				BB572A3B13D406F80060A351 /* DWUserPresenter.m in Sources */,
+				BB572A3E13D408F20060A351 /* DWUsersDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

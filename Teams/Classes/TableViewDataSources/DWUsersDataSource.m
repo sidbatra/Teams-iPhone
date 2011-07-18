@@ -1,26 +1,26 @@
 //
-//  DWTeamsDataSource.m
+//  DWUsersDataSource.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWTeamsDataSource.h"
+#import "DWUsersDataSource.h"
 
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWTeamsDataSource
+@implementation DWUsersDataSource
 
-@synthesize teamsController = _teamsController;
+@synthesize usersController = _usersController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
-        self.teamsController.delegate   = self;
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
     }
     
     return self;
@@ -28,16 +28,16 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.teamsController    = nil;
+    self.usersController    = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)populateTeams:(NSMutableArray*)teams {
-   
+- (void)populateUsers:(NSMutableArray*)users {
+    
     [self clean];
-    self.objects = teams;
+    self.objects = users;
     
     [self.delegate reloadTableView];
 }
@@ -49,12 +49,12 @@
 #pragma mark Data requests
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadTeams {
+- (void)loadUsers {
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    [self loadTeams];
+    [self loadUsers];
 }
 
 //----------------------------------------------------------------------------------------------------
