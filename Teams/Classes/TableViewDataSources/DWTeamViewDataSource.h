@@ -21,6 +21,7 @@
     
     DWResource          *_followers;
     DWResource          *_members;
+    DWResource          *_invite;
     
     NSInteger           _teamID;
 }
@@ -44,6 +45,11 @@
  * Resource object representing the members cell
  */
 @property (nonatomic,retain) DWResource *members;
+
+/**
+ * Resource object representing the invite people cell
+ */
+@property (nonatomic,retain) DWResource *invite;
 
 /**
  * TeamID for the team being displayed

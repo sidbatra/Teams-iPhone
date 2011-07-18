@@ -10,6 +10,8 @@
 #import "DWUser.h"
 #import "DWConstants.h"
 
+static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -34,6 +36,11 @@
  */
 - (void)addFollowersResourceUsingTeam:(DWTeam*)team;
 
+/**
+ * Add an invite resource into self.objects
+ */
+- (void)addInviteResource;
+
 @end
 
 
@@ -47,6 +54,7 @@
 @synthesize usersController     = _usersController;
 @synthesize followers           = _followers;
 @synthesize members             = _members;
+@synthesize invite              = _invite;
 @synthesize teamID              = _teamID;
 
 //----------------------------------------------------------------------------------------------------
@@ -71,6 +79,7 @@
     self.usersController    = nil;
     self.followers          = nil;
     self.members            = nil;
+    self.invite             = nil;
     
     [super dealloc];
 }
@@ -108,6 +117,18 @@
     
     self.followers.text             = [DWTeamsHelper totalWatchersLineForTeam:team];
     [self.objects addObject:self.followers];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addInviteResource {
+
+    if(!self.invite)
+        self.invite                 = [[[DWResource alloc] init] autorelease];
+    
+    self.invite.text                = @"Add People";
+    self.invite.image               = [UIImage imageNamed:kImgInvite];
+    
+    [self.objects addObject:self.invite];
 }
 
 
@@ -150,7 +171,7 @@
     
     [self addMembersResourceUsingTeam:team];
     [self addFollowersResourceUsingTeam:team];
-    
+    [self addInviteResource];
     
        
     
