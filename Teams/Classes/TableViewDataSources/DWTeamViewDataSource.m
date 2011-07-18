@@ -23,6 +23,17 @@
  */
 - (void)setupMemberResource:(DWResource*)resource 
                    withUser:(DWUser*)user;
+
+/**
+ * Add a members resource into self.objects based on the given team
+ */
+- (void)addMembersResourceUsingTeam:(DWTeam*)team;
+
+/**
+ * Add a followers resource into self.objects based on the given team
+ */
+- (void)addFollowersResourceUsingTeam:(DWTeam*)team;
+
 @end
 
 
@@ -79,6 +90,26 @@
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)addMembersResourceUsingTeam:(DWTeam*)team {
+    
+    if(!self.members)
+        self.members                = [[[DWResource alloc] init] autorelease];
+    
+    self.members.text               = [DWTeamsHelper totalMembersLineForTeam:team];
+    [self.objects addObject:self.members];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addFollowersResourceUsingTeam:(DWTeam*)team {
+    
+    if(!self.followers)
+        self.followers              = [[[DWResource alloc] init] autorelease];
+    
+    self.followers.text             = [DWTeamsHelper totalWatchersLineForTeam:team];
+    [self.objects addObject:self.followers];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -117,19 +148,11 @@
     [self.objects addObject:team];
     
     
-    if(!self.members)
-        self.members                = [[[DWResource alloc] init] autorelease];
-    
-    self.members.text               = [DWTeamsHelper totalMembersLineForTeam:team];
-    [self.objects addObject:self.members];
+    [self addMembersResourceUsingTeam:team];
+    [self addFollowersResourceUsingTeam:team];
     
     
-    if(!self.followers)
-        self.followers              = [[[DWResource alloc] init] autorelease];
-    
-    self.followers.text             = [DWTeamsHelper totalWatchersLineForTeam:team];
-    [self.objects addObject:self.followers];
-    
+       
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
     message.content     = [DWTeamsHelper createdAtLineForTeam:team];
