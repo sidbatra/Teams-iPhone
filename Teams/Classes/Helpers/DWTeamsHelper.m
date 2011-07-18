@@ -29,7 +29,10 @@
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)totalMembersLineForTeam:(DWTeam*)team {
-    return [NSString stringWithFormat:@"%d People on the Team",team.membersCount];    
+    
+    return [NSString stringWithFormat:@"%d %@ on the Team",
+            team.membersCount,
+            team.membersCount == 1 ? @"Person" : @"People"];    
 }
 
 @end
