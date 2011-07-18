@@ -7,6 +7,7 @@
 
 #import "DWUsersViewController.h"
 
+@class DWTeam;
 @class DWTeamFollowersDataSource;
 
 /**
@@ -20,5 +21,11 @@
  * Data source for the table view
  */
 @property (nonatomic,retain) DWTeamFollowersDataSource *teamFollowersDataSource;
+
+
+/**
+ * Init with team whose followers are being displayed
+ */
+- (id)initWithTeam:(DWTeam*)team;
 
 @end
