@@ -33,7 +33,12 @@ static CGFloat const kCellHeight  = 60;
                                   reuseIdentifier:identifier] autorelease];
     
     
-    cell.boldText   = user.firstName;
+    if(style == KUserPresenterStyleFullSignature)
+        cell.boldText   = [DWUsersHelper shortSignatureWithTeamName:user]; 
+    else
+        cell.boldText   = user.firstName;
+    
+    
     cell.plainText  = user.byline;
     
     [user startSmallImageDownload];

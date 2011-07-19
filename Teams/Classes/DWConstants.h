@@ -57,6 +57,13 @@ enum {
 };
 
 /**
+ * Presentation styles for the user presenter
+ */
+typedef enum {
+    KUserPresenterStyleFullSignature = 1,
+} DWUserPresenterStyle;
+
+/**
  * Presentation styles for the item presenter
  */
 typedef enum {

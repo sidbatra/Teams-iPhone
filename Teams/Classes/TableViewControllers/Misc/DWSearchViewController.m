@@ -35,6 +35,10 @@
         self.teamsLogicController.tableViewController = self;
         
         self.searchDataSource           = [[[DWSearchDataSource alloc] init] autorelease];
+        
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:KUserPresenterStyleFullSignature]
+                                        forKey:[[DWUser class] className]];
     }
     
     return self;
