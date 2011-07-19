@@ -35,7 +35,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        // Custom initialization
+        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
+        self.membershipsController.delegate = self;
     }
     return self;
 }
@@ -100,12 +101,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)joinTeam {
-    if (!self.membershipsController) 
-        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
-    
-    self.membershipsController.delegate     = self;
-    
+- (void)joinTeam {  
     [self.membershipsController createMembershipForTeamID:self.team.databaseID];
 }
 

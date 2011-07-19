@@ -8,18 +8,21 @@
 
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
+#import "DWContactsController.h"
 
 @protocol DWInvitePeopleViewControllerDelegate;
 
 /**
  * View for adding people throughout the app.
  */
-@interface DWInvitePeopleViewController : UIViewController {
+@interface DWInvitePeopleViewController : UIViewController <DWContactsControllerDelegate> {
     UITextField                 *_searchContactsTextField;
     UILabel                     *_resultsLabel;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    
+    DWContactsController        *_contactsController;
     
     id <DWInvitePeopleViewControllerDelegate>  _delegate;
 }
@@ -35,6 +38,11 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Controller for address book contacts requests
+ */
+@property (nonatomic,retain) DWContactsController *contactsController;
 
 /**
  * Delegate to send updates to

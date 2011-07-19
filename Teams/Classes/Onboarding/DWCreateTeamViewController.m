@@ -39,7 +39,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        _hasCreatedTeam = NO;
+        
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
+        self.teamsController.delegate   = self;
+        _hasCreatedTeam                 = NO;
     }
     return self;
 }
@@ -131,11 +134,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         [self displayEmptyFieldsError];
 	}
 	else {
-        if (!self.teamsController) 
-            self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
-        
-        self.teamsController.delegate   = self;
-        
         [self.teamsController createTeamWithName:self.teamNameTextField.text 
                                           byline:self.teamBylineTextField.text 
                                        andDomain:self.domain];        
@@ -148,12 +146,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         [self displayEmptyFieldsError];
 	}
 	else {
-        if(!self.teamsController)
-            self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
-        
-        self.teamsController.delegate   = self;     
-        
-        [self.teamsController updateTeamHavingID:_teamID 
+     [self.teamsController updateTeamHavingID:_teamID 
                                         withName:self.teamNameTextField.text 
                                           byline:self.teamBylineTextField.text 
                                        andDomain:self.domain];        

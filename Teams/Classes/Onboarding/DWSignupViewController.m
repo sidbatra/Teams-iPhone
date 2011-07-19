@@ -41,8 +41,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        _hasCreatedUser = NO;
-        _teamResourceID     = [[NSDate date] timeIntervalSince1970];
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];    
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
+        self.usersController.delegate   = self;
+        self.teamsController.delegate   = self;
+        
+        _hasCreatedUser             = NO;
+        _teamResourceID             = [[NSDate date] timeIntervalSince1970];
     }
     
     return self;
@@ -129,12 +134,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         [self displayEmptyFieldsError];
 	}
 	else {			
-        self.password                   = [@"password" encrypt];
-        
-        if (!self.usersController)
-            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
-        
-        self.usersController.delegate   = self;
+        self.password = [@"password" encrypt];        
         
         [self.usersController createUserWithEmail:self.emailTextField.text 
                                       andPassword:self.password];	
@@ -146,12 +146,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 	if (self.emailTextField.text.length == 0) {        
         [self displayEmptyFieldsError];
 	}
-	else {			
-        if (!self.usersController)
-            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
-        
-        self.usersController.delegate   = self;
-        
+	else {			               
         [self.usersController updateUserHavingID:_userID 
                                        withEmail:self.emailTextField.text];
     }    
@@ -199,13 +194,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     _userID                 = user.databaseID;
     
     [self.delegate userCreated:user];
-    
-    if(!self.teamsController)
-        self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
-    
-    self.teamsController.delegate   = self;
-    
-    NSString *domain                = [user getDomainFromEmail];
+   
+    NSString *domain = [user getDomainFromEmail];
     [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
 }
 
@@ -226,15 +216,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         
     if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"]) {
 
-    [self.delegate userEmailUpdated:user];
+        [self.delegate userEmailUpdated:user];
     
-    if(!self.teamsController)
-        self.teamsController        = [[[DWTeamsController alloc] init] autorelease];
-    
-    self.teamsController.delegate   = self;
-    
-    NSString *domain                = [user getDomainFromEmail];
-    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
+        NSString *domain = [user getDomainFromEmail];        
+        [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
     }
 }
 

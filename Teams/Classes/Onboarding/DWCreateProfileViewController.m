@@ -51,7 +51,10 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 	self = [super init];
 	
 	if(self) {        
-        _hasPasswordChanged = NO;
+        
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
+        self.usersController.delegate   = self;
+        _hasPasswordChanged             = NO;
 	}
     
 	return self;
@@ -151,12 +154,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 	else {			
         if(_hasPasswordChanged)
             self.password = [self.passwordTextField.text encrypt];
-        
-        if (!self.usersController)
-            self.usersController        = [[[DWUsersController alloc] init] autorelease];        
-        
-        self.usersController.delegate   = self;
-        
+
         [self.usersController updateUserHavingID:self.userID 
                                    withFirstName:self.firstNameTextField.text 
                                         lastName:self.lastNameTextField.text 
