@@ -28,4 +28,9 @@
  */
 + (NSString*)shortSignatureWithTeamName:(DWUser*)user;
 
+/**
+ * <First Name> <Last Name>
+ */
++ (NSString*)displayName:(DWUser*)user;
+
 @end

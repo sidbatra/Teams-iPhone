@@ -27,5 +27,11 @@
             user.firstName];
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)displayName:(DWUser*)user {
+    return [NSString stringWithFormat:@"%@ %@",
+            user.firstName,
+            user.lastName];
+}
 
 @end
