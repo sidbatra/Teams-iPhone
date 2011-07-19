@@ -13,6 +13,20 @@ static NSString* const kSearchBarText				= @"Search teams and people";
 static NSString* const kSearchBarBackgroundClass	= @"UISearchBarBackground";
 static NSInteger const kMinimumQueryLength			= 1;
 
+/**
+ * Private method and property declarations
+ */
+@interface DWTeamsContainerViewController()
+
+/**
+ * View creation methods
+ */
+- (void)loadPopularTeamsViewController;
+- (void)loadSearchViewController;
+- (void)loadSearchBar;
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -38,26 +52,18 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-    [super viewDidLoad];
-        
+- (void)loadPopularTeamsViewController {
+    
     if(!self.popularTeamsViewController) {
         self.popularTeamsViewController = [[[DWPopularTeamsViewController alloc] init] autorelease];
         [self.popularTeamsViewController setTeamsDelegate:self];
     }
     
     [self.view addSubview:self.popularTeamsViewController.view];
-    
-    
-    if(!self.searchViewController) {
-        self.searchViewController = [[[DWSearchViewController alloc] init] autorelease];
-        [self.searchViewController setUsersDelegate:self];
-        [self.searchViewController setTeamsDelegate:self];
-    }
-    
-    [self.view addSubview:self.searchViewController.view];
-    
+}
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadSearchBar {
     
     if(!self.searchBar) {
         self.searchBar					= [[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,320,0)] autorelease];
@@ -83,9 +89,29 @@ static NSInteger const kMinimumQueryLength			= 1;
         }
     }
     
-    
     [self.navigationController.navigationBar addSubview:self.searchBar];
-        
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadSearchViewController {
+    
+    if(!self.searchViewController) {
+        self.searchViewController = [[[DWSearchViewController alloc] init] autorelease];
+        [self.searchViewController setUsersDelegate:self];
+        [self.searchViewController setTeamsDelegate:self];
+    }
+    
+    [self.view addSubview:self.searchViewController.view];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self loadPopularTeamsViewController];
+    [self loadSearchViewController];
+    [self loadSearchBar];
+    
 	self.navigationItem.titleView = nil;
 }
 
