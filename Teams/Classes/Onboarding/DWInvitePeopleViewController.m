@@ -26,7 +26,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
 
-@synthesize contactsController              = _contactsController;
+@synthesize contactsViewController          = _contactsViewController;
 
 @synthesize delegate                        = _delegate;
 
@@ -34,8 +34,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 - (id)init {
     self = [super init];
     if (self) {
-        self.contactsController             = [[[DWContactsController alloc] init] autorelease];
-        self.contactsController.delegate    = self;
+        //custom initialization
     }
     return self;
 }
@@ -48,7 +47,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;    
     
-    self.contactsController         = nil;
+    self.contactsViewController     = nil;
     
     [super dealloc];
 }
@@ -88,8 +87,11 @@ static NSString* const kRightNavBarButtonText   = @"Done";
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
     
-    self.resultsLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.resultsLabel.numberOfLines = 0;
+    CGRect frame                            = CGRectMake(0,100,320,320);    
+    self.contactsViewController             = [[[DWContactsViewController alloc] init] autorelease];
+    self.contactsViewController.view.frame  = frame;
+    
+    [self.view addSubview:self.contactsViewController.view];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -105,31 +107,14 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)searchContactsTextFieldEditingChanged:(id)sender {
-    [self.contactsController getContactsMatching:self.searchContactsTextField.text];
+    self.contactsViewController.view.hidden = NO;    
+    [self.contactsViewController loadContactsMatching:self.searchContactsTextField.text];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
     [self.delegate peopleInvited];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWUsersController Delegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)contactsLoaded:(NSMutableArray *)contacts {
-    NSString *results = [NSString stringWithString:kEmptyString];
-    for(id contact in contacts) {
-        NSString *temp = [NSString stringWithFormat:@"%@ -- %@",
-                          [(DWContact*)contact email], [(DWContact*)contact fullName]];
-        
-        results = [NSString stringWithFormat:@"%@ \n %@",results,temp];
-    }
-    self.resultsLabel.text = results;
 }
 
 

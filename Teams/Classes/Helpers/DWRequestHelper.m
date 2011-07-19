@@ -4,6 +4,7 @@
 //
 
 #import "DWRequestHelper.h"
+#import "DWConstants.h"
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -13,7 +14,7 @@
 //----------------------------------------------------------------------------------------------------
 + (NSString*)generateErrorMessageFrom:(NSArray*)errors {
 
-    NSMutableString *errorMsg = [[[NSMutableString alloc] initWithString:@""] autorelease];
+    NSMutableString *errorMsg = [[[NSMutableString alloc] initWithString:kEmptyString] autorelease];
     
     for(id error in errors) {
         for (id e in error) {

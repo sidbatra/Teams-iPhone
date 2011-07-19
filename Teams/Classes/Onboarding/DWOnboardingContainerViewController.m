@@ -216,7 +216,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)peopleInvited {
-    //TODO
+    [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
+    [self.parentViewController dismissModalViewControllerAnimated:YES];    
 }
 
 

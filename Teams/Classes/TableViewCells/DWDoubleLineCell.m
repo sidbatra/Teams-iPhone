@@ -1,9 +1,9 @@
 //
-//  DWPlaceSearchResultCell.m
+//  DWDoubleLineCell.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWPlaceSearchResultCell.h"
+#import "DWDoubleLineCell.h"
 
 static NSString* const kImgPlaceIcon			= @"pointer_mini_gray_dark.png";
 static NSString* const kImgPlaceHighlightedIcon = @"pointer_mini_white.png";
@@ -13,7 +13,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWPlaceSearchResultSelectedView
+@implementation DWDoubleLineSelectedView
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame {
@@ -34,10 +34,10 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWPlaceSearchResultView
+@implementation DWDoubleLineView
 
-@synthesize placeName		= _placeName;
-@synthesize placeDetails	= _placeDetails;
+@synthesize firstLine		= _firstLine;
+@synthesize secondLine      = _secondLine;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame {
@@ -53,8 +53,8 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-	self.placeName		= nil;
-	self.placeDetails	= nil;
+	self.firstLine		= nil;
+	self.secondLine     = nil;
 	
 	[super dealloc];
 }
@@ -64,7 +64,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 
 	_highlighted ? [[UIColor whiteColor] set] : [[UIColor blackColor] set];
 	
-	[self.placeName drawInRect:CGRectMake(20, 4, 293, 18) 
+	[self.firstLine drawInRect:CGRectMake(20, 4, 293, 18) 
 					  withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 				 lineBreakMode:UILineBreakModeTailTruncation
 					 alignment:UITextAlignmentLeft];
@@ -72,7 +72,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 	
 	_highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.4588 green:0.4588 blue:0.4588 alpha:1.0] set];
 	
-	[self.placeDetails drawInRect:CGRectMake(20, 21, 293, 18) 
+	[self.secondLine drawInRect:CGRectMake(20, 21, 293, 18) 
 						 withFont:[UIFont fontWithName:@"HelveticaNeue" size:15] 
 					lineBreakMode:UILineBreakModeTailTruncation
 						alignment:UITextAlignmentLeft];
@@ -116,9 +116,9 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWPlaceSearchResultCell
+@implementation DWDoubleLineCell
 
-@synthesize placeSearchResultView = _placeSearchResultView;
+@synthesize doubleLineView = _doubleLineView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -129,11 +129,11 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 		
 		CGRect frame = CGRectMake(0.0,0.0,self.contentView.bounds.size.width,self.contentView.bounds.size.height);
 		
-		self.placeSearchResultView = [[[DWPlaceSearchResultView alloc] initWithFrame:frame] autorelease];
-        self.placeSearchResultView.autoresizingMask	= UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        self.placeSearchResultView.contentMode		= UIViewContentModeRedraw;
+		self.doubleLineView = [[[DWDoubleLineView alloc] initWithFrame:frame] autorelease];
+        self.doubleLineView.autoresizingMask	= UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        self.doubleLineView.contentMode         = UIViewContentModeRedraw;
 		
-		[self.contentView addSubview:self.placeSearchResultView];
+		[self.contentView addSubview:self.doubleLineView];
 		
 		//self.selectedBackgroundView = [[[DWPlaceSearchResultSelectedView alloc] initWithFrame:frame] autorelease];
 		self.accessoryType			= UITableViewCellAccessoryNone;
@@ -144,33 +144,33 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
-	self.placeSearchResultView = nil;
+	self.doubleLineView = nil;
 	
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)reset {
-	[self.placeSearchResultView reset];
+	[self.doubleLineView reset];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setPlaceName:(NSString*)placeName {
-	self.placeSearchResultView.placeName = placeName;
-	[self.placeSearchResultView redisplay];
+- (void)setFirstLine:(NSString*)firstLine {
+	self.doubleLineView.firstLine = firstLine;
+	[self.doubleLineView redisplay];
 	
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setPlaceDetails:(NSString *)placeDetails {
-	self.placeSearchResultView.placeDetails = placeDetails;
-	[self.placeSearchResultView redisplay];
+- (void)setSecondLine:(NSString *)secondLine {
+	self.doubleLineView.secondLine = secondLine;
+	[self.doubleLineView redisplay];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 - (void)redisplay {
-	[self.placeSearchResultView redisplay];
+	[self.doubleLineView redisplay];
 }
 
 
