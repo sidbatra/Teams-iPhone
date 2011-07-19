@@ -7,6 +7,7 @@
 #import "ABContactsHelper.h"
 #import "DWConstants.h"
 #import "DWGUIManager.h"
+#import "DWContact.h"
 
 static NSString* const kAddPeopleText           = @"Add People";
 static NSString* const kAddPeopleSubText        = @"to the %@ Team";
@@ -25,13 +26,16 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
 
+@synthesize contactsController              = _contactsController;
+
 @synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     if (self) {
-        //Custom initialization
+        self.contactsController             = [[[DWContactsController alloc] init] autorelease];
+        self.contactsController.delegate    = self;
     }
     return self;
 }
@@ -43,6 +47,8 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;    
+    
+    self.contactsController         = nil;
     
     [super dealloc];
 }
@@ -99,23 +105,31 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)searchContactsTextFieldEditingChanged:(id)sender {
-    
-    NSArray *contacts = [ABContactsHelper contactsWithPropertiesContaining:self.searchContactsTextField.text];
-    NSString *results = [NSString stringWithString:@""];
-    
-    for(id contact in contacts) {
-        NSString *temp = [NSString stringWithFormat:@"%@ -- %@ %@",
-                          [contact emailaddresses],[contact firstname],[contact lastname]];
-                
-        results = [NSString stringWithFormat:@"%@ \n %@",results,temp];
-    }
-    self.resultsLabel.text = results;
+    [self.contactsController getContactsMatching:self.searchContactsTextField.text];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
     [self.delegate peopleInvited];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactsLoaded:(NSMutableArray *)contacts {
+    NSString *results = [NSString stringWithString:kEmptyString];
+    for(id contact in contacts) {
+        NSString *temp = [NSString stringWithFormat:@"%@ -- %@",
+                          [(DWContact*)contact email], [(DWContact*)contact fullName]];
+        
+        results = [NSString stringWithFormat:@"%@ \n %@",results,temp];
+    }
+    self.resultsLabel.text = results;
 }
 
 
