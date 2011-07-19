@@ -373,6 +373,7 @@
 		BBB1A8D413D50EBB00C08315 /* DWTeamMembersDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8C713D50EBB00C08315 /* DWTeamMembersDataSource.m */; };
 		BBB1A8D513D50EBB00C08315 /* DWUsersDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8C913D50EBB00C08315 /* DWUsersDataSource.m */; };
 		BBB1A8D913D50EEB00C08315 /* DWSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */; };
+		BBB1A8DD13D5123300C08315 /* DWSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */; };
 		BBB3C3D6135FB21A00EA6087 /* shadow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */; };
 		BBB3C3D7135FB21A00EA6087 /* shadow_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */; };
 		BBB3C3D8135FB21A00EA6087 /* shadow_top.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D0135FB21A00EA6087 /* shadow_top.png */; };
@@ -1022,6 +1023,8 @@
 		BBB1A8C913D50EBB00C08315 /* DWUsersDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersDataSource.m; sourceTree = "<group>"; };
 		BBB1A8D713D50EEB00C08315 /* DWSearchDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchDataSource.h; sourceTree = "<group>"; };
 		BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchDataSource.m; sourceTree = "<group>"; };
+		BBB1A8DB13D5123300C08315 /* DWSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchViewController.h; sourceTree = "<group>"; };
+		BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchViewController.m; sourceTree = "<group>"; };
 		BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_bottom.png; path = resources/shadow_bottom.png; sourceTree = "<group>"; };
 		BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shadow_bottom@2x.png"; path = "resources/shadow_bottom@2x.png"; sourceTree = "<group>"; };
 		BBB3C3D0135FB21A00EA6087 /* shadow_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_top.png; path = resources/shadow_top.png; sourceTree = "<group>"; };
@@ -1756,6 +1759,7 @@
 			children = (
 				BB272B2813CFCCBE00FDACA1 /* Base */,
 				BB272B2B13CFCCBE00FDACA1 /* Items */,
+				BBB1A8DA13D5121C00C08315 /* Misc */,
 				BB272C3213D1034500FDACA1 /* Teams */,
 				BB572A4513D40C510060A351 /* Users */,
 			);
@@ -2221,6 +2225,15 @@
 			children = (
 				BBB1A8D713D50EEB00C08315 /* DWSearchDataSource.h */,
 				BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		BBB1A8DA13D5121C00C08315 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				BBB1A8DB13D5123300C08315 /* DWSearchViewController.h */,
+				BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -3005,6 +3018,7 @@
 				BBB1A8D413D50EBB00C08315 /* DWTeamMembersDataSource.m in Sources */,
 				BBB1A8D513D50EBB00C08315 /* DWUsersDataSource.m in Sources */,
 				BBB1A8D913D50EEB00C08315 /* DWSearchDataSource.m in Sources */,
+				BBB1A8DD13D5123300C08315 /* DWSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

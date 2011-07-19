@@ -35,6 +35,8 @@ static CGFloat const kCellHeight  = 60;
     cell.boldText   = user.firstName;
     cell.plainText  = user.byline;
     
+    [user startSmallImageDownload];
+    
     [cell setImage:user.smallImage];
     
     [cell reset];

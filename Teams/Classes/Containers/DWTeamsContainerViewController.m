@@ -6,6 +6,7 @@
 #import "DWTeamsContainerViewController.h"
 #import "DWSegmentedController.h"
 #import "DWPopularTeamsViewController.h"
+#import "DWSearchViewController.h"
 #import "DWRecentTeamsViewController.h"
 #import "DWConstants.h"
 
@@ -75,16 +76,17 @@ static NSString* const kMsgUnload					= @"Unload called on teams container";
         DWPopularTeamsViewController *popularTeamsController = [[[DWPopularTeamsViewController alloc] init] autorelease];
         [popularTeamsController setTeamsDelegate:self];
         
+        DWSearchViewController *searchController = [[[DWSearchViewController alloc] init] autorelease];
+        [searchController setUsersDelegate:self];
+        [searchController setTeamsDelegate:self];
+        
         DWRecentTeamsViewController *recentTeamsController = [[[DWRecentTeamsViewController alloc] init] autorelease];
         [recentTeamsController setTeamsDelegate:self];
         
-        
-        UIViewController *b = [[[UIViewController alloc] init] autorelease];
-        b.view.backgroundColor = [UIColor blueColor];
-        
+
         self.segmentedController.subControllers = [NSArray arrayWithObjects:
                                                    popularTeamsController,
-                                                   b,
+                                                   searchController,
                                                    recentTeamsController
                                                    ,nil];
     }
