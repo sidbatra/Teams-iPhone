@@ -5,6 +5,7 @@
 
 #import "DWUserPresenter.h"
 #import "DWUser.h"
+#import "DWUsersHelper.h"
 #import "DWSlimCell.h"
 #import "DWConstants.h"
 

@@ -21,4 +21,11 @@
  */
 + (NSString*)signatureWithTeamName:(DWUser*)user;
 
+/**
+ * Generates a signature for the user with the full team name and
+ * first name.
+ * Eg - Company / Bob
+ */
++ (NSString*)shortSignatureWithTeamName:(DWUser*)user;
+
 @end
