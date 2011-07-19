@@ -7,6 +7,7 @@
 #import "DWConstants.h"
 #import "DWRequestsManager.h"
 #import "DWRequestHelper.h"
+#import "DWMembership.h"
 
 static NSString* const kNewMembershipURI    = @"/memberships/teams/%d.json?";
 
@@ -30,7 +31,7 @@ static NSString* const kNewMembershipURI    = @"/memberships/teams/%d.json?";
 												   object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(membershipError:) 
+												 selector:@selector(membershipCreationError:) 
 													 name:kNNewMembershipError
 												   object:nil];
     }
@@ -61,8 +62,55 @@ static NSString* const kNewMembershipURI    = @"/memberships/teams/%d.json?";
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNNewMembershipCreated
                                                    errorNotification:kNNewMembershipError
-                                                       requestMethod:kPost 
-                                                        authenticate:NO];
+                                                       requestMethod:kPost];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreated:(NSNotification*)notification {
+    
+    SEL sel = @selector(membershipCreated:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *info	= [notification userInfo];
+    NSDictionary *data  = [info objectForKey:kKeyData];
+    /*
+    NSArray *errors     = [data objectForKey:kKeyErrors];
+
+    if ([errors count] ) {
+        SEL sel = @selector(membershipCreationError:);
+        
+        if(![self.delegate respondsToSelector:sel])
+            return;
+        
+        [self.delegate performSelector:sel 
+                            withObject:[DWRequestHelper generateErrorMessageFrom:errors]];
+        return;
+    }*/
+    
+    DWMembership *membership = [DWMembership create:data];    
+    [self.delegate performSelector:sel 
+                        withObject:membership];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreationError:(NSNotification*)notification {
+    
+    SEL sel = @selector(membershipCreationError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
 }
 
 @end

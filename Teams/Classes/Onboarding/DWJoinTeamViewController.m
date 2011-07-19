@@ -6,22 +6,26 @@
 #import "DWJoinTeamViewController.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
+#import "DWMembership.h"
 
 
-static NSString* const kJoinTeamText                  = @"Join %@";
-static NSString* const kJoinTeamSubText               = @"as the %d member";
-static NSString* const kRightNavBarButtonText         = @"Join";
+static NSString* const kJoinTeamText                    = @"Join %@";
+static NSString* const kJoinTeamSubText                 = @"as the %d member";
+static NSString* const kRightNavBarButtonText           = @"Join";
+static NSString* const kMsgErrorTitle                   = @"Error";
+static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWJoinTeamViewController
 
-@synthesize teamName                    = _teamName;
-@synthesize teamMembersCount            = _teamMembersCount;
+@synthesize team                        = _team;
 
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
+
+@synthesize membershipsController       = _membershipsController;
 
 @synthesize delegate                    = _delegate;
 
@@ -38,6 +42,13 @@ static NSString* const kRightNavBarButtonText         = @"Join";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.team                   = nil;
+    
+    self.navTitleView           = nil;
+    self.navRightBarButtonView  = nil;
+    
+    self.membershipsController  = nil;
+    
     [super dealloc];
 }
 
@@ -65,8 +76,8 @@ static NSString* const kRightNavBarButtonText         = @"Join";
                                                        kNavTitleViewHeight) 
                               andDelegate:self] autorelease];
     
-    [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.teamName] 
-                        andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,self.teamMembersCount+1]];
+    [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.team.name] 
+                        andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,self.team.membersCount+1]];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
@@ -90,7 +101,34 @@ static NSString* const kRightNavBarButtonText         = @"Join";
 
 //----------------------------------------------------------------------------------------------------
 - (void)joinTeam {
+    if (!self.membershipsController) 
+        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
     
+    self.membershipsController.delegate     = self;
+    
+    [self.membershipsController createMembershipForTeamID:self.team.databaseID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWMembershipsController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreated:(DWMembership *)membership {
+    [self.delegate teamJoined:membership.team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreationError:(NSString *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 
