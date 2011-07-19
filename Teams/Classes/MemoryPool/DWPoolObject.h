@@ -5,11 +5,25 @@
 
 #import <Foundation/Foundation.h>
 
+
+/**
+ * Protocol for DWPoolObject and all its child classes
+ */
+@protocol DWPoolObjectProtocol
+
+/**
+ * Factory method for creating DWPoolObjects
+ */
++ (id)create:(NSDictionary *)objectJSON;
+
+@end
+
+
 /**
  * PoolObject is a mandatory base class for all
  * models that are added to the memory pool
  */
-@interface DWPoolObject : NSObject {
+@interface DWPoolObject : NSObject<DWPoolObjectProtocol> {
 	NSInteger	_databaseID;
 	NSInteger	_pointerCount;
 }

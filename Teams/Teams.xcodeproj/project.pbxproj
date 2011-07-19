@@ -368,6 +368,7 @@
 		BBAEA5DB137113BD006A50C8 /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */; };
 		BBAEA5DE137127D3006A50C8 /* new_item_triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5DC137127D2006A50C8 /* new_item_triangle.png */; };
 		BBAEA5DF137127D3006A50C8 /* new_item_triangle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5DD137127D2006A50C8 /* new_item_triangle@2x.png */; };
+		BBB1A8AB13D4F8F400C08315 /* DWSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */; };
 		BBB3C3D6135FB21A00EA6087 /* shadow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */; };
 		BBB3C3D7135FB21A00EA6087 /* shadow_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */; };
 		BBB3C3D8135FB21A00EA6087 /* shadow_top.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D0135FB21A00EA6087 /* shadow_top.png */; };
@@ -1010,6 +1011,8 @@
 		BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_video@2x.png"; path = "resources/icon_video@2x.png"; sourceTree = "<group>"; };
 		BBAEA5DC137127D2006A50C8 /* new_item_triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = new_item_triangle.png; path = resources/new_item_triangle.png; sourceTree = "<group>"; };
 		BBAEA5DD137127D2006A50C8 /* new_item_triangle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "new_item_triangle@2x.png"; path = "resources/new_item_triangle@2x.png"; sourceTree = "<group>"; };
+		BBB1A8A913D4F8F400C08315 /* DWSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchController.h; sourceTree = "<group>"; };
+		BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchController.m; sourceTree = "<group>"; };
 		BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_bottom.png; path = resources/shadow_bottom.png; sourceTree = "<group>"; };
 		BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shadow_bottom@2x.png"; path = "resources/shadow_bottom@2x.png"; sourceTree = "<group>"; };
 		BBB3C3D0135FB21A00EA6087 /* shadow_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_top.png; path = resources/shadow_top.png; sourceTree = "<group>"; };
@@ -2312,6 +2315,8 @@
 				BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */,
 				267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */,
 				267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */,
+				BBB1A8A913D4F8F400C08315 /* DWSearchController.h */,
+				BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -2953,6 +2958,7 @@
 				BB572A4E13D40F6A0060A351 /* DWTeamMembersViewController.m in Sources */,
 				267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */,
 				267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */,
+				BBB1A8AB13D4F8F400C08315 /* DWSearchController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
