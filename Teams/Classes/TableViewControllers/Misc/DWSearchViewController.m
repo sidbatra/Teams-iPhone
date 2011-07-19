@@ -13,11 +13,6 @@
 #import "NSObject+Helpers.h"
 
 
-static NSString* const kSearchBarText				= @"Search places worldwide";
-static NSString* const kSearchBarBackgroundClass	= @"UISearchBarBackground";
-static NSInteger const kMinimumQueryLength			= 1;
-
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -27,7 +22,6 @@ static NSInteger const kMinimumQueryLength			= 1;
 @synthesize usersLogicController    = _usersLogicController;
 @synthesize teamsLogicController    = _teamsLogicController;
 @synthesize searchDataSource        = _searchDataSource;
-@synthesize searchBar               = _searchBar;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -51,7 +45,6 @@ static NSInteger const kMinimumQueryLength			= 1;
     self.usersLogicController       = nil;
     self.teamsLogicController       = nil;
     self.searchDataSource           = nil;
-    self.searchBar                  = nil;
     
     [super dealloc];
 }
@@ -87,36 +80,15 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)search:(NSString*)query {
+    [self.searchDataSource loadDataForQuery:query];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.view.hidden = YES;
 }
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark UISearchBarDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
-	
-	if(theSearchBar.text.length >= kMinimumQueryLength) {
-		
-		[self.searchBar resignFirstResponder];
-		
-		[self.searchDataSource loadDataForQuery:theSearchBar.text];
-	}
-	
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchBar:(UISearchBar *)searchBar
-	textDidChange:(NSString *)searchText {
-	
-	if([searchText isEqualToString:kEmptyString]) {
-	}
-}
-
-
 
 @end

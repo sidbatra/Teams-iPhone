@@ -20,6 +20,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 @implementation DWTeamsContainerViewController
 
 @synthesize popularTeamsViewController  = _popularTeamsViewController;
+@synthesize searchViewController        = _searchViewController;
 @synthesize searchBar                   = _searchBar;
 
 //----------------------------------------------------------------------------------------------------
@@ -30,6 +31,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.popularTeamsViewController = nil;
+    self.searchViewController       = nil;
     self.searchBar                  = nil;
     
 	[super dealloc];
@@ -45,6 +47,16 @@ static NSInteger const kMinimumQueryLength			= 1;
     }
     
     [self.view addSubview:self.popularTeamsViewController.view];
+    
+    
+    if(!self.searchViewController) {
+        self.searchViewController = [[[DWSearchViewController alloc] init] autorelease];
+        [self.searchViewController setUsersDelegate:self];
+        [self.searchViewController setTeamsDelegate:self];
+    }
+    
+    [self.view addSubview:self.searchViewController.view];
+    
 
     
     if(!self.searchBar) {
@@ -71,12 +83,8 @@ static NSInteger const kMinimumQueryLength			= 1;
         }
     }
     
+    
     [self.navigationController.navigationBar addSubview:self.searchBar];
-    
-    
-    //DWSearchViewController *searchController = [[[DWSearchViewController alloc] init] autorelease];
-    //[searchController setUsersDelegate:self];
-    //[searchController setTeamsDelegate:self];
         
 	self.navigationItem.titleView = nil;
 }
@@ -99,6 +107,8 @@ static NSInteger const kMinimumQueryLength			= 1;
     
     [self.searchBar setShowsCancelButton:YES 
                                 animated:YES];
+    
+    self.searchViewController.view.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -110,6 +120,8 @@ static NSInteger const kMinimumQueryLength			= 1;
     [self.searchBar setText:kEmptyString];
     
     [self.searchBar resignFirstResponder];
+    
+    self.searchViewController.view.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -117,9 +129,19 @@ static NSInteger const kMinimumQueryLength			= 1;
 	
 	if(theSearchBar.text.length >= kMinimumQueryLength) {
 		
-		//[self.searchBar resignFirstResponder];
-		
-		//[self.searchDataSource loadDataForQuery:theSearchBar.text];
+		[self.searchBar resignFirstResponder];
+        [self.searchViewController search:theSearchBar.text];
+        
+        
+        /**
+         * Keep the cancel button enabled
+         */
+        for (UIView *view in self.searchBar.subviews) {
+            if ([view isKindOfClass:[UIButton class]]) {
+                ((UIButton*)view).enabled = YES;
+                break;
+            }
+        }
 	}
 	
 }

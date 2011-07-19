@@ -20,8 +20,6 @@
     DWUsersLogicController      *_usersLogicController;
     DWTeamsLogicController      *_teamsLogicController;
     DWSearchDataSource          *_searchDataSource;
-    
-    UISearchBar                 *_searchBar;
 }
 
 /**
@@ -41,11 +39,6 @@
  */
 @property (nonatomic,retain) DWSearchDataSource *searchDataSource;
 
-/**
- * Search bar for typing in queries
- */
-@property (nonatomic,retain) UISearchBar *searchBar;
-
 
 /**
  * Set a users logic controller delegate
@@ -56,5 +49,10 @@
  * Set a teams logic controller delegate
  */
 - (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate;
+
+/**
+ * Launch a search query
+ */
+- (void)search:(NSString*)query;
 
 @end
