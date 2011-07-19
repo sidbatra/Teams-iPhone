@@ -50,6 +50,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
  */
 - (void)userSelected:(DWUser*)user;
 
+/**
+ * Displays the invite people controller
+ */
+- (void)invitePeople;
+
 @end
 
 
@@ -122,6 +127,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     
     [self.navigationController pushViewController:userItemsController
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)invitePeople {
+    NSLog(@"invite people controller");
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -264,6 +274,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     
     [self.navigationController pushViewController:teamFollowersViewController
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showInvitePeople {
+    [self invitePeople];
 }
 
 

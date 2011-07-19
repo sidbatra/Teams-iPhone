@@ -139,6 +139,8 @@
         [self.delegate showMembersOfTeam:team];
     else if(resource == self.teamViewDataSource.followers)
         [self.delegate showFollowersOfTeam:team];
+    else if(resource == self.teamViewDataSource.invite)
+        [self.delegate showInvitePeople];
 }
 
 @end
