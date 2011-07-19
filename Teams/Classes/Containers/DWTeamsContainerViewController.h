@@ -7,18 +7,18 @@
 
 #import "DWContainerViewController.h"
 
-@class DWSegmentedController;
+@class DWPopularTeamsViewController;
 
 /**
  * Root view for the teams navigation controller
  */
 @interface DWTeamsContainerViewController : DWContainerViewController {
-    DWSegmentedController   *_segmentedController;
+    DWPopularTeamsViewController    *_popularTeamsViewController;
 }
 
 /**
- * Segmented controller for displaying the Popular, Search and Recent segments
+ * Displays the currently "popular" teams
  */
-@property (nonatomic,retain) DWSegmentedController *segmentedController;
+@property (nonatomic,retain) DWPopularTeamsViewController *popularTeamsViewController;
 
 @end
