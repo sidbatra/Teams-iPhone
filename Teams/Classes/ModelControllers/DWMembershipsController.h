@@ -42,6 +42,11 @@
 /**
  * Fired when a membership is created
  */
-- (void)membershipCreated;
+- (void)membershipCreated:(DWMembership*)membership;
+
+/**
+ * Error message while creating a membership
+ */
+- (void)membershipCreationError:(NSString*)error;
 
 @end

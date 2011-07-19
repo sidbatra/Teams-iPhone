@@ -144,8 +144,7 @@
     if (team) {
         DWJoinTeamViewController *joinTeamViewController        = [[[DWJoinTeamViewController alloc] init] autorelease];
         joinTeamViewController.delegate                         = self;
-        joinTeamViewController.teamName                         = team.name;
-        joinTeamViewController.teamMembersCount                 = team.membersCount;
+        joinTeamViewController.team                             = team;
         
         [self.navigationController pushViewController:joinTeamViewController 
                                              animated:YES];

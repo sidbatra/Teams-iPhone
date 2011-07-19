@@ -10,7 +10,6 @@
 #import "DWSession.h"
 #import "DWMemoryPool.h"
 #import "DWConstants.h"
-#import "DWGUIManager.h"
 
 static NSString* const kMsgProgressIndicator    = @"Signing Up";
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
@@ -83,7 +82,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.hidesBackButton = YES;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
