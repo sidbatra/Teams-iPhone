@@ -6,6 +6,7 @@
 #import "DWItemPresenter.h"
 #import "DWItemFeedCell.h"
 #import "DWItem.h"
+#import "DWItemsHelper.h"
 #import "DWConstants.h"
 
 static CGFloat const kCellHeight  = 320;
@@ -58,7 +59,7 @@ static CGFloat const kCellHeight  = 320;
     }
     
     [cell setDetails:item.touchesCount 
-        andCreatedAt:@"9 hours ago"];
+        andCreatedAt:[DWItemsHelper createdAgoInWordsForItem:item]];
     
     [cell reset];
     [cell redisplay];
