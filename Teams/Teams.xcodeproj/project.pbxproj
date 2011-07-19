@@ -154,6 +154,8 @@
 		268C02EB1389FD1100DA1541 /* pointer_gray_dark_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E71389FD1100DA1541 /* pointer_gray_dark_active@2x.png */; };
 		268C02EC1389FD1100DA1541 /* pointer_gray_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E81389FD1100DA1541 /* pointer_gray_dark.png */; };
 		268C02ED1389FD1100DA1541 /* pointer_gray_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E91389FD1100DA1541 /* pointer_gray_dark@2x.png */; };
+		269FC70013D5EB68004892D0 /* DWContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC6FF13D5EB68004892D0 /* DWContact.m */; };
+		269FC70413D5EEF4004892D0 /* DWContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC70313D5EEF4004892D0 /* DWContactsController.m */; };
 		26A2009C1370D0DA00B698CE /* launch_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009A1370D0DA00B698CE /* launch_bg.png */; };
 		26A2009D1370D0DA00B698CE /* launch_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009B1370D0DA00B698CE /* launch_bg@2x.png */; };
 		26A200A01370D24300B698CE /* d_logo_login_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009E1370D24300B698CE /* d_logo_login_white.png */; };
@@ -697,6 +699,10 @@
 		268C02E71389FD1100DA1541 /* pointer_gray_dark_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pointer_gray_dark_active@2x.png"; path = "resources/pointer_gray_dark_active@2x.png"; sourceTree = "<group>"; };
 		268C02E81389FD1100DA1541 /* pointer_gray_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pointer_gray_dark.png; path = resources/pointer_gray_dark.png; sourceTree = "<group>"; };
 		268C02E91389FD1100DA1541 /* pointer_gray_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pointer_gray_dark@2x.png"; path = "resources/pointer_gray_dark@2x.png"; sourceTree = "<group>"; };
+		269FC6FE13D5EB68004892D0 /* DWContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContact.h; sourceTree = "<group>"; };
+		269FC6FF13D5EB68004892D0 /* DWContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContact.m; sourceTree = "<group>"; };
+		269FC70213D5EEF4004892D0 /* DWContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsController.h; sourceTree = "<group>"; };
+		269FC70313D5EEF4004892D0 /* DWContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsController.m; sourceTree = "<group>"; };
 		26A2009A1370D0DA00B698CE /* launch_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch_bg.png; path = resources/launch_bg.png; sourceTree = "<group>"; };
 		26A2009B1370D0DA00B698CE /* launch_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch_bg@2x.png"; path = "resources/launch_bg@2x.png"; sourceTree = "<group>"; };
 		26A2009E1370D24300B698CE /* d_logo_login_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = d_logo_login_white.png; path = resources/d_logo_login_white.png; sourceTree = "<group>"; };
@@ -2138,6 +2144,8 @@
 				BB572A1C13D36E2C0060A351 /* DWMessage.m */,
 				BB572A2713D391F40060A351 /* DWResource.h */,
 				BB572A2813D391F40060A351 /* DWResource.m */,
+				269FC6FE13D5EB68004892D0 /* DWContact.h */,
+				269FC6FF13D5EB68004892D0 /* DWContact.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -2375,6 +2383,8 @@
 				267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */,
 				BBB1A8A913D4F8F400C08315 /* DWSearchController.h */,
 				BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */,
+				269FC70213D5EEF4004892D0 /* DWContactsController.h */,
+				269FC70313D5EEF4004892D0 /* DWContactsController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -3019,6 +3029,8 @@
 				BBB1A8D513D50EBB00C08315 /* DWUsersDataSource.m in Sources */,
 				BBB1A8D913D50EEB00C08315 /* DWSearchDataSource.m in Sources */,
 				BBB1A8DD13D5123300C08315 /* DWSearchViewController.m in Sources */,
+				269FC70013D5EB68004892D0 /* DWContact.m in Sources */,
+				269FC70413D5EEF4004892D0 /* DWContactsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
