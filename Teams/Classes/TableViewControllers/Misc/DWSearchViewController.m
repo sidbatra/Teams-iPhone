@@ -89,30 +89,6 @@ static NSInteger const kMinimumQueryLength			= 1;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-    if(!self.searchBar) {
-        self.searchBar					= [[[UISearchBar alloc] initWithFrame:CGRectMake(0,
-                                                                                    0,
-                                                                                    self.tableView.frame.size.width,
-                                                                                    0)] autorelease];
-        self.searchBar.delegate			= self;
-        self.searchBar.placeholder		= kSearchBarText;
-        self.searchBar.backgroundColor	= [UIColor colorWithRed:0.1764 
-                                                          green:0.1764
-                                                           blue:0.1764
-                                                          alpha:1.0];
-        [self.searchBar sizeToFit];	
-        
-        
-        for (UIView *subview in self.searchBar.subviews) {
-            if ([subview isKindOfClass:NSClassFromString(kSearchBarBackgroundClass)]) {
-                [subview removeFromSuperview];
-                break;
-            }
-        }
-    }
-	
-    self.tableView.tableHeaderView  = self.searchBar;
 }
 
 
