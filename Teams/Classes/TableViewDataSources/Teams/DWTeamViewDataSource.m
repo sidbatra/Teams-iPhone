@@ -201,11 +201,13 @@ static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamFollowersLoaded:(NSMutableArray *)users {
+- (void)teamFollowersLoaded:(NSMutableArray*)users {
     DWUser *user = [users objectAtIndex:0];
     
     [self setupMemberResource:self.followers
                      withUser:user];
+    
+    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -220,6 +222,8 @@ static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
     
     [self setupMemberResource:self.members
                      withUser:user];
+    
+    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
