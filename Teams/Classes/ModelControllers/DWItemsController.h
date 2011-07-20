@@ -75,6 +75,11 @@
 - (void)getTeamItemsForTeamID:(NSInteger)teamID
                        before:(NSInteger)before;
 
+/**
+ * Get an individual item
+ */
+- (void)getItemWithID:(NSInteger)itemID;
+
 @end
 
 

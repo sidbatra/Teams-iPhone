@@ -18,7 +18,7 @@ static NSString* const kCreateItemURI       = @"/items.json?item[data]=%@&item[l
 static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
 static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
 static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
-
+static NSString* const kItemURI             = @"/items/%d.json?";
 
 
 /**
@@ -87,6 +87,16 @@ static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(teamItemsError:) 
                                                      name:kNTeamItemsError
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(itemLoaded:) 
+                                                     name:kNItemLoaded
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(itemError:) 
+                                                     name:kNItemError
                                                    object:nil];
     }
     
@@ -237,6 +247,24 @@ static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
                                                           resourceID:teamID];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Show
+
+//----------------------------------------------------------------------------------------------------
+- (void)getItemWithID:(NSInteger)itemID {
+    
+    NSString *localURL = [NSString stringWithFormat:kItemURI,
+                          itemID];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNItemLoaded
+                                                   errorNotification:kNItemError
+                                                       requestMethod:kGet
+                                                          resourceID:itemID];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -358,7 +386,6 @@ static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
                         withObject:[error localizedDescription]];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsLoaded:(NSNotification*)notification {
     
@@ -406,5 +433,51 @@ static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
                         withObject:[error localizedDescription]];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)itemLoaded:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL itemsSel = @selector(itemLoaded:);
+    
+    if(![self.delegate respondsToSelector:itemsSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSDictionary *data      = [userInfo objectForKey:kKeyData];
+    DWItem *item            = [DWItem create:data];
+    
+    [self.delegate performSelector:itemsSel
+                        withObject:item];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemError:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(itemsResourceID);
+    SEL errorSel = @selector(itemError:);
+    
+    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:errorSel
+                        withObject:[error localizedDescription]];
+}
 
 @end
