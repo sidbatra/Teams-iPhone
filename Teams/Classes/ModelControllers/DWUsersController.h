@@ -63,6 +63,11 @@
  */
 - (void)getLastMemberOfTeam:(NSInteger)teamID;
 
+/**
+ * Get users who've touched the given itemID
+ */
+- (void)getTouchersOfItem:(NSInteger)itemID;
+
 @end
 
 
@@ -118,5 +123,15 @@
  * Error message while loading users belonging a team
  */
 - (void)teamMembersError:(NSString*)error;
+
+/**
+ * Array of parsed DWUser objects who touched an item
+ */
+- (void)itemTouchersLoaded:(NSMutableArray*)users;
+
+/**
+ * Error message while loading users who touched an item
+ */
+- (void)itemTouchersError:(NSString*)error;
 
 @end
