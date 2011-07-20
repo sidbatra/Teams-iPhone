@@ -10,6 +10,7 @@
 #import "DWPostProgressView.h"
 
 @class DWFollowedItemsViewController;
+@class DWNavTitleView;
 
 /**
  * Primary view for the Feed tab and container for followed 
@@ -21,6 +22,7 @@
     
 	DWPostProgressView				*_postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
+    DWNavTitleView                  *_navTitleView;
     
     BOOL                            _isProgressBarActive;
 }
@@ -39,5 +41,10 @@
  * Subview for displaying small profile picture
  */
 @property (nonatomic,retain) DWSmallProfilePicView *smallProfilePicView;
+
+/**
+ * Nav bar title view for displaying user name and byline
+ */
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
 
 @end

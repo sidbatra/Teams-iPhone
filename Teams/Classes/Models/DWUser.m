@@ -199,6 +199,8 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     NSString *byline            = [user objectForKey:kKeyByLine];
     NSString *followingsCount   = [user objectForKey:kKeyFollowingsCount];
     NSDictionary *photo         = [user objectForKey:kKeyPhoto];
+    NSDictionary *team          = [user objectForKey:kKeyTeam];
+
     
     if(email && ![self.email isEqualToString:email])
         self.email = email;
@@ -232,6 +234,14 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
             self.largeImage     = nil;
         }
     } 
+    
+    
+    if(team) {
+        if(self.team)
+            [self.team update:team];
+        else
+            self.team = [DWTeam create:team];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------

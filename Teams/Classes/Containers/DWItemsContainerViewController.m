@@ -5,6 +5,8 @@
 
 #import "DWItemsContainerViewController.h"
 #import "DWFollowedItemsViewController.h"
+#import "DWNavTitleView.h"
+#import "DWUsersHelper.h"
 #import "DWCreationQueue.h"
 #import "DWNotificationsHelper.h"
 #import "DWGUIManager.h"
@@ -23,12 +25,18 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)setProfilePicture:(UIImage*)image;
 
 /**
+ * Update the display of the nav title view
+ */
+- (void)updateNavTitleView;
+
+/**
  * View creation methods
  */
 - (void)loadNotificationsButton;
 - (void)loadProgressView;
 - (void)loadFollowedView;
 - (void)loadProfilePicView;
+- (void)loadNavTitleView;
 @end
 
 
@@ -41,6 +49,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 @synthesize followedViewController  = _followedViewController;
 @synthesize postProgressView        = _postProgressView;
 @synthesize smallProfilePicView     = _smallProfilePicView;
+@synthesize navTitleView            = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -64,6 +73,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     self.followedViewController     = nil;
     self.postProgressView           = nil;
     self.smallProfilePicView        = nil;
+    self.navTitleView               = nil;
     
 	[super dealloc];
 }
@@ -86,6 +96,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     [self loadProgressView];
     [self loadFollowedView];
     [self loadProfilePicView];
+    [self loadNavTitleView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -150,6 +161,23 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
         [[DWSession sharedDWSession].currentUser startSmallImageDownload];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadNavTitleView {
+    
+    if(!self.navTitleView) {
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(60,0,200,40) 
+                                                      andDelegate:nil];
+    }
+
+    [self updateNavTitleView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateNavTitleView {
+    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:[DWSession sharedDWSession].currentUser]
+                                         andSubTitle:[DWSession sharedDWSession].currentUser.byline];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -170,7 +198,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
         if(!_isProgressBarActive) {
             _isProgressBarActive = YES;
             [self.navigationController.navigationBar addSubview:self.postProgressView];
-            //[self.userTitleView removeFromSuperview];
+            [self.navTitleView removeFromSuperview];
         }
 		
 		[self.postProgressView updateDisplayWithTotalActive:totalActive
@@ -179,7 +207,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 	}
 	else if(_isProgressBarActive) {
             _isProgressBarActive = NO;
-            //[self.navigationController.navigationBar addSubview:self.userTitleView];
+            [self.navigationController.navigationBar addSubview:self.navTitleView];
             [self.postProgressView removeFromSuperview];
     }        
 }
@@ -243,7 +271,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     if(_isProgressBarActive)
         [self.navigationController.navigationBar addSubview:self.postProgressView];
     else
-        //Add user title view
+        [self.navigationController.navigationBar addSubview:self.navTitleView];
+
     
     [self.navigationController.navigationBar addSubview:self.smallProfilePicView];    
 }

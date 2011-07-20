@@ -10,8 +10,6 @@
 		1D3623260D0F684500981E51 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DWAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		26000219130DFB0100366CE3 /* KTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26000218130DFB0100366CE3 /* KTTextView.m */; };
-		2612D6261362556E005AE9E5 /* DWPlaceTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612D6251362556E005AE9E5 /* DWPlaceTitleView.m */; };
-		2612D62913637E46005AE9E5 /* DWUserTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2612D62813637E44005AE9E5 /* DWUserTitleView.m */; };
 		2612D62C13639610005AE9E5 /* static_button_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62A13639610005AE9E5 /* static_button_active.png */; };
 		2612D62D13639610005AE9E5 /* static_button_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62B13639610005AE9E5 /* static_button_active@2x.png */; };
 		262415F213D21F1E00474D4B /* DWRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 262415F113D21F1E00474D4B /* DWRequestHelper.m */; };
@@ -112,8 +110,6 @@
 		2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E58513CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m */; };
 		2632E58813CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E58613CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib */; };
 		2632E59313CCE0D7005B1B1E /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E59213CCE0D7005B1B1E /* DWUsersController.m */; };
-		2632E59813CCE177005B1B1E /* DWNavRightBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E59513CCE177005B1B1E /* DWNavRightBarButtonView.m */; };
-		2632E59913CCE177005B1B1E /* DWNavTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E59713CCE177005B1B1E /* DWNavTitleView.m */; };
 		2632E5AB13CCE39B005B1B1E /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E5A613CCE39B005B1B1E /* ABContact.m */; };
 		2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E5A813CCE39B005B1B1E /* ABContactsHelper.m */; };
 		2632E5AD13CCE39B005B1B1E /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E5AA13CCE39B005B1B1E /* ABGroup.m */; };
@@ -130,11 +126,14 @@
 		2640A40F130A2A5700E0AEAF /* arrow_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */; };
 		265C6B0B135D082500331AD0 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B09135D082500331AD0 /* timer.png */; };
 		265C6B0C135D082500331AD0 /* timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B0A135D082500331AD0 /* timer@2x.png */; };
-		265CBE1E136632DE00CC2C83 /* DWUserProfileTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 265CBE1D136632DE00CC2C83 /* DWUserProfileTitleView.m */; };
 		265CBE2113665B0900CC2C83 /* button_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 265CBE1F13665B0900CC2C83 /* button_camera.png */; };
 		265CBE2213665B0900CC2C83 /* button_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265CBE2013665B0900CC2C83 /* button_camera@2x.png */; };
 		2661B1A21319F7BD00A89D13 /* mediabar_keyboard_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2661B1A01319F7BD00A89D13 /* mediabar_keyboard_bg.png */; };
 		2661B1A31319F7BD00A89D13 /* mediabar_keyboard_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2661B1A11319F7BD00A89D13 /* mediabar_keyboard_bg@2x.png */; };
+		2666911813D652EB00FE630D /* DWDoubleLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2666911713D652EB00FE630D /* DWDoubleLineCell.m */; };
+		2666911B13D652FD00FE630D /* DWContactPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2666911A13D652FD00FE630D /* DWContactPresenter.m */; };
+		2666911E13D6531300FE630D /* DWContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2666911D13D6531300FE630D /* DWContactsViewController.m */; };
+		2666912113D6533D00FE630D /* DWContactsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2666912013D6533D00FE630D /* DWContactsDataSource.m */; };
 		266BBFCD1363D5EF00EBF1AD /* user_photo_gloss.png in Resources */ = {isa = PBXBuildFile; fileRef = 266BBFCB1363D5EF00EBF1AD /* user_photo_gloss.png */; };
 		266BBFCE1363D5EF00EBF1AD /* user_photo_gloss@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 266BBFCC1363D5EF00EBF1AD /* user_photo_gloss@2x.png */; };
 		2672240D131B3F9600654D88 /* modalview_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2672240B131B3F9600654D88 /* modalview_bg.png */; };
@@ -156,9 +155,6 @@
 		268C02ED1389FD1100DA1541 /* pointer_gray_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E91389FD1100DA1541 /* pointer_gray_dark@2x.png */; };
 		269FC70013D5EB68004892D0 /* DWContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC6FF13D5EB68004892D0 /* DWContact.m */; };
 		269FC70413D5EEF4004892D0 /* DWContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC70313D5EEF4004892D0 /* DWContactsController.m */; };
-		269FC70B13D6074F004892D0 /* DWContactsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC70A13D6074F004892D0 /* DWContactsDataSource.m */; };
-		269FC70F13D6126F004892D0 /* DWContactPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC70E13D6126F004892D0 /* DWContactPresenter.m */; };
-		269FC71A13D6197D004892D0 /* DWContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC71913D6197D004892D0 /* DWContactsViewController.m */; };
 		26A2009C1370D0DA00B698CE /* launch_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009A1370D0DA00B698CE /* launch_bg.png */; };
 		26A2009D1370D0DA00B698CE /* launch_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009B1370D0DA00B698CE /* launch_bg@2x.png */; };
 		26A200A01370D24300B698CE /* d_logo_login_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009E1370D24300B698CE /* d_logo_login_white.png */; };
@@ -212,7 +208,6 @@
 		BB272B4A13CFCDFF00FDACA1 /* DWItemFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3F13CFCDFF00FDACA1 /* DWItemFeedCell.m */; };
 		BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */; };
 		BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */; };
-		BB272B4E13CFCDFF00FDACA1 /* DWDoubleLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B4713CFCDFF00FDACA1 /* DWDoubleLineCell.m */; };
 		BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */; };
 		BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5413CFCE5A00FDACA1 /* NSObject+Helpers.m */; };
 		BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B5613CFCE5A00FDACA1 /* NSString+Helpers.m */; };
@@ -239,7 +234,6 @@
 		BB28E01D1360093000FF4566 /* loading_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E0191360093000FF4566 /* loading_bar.png */; };
 		BB28E01E1360093000FF4566 /* loading_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E01A1360093000FF4566 /* loading_bar@2x.png */; };
 		BB33134312F2628F00B713F9 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB33134212F2628F00B713F9 /* DWGUIManager.m */; };
-		BB33CB70135FA93C00BDBE98 /* DWTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB33CB6F135FA93C00BDBE98 /* DWTitleView.m */; };
 		BB348714138A4779003802D1 /* hand_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348710138A4778003802D1 /* hand_text.png */; };
 		BB348715138A4779003802D1 /* hand_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348711138A4778003802D1 /* hand_text@2x.png */; };
 		BB348716138A4779003802D1 /* share_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348712138A4778003802D1 /* share_text.png */; };
@@ -380,6 +374,8 @@
 		BBB1A8D913D50EEB00C08315 /* DWSearchDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */; };
 		BBB1A8DD13D5123300C08315 /* DWSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */; };
 		BBB1A8EC13D5F9E800C08315 /* DWItemsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8EB13D5F9E800C08315 /* DWItemsHelper.m */; };
+		BBB1A8F213D6050F00C08315 /* DWNavRightBarButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8EF13D6050F00C08315 /* DWNavRightBarButtonView.m */; };
+		BBB1A8F313D6050F00C08315 /* DWNavTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8F113D6050F00C08315 /* DWNavTitleView.m */; };
 		BBB3C3D6135FB21A00EA6087 /* shadow_bottom.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */; };
 		BBB3C3D7135FB21A00EA6087 /* shadow_bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */; };
 		BBB3C3D8135FB21A00EA6087 /* shadow_top.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D0135FB21A00EA6087 /* shadow_top.png */; };
@@ -536,10 +532,6 @@
 		1D6058910D05DD3D006BFB54 /* Teams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26000217130DFB0100366CE3 /* KTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTextView.h; sourceTree = "<group>"; };
 		26000218130DFB0100366CE3 /* KTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTextView.m; sourceTree = "<group>"; };
-		2612D6241362556D005AE9E5 /* DWPlaceTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPlaceTitleView.h; path = Classes/DWPlaceTitleView.h; sourceTree = "<group>"; };
-		2612D6251362556E005AE9E5 /* DWPlaceTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPlaceTitleView.m; path = Classes/DWPlaceTitleView.m; sourceTree = "<group>"; };
-		2612D62713637E43005AE9E5 /* DWUserTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUserTitleView.h; path = Classes/DWUserTitleView.h; sourceTree = "<group>"; };
-		2612D62813637E44005AE9E5 /* DWUserTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUserTitleView.m; path = Classes/DWUserTitleView.m; sourceTree = "<group>"; };
 		2612D62A13639610005AE9E5 /* static_button_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = static_button_active.png; path = resources/static_button_active.png; sourceTree = "<group>"; };
 		2612D62B13639610005AE9E5 /* static_button_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "static_button_active@2x.png"; path = "resources/static_button_active@2x.png"; sourceTree = "<group>"; };
 		262415F013D21F1E00474D4B /* DWRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestHelper.h; sourceTree = "<group>"; };
@@ -651,10 +643,6 @@
 		2632E58613CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWUpdateTeamDetailsViewController.xib; path = Classes/Teams/DWUpdateTeamDetailsViewController.xib; sourceTree = "<group>"; };
 		2632E59113CCE0D7005B1B1E /* DWUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersController.h; sourceTree = "<group>"; };
 		2632E59213CCE0D7005B1B1E /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
-		2632E59413CCE177005B1B1E /* DWNavRightBarButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNavRightBarButtonView.h; path = Classes/DWNavRightBarButtonView.h; sourceTree = "<group>"; };
-		2632E59513CCE177005B1B1E /* DWNavRightBarButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNavRightBarButtonView.m; path = Classes/DWNavRightBarButtonView.m; sourceTree = "<group>"; };
-		2632E59613CCE177005B1B1E /* DWNavTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNavTitleView.h; path = Classes/DWNavTitleView.h; sourceTree = "<group>"; };
-		2632E59713CCE177005B1B1E /* DWNavTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNavTitleView.m; path = Classes/DWNavTitleView.m; sourceTree = "<group>"; };
 		2632E5A513CCE39B005B1B1E /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
 		2632E5A613CCE39B005B1B1E /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
 		2632E5A713CCE39B005B1B1E /* ABContactsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContactsHelper.h; sourceTree = "<group>"; };
@@ -674,12 +662,18 @@
 		2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_button@2x.png"; path = "resources/arrow_button@2x.png"; sourceTree = "<group>"; };
 		265C6B09135D082500331AD0 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timer.png; path = resources/timer.png; sourceTree = "<group>"; };
 		265C6B0A135D082500331AD0 /* timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timer@2x.png"; path = "resources/timer@2x.png"; sourceTree = "<group>"; };
-		265CBE1C136632DE00CC2C83 /* DWUserProfileTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUserProfileTitleView.h; path = Classes/DWUserProfileTitleView.h; sourceTree = "<group>"; };
-		265CBE1D136632DE00CC2C83 /* DWUserProfileTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUserProfileTitleView.m; path = Classes/DWUserProfileTitleView.m; sourceTree = "<group>"; };
 		265CBE1F13665B0900CC2C83 /* button_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_camera.png; path = resources/button_camera.png; sourceTree = "<group>"; };
 		265CBE2013665B0900CC2C83 /* button_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_camera@2x.png"; path = "resources/button_camera@2x.png"; sourceTree = "<group>"; };
 		2661B1A01319F7BD00A89D13 /* mediabar_keyboard_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mediabar_keyboard_bg.png; path = resources/mediabar_keyboard_bg.png; sourceTree = "<group>"; };
 		2661B1A11319F7BD00A89D13 /* mediabar_keyboard_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "mediabar_keyboard_bg@2x.png"; path = "resources/mediabar_keyboard_bg@2x.png"; sourceTree = "<group>"; };
+		2666911613D652EB00FE630D /* DWDoubleLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDoubleLineCell.h; sourceTree = "<group>"; };
+		2666911713D652EB00FE630D /* DWDoubleLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDoubleLineCell.m; sourceTree = "<group>"; };
+		2666911913D652FD00FE630D /* DWContactPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactPresenter.h; sourceTree = "<group>"; };
+		2666911A13D652FD00FE630D /* DWContactPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactPresenter.m; sourceTree = "<group>"; };
+		2666911C13D6531300FE630D /* DWContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsViewController.h; sourceTree = "<group>"; };
+		2666911D13D6531300FE630D /* DWContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsViewController.m; sourceTree = "<group>"; };
+		2666911F13D6533D00FE630D /* DWContactsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsDataSource.h; sourceTree = "<group>"; };
+		2666912013D6533D00FE630D /* DWContactsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsDataSource.m; sourceTree = "<group>"; };
 		266BBFCB1363D5EF00EBF1AD /* user_photo_gloss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_photo_gloss.png; path = resources/user_photo_gloss.png; sourceTree = "<group>"; };
 		266BBFCC1363D5EF00EBF1AD /* user_photo_gloss@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_photo_gloss@2x.png"; path = "resources/user_photo_gloss@2x.png"; sourceTree = "<group>"; };
 		2672240B131B3F9600654D88 /* modalview_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = modalview_bg.png; path = resources/modalview_bg.png; sourceTree = "<group>"; };
@@ -707,12 +701,6 @@
 		269FC6FF13D5EB68004892D0 /* DWContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContact.m; sourceTree = "<group>"; };
 		269FC70213D5EEF4004892D0 /* DWContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsController.h; sourceTree = "<group>"; };
 		269FC70313D5EEF4004892D0 /* DWContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsController.m; sourceTree = "<group>"; };
-		269FC70913D6074E004892D0 /* DWContactsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsDataSource.h; sourceTree = "<group>"; };
-		269FC70A13D6074F004892D0 /* DWContactsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsDataSource.m; sourceTree = "<group>"; };
-		269FC70D13D6126F004892D0 /* DWContactPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactPresenter.h; sourceTree = "<group>"; };
-		269FC70E13D6126F004892D0 /* DWContactPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactPresenter.m; sourceTree = "<group>"; };
-		269FC71813D6197C004892D0 /* DWContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsViewController.h; sourceTree = "<group>"; };
-		269FC71913D6197D004892D0 /* DWContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsViewController.m; sourceTree = "<group>"; };
 		26A2009A1370D0DA00B698CE /* launch_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = launch_bg.png; path = resources/launch_bg.png; sourceTree = "<group>"; };
 		26A2009B1370D0DA00B698CE /* launch_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "launch_bg@2x.png"; path = "resources/launch_bg@2x.png"; sourceTree = "<group>"; };
 		26A2009E1370D24300B698CE /* d_logo_login_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = d_logo_login_white.png; path = resources/d_logo_login_white.png; sourceTree = "<group>"; };
@@ -779,8 +767,6 @@
 		BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessageCell.m; sourceTree = "<group>"; };
 		BB272B4213CFCDFF00FDACA1 /* DWPaginationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationCell.h; sourceTree = "<group>"; };
 		BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationCell.m; sourceTree = "<group>"; };
-		BB272B4613CFCDFF00FDACA1 /* DWDoubleLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DWDoubleLineCell.h; sourceTree = "<group>"; };
-		BB272B4713CFCDFF00FDACA1 /* DWDoubleLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDoubleLineCell.m; sourceTree = "<group>"; };
 		BB272B5113CFCE5A00FDACA1 /* NSData+Crypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Crypto.h"; sourceTree = "<group>"; };
 		BB272B5213CFCE5A00FDACA1 /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
 		BB272B5313CFCE5A00FDACA1 /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helpers.h"; sourceTree = "<group>"; };
@@ -825,8 +811,6 @@
 		BB28E01A1360093000FF4566 /* loading_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_bar@2x.png"; path = "resources/loading_bar@2x.png"; sourceTree = "<group>"; };
 		BB33134112F2628F00B713F9 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWGUIManager.h; path = Classes/DWGUIManager.h; sourceTree = "<group>"; };
 		BB33134212F2628F00B713F9 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWGUIManager.m; path = Classes/DWGUIManager.m; sourceTree = "<group>"; };
-		BB33CB6E135FA93C00BDBE98 /* DWTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTitleView.h; path = Classes/DWTitleView.h; sourceTree = "<group>"; };
-		BB33CB6F135FA93C00BDBE98 /* DWTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTitleView.m; path = Classes/DWTitleView.m; sourceTree = "<group>"; };
 		BB348710138A4778003802D1 /* hand_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_text.png; path = resources/hand_text.png; sourceTree = "<group>"; };
 		BB348711138A4778003802D1 /* hand_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand_text@2x.png"; path = "resources/hand_text@2x.png"; sourceTree = "<group>"; };
 		BB348712138A4778003802D1 /* share_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_text.png; path = resources/share_text.png; sourceTree = "<group>"; };
@@ -1043,6 +1027,10 @@
 		BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchViewController.m; sourceTree = "<group>"; };
 		BBB1A8EA13D5F9E800C08315 /* DWItemsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsHelper.h; sourceTree = "<group>"; };
 		BBB1A8EB13D5F9E800C08315 /* DWItemsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsHelper.m; sourceTree = "<group>"; };
+		BBB1A8EE13D6050F00C08315 /* DWNavRightBarButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavRightBarButtonView.h; sourceTree = "<group>"; };
+		BBB1A8EF13D6050F00C08315 /* DWNavRightBarButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavRightBarButtonView.m; sourceTree = "<group>"; };
+		BBB1A8F013D6050F00C08315 /* DWNavTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavTitleView.h; sourceTree = "<group>"; };
+		BBB1A8F113D6050F00C08315 /* DWNavTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavTitleView.m; sourceTree = "<group>"; };
 		BBB3C3CE135FB21A00EA6087 /* shadow_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_bottom.png; path = resources/shadow_bottom.png; sourceTree = "<group>"; };
 		BBB3C3CF135FB21A00EA6087 /* shadow_bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "shadow_bottom@2x.png"; path = "resources/shadow_bottom@2x.png"; sourceTree = "<group>"; };
 		BBB3C3D0135FB21A00EA6087 /* shadow_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shadow_top.png; path = resources/shadow_top.png; sourceTree = "<group>"; };
@@ -1314,25 +1302,6 @@
 			);
 			name = ABContactsHelper;
 			path = External/ABContactsHelper;
-			sourceTree = "<group>";
-		};
-		265CBE1B1366324E00CC2C83 /* Title Views */ = {
-			isa = PBXGroup;
-			children = (
-				2632E59613CCE177005B1B1E /* DWNavTitleView.h */,
-				2632E59713CCE177005B1B1E /* DWNavTitleView.m */,
-				2632E59413CCE177005B1B1E /* DWNavRightBarButtonView.h */,
-				2632E59513CCE177005B1B1E /* DWNavRightBarButtonView.m */,
-				BB33CB6E135FA93C00BDBE98 /* DWTitleView.h */,
-				BB33CB6F135FA93C00BDBE98 /* DWTitleView.m */,
-				2612D6241362556D005AE9E5 /* DWPlaceTitleView.h */,
-				2612D6251362556E005AE9E5 /* DWPlaceTitleView.m */,
-				2612D62713637E43005AE9E5 /* DWUserTitleView.h */,
-				2612D62813637E44005AE9E5 /* DWUserTitleView.m */,
-				265CBE1C136632DE00CC2C83 /* DWUserProfileTitleView.h */,
-				265CBE1D136632DE00CC2C83 /* DWUserProfileTitleView.m */,
-			);
-			name = "Title Views";
 			sourceTree = "<group>";
 		};
 		267A0DA112E818AC001B0604 /* Images */ = {
@@ -1706,7 +1675,6 @@
 				BB272B3D13CFCDE100FDACA1 /* TableViewCells */,
 				BB272B2713CFCC4E00FDACA1 /* TableViewControllers */,
 				BBB1A8AD13D50EBB00C08315 /* TableViewDataSources */,
-				265CBE1B1366324E00CC2C83 /* Title Views */,
 				26EF03AF12E77CAD00E7BA76 /* Views */,
 				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -1826,6 +1794,8 @@
 		BB272B3D13CFCDE100FDACA1 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				2666911613D652EB00FE630D /* DWDoubleLineCell.h */,
+				2666911713D652EB00FE630D /* DWDoubleLineCell.m */,
 				BB272B3E13CFCDFF00FDACA1 /* DWItemFeedCell.h */,
 				BB272B3F13CFCDFF00FDACA1 /* DWItemFeedCell.m */,
 				BB272C2613D0F71E00FDACA1 /* DWTeamFeedCell.h */,
@@ -1836,8 +1806,6 @@
 				BB272B4113CFCDFF00FDACA1 /* DWMessageCell.m */,
 				BB272B4213CFCDFF00FDACA1 /* DWPaginationCell.h */,
 				BB272B4313CFCDFF00FDACA1 /* DWPaginationCell.m */,
-				BB272B4613CFCDFF00FDACA1 /* DWDoubleLineCell.h */,
-				BB272B4713CFCDFF00FDACA1 /* DWDoubleLineCell.m */,
 			);
 			name = TableViewCells;
 			path = Classes/TableViewCells;
@@ -1862,10 +1830,14 @@
 		BB272C0313D0AE7A00FDACA1 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
-				BB272C0413D0AEC200FDACA1 /* DWNavBarBackButton.h */,
-				BB272C0513D0AEC200FDACA1 /* DWNavBarBackButton.m */,
 				BB272C0613D0AEC200FDACA1 /* DWNavigationBar.h */,
 				BB272C0713D0AEC200FDACA1 /* DWNavigationBar.m */,
+				BB272C0413D0AEC200FDACA1 /* DWNavBarBackButton.h */,
+				BB272C0513D0AEC200FDACA1 /* DWNavBarBackButton.m */,
+				BBB1A8F013D6050F00C08315 /* DWNavTitleView.h */,
+				BBB1A8F113D6050F00C08315 /* DWNavTitleView.m */,
+				BBB1A8EE13D6050F00C08315 /* DWNavRightBarButtonView.h */,
+				BBB1A8EF13D6050F00C08315 /* DWNavRightBarButtonView.m */,
 			);
 			name = NavigationBar;
 			path = Classes/NavigationBar;
@@ -2243,10 +2215,10 @@
 		BBB1A8D613D50ECF00C08315 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				2666911F13D6533D00FE630D /* DWContactsDataSource.h */,
+				2666912013D6533D00FE630D /* DWContactsDataSource.m */,
 				BBB1A8D713D50EEB00C08315 /* DWSearchDataSource.h */,
 				BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */,
-				269FC70913D6074E004892D0 /* DWContactsDataSource.h */,
-				269FC70A13D6074F004892D0 /* DWContactsDataSource.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -2254,10 +2226,10 @@
 		BBB1A8DA13D5121C00C08315 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				2666911C13D6531300FE630D /* DWContactsViewController.h */,
+				2666911D13D6531300FE630D /* DWContactsViewController.m */,
 				BBB1A8DB13D5123300C08315 /* DWSearchViewController.h */,
 				BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */,
-				269FC71813D6197C004892D0 /* DWContactsViewController.h */,
-				269FC71913D6197D004892D0 /* DWContactsViewController.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -2310,6 +2282,8 @@
 		BBC8D8E913CC1B6100A224F5 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				2666911913D652FD00FE630D /* DWContactPresenter.h */,
+				2666911A13D652FD00FE630D /* DWContactPresenter.m */,
 				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
 				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
@@ -2323,8 +2297,6 @@
 				BB572A1F13D36F930060A351 /* DWMessagePresenter.m */,
 				BB572A2A13D3951D0060A351 /* DWResourcePresenter.h */,
 				BB572A2B13D3951E0060A351 /* DWResourcePresenter.m */,
-				269FC70D13D6126F004892D0 /* DWContactPresenter.h */,
-				269FC70E13D6126F004892D0 /* DWContactPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2923,11 +2895,7 @@
 				BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */,
 				268B56831356682800BB43DC /* DWCameraOverlayViewController.m in Sources */,
 				BBE70D9F135D10C2001D83CC /* DWPostProgressView.m in Sources */,
-				BB33CB70135FA93C00BDBE98 /* DWTitleView.m in Sources */,
-				2612D6261362556E005AE9E5 /* DWPlaceTitleView.m in Sources */,
-				2612D62913637E46005AE9E5 /* DWUserTitleView.m in Sources */,
 				BBD837641363D86C00326E1F /* DWSmallProfilePicView.m in Sources */,
-				265CBE1E136632DE00CC2C83 /* DWUserProfileTitleView.m in Sources */,
 				BBC7CCCB13664BF80003CE02 /* DWVideoView.m in Sources */,
 				BBFD2948138701280077904A /* DWSharingManager.m in Sources */,
 				BBFD298C1387A6D20077904A /* DWShareItemViewController.m in Sources */,
@@ -2978,8 +2946,6 @@
 				2632E58113CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m in Sources */,
 				2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */,
 				2632E59313CCE0D7005B1B1E /* DWUsersController.m in Sources */,
-				2632E59813CCE177005B1B1E /* DWNavRightBarButtonView.m in Sources */,
-				2632E59913CCE177005B1B1E /* DWNavTitleView.m in Sources */,
 				2632E5AB13CCE39B005B1B1E /* ABContact.m in Sources */,
 				2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */,
 				2632E5AD13CCE39B005B1B1E /* ABGroup.m in Sources */,
@@ -2998,7 +2964,6 @@
 				BB272B4A13CFCDFF00FDACA1 /* DWItemFeedCell.m in Sources */,
 				BB272B4B13CFCDFF00FDACA1 /* DWMessageCell.m in Sources */,
 				BB272B4C13CFCDFF00FDACA1 /* DWPaginationCell.m in Sources */,
-				BB272B4E13CFCDFF00FDACA1 /* DWDoubleLineCell.m in Sources */,
 				BB272B5913CFCE5A00FDACA1 /* NSData+Crypto.m in Sources */,
 				BB272B5A13CFCE5A00FDACA1 /* NSObject+Helpers.m in Sources */,
 				BB272B5B13CFCE5A00FDACA1 /* NSString+Helpers.m in Sources */,
@@ -3052,9 +3017,12 @@
 				269FC70013D5EB68004892D0 /* DWContact.m in Sources */,
 				269FC70413D5EEF4004892D0 /* DWContactsController.m in Sources */,
 				BBB1A8EC13D5F9E800C08315 /* DWItemsHelper.m in Sources */,
-				269FC70B13D6074F004892D0 /* DWContactsDataSource.m in Sources */,
-				269FC70F13D6126F004892D0 /* DWContactPresenter.m in Sources */,
-				269FC71A13D6197D004892D0 /* DWContactsViewController.m in Sources */,
+				BBB1A8F213D6050F00C08315 /* DWNavRightBarButtonView.m in Sources */,
+				BBB1A8F313D6050F00C08315 /* DWNavTitleView.m in Sources */,
+				2666911813D652EB00FE630D /* DWDoubleLineCell.m in Sources */,
+				2666911B13D652FD00FE630D /* DWContactPresenter.m in Sources */,
+				2666911E13D6531300FE630D /* DWContactsViewController.m in Sources */,
+				2666912113D6533D00FE630D /* DWContactsDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

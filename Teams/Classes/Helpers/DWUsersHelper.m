@@ -20,4 +20,18 @@
             user.lastName];
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)shortSignatureWithTeamName:(DWUser*)user {
+    return [NSString stringWithFormat:@"%@ / %@",
+            user.team.name,
+            user.firstName];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)displayName:(DWUser*)user {
+    return [NSString stringWithFormat:@"%@ %@",
+            user.firstName,
+            user.lastName];
+}
+
 @end

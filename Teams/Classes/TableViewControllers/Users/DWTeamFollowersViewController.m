@@ -27,8 +27,8 @@
         self.teamFollowersDataSource            = [[[DWTeamFollowersDataSource alloc] init] autorelease];
         self.teamFollowersDataSource.teamID     = team.databaseID;
         
-        //[self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
-        //                                forKey:[[DWUser class] className]];
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:KUserPresenterStyleFullSignature]
+                                        forKey:[[DWUser class] className]];
     }
     
     return self;
