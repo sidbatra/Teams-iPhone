@@ -324,10 +324,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self.loadingView.hidden         = YES;
     self.errorView.hidden           = YES;
     
-    _isPullToRefreshActive          = NO;
-    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-    
     [self.tableView reloadData];
+
+    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    _isPullToRefreshActive          = NO;    
 }
 
 //----------------------------------------------------------------------------------------------------

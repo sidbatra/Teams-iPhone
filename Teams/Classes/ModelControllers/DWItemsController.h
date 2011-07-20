@@ -138,4 +138,14 @@
  */
 - (void)teamItemsError:(NSString*)message;
 
+/**
+ * Parsed DWItem
+ */
+- (void)itemLoaded:(DWItem*)item;
+
+/**
+ * Error message encourntered while fetching an individual item
+ */
+- (void)itemError:(NSString*)error;
+
 @end
