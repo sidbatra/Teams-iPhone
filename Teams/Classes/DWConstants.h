@@ -87,7 +87,8 @@ typedef enum {
     kResourceTypeEmpty                   = -1,
     kResourceTypeLargeAttachmentImage    = 0,
     kResourceTypeSliceAttachmentImage    = 1,
-    kResourceTypeSmallUserImage          = 2
+    kResourceTypeSmallUserImage          = 2,
+    kResourceTypeSmallNotificationImage  = 3
 } DWResourceType;
 
 

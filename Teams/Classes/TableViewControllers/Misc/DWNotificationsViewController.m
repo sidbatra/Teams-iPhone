@@ -25,6 +25,11 @@
         
         self.notificationsDataSource    = [[[DWNotificationsDataSource alloc] init] autorelease];
 
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(imageLoaded:) 
+													 name:kNImgSmallNotificationLoaded
+												   object:nil];
     }
     
     return self;
@@ -32,6 +37,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.notificationsDataSource    = nil;
     
     [super dealloc];
@@ -49,6 +56,23 @@
     self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
 
     [self.notificationsDataSource loadNotifications];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)imageLoaded:(NSNotification*)notification {
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    id resource             = [info objectForKey:kKeyImage];
+    
+    [self provideResourceToVisibleCells:kResourceTypeSmallNotificationImage
+                               resource:resource
+                             resourceID:resourceID];
 }
 
 

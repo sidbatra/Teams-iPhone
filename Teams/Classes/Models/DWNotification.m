@@ -90,8 +90,8 @@
 
     
     if(image) {
-        NSString *imageURL = [notification objectForKey:kKeySmallURL];
-
+        NSString *imageURL = [image objectForKey:kKeySmallURL];
+        
         if(imageURL && ![self.imageURL isEqualToString:imageURL]) {
             self.imageURL = imageURL;
         }
@@ -125,7 +125,7 @@
 	if(resourceID != self.databaseID)
 		return;
 	
-	self.image              = [info objectForKey:kKeyImage];		
+    self.image              = [info objectForKey:kKeyImage];		
 	_isImageDownloading     = NO;
 }
 
