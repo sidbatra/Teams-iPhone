@@ -4,6 +4,8 @@
 //
 
 #import "DWUserViewDataSource.h"
+#import "DWUser.h"
+#import "DWMessage.h"
 
 
 
@@ -14,6 +16,8 @@
 
 @synthesize usersController = _usersController;
 @synthesize userID          = _userID;
+
+@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -63,6 +67,18 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
+    
+    [self clean];
+    self.objects = [NSMutableArray array];
+    
+    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    message.content     = [NSString stringWithFormat:@"%@ Team",user.team.name];
+    [self.objects addObject:message];
+    
+    [self.delegate userLoaded:user];
+    [user destroy];
+    
+    [self.delegate reloadTableView];
 }
 
 //----------------------------------------------------------------------------------------------------

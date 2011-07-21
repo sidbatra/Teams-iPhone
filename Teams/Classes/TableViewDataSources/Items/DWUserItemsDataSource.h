@@ -32,7 +32,7 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate> delegate;
+@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate,NSObject> delegate;
 
 
 /**

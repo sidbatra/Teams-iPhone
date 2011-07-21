@@ -5,6 +5,7 @@
 #import "DWContainerViewController.h"
 
 #import "DWTabBarController.h"
+#import "DWUserViewController.h"
 #import "DWUserItemsViewController.h"
 #import "DWTeamItemsViewController.h"
 #import "DWTeamMembersViewController.h"
@@ -122,12 +123,19 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
     
+    DWUserViewController *userViewController = [[[DWUserViewController alloc] 
+                                                 initWithUserID:user.databaseID] autorelease];
+    
+    [self.navigationController pushViewController:userViewController
+                                         animated:YES];
+    /*
     DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] 
                                                         initWithUserID:user.databaseID] autorelease];
     [userItemsController setItemsDelegate:self];
     
     [self.navigationController pushViewController:userItemsController
                                          animated:YES];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

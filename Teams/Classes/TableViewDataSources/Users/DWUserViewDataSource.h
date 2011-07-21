@@ -8,6 +8,9 @@
 #import "DWTableViewDataSource.h"
 #import "DWUsersController.h"
 
+@class DWUser;
+@protocol DWUserViewDataSourceDelegate;
+
 /**
  * Data source for the user table view
  */
@@ -28,10 +31,27 @@
  */
 @property (nonatomic,assign) NSInteger userID;
 
+/**
+ * Overriding the base class delegate
+ */
+@property (nonatomic,assign) id<DWUserViewDataSourceDelegate,NSObject> delegate;
+
 
 /**
  * Start fetching the user from the server
  */
 - (void)loadUser;
 
+@end
+
+
+/**
+ * Additional delegate methods for the data source
+ */
+@protocol DWUserViewDataSourceDelegate<DWTableViewDataSourceDelegate>
+
+/**
+ * Provide the fetched user object to the table view to update the UI
+ */
+- (void)userLoaded:(DWUser*)user;
 @end
