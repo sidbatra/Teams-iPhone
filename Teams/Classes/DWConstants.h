@@ -277,6 +277,8 @@ extern NSString* const kNImgActualUserImageError;
 extern NSString* const kNImgSliceAttachmentLoaded;
 extern NSString* const kNImgSliceAttachmentFinalized;
 extern NSString* const kNImgSliceAttachmentError;
+extern NSString* const kNImgSmallNotificationLoaded;
+extern NSString* const kNImgSmallNotificationError;
 extern NSString* const kNNewApplicationBadge;
 extern NSString* const kNTabSelectionChanged;
 extern NSString* const kNNewLocationAvailable;
@@ -297,8 +299,8 @@ extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNEnteringLowMemoryState;
-extern NSString* const kNImgSmallNotificationLoaded;
-extern NSString* const kNImgSmallNotificationError;
+extern NSString* const kNNotificationsLoaded;
+extern NSString* const kNNotificationsError;
 
 
 /**

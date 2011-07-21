@@ -219,6 +219,8 @@ NSString* const kNImgActualUserImageError		= @"NImgActualUserImageError";
 NSString* const kNImgSliceAttachmentLoaded		= @"NImgSliceAttachmentLoaded";
 NSString* const kNImgSliceAttachmentFinalized	= @"NImgSliceAttachmentFinalized";
 NSString* const kNImgSliceAttachmentError		= @"NImgSliceAttachmentError";
+NSString* const kNImgSmallNotificationLoaded	= @"NImgSmallNotificationLoaded";
+NSString* const kNImgSmallNotificationError		= @"NImgSmallNotificationError";
 NSString* const kNNewApplicationBadge			= @"NNewApplicationBadge"; 
 NSString* const kNTabSelectionChanged			= @"NTabSelectionChanged";
 NSString* const kNNewLocationAvailable			= @"NNewLocationAvailable";
@@ -239,8 +241,8 @@ NSString* const kNNewFeedItemsRead              = @"NNewFeedItemsRead";
 NSString* const kNUserProfilePicUpdated         = @"NUserProfilePicUpdated";
 NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
 NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
-NSString* const kNImgSmallNotificationLoaded	= @"NImgSmallNotificationLoaded";
-NSString* const kNImgSmallNotificationError		= @"NImgSmallNotificationError";
+NSString* const kNNotificationsLoaded           = @"NNotificationsLoaded";
+NSString* const kNNotificationsError            = @"NNotificationsError";
 
 
 //----------------------------------------------------------------------------------------------------
