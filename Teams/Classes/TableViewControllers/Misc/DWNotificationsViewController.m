@@ -7,6 +7,8 @@
 #import "DWNotificationsDataSource.h"
 #import "DWGUIManager.h"
 
+static NSString* const kTitle   = @"Notifications";
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -53,7 +55,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:kTitle];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
 
     [self.notificationsDataSource loadNotifications];
 }
