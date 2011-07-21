@@ -9,6 +9,7 @@
 #import "DWTeamItemsViewController.h"
 #import "DWTeamMembersViewController.h"
 #import "DWTeamFollowersViewController.h"
+#import "DWItemViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -121,8 +122,8 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
     
-    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
-                                                                                             andIgnore:YES] autorelease];
+    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] 
+                                                        initWithUserID:user.databaseID] autorelease];
     [userItemsController setItemsDelegate:self];
     
     [self.navigationController pushViewController:userItemsController
@@ -201,6 +202,15 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)itemsLogicShareSelectedForItem:(DWItem*)item {
     NSLog(@"item sharing selecred - %d",item.databaseID);
+    
+    
+    /*DWItemViewController *itemViewController = [[[DWItemViewController alloc] initWithItem:item] autorelease];
+    [itemViewController setItemsDelegate:self];
+    [itemViewController setUsersDelegate:self];
+    
+    [self.navigationController pushViewController:itemViewController
+                                         animated:YES];
+     */
 }
 
 //----------------------------------------------------------------------------------------------------

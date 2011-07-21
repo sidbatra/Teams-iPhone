@@ -44,6 +44,11 @@
                andPassword:(NSString*)password;
 
 /**
+ * Get the user with the given userID
+ */
+- (void)getUserWithID:(NSInteger)userID;
+
+/**
  * Get all the followers of the given teamID
  */
 - (void)getFollowersOfTeam:(NSInteger)teamID;
@@ -62,6 +67,11 @@
  * Get the last member of the given teamID
  */
 - (void)getLastMemberOfTeam:(NSInteger)teamID;
+
+/**
+ * Get users who've touched the given itemID
+ */
+- (void)getTouchersOfItem:(NSInteger)itemID;
 
 @end
 
@@ -100,6 +110,16 @@
 - (void)userUpdateError:(NSString*)error;
 
 /**
+ * Fired when a user object is successfully loaded
+ */
+- (void)userLoaded:(DWUser*)user;
+
+/**
+ * Fired when there is an error loading a user
+ */
+- (void)userLoadError:(NSString*)error;
+
+/**
  * Array of parsed DWUser objects following a team
  */
 - (void)teamFollowersLoaded:(NSMutableArray*)users;
@@ -118,5 +138,15 @@
  * Error message while loading users belonging a team
  */
 - (void)teamMembersError:(NSString*)error;
+
+/**
+ * Array of parsed DWUser objects who touched an item
+ */
+- (void)itemTouchersLoaded:(NSMutableArray*)users;
+
+/**
+ * Error message while loading users who touched an item
+ */
+- (void)itemTouchersError:(NSString*)error;
 
 @end

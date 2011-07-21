@@ -200,6 +200,8 @@
 		BB05BB22131B30E50068331E /* segmented_view_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05BB20131B30E50068331E /* segmented_view_bg@2x.png */; };
 		BB1DD32F136D189C0033D69B /* add_profile_pic_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1DD32D136D189C0033D69B /* add_profile_pic_placeholder.png */; };
 		BB1DD330136D189C0033D69B /* add_profile_pic_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1DD32E136D189C0033D69B /* add_profile_pic_placeholder@2x.png */; };
+		BB1F25A313D6533A00E291CF /* DWItemViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1F25A213D6533A00E291CF /* DWItemViewDataSource.m */; };
+		BB1F25A713D6603700E291CF /* DWItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB1F25A613D6603700E291CF /* DWItemViewController.m */; };
 		BB272B3213CFCCBE00FDACA1 /* DWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2A13CFCCBE00FDACA1 /* DWTableViewController.m */; };
 		BB272B3313CFCCBE00FDACA1 /* DWFollowedItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B2D13CFCCBE00FDACA1 /* DWFollowedItemsViewController.m */; };
 		BB272B3513CFCCBE00FDACA1 /* DWUserItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB272B3113CFCCBE00FDACA1 /* DWUserItemsViewController.m */; };
@@ -404,6 +406,12 @@
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
 		BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0BFDA1344487C00BCFB96 /* DWConstants.m */; };
 		BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */; };
+		BBD113B313D7C044002D7352 /* DWNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B213D7C044002D7352 /* DWNotificationsController.m */; };
+		BBD113B713D7C120002D7352 /* DWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B613D7C120002D7352 /* DWNotification.m */; };
+		BBD113BA13D7D4E4002D7352 /* DWNotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B913D7D4E4002D7352 /* DWNotificationsDataSource.m */; };
+		BBD113BD13D7D7C8002D7352 /* DWNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113BC13D7D7C8002D7352 /* DWNotificationsViewController.m */; };
+		BBD113C013D7D9B8002D7352 /* DWNotificationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */; };
+		BBD113C313D8AF36002D7352 /* DWFollowingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113C213D8AF33002D7352 /* DWFollowingsController.m */; };
 		BBD837641363D86C00326E1F /* DWSmallProfilePicView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD837631363D86C00326E1F /* DWSmallProfilePicView.m */; };
 		BBD837671363D88700326E1F /* button_notifications.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837651363D88700326E1F /* button_notifications.png */; };
 		BBD837681363D88700326E1F /* button_notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837661363D88700326E1F /* button_notifications@2x.png */; };
@@ -751,6 +759,10 @@
 		BB0CFE721302703A00F38552 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Entitlements.plist; path = resources/Entitlements.plist; sourceTree = "<group>"; };
 		BB1DD32D136D189C0033D69B /* add_profile_pic_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = add_profile_pic_placeholder.png; path = resources/add_profile_pic_placeholder.png; sourceTree = "<group>"; };
 		BB1DD32E136D189C0033D69B /* add_profile_pic_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "add_profile_pic_placeholder@2x.png"; path = "resources/add_profile_pic_placeholder@2x.png"; sourceTree = "<group>"; };
+		BB1F25A113D6533A00E291CF /* DWItemViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemViewDataSource.h; sourceTree = "<group>"; };
+		BB1F25A213D6533A00E291CF /* DWItemViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemViewDataSource.m; sourceTree = "<group>"; };
+		BB1F25A513D6603700E291CF /* DWItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemViewController.h; sourceTree = "<group>"; };
+		BB1F25A613D6603700E291CF /* DWItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemViewController.m; sourceTree = "<group>"; };
 		BB272B2913CFCCBE00FDACA1 /* DWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewController.h; sourceTree = "<group>"; };
 		BB272B2A13CFCCBE00FDACA1 /* DWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewController.m; sourceTree = "<group>"; };
 		BB272B2C13CFCCBE00FDACA1 /* DWFollowedItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowedItemsViewController.h; sourceTree = "<group>"; };
@@ -1066,6 +1078,18 @@
 		BBD0BFDA1344487C00BCFB96 /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWConstants.m; path = Classes/DWConstants.m; sourceTree = "<group>"; };
 		BBD0C3701346E2D700BCFB96 /* DWNotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNotificationsHelper.h; path = Classes/DWNotificationsHelper.h; sourceTree = "<group>"; };
 		BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNotificationsHelper.m; path = Classes/DWNotificationsHelper.m; sourceTree = "<group>"; };
+		BBD113B113D7C044002D7352 /* DWNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsController.h; sourceTree = "<group>"; };
+		BBD113B213D7C044002D7352 /* DWNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsController.m; sourceTree = "<group>"; };
+		BBD113B513D7C120002D7352 /* DWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotification.h; sourceTree = "<group>"; };
+		BBD113B613D7C120002D7352 /* DWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotification.m; sourceTree = "<group>"; };
+		BBD113B813D7D4E4002D7352 /* DWNotificationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsDataSource.h; sourceTree = "<group>"; };
+		BBD113B913D7D4E4002D7352 /* DWNotificationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsDataSource.m; sourceTree = "<group>"; };
+		BBD113BB13D7D7C8002D7352 /* DWNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsViewController.h; sourceTree = "<group>"; };
+		BBD113BC13D7D7C8002D7352 /* DWNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsViewController.m; sourceTree = "<group>"; };
+		BBD113BE13D7D9B8002D7352 /* DWNotificationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationPresenter.h; sourceTree = "<group>"; };
+		BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationPresenter.m; sourceTree = "<group>"; };
+		BBD113C113D8AF30002D7352 /* DWFollowingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowingsController.h; sourceTree = "<group>"; };
+		BBD113C213D8AF33002D7352 /* DWFollowingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowingsController.m; sourceTree = "<group>"; };
 		BBD837621363D86C00326E1F /* DWSmallProfilePicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSmallProfilePicView.h; path = Classes/DWSmallProfilePicView.h; sourceTree = "<group>"; };
 		BBD837631363D86C00326E1F /* DWSmallProfilePicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSmallProfilePicView.m; path = Classes/DWSmallProfilePicView.m; sourceTree = "<group>"; };
 		BBD837651363D88700326E1F /* button_notifications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_notifications.png; path = resources/button_notifications.png; sourceTree = "<group>"; };
@@ -1773,6 +1797,8 @@
 				BB272B3113CFCCBE00FDACA1 /* DWUserItemsViewController.m */,
 				BB272BFD13CFFB6400FDACA1 /* DWTeamItemsViewController.h */,
 				BB272BFE13CFFB6600FDACA1 /* DWTeamItemsViewController.m */,
+				BB1F25A513D6603700E291CF /* DWItemViewController.h */,
+				BB1F25A613D6603700E291CF /* DWItemViewController.m */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -2122,6 +2148,8 @@
 				BB8499E113C6B09E00D9789D /* DWUser.m */,
 				BBEE2E5D13CE8B8500AEAC83 /* DWTouch.h */,
 				BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */,
+				BBD113B513D7C120002D7352 /* DWNotification.h */,
+				BBD113B613D7C120002D7352 /* DWNotification.m */,
 				BB3A43BD13CD3B2900316EE6 /* DWPagination.h */,
 				BB3A43BE13CD3B2900316EE6 /* DWPagination.m */,
 				BB572A1B13D36E2C0060A351 /* DWMessage.h */,
@@ -2172,14 +2200,16 @@
 		BBB1A8B113D50EBB00C08315 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				BBB1A8B213D50EBB00C08315 /* DWFollowedItemsDataSource.h */,
-				BBB1A8B313D50EBB00C08315 /* DWFollowedItemsDataSource.m */,
 				BBB1A8B413D50EBB00C08315 /* DWItemsDataSource.h */,
 				BBB1A8B513D50EBB00C08315 /* DWItemsDataSource.m */,
+				BBB1A8B213D50EBB00C08315 /* DWFollowedItemsDataSource.h */,
+				BBB1A8B313D50EBB00C08315 /* DWFollowedItemsDataSource.m */,
 				BBB1A8B613D50EBB00C08315 /* DWTeamItemsDataSource.h */,
 				BBB1A8B713D50EBB00C08315 /* DWTeamItemsDataSource.m */,
 				BBB1A8B813D50EBB00C08315 /* DWUserItemsDataSource.h */,
 				BBB1A8B913D50EBB00C08315 /* DWUserItemsDataSource.m */,
+				BB1F25A113D6533A00E291CF /* DWItemViewDataSource.h */,
+				BB1F25A213D6533A00E291CF /* DWItemViewDataSource.m */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -2219,6 +2249,8 @@
 				2666912013D6533D00FE630D /* DWContactsDataSource.m */,
 				BBB1A8D713D50EEB00C08315 /* DWSearchDataSource.h */,
 				BBB1A8D813D50EEB00C08315 /* DWSearchDataSource.m */,
+				BBD113B813D7D4E4002D7352 /* DWNotificationsDataSource.h */,
+				BBD113B913D7D4E4002D7352 /* DWNotificationsDataSource.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -2230,6 +2262,8 @@
 				2666911D13D6531300FE630D /* DWContactsViewController.m */,
 				BBB1A8DB13D5123300C08315 /* DWSearchViewController.h */,
 				BBB1A8DC13D5123300C08315 /* DWSearchViewController.m */,
+				BBD113BB13D7D7C8002D7352 /* DWNotificationsViewController.h */,
+				BBD113BC13D7D7C8002D7352 /* DWNotificationsViewController.m */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -2297,6 +2331,8 @@
 				BB572A1F13D36F930060A351 /* DWMessagePresenter.m */,
 				BB572A2A13D3951D0060A351 /* DWResourcePresenter.h */,
 				BB572A2B13D3951E0060A351 /* DWResourcePresenter.m */,
+				BBD113BE13D7D9B8002D7352 /* DWNotificationPresenter.h */,
+				BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2375,6 +2411,10 @@
 				267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */,
 				BBB1A8A913D4F8F400C08315 /* DWSearchController.h */,
 				BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */,
+				BBD113B113D7C044002D7352 /* DWNotificationsController.h */,
+				BBD113B213D7C044002D7352 /* DWNotificationsController.m */,
+				BBD113C113D8AF30002D7352 /* DWFollowingsController.h */,
+				BBD113C213D8AF33002D7352 /* DWFollowingsController.m */,
 				269FC70213D5EEF4004892D0 /* DWContactsController.h */,
 				269FC70313D5EEF4004892D0 /* DWContactsController.m */,
 			);
@@ -3023,6 +3063,14 @@
 				2666911B13D652FD00FE630D /* DWContactPresenter.m in Sources */,
 				2666911E13D6531300FE630D /* DWContactsViewController.m in Sources */,
 				2666912113D6533D00FE630D /* DWContactsDataSource.m in Sources */,
+				BB1F25A313D6533A00E291CF /* DWItemViewDataSource.m in Sources */,
+				BB1F25A713D6603700E291CF /* DWItemViewController.m in Sources */,
+				BBD113B313D7C044002D7352 /* DWNotificationsController.m in Sources */,
+				BBD113B713D7C120002D7352 /* DWNotification.m in Sources */,
+				BBD113BA13D7D4E4002D7352 /* DWNotificationsDataSource.m in Sources */,
+				BBD113BD13D7D7C8002D7352 /* DWNotificationsViewController.m in Sources */,
+				BBD113C013D7D9B8002D7352 /* DWNotificationPresenter.m in Sources */,
+				BBD113C313D8AF36002D7352 /* DWFollowingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

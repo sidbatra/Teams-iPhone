@@ -95,7 +95,8 @@ typedef enum {
     kResourceTypeEmpty                   = -1,
     kResourceTypeLargeAttachmentImage    = 0,
     kResourceTypeSliceAttachmentImage    = 1,
-    kResourceTypeSmallUserImage          = 2
+    kResourceTypeSmallUserImage          = 2,
+    kResourceTypeSmallNotificationImage  = 3
 } DWResourceType;
 
 
@@ -194,6 +195,9 @@ extern NSString* const kKeyTotalProgress;
 extern NSString* const kKeyResetType;
 extern NSString* const kKeyType;
 extern NSString* const kKeyUserImage;
+extern NSString* const kKeyEntityData;
+extern NSString* const kKeyEventData;
+extern NSString* const kKeyResourceType;
 
 /**
  * Notification names
@@ -219,6 +223,8 @@ extern NSString* const kNRecentTeamsError;
 extern NSString* const kNPlaceUpdated;
 extern NSString* const kNPlaceUpdateError;
 extern NSString* const kNNewPlaceParsed;
+extern NSString* const kNFollowingLoaded;
+extern NSString* const kNFollowingError;
 extern NSString* const kNNewFollowingCreated;
 extern NSString* const kNNewFollowingError;
 extern NSString* const kNFollowingDestroyed;
@@ -228,6 +234,8 @@ extern NSString* const kNUserError;
 extern NSString* const kNUserUpdated;
 extern NSString* const kNUserUpdateError;
 extern NSString* const kNUserLogsIn;
+extern NSString* const kNItemLoaded;
+extern NSString* const kNItemError;
 extern NSString* const kNFollowedItemsLoaded;
 extern NSString* const kNFollowedItemsError;
 extern NSString* const kNUserItemsLoaded;
@@ -251,6 +259,8 @@ extern NSString* const kNTeamFollowersLoaded;
 extern NSString* const kNTeamFollowersError;	
 extern NSString* const kNTeamMembersLoaded;	
 extern NSString* const kNTeamMembersError;	
+extern NSString* const kNItemTouchersLoaded;	
+extern NSString* const kNItemTouchersError;
 extern NSString* const kNNewSessionCreated;
 extern NSString* const kNNewSessionError;
 extern NSString* const kNNewMembershipCreated;
@@ -278,6 +288,8 @@ extern NSString* const kNImgActualUserImageError;
 extern NSString* const kNImgSliceAttachmentLoaded;
 extern NSString* const kNImgSliceAttachmentFinalized;
 extern NSString* const kNImgSliceAttachmentError;
+extern NSString* const kNImgSmallNotificationLoaded;
+extern NSString* const kNImgSmallNotificationError;
 extern NSString* const kNNewApplicationBadge;
 extern NSString* const kNTabSelectionChanged;
 extern NSString* const kNNewLocationAvailable;
@@ -298,13 +310,21 @@ extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNEnteringLowMemoryState;
+extern NSString* const kNNotificationsLoaded;
+extern NSString* const kNNotificationsError;
+
 
 /**
- * Nav bar title view dimensions
+ * Nav bar sub view dimensions
  */
 extern NSInteger const kNavTitleViewX;
+extern NSInteger const kNavTitleViewY;
 extern NSInteger const kNavTitleViewWidth;
 extern NSInteger const kNavTitleViewHeight;
+extern NSInteger const kNavRightButtonX;
+extern NSInteger const kNavRightButtonY;
+extern NSInteger const kNavRightButtonWidth;
+extern NSInteger const kNavRightButtonHeight;
 
 
 /**

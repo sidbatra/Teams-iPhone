@@ -1,27 +1,29 @@
 //
-//  DWUserItemsDataSource.m
+//  DWItemViewDataSource.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWUserItemsDataSource.h"
-#import "DWUser.h"
+#import "DWItemViewDataSource.h"
 
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWUserItemsDataSource
+@implementation DWItemViewDataSource
 
-@synthesize usersController = _usersController;
-@synthesize userID          = _userID;
-@dynamic delegate;
+@synthesize itemsController     = _itemsController;
+@synthesize usersController     = _usersController;
+@synthesize itemID              = _itemID;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {
+        self.itemsController            = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController.delegate   = self;
+        
         self.usersController            = [[[DWUsersController alloc] init] autorelease];
         self.usersController.delegate   = self;
     }
@@ -31,34 +33,31 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.itemsController    = nil;
     self.usersController    = nil;
     
     [super dealloc];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)loadItems {
-    [self.itemsController getUserItemsForUserID:_userID
-                                         before:_oldestTimestamp];
-}
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadUser {
-    [self.usersController  getUserWithID:_userID];
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Data requests
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadData {
+    _itemLoaded     = NO;
+    _usersLoaded    = NO;
+
+    [self.itemsController getItemWithID:self.itemID];
+    [self.usersController getTouchersOfItem:self.itemID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    [super refreshInitiated];
-    
-    [self loadUser];
+    [self loadData];
 }
-
-//----------------------------------------------------------------------------------------------------
-- (void)paginate {
-    [self loadItems];
-}
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -68,17 +67,31 @@
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)itemsResourceID {
-    return _userID;
+    return self.itemID;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userItemsLoaded:(NSMutableArray *)items {  
-    [self populateItems:items];
+- (void)itemLoaded:(DWItem*)item {
+
+    if(!_usersLoaded) {
+        [self clean];
+        self.objects = [NSMutableArray array];
+        [self.objects addObject:item];
+    }
+    else {
+        [self.objects insertObject:item
+                           atIndex:0];
+    }
+    
+    [self.delegate reloadTableView];
+
+        
+    _itemLoaded = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userItemsError:(NSString *)message {
-    NSLog(@"User items error - %@",message);
+- (void)itemError:(NSString *)message {
+    NSLog(@"Item error - %@",message);
     [self.delegate displayError:message];
 }
 
@@ -86,26 +99,35 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUsersControlelrDelegate
+#pragma mark DWUsersControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)usersResourceID {
-    return _userID;
+    return self.itemID;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userLoaded:(DWUser*)user {
+- (void)itemTouchersLoaded:(NSMutableArray*)users {
     
-    [self.delegate userLoaded:user];
+    if(!_itemLoaded) {
+        [self clean];
+        self.objects = users;
+    }
+    else {
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,[users count])];
+        [self.objects insertObjects:users atIndexes:indexSet];          
+    }
     
-    [user startSmallImageDownload];
-    [user destroy];
+    [self.delegate reloadTableView];
+    
+    _usersLoaded = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userLoadError:(NSString*)error {
-    NSLog(@"User load error - %@",error);
-    [self.delegate displayError:error];
+- (void)itemTouchersError:(NSString *)error {
+    NSLog(@"Item touchers error - %@",error);
+    [self.delegate displayError:error];    
 }
+
 
 @end

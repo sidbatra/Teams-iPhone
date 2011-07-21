@@ -75,6 +75,11 @@
 - (void)getTeamItemsForTeamID:(NSInteger)teamID
                        before:(NSInteger)before;
 
+/**
+ * Get an individual item
+ */
+- (void)getItemWithID:(NSInteger)itemID;
+
 @end
 
 
@@ -132,5 +137,15 @@
  * Error message encountered while loading a teams's items
  */
 - (void)teamItemsError:(NSString*)message;
+
+/**
+ * Parsed DWItem
+ */
+- (void)itemLoaded:(DWItem*)item;
+
+/**
+ * Error message encourntered while fetching an individual item
+ */
+- (void)itemError:(NSString*)error;
 
 @end

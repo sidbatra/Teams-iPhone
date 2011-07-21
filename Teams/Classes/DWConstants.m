@@ -68,7 +68,7 @@ NSString* const kKeyError					= @"error";
 NSString* const kKeyErrorMessage			= @"errorMessage";
 NSString* const kKeyErrorMessages			= @"error_messages";
 NSString* const kKeyImage					= @"image";
-NSString* const kKeyResourceID				= @"resourceID";
+NSString* const kKeyResourceID				= @"resource_id";
 NSString* const kKeyPlaces					= @"places";
 NSString* const kKeyPlace					= @"place";
 NSString* const kKeyNewPlace				= @"new_place";
@@ -130,7 +130,9 @@ NSString* const kKeyTotalProgress			= @"total_progress";
 NSString* const kKeyResetType               = @"reset_type";
 NSString* const kKeyType                    = @"type";
 NSString* const kKeyUserImage               = @"user_image";
-
+NSString* const kKeyEntityData              = @"entity_data";
+NSString* const kKeyEventData               = @"event_data";
+NSString* const kKeyResourceType            = @"resource_type";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kNPopularPlacesLoaded			= @"NPopularPlacesLoaded";
@@ -154,6 +156,8 @@ NSString* const kNRecentTeamsError				= @"NRecentTeamsError";
 NSString* const kNPlaceUpdated					= @"NPlaceUpdated";
 NSString* const kNPlaceUpdateError				= @"NPlaceUpdateError";
 NSString* const kNNewPlaceParsed				= @"NNewPlaceParsed";
+NSString* const kNFollowingLoaded               = @"NFollowingLoaded";
+NSString* const kNFollowingError                = @"NFollowingError";
 NSString* const kNNewFollowingCreated			= @"NNewFollowingCreated";
 NSString* const kNNewFollowingError				= @"NNewFollowingError";
 NSString* const kNFollowingDestroyed			= @"NFollowingDestroyed";
@@ -163,6 +167,8 @@ NSString* const kNUserError						= @"NUserError";
 NSString* const kNUserUpdated					= @"NUserUpdated";
 NSString* const kNUserUpdateError				= @"NUserUpdateError";
 NSString* const kNUserLogsIn					= @"NUserLogsIn";
+NSString* const kNItemLoaded                    = @"NItemLoaded";
+NSString* const kNItemError                     = @"NItemError";
 NSString* const kNFollowedItemsLoaded			= @"NFollowedItemsLoaded";
 NSString* const kNFollowedItemsError			= @"NFollowedItemsError";
 NSString* const kNUserItemsLoaded               = @"NUserItemsLoaded";
@@ -185,7 +191,9 @@ NSString* const kNNewUserError					= @"NNewUserError";
 NSString* const kNTeamFollowersLoaded           = @"NTeamFollowersLoaded";	
 NSString* const kNTeamFollowersError            = @"NTeamFollowersError";	
 NSString* const kNTeamMembersLoaded             = @"NTeamMembersLoaded";	
-NSString* const kNTeamMembersError              = @"NTeamMembersError";	
+NSString* const kNTeamMembersError              = @"NTeamMembersError";
+NSString* const kNItemTouchersLoaded            = @"NItemTouchersLoaded";	
+NSString* const kNItemTouchersError             = @"NItemTouchersError";
 NSString* const kNNewSessionCreated				= @"NNewSessionCreated";
 NSString* const kNNewSessionError				= @"NNewSessionError";
 NSString* const kNNewMembershipCreated			= @"NNewMembershipCreated";
@@ -213,6 +221,8 @@ NSString* const kNImgActualUserImageError		= @"NImgActualUserImageError";
 NSString* const kNImgSliceAttachmentLoaded		= @"NImgSliceAttachmentLoaded";
 NSString* const kNImgSliceAttachmentFinalized	= @"NImgSliceAttachmentFinalized";
 NSString* const kNImgSliceAttachmentError		= @"NImgSliceAttachmentError";
+NSString* const kNImgSmallNotificationLoaded	= @"NImgSmallNotificationLoaded";
+NSString* const kNImgSmallNotificationError		= @"NImgSmallNotificationError";
 NSString* const kNNewApplicationBadge			= @"NNewApplicationBadge"; 
 NSString* const kNTabSelectionChanged			= @"NTabSelectionChanged";
 NSString* const kNNewLocationAvailable			= @"NNewLocationAvailable";
@@ -233,13 +243,19 @@ NSString* const kNNewFeedItemsRead              = @"NNewFeedItemsRead";
 NSString* const kNUserProfilePicUpdated         = @"NUserProfilePicUpdated";
 NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
 NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
-
+NSString* const kNNotificationsLoaded           = @"NNotificationsLoaded";
+NSString* const kNNotificationsError            = @"NNotificationsError";
 
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kNavTitleViewX                  = 60;
+NSInteger const kNavTitleViewY                  = 0;
 NSInteger const kNavTitleViewWidth              = 200;
 NSInteger const kNavTitleViewHeight             = 44;
+NSInteger const kNavRightButtonX                = 260;
+NSInteger const kNavRightButtonY                = 0;
+NSInteger const kNavRightButtonWidth            = 44;
+NSInteger const kNavRightButtonHeight           = 44;
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kDWButtonTypeStatic             = 0;
