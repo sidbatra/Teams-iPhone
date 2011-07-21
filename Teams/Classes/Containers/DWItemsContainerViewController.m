@@ -147,8 +147,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     if (!self.smallProfilePicView) {
         self.smallProfilePicView = [[[DWSmallProfilePicView alloc] 
-                                     initWithFrame:CGRectMake(260, 0, 
-                                                              kNavTitleViewWidth,kNavTitleViewHeight)] autorelease];
+                                     initWithFrame:CGRectMake(kNavRightButtonX,
+                                                              kNavRightButtonY, 
+                                                              kNavRightButtonWidth,
+                                                              kNavRightButtonHeight)] autorelease];
         self.smallProfilePicView.delegate = self;
     }
     

@@ -11,6 +11,7 @@
 #import "DWGUIManager.h"
 #import "DWUsersHelper.h"
 #import "DWNavTitleView.h"
+#import "DWSmallProfilePicView.h"
 
 
 /**
@@ -19,9 +20,19 @@
 @interface DWUserItemsViewController()
 
 /**
+ * Set the image for the small profile pic view
+ */
+- (void)setProfilePicture:(UIImage*)image;
+
+/**
  * Add the title view to the navigatio bar
  */
 - (void)loadNavTitleView;
+
+/**
+ * Load the profile picture onto the nav bar
+ */ 
+- (void)loadSmallProfilePicView;
 
 @end
 
@@ -34,6 +45,7 @@
 
 @synthesize userItemsDataSource     = _userItemsDataSource;
 @synthesize navTitleView            = _navTitleView;
+@synthesize smallProfilePicView     = _smallProfilePicView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUser:(DWUser*)user 
@@ -47,6 +59,11 @@
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleUserItems]
                                                                 forKey:[[DWItem class] className]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(smallUserImageLoaded:) 
+                                                     name:kNImgSmallUserLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -65,8 +82,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.userItemsDataSource    = nil;
     self.navTitleView           = nil;
+    self.smallProfilePicView    = nil;
     
     [super dealloc];
 }
@@ -83,8 +103,14 @@
     self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self loadNavTitleView];
+    [self loadSmallProfilePicView];
        
     [self.userItemsDataSource loadItems];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setProfilePicture:(UIImage*)image {
+    [self.smallProfilePicView setProfilePicButtonBackgroundImage:image];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -104,14 +130,47 @@
                                          andSubTitle:user.byline];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadSmallProfilePicView {
+    
+    if(!self.smallProfilePicView) {
+        self.smallProfilePicView = [[[DWSmallProfilePicView alloc] 
+                                     initWithFrame:CGRectMake(kNavRightButtonX,
+                                                              kNavRightButtonY, 
+                                                              kNavRightButtonWidth,
+                                                              kNavRightButtonHeight)] autorelease];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Nav Stack Selectors
+
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
+    [self.navigationController.navigationBar addSubview:self.smallProfilePicView];    
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)smallUserImageLoaded:(NSNotification*)notification {
+    
+	NSDictionary *info	= [notification userInfo];
+    DWUser *user        = [DWUser fetch:self.userItemsDataSource.userID];
+    
+    
+	if([[info objectForKey:kKeyResourceID] integerValue] != user.databaseID)
+		return;
+    
+    [self setProfilePicture:[info objectForKey:kKeyImage]];
 }
 
 @end

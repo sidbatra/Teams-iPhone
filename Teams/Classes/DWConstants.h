@@ -305,12 +305,16 @@ extern NSString* const kNNotificationsError;
 
 
 /**
- * Nav bar title view dimensions
+ * Nav bar sub view dimensions
  */
 extern NSInteger const kNavTitleViewX;
 extern NSInteger const kNavTitleViewY;
 extern NSInteger const kNavTitleViewWidth;
 extern NSInteger const kNavTitleViewHeight;
+extern NSInteger const kNavRightButtonX;
+extern NSInteger const kNavRightButtonY;
+extern NSInteger const kNavRightButtonWidth;
+extern NSInteger const kNavRightButtonHeight;
 
 
 /**
