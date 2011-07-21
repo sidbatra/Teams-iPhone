@@ -79,6 +79,14 @@ typedef enum {
 } DWTeamPresenterStyle;
 
 
+/**
+ * Presentation styles for the contacts presenter
+ */
+typedef enum {
+    kContactPresenterStyleSelected = 1,
+} DWContactPresenterStyle;
+
+
 
 /**
  * Types of resources flowing through the application

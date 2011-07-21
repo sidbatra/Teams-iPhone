@@ -8,6 +8,8 @@
 #import "DWTableViewDataSource.h"
 #import "DWContactsController.h"
 
+@class DWContact;
+
 /**
  * Data source for the contacts table view controller
  */
@@ -26,5 +28,15 @@
  * given string
  */
 - (void)loadContactsMatching:(NSString*)string;
+
+/*
+ * Add the given contact at the end of objects array
+ */
+- (void)addContact:(DWContact*)contact;
+
+/*
+ * Remove the given contact from the objects array
+ */
+- (void)removeContact:(DWContact*)contact;
 
 @end

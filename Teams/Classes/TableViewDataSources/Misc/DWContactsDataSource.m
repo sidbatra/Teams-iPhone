@@ -4,6 +4,7 @@
 //
 
 #import "DWContactsDataSource.h"
+#import "DWContact.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -36,6 +37,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadContactsMatching:(NSString*)string {
     [self.contactsController getContactsMatching:string];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addContact:(DWContact*)contact {
+    [self.objects addObject:contact];
+    [self.delegate reloadTableView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeContact:(DWContact*)contact {
+    [self removeObject:contact withAnimation:UITableViewRowAnimationTop];
 }
 
 

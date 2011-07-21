@@ -5,9 +5,8 @@
 
 #import "DWDoubleLineCell.h"
 
-static NSString* const kImgPlaceIcon			= @"pointer_mini_gray_dark.png";
-static NSString* const kImgPlaceHighlightedIcon = @"pointer_mini_white.png";
-static NSString* const kImgSeparator			= @"hr_gray_create.png";
+static NSString* const kImgCheckMarkIcon			= @"pointer_mini_gray_dark.png";
+static NSString* const kImgSeparator                = @"hr_gray_create.png";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -21,7 +20,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 	
     if (self) {
         self.opaque				= YES;
-		self.backgroundColor	= [UIColor blueColor];
+		self.backgroundColor	= [UIColor grayColor];
     }
     
     return self;
@@ -38,6 +37,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 
 @synthesize firstLine		= _firstLine;
 @synthesize secondLine      = _secondLine;
+@synthesize isDarker        = _isDarker;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame {
@@ -46,6 +46,7 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
     if (self) {
         self.opaque				= YES;
 		self.backgroundColor	= [UIColor colorWithRed:0.9294 green:0.9294 blue:0.9294 alpha:1.0];
+        self.isDarker           = NO;
     }
     
     return self;
@@ -61,23 +62,29 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)drawRect:(CGRect)rect {
-
-	_highlighted ? [[UIColor whiteColor] set] : [[UIColor blackColor] set];
+    
+    if (self.isDarker) 
+        [[UIColor whiteColor] set];
+    else
+        _highlighted ? [[UIColor whiteColor] set] : [[UIColor blackColor] set];
 	
 	[self.firstLine drawInRect:CGRectMake(20, 4, 293, 18) 
 					  withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 				 lineBreakMode:UILineBreakModeTailTruncation
 					 alignment:UITextAlignmentLeft];
 	
-	
-	_highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.4588 green:0.4588 blue:0.4588 alpha:1.0] set];
+	if(self.isDarker)
+        [[UIColor whiteColor] set];
+    else
+        _highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.4588 green:0.4588 blue:0.4588 alpha:1.0] set];
 	
 	[self.secondLine drawInRect:CGRectMake(20, 21, 293, 18) 
-						 withFont:[UIFont fontWithName:@"HelveticaNeue" size:15] 
-					lineBreakMode:UILineBreakModeTailTruncation
-						alignment:UITextAlignmentLeft];
+                       withFont:[UIFont fontWithName:@"HelveticaNeue" size:15] 
+                  lineBreakMode:UILineBreakModeTailTruncation
+                      alignment:UITextAlignmentLeft];
 	
-	[[UIImage imageNamed:_highlighted ? kImgPlaceHighlightedIcon : kImgPlaceIcon] drawInRect:CGRectMake(7, 8, 8, 11)];
+    if (self.isDarker) 
+        [[UIImage imageNamed:kImgCheckMarkIcon] drawInRect:CGRectMake(280, 7, 8, 11)];
 	
 	[[UIImage imageNamed:kImgSeparator] drawInRect:CGRectMake(0, 43, 320, 1)];
 }
@@ -135,8 +142,9 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 		
 		[self.contentView addSubview:self.doubleLineView];
 		
-		//self.selectedBackgroundView = [[[DWPlaceSearchResultSelectedView alloc] initWithFrame:frame] autorelease];
+		self.selectedBackgroundView = [[[DWDoubleLineSelectedView alloc] initWithFrame:frame] autorelease];
 		self.accessoryType			= UITableViewCellAccessoryNone;
+		//self.selectionStyle         = UITableViewCellSelectionStyleNone;
     }
 	
     return self;
@@ -167,6 +175,11 @@ static NSString* const kImgSeparator			= @"hr_gray_create.png";
 	[self.doubleLineView redisplay];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)turnOnDarkerState {
+    self.doubleLineView.backgroundColor = [UIColor blackColor];
+    self.doubleLineView.isDarker        = YES;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)redisplay {

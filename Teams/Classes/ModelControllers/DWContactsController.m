@@ -49,7 +49,8 @@
         dWContact.fullName      = [NSString stringWithFormat:@"%@ %@",[contact firstname],[contact lastname]];
         dWContact.email         = [contact emailaddresses];
         
-        [results addObject:dWContact];
+        if (dWContact.email) 
+            [results addObject:dWContact];
     }
     
     [self.delegate performSelector:sel

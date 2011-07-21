@@ -15,14 +15,17 @@
 /**
  * View for adding people throughout the app.
  */
-@interface DWInvitePeopleViewController : UIViewController {
+@interface DWInvitePeopleViewController : UIViewController<DWContactsViewControllerDelegate,UIActionSheetDelegate> {
     UITextField                 *_searchContactsTextField;
     UILabel                     *_resultsLabel;
     
+    NSString                    *_teamName;
+        
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
     
-    DWContactsViewController    *_contactsViewController;
+    DWContactsViewController    *_queryContactsViewController;
+    DWContactsViewController    *_addedContactsViewController;    
         
     id <DWInvitePeopleViewControllerDelegate>  _delegate;
 }
@@ -34,15 +37,21 @@
 @property (nonatomic, retain) IBOutlet UILabel *resultsLabel;
 
 /**
+ * Team which the user belongs to
+ */
+@property (nonatomic,copy) NSString *teamName;
+
+/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
- * Show contacts from the address book
+ * Controllers for quering and added contacts from the address book
  */
-@property (nonatomic,retain) DWContactsViewController *contactsViewController;
+@property (nonatomic,retain) DWContactsViewController *queryContactsViewController;
+@property (nonatomic,retain) DWContactsViewController *addedContactsViewController;
 
 /**
  * Delegate to send updates to

@@ -83,6 +83,24 @@
 - (void)addObject:(id)object
           atIndex:(NSInteger)index;
 
+/**
+ * Add the given object at the end of the array
+ */
+- (void)addObjectAtEnd:(id)object;
+
+/**
+ * Remove the given object from the array with default 
+ * animation
+ */
+- (void)removeObject:(id)object;
+
+/**
+ * Remove the given object from the array with specified 
+ * animation
+ */
+- (void)removeObject:(id)object 
+       withAnimation:(UITableViewRowAnimation)animation;
+
 @end
 
 
@@ -107,6 +125,13 @@
  * with animation
  */
 - (void)insertRowAtIndex:(NSInteger)index;
+
+/**
+ * Removes an existing row from the table view
+ * with specified animation
+ */
+- (void)removeRowAtIndex:(NSInteger)index 
+           withAnimation:(UITableViewRowAnimation)animation;
 
 /**
  * Reload the cell at the given index

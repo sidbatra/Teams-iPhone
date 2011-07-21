@@ -7,22 +7,29 @@
 
 #import "DWContactsDataSource.h"
 #import "NSObject+Helpers.h"
+#import "DWContact.h"
 
-
+static NSString* const kMsgActionSheetCancel                = @"Cancel";
+static NSString* const kMsgActionSheetDelete                = @"Delete";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWContactsViewController
 
-@synthesize contactsDataSource        = _contactsDataSource;
+@synthesize contactsDataSource          = _contactsDataSource;
+
+@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)init {
+- (id)initWithPresentationStyle:(NSInteger)style {
     self = [super init];
     
     if(self) {        
-        self.contactsDataSource = [[[DWContactsDataSource alloc] init] autorelease];
+        self.contactsDataSource = [[[DWContactsDataSource alloc] init] autorelease];        
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:style]
+                                        forKey:[[DWContact class] className]];
     }
     
     return self;
@@ -34,6 +41,25 @@
     
     [super dealloc];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark View Lifecyle
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+	[super viewDidLoad];
+    
+    self.view.hidden = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Datasource Methods
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
@@ -47,10 +73,45 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-	[super viewDidLoad];
+- (void)addContact:(DWContact *)contact {
+    [self.contactsDataSource addContact:contact];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark ActionSheet Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)showActionSheetInView:(UIView*)view forRemoving:(DWContact*)contact {
+    _contactToRemove  = contact;
     
-    self.view.hidden = YES;
+    UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
+                                                              delegate:self 
+                                                     cancelButtonTitle:kMsgActionSheetCancel
+                                                destructiveButtonTitle:kMsgActionSheetDelete
+                                                     otherButtonTitles:nil];
+    
+    [actionSheet showInView:view];
+    [actionSheet release];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+	if (buttonIndex == 0) 
+        [self.contactsDataSource removeContact:_contactToRemove];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWContactPresenterDelegate (Implemented via selectors)
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactClicked:(id)contact {
+    [self.delegate contactSelected:contact fromObject:self];
 }
 
 @end

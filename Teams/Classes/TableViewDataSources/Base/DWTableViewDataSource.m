@@ -96,6 +96,24 @@ static NSInteger const kDefaultSections = 1;
     [self.delegate insertRowAtIndex:index];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)addObjectAtEnd:(id)object {
+    [self addObject:object atIndex:[self.objects count]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeObject:(id)object {
+    [self removeObject:object withAnimation:UITableViewRowAnimationTop];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeObject:(id)object withAnimation:(UITableViewRowAnimation)animation {
+    NSInteger index = [self indexForObject:object];
+    
+    [self.objects removeObjectAtIndex:index];
+    [self.delegate removeRowAtIndex:index withAnimation:animation];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
