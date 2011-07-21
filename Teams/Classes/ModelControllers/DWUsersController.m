@@ -12,6 +12,7 @@
 
 static NSString* const kNewUserURI          = @"/users.json?user[email]=%@&user[password]=%@";
 static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
+static NSString* const kUserURI             = @"/users/%d.json?";
 static NSString* const kTeamFollowersURI    = @"/teams/%d/followers.json?limit=%d";
 static NSString* const kTeamMembersURI      = @"/teams/%d/members.json?limit=%d";
 static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
@@ -76,6 +77,16 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userUpdateError:) 
 													 name:kNUserUpdateError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userLoaded:) 
+													 name:kNUserLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userLoadError:) 
+													 name:kNUserError
 												   object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -187,6 +198,25 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
                       byline:byline     
                  andPassword:password];
 }
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Show
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUserWithID:(NSInteger)userID {
+    
+    NSString *localURL = [NSString stringWithFormat:kUserURI,
+                          userID];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserLoaded
+                                                   errorNotification:kNUserError
+                                                       requestMethod:kGet
+                                                          resourceID:userID];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -356,6 +386,54 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
     [self.delegate performSelector:sel 
                         withObject:[error localizedDescription]];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoaded:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(usersResourceID);
+    SEL usersSel = @selector(userLoaded:);
+    
+    if(![self.delegate respondsToSelector:usersSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSDictionary *data      = [userInfo objectForKey:kKeyData];
+    DWUser *user            = [DWUser create:data];    
+    
+    [self.delegate performSelector:usersSel
+                        withObject:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoadError:(NSNotification*)notification {
+    
+    SEL idSel    = @selector(usersResourceID);
+    SEL errorSel = @selector(userLoadError:);
+    
+    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    
+    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:errorSel 
+                        withObject:[error localizedDescription]];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamFollowersLoaded:(NSNotification*)notification {

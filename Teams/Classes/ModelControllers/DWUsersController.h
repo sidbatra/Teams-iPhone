@@ -44,6 +44,11 @@
                andPassword:(NSString*)password;
 
 /**
+ * Get the user with the given userID
+ */
+- (void)getUserWithID:(NSInteger)userID;
+
+/**
  * Get all the followers of the given teamID
  */
 - (void)getFollowersOfTeam:(NSInteger)teamID;
@@ -103,6 +108,16 @@
  * Error message while updating a user
  */
 - (void)userUpdateError:(NSString*)error;
+
+/**
+ * Fired when a user object is successfully loaded
+ */
+- (void)userLoaded:(DWUser*)user;
+
+/**
+ * Fired when there is an error loading a user
+ */
+- (void)userLoadError:(NSString*)error;
 
 /**
  * Array of parsed DWUser objects following a team
