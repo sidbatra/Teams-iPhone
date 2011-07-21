@@ -53,14 +53,13 @@
 @synthesize smallProfilePicView     = _smallProfilePicView;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithUser:(DWUser*)user 
-         andIgnore:(BOOL)ignore {
+- (id)initWithUserID:(NSInteger)userID {
     
     self = [super init];
     
     if(self) {
         self.userItemsDataSource        = [[[DWUserItemsDataSource alloc] init] autorelease];
-        self.userItemsDataSource.userID = user.databaseID;
+        self.userItemsDataSource.userID = userID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleUserItems]
                                                                 forKey:[[DWItem class] className]];

@@ -30,8 +30,8 @@
 //----------------------------------------------------------------------------------------------------
 + (NSString*)displayName:(DWUser*)user {
     return [NSString stringWithFormat:@"%@ %@",
-            user.firstName,
-            user.lastName];
+            user.firstName  ? user.firstName    : @"",
+            user.lastName   ? user.lastName     : @""];
 }
 
 @end

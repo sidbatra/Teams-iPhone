@@ -40,9 +40,8 @@
 
 
 /**
- * Init with the user whose items are being displayed
+ * Init with the userID whose items are being displayed
  */ 
-- (id)initWithUser:(DWUser*)user
-         andIgnore:(BOOL)ignore;
+- (id)initWithUserID:(NSInteger)userID;
 
 @end

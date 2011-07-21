@@ -122,8 +122,8 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(DWUser*)user {
     
-    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] initWithUser:user 
-                                                                                             andIgnore:YES] autorelease];
+    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] 
+                                                        initWithUserID:user.databaseID] autorelease];
     [userItemsController setItemsDelegate:self];
     
     [self.navigationController pushViewController:userItemsController
