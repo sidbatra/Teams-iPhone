@@ -15,6 +15,7 @@
 
 @synthesize usersController = _usersController;
 @synthesize userID          = _userID;
+@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -94,6 +95,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
+    
+    [self.delegate userLoaded:user];
+    
     [user startSmallImageDownload];
     [user destroy];
 }

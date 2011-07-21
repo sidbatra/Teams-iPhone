@@ -8,6 +8,8 @@
 #import "DWItemsDataSource.h"
 #import "DWUsersController.h"
 
+@protocol DWUserItemsDataSourceDelegate;
+
 /**
  * Data source for the user items view controller
  */
@@ -16,6 +18,11 @@
     
     NSInteger           _userID;
 }
+
+/**
+ * Redefined delegate object
+ */
+@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate> delegate;
 
 /**
  * Interface to the users service
@@ -33,4 +40,16 @@
  */
 - (void)loadUser;
 
+@end
+
+
+/**
+ * Additional delegate methods for the data source
+ */
+@protocol DWUserItemsDataSourceDelegate<DWTableViewDataSourceDelegate>
+
+/**
+ * Provide the fetched user object to the table view to update the UI
+ */
+- (void)userLoaded:(DWUser*)user;
 @end
