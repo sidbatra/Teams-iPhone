@@ -106,6 +106,7 @@
     [self loadSmallProfilePicView];
        
     [self.userItemsDataSource loadItems];
+    [self.userItemsDataSource loadUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -140,6 +141,11 @@
                                                               kNavRightButtonWidth,
                                                               kNavRightButtonHeight)] autorelease];
     }
+    
+    DWUser *user = [DWUser fetch:self.userItemsDataSource.userID];
+    
+    if(user.smallImage)
+        [self setProfilePicture:user.smallImage];
 }
 
 

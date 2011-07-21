@@ -4,6 +4,7 @@
 //
 
 #import "DWUserItemsDataSource.h"
+#import "DWUser.h"
 
 
 
@@ -12,13 +13,51 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserItemsDataSource
 
-@synthesize userID = _userID;
+@synthesize usersController = _usersController;
+@synthesize userID          = _userID;
+
+//----------------------------------------------------------------------------------------------------
+- (id)init {
+    self = [super init];
+    
+    if(self) {
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
+    }
+    
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    self.usersController    = nil;
+    
+    [super dealloc];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadItems {
     [self.itemsController getUserItemsForUserID:_userID
                                          before:_oldestTimestamp];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadUser {
+    [self.usersController  getUserWithID:_userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)refreshInitiated {
+    [super refreshInitiated];
+    
+    [self loadUser];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginate {
+    [self loadItems];
+}
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -42,5 +81,26 @@
     [self.delegate displayError:message];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControlelrDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)usersResourceID {
+    return _userID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoaded:(DWUser*)user {
+    [user startSmallImageDownload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoadError:(NSString*)error {
+    NSLog(@"User load error - %@",error);
+    [self.delegate displayError:error];
+}
 
 @end
