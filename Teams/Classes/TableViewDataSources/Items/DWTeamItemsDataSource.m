@@ -12,14 +12,53 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWTeamItemsDataSource
 
-@synthesize teamID  = _teamID;
+@synthesize teamsController     = _teamsController;
+@synthesize teamID              = _teamID;
+
+@dynamic delegate;
+
+//----------------------------------------------------------------------------------------------------
+- (id)init {
+    self = [super init];
+    
+    if(self) {
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate   = self;
+    }
+    
+    return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    self.teamsController    = nil;
+    
+    [super dealloc];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadItems {
-    [self.itemsController getTeamItemsForTeamID:_teamID
+    [self.itemsController getTeamItemsForTeamID:self.teamID
                                          before:_oldestTimestamp];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadFollowing {
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadTeam {
+    [self.teamsController getTeamWithID:self.teamID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)refreshInitiated {
+    [super refreshInitiated];
+    
+    [self loadTeam];
+    [self loadFollowing];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -28,7 +67,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)itemsResourceID {
-    return _teamID;
+    return self.teamID;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -40,6 +79,27 @@
 - (void)teamItemsError:(NSString *)message {
     NSLog(@"Team items error - %@",message);
     [self.delegate displayError:message];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)teamResourceID {
+    return self.teamID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamLoaded:(DWTeam *)team {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamLoadError:(NSString *)error {
+    NSLog(@"Team load error - %@",error);
+    [self.delegate displayError:error];        
 }
 
 
