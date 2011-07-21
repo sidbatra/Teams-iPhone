@@ -14,11 +14,12 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWNotification
 
-@synthesize entityData      = _entityData;
-@synthesize eventData       = _eventData;
-@synthesize resourceType    = _resourceType;
-@synthesize imageURL        = _imageURL;
-@synthesize image           = _image;
+@synthesize entityData          = _entityData;
+@synthesize eventData           = _eventData;
+@synthesize resourceType        = _resourceType;
+@synthesize imageURL            = _imageURL;
+@synthesize image               = _image;
+@synthesize createdAtTimestamp  = _createdAtTimestamp;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -68,11 +69,15 @@
 	NSString *entityData        = [notification objectForKey:kKeyEntityData];
     NSString *eventData         = [notification objectForKey:kKeyEventData];
     NSString *resourceType      = [notification objectForKey:kKeyResourceType];
+    NSString *timestamp         = [notification objectForKey:kKeyTimestamp];
     NSDictionary *image         = [notification objectForKey:kKeyImage];
     
     
     if(resourceID)
         _resourceID = [resourceID integerValue];
+    
+    if(timestamp)
+        _createdAtTimestamp = [timestamp integerValue];
     
     if(entityData && ![self.entityData isEqualToString:entityData])
         self.entityData = entityData;

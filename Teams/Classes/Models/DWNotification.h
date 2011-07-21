@@ -18,9 +18,11 @@
     NSString        *_resourceType;
     NSString        *_imageURL;
     
+    UIImage         *_image;
+    
     BOOL            _isImageDownloading;
     
-    UIImage         *_image;
+    NSTimeInterval	_createdAtTimestamp;
 }
 
 /**
@@ -47,6 +49,11 @@
  * Image location at imageURL
  */
 @property (nonatomic,retain) UIImage* image;
+
+/**
+ * Timestamp of the date of creation of the notification
+ */
+@property (nonatomic,readonly) NSTimeInterval createdAtTimestamp;
 
 
 /**
