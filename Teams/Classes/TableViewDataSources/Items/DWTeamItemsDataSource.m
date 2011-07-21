@@ -6,6 +6,18 @@
 #import "DWTeamItemsDataSource.h"
 #import "DWSession.h"
 
+/**
+ * Private method and property declarations
+ */
+@interface DWTeamItemsDataSource()
+
+/**
+ * Fire delegate if both team and following have been loaded. 
+ */
+- (void)fireTeamAndFollowingDelegate;
+
+@end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -15,6 +27,8 @@
 
 @synthesize teamsController         = _teamsController;
 @synthesize followingsController    = _followingsController;
+@synthesize team                    = _team;
+@synthesize following               = _following;
 @synthesize teamID                  = _teamID;
 
 @dynamic delegate;
@@ -36,8 +50,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    
+    [self.following destroy];
+    [self.team destroy];
+    
     self.teamsController        = nil;
     self.followingsController   = nil;
+    self.team                   = nil;
+    self.following              = nil;
     
     [super dealloc];
 }
@@ -50,12 +70,22 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadFollowing {
+    
+    [self.following destroy];
+    self.following      = nil;
+    
+    _followingLoaded    = NO;
+    
     [self.followingsController getFollowingForTeamID:self.teamID
                                            andUserID:[DWSession sharedDWSession].currentUser.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadTeam {
+    
+    [self.team destroy];
+    self.team = nil;
+    
     [self.teamsController getTeamWithID:self.teamID];
 }
 
@@ -66,6 +96,17 @@
     [self loadTeam];
     [self loadFollowing];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)fireTeamAndFollowingDelegate {
+    
+    if(!self.team || !_followingLoaded)
+        return;
+    
+    [self.delegate teamLoaded:self.team
+                withFollowing:self.following];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -101,6 +142,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam *)team {
+    self.team = team;
+    
+    [self fireTeamAndFollowingDelegate];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -122,6 +166,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingLoaded:(DWFollowing*)following {
+    self.following      = following;
+    _followingLoaded    = YES;
+    
+    [self fireTeamAndFollowingDelegate];
 }
 
 //----------------------------------------------------------------------------------------------------

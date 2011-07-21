@@ -154,7 +154,10 @@ static NSString* const kDestroyFollowingURI     = @"/followings/%d.json?";
     
     
     NSDictionary *data          = [userInfo objectForKey:kKeyData];
-    DWFollowing *following      = [DWFollowing create:data];
+    DWFollowing *following      = nil;
+    
+    if(data && ![data isKindOfClass:[NSNull class]])
+       following = [DWFollowing create:data];
     
     [self.delegate performSelector:followingSel
                         withObject:following];

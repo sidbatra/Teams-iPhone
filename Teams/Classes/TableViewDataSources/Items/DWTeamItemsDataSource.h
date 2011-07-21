@@ -20,7 +20,11 @@
     DWTeamsController       *_teamsController;
     DWFollowingsController  *_followingsController;
     
+    DWTeam                  *_team;
+    DWFollowing             *_following;
+    
     NSInteger               _teamID;
+    BOOL                    _followingLoaded;
 }
 
 /**
@@ -32,6 +36,16 @@
  * Interface to the follow service
  */
 @property (nonatomic,retain) DWFollowingsController *followingsController;
+
+/**
+ * Team whose items are being displayed
+ */
+@property (nonatomic,retain) DWTeam *team;
+
+/**
+ * Following between the current user and the team
+ */
+@property (nonatomic,retain) DWFollowing *following;
 
 /**
  * teamID for the team whose items are being displayed
