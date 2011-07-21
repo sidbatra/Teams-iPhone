@@ -103,7 +103,7 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this team";
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:nil];        
+                                                      andDelegate:self];        
     }
 }
 
@@ -124,6 +124,17 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this team";
         [self.navTitleView displayActiveButtonWithTitle:team.name
                                             andSubTitle:kMsgFollowAction];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNavTitleViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapTitleView {
+    [self.teamItemsDataSource invertFollowingState];
 }
 
 

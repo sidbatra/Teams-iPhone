@@ -190,7 +190,7 @@ static NSString* const kDestroyFollowingURI     = @"/followings/%d.json?";
 - (void)followingCreated:(NSNotification*)notification {
     
     SEL idSel           = @selector(followingResourceID);
-    SEL followingSel    = @selector(followinCreated:);
+    SEL followingSel    = @selector(followingCreated:);
     
     if(![self.delegate respondsToSelector:followingSel] || ![self.delegate respondsToSelector:idSel])
         return;
@@ -237,7 +237,7 @@ static NSString* const kDestroyFollowingURI     = @"/followings/%d.json?";
 - (void)followingDestroyed:(NSNotification*)notification {
     
     SEL idSel           = @selector(followingResourceID);
-    SEL followingSel    = @selector(followingDestroyed:);
+    SEL followingSel    = @selector(followingDestroyed);
     
     if(![self.delegate respondsToSelector:followingSel] || ![self.delegate respondsToSelector:idSel])
         return;

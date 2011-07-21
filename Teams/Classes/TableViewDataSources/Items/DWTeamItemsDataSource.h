@@ -68,6 +68,11 @@
  */
 - (void)loadFollowing;
 
+/**
+ * Invert the current following state - follow if not following and vice versa
+ */
+- (void)invertFollowingState;
+
 @end
 
 

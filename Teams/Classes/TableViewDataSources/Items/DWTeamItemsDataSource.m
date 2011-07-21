@@ -4,6 +4,7 @@
 //
 
 #import "DWTeamItemsDataSource.h"
+#import "DWFollowing.h"
 #import "DWSession.h"
 
 /**
@@ -15,6 +16,16 @@
  * Fire delegate if both team and following have been loaded. 
  */
 - (void)fireTeamAndFollowingDelegate;
+
+/**
+ * Destroy the current following object
+ */
+- (void)cleanFollowing;
+
+/**
+ * Apply a new following
+ */
+- (void)applyFollowing:(DWFollowing*)following;
 
 @end
 
@@ -70,11 +81,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadFollowing {
-    
-    [self.following destroy];
-    self.following      = nil;
-    
-    _followingLoaded    = NO;
+   
+    [self cleanFollowing];
     
     [self.followingsController getFollowingForTeamID:self.teamID
                                            andUserID:[DWSession sharedDWSession].currentUser.databaseID];
@@ -90,6 +98,20 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)invertFollowingState {
+    
+    if(self.following) {        
+        [self.followingsController deleteFollowing:self.following.databaseID
+                                         forTeamID:self.team.databaseID];
+    }
+    else {
+        [self.followingsController postFollowingForTeamID:self.team.databaseID];
+    }
+    
+    [self cleanFollowing];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
     [super refreshInitiated];
     
@@ -99,12 +121,27 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fireTeamAndFollowingDelegate {
-    
+        
     if(!self.team || !_followingLoaded)
         return;
     
     [self.delegate teamLoaded:self.team
                 withFollowing:self.following];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)cleanFollowing {
+    
+    [self.following destroy];
+    self.following      = nil;
+    
+    _followingLoaded    = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)applyFollowing:(DWFollowing *)following {
+    self.following      = following;
+    _followingLoaded    = YES;
 }
 
 
@@ -166,9 +203,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingLoaded:(DWFollowing*)following {
-    self.following      = following;
-    _followingLoaded    = YES;
     
+    [self applyFollowing:following];
     [self fireTeamAndFollowingDelegate];
 }
 
@@ -176,6 +212,30 @@
 - (void)followingLoadError:(NSString *)error {
     NSLog(@"Following load error - %@",error);
     [self.delegate displayError:error];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreated:(DWFollowing *)following {
+    [self applyFollowing:following];
+    [self fireTeamAndFollowingDelegate];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreationError:(NSString *)error {
+    NSLog(@"Following creation error - %@",error);
+    [self.delegate displayError:error];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyed {
+    [self applyFollowing:nil];
+    [self fireTeamAndFollowingDelegate];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyError:(NSString*)error {
+    NSLog(@"Following deletion error - %@",error);
+    [self.delegate displayError:error];
 }
 
 @end
