@@ -247,6 +247,7 @@ NSString* const kNNotificationsError            = @"NNotificationsError";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kNavTitleViewX                  = 60;
+NSInteger const kNavTitleViewY                  = 0;
 NSInteger const kNavTitleViewWidth              = 200;
 NSInteger const kNavTitleViewHeight             = 44;
 

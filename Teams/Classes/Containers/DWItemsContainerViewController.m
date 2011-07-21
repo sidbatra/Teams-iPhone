@@ -167,7 +167,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(60,0,200,40) 
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+                                                                             kNavTitleViewY,
+                                                                             kNavTitleViewWidth,
+                                                                             kNavTitleViewHeight) 
                                                       andDelegate:nil];
     }
 

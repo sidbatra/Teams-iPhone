@@ -308,6 +308,7 @@ extern NSString* const kNNotificationsError;
  * Nav bar title view dimensions
  */
 extern NSInteger const kNavTitleViewX;
+extern NSInteger const kNavTitleViewY;
 extern NSInteger const kNavTitleViewWidth;
 extern NSInteger const kNavTitleViewHeight;
 
