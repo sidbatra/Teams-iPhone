@@ -215,6 +215,8 @@ extern NSString* const kNRecentTeamsError;
 extern NSString* const kNPlaceUpdated;
 extern NSString* const kNPlaceUpdateError;
 extern NSString* const kNNewPlaceParsed;
+extern NSString* const kNFollowingLoaded;
+extern NSString* const kNFollowingError;
 extern NSString* const kNNewFollowingCreated;
 extern NSString* const kNNewFollowingError;
 extern NSString* const kNFollowingDestroyed;
