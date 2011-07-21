@@ -4,6 +4,7 @@
 //
 
 #import "DWTeamItemsDataSource.h"
+#import "DWSession.h"
 
 
 
@@ -12,8 +13,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWTeamItemsDataSource
 
-@synthesize teamsController     = _teamsController;
-@synthesize teamID              = _teamID;
+@synthesize teamsController         = _teamsController;
+@synthesize followingsController    = _followingsController;
+@synthesize teamID                  = _teamID;
 
 @dynamic delegate;
 
@@ -22,8 +24,11 @@
     self = [super init];
     
     if(self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
-        self.teamsController.delegate   = self;
+        self.teamsController                = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate       = self;
+        
+        self.followingsController           = [[[DWFollowingsController alloc] init] autorelease];
+        self.followingsController.delegate  = self;
     }
     
     return self;
@@ -31,7 +36,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.teamsController    = nil;
+    self.teamsController        = nil;
+    self.followingsController   = nil;
     
     [super dealloc];
 }
@@ -44,7 +50,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadFollowing {
-    
+    [self.followingsController getFollowingForTeamID:self.teamID
+                                           andUserID:[DWSession sharedDWSession].currentUser.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -103,5 +110,24 @@
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowingsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)followingResourceID {
+    return self.teamID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingLoaded:(DWFollowing*)following {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingLoadError:(NSString *)error {
+    NSLog(@"Following load error - %@",error);
+    [self.delegate displayError:error];    
+}
 
 @end

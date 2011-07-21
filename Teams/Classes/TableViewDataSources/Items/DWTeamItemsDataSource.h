@@ -7,6 +7,7 @@
 
 #import "DWItemsDataSource.h"
 #import "DWTeamsController.h"
+#import "DWFollowingsController.h"
 
 @class DWTeam;
 @class DWFollowing;
@@ -15,15 +16,22 @@
 /**
  * Data source for the team items view controller
  */
-@interface DWTeamItemsDataSource : DWItemsDataSource<DWTeamsControllerDelegate> {
-    DWTeamsController   *_teamsController;
-    NSInteger           _teamID;
+@interface DWTeamItemsDataSource : DWItemsDataSource<DWTeamsControllerDelegate,DWFollowingsControllerDelegate> {
+    DWTeamsController       *_teamsController;
+    DWFollowingsController  *_followingsController;
+    
+    NSInteger               _teamID;
 }
 
 /**
  * Interface to the teams service
  */
 @property (nonatomic,retain) DWTeamsController  *teamsController;
+
+/**
+ * Interface to the follow service
+ */
+@property (nonatomic,retain) DWFollowingsController *followingsController;
 
 /**
  * teamID for the team whose items are being displayed
@@ -40,6 +48,11 @@
  * Fetch the team from the server
  */
 - (void)loadTeam;
+
+/**
+ * Fetch the following between the team and the current user
+ */
+- (void)loadFollowing;
 
 @end
 

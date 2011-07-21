@@ -69,6 +69,8 @@
                                                                               andSelector:@selector(didTapDetailsButton:)];
     
     [self.teamItemsDataSource loadItems];
+    [self.teamItemsDataSource loadTeam];
+    [self.teamItemsDataSource loadFollowing];
 }
 
 
