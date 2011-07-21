@@ -186,6 +186,9 @@ extern NSString* const kKeyTotalProgress;
 extern NSString* const kKeyResetType;
 extern NSString* const kKeyType;
 extern NSString* const kKeyUserImage;
+extern NSString* const kKeyEntityData;
+extern NSString* const kKeyEventData;
+extern NSString* const kKeyResourceType;
 
 /**
  * Notification names
@@ -294,6 +297,9 @@ extern NSString* const kNNewFeedItemsRead;
 extern NSString* const kNUserProfilePicUpdated;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNEnteringLowMemoryState;
+extern NSString* const kNImgSmallNotificationLoaded;
+extern NSString* const kNImgSmallNotificationError;
+
 
 /**
  * Nav bar title view dimensions

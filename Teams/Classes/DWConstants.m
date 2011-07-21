@@ -68,7 +68,7 @@ NSString* const kKeyError					= @"error";
 NSString* const kKeyErrorMessage			= @"errorMessage";
 NSString* const kKeyErrorMessages			= @"error_messages";
 NSString* const kKeyImage					= @"image";
-NSString* const kKeyResourceID				= @"resourceID";
+NSString* const kKeyResourceID				= @"resource_id";
 NSString* const kKeyPlaces					= @"places";
 NSString* const kKeyPlace					= @"place";
 NSString* const kKeyNewPlace				= @"new_place";
@@ -130,7 +130,9 @@ NSString* const kKeyTotalProgress			= @"total_progress";
 NSString* const kKeyResetType               = @"reset_type";
 NSString* const kKeyType                    = @"type";
 NSString* const kKeyUserImage               = @"user_image";
-
+NSString* const kKeyEntityData              = @"entity_data";
+NSString* const kKeyEventData               = @"event_data";
+NSString* const kKeyResourceType            = @"resource_type";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kNPopularPlacesLoaded			= @"NPopularPlacesLoaded";
@@ -237,7 +239,8 @@ NSString* const kNNewFeedItemsRead              = @"NNewFeedItemsRead";
 NSString* const kNUserProfilePicUpdated         = @"NUserProfilePicUpdated";
 NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
 NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
-
+NSString* const kNImgSmallNotificationLoaded	= @"NImgSmallNotificationLoaded";
+NSString* const kNImgSmallNotificationError		= @"NImgSmallNotificationError";
 
 
 //----------------------------------------------------------------------------------------------------
