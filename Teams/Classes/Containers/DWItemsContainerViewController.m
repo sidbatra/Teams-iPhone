@@ -5,6 +5,8 @@
 
 #import "DWItemsContainerViewController.h"
 #import "DWFollowedItemsViewController.h"
+#import "DWNotificationsViewController.h"
+
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
 #import "DWCreationQueue.h"
@@ -256,7 +258,12 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
-    NSLog(@"notification button touched");
+    
+    DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
+                                                                   init] autorelease];
+    
+    [self.navigationController pushViewController:notificationsViewController
+                                         animated:YES];
 }
 
 

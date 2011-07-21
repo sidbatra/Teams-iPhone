@@ -5,6 +5,7 @@
 
 #import "DWNotificationsViewController.h"
 #import "DWNotificationsDataSource.h"
+#import "DWGUIManager.h"
 
 
 
@@ -45,6 +46,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+
     [self.notificationsDataSource loadNotifications];
 }
 
