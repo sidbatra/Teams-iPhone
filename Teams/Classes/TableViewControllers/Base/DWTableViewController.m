@@ -362,6 +362,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)removeRowAtIndex:(NSInteger)index withAnimation:(UITableViewRowAnimation)animation {
+    
+    NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
+                                                 inSection:0];
+    NSArray *indexPaths		= [NSArray arrayWithObjects:indexPath,nil];
+    
+    [self.tableView deleteRowsAtIndexPaths:indexPaths
+                          withRowAnimation:animation];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)reloadRowAtIndex:(NSInteger)index {
     
     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index

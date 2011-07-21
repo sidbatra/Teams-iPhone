@@ -9,10 +9,14 @@
 #import "DWGUIManager.h"
 #import "DWContact.h"
 
-static NSString* const kAddPeopleText           = @"Add People";
-static NSString* const kAddPeopleSubText        = @"to the %@ Team";
-static NSString* const kRightNavBarButtonText   = @"Done";
 
+static NSString* const kAddPeopleText                       = @"Add People";
+static NSString* const kAddPeopleSubText                    = @"to the %@ Team";
+static NSString* const kRightNavBarButtonText               = @"Done";
+static NSInteger const kTableViewX							= 0;
+static NSInteger const kTableViewY							= 44;
+static NSInteger const kTableViewWidth						= 320;
+static NSInteger const kTableViewHeight						= 200;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -23,10 +27,13 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 @synthesize searchContactsTextField         = _searchContactsTextField;
 @synthesize resultsLabel                    = _resultsLabel;
 
+@synthesize teamName                        = _teamName;
+
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
 
-@synthesize contactsViewController          = _contactsViewController;
+@synthesize queryContactsViewController     = _queryContactsViewController;
+@synthesize addedContactsViewController     = _addedContactsViewController;
 
 @synthesize delegate                        = _delegate;
 
@@ -41,13 +48,16 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.searchContactsTextField    = nil;
-    self.resultsLabel               = nil;
+    self.searchContactsTextField        = nil;
+    self.resultsLabel                   = nil;
     
-    self.navTitleView               = nil;
-    self.navRightBarButtonView      = nil;    
+    self.teamName                       = nil;
     
-    self.contactsViewController     = nil;
+    self.navTitleView                   = nil;
+    self.navRightBarButtonView          = nil;    
+    
+    self.queryContactsViewController    = nil;
+    self.addedContactsViewController    = nil;    
     
     [super dealloc];
 }
@@ -77,7 +87,7 @@ static NSString* const kRightNavBarButtonText   = @"Done";
                               andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kAddPeopleText 
-                        andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,@"Twitter"]];    
+                        andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,self.teamName]];    
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
@@ -87,11 +97,24 @@ static NSString* const kRightNavBarButtonText   = @"Done";
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
     
-    CGRect frame                            = CGRectMake(0,100,320,320);    
-    self.contactsViewController             = [[[DWContactsViewController alloc] init] autorelease];
-    self.contactsViewController.view.frame  = frame;
     
-    [self.view addSubview:self.contactsViewController.view];
+
+    
+    self.queryContactsViewController                = [[[DWContactsViewController alloc]
+                                                        initWithPresentationStyle:kPresentationStyleDefault] autorelease];
+
+    self.addedContactsViewController                = [[[DWContactsViewController alloc]
+                                                        initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
+    
+    self.queryContactsViewController.delegate       = self;
+    self.addedContactsViewController.delegate       = self;
+    
+    CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
+    self.queryContactsViewController.view.frame     = frame;
+    self.addedContactsViewController.view.frame     = frame;
+    
+    [self.view addSubview:self.queryContactsViewController.view];    
+    [self.view addSubview:self.addedContactsViewController.view];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -99,6 +122,22 @@ static NSString* const kRightNavBarButtonText   = @"Done";
     [super viewDidUnload];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayAddedContacts {
+    self.queryContactsViewController.view.hidden    = YES;  
+    self.addedContactsViewController.view.hidden    = NO;     
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayQueriedContacts {
+    self.queryContactsViewController.view.hidden    = NO;  
+    self.addedContactsViewController.view.hidden    = YES;    
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -107,14 +146,40 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)searchContactsTextFieldEditingChanged:(id)sender {
-    self.contactsViewController.view.hidden = NO;    
-    [self.contactsViewController loadContactsMatching:self.searchContactsTextField.text];
+    
+    if ([self.searchContactsTextField.text length]) {        
+        [self displayQueriedContacts];        
+        [self.queryContactsViewController loadContactsMatching:self.searchContactsTextField.text];
+    }
+    else {
+        [self displayAddedContacts];
+    }
 }
 
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
     [self.delegate peopleInvited];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWContactsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactSelected:(DWContact *)contact fromObject:(id)object {
+    if ([object isEqual:self.queryContactsViewController ] ) {
+        [self displayAddedContacts];
+        [self.addedContactsViewController addContact:contact];
+        
+        self.searchContactsTextField.text = kEmptyString;        
+    }
+    else {
+        [self.addedContactsViewController showActionSheetInView:self.parentViewController.view
+                                                    forRemoving:contact];
+    }
 }
 
 

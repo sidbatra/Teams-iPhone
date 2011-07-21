@@ -8,7 +8,7 @@
 #import "DWDoubleLineCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 60;
+static CGFloat const kCellHeight  = 44;
 
 
 
@@ -34,6 +34,10 @@ static CGFloat const kCellHeight  = 60;
     [cell setFirstLine:contact.fullName];
     [cell setSecondLine:contact.email];
     
+    if(style == kContactPresenterStyleSelected) {
+        [cell turnOnDarkerState];
+    }
+
     [cell reset];
     [cell redisplay];
     
@@ -59,7 +63,15 @@ static CGFloat const kCellHeight  = 60;
 //----------------------------------------------------------------------------------------------------
 + (void)cellClickedForObject:(id)object
                 withDelegate:(id)delegate {
-    NSLog(@"cell clicked for contact cell");
+    
+    SEL sel = @selector(contactClicked:);
+    
+    if(![delegate respondsToSelector:sel])
+        return;
+    
+    
+    [delegate performSelector:sel 
+                   withObject:object];
 }
 
 @end

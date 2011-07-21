@@ -203,6 +203,7 @@
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
     invitePeopleViewController.delegate                         = self;
+    invitePeopleViewController.teamName                         = [DWSession sharedDWSession].currentUser.team.name;
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];
@@ -217,6 +218,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)peopleInvited {
     [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
+    [[DWSession sharedDWSession] update]; 
+    
     [self.parentViewController dismissModalViewControllerAnimated:YES];    
 }
 

@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * Forms the background view of a selected place search result cell
+ * Forms the background view of a selected double line cell
  */
 @interface DWDoubleLineSelectedView : UIView {
 }
@@ -22,6 +22,7 @@
 	NSString	*_secondLine;
 	
 	BOOL		_highlighted;
+    BOOL        _isDarker;
 }
 
 
@@ -34,6 +35,11 @@
  * Second line
  */
 @property (nonatomic,copy) NSString* secondLine;
+
+/**
+ * Checks if the cell is in its darker state
+ */
+@property (nonatomic,assign) BOOL isDarker;
 
 /**
  * Reset any variables that may not be refreshed - eg : _highlight
@@ -77,6 +83,10 @@
  */ 
 - (void)setSecondLine:(NSString*)secondLine;
 
+/**
+ * Turn on the dark colored state
+ */ 
+- (void)turnOnDarkerState;
 
 /**
  * Sets the cell to be rerendered
