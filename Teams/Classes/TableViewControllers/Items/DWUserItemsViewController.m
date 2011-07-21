@@ -20,6 +20,11 @@
 @interface DWUserItemsViewController()
 
 /**
+ * Update the display of the title view
+ */
+- (void)updateTitleViewWithUser:(DWUser*)user;
+
+/**
  * Set the image for the small profile pic view
  */
 - (void)setProfilePicture:(UIImage*)image;
@@ -110,6 +115,12 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)updateTitleViewWithUser:(DWUser*)user {
+    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
+                                         andSubTitle:user.byline];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setProfilePicture:(UIImage*)image {
     [self.smallProfilePicView setProfilePicButtonBackgroundImage:image];
 }
@@ -126,9 +137,7 @@
     }
     
     DWUser *user = [DWUser fetch:self.userItemsDataSource.userID];
-    
-    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
-                                         andSubTitle:user.byline];
+    [self updateTitleViewWithUser:user];
 }
 
 //----------------------------------------------------------------------------------------------------
