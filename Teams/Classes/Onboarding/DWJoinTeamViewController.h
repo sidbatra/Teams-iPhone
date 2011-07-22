@@ -4,11 +4,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+
 #import "DWMembershipsController.h"
 
 @class DWTeam;
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
+
 @protocol DWJoinTeamViewControllerDelegate;
 
 /**

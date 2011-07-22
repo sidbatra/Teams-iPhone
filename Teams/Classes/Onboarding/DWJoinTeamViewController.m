@@ -4,9 +4,12 @@
 //
 
 #import "DWJoinTeamViewController.h"
-#import "DWGUIManager.h"
+
 #import "DWConstants.h"
 #import "DWMembership.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWGUIManager.h"
 
 
 static NSString* const kJoinTeamText                    = @"Join %@";
