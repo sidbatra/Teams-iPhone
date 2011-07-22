@@ -9,6 +9,7 @@
 #import "DWTeam.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
+#import "DWTeamsHelper.h"
 
 
 
@@ -61,7 +62,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    DWTeam *team = [DWTeam fetch:self.teamFollowersDataSource.teamID];
+    
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:[DWTeamsHelper watchersOfTeam:team]];
     
     [self.teamFollowersDataSource loadUsers];
 }
