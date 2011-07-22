@@ -11,6 +11,7 @@
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
 #import "DWNavTitleView.h"
+#import "DWSession.h"
 
 
 static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
@@ -134,7 +135,11 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleView {
-    [self.teamItemsDataSource invertFollowingState];
+    
+    DWTeam *team = [DWTeam fetch:self.teamItemsDataSource.teamID];
+    
+    if(team != [DWSession sharedDWSession].currentUser.team)
+        [self.teamItemsDataSource invertFollowingState];
 }
 
 
