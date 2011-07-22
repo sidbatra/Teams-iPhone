@@ -57,6 +57,16 @@
 + (void)cellClickedForObject:(id)object
                 withDelegate:(id)delegate {
     
+    SEL sel             = @selector(messageClicked:);
+    DWMessage *message  = object;
+    
+    if(![delegate respondsToSelector:sel] || !message.interactive)
+        return;
+
+    
+    [delegate performSelector:sel 
+                   withObject:object];
+    
 }
 
 @end

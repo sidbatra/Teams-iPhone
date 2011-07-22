@@ -44,8 +44,10 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserViewDataSource
 
-@synthesize usersController = _usersController;
-@synthesize userID          = _userID;
+@synthesize usersController     = _usersController;
+@synthesize teamMessage         = _teamMessage;
+@synthesize watchingMessage     = _watchingMessage;
+@synthesize userID              = _userID;
 
 @dynamic delegate;
 
@@ -64,6 +66,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.usersController    = nil;
+    self.teamMessage        = nil;
+    self.watchingMessage    = nil;
     
     [super dealloc];
 }
@@ -83,21 +87,21 @@
 //----------------------------------------------------------------------------------------------------
 - (void)addCurrentTeamMessage:(DWUser*)user {
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.interactive = YES;
-    message.content     = [DWUsersHelper currentTeamLine:user];
+    self.teamMessage                = [[[DWMessage alloc] init] autorelease];
+    self.teamMessage.interactive    = YES;
+    self.teamMessage.content        = [DWUsersHelper currentTeamLine:user];
     
-    [self.objects addObject:message];
+    [self.objects addObject:self.teamMessage];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)addWatchingTeamsMessage:(DWUser*)user {
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.interactive = YES;
-    message.content     = [DWUsersHelper watchingTeamsLine:user];
+    self.watchingMessage                = [[[DWMessage alloc] init] autorelease];
+    self.watchingMessage.interactive    = YES;
+    self.watchingMessage.content        = [DWUsersHelper watchingTeamsLine:user];
     
-    [self.objects addObject:message];
+    [self.objects addObject:self.watchingMessage];
 }
 
 //----------------------------------------------------------------------------------------------------

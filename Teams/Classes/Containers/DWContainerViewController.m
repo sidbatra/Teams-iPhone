@@ -5,7 +5,6 @@
 #import "DWContainerViewController.h"
 
 #import "DWTabBarController.h"
-#import "DWUserViewController.h"
 #import "DWUserItemsViewController.h"
 #import "DWTeamItemsViewController.h"
 #import "DWTeamMembersViewController.h"
@@ -126,16 +125,10 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     DWUserViewController *userViewController = [[[DWUserViewController alloc] 
                                                  initWithUserID:user.databaseID] autorelease];
     
+    userViewController.delegate =  self;
+    
     [self.navigationController pushViewController:userViewController
                                          animated:YES];
-    /*
-    DWUserItemsViewController *userItemsController  = [[[DWUserItemsViewController alloc] 
-                                                        initWithUserID:user.databaseID] autorelease];
-    [userItemsController setItemsDelegate:self];
-    
-    [self.navigationController pushViewController:userItemsController
-                                         animated:YES];
-     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -297,6 +290,22 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)showInvitePeople {
     [self invitePeople];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark TeamViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userViewShowTeam:(DWTeam*)team {
+    [self teamSelected:team];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userViewShowTeamsWatchedBy:(DWUser*)user {
+    NSLog(@"teams watched by user");
 }
 
 

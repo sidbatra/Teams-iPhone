@@ -9,6 +9,7 @@
 #import "DWUsersController.h"
 
 @class DWUser;
+@class DWMessage;
 @protocol DWUserViewDataSourceDelegate;
 
 /**
@@ -18,6 +19,9 @@
     
     DWUsersController   *_usersController;
     
+    DWMessage           *_teamMessage;
+    DWMessage           *_watchingMessage;
+    
     NSInteger           _userID;
 }
 
@@ -25,6 +29,17 @@
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
+
+/**
+ * Message displaying the current team
+ */
+@property (nonatomic,retain) DWMessage *teamMessage;
+
+/**
+ * Message displaying the total teams being watched
+ */
+@property (nonatomic,retain) DWMessage *watchingMessage;
+
 
 /**
  * ID of the user being displayed

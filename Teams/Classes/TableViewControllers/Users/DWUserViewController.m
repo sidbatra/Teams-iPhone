@@ -32,6 +32,7 @@
 
 @synthesize userViewDataSource  = _userViewDataSource;
 @synthesize navTitleView        = _navTitleView;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUserID:(NSInteger)userID {
@@ -113,6 +114,23 @@
 - (void)userLoaded:(DWUser*)user {
     [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
                                          andSubTitle:user.team.name];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWResourcePresenterDelegate (via selectors)
+
+//----------------------------------------------------------------------------------------------------
+- (void)messageClicked:(id)message {
+    
+    DWUser *user = [DWUser fetch:self.userViewDataSource.userID];
+    
+    if(message == self.userViewDataSource.teamMessage)
+        [self.delegate userViewShowTeam:user.team];
+    else if(message == self.userViewDataSource.watchingMessage)
+        [self.delegate userViewShowTeamsWatchedBy:user];
 }
 
 
