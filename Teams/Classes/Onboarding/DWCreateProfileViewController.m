@@ -4,11 +4,14 @@
 //
 
 #import "DWCreateProfileViewController.h"
-#import "DWUser.h"
-#import "DWRequestsManager.h"
+
 #import "NSString+Helpers.h"
-#import "DWSession.h"
 #import "DWConstants.h"
+#import "DWUser.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWSpinnerOverlayView.h"
+
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
 static NSString* const kMsgIncomplete           = @"Enter first name, last name, email and password";
@@ -17,6 +20,7 @@ static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kCreateProfileText       = @"Add Yourself";
 static NSString* const kCreateProfileSubText    = @"to the %@ Team";
 static NSString* const kRightNavBarButtonText   = @"Next";
+static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -24,11 +28,11 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreateProfileViewController
 
-@synthesize profileDetailsContainerView     = _profileDetailsContainerView;
 @synthesize firstNameTextField              = _firstNameTextField;
 @synthesize lastNameTextField               = _lastNameTextField;
 @synthesize byLineTextField                 = _byLineTextField;
 @synthesize passwordTextField               = _passwordTextField;
+@synthesize spinnerContainerView            = _spinnerContainerView;
 
 @synthesize password                        = _password;
 @synthesize teamName                        = _teamName;
@@ -36,6 +40,7 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navRightBarButtonView           = _navRightBarButtonView;
+@synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
 
@@ -46,31 +51,30 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 - (id)init {
 	self = [super init];
 	
-	if(self) {        
-        
+	if(self) {
         self.usersController            = [[[DWUsersController alloc] init] autorelease];        
         self.usersController.delegate   = self;
+        
         _hasPasswordChanged             = NO;
 	}
-    
 	return self;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-    self.profileDetailsContainerView    = nil;
 	self.firstNameTextField             = nil;
     self.lastNameTextField              = nil;
 	self.byLineTextField                = nil;
 	self.passwordTextField              = nil;
+    self.spinnerContainerView           = nil;
     
     self.password                       = nil;    
-    self.teamName                           = nil;
+    self.teamName                       = nil;
     
     self.navTitleView                   = nil;
 	self.navRightBarButtonView          = nil;
+    self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
 	
@@ -100,8 +104,11 @@ static NSString* const kRightNavBarButtonText   = @"Next";
                                                                 kNavTitleViewHeight)
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
+    if (!self.spinnerOverlayView)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)
+                                                                        andMessageText:kMsgProcesssing] autorelease];
     
-	[[self.profileDetailsContainerView layer] setCornerRadius:2.5f];	
+    
 	[self.firstNameTextField becomeFirstResponder];
 }
 
@@ -132,6 +139,18 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
+- (void)freezeUI {	
+    self.spinnerContainerView.hidden = NO;
+    [self.spinnerOverlayView enable];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unfreezeUI {
+    self.spinnerContainerView.hidden = YES;
+    [self.spinnerOverlayView disable];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)updateUser {
 
 	if (self.byLineTextField.text.length == 0 || 
@@ -148,6 +167,8 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 		[alert release];
 	}
 	else {			
+        [self freezeUI];
+        
         if(_hasPasswordChanged)
             self.password = [self.passwordTextField.text encrypt];
 
@@ -194,12 +215,11 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
     if (textField == self.passwordTextField) {
-        
         self.passwordTextField.text = kEmptyString;
         _hasPasswordChanged         = YES;
     }
-    
     return YES;
 }
 
@@ -211,8 +231,10 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    user.encryptedPassword  = self.password;
+    user.encryptedPassword = self.password;
+    
     [self.delegate userDetailsUpdated:user];
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -225,6 +247,8 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 
@@ -236,8 +260,10 @@ static NSString* const kRightNavBarButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.firstNameTextField becomeFirstResponder];    
+    
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];
 }
 
 

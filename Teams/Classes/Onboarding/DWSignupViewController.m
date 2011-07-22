@@ -110,7 +110,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(90,170)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
                                                                         andMessageText:kMsgProcesssing] autorelease];
     
     [self.emailTextField becomeFirstResponder];

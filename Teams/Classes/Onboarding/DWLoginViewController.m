@@ -58,7 +58,6 @@ static NSString* const kMsgProcesssing          = @"Logging In";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
 	self.emailTextField             = nil;
 	self.passwordTextField          = nil;
@@ -101,7 +100,7 @@ static NSString* const kMsgProcesssing          = @"Logging In";
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(100,130)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,130)
                                                                         andMessageText:kMsgProcesssing] autorelease];
 
     [self.emailTextField becomeFirstResponder];

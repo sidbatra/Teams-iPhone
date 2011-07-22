@@ -5,7 +5,7 @@
 
 #import "DWSpinnerOverlayView.h"
 
-static NSInteger const kSpinnerSize     = 20;
+static NSInteger const kSpinnerSize = 20;
 
 
 /**
@@ -83,7 +83,7 @@ static NSInteger const kSpinnerSize     = 20;
 - (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text {
     
     UILabel *messageLabel			= [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(origin.x,origin.y,100,20)] 
+                                        initWithFrame:CGRectMake(origin.x,origin.y,200,20)] 
                                        autorelease];	
     
 	messageLabel.backgroundColor	= [UIColor clearColor];

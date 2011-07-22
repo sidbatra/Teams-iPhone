@@ -108,7 +108,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(90,170)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
                                                                         andMessageText:kMsgProcesssing] autorelease];
 
     

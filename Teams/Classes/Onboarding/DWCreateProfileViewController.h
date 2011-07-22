@@ -4,13 +4,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <QuartzCore/QuartzCore.h>
 
-#import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
 #import "DWUsersController.h"
 
 @class DWUser;
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
+@class DWSpinnerOverlayView;
+
 @protocol DWCreateProfileViewControllerDelegate;
 
 
@@ -19,11 +20,11 @@
  */
 @interface DWCreateProfileViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate> {
 	
-	UIView                      *_profileDetailsContainerView;
 	UITextField                 *_firstNameTextField;
     UITextField                 *_lastNameTextField;
 	UITextField                 *_byLineTextField;
 	UITextField                 *_passwordTextField;
+	UIView                      *_spinnerContainerView;            
     
 	NSString                    *_password; 
     NSString                    *_teamName;
@@ -32,6 +33,7 @@
 			  	
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWUsersController           *_usersController;
 																				    
@@ -42,11 +44,11 @@
 /**
  * IBOutlet properties
  */
-@property (nonatomic, retain) IBOutlet UIView *profileDetailsContainerView;
 @property (nonatomic, retain) IBOutlet UITextField *firstNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *lastNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *byLineTextField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Encrypted password for the current user
@@ -68,6 +70,11 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Custom overlay spinner view
+ */
+@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling user requests
