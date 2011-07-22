@@ -13,7 +13,7 @@
 #import "DWNavTitleView.h"
 
 
-static NSString* const kMsgFollowAction = @"Tap to start watching this team";
+static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 
 
 /**
