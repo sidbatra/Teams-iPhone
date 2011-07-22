@@ -34,7 +34,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
     
     self = [super init];
     

@@ -59,6 +59,10 @@
                     byline:(NSString*)byline 
                  andDomain:(NSString*)domain;
 
+- (void)updateTeamHavingID:(NSInteger)teamID 
+                  withName:(NSString*)name 
+                 andByline:(NSString*)byline;
+
 @end
 
 
