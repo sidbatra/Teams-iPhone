@@ -12,30 +12,32 @@
  * User model represnts a user entity as defined in the database
  */
 @interface DWUser : DWPoolObject<NSCoding> {
-	NSString	*_firstName;
-	NSString	*_lastName;
-    NSString    *_byline;
-	NSString	*_email;
-	NSString	*_encryptedPassword;
-	NSString	*_smallURL;
-    NSString	*_largeURL;
-	NSData      *_twitterXAuthToken;
-	NSString	*_facebookAccessToken;
+	NSString        *_firstName;
+	NSString        *_lastName;
+    NSString        *_byline;
+	NSString        *_email;
+	NSString        *_encryptedPassword;
+	NSString        *_smallURL;
+    NSString        *_largeURL;
+	NSData          *_twitterXAuthToken;
+	NSString        *_facebookAccessToken;
     
-    DWTeam      *_team;
+    DWTeam          *_team;
 	
-	UIImage		*_smallImage;
-    UIImage     *_largeImage;
+	UIImage         *_smallImage;
+    UIImage         *_largeImage;
     
-    NSInteger   _followingCount;
+    NSInteger       _followingCount;
+    NSTimeInterval	_createdAtTimestamp;
+
 	
-	BOOL		_isSmallDownloading;
-    BOOL		_isLargeDownloading;
-	BOOL		_isProcessed;
-	BOOL		_hasPhoto;
-    BOOL        _isCurrentUser;
-    BOOL        _isNewUser;
-    BOOL        _hasInvitedPeople;
+	BOOL            _isSmallDownloading;
+    BOOL            _isLargeDownloading;
+	BOOL            _isProcessed;
+	BOOL            _hasPhoto;
+    BOOL            _isCurrentUser;
+    BOOL            _isNewUser;
+    BOOL            _hasInvitedPeople;
 }
 
 /**
@@ -111,6 +113,11 @@
  * Number of places followed by the user
  */
 @property (nonatomic,assign) NSInteger followingCount;
+
+/**
+ * Timestamp of creation
+ */
+@property (nonatomic,readonly) NSTimeInterval createdAtTimestamp;
 
 /**
  * If the user object is the object of the currently signed in user

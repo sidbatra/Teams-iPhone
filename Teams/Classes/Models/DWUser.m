@@ -63,6 +63,7 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 @synthesize twitterXAuthToken	= _twitterXAuthToken;
 @synthesize	facebookAccessToken = _facebookAccessToken;
 @synthesize followingCount      = _followingCount;
+@synthesize createdAtTimestamp  = _createdAtTimestamp;
 @synthesize isCurrentUser       = _isCurrentUser;
 @synthesize isNewUser           = _isNewUser;
 @synthesize hasInvitedPeople    = _hasInvitedPeople;
@@ -198,6 +199,7 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     NSString *lastName          = [user objectForKey:kKeyLastName];
     NSString *byline            = [user objectForKey:kKeyByLine];
     NSString *followingsCount   = [user objectForKey:kKeyFollowingsCount];
+    NSString *timestamp         = [user objectForKey:kKeyTimestamp];
     NSDictionary *photo         = [user objectForKey:kKeyPhoto];
     NSDictionary *team          = [user objectForKey:kKeyTeam];
 
@@ -216,6 +218,9 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
     
     if(followingsCount)
         self.followingCount = [followingsCount integerValue];
+    
+    if(timestamp)
+        _createdAtTimestamp = [timestamp integerValue];
     
     
     if(photo) {

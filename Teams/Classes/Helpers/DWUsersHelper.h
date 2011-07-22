@@ -33,4 +33,19 @@
  */
 + (NSString*)displayName:(DWUser*)user;
 
+/**
+ * Formats the user's team as - <Team Name> Team
+ */
++ (NSString*)currentTeamLine:(DWUser*)user;
+
+/**
+ * Formats the user's following count - Watching %d other Team(s)
+ */
++ (NSString*)watchingTeamsLine:(DWUser*)user;
+
+/** 
+ * Formats date of joining - "Joined July 9th, 2011"
+ */
++ (NSString*)createdAtLine:(DWUser*)user;
+
 @end
