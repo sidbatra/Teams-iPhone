@@ -9,6 +9,7 @@
 
 @class DWTeam;
 @class DWTeamItemsDataSource;
+@class DWNavTitleView;
 @protocol DWTeamItemsViewControllerDelegate;
 
 
@@ -18,6 +19,8 @@
 @interface DWTeamItemsViewController : DWItemsViewController {
     DWTeamItemsDataSource       *_teamItemsDataSource;
     
+    DWNavTitleView              *_navTitleView;
+    
     id<DWTeamItemsViewControllerDelegate>    _delegate;
 }
 
@@ -25,6 +28,11 @@
  * Data source for the table view
  */
 @property (nonatomic,retain) DWTeamItemsDataSource *teamItemsDataSource;
+
+/**
+ * Title view for the nav bar
+ */
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
 
 /**
  * Delegate that receives messages based on the DWTeamViewControllerDelegate protocol

@@ -49,7 +49,6 @@
 		26254D1913029E6F00D83345 /* user_medium_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CF313029E6F00D83345 /* user_medium_placeholder@2x.png */; };
 		26254D1A13029E6F00D83345 /* user_small_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CF413029E6F00D83345 /* user_small_placeholder.png */; };
 		26254D1B13029E6F00D83345 /* user_small_placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CF513029E6F00D83345 /* user_small_placeholder@2x.png */; };
-		262836F013D8E351001E29FC /* DWInvitesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262836EF13D8E351001E29FC /* DWInvitesController.m */; };
 		262CEE64135A5C9500E678AB /* flash_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 262CEE52135A5C9500E678AB /* flash_off.png */; };
 		262CEE65135A5C9500E678AB /* flash_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262CEE53135A5C9500E678AB /* flash_off@2x.png */; };
 		262CEE66135A5C9500E678AB /* flash_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 262CEE54135A5C9500E678AB /* flash_on.png */; };
@@ -154,6 +153,7 @@
 		268C02EB1389FD1100DA1541 /* pointer_gray_dark_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E71389FD1100DA1541 /* pointer_gray_dark_active@2x.png */; };
 		268C02EC1389FD1100DA1541 /* pointer_gray_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E81389FD1100DA1541 /* pointer_gray_dark.png */; };
 		268C02ED1389FD1100DA1541 /* pointer_gray_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268C02E91389FD1100DA1541 /* pointer_gray_dark@2x.png */; };
+		268C697D13D907AF00169997 /* DWInvitesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268C697C13D907AF00169997 /* DWInvitesController.m */; };
 		269FC70013D5EB68004892D0 /* DWContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC6FF13D5EB68004892D0 /* DWContact.m */; };
 		269FC70413D5EEF4004892D0 /* DWContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 269FC70313D5EEF4004892D0 /* DWContactsController.m */; };
 		26A2009C1370D0DA00B698CE /* launch_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A2009A1370D0DA00B698CE /* launch_bg.png */; };
@@ -581,8 +581,6 @@
 		26254CF313029E6F00D83345 /* user_medium_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_medium_placeholder@2x.png"; path = "resources/user_medium_placeholder@2x.png"; sourceTree = "<group>"; };
 		26254CF413029E6F00D83345 /* user_small_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = user_small_placeholder.png; path = resources/user_small_placeholder.png; sourceTree = "<group>"; };
 		26254CF513029E6F00D83345 /* user_small_placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "user_small_placeholder@2x.png"; path = "resources/user_small_placeholder@2x.png"; sourceTree = "<group>"; };
-		262836EE13D8E351001E29FC /* DWInvitesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInvitesController.h; sourceTree = "<group>"; };
-		262836EF13D8E351001E29FC /* DWInvitesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInvitesController.m; sourceTree = "<group>"; };
 		262CEE52135A5C9500E678AB /* flash_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flash_off.png; path = resources/flash_off.png; sourceTree = "<group>"; };
 		262CEE53135A5C9500E678AB /* flash_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "flash_off@2x.png"; path = "resources/flash_off@2x.png"; sourceTree = "<group>"; };
 		262CEE54135A5C9500E678AB /* flash_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = flash_on.png; path = resources/flash_on.png; sourceTree = "<group>"; };
@@ -708,6 +706,8 @@
 		268C02E71389FD1100DA1541 /* pointer_gray_dark_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pointer_gray_dark_active@2x.png"; path = "resources/pointer_gray_dark_active@2x.png"; sourceTree = "<group>"; };
 		268C02E81389FD1100DA1541 /* pointer_gray_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pointer_gray_dark.png; path = resources/pointer_gray_dark.png; sourceTree = "<group>"; };
 		268C02E91389FD1100DA1541 /* pointer_gray_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "pointer_gray_dark@2x.png"; path = "resources/pointer_gray_dark@2x.png"; sourceTree = "<group>"; };
+		268C697B13D907AF00169997 /* DWInvitesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInvitesController.h; sourceTree = "<group>"; };
+		268C697C13D907AF00169997 /* DWInvitesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInvitesController.m; sourceTree = "<group>"; };
 		269FC6FE13D5EB68004892D0 /* DWContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContact.h; sourceTree = "<group>"; };
 		269FC6FF13D5EB68004892D0 /* DWContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContact.m; sourceTree = "<group>"; };
 		269FC70213D5EEF4004892D0 /* DWContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsController.h; sourceTree = "<group>"; };
@@ -2319,6 +2319,8 @@
 		BBC8D8E913CC1B6100A224F5 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				2666911913D652FD00FE630D /* DWContactPresenter.h */,
+				2666911A13D652FD00FE630D /* DWContactPresenter.m */,
 				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
 				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
@@ -2334,8 +2336,6 @@
 				BB572A2B13D3951E0060A351 /* DWResourcePresenter.m */,
 				BBD113BE13D7D9B8002D7352 /* DWNotificationPresenter.h */,
 				BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */,
-				2666911913D652FD00FE630D /* DWContactPresenter.h */,
-				2666911A13D652FD00FE630D /* DWContactPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2400,6 +2400,8 @@
 		BBF8989913CA3F1300D5C5FB /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				268C697B13D907AF00169997 /* DWInvitesController.h */,
+				268C697C13D907AF00169997 /* DWInvitesController.m */,
 				BBEE2E4F13CE720A00AEAC83 /* DWSessionController.h */,
 				BBEE2E5013CE720A00AEAC83 /* DWSessionController.m */,
 				2632E59113CCE0D7005B1B1E /* DWUsersController.h */,
@@ -2420,8 +2422,6 @@
 				BBD113C213D8AF33002D7352 /* DWFollowingsController.m */,
 				269FC70213D5EEF4004892D0 /* DWContactsController.h */,
 				269FC70313D5EEF4004892D0 /* DWContactsController.m */,
-				262836EE13D8E351001E29FC /* DWInvitesController.h */,
-				262836EF13D8E351001E29FC /* DWInvitesController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -3076,7 +3076,7 @@
 				BBD113BD13D7D7C8002D7352 /* DWNotificationsViewController.m in Sources */,
 				BBD113C013D7D9B8002D7352 /* DWNotificationPresenter.m in Sources */,
 				BBD113C313D8AF36002D7352 /* DWFollowingsController.m in Sources */,
-				262836F013D8E351001E29FC /* DWInvitesController.m in Sources */,
+				268C697D13D907AF00169997 /* DWInvitesController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

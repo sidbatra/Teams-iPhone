@@ -20,11 +20,6 @@
 }
 
 /**
- * Redefined delegate object
- */
-@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate> delegate;
-
-/**
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
@@ -33,6 +28,11 @@
  * The userID whose items are being displayed
  */
 @property (nonatomic,assign) NSInteger userID;
+
+/**
+ * Redefined delegate object
+ */
+@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate> delegate;
 
 
 /**

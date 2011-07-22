@@ -30,7 +30,7 @@
 - (void)setProfilePicture:(UIImage*)image;
 
 /**
- * Add the title view to the navigatio bar
+ * Add the title view to the navigation bar
  */
 - (void)loadNavTitleView;
 
