@@ -4,13 +4,16 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DWNavRightBarButtonView.h"
-#import "DWNavTitleView.h"
+
 #import "DWUsersController.h"
 #import "DWTeamsController.h"
 
 @class DWTeam;
 @class DWUser;
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
+@class DWSpinnerOverlayView;
+
 @protocol DWSignupViewControllerDelegate;
 
 
@@ -19,6 +22,7 @@
  */
 @interface DWSignupViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate,DWTeamsControllerDelegate> {
     UITextField                 *_emailTextField;
+	UIView                      *_spinnerContainerView;        
     
 	NSString                    *_password;    
     NSInteger                   _userID;
@@ -27,6 +31,7 @@
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWUsersController           *_usersController;
     DWTeamsController           *_teamsController;
@@ -39,6 +44,7 @@
  * IBOutlets
  */
 @property (nonatomic, retain) IBOutlet UITextField *emailTextField;
+@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Encrypted user password
@@ -46,16 +52,21 @@
 @property (nonatomic,copy) NSString *password;
 
 /**
- * Model Controllers
- */
-@property (nonatomic,retain) DWUsersController *usersController;
-@property (nonatomic,retain) DWTeamsController *teamsController;
-
-/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Custom overlay spinner view
+ */
+@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+
+/**
+ * Model Controllers
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic,retain) DWTeamsController *teamsController;
 
 /**
  * Delegate to send updates to

@@ -4,11 +4,16 @@
 //
 
 #import "DWSignupViewController.h"
-#import "DWGUIManager.h"
-#import "DWConstants.h"
+
 #import "NSString+Helpers.h"
+#import "DWConstants.h"
 #import "DWTeam.h"
 #import "DWUser.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWSpinnerOverlayView.h"
+#import "DWGUIManager.h"
+
 
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kRightNavBarButtonText           = @"Next";
@@ -16,6 +21,7 @@ static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter your work email";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
+static NSString* const kMsgProcesssing                  = @"Searching existing teams ...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -24,11 +30,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @implementation DWSignupViewController
 
 @synthesize emailTextField              = _emailTextField;
+@synthesize spinnerContainerView        = _spinnerContainerView;
 
 @synthesize password                    = _password;
 
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize usersController             = _usersController;
 @synthesize teamsController             = _teamsController;
@@ -42,12 +50,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     if (self) {
         self.usersController            = [[[DWUsersController alloc] init] autorelease];    
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
         self.usersController.delegate   = self;
+        
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
         self.teamsController.delegate   = self;
         
-        _hasCreatedUser             = NO;
-        _teamResourceID             = [[NSDate date] timeIntervalSince1970];
+        _hasCreatedUser                 = NO;
+        _teamResourceID                 = [[NSDate date] timeIntervalSince1970];
     }
     
     return self;
@@ -56,11 +65,13 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
     self.emailTextField             = nil;
+    self.spinnerContainerView       = nil;
     
     self.password                   = nil;
     
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
+    self.spinnerOverlayView         = nil;
     
     self.usersController            = nil;
     self.teamsController            = nil;
@@ -97,6 +108,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                                 kNavTitleViewHeight)
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
+    
+    if (!self.spinnerOverlayView)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(90,170)
+                                                                        andMessageText:kMsgProcesssing] autorelease];
+    
+    [self.emailTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -118,6 +135,18 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
+- (void)freezeUI {	
+    self.spinnerContainerView.hidden = NO;
+    [self.spinnerOverlayView enable];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unfreezeUI {
+    self.spinnerContainerView.hidden = YES;
+    [self.spinnerOverlayView disable];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayEmptyFieldsError {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
                                                     message:kMsgIncomplete
@@ -134,6 +163,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         [self displayEmptyFieldsError];
 	}
 	else {			
+        [self freezeUI];
         self.password = [@"password" encrypt];        
         
         [self.usersController createUserWithEmail:self.emailTextField.text 
@@ -146,7 +176,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 	if (self.emailTextField.text.length == 0) {        
         [self displayEmptyFieldsError];
 	}
-	else {			               
+	else {		
+        [self freezeUI];
         [self.usersController updateUserHavingID:_userID 
                                        withEmail:self.emailTextField.text];
     }    
@@ -209,6 +240,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -233,6 +266,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 
@@ -249,6 +284,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam*)team {
     [self.delegate teamLoaded:team];
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -260,6 +296,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 
@@ -272,6 +310,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];        
 }
 
 @end

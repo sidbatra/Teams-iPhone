@@ -67,10 +67,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationController.navigationBarHidden   = YES;
+    self.navigationController.navigationBarHidden           = YES;
+    self.navigationController.navigationBar.clipsToBounds   = NO;
     
-    self.splashScreenViewController                 = [[[DWSplashScreenViewController alloc] init] autorelease];
-    self.splashScreenViewController.delegate    	= self;
+    self.splashScreenViewController                         = [[[DWSplashScreenViewController alloc] init] autorelease];
+    self.splashScreenViewController.delegate                = self;
     
     [self.view addSubview:self.splashScreenViewController.view];
 }

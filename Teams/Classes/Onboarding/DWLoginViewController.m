@@ -20,7 +20,7 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kLoginText               = @"Log In";
 static NSString* const kRightNavBarButtonText   = @"Done";
-static NSString* const kMsgLoading              = @"Logging In";
+static NSString* const kMsgProcesssing          = @"Logging In";
 
 
 
@@ -102,7 +102,7 @@ static NSString* const kMsgLoading              = @"Logging In";
     
     if (!self.spinnerOverlayView)
         self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(100,130)
-                                                                        andMessageText:kMsgLoading] autorelease];
+                                                                        andMessageText:kMsgProcesssing] autorelease];
 
     [self.emailTextField becomeFirstResponder];
 }
@@ -210,7 +210,6 @@ static NSString* const kMsgLoading              = @"Logging In";
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
-    self.navigationController.navigationBar.clipsToBounds = NO;
 }
 
 @end
