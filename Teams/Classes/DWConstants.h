@@ -78,6 +78,13 @@ typedef enum {
     kTeamPresenterStyleNavigationDisabled = 1,
 } DWTeamPresenterStyle;
 
+/**
+ * Presentation styles for the resource presenter
+ */
+typedef enum {
+    kResourcePresenterStyleFat = 1,
+} DWResourcePresenterStyle;
+
 
 /**
  * Presentation styles for the contacts presenter
@@ -96,7 +103,9 @@ typedef enum {
     kResourceTypeLargeAttachmentImage    = 0,
     kResourceTypeSliceAttachmentImage    = 1,
     kResourceTypeSmallUserImage          = 2,
-    kResourceTypeSmallNotificationImage  = 3
+    kResourceTypeLargeUserImage          = 3,
+    kResourceTypeSmallNotificationImage  = 4
+    
 } DWResourceType;
 
 
@@ -454,7 +463,9 @@ extern NSString* const kFacebookAppID;
 extern NSInteger const kStatusBarStyle;
 extern NSInteger const kURLTagMultipler;
 extern NSInteger const kPaginationCellHeight;
+extern NSInteger const kSlimCellHeight;
 extern NSInteger const kMessageCellHeight;
+extern NSInteger const kImageCellHeight;
 extern NSString* const kEmptyString;
 
 
