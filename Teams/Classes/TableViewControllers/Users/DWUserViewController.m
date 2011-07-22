@@ -5,7 +5,9 @@
 
 #import "DWUserViewController.h"
 #import "DWUser.h"
+#import "DWResource.h"
 #import "DWGUIManager.h"
+#import "NSObject+Helpers.h"
 
 
 
@@ -23,6 +25,15 @@
     if(self) {
         self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
         self.userViewDataSource.userID  = userID;
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kResourcePresenterStyleFat]
+                                        forKey:[[DWResource class] className]];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(largeImageLoaded:) 
+                                                     name:kNImgLargeUserLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -41,6 +52,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.userViewDataSource = nil;
     
     [super dealloc];
@@ -69,5 +82,24 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)largeImageLoaded:(NSNotification*)notification {
+    
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    id resource             = [info objectForKey:kKeyImage];
+    
+    [self provideResourceToVisibleCells:kResourceTypeLargeUserImage
+                               resource:resource
+                             resourceID:resourceID];
+}
+
 
 @end
