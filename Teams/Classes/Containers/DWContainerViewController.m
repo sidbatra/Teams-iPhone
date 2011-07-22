@@ -10,6 +10,7 @@
 #import "DWTeamMembersViewController.h"
 #import "DWTeamFollowersViewController.h"
 #import "DWItemViewController.h"
+#import "DWUserTeamsViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -305,7 +306,14 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userViewShowTeamsWatchedBy:(DWUser*)user {
-    NSLog(@"teams watched by user");
+    DWUserTeamsViewController *userTeamsViewController = [[[DWUserTeamsViewController alloc] 
+                                                           initWithUser:user
+                                                           andIgnore:YES] autorelease];
+    
+    [userTeamsViewController setTeamsDelegate:self];
+    
+    [self.navigationController pushViewController:userTeamsViewController
+                                         animated:YES];
 }
 
 

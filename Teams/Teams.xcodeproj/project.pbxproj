@@ -348,6 +348,7 @@
 		BB8B8E9D1352EB1C00C8CB76 /* tab_places_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB8B8E931352EB1C00C8CB76 /* tab_places_on.png */; };
 		BB8B8E9E1352EB1C00C8CB76 /* tab_places_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB8B8E941352EB1C00C8CB76 /* tab_places_on@2x.png */; };
 		BB9D3FCC13D92FE200CC8F07 /* DWUserTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCB13D92FE200CC8F07 /* DWUserTeamsDataSource.m */; };
+		BB9D3FD013D9313900CC8F07 /* DWUserTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */; };
 		BB9EC29E135430A800D6BBF6 /* tab_create_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9EC29C135430A800D6BBF6 /* tab_create_active.png */; };
 		BB9EC29F135430A800D6BBF6 /* tab_create_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9EC29D135430A800D6BBF6 /* tab_create_active@2x.png */; };
 		BB9EC5E413551BD600D6BBF6 /* ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9EC5E213551BD600D6BBF6 /* ghost.png */; };
@@ -1001,6 +1002,8 @@
 		BB8B8E941352EB1C00C8CB76 /* tab_places_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_places_on@2x.png"; path = "resources/tab_places_on@2x.png"; sourceTree = "<group>"; };
 		BB9D3FCA13D92FE200CC8F07 /* DWUserTeamsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserTeamsDataSource.h; sourceTree = "<group>"; };
 		BB9D3FCB13D92FE200CC8F07 /* DWUserTeamsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserTeamsDataSource.m; sourceTree = "<group>"; };
+		BB9D3FCE13D9313900CC8F07 /* DWUserTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserTeamsViewController.h; sourceTree = "<group>"; };
+		BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserTeamsViewController.m; sourceTree = "<group>"; };
 		BB9EC29C135430A800D6BBF6 /* tab_create_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tab_create_active.png; path = resources/tab_create_active.png; sourceTree = "<group>"; };
 		BB9EC29D135430A800D6BBF6 /* tab_create_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tab_create_active@2x.png"; path = "resources/tab_create_active@2x.png"; sourceTree = "<group>"; };
 		BB9EC5E213551BD600D6BBF6 /* ghost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ghost.png; path = resources/ghost.png; sourceTree = "<group>"; };
@@ -1907,6 +1910,8 @@
 				BB272C3713D1046D00FDACA1 /* DWPopularTeamsViewController.m */,
 				BB272C3C13D10A6900FDACA1 /* DWRecentTeamsViewController.h */,
 				BB272C3D13D10A6B00FDACA1 /* DWRecentTeamsViewController.m */,
+				BB9D3FCE13D9313900CC8F07 /* DWUserTeamsViewController.h */,
+				BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */,
 				BB272C5713D248A800FDACA1 /* DWTeamViewController.h */,
 				BB272C5813D248A800FDACA1 /* DWTeamViewController.m */,
 			);
@@ -3101,6 +3106,7 @@
 				BBD113DF13D908D0002D7352 /* DWUserViewController.m in Sources */,
 				BBD113EA13D90C40002D7352 /* DWImageCell.m in Sources */,
 				BB9D3FCC13D92FE200CC8F07 /* DWUserTeamsDataSource.m in Sources */,
+				BB9D3FD013D9313900CC8F07 /* DWUserTeamsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
