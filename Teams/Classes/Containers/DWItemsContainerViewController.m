@@ -6,6 +6,7 @@
 #import "DWItemsContainerViewController.h"
 #import "DWFollowedItemsViewController.h"
 #import "DWNotificationsViewController.h"
+#import "DWUserViewController.h"
 
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
@@ -237,7 +238,15 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 
 //----------------------------------------------------------------------------------------------------
 - (void)profilePictureTouched {
-    NSLog(@"profile picture touched");
+    
+    DWUserViewController *userViewController = [[[DWUserViewController alloc] 
+                                                 initWithUserID:[DWSession sharedDWSession].currentUser.databaseID]
+                                                autorelease];
+    
+    userViewController.delegate =  self;
+    
+    [self.navigationController pushViewController:userViewController
+                                         animated:YES];
 }
 
 
