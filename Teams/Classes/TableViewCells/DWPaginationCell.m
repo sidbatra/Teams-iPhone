@@ -56,7 +56,7 @@ static NSInteger const kSpinnerSize             = 20;
                                            autorelease];
     spinner.alpha   = 0.5;
 	spinner.frame	= CGRectMake((self.contentView.frame.size.width - kSpinnerSize)/2,
-                                 (60 - kSpinnerSize)/2,
+                                 (kPaginationCellHeight - kSpinnerSize)/2,
                                  kSpinnerSize,
                                  kSpinnerSize);
     

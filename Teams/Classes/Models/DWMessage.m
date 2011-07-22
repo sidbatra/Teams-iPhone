@@ -12,7 +12,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWMessage
 
-@synthesize content = _content;
+@synthesize content         = _content;
+@synthesize interactive     = _interactive;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {

@@ -449,15 +449,10 @@ extern NSString* const kFacebookAppID;
 /**
  * Misc App UI
  */
-extern NSString* const kPlaceListViewControllerNib;
-extern NSString* const kGenericBackButtonTitle;
 extern NSInteger const kStatusBarStyle;
-extern NSInteger const kAttachmentHeight;
-extern NSInteger const kAttachmentYPadding;
 extern NSInteger const kURLTagMultipler;
 extern NSInteger const kPaginationCellHeight;
-extern NSInteger const kUserViewCellHeight;
-extern NSInteger const kPlaceViewCellHeight;
+extern NSInteger const kMessageCellHeight;
 extern NSString* const kEmptyString;
 
 

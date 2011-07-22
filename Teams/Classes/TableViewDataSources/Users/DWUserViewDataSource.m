@@ -72,6 +72,7 @@
     self.objects = [NSMutableArray array];
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    message.interactive = YES;
     message.content     = [NSString stringWithFormat:@"%@ Team",user.team.name];
     [self.objects addObject:message];
     

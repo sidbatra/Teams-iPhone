@@ -6,8 +6,7 @@
 #import "DWMessagePresenter.h"
 #import "DWMessageCell.h"
 #import "DWMessage.h"
-
-static CGFloat const kCellHeight  = 60;
+#import "DWConstants.h"
 
 
 
@@ -32,6 +31,9 @@ static CGFloat const kCellHeight  = 60;
     
     [cell setMessage:message.content];
     
+    if(message.interactive)
+        [cell enableInteractiveMode];
+    
     return cell;
 }
 
@@ -39,7 +41,7 @@ static CGFloat const kCellHeight  = 60;
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return kMessageCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------
