@@ -30,4 +30,14 @@
  */
 + (NSString*)totalMembersLineForTeam:(DWTeam*)team;
 
+/**
+ * Title for watchers of team
+ */
++ (NSString*)watchersOfTeam:(DWTeam*)team;
+
+/**
+ * Title for members of team
+ */
++ (NSString*)membersOfTeam:(DWTeam*)team ;
+
 @end

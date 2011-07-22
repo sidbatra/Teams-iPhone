@@ -45,9 +45,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (NSInteger)presentationStyleForClassName:(NSString*)className;
 
 /**
- * Generate and return the identifier for the given class name
+ * Generate and return the identifier for the given class name and style
  */
-- (NSString*)identifierForClassName:(NSString*)className;
+- (NSString*)identifierForClassName:(NSString*)className 
+                          withStyle:(NSInteger)style;
 
 @end
 
@@ -217,8 +218,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
-- (NSString*)identifierForClassName:(NSString *)className {
-    return className;
+- (NSString*)identifierForClassName:(NSString*)className 
+                          withStyle:(NSInteger)style {
+    
+    return [NSString stringWithFormat:@"%@_%d",className,style];
 }
 
 
@@ -258,7 +261,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                                          forSection:indexPath.section];
     
     NSString *className     = [[object class] className];
-    NSString* identifier    = [self identifierForClassName:className];
+    NSInteger style         = [self presentationStyleForClassName:className];
+    NSString* identifier    = [self identifierForClassName:className 
+                                                 withStyle:style];
     
     id cell                 = [tableView dequeueReusableCellWithIdentifier:identifier];
     
@@ -269,7 +274,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                             withBaseCell:cell
                       withCellIdentifier:identifier
                             withDelegate:[self getDelegateForClassName:className]
-                    andPresentationStyle:[self presentationStyleForClassName:className]];
+                    andPresentationStyle:style];
 }
 
 

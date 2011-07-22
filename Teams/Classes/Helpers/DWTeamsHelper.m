@@ -36,4 +36,14 @@
             team.membersCount == 1 ? @"Person" : @"People"];    
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)watchersOfTeam:(DWTeam*)team {
+    return [NSString stringWithFormat:@"Watching %@",team.name];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)membersOfTeam:(DWTeam*)team {
+    return [NSString stringWithFormat:@"Team %@",team.name];
+}
+
 @end

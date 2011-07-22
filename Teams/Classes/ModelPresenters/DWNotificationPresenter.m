@@ -8,8 +8,6 @@
 #import "DWSlimCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 60;
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -49,7 +47,7 @@ static CGFloat const kCellHeight  = 60;
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return kSlimCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------

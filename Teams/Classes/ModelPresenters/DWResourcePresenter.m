@@ -6,9 +6,8 @@
 #import "DWResourcePresenter.h"
 #import "DWResource.h"
 #import "DWSlimCell.h"
+#import "DWImageCell.h"
 #import "DWConstants.h"
-
-static CGFloat const kCellHeight  = 60;
 
 
 
@@ -18,25 +17,64 @@ static CGFloat const kCellHeight  = 60;
 @implementation DWResourcePresenter
 
 //----------------------------------------------------------------------------------------------------
++ (UITableViewCell*)slimCellForObject:(id)object
+                         withBaseCell:(id)base
+                   withCellIdentifier:(NSString*)identifier {
+    
+    DWResource *resource        = object;
+    DWSlimCell *cell            = base;
+
+    if(!cell)
+        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewStylePlain 
+                                  reuseIdentifier:identifier] autorelease];
+
+    cell.boldText   = resource.text;
+
+    [cell setImage:resource.image];
+
+    [cell reset];
+    [cell redisplay];
+    
+    return cell;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UITableViewCell*)fatCellForObject:(id)object
+                        withBaseCell:(id)base
+                  withCellIdentifier:(NSString*)identifier {
+    
+    DWResource *resource        = object;
+    DWImageCell *cell           = base;
+    
+    if(!cell)
+        cell = [[[DWImageCell alloc] initWithStyle:UITableViewStylePlain 
+                                   reuseIdentifier:identifier] autorelease];
+    
+    [cell setImage:resource.image];
+    [cell setByline:resource.text];
+    
+    return cell;
+}
+
+//----------------------------------------------------------------------------------------------------
 + (UITableViewCell*)cellForObject:(id)object
                      withBaseCell:(id)base
                withCellIdentifier:(NSString*)identifier
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
     
-    DWResource *resource        = object;
-    DWSlimCell *cell            = base;
+    UITableViewCell *cell = nil;
     
-    if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewStylePlain 
-                                  reuseIdentifier:identifier] autorelease];
-    
-    cell.boldText   = resource.text;
-    
-    [cell setImage:resource.image];
-    
-    [cell reset];
-    [cell redisplay];
+    if(style == kResourcePresenterStyleFat) {
+        cell = [self fatCellForObject:object
+                         withBaseCell:base
+                   withCellIdentifier:identifier];
+    }
+    else {
+        cell = [self slimCellForObject:object
+                          withBaseCell:base
+                    withCellIdentifier:identifier];
+    }
     
     return cell;
 }
@@ -45,7 +83,28 @@ static CGFloat const kCellHeight  = 60;
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return style == kResourcePresenterStyleFat ? kImageCellHeight : kSlimCellHeight;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)updateFatCell:(id)base 
+             withImage:(UIImage*)image {
+    
+    DWImageCell *cell = base;
+    [cell setImage:image];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)updateSlimCell:(id)base
+             withImage:(UIImage*)image
+           forResource:(DWResource*)resourceObject {
+
+    DWSlimCell *cell = base;
+
+    [cell setImage:image];
+    [cell redisplay];
+        
+    resourceObject.image = image;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -56,18 +115,19 @@ static CGFloat const kCellHeight  = 60;
                  havingResourceID:(NSInteger)resourceID
                            ofType:(NSInteger)resourceType {    
     
-    DWResource *resourceObject      = object;
+    DWResource *resourceObject = object;
     
     if(resourceType != resourceObject.imageResourceType || resourceID != resourceObject.imageResourceID)
         return;
     
-    DWSlimCell *cell                = base;
-    
-    if([resource isKindOfClass:[UIImage class]]) {
-        [cell setImage:resource];
-        [cell redisplay];
-        
-        resourceObject.image = resource;
+    if(style == kResourcePresenterStyleFat) {
+        [self updateFatCell:base
+                  withImage:resource];
+    }
+    else {
+        [self updateSlimCell:base
+                   withImage:resource
+                 forResource:resourceObject];
     }
 }
 

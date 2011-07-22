@@ -59,5 +59,10 @@
     return [NSString stringWithFormat:@"Joined %@",[dateFormat stringFromDate:userCreatedAt]];
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)userTeamsTitle:(DWUser*)user {
+    return [NSString stringWithFormat:@"%@'s watching",user.firstName];
+}
+
 
 @end

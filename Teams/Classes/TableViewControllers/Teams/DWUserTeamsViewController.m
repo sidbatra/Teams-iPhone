@@ -1,35 +1,32 @@
 //
-//  DWTeamFollowersViewController.m
+//  DWUserTeamsViewController.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWTeamFollowersViewController.h"
-#import "DWTeamFollowersDataSource.h"
+#import "DWUserTeamsViewController.h"
+#import "DWUserTeamsDataSource.h"
 #import "DWUser.h"
-#import "DWTeam.h"
-#import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
-#import "DWTeamsHelper.h"
+#import "DWUsersHelper.h"
 
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWTeamFollowersViewController
+@implementation DWUserTeamsViewController
 
-@synthesize teamFollowersDataSource = _teamFollowersDataSource;
+@synthesize userTeamsDataSource = _userTeamsDataSource;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithTeam:(DWTeam*)team {
-    self =  [super init];
+- (id)initWithUser:(DWUser*)user 
+         andIgnore:(BOOL)ignore {
     
-    if(self) {
-        self.teamFollowersDataSource            = [[[DWTeamFollowersDataSource alloc] init] autorelease];
-        self.teamFollowersDataSource.teamID     = team.databaseID;
-        
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:KUserPresenterStyleFullSignature]
-                                        forKey:[[DWUser class] className]];
+    self = [super init];
+    
+    if(self) {        
+        self.userTeamsDataSource            = [[[DWUserTeamsDataSource alloc] init] autorelease];
+        self.userTeamsDataSource.userID     = user.databaseID;
     }
     
     return self;
@@ -39,35 +36,37 @@
 - (id)init {
     self = [super init];
     
-    if(self) {
-        self.teamFollowersDataSource            = [[[DWTeamFollowersDataSource alloc] init] autorelease];
+    if(self) {        
+        self.userTeamsDataSource            = [[[DWUserTeamsDataSource alloc] init] autorelease];
     }
     
     return self;
 }
 
+
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
-    self.teamFollowersDataSource    = nil;
+    self.userTeamsDataSource        = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
-    return self.teamFollowersDataSource;
+    return self.userTeamsDataSource;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    DWTeam *team = [DWTeam fetch:self.teamFollowersDataSource.teamID];
+    DWUser *user = [DWUser fetch:self.userTeamsDataSource.userID];
     
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:[DWUsersHelper userTeamsTitle:user]];
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:[DWTeamsHelper watchersOfTeam:team]];
     
-    [self.teamFollowersDataSource loadUsers];
+    [self.userTeamsDataSource loadTeams];
 }
+
 
 @end

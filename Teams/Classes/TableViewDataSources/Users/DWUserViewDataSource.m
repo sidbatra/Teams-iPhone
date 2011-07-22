@@ -5,13 +5,20 @@
 
 #import "DWUserViewDataSource.h"
 #import "DWUser.h"
+#import "DWResource.h"
 #import "DWMessage.h"
 #import "DWUsersHelper.h"
+#import "DWConstants.h"
 
 /**
  * Private method and property declarations
  */
 @interface DWUserViewDataSource()
+
+/**
+ * Add a resource object to display the user image
+ */
+- (void)addImageResource:(DWUser*)user;
 
 /**
  * Adds an object with a line about the user's current team
@@ -37,8 +44,10 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserViewDataSource
 
-@synthesize usersController = _usersController;
-@synthesize userID          = _userID;
+@synthesize usersController     = _usersController;
+@synthesize teamMessage         = _teamMessage;
+@synthesize watchingMessage     = _watchingMessage;
+@synthesize userID              = _userID;
 
 @dynamic delegate;
 
@@ -57,28 +66,42 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.usersController    = nil;
+    self.teamMessage        = nil;
+    self.watchingMessage    = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)addImageResource:(DWUser*)user {
+    
+    DWResource *resource            = [[[DWResource alloc] init] autorelease];
+    resource.text                   = user.byline;
+    resource.image                  = user.largeImage;
+    resource.imageResourceType      = kResourceTypeLargeUserImage;
+    resource.imageResourceID        = user.databaseID;
+    
+    [self.objects addObject:resource];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)addCurrentTeamMessage:(DWUser*)user {
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.interactive = YES;
-    message.content     = [DWUsersHelper currentTeamLine:user];
+    self.teamMessage                = [[[DWMessage alloc] init] autorelease];
+    self.teamMessage.interactive    = YES;
+    self.teamMessage.content        = [DWUsersHelper currentTeamLine:user];
     
-    [self.objects addObject:message];
+    [self.objects addObject:self.teamMessage];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)addWatchingTeamsMessage:(DWUser*)user {
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.interactive = YES;
-    message.content     = [DWUsersHelper watchingTeamsLine:user];
+    self.watchingMessage                = [[[DWMessage alloc] init] autorelease];
+    self.watchingMessage.interactive    = YES;
+    self.watchingMessage.content        = [DWUsersHelper watchingTeamsLine:user];
     
-    [self.objects addObject:message];
+    [self.objects addObject:self.watchingMessage];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -123,6 +146,9 @@
     [self clean];
     self.objects = [NSMutableArray array];
     
+    [user startLargeImageDownload];
+    
+    [self addImageResource:user];
     [self addCurrentTeamMessage:user];
     [self addWatchingTeamsMessage:user];
     [self addJoiningMessage:user];

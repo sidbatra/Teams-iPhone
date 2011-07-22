@@ -48,4 +48,9 @@
  */
 + (NSString*)createdAtLine:(DWUser*)user;
 
+/**
+ * Title for the user's teams page. eg - "Sid's watching"
+ */
++ (NSString*)userTeamsTitle:(DWUser*)user;
+
 @end
