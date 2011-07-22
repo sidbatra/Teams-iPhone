@@ -45,6 +45,11 @@
 - (void)getRecentTeams;
 
 /**
+ * Get a list of teams followed by the given userID
+ */
+- (void)getTeamsFollowedBy:(NSInteger)userID;
+
+/**
  * Create a new team
  */
 - (void)createTeamWithName:(NSString*)name
@@ -108,6 +113,16 @@
  * Error message encountered while loading recent teams
  */
 - (void)recentTeamsError:(NSString*)message;
+
+/**
+ * Array of parsed DWTeam objects which are being followed by a user
+ */
+- (void)userTeamsLoaded:(NSMutableArray*)teams;
+
+/**
+ * Error while fetching the teams being watched by a user
+ */
+- (void)userTeamsError:(NSString*)error;
 
 /**
  * Fired when a team is created
