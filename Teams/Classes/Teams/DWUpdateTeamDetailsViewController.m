@@ -159,6 +159,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)teamUpdated:(DWTeam*)team { 
     NSLog(@"team updated");
+    //update the session when this fires
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -6,10 +6,9 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "DWNavigationBar.h"
 #import "DWNavTitleView.h"
 #import "DWNavRightBarButtonView.h"
-#import "DWUsersDataSource.h"
+#import "DWUsersController.h"
 
 @class DWUser;
 @protocol DWCreateProfileViewControllerDelegate;

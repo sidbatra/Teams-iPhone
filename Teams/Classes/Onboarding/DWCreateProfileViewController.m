@@ -8,16 +8,12 @@
 #import "DWRequestsManager.h"
 #import "NSString+Helpers.h"
 #import "DWSession.h"
-#import "DWMemoryPool.h"
 #import "DWConstants.h"
 
-static NSString* const kMsgProgressIndicator    = @"Signing Up";
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
 static NSString* const kMsgIncomplete           = @"Enter first name, last name, email and password";
 static NSString* const kMsgErrorTitle           = @"Error";
-static NSString* const kMsgErrorNetwork         = @"Please make sure you have network connectivity and try again";
 static NSString* const kMsgCancelTitle          = @"OK";
-static NSInteger const kPreviewSize             = 75;
 static NSString* const kCreateProfileText       = @"Add Yourself";
 static NSString* const kCreateProfileSubText    = @"to the %@ Team";
 static NSString* const kRightNavBarButtonText   = @"Next";
