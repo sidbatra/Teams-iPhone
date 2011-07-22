@@ -225,6 +225,16 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
                                                        requestMethod:kPut];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)updateTeamHavingID:(NSInteger)teamID 
+                  withName:(NSString*)name 
+                 andByline:(NSString*)byline {
+    
+    [self updateTeamHavingID:teamID 
+                    withName:name 
+                      byline:byline 
+                   andDomain:kEmptyString];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

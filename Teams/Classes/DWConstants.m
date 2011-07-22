@@ -28,7 +28,7 @@ NSString* const kDelete				= @"DELETE";
 	NSString* const kS3Server		= @"http://denwen-teams-production.s3.amazonaws.com/";
 #else
     //NSString* const kDenwenServer	= @"ec2-50-19-68-158.compute-1.amazonaws.com";//@"sbat.denwen.com";
-    NSString* const kDenwenServer	= @"teams.denwen.com";
+    NSString* const kDenwenServer	= @"teamd.denwen.com";
 	
 	//----------------------------------------------------------------------------------------------------
 	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDctMTFUMDU6MDg6NDEuMDAwWicsCiAgICAgICAgICdjb25kaXRpb25zJzogWwogICAgICAgICAgIHsnYnVja2V0JzogJ2Rlbndlbi10ZWFtcy1kZXZlbG9wbWVudCd9LAogICAgICAgICAgIHsnYWNsJzogJ3B1YmxpYy1yZWFkJ30sCiAgICAgICAgICAgWydjb250ZW50LWxlbmd0aC1yYW5nZScsIDAsIDUyNDI4ODAwXSwKICAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJyRrZXknLCAnJ10sCiAgICAgICAgICAgWydzdGFydHMtd2l0aCcsICcnLCAnJ10KICAgICAgICAgXQogICAgICAgfQ==";

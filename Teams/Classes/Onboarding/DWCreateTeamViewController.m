@@ -8,7 +8,7 @@
 #import "DWConstants.h"
 #import "DWTeam.h"
 
-static NSString* const kCreateTeamText                  = @"Create New Team";
+static NSString* const kUpdateTeamDetailsText                  = @"Create New Team";
 static NSString* const kRightNavBarButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
@@ -34,7 +34,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithDelegate:(id)theDelegate {
+- (id)init {
     
     self = [super init];
     
@@ -96,7 +96,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                        kNavTitleViewHeight) 
                                 andDelegate:self] autorelease];
     
-    [self.navTitleView displayTitle:kCreateTeamText];
+    [self.navTitleView displayTitle:kUpdateTeamDetailsText];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
