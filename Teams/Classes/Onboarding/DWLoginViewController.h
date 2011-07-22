@@ -6,27 +6,29 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-#import "MBProgressHUD.h"
-#import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
 #import "DWSessionController.h"
 
 @class DWUser;
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
+@class DWSpinnerOverlayView;
+
 @protocol DWLoginViewControllerDelegate;
+
 
 /**
  * Login view controller for giving access to existing users
  */
 @interface DWLoginViewController : UIViewController<UITextFieldDelegate,DWSessionControllerDelegate> {
-	UIView                      *_loginFieldsContainerView;
 	UITextField                 *_emailTextField;
 	UITextField                 *_passwordTextField;
+	UIView                      *_spinnerContainerView;    
     
 	NSString                    *_password;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
-	MBProgressHUD               *mbProgressIndicator;
+    DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWSessionController         *_sessionController;
     
@@ -37,9 +39,9 @@
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UIView *loginFieldsContainerView;
 @property (nonatomic, retain) IBOutlet UITextField *emailTextField;
 @property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
+@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Encrypted user password
@@ -51,6 +53,11 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Custom overlay spinner view
+ */
+@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling session requests

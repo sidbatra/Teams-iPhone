@@ -14,4 +14,21 @@
     
 }
 
+/**
+ * Custom init with spinner origin and message text
+ */
+- (id)initWithSpinnerOrigin:(CGPoint)origin 
+             andMessageText:(NSString*)text;
+
+
+/**
+ * Shows the view and enables all interaction
+ */
+- (void)enable;
+
+/**
+ * Hides the view and disables all interaction
+ */
+- (void)disable;
+
 @end

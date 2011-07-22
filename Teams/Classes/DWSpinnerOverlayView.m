@@ -38,8 +38,9 @@ static NSInteger const kSpinnerSize     = 20;
     self = [super initWithFrame:CGRectMake(0, 0, 320, 480)];
     
     if (self) {
-        self.backgroundColor    = [UIColor clearColor];
+        self.backgroundColor            = [UIColor clearColor];
 
+        [self disable];
         [self createSpinnerWithOrigin:origin];
         
         [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y)
@@ -54,15 +55,25 @@ static NSInteger const kSpinnerSize     = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)enable {
+    self.userInteractionEnabled     = YES;
+    self.hidden                     = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disable {
+    self.userInteractionEnabled     = NO;
+    self.hidden                     = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createSpinnerWithOrigin:(CGPoint)origin {
 	
     UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] 
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] 
                                            autorelease];
     
-    spinner.alpha                       = 0.5;
 	spinner.frame                       = CGRectMake(origin.x,origin.y,kSpinnerSize,kSpinnerSize);
-    
     [spinner startAnimating];
     
 	[self addSubview:spinner];	

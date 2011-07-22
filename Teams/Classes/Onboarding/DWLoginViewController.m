@@ -4,18 +4,23 @@
 //
 
 #import "DWLoginViewController.h"
-#import "DWUser.h"
-#import "DWGUIManager.h"
+
 #import "NSString+Helpers.h"
 #import "DWConstants.h"
+#import "DWUser.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWSpinnerOverlayView.h"
+#import "DWGUIManager.h"
 
-static NSString* const kMsgProgressIndicator    = @"Logging In";
+
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
 static NSString* const kMsgIncomplete           = @"Enter email and password";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kLoginText               = @"Log In";
 static NSString* const kRightNavBarButtonText   = @"Done";
+static NSString* const kMsgLoading              = @"Logging In";
 
 
 
@@ -24,14 +29,15 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 //----------------------------------------------------------------------------------------------------
 @implementation DWLoginViewController
 
-@synthesize loginFieldsContainerView    = _loginFieldsContainerView;
 @synthesize emailTextField              = _emailTextField;
 @synthesize passwordTextField           = _passwordTextField;
+@synthesize spinnerContainerView        = _spinnerContainerView;
 
 @synthesize password                    = _password;
 
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize sessionController           = _sessionController;
 
@@ -54,14 +60,15 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 - (void)dealloc {	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-    self.loginFieldsContainerView   = nil;
 	self.emailTextField             = nil;
 	self.passwordTextField          = nil;
+    self.spinnerContainerView       = nil; 
     
 	self.password                   = nil;
     
     self.navTitleView               = nil;
 	self.navRightBarButtonView      = nil;
+    self.spinnerOverlayView         = nil;
     
     self.sessionController          = nil;
 	
@@ -93,13 +100,11 @@ static NSString* const kRightNavBarButtonText   = @"Done";
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
     
-	
-	[[self.loginFieldsContainerView layer] setCornerRadius:2.5f];
-	[self.emailTextField becomeFirstResponder];
-	
-    mbProgressIndicator         = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
-    mbProgressIndicator.yOffset = -87;
-	[self.view addSubview:mbProgressIndicator];
+    if (!self.spinnerOverlayView)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(100,130)
+                                                                        andMessageText:kMsgLoading] autorelease];
+
+    [self.emailTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -114,14 +119,14 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 
 //----------------------------------------------------------------------------------------------------
 - (void)freezeUI {	
-	mbProgressIndicator.labelText = kMsgProgressIndicator;
-	[mbProgressIndicator show:YES];
+    self.spinnerContainerView.hidden = NO;
+    [self.spinnerOverlayView enable];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unfreezeUI {
-	[mbProgressIndicator hide:YES];
-	[self.emailTextField becomeFirstResponder];
+    self.spinnerContainerView.hidden = YES;
+    [self.spinnerOverlayView disable];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -204,6 +209,8 @@ static NSString* const kRightNavBarButtonText   = @"Done";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
+    self.navigationController.navigationBar.clipsToBounds = NO;
 }
 
 @end
