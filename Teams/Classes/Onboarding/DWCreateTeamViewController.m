@@ -8,7 +8,7 @@
 #import "DWConstants.h"
 #import "DWTeam.h"
 
-static NSString* const kUpdateTeamDetailsText                  = @"Create New Team";
+static NSString* const kCreateTeamText                  = @"Create New Team";
 static NSString* const kRightNavBarButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
@@ -96,7 +96,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                        kNavTitleViewHeight) 
                                 andDelegate:self] autorelease];
     
-    [self.navTitleView displayTitle:kUpdateTeamDetailsText];
+    [self.navTitleView displayTitle:kCreateTeamText];
     
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
