@@ -159,7 +159,7 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [self.delegate peopleInvited];
+    [self.addedContactsViewController triggerInvites];
 }
 
 
@@ -180,6 +180,14 @@ static NSInteger const kTableViewHeight						= 200;
         [self.addedContactsViewController showActionSheetInView:self.parentViewController.view
                                                     forRemoving:contact];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)invitesTriggeredFromObject:(id)object {
+    
+    if ([object isEqual:self.addedContactsViewController]) 
+        [self.delegate peopleInvited];
+    
 }
 
 

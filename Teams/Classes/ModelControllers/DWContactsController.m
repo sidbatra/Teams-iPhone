@@ -46,7 +46,8 @@
     for(id contact in contacts) {
         
         DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
-        dWContact.fullName      = [NSString stringWithFormat:@"%@ %@",[contact firstname],[contact lastname]];
+        dWContact.firstName     = [contact firstname]; 
+        dWContact.lastName      = [contact lastname];
         dWContact.email         = [contact emailaddresses];
         
         if (dWContact.email) 

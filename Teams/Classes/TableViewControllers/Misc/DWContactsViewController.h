@@ -6,8 +6,8 @@
 #import <Foundation/Foundation.h>
 
 #import "DWTableViewController.h"
+#import "DWContactsDataSource.h"
 
-@class DWContactsDataSource;
 @class DWContact;
 @protocol DWContactsViewControllerDelegate;
 
@@ -15,7 +15,7 @@
 /**
  * Table view displaying search results
  */
-@interface DWContactsViewController : DWTableViewController<UIActionSheetDelegate> {
+@interface DWContactsViewController : DWTableViewController<UIActionSheetDelegate,DWContactsDataSourceDelegate> {
     
     DWContact                       *_contactToRemove;
     DWContactsDataSource            *_contactsDataSource;
@@ -56,6 +56,11 @@
 - (void)showActionSheetInView:(UIView*)view
                   forRemoving:(DWContact*)contact;
 
+/**
+ * Send invite information to server
+ */
+- (void)triggerInvites;
+
 @end
 
 
@@ -70,5 +75,11 @@
  */
 - (void)contactSelected:(DWContact*)contact 
              fromObject:(id)object;
+
+/**
+ * Fired when the invite information is 
+ * successfully sent to the server
+ */
+- (void)invitesTriggeredFromObject:(id)object;
 
 @end

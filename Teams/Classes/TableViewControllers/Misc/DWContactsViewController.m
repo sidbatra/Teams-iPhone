@@ -4,8 +4,6 @@
 //
 
 #import "DWContactsViewController.h"
-
-#import "DWContactsDataSource.h"
 #import "NSObject+Helpers.h"
 #import "DWContact.h"
 
@@ -77,6 +75,11 @@ static NSString* const kMsgActionSheetDelete                = @"Delete";
     [self.contactsDataSource addContact:contact];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)triggerInvites {
+    [self.contactsDataSource triggerInvites];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -113,5 +116,17 @@ static NSString* const kMsgActionSheetDelete                = @"Delete";
 - (void)contactClicked:(id)contact {
     [self.delegate contactSelected:contact fromObject:self];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWContactDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)invitesCreated {
+    [self.delegate invitesTriggeredFromObject:self];
+}
+
 
 @end

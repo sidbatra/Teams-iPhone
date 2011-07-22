@@ -10,18 +10,30 @@
  */
 @interface DWContact : NSObject {
     
-    NSString    *_fullName;    
+    NSString    *_firstName;    
+    NSString    *_lastName;        
     NSString    *_email;
 }
 
 /**
- * Full name of the contact
+ * First name of the contact
  */
-@property (nonatomic,copy) NSString *fullName;
+@property (nonatomic,copy) NSString *firstName;
+
+/**
+ * Last name of the contact
+ */
+@property (nonatomic,copy) NSString *lastName;
 
 /**
  * Email of the contact
  */
 @property (nonatomic,copy) NSString *email;
+
+
+/**
+ * Full name of the contact
+ */
+- (NSString*)fullName;
 
 @end
