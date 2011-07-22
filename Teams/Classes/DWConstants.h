@@ -263,6 +263,8 @@ extern NSString* const kNItemTouchersLoaded;
 extern NSString* const kNItemTouchersError;
 extern NSString* const kNNewSessionCreated;
 extern NSString* const kNNewSessionError;
+extern NSString* const kNNewInvitesCreated;
+extern NSString* const kNNewInvitesError;
 extern NSString* const kNNewMembershipCreated;
 extern NSString* const kNNewMembershipError;
 extern NSString* const kNS3UploadDone;

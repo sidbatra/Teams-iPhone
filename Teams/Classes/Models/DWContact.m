@@ -12,7 +12,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWContact
 
-@synthesize fullName        = _fullName;
+@synthesize firstName       = _firstName;
+@synthesize lastName        = _lastName;
 @synthesize email           = _email;
 
 //----------------------------------------------------------------------------------------------------
@@ -31,10 +32,16 @@
     
     NSLog(@"contact released");
     
-    self.fullName   = nil;
-    self.email      = nil;
+    self.firstName      = nil;
+    self.lastName       = nil;
+    self.email          = nil;
     
     [super dealloc];
+}
+
+//---------------------------------------------------------------------------------------------------
+- (NSString*)fullName {
+    return [NSString stringWithFormat:@"%@ %@",self.firstName,self.lastName];
 }
 
 @end

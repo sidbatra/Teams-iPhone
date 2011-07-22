@@ -13,6 +13,8 @@
 @implementation DWContactsDataSource
 
 @synthesize contactsController      = _contactsController;
+@synthesize invitesController       = _invitesController;
+@dynamic delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -20,8 +22,11 @@
     self = [super init];
     
     if(self) {
-        self.contactsController            = [[[DWContactsController alloc] init] autorelease];
-        self.contactsController.delegate   = self;
+        self.contactsController             = [[[DWContactsController alloc] init] autorelease];
+        self.contactsController.delegate    = self;
+        
+        self.invitesController              = [[[DWInvitesController alloc] init] autorelease];
+        self.invitesController.delegate     = self;
     }
     
     return self;
@@ -29,7 +34,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.contactsController   = nil;
+    self.contactsController     = nil;
+    self.invitesController      = nil;
     
     [super dealloc];
 }
@@ -50,6 +56,10 @@
     [self removeObject:contact withAnimation:UITableViewRowAnimationTop];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)triggerInvites {
+    [self.invitesController createInvitesFrom:self.objects];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -62,6 +72,22 @@
     self.objects = contacts;
     
     [self.delegate reloadTableView];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWInvitesController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)invitesCreated {
+    [self.delegate invitesCreated];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)invitesCreationError:(NSString *)error {
+    [self.delegate displayError:error];
 }
 
 
