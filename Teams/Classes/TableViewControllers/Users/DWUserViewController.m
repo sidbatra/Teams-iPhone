@@ -8,6 +8,20 @@
 #import "DWResource.h"
 #import "DWGUIManager.h"
 #import "NSObject+Helpers.h"
+#import "DWNavTitleView.h"
+#import "DWUsersHelper.h"
+
+/**
+ * Private method and property declarations
+ */
+@interface DWUserViewController()
+
+/**
+ * Create a nav title view
+ */
+- (void)loadNavTitleView;
+
+@end
 
 
 
@@ -17,6 +31,7 @@
 @implementation DWUserViewController
 
 @synthesize userViewDataSource  = _userViewDataSource;
+@synthesize navTitleView        = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUserID:(NSInteger)userID {
@@ -55,6 +70,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     self.userViewDataSource = nil;
+    self.navTitleView       = nil;
     
     [super dealloc];
 }
@@ -70,7 +86,21 @@
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
+    [self loadNavTitleView];
+    
     [self.userViewDataSource loadUser];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadNavTitleView {
+    
+    if(!self.navTitleView) {
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+                                                                             kNavTitleViewY,
+                                                                             kNavTitleViewWidth,
+                                                                             kNavTitleViewHeight) 
+                                                      andDelegate:nil];
+    }
 }
 
 
@@ -81,6 +111,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
+    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
+                                         andSubTitle:user.team.name];
 }
 
 
@@ -100,6 +132,18 @@
                                resource:resource
                              resourceID:resourceID];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
+}
+
 
 
 @end
