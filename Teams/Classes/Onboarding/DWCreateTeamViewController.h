@@ -4,11 +4,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+
 #import "DWTeamsController.h"
 
 @class DWTeam;
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
+@class DWSpinnerOverlayView;
+
 @protocol DWCreateTeamViewControllerDelegate;
 
 
@@ -16,15 +19,17 @@
  * Provides an interface for creating a new team.
  */
 @interface DWCreateTeamViewController : UIViewController<UITextFieldDelegate,DWTeamsControllerDelegate> {
+    
     UITextField                 *_teamNameTextField;
 	UITextField                 *_teamBylineTextField;
+    UILabel                     *_messageLabel;
+    UIView                      *_spinnerContainerView; 
     
-	NSString                    *_domain;    
-    BOOL                        _hasCreatedTeam;
-    NSInteger                   _teamID;
+	NSString                    *_domain;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWSpinnerOverlayView        *_spinnerOverlayView;    
     
     DWTeamsController           *_teamsController;
     
@@ -37,6 +42,8 @@
  */
 @property (nonatomic, retain) IBOutlet UITextField *teamNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
+@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
+@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Team domain from the user email
@@ -50,6 +57,11 @@
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
+ * Custom overlay spinner view
+ */
+@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+
+/**
  * Controller for handling teams requests
  */
 @property (nonatomic,retain) DWTeamsController *teamsController;
@@ -58,14 +70,6 @@
  * Delegate to send updates to
  */
 @property (nonatomic,assign) id<DWCreateTeamViewControllerDelegate> delegate;
-
-/**
- * Prepopulate the create team view from session data to 
- * keep state persistence.
- */
-- (void)prePopulateViewWithName:(NSString*)name 
-                         byline:(NSString*)byline 
-                  andTeamID:(NSInteger)teamID;
 
 
 @end

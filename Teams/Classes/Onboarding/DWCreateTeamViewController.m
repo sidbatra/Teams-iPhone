@@ -4,9 +4,13 @@
 //
 
 #import "DWCreateTeamViewController.h"
-#import "DWGUIManager.h"
+
 #import "DWConstants.h"
 #import "DWTeam.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWSpinnerOverlayView.h"
+#import "DWGUIManager.h"
 
 static NSString* const kCreateTeamText                  = @"Create New Team";
 static NSString* const kRightNavBarButtonText           = @"Next";
@@ -14,6 +18,8 @@ static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
+static NSString* const kMessageLabelText                = @"Open to friends and colleagues with a @%@ address:";
+static NSString* const kMsgProcesssing                  = @"Creating new Team ...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -23,11 +29,14 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 @synthesize teamNameTextField           = _teamNameTextField;
 @synthesize teamBylineTextField         = _teamBylineTextField;
+@synthesize messageLabel                = _messageLabel;
+@synthesize spinnerContainerView        = _spinnerContainerView;
 
 @synthesize domain                      = _domain;
 
 @synthesize navTitleView                = _navTitleView;
 @synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize teamsController             = _teamsController;
 
@@ -39,10 +48,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        
         self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
         self.teamsController.delegate   = self;
-        _hasCreatedTeam                 = NO;
     }
     return self;
 }
@@ -52,11 +59,14 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     self.teamNameTextField          = nil;
     self.teamBylineTextField        = nil;
+    self.messageLabel               = nil;
+    self.spinnerContainerView       = nil;
     
     self.domain                     = nil;
     
     self.navTitleView               = nil;
     self.navRightBarButtonView      = nil;
+    self.spinnerOverlayView         = nil;
     
     self.teamsController            = nil;
     
@@ -66,15 +76,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)prePopulateViewWithName:(NSString*)name byline:(NSString*)byline andTeamID:(NSInteger)teamID {
-    self.teamNameTextField.text         = name;
-    self.teamBylineTextField.text       = byline;
-    
-    _teamID                             = teamID;
-    _hasCreatedTeam                     = YES;
 }
 
 
@@ -105,6 +106,14 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                                 kNavTitleViewHeight)
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
+    
+    if (!self.spinnerOverlayView)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(90,170)
+                                                                        andMessageText:kMsgProcesssing] autorelease];
+
+    
+    self.messageLabel.text = [NSString stringWithFormat:kMessageLabelText,self.domain];
+    [self.teamNameTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -112,10 +121,23 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     [super viewDidUnload];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)freezeUI {	
+    self.spinnerContainerView.hidden = NO;
+    [self.spinnerOverlayView enable];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unfreezeUI {
+    self.spinnerContainerView.hidden = YES;
+    [self.spinnerOverlayView disable];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayEmptyFieldsError {
@@ -134,31 +156,11 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         [self displayEmptyFieldsError];
 	}
 	else {
+        [self freezeUI];
         [self.teamsController createTeamWithName:self.teamNameTextField.text 
                                           byline:self.teamBylineTextField.text 
                                        andDomain:self.domain];        
     }
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)updateTeam {
-    if (self.teamNameTextField.text.length == 0 ||  self.teamBylineTextField.text.length == 0) {
-        [self displayEmptyFieldsError];
-	}
-	else {
-     [self.teamsController updateTeamHavingID:_teamID 
-                                        withName:self.teamNameTextField.text 
-                                          byline:self.teamBylineTextField.text 
-                                       andDomain:self.domain];        
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
--(void)createOrUpdateTeam {
-    if (!_hasCreatedTeam)
-        [self createTeam];
-    else
-        [self updateTeam];       
 }
 
 
@@ -169,7 +171,21 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    [self createOrUpdateTeam];
+    [self createTeam];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	
+	if(textField == self.teamNameTextField) {
+		[self.teamNameTextField resignFirstResponder];
+		[self.teamBylineTextField becomeFirstResponder];
+	}
+	else if(textField == self.teamBylineTextField) {
+		[self createTeam];
+	}
+    
+	return YES;
 }
 
 
@@ -179,11 +195,9 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWTeamsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamCreated:(DWTeam*)team {     
-    _hasCreatedTeam = YES;
-    _teamID         = team.databaseID;
-    
+- (void)teamCreated:(DWTeam*)team {
     [self.delegate teamCreated:team];
+    [self unfreezeUI];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -195,25 +209,9 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 										  otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
-
-//----------------------------------------------------------------------------------------------------
-- (void)teamUpdated:(DWTeam*)team { 
-    _hasCreatedTeam = YES;    
-    [self.delegate teamCreated:team];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)teamUpdateError:(NSString*)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-													message:error
-												   delegate:nil 
-										  cancelButtonTitle:kMsgCancelTitle
-										  otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -225,6 +223,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];            
 }
 
 @end

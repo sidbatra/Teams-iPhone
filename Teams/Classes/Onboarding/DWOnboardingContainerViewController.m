@@ -157,12 +157,7 @@
         
         [self.navigationController pushViewController:createTeamViewController 
                                              animated:YES];        
-        
-        if ([[DWSession sharedDWSession] state] >= kSessionStateTillTeamDetails) 
-            [createTeamViewController prePopulateViewWithName:[DWSession sharedDWSession].currentUser.team.name
-                                                       byline:[DWSession sharedDWSession].currentUser.team.byline
-                                                    andTeamID:[DWSession sharedDWSession].currentUser.team.databaseID];
-    }
+    }    
 }
 
 
