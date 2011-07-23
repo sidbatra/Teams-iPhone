@@ -9,18 +9,22 @@
 @class DWTeam;
 @class DWNavTitleView;
 @class DWNavRightBarButtonView;
+@class DWSpinnerOverlayView;
 
 /*
  * Provides an interface for editing team details
  */
-@interface DWUpdateTeamDetailsViewController : UIViewController<DWTeamsControllerDelegate> {
+@interface DWUpdateTeamDetailsViewController : UIViewController<UITextFieldDelegate,DWTeamsControllerDelegate> {
     UITextField                 *_teamNameTextField;
 	UITextField                 *_teamBylineTextField;
+    UILabel                     *_messageLabel;    
+    UIView                      *_spinnerContainerView;     
     
     DWTeam                      *_team;
     
     DWNavTitleView              *_navTitleView;
     DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWSpinnerOverlayView        *_spinnerOverlayView;        
     
     DWTeamsController           *_teamsController;
 }
@@ -30,6 +34,9 @@
  */
 @property (nonatomic, retain) IBOutlet UITextField *teamNameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
+@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
+@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+
 
 /**
  * Team which the user is a part of
@@ -41,6 +48,11 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+
+/**
+ * Custom overlay spinner view
+ */
+@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling teams requests
