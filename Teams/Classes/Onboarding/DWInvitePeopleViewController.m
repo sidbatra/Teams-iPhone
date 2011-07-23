@@ -4,10 +4,13 @@
 //
 
 #import "DWInvitePeopleViewController.h"
-#import "ABContactsHelper.h"
+
 #import "DWConstants.h"
-#import "DWGUIManager.h"
 #import "DWContact.h"
+#import "ABContactsHelper.h"
+#import "DWNavTitleView.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWGUIManager.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
@@ -99,16 +102,18 @@ static NSInteger const kTableViewHeight						= 200;
     
     
 
+    if (!self.queryContactsViewController) 
+        self.queryContactsViewController = [[[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kPresentationStyleDefault] autorelease];
     
-    self.queryContactsViewController                = [[[DWContactsViewController alloc]
-                                                        initWithPresentationStyle:kPresentationStyleDefault] autorelease];
+    if (!self.addedContactsViewController) 
+        self.addedContactsViewController = [[[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
 
-    self.addedContactsViewController                = [[[DWContactsViewController alloc]
-                                                        initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
-    
+
     self.queryContactsViewController.delegate       = self;
     self.addedContactsViewController.delegate       = self;
-    
+       
     CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
     self.queryContactsViewController.view.frame     = frame;
     self.addedContactsViewController.view.frame     = frame;
@@ -121,6 +126,7 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)viewDidUnload {
     [super viewDidUnload];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -139,6 +145,7 @@ static NSInteger const kTableViewHeight						= 200;
     self.addedContactsViewController.view.hidden    = YES;    
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -155,7 +162,6 @@ static NSInteger const kTableViewHeight						= 200;
         [self displayAddedContacts];
     }
 }
-
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {

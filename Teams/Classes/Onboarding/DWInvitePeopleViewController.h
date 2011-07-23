@@ -6,16 +6,17 @@
 #import <UIKit/UIKit.h>
 #import <AddressBook/AddressBook.h>
 
-#import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
 #import "DWContactsViewController.h"
+
+@class DWNavTitleView;
+@class DWNavRightBarButtonView;
 
 @protocol DWInvitePeopleViewControllerDelegate;
 
 /**
  * View for adding people throughout the app.
  */
-@interface DWInvitePeopleViewController : UIViewController<DWContactsViewControllerDelegate,UIActionSheetDelegate> {
+@interface DWInvitePeopleViewController : UIViewController<DWContactsViewControllerDelegate> {
     UITextField                 *_searchContactsTextField;
     UILabel                     *_resultsLabel;
     
