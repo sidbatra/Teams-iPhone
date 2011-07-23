@@ -213,7 +213,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     standaloneTitleLabel.text       = title;
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)displayTitle:(NSString*)title 
          andSubTitle:(NSString*)subTitle {
@@ -229,11 +228,12 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayActiveButtonWithTitle:(NSString*)title 
-                         andSubTitle:(NSString*)subTitle {
+                         andSubTitle:(NSString*)subTitle
+                    withEnabledState:(BOOL)enabledState {
     
     [self reset];
     
-    underlayButton.enabled      = YES;
+    underlayButton.enabled      = enabledState;
     underlayButton.hidden       = NO;
     
     [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButton]
@@ -252,11 +252,12 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayPassiveButtonWithTitle:(NSString*)title 
-                          andSubTitle:(NSString*)subTitle {
+                          andSubTitle:(NSString*)subTitle
+                     withEnabledState:(BOOL)enabledState {
 
     [self reset];
     
-    underlayButton.enabled      = YES;
+    underlayButton.enabled      = enabledState;
     underlayButton.hidden       = NO;
     
     [self applyUnderButtonPassiveImages];  
@@ -270,11 +271,11 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displaySpinner {
+- (void)displaySpinnerWithUnderlay:(BOOL)useUnderlay {
     
     [self reset];
     
-    underlayButton.hidden           = NO;
+    underlayButton.hidden           = !useUnderlay;
     
     spinner.hidden                  = NO;
     [spinner startAnimating];

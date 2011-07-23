@@ -116,7 +116,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)updateTitleViewWithUser:(DWUser*)user {
     [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
-                                         andSubTitle:user.byline];
+                                         andSubTitle:user.byline
+                                    withEnabledState:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

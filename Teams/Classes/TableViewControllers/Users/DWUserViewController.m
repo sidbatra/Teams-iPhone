@@ -113,7 +113,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
     [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
-                                         andSubTitle:user.team.name];
+                                         andSubTitle:user.team.name
+                                    withEnabledState:NO];
 }
 
 

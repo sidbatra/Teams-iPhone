@@ -41,20 +41,25 @@
 
 /**
  * Display title subtitle with a visually active button in the background
+ * Enabled state controls the enabled state of the underlying button
  */
 - (void)displayActiveButtonWithTitle:(NSString*)title 
-                         andSubTitle:(NSString*)subTitle;
+                         andSubTitle:(NSString*)subTitle
+                    withEnabledState:(BOOL)enabledState;
 
 /**
  * Display title and subtitle with a visually dull button in the background
+ * Enabled state controls the enabled state of the underlying button
+ *
  */
 - (void)displayPassiveButtonWithTitle:(NSString*)title
-                          andSubTitle:(NSString*)subTitle;
+                          andSubTitle:(NSString*)subTitle
+                     withEnabledState:(BOOL)enabledState;
 
 /**
- * Display a centered spinner
+ * Display a centered spinner with or without an underlay
  */
-- (void)displaySpinner;
+- (void)displaySpinnerWithUnderlay:(BOOL)useUnderlay;
 
 @end
 

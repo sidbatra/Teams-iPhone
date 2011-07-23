@@ -106,7 +106,7 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
                                                                              kNavTitleViewHeight) 
                                                       andDelegate:self];       
         
-        [self.navTitleView displaySpinner];
+        [self.navTitleView displaySpinnerWithUnderlay:YES];
     }
 }
 
@@ -121,11 +121,13 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
     
     if(following) {
         [self.navTitleView displayPassiveButtonWithTitle:team.name
-                                             andSubTitle:team.byline];
+                                             andSubTitle:team.byline
+                                        withEnabledState:[DWSession sharedDWSession].currentUser.team != team];
     }
     else {
         [self.navTitleView displayActiveButtonWithTitle:team.name
-                                            andSubTitle:kMsgFollowAction];
+                                            andSubTitle:kMsgFollowAction
+                                       withEnabledState:YES];
     }
 }
 
@@ -137,13 +139,9 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleView {
-    
-    DWTeam *team = [DWTeam fetch:self.teamItemsDataSource.teamID];
-    
-    if(team != [DWSession sharedDWSession].currentUser.team) {
-        [self.navTitleView displaySpinner];
-        [self.teamItemsDataSource invertFollowingState];
-    }
+        
+    [self.navTitleView displaySpinnerWithUnderlay:YES];
+    [self.teamItemsDataSource invertFollowingState];
 }
 
 
