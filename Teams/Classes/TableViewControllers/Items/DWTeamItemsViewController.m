@@ -140,8 +140,10 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
     
     DWTeam *team = [DWTeam fetch:self.teamItemsDataSource.teamID];
     
-    if(team != [DWSession sharedDWSession].currentUser.team)
+    if(team != [DWSession sharedDWSession].currentUser.team) {
+        [self.navTitleView displaySpinner];
         [self.teamItemsDataSource invertFollowingState];
+    }
 }
 
 

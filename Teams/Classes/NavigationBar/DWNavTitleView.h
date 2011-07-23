@@ -24,48 +24,51 @@
 /**
  * Custom init with delegate
  */
-- (id)initWithFrame:(CGRect)frame andDelegate:(id)delegate;
+- (id)initWithFrame:(CGRect)frame 
+        andDelegate:(id)delegate;
 
 
 /**
- * Display state for title view
+ * Display single line vertically centered title
  */
 - (void)displayTitle:(NSString*)title;
-- (void)displayTitle:(NSString*)title andSubTitle:(NSString*)subTitle;
-- (void)displayActiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle;
-- (void)displayPassiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle;
+
+/**
+ * Display title and subtitle
+ */ 
+- (void)displayTitle:(NSString*)title 
+         andSubTitle:(NSString*)subTitle;
+
+/**
+ * Display title subtitle with a visually active button in the background
+ */
+- (void)displayActiveButtonWithTitle:(NSString*)title 
+                         andSubTitle:(NSString*)subTitle;
+
+/**
+ * Display title and subtitle with a visually dull button in the background
+ */
+- (void)displayPassiveButtonWithTitle:(NSString*)title
+                          andSubTitle:(NSString*)subTitle;
+
+/**
+ * Display a centered spinner
+ */
 - (void)displaySpinner;
 
-/** 
- * Title view button pressed
- */
-- (void)titleViewButtonTapped;
-
 @end
 
 
 /**
- * Declarations for private methods
- */
-@interface DWNavTitleView (Private)
-
-- (void)createUnderlayButton;
-- (void)createTitleLabel;
-- (void)createSubtitleLabel;
-- (void)createStandaloneTitleLabel;
-- (void)createSpinner;
-
-@end
-
-
-/**
- * Delegate protocol to receive updates when
- * the titleview is tapped
+ * Delegate protocol to receive updates when the titleview is tapped
  */
 @protocol DWNavTitleViewDelegate 
 
 @optional
 
+/**
+ * Fired when the title view is touched
+ */
 -(void)didTapTitleView;
 
 @end

@@ -11,6 +11,41 @@ static NSString* const kImgPassiveButtonHighlighted         = @"static_button_ac
 static NSString* const kImgActiveButton                     = @"button_follow.png";
 static NSString* const kImgActiveButtonHighlighted          = @"button_follow_active.png";
 
+
+/**
+ * Private method and property declarations
+ */
+@interface DWNavTitleView()
+
+/**
+ * Reset all combinations of all states. Called right before
+ * entering a state to undo all previous states.
+ */
+- (void)reset;
+
+/**
+ * Called when the title view is pressed
+ */
+- (void)titleViewButtonTapped;
+
+/**
+ * Apply inactive background images to the underlay button
+ */
+- (void)applyUnderButtonPassiveImages;
+
+
+/**
+ * View creation methods
+ */
+- (void)createUnderlayButton;
+- (void)createTitleLabel;
+- (void)createSubtitleLabel;
+- (void)createStandaloneTitleLabel;
+- (void)createSpinner;
+@end
+
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -41,17 +76,15 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     [super dealloc];
 }
 
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Private Methods
 //----------------------------------------------------------------------------------------------------
 - (void)createUnderlayButton {    
     underlayButton              = [UIButton buttonWithType:UIButtonTypeCustom];
     
     underlayButton.frame        = CGRectMake(0, 0, 200, 44);
     underlayButton.hidden       = YES;
+    
+    
+    [self applyUnderButtonPassiveImages];
         
     [underlayButton addTarget:self 
                        action:@selector(didTouchDownOnButton:) 
@@ -142,6 +175,29 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     [spinner release];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)applyUnderButtonPassiveImages {
+    
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgPassiveButton]
+                              forState:UIControlStateNormal];
+    
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgPassiveButtonHighlighted]
+                              forState:UIControlStateHighlighted];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)reset {
+    underlayButton.hidden = YES;
+    underlayButton.enabled  = NO;
+    
+    titleLabel.hidden               = YES;
+    subtitleLabel.hidden            = YES;
+    standaloneTitleLabel.hidden     = YES;
+    
+    spinner.hidden                  = YES;
+    [spinner stopAnimating];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -151,13 +207,18 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 //----------------------------------------------------------------------------------------------------
 - (void)displayTitle:(NSString*)title {
     
+    [self reset];
+    
     standaloneTitleLabel.hidden     = NO;
     standaloneTitleLabel.text       = title;
 }
 
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayTitle:(NSString*)title andSubTitle:(NSString*)subTitle {
+- (void)displayTitle:(NSString*)title 
+         andSubTitle:(NSString*)subTitle {
+    
+    [self reset];
     
     titleLabel.hidden           = NO;
     titleLabel.text             = title;
@@ -167,9 +228,12 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayActiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle {
+- (void)displayActiveButtonWithTitle:(NSString*)title 
+                         andSubTitle:(NSString*)subTitle {
     
-    spinner.hidden              = YES;
+    [self reset];
+    
+    underlayButton.enabled      = YES;
     underlayButton.hidden       = NO;
     
     [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButton]
@@ -187,16 +251,15 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayPassiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle {
+- (void)displayPassiveButtonWithTitle:(NSString*)title 
+                          andSubTitle:(NSString*)subTitle {
+
+    [self reset];
     
-    spinner.hidden              = YES;
+    underlayButton.enabled      = YES;
     underlayButton.hidden       = NO;
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgPassiveButton]
-                              forState:UIControlStateNormal];
-    
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgPassiveButtonHighlighted]
-                              forState:UIControlStateHighlighted];
+    [self applyUnderButtonPassiveImages];  
     
     
     titleLabel.hidden           = NO;
@@ -209,20 +272,20 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 //----------------------------------------------------------------------------------------------------
 - (void)displaySpinner {
     
-    underlayButton.enabled          = NO;
+    [self reset];
     
-    titleLabel.hidden               = YES;
-    subtitleLabel.hidden            = YES;
-    standaloneTitleLabel.hidden     = YES;
-     
+    underlayButton.hidden           = NO;
+    
     spinner.hidden                  = NO;
     [spinner startAnimating];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Button Touch Events
+
 //----------------------------------------------------------------------------------------------------
 - (void)titleViewButtonTapped {
     [_delegate didTapTitleView];
