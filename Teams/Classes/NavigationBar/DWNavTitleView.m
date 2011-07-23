@@ -169,6 +169,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 //----------------------------------------------------------------------------------------------------
 - (void)displayActiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle {
     
+    spinner.hidden              = YES;
     underlayButton.hidden       = NO;
     
     [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButton]
@@ -188,6 +189,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 //----------------------------------------------------------------------------------------------------
 - (void)displayPassiveButtonWithTitle:(NSString*)title andSubTitle:(NSString*)subTitle {
     
+    spinner.hidden              = YES;
     underlayButton.hidden       = NO;
     
     [underlayButton setBackgroundImage:[UIImage imageNamed:kImgPassiveButton]
