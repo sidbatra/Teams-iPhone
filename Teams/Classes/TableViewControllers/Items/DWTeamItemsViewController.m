@@ -104,7 +104,9 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:self];        
+                                                      andDelegate:self];       
+        
+        [self.navTitleView displaySpinner];
     }
 }
 
