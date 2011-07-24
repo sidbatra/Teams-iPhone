@@ -255,9 +255,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 	if(selectedIndex == kTabBarFeedIndex && 
         [DWPushNotificationsManager sharedDWPushNotificationsManager].showNotifications)  {
             
-        [self displayNotifications];
-            //if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
-            //    [(DWNotificationsViewController*)self.navigationController.topViewController hardRefresh];
+        if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
+            [(DWNotificationsViewController*)self.navigationController.topViewController softRefresh];
+        else
+            [self displayNotifications];
     }
 }
 

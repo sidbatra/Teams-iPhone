@@ -60,7 +60,12 @@ static NSString* const kTitle   = @"Notifications";
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
 
     [self.notificationsDataSource loadNotifications];
-    
+    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)softRefresh {
+    [self.notificationsDataSource refreshInitiated];
     [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
 }
 

@@ -21,4 +21,10 @@
  */
 @property (nonatomic,retain) DWNotificationsDataSource *notificationsDataSource;
 
+
+/**
+ * Silently reload notifications
+ */ 
+- (void)softRefresh;
+
 @end
