@@ -133,6 +133,9 @@ NSString* const kKeyUserImage               = @"user_image";
 NSString* const kKeyEntityData              = @"entity_data";
 NSString* const kKeyEventData               = @"event_data";
 NSString* const kKeyResourceType            = @"resource_type";
+NSString* const kKeyAPS                     = @"aps";
+NSString* const kKeyBadge                   = @"badge";
+NSString* const kKeyAlert                   = @"alert";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kNPopularPlacesLoaded			= @"NPopularPlacesLoaded";

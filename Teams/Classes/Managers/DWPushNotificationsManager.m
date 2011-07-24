@@ -10,10 +10,6 @@
 
 #import "SynthesizeSingleton.h"
 
-
-static NSString* const kKeyAPS                  = @"aps";
-static NSString* const kKeyBadge                = @"badge";
-static NSString* const kKeyAlert                = @"alert";
 static NSString* const kAlertTitle              = @"Denwen";
 static NSString* const kCancelTitle             = @"OK";
 static NSString* const kActionTitle             = @"View";
@@ -31,6 +27,11 @@ static NSInteger const kNotificationTypeItem    = 2;
  * Start chain of events to display the notifications to the user
  */
 - (void)displayNotifications;
+
+/**
+ * Broadcast's the _unreadNotificationsCount as the new badge number
+ */
+- (void)broadcastNewBadgeNumber;
 
 @end
 
@@ -70,12 +71,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)handleLiveNotificationWithInfo:(NSDictionary*)info {
-	
-    _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
-    
     
 	NSDictionary *aps		= (NSDictionary*)[info objectForKey:kKeyAPS];
 	NSDictionary *alert     = [aps objectForKey:kKeyAlert];
+    NSString *badge         = [aps objectForKey:kKeyBadge];
+
 
     if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 
@@ -89,15 +89,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
              [alertView show];
              [alertView release];
         }
+        
+        if(badge) {
+            _unreadNotificationsCount = [badge integerValue];
+            [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
+        }
+        
 	}
-    else
+    else {
+        _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        
         [self displayNotifications];
+    }
+    
+    
+    [self broadcastNewBadgeNumber];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)handleBackgroundNotification {
     
     _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    
+    [self broadcastNewBadgeNumber];
+    
     
     if(self.backgroundNotificationInfo) {
         [self displayNotifications];
@@ -120,6 +135,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
     _unreadNotificationsCount   = 0;
     
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    [self broadcastNewBadgeNumber];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -132,6 +149,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                 [NSNumber numberWithInteger:kTabBarFeedIndex],kKeyTabIndex,
                                                                 [NSNumber numberWithInteger:kResetNone],kKeyResetType,
+                                                                nil]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)broadcastNewBadgeNumber {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNNewApplicationBadge
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:_unreadNotificationsCount],kKeyBadge,
                                                                 nil]];
 }
 

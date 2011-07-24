@@ -77,6 +77,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 											 selector:@selector(tabSelectionChanged:) 
 												 name:kNTabSelectionChanged
 											   object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(newApplicationBadge:) 
+												 name:kNNewApplicationBadge
+											   object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -260,6 +265,14 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
         else
             [self displayNotifications];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)newApplicationBadge:(NSNotification*)notification {
+    NSDictionary *info          = [notification userInfo];	
+    NSInteger badegeNumber      = [[info objectForKey:kKeyBadge] integerValue];
+    
+    NSLog(@"new badge number is %d",badegeNumber);
 }
 
 
