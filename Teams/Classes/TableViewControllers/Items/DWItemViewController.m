@@ -24,13 +24,13 @@
 @synthesize itemViewDataSource      = _itemViewDataSource;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithItem:(DWItem*)item {
+- (id)initWithItemID:(NSInteger)itemID {
     
     self = [super init];
     
     if(self) {
         self.itemViewDataSource             = [[[DWItemViewDataSource alloc] init] autorelease];
-        self.itemViewDataSource.itemID      = item.databaseID;
+        self.itemViewDataSource.itemID      = itemID;
         
         self.itemsLogicController           = [[[DWItemsLogicController alloc] init] autorelease];
         self.itemsLogicController.tableViewController = self;
