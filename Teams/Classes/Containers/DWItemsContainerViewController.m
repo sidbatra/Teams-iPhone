@@ -273,6 +273,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
+ 
     
     DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
                                                                    init] autorelease];

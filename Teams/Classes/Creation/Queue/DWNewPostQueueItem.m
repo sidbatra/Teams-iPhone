@@ -149,6 +149,8 @@
     
     NSLog(@"new item with id - %d",item.databaseID);
     
+    [item destroy];
+    
     [self primaryUploadFinished];
 }
 
