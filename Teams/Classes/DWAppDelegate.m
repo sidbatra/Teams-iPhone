@@ -74,16 +74,16 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-    /*
+    
 	if([[url absoluteString] hasPrefix:kFacebookURLPrefix]) {
 		[[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
 															object:url];	
 	}
 	else {
-		[[NSNotificationCenter defaultCenter] postNotificationName:kNDenwenURLOpened 
-															object:[url absoluteString]];	
+		//[[NSNotificationCenter defaultCenter] postNotificationName:kNDenwenURLOpened 
+		//													object:[url absoluteString]];	
 	}
-     */
+     
 	
 	return YES;
 }

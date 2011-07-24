@@ -363,14 +363,13 @@ NSString* const kImgGenericPlaceHolder			= @"generic_placeholder.png";
  */
 NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
 NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
-NSString* const kFacebookAppID					= @"127979053940843";
+NSString* const kFacebookAppID					= @"142023125881016";
 
 #else
 
 NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
 NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
-//NSString* const kFacebookAppID					= @"127979053940843";
-NSString* const kFacebookAppID					= @"176869555684965";
+NSString* const kFacebookAppID					= @"142023125881016";
 
 
 /**

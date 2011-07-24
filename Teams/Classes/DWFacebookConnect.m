@@ -4,8 +4,6 @@
 //
 
 #import "DWFacebookConnect.h"
-#import "DWRequestsManager.h"
-#import "DWSession.h"
 #import "DWConstants.h"
 
 
@@ -14,8 +12,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFacebookConnect
 
-@synthesize facebook    = _facebook;
-@synthesize delegate    = _delegate;
+@synthesize facebook    	= _facebook;
+@synthesize accessToken     = _accessToken;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -38,36 +37,47 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.facebook   = nil;
+    self.facebook       = nil;
+    self.accessToken    = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)authenticate {
+- (BOOL)authenticate {
     
-    if([DWSession sharedDWSession].currentUser.facebookAccessToken) {
-		self.facebook.accessToken		= [DWSession sharedDWSession].currentUser.facebookAccessToken;
+    BOOL isAuthenticated = NO;
+    
+    if(self.accessToken) {
+		self.facebook.accessToken		= self.accessToken;
 		self.facebook.expirationDate	= [NSDate distantFuture];
         
-        [_delegate fbAuthenticated];
+        isAuthenticated                 = YES;
 	}
     else {
         [self.facebook authorize:[NSArray arrayWithObjects:
                                   @"offline_access", 
                                   @"publish_stream",
-                                  @"user_checkins",
-                                  @"user_hometown",
+                                  @"user_education_history",
+                                  @"user_groups",
                                   @"user_likes",
                                   @"user_location",
                                   @"user_work_history",
+                                  @"user_events",
+                                  @"friends_education_history",
                                   @"friends_work_history",
-                                  @"friends_checkins",
-                                  @"user_events",nil] 
+                                  @"friends_likes",
+                                  nil] 
                         delegate:self];
-        
-        [_delegate fbAuthenticating];
     }
+    
+    return isAuthenticated;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getProfilePicture {
+    [self.facebook requestWithGraphPath:@"/me/picture?type=large" 
+                            andDelegate:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -112,15 +122,22 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbDidLogin {
-	//[[DWSession sharedDWSession].currentUser storeFacebookToken:self.facebook.accessToken];
-	//[[DWRequestsManager sharedDWRequestsManager] updateFacebookTokenForCurrentUser:self.facebook.accessToken];
     
-    [_delegate fbAuthenticated];
+    self.accessToken = self.facebook.accessToken;
+    
+    SEL sel = @selector(fbAuthenticated);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 //----------------------------------------------------------------------------------------------------
 -(void)fbDidNotLogin:(BOOL)cancelled {
-    [_delegate fbAuthenticationFailed];
+    
+    SEL sel = @selector(fbAuthenticationFailed);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 
@@ -155,13 +172,22 @@
 		result = [result objectAtIndex:0];
 	}
     
-    [_delegate fbSharingDone];
+    
+    SEL sel = @selector(fbRequestLoaded:);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel 
+                        withObject:result];
 }
-
 
 //----------------------------------------------------------------------------------------------------
 - (void)request:(FBRequest *)request didFailWithError:(NSError *)error {
-    [_delegate fbSharingFailed];
+
+    SEL sel = @selector(fbRequestFailed:);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel 
+                        withObject:error];
 }
 
 

@@ -14,8 +14,9 @@
  */
 @interface DWFacebookConnect : NSObject<FBSessionDelegate,FBRequestDelegate> {
     Facebook    *_facebook;
+    NSString    *_accessToken;
     
-    id<DWFacebookConnectDelegate> _delegate;
+    id<DWFacebookConnectDelegate,NSObject> _delegate;
 }
 
 /**
@@ -24,15 +25,25 @@
 @property (nonatomic,retain) Facebook *facebook;
 
 /**
+ * Access token to make requests on behalf of the user
+ */
+@property (nonatomic,copy) NSString *accessToken;
+
+/**
  * DWFacebookConnectDelegate
  */
-@property (nonatomic,assign) id<DWFacebookConnectDelegate> delegate;
+@property (nonatomic,assign) id<DWFacebookConnectDelegate,NSObject> delegate;
 
 
 /**
- * If not authenticated ask for permissions, else setup auth token
+ * Test authentication status and authenticate if needed. Returns YES if authenticated
  */
-- (void)authenticate;
+- (BOOL)authenticate;
+
+/**
+ * Get the largest copy of the user's profile picture
+ */
+- (void)getProfilePicture;
 
 /**
  * Post a message to the wall
@@ -51,9 +62,11 @@
  * Protocol to fire events about the fbSharing lifecycle
  */
 @protocol DWFacebookConnectDelegate 
+
+@optional
+
 - (void)fbAuthenticated;
-- (void)fbAuthenticating;
 - (void)fbAuthenticationFailed;
-- (void)fbSharingDone;
-- (void)fbSharingFailed;
+- (void)fbRequestLoaded:(id)result;
+- (void)fbRequestFailed:(NSError*)error;
 @end
