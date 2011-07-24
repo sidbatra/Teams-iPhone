@@ -33,6 +33,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)updateNavTitleView;
 
 /**
+ * Display the notifications controller
+ */
+- (void)displayNotifications;
+
+/**
  * View creation methods
  */
 - (void)loadNotificationsButton;
@@ -67,6 +72,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
                                              selector:@selector(smallUserImageLoaded:) 
                                                  name:kNImgSmallUserLoaded
                                                object:nil];  
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+											 selector:@selector(tabSelectionChanged:) 
+												 name:kNTabSelectionChanged
+											   object:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -108,11 +118,6 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
 	NSLog(@"%@",kMsgUnload);
 }
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark View Lifecycle
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNotificationsButton {
@@ -187,6 +192,16 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
                                     withEnabledState:NO];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayNotifications {
+    
+    DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
+                                                                   init] autorelease];
+    
+    [self.navigationController pushViewController:notificationsViewController
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -231,6 +246,21 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     [self setProfilePicture:[info objectForKey:kKeyImage]];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)tabSelectionChanged:(NSNotification*)notification {
+	
+	NSDictionary *info          = [notification userInfo];	
+    NSInteger selectedIndex     = [[info objectForKey:kKeySelectedIndex] integerValue];
+
+	if(selectedIndex == kTabBarFeedIndex && 
+        [DWPushNotificationsManager sharedDWPushNotificationsManager].showNotifications)  {
+            
+        [self displayNotifications];
+            //if([self.navigationController.topViewController isKindOfClass:[DWNotificationsViewController class]])
+            //    [(DWNotificationsViewController*)self.navigationController.topViewController hardRefresh];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -273,13 +303,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
- 
-    
-    DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
-                                                                   init] autorelease];
-    
-    [self.navigationController pushViewController:notificationsViewController
-                                         animated:YES];
+    [self displayNotifications];
 }
 
 

@@ -49,7 +49,7 @@ NSInteger const kResetSoft              = 1;
 
 
 //----------------------------------------------------------------------------------------------------
-NSInteger const kTabBarPlacesIndex		= 0;
+NSInteger const kTabBarTeamsIndex		= 0;
 NSInteger const kTabBarCreateIndex		= 1;
 NSInteger const kTabBarFeedIndex		= 2;
 NSInteger const kTabBarNormalTag		= 0;

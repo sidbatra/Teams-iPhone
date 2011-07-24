@@ -5,6 +5,7 @@
 
 #import "DWNotificationsViewController.h"
 #import "DWNotificationsDataSource.h"
+#import "DWPushNotificationsManager.h"
 #import "DWGUIManager.h"
 
 static NSString* const kTitle   = @"Notifications";
@@ -59,6 +60,8 @@ static NSString* const kTitle   = @"Notifications";
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
 
     [self.notificationsDataSource loadNotifications];
+    
+    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
 }
 
 

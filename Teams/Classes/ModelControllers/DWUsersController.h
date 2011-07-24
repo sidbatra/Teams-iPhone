@@ -44,6 +44,12 @@
                andPassword:(NSString*)password;
 
 /**
+ * Update the iphone device id for the given userID
+ */
+- (void)updateUserHavingID:(NSInteger)userID
+        withiPhoneDeviceID:(NSString*)deviceID;
+
+/**
  * Get the user with the given userID
  */
 - (void)getUserWithID:(NSInteger)userID;

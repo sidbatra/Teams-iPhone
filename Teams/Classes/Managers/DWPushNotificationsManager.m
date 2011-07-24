@@ -5,6 +5,7 @@
 
 #import "DWPushNotificationsManager.h"
 #import "DWRequestsManager.h"
+#import "DWNotification.h"
 #import "DWConstants.h"
 
 #import "SynthesizeSingleton.h"
@@ -41,7 +42,9 @@ static NSInteger const kNotificationTypeItem    = 2;
 @implementation DWPushNotificationsManager
 
 @synthesize backgroundNotificationInfo      = _backgroundNotificationInfo;
-@synthesize hasUnreadNotifications          = _hasUnreadNotifications;
+@synthesize usersController                 = _usersController;
+@synthesize unreadNotificationsCount        = _unreadNotificationsCount;
+@synthesize showNotifications               = _showNotifications;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
@@ -50,6 +53,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 	self = [super init];
 	
 	if(self) {
+        self.usersController                    = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate           = self;
 	}
 	
 	return self;
@@ -57,7 +62,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.backgroundNotificationInfo   = nil;
+    self.backgroundNotificationInfo     = nil;
+    self.usersController                = nil;
     
     [super dealloc];
 }
@@ -65,14 +71,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 //----------------------------------------------------------------------------------------------------
 - (void)handleLiveNotificationWithInfo:(NSDictionary*)info {
 	
+    _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    
+    
 	NSDictionary *aps		= (NSDictionary*)[info objectForKey:kKeyAPS];
 	NSDictionary *alert     = [aps objectForKey:kKeyAlert];
-    //NSDictionary *badge     = [aps objectForKey:kKeyBadge];
-    
-    
-	if(alert) {
 
-        if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+    if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+
+        if(alert) {
+
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
                                                                  message:[alert objectForKey:kKeyBody] 
                                                                 delegate:self 
@@ -81,13 +89,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
              [alertView show];
              [alertView release];
         }
-        else
-            [self displayNotifications];
 	}
+    else
+        [self displayNotifications];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)handleBackgroundNotification {
+    
+    _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
     
     if(self.backgroundNotificationInfo) {
         [self displayNotifications];
@@ -96,17 +106,26 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)resetUnreadCount {
-	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-	
-	//if(self.unreadItems)
-	//	[[DWRequestsManager sharedDWRequestsManager] updateUnreadCountForCurrentUserBy:self.unreadItems];	
+- (void)setDeviceToken:(NSData*)deviceToken 
+             forUserID:(NSInteger)userID {
+    
+    [self.usersController updateUserHavingID:userID 
+                          withiPhoneDeviceID:[NSString stringWithFormat:@"%@",deviceToken]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)resetNotifications {
+    
+    _showNotifications          = NO;
+    _unreadNotificationsCount   = 0;
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayNotifications {
     
-    _hasUnreadNotifications    = YES;
+    _showNotifications = YES;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil
@@ -121,11 +140,29 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UIAlertViewDelegate
+
 //----------------------------------------------------------------------------------------------------
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	    
 	if (buttonIndex == kActionButtonIndex)
         [self displayNotifications];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    NSLog(@"updateD");
+    [user destroy];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString*)error {
+    NSLog(@"updat errir %@",error);
 }
 
 @end

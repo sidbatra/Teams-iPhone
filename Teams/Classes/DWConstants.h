@@ -119,7 +119,7 @@ extern NSInteger const kResetSoft;
 /**
  * Tab bar
  */ 
-extern NSInteger const kTabBarPlacesIndex;
+extern NSInteger const kTabBarTeamsIndex;
 extern NSInteger const kTabBarCreateIndex;
 extern NSInteger const kTabBarFeedIndex;
 extern NSInteger const kTabBarNormalTag;

@@ -10,12 +10,13 @@
 #import "DWRequestHelper.h"
 #import "DWUser.h"
 
-static NSString* const kNewUserURI          = @"/users.json?user[email]=%@&user[password]=%@";
-static NSString* const kUpdateUserURI       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
-static NSString* const kUserURI             = @"/users/%d.json?";
-static NSString* const kTeamFollowersURI    = @"/teams/%d/followers.json?limit=%d";
-static NSString* const kTeamMembersURI      = @"/teams/%d/members.json?limit=%d";
-static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
+static NSString* const kNewUserURI              = @"/users.json?user[email]=%@&user[password]=%@";
+static NSString* const kUpdateUserURI           = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
+static NSString* const kUpdateUserDeviceURI     = @"/users/%d.json?user[iphone_device_id]=%@";
+static NSString* const kUserURI                 = @"/users/%d.json?";
+static NSString* const kTeamFollowersURI        = @"/teams/%d/followers.json?limit=%d";
+static NSString* const kTeamMembersURI          = @"/teams/%d/members.json?limit=%d";
+static NSString* const kItemTouchersURI         = @"/items/%d/touchers.json?";
 
 
 /**
@@ -158,8 +159,12 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
 #pragma mark Update
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateUserHavingID:(NSInteger)userID withEmail:(NSString*)email andFirstName:(NSString*)firstName 
-                  lastName:(NSString*)lastName byline:(NSString*)byline andPassword:(NSString*)password {
+- (void)updateUserHavingID:(NSInteger)userID 
+                 withEmail:(NSString*)email
+              andFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName
+                    byline:(NSString*)byline
+               andPassword:(NSString*)password {
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
                           userID,
@@ -177,7 +182,8 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateUserHavingID:(NSInteger)userID withEmail:(NSString*)email {
+- (void)updateUserHavingID:(NSInteger)userID 
+                 withEmail:(NSString*)email {
     
     [self updateUserHavingID:userID 
                    withEmail:email 
@@ -188,8 +194,11 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateUserHavingID:(NSInteger)userID withFirstName:(NSString*)firstName 
-                  lastName:(NSString*)lastName byline:(NSString*)byline andPassword:(NSString*)password {
+- (void)updateUserHavingID:(NSInteger)userID 
+             withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName
+                    byline:(NSString*)byline
+               andPassword:(NSString*)password {
     
     [self updateUserHavingID:userID 
                    withEmail:kEmptyString 
@@ -198,6 +207,21 @@ static NSString* const kItemTouchersURI     = @"/items/%d/touchers.json?";
                       byline:byline     
                  andPassword:password];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID
+        withiPhoneDeviceID:(NSString*)deviceID {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserDeviceURI,
+                          userID,
+                          [deviceID stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];    
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

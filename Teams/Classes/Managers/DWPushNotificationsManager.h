@@ -5,13 +5,20 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DWUsersController.h"
+#import "DWNotificationsController.h"
+
 /**
  * Handle the notifications flow of the app
  */
-@interface DWPushNotificationsManager : NSObject {
-    NSDictionary    *_backgroundNotificationInfo;
+@interface DWPushNotificationsManager : NSObject<DWUsersControllerDelegate,DWNotificationsControllerDelegate> {
     
-    BOOL            _hasUnreadNotifications;
+    NSDictionary                *_backgroundNotificationInfo;
+    
+    DWUsersController           *_usersController;
+    
+    NSInteger                   _unreadNotificationsCount;
+    BOOL                        _showNotifications;
 }
 
 /**
@@ -26,9 +33,19 @@
 @property (nonatomic,retain) NSDictionary *backgroundNotificationInfo;
 
 /**
+ * Interface to the users service
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+
+/**
  * Flag for unread notifications
  */
-@property (nonatomic,readonly) BOOL hasUnreadNotifications;
+@property (nonatomic,readonly) NSInteger unreadNotificationsCount;
+
+/**
+ * Flag is set when the user has shown explicit intent to view notifications
+ */
+@property (nonatomic,readonly) BOOL showNotifications;
 
 
 /**
@@ -40,6 +57,18 @@
  * Handle push notifications received while the app wass in the background
  */
 - (void)handleBackgroundNotification;
+
+/**
+ * Apply the given iphone device token for the given userID
+ */
+- (void)setDeviceToken:(NSData*)deviceToken 
+             forUserID:(NSInteger)userID;
+
+/**
+ * Reset all states after notifications are viewed 
+ */
+- (void)resetNotifications;
+
 
 @end
 
