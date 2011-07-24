@@ -6,6 +6,7 @@
 #import "DWPushNotificationsManager.h"
 #import "DWRequestsManager.h"
 #import "DWNotification.h"
+#import "DWSession.h"
 #import "DWConstants.h"
 
 #import "SynthesizeSingleton.h"
@@ -137,6 +138,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
     
     [self broadcastNewBadgeNumber];
+    
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
+                      withNotificationsCount:0];
 }
 
 //----------------------------------------------------------------------------------------------------

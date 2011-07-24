@@ -50,6 +50,12 @@
         withiPhoneDeviceID:(NSString*)deviceID;
 
 /**
+ * Update the unread notifications count for the give userID
+ */
+- (void)updateUserHavingID:(NSInteger)userID
+    withNotificationsCount:(NSInteger)unreadNotificationsCount;
+
+/**
  * Get the user with the given userID
  */
 - (void)getUserWithID:(NSInteger)userID;

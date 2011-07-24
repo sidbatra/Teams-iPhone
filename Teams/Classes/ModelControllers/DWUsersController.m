@@ -10,13 +10,14 @@
 #import "DWRequestHelper.h"
 #import "DWUser.h"
 
-static NSString* const kNewUserURI              = @"/users.json?user[email]=%@&user[password]=%@";
-static NSString* const kUpdateUserURI           = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
-static NSString* const kUpdateUserDeviceURI     = @"/users/%d.json?user[iphone_device_id]=%@";
-static NSString* const kUserURI                 = @"/users/%d.json?";
-static NSString* const kTeamFollowersURI        = @"/teams/%d/followers.json?limit=%d";
-static NSString* const kTeamMembersURI          = @"/teams/%d/members.json?limit=%d";
-static NSString* const kItemTouchersURI         = @"/items/%d/touchers.json?";
+static NSString* const kNewUserURI                          = @"/users.json?user[email]=%@&user[password]=%@";
+static NSString* const kUpdateUserURI                       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
+static NSString* const kUpdateUserDeviceURI                 = @"/users/%d.json?user[iphone_device_id]=%@";
+static NSString* const kUpdateUserNotificationsCountURI     = @"/users/%d.json?user[unread_notifications_count]=%d";
+static NSString* const kUserURI                             = @"/users/%d.json?";
+static NSString* const kTeamFollowersURI                    = @"/teams/%d/followers.json?limit=%d";
+static NSString* const kTeamMembersURI                      = @"/teams/%d/members.json?limit=%d";
+static NSString* const kItemTouchersURI                     = @"/items/%d/touchers.json?";
 
 
 /**
@@ -215,6 +216,20 @@ static NSString* const kItemTouchersURI         = @"/items/%d/touchers.json?";
     NSString *localURL = [NSString stringWithFormat:kUpdateUserDeviceURI,
                           userID,
                           [deviceID stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID
+    withNotificationsCount:(NSInteger)unreadNotificationsCount {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserNotificationsCountURI,
+                          userID,
+                          unreadNotificationsCount];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
