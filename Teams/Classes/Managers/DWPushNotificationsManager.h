@@ -1,5 +1,5 @@
 //
-//  DWNotificationsHelper.h
+//  DWPushNotificationsManager.h
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
@@ -8,7 +8,7 @@
 /**
  * Handle the notifications flow of the app
  */
-@interface DWNotificationsHelper : NSObject {
+@interface DWPushNotificationsManager : NSObject {
 	NSInteger       _unreadItems;
     BOOL            _unreadNotifications;
     NSDictionary    *_backgroundRemoteInfo;
@@ -17,7 +17,7 @@
 /**
  * The sole shared instance of the class
  */
-+ (DWNotificationsHelper *)sharedDWNotificationsHelper;
++ (DWPushNotificationsManager *)sharedDWPushNotificationsManager;
 
 /**
  * Total unread items on the feed page
@@ -57,6 +57,6 @@
 /**
  * Declarations for private methods
  */
-@interface DWNotificationsHelper(Private)
+@interface DWPushNotificationsManager(Private)
 - (void)displayNotifications;
 @end

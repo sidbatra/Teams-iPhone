@@ -38,7 +38,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {    
     	    
-    //[DWNotificationsHelper sharedDWNotificationsHelper].backgroundRemoteInfo = [launchOptions objectForKey:
+    //[DWPushNotificationsManager sharedDWPushNotificationsManager].backgroundRemoteInfo = [launchOptions objectForKey:
     //                                                                                UIApplicationLaunchOptionsRemoteNotificationKey];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -68,7 +68,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleLiveNotificationWithUserInfo:userInfo];
+	//[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleLiveNotificationWithUserInfo:userInfo];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	if(self.tabBarController == nil) 
 		[self setupApplication];
     
-	//[[DWNotificationsHelper sharedDWNotificationsHelper] handleBackgroundNotification];
+	//[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleBackgroundNotification];
 }
 
 //----------------------------------------------------------------------------------------------------

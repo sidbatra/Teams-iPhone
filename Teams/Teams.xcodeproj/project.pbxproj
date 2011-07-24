@@ -236,7 +236,6 @@
 		BB28E01C1360093000FF4566 /* loading_bar_fail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E0181360092F00FF4566 /* loading_bar_fail@2x.png */; };
 		BB28E01D1360093000FF4566 /* loading_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E0191360093000FF4566 /* loading_bar.png */; };
 		BB28E01E1360093000FF4566 /* loading_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB28E01A1360093000FF4566 /* loading_bar@2x.png */; };
-		BB33134312F2628F00B713F9 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB33134212F2628F00B713F9 /* DWGUIManager.m */; };
 		BB348714138A4779003802D1 /* hand_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348710138A4778003802D1 /* hand_text.png */; };
 		BB348715138A4779003802D1 /* hand_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348711138A4778003802D1 /* hand_text@2x.png */; };
 		BB348716138A4779003802D1 /* share_text.png in Resources */ = {isa = PBXBuildFile; fileRef = BB348712138A4778003802D1 /* share_text.png */; };
@@ -283,7 +282,6 @@
 		BB4051CF12F2377500916688 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051B412F2377500916688 /* MBProgressHUD.m */; };
 		BB4051D112F2377500916688 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BA12F2377500916688 /* RegexKitLite.m */; };
 		BB4051D212F2377500916688 /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */; };
-		BB4D1DDC13C24DAB00F8819C /* DWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D1DDB13C24DAB00F8819C /* DWLocationManager.m */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
@@ -408,7 +406,6 @@
 		BBCE3A66131CC38D008BDA82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A64131CC38D008BDA82 /* Default@2x.png */; };
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
 		BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0BFDA1344487C00BCFB96 /* DWConstants.m */; };
-		BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */; };
 		BBD113B313D7C044002D7352 /* DWNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B213D7C044002D7352 /* DWNotificationsController.m */; };
 		BBD113B713D7C120002D7352 /* DWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B613D7C120002D7352 /* DWNotification.m */; };
 		BBD113BA13D7D4E4002D7352 /* DWNotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B913D7D4E4002D7352 /* DWNotificationsDataSource.m */; };
@@ -440,6 +437,9 @@
 		BBEE2E5113CE720A00AEAC83 /* DWSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5013CE720A00AEAC83 /* DWSessionController.m */; };
 		BBEE2E5C13CE8AFE00AEAC83 /* DWTouchesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */; };
 		BBEE2E5F13CE8B8500AEAC83 /* DWTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */; };
+		BBF350D813DC985B00B339A8 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D313DC985B00B339A8 /* DWGUIManager.m */; };
+		BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D513DC985B00B339A8 /* DWLocationManager.m */; };
+		BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */; };
 		BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */; };
 		BBF89636135022BA00B332CA /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89623135022BA00B332CA /* button_blue.png */; };
 		BBF89637135022BA00B332CA /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89624135022BA00B332CA /* button_blue@2x.png */; };
@@ -830,8 +830,6 @@
 		BB28E0181360092F00FF4566 /* loading_bar_fail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_bar_fail@2x.png"; path = "resources/loading_bar_fail@2x.png"; sourceTree = "<group>"; };
 		BB28E0191360093000FF4566 /* loading_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = loading_bar.png; path = resources/loading_bar.png; sourceTree = "<group>"; };
 		BB28E01A1360093000FF4566 /* loading_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "loading_bar@2x.png"; path = "resources/loading_bar@2x.png"; sourceTree = "<group>"; };
-		BB33134112F2628F00B713F9 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWGUIManager.h; path = Classes/DWGUIManager.h; sourceTree = "<group>"; };
-		BB33134212F2628F00B713F9 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWGUIManager.m; path = Classes/DWGUIManager.m; sourceTree = "<group>"; };
 		BB348710138A4778003802D1 /* hand_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hand_text.png; path = resources/hand_text.png; sourceTree = "<group>"; };
 		BB348711138A4778003802D1 /* hand_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hand_text@2x.png"; path = "resources/hand_text@2x.png"; sourceTree = "<group>"; };
 		BB348712138A4778003802D1 /* share_text.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_text.png; path = resources/share_text.png; sourceTree = "<group>"; };
@@ -914,8 +912,6 @@
 		BB4051BA12F2377500916688 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		BB4051BB12F2377500916688 /* RKLMatchEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLMatchEnumerator.h; sourceTree = "<group>"; };
 		BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLMatchEnumerator.m; sourceTree = "<group>"; };
-		BB4D1DDA13C24DAB00F8819C /* DWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLocationManager.h; path = Classes/DWLocationManager.h; sourceTree = "<group>"; };
-		BB4D1DDB13C24DAB00F8819C /* DWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWLocationManager.m; path = Classes/DWLocationManager.m; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
@@ -1089,8 +1085,6 @@
 		BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = resources/iTunesArtwork; sourceTree = "<group>"; };
 		BBD0BFD91344487C00BCFB96 /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWConstants.h; path = Classes/DWConstants.h; sourceTree = "<group>"; };
 		BBD0BFDA1344487C00BCFB96 /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWConstants.m; path = Classes/DWConstants.m; sourceTree = "<group>"; };
-		BBD0C3701346E2D700BCFB96 /* DWNotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWNotificationsHelper.h; path = Classes/DWNotificationsHelper.h; sourceTree = "<group>"; };
-		BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWNotificationsHelper.m; path = Classes/DWNotificationsHelper.m; sourceTree = "<group>"; };
 		BBD113B113D7C044002D7352 /* DWNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsController.h; sourceTree = "<group>"; };
 		BBD113B213D7C044002D7352 /* DWNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsController.m; sourceTree = "<group>"; };
 		BBD113B513D7C120002D7352 /* DWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotification.h; sourceTree = "<group>"; };
@@ -1137,6 +1131,12 @@
 		BBEE2E5B13CE8AFD00AEAC83 /* DWTouchesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchesController.m; sourceTree = "<group>"; };
 		BBEE2E5D13CE8B8500AEAC83 /* DWTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouch.h; sourceTree = "<group>"; };
 		BBEE2E5E13CE8B8500AEAC83 /* DWTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouch.m; sourceTree = "<group>"; };
+		BBF350D213DC985B00B339A8 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
+		BBF350D313DC985B00B339A8 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGUIManager.m; sourceTree = "<group>"; };
+		BBF350D413DC985B00B339A8 /* DWLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLocationManager.h; sourceTree = "<group>"; };
+		BBF350D513DC985B00B339A8 /* DWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLocationManager.m; sourceTree = "<group>"; };
+		BBF350D613DC985B00B339A8 /* DWPushNotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPushNotificationsManager.h; sourceTree = "<group>"; };
+		BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPushNotificationsManager.m; sourceTree = "<group>"; };
 		BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWMediaPickerController.h; path = Classes/DWMediaPickerController.h; sourceTree = "<group>"; };
 		BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWMediaPickerController.m; path = Classes/DWMediaPickerController.m; sourceTree = "<group>"; };
 		BBF89623135022BA00B332CA /* button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_blue.png; path = resources/button_blue.png; sourceTree = "<group>"; };
@@ -1706,7 +1706,7 @@
 				BB272B5013CFCE3400FDACA1 /* Extensions */,
 				BBF8989513CA305400D5C5FB /* Helpers */,
 				BB572A0513D25C020060A351 /* LogicControllers */,
-				BBB51A0812F9FB490024086F /* Managers */,
+				BBF350D113DC985A00B339A8 /* Managers */,
 				BB8499E813C6B1B600D9789D /* MemoryPool */,
 				BB8499D513C6B08A00D9789D /* Models */,
 				BBF8989913CA3F1300D5C5FB /* ModelControllers */,
@@ -1716,7 +1716,6 @@
 				BB8499C113C27AA400D9789D /* Onboarding */,
 				BB272C0D13D0B77300FDACA1 /* SegmentedControl */,
 				BBFD29A11388241D0077904A /* Sharing */,
-				BB3CCBC212F9368F00ADFCD7 /* Singletons */,
 				BBF8987413C6B47300D5C5FB /* Session */,
 				BBF8986D13C6B45500D5C5FB /* TabBar */,
 				BB272B3D13CFCDE100FDACA1 /* TableViewCells */,
@@ -1991,15 +1990,6 @@
 				BB3BE20D133AB6E30055FED0 /* Reachability.m */,
 			);
 			name = Reachability;
-			sourceTree = "<group>";
-		};
-		BB3CCBC212F9368F00ADFCD7 /* Singletons */ = {
-			isa = PBXGroup;
-			children = (
-				BBD0C3701346E2D700BCFB96 /* DWNotificationsHelper.h */,
-				BBD0C3711346E2D700BCFB96 /* DWNotificationsHelper.m */,
-			);
-			name = Singletons;
 			sourceTree = "<group>";
 		};
 		BB40518412F2373E00916688 /* External */ = {
@@ -2301,17 +2291,6 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		BBB51A0812F9FB490024086F /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				BB4D1DDA13C24DAB00F8819C /* DWLocationManager.h */,
-				BB4D1DDB13C24DAB00F8819C /* DWLocationManager.m */,
-				BB33134112F2628F00B713F9 /* DWGUIManager.h */,
-				BB33134212F2628F00B713F9 /* DWGUIManager.m */,
-			);
-			name = Managers;
-			sourceTree = "<group>";
-		};
 		BBC0C6D612F4C56000291C33 /* external */ = {
 			isa = PBXGroup;
 			children = (
@@ -2369,6 +2348,20 @@
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
+			sourceTree = "<group>";
+		};
+		BBF350D113DC985A00B339A8 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BBF350D213DC985B00B339A8 /* DWGUIManager.h */,
+				BBF350D313DC985B00B339A8 /* DWGUIManager.m */,
+				BBF350D413DC985B00B339A8 /* DWLocationManager.h */,
+				BBF350D513DC985B00B339A8 /* DWLocationManager.m */,
+				BBF350D613DC985B00B339A8 /* DWPushNotificationsManager.h */,
+				BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */,
+			);
+			name = Managers;
+			path = Classes/Managers;
 			sourceTree = "<group>";
 		};
 		BBF8986D13C6B45500D5C5FB /* TabBar */ = {
@@ -2946,7 +2939,6 @@
 				BB4051CF12F2377500916688 /* MBProgressHUD.m in Sources */,
 				BB4051D112F2377500916688 /* RegexKitLite.m in Sources */,
 				BB4051D212F2377500916688 /* RKLMatchEnumerator.m in Sources */,
-				BB33134312F2628F00B713F9 /* DWGUIManager.m in Sources */,
 				BBC0C6EB12F4C57800291C33 /* EGORefreshTableHeaderView.m in Sources */,
 				26000219130DFB0100366CE3 /* KTTextView.m in Sources */,
 				BB3BE1CE133AB65F0055FED0 /* ASIAuthenticationDialog.m in Sources */,
@@ -2966,7 +2958,6 @@
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
 				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
-				BBD0C3721346E2D700BCFB96 /* DWNotificationsHelper.m in Sources */,
 				BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */,
 				268B56831356682800BB43DC /* DWCameraOverlayViewController.m in Sources */,
 				BBE70D9F135D10C2001D83CC /* DWPostProgressView.m in Sources */,
@@ -2986,7 +2977,6 @@
 				BBFD29CE1388462E0077904A /* TwitterTweetPoster.m in Sources */,
 				BBFD29CF1388462E0077904A /* TwitterUtils.m in Sources */,
 				BBFD29E81388625D0077904A /* DWTwitterConnect.m in Sources */,
-				BB4D1DDC13C24DAB00F8819C /* DWLocationManager.m in Sources */,
 				BB8499E213C6B09E00D9789D /* DWAttachment.m in Sources */,
 				BB8499E313C6B09E00D9789D /* DWFollowing.m in Sources */,
 				BB8499E413C6B09E00D9789D /* DWItem.m in Sources */,
@@ -3113,6 +3103,9 @@
 				BB9D3FCC13D92FE200CC8F07 /* DWUserTeamsDataSource.m in Sources */,
 				BB9D3FD013D9313900CC8F07 /* DWUserTeamsViewController.m in Sources */,
 				2620294613D9F6F90003B7C0 /* DWSpinnerOverlayView.m in Sources */,
+				BBF350D813DC985B00B339A8 /* DWGUIManager.m in Sources */,
+				BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */,
+				BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

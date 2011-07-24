@@ -11,7 +11,7 @@
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
 #import "DWCreationQueue.h"
-#import "DWNotificationsHelper.h"
+#import "DWPushNotificationsManager.h"
 #import "DWGUIManager.h"
 #import "DWSession.h"
 

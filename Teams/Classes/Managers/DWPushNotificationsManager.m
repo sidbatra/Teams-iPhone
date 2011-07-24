@@ -1,9 +1,9 @@
 //
-//  DWNotificationsHelper.m
+//  DWPushNotificationsManager.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWNotificationsHelper.h"
+#import "DWPushNotificationsManager.h"
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 
@@ -20,16 +20,18 @@ static NSInteger const kActionButtonIndex       = 1;
 static NSInteger const kNotificationTypeTouch   = 1;
 static NSInteger const kNotificationTypeItem    = 2;
 
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWNotificationsHelper
+@implementation DWPushNotificationsManager
 
 @synthesize unreadItems             = _unreadItems;
 @synthesize unreadNotifications     = _unreadNotifications;
 @synthesize backgroundRemoteInfo    = _backgroundRemoteInfo;
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(DWNotificationsHelper);
+SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
