@@ -21,15 +21,27 @@ static NSInteger const kNotificationTypeTouch   = 1;
 static NSInteger const kNotificationTypeItem    = 2;
 
 
+/**
+ * Private method and property declarations
+ */
+@interface DWPushNotificationsManager()
+
+/**
+ * Start chain of events to display the notifications to the user
+ */
+- (void)displayNotifications;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWPushNotificationsManager
 
-@synthesize unreadItems             = _unreadItems;
-@synthesize unreadNotifications     = _unreadNotifications;
-@synthesize backgroundRemoteInfo    = _backgroundRemoteInfo;
+@synthesize backgroundNotificationInfo      = _backgroundNotificationInfo;
+@synthesize hasUnreadNotifications          = _hasUnreadNotifications;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
@@ -45,21 +57,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.backgroundRemoteInfo   = nil;
+    self.backgroundNotificationInfo   = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)handleLiveNotificationWithUserInfo:(NSDictionary*)userInfo {
+- (void)handleLiveNotificationWithInfo:(NSDictionary*)info {
 	
-	NSDictionary *aps		= (NSDictionary*)[userInfo objectForKey:kKeyAPS];
+	NSDictionary *aps		= (NSDictionary*)[info objectForKey:kKeyAPS];
 	NSDictionary *alert     = [aps objectForKey:kKeyAlert];
+    //NSDictionary *badge     = [aps objectForKey:kKeyBadge];
+    
     
 	if(alert) {
-        NSInteger type       = [[alert objectForKey:kKeyType] integerValue];
-        
-        if(type == kNotificationTypeTouch && [UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
+
+        if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
              UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
                                                                  message:[alert objectForKey:kKeyBody] 
                                                                 delegate:self 
@@ -68,7 +81,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
              [alertView show];
              [alertView release];
         }
-        else if(type == kNotificationTypeTouch)
+        else
             [self displayNotifications];
 	}
 }
@@ -76,9 +89,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 //----------------------------------------------------------------------------------------------------
 - (void)handleBackgroundNotification {
     
-    if(self.backgroundRemoteInfo) {
+    if(self.backgroundNotificationInfo) {
         [self displayNotifications];
-        self.backgroundRemoteInfo = nil;
+        self.backgroundNotificationInfo = nil;
     }
 }
 
@@ -87,14 +100,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 	[[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 	
 	//if(self.unreadItems)
-	//	[[DWRequestsManager sharedDWRequestsManager] updateUnreadCountForCurrentUserBy:self.unreadItems];
-	
-	self.unreadItems = 0;
+	//	[[DWRequestsManager sharedDWRequestsManager] updateUnreadCountForCurrentUserBy:self.unreadItems];	
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayNotifications {
-    _unreadNotifications    = YES;
+    
+    _hasUnreadNotifications    = YES;
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil

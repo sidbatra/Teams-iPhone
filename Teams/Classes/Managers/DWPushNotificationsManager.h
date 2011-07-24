@@ -9,9 +9,9 @@
  * Handle the notifications flow of the app
  */
 @interface DWPushNotificationsManager : NSObject {
-	NSInteger       _unreadItems;
-    BOOL            _unreadNotifications;
-    NSDictionary    *_backgroundRemoteInfo;
+    NSDictionary    *_backgroundNotificationInfo;
+    
+    BOOL            _hasUnreadNotifications;
 }
 
 /**
@@ -20,43 +20,26 @@
 + (DWPushNotificationsManager *)sharedDWPushNotificationsManager;
 
 /**
- * Total unread items on the feed page
- */
-@property (nonatomic,assign) NSInteger unreadItems;
-
-/**
- * Flags the presence of unread notifications
- */
-@property (nonatomic,assign) BOOL unreadNotifications;
-
-/**
- * Dictionary with the remote notification info obtained when the
+ * Dictionary with the remote notification info obtained while the
  * app was closed
  */
-@property (nonatomic,retain) NSDictionary *backgroundRemoteInfo;
-
+@property (nonatomic,retain) NSDictionary *backgroundNotificationInfo;
 
 /**
- * Handle push notifications when the app is open
+ * Flag for unread notifications
  */
-- (void)handleLiveNotificationWithUserInfo:(NSDictionary*)userInfo;
+@property (nonatomic,readonly) BOOL hasUnreadNotifications;
+
 
 /**
- * Handle push notifications when the app is in the background
+ * Handle push notifications while the app is open
+ */
+- (void)handleLiveNotificationWithInfo:(NSDictionary*)info;
+
+/**
+ * Handle push notifications received while the app wass in the background
  */
 - (void)handleBackgroundNotification;
 
-/**
- * Reset the application badege number and sent the read count to the
- * server
- */
-- (void)resetUnreadCount;
-
 @end
 
-/**
- * Declarations for private methods
- */
-@interface DWPushNotificationsManager(Private)
-- (void)displayNotifications;
-@end

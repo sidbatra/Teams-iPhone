@@ -6,6 +6,7 @@
 #import "DWAppDelegate.h"
 #import "DWContainerViewController.h"
 #import "DWCreateViewController.h"
+#import "DWPushNotificationsManager.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 
@@ -38,8 +39,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions {    
     	    
-    //[DWPushNotificationsManager sharedDWPushNotificationsManager].backgroundRemoteInfo = [launchOptions objectForKey:
-    //                                                                                UIApplicationLaunchOptionsRemoteNotificationKey];
+    [DWPushNotificationsManager sharedDWPushNotificationsManager].backgroundNotificationInfo = [launchOptions objectForKey:
+                                                                                    UIApplicationLaunchOptionsRemoteNotificationKey];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(userLogsIn:) 
@@ -68,7 +69,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-	//[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleLiveNotificationWithUserInfo:userInfo];
+	[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleLiveNotificationWithInfo:userInfo];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -94,7 +95,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	if(self.tabBarController == nil) 
 		[self setupApplication];
     
-	//[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleBackgroundNotification];
+	[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleBackgroundNotification];
 }
 
 //----------------------------------------------------------------------------------------------------
