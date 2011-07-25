@@ -41,9 +41,9 @@
 
 
 /**
- * Init with the team whose items are being displayed
+ * Init with the teamID whose items are being displayed
  */ 
-- (id)initWithTeam:(DWTeam*)team;
+- (id)initWithTeamID:(NSInteger)teamID;
 
 @end
 

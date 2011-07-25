@@ -38,6 +38,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     
     if(self) {
         _isUsersTeam                        = [DWSession sharedDWSession].currentUser.team == team;
+        
         self.teamViewDataSource             = [[[DWTeamViewDataSource alloc] init] autorelease];
         self.teamViewDataSource.teamID      = team.databaseID;
         
