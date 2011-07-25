@@ -10,6 +10,10 @@
 #import "NSObject+Helpers.h"
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
+#import "DWSession.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWUpdateUserDetailsViewController.h"
+
 
 /**
  * Private method and property declarations
@@ -21,8 +25,15 @@
  */
 - (void)loadNavTitleView;
 
+/**
+ * Create a nav right bar button
+ */
+- (void)loadNavRightBarButtonView;
+
 @end
 
+
+static NSString* const kRightNavBarButtonText   = @"Edit";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -30,15 +41,19 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserViewController
 
-@synthesize userViewDataSource  = _userViewDataSource;
-@synthesize navTitleView        = _navTitleView;
-@synthesize delegate            = _delegate;
+@synthesize userViewDataSource      = _userViewDataSource;
+
+@synthesize navTitleView            = _navTitleView;
+@synthesize navRightBarButtonView   = _navRightBarButtonView;
+
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUserID:(NSInteger)userID {
     self = [super init];
     
     if(self) {
+        _isCurrentUser                  = [DWSession sharedDWSession].currentUser.databaseID == userID;
         self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
         self.userViewDataSource.userID  = userID;
         
@@ -70,8 +85,10 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.userViewDataSource = nil;
-    self.navTitleView       = nil;
+    self.userViewDataSource     = nil;
+    
+    self.navTitleView           = nil;
+    self.navRightBarButtonView  = nil;
     
     [super dealloc];
 }
@@ -90,6 +107,9 @@
     [self loadNavTitleView];
     
     [self.userViewDataSource loadUser];
+    
+    if (_isCurrentUser && !self.navRightBarButtonView)
+        [self loadNavRightBarButtonView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -104,6 +124,31 @@
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadNavRightBarButtonView {
+    self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+                                   initWithFrame:CGRectMake(260,0,
+                                                            kNavTitleViewWidth,
+                                                            kNavTitleViewHeight)
+                                           title:kRightNavBarButtonText 
+                                       andTarget:self] autorelease];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBAction methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapDoneButton:(id)sender event:(id)event {
+    DWUpdateUserDetailsViewController *updateUserDetailsViewController = [[[DWUpdateUserDetailsViewController alloc] 
+                                                                          initWithUser:[DWUser fetch:self.userViewDataSource.userID]]
+                                                                          autorelease];
+    
+    [self.navigationController pushViewController:updateUserDetailsViewController 
+                                         animated:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -161,6 +206,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
+    
+    if(_isCurrentUser)
+        [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
 }
 
 

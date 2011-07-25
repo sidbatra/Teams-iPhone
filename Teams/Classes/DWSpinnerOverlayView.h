@@ -20,6 +20,12 @@
 - (id)initWithSpinnerOrigin:(CGPoint)origin 
              andMessageText:(NSString*)text;
 
+/**
+ * Custom init with spinner origin, style and message text
+ */
+- (id)initWithSpinnerOrigin:(CGPoint)origin 
+               spinnerStyle:(NSInteger)spinnerStyle 
+             andMessageText:(NSString*)text;
 
 /**
  * Shows the view and enables all interaction

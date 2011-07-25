@@ -4,13 +4,19 @@
 //
 
 #import "DWTeamViewController.h"
-#import "DWTeamsLogicController.h"
 
+#import "DWConstants.h"
+#import "DWTeamsLogicController.h"
 #import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
+#import "DWSession.h"
+#import "DWNavRightBarButtonView.h"
+#import "DWUpdateTeamDetailsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
 
+
+static NSString* const kRightNavBarButtonText   = @"Edit";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -20,6 +26,9 @@
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
 @synthesize teamsLogicController    = _teamsLogicController;
+
+@synthesize navRightBarButtonView   = _navRightBarButtonView;
+
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -28,6 +37,7 @@
     self = [super init];
     
     if(self) {
+        _isUsersTeam                        = [DWSession sharedDWSession].currentUser.team == team;
         self.teamViewDataSource             = [[[DWTeamViewDataSource alloc] init] autorelease];
         self.teamViewDataSource.teamID      = team.databaseID;
         
@@ -66,6 +76,9 @@
 
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
+    
+    self.navRightBarButtonView      = nil;
+    
     self.delegate                   = nil;
     
     [super dealloc];
@@ -104,6 +117,30 @@
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self.teamViewDataSource loadData];
+    
+    if (_isUsersTeam && !self.navRightBarButtonView)
+        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+                                       initWithFrame:CGRectMake(260,0,
+                                                                kNavTitleViewWidth,
+                                                                kNavTitleViewHeight)
+                                               title:kRightNavBarButtonText 
+                                           andTarget:self] autorelease];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBAction methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapDoneButton:(id)sender event:(id)event {
+    DWUpdateTeamDetailsViewController *updateTeamDetailsViewController  = [[[DWUpdateTeamDetailsViewController alloc] 
+                                                                            initWithTeam:[DWTeam fetch:self.teamViewDataSource.teamID]] 
+                                                                           autorelease];
+    
+    [self.navigationController pushViewController:updateTeamDetailsViewController 
+                                         animated:YES];
 }
 
 
@@ -141,6 +178,18 @@
         [self.delegate showFollowersOfTeam:team];
     else if(resource == self.teamViewDataSource.invite)
         [self.delegate showInvitePeople];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    if (_isUsersTeam) 
+        [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
 }
 
 @end

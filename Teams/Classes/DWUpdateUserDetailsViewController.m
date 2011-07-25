@@ -11,6 +11,7 @@
 #import "NSString+Helpers.h"
 #import "DWSession.h"
 #import "DWConstants.h"
+#import "DWGUIManager.h"
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
@@ -73,7 +74,8 @@ static NSString* const kRightNavBarButtonText   = @"Save";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.leftBarButtonItem           = [DWGUIManager customBackButton:self];
+    self.navigationItem.hidesBackButton             = YES;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -103,5 +105,27 @@ static NSString* const kRightNavBarButtonText   = @"Save";
     [super didReceiveMemoryWarning];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapBackButton:(id)sender event:(id)event {
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];    
+    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+}
 
 @end

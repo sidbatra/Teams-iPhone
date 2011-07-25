@@ -16,7 +16,8 @@ static NSInteger const kSpinnerSize = 20;
 /**
  * Create and add the spinner to the view
  */
-- (void)createSpinnerWithOrigin:(CGPoint)origin;
+- (void)createSpinnerWithOrigin:(CGPoint)origin 
+                       andStyle:(NSInteger)spinnerStyle;
 
 /**
  * Create and add the text label to the view
@@ -34,14 +35,23 @@ static NSInteger const kSpinnerSize = 20;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithSpinnerOrigin:(CGPoint)origin andMessageText:(NSString*)text {
+    return [self initWithSpinnerOrigin:origin
+                          spinnerStyle:UIActivityIndicatorViewStyleGray
+                        andMessageText:text];
+
+}
+
+//----------------------------------------------------------------------------------------------------
+- (id)initWithSpinnerOrigin:(CGPoint)origin 
+               spinnerStyle:(NSInteger)spinnerStyle andMessageText:(NSString*)text {
     
     self = [super initWithFrame:CGRectMake(0, 0, 320, 480)];
     
     if (self) {
         self.backgroundColor            = [UIColor clearColor];
-
+        
         [self disable];
-        [self createSpinnerWithOrigin:origin];
+        [self createSpinnerWithOrigin:origin andStyle:spinnerStyle];
         
         [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y)
                             andText:text];
@@ -67,10 +77,10 @@ static NSInteger const kSpinnerSize = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createSpinnerWithOrigin:(CGPoint)origin {
+- (void)createSpinnerWithOrigin:(CGPoint)origin andStyle:(NSInteger)spinnerStyle {
 	
     UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray] 
+                                            initWithActivityIndicatorStyle:spinnerStyle] 
                                            autorelease];
     
 	spinner.frame                       = CGRectMake(origin.x,origin.y,kSpinnerSize,kSpinnerSize);
