@@ -10,14 +10,19 @@
 
 @class DWTeam;
 @class DWNavTitleView;
+@class DWNavRightBarButtonView;
 @protocol DWUserViewControllerDelegate;
 
 /**
  * Display the user profile
  */
 @interface DWUserViewController : DWTableViewController<DWUserViewDataSourceDelegate> {
-    DWUserViewDataSource    *_userViewDataSource;
-    DWNavTitleView          *_navTitleView;
+    BOOL                        _isCurrentUser;
+    
+    DWUserViewDataSource        *_userViewDataSource;
+    
+    DWNavTitleView              *_navTitleView;
+    DWNavRightBarButtonView     *_navRightBarButtonView;
     
     id<DWUserViewControllerDelegate>    _delegate;
 }
@@ -25,12 +30,17 @@
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWUserViewDataSource   *userViewDataSource;
+@property (nonatomic,retain) DWUserViewDataSource *userViewDataSource;
 
 /**
  * Title view for the nav bar
  */ 
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
+
+/**
+ * Custom right button for navigation bar
+ */
+@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
 
 /**
  * Delegate receives events based on DWUserViewControllerDelegate

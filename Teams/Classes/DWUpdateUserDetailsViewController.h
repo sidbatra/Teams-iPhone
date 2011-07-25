@@ -51,4 +51,10 @@
 @property (nonatomic,retain) DWUsersController *usersController;
 
 
+/**
+ * Custom init with user
+ */
+- (id)initWithUser:(DWUser*)user;
+
+
 @end
