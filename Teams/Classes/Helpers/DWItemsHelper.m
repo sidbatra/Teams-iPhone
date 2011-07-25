@@ -46,5 +46,14 @@
     return result;
 }
 
+//----------------------------------------------------------------------------------------------------
++ (NSString*)itemViewTitle:(DWItem*)item 
+      belongsToCurrentUser:(BOOL)currentUsersItem {
+    
+    return currentUsersItem ? 
+            @"Your Post" : 
+            [NSString stringWithFormat:@"%@'s Post",item.user.firstName];
+}
+
 
 @end

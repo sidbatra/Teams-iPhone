@@ -16,6 +16,8 @@
 @synthesize usersController     = _usersController;
 @synthesize itemID              = _itemID;
 
+@dynamic delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -84,7 +86,7 @@
     }
     
     [self.delegate reloadTableView];
-
+    [self.delegate itemLoaded:item];
         
     _itemLoaded = YES;
 }

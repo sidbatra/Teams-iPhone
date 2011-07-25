@@ -10,6 +10,7 @@
 #import "DWItem.h"
 #import "DWUser.h"
 #import "DWGUIManager.h"
+#import "DWItemsHelper.h"
 #import "NSObject+Helpers.h"
 
 
@@ -90,6 +91,12 @@
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return self.itemViewDataSource;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemLoaded:(DWItem*)item {
+    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewForText:[DWItemsHelper itemViewTitle:item
+                                                                                  belongsToCurrentUser:item.user.isCurrentUser]];
 }
 
 //----------------------------------------------------------------------------------------------------

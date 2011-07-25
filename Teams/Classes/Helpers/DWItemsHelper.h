@@ -19,4 +19,10 @@
  */
 + (NSString*)createdAgoInWordsForItem:(DWItem*)item;
 
+/**
+ * Title for the item view controller
+ */
++ (NSString*)itemViewTitle:(DWItem*)item 
+      belongsToCurrentUser:(BOOL)currentUsersItem;
+
 @end
