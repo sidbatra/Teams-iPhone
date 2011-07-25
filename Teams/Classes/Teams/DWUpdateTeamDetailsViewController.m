@@ -90,7 +90,8 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self];
+    self.navigationItem.leftBarButtonItem                   = [DWGUIManager customBackButton:self];
+    self.navigationController.navigationBar.clipsToBounds   = NO;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc]
