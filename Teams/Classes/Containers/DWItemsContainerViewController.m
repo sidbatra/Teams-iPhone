@@ -5,7 +5,6 @@
 
 #import "DWItemsContainerViewController.h"
 #import "DWFollowedItemsViewController.h"
-#import "DWNotificationsViewController.h"
 #import "DWUserViewController.h"
 
 #import "DWNavTitleView.h"
@@ -202,6 +201,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
                                                                    init] autorelease];
+    
+    notificationsViewController.delegate = self;
     
     [self.navigationController pushViewController:notificationsViewController
                                          animated:YES];

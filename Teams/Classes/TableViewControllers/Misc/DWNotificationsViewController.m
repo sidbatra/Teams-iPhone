@@ -6,9 +6,14 @@
 #import "DWNotificationsViewController.h"
 #import "DWNotificationsDataSource.h"
 #import "DWPushNotificationsManager.h"
+#import "DWNotification.h"
+#import "DWUser.h"
+#import "DWItem.h"
 #import "DWGUIManager.h"
+#import "NSObject+Helpers.h"
 
-static NSString* const kTitle   = @"Notifications";
+static NSString* const kTitle               = @"Notifications";
+static NSString* const kModelNamePrefix     = @"DW";
 
 
 
@@ -18,6 +23,7 @@ static NSString* const kTitle   = @"Notifications";
 @implementation DWNotificationsViewController
 
 @synthesize notificationsDataSource = _notificationsDataSource;
+@synthesize delegate                = _delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -67,6 +73,25 @@ static NSString* const kTitle   = @"Notifications";
 - (void)softRefresh {
     [self.notificationsDataSource refreshInitiated];
     [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNotificationPresenterDelegate - (implmented via selectors)
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationClicked:(DWNotification*)notification {
+    
+    NSString *clientClassName = [NSString stringWithFormat:@"%@%@",kModelNamePrefix,notification.resourceType];
+    
+    if([clientClassName isEqualToString:[DWUser className]]) {
+        [self.delegate notificationsUserSelected:notification.resourceID];
+    }
+    else if([clientClassName isEqualToString:[DWItem className]]) {
+        [self.delegate notificationsItemSelected:notification.resourceID];
+    }
 }
 
 

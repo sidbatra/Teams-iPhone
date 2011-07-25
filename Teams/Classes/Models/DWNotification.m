@@ -14,6 +14,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWNotification
 
+@synthesize resourceID          = _resourceID;
 @synthesize entityData          = _entityData;
 @synthesize eventData           = _eventData;
 @synthesize resourceType        = _resourceType;

@@ -26,6 +26,11 @@
 }
 
 /**
+ * Resource ID of the notification
+ */
+@property (nonatomic,readonly) NSInteger resourceID;
+
+/**
  * Text about the entity featured in the notification
  */
 @property (nonatomic,copy) NSString* entityData;
