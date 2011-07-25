@@ -44,9 +44,9 @@
 
 
 /**
- * Init with the item being displayed
+ * Init with the itemID being displayed
  */
-- (id)initWithItem:(DWItem*)item;
+- (id)initWithItemID:(NSInteger)itemID;
     
 /**
  * Set a items logic controller delegate

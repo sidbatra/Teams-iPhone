@@ -43,6 +43,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 - (BOOL)isSelectedTab;
 
 /**
+ * Displays the designated view controller when an item is selected
+ */
+- (void)itemSelected:(NSInteger)itemID;
+
+/**
  * Displays the designated view controller for a team whenever one is selected
  */
 - (void)teamSelected:(DWTeam*)team;
@@ -50,7 +55,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 /**
  * Displays the designated view controller for a user whenever one is selected
  */
-- (void)userSelected:(DWUser*)user;
+- (void)userSelected:(NSInteger)userID;
 
 /**
  * Displays the invite people controller
@@ -108,6 +113,18 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)itemSelected:(NSInteger)itemID {
+    
+    DWItemViewController *itemViewController = [[[DWItemViewController alloc] initWithItemID:itemID] autorelease];
+    
+    [itemViewController setItemsDelegate:self];
+    [itemViewController setUsersDelegate:self];
+     
+    [self.navigationController pushViewController:itemViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)teamSelected:(DWTeam*)team {
     
     DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
@@ -121,10 +138,10 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userSelected:(DWUser*)user {
+- (void)userSelected:(NSInteger)userID {
     
     DWUserViewController *userViewController = [[[DWUserViewController alloc] 
-                                                 initWithUserID:user.databaseID] autorelease];
+                                                 initWithUserID:userID] autorelease];
     
     userViewController.delegate =  self;
     
@@ -198,21 +215,12 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)itemsLogicUserSelected:(DWUser*)user {
-    [self userSelected:user];
+    [self userSelected:user.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)itemsLogicShareSelectedForItem:(DWItem*)item {
     NSLog(@"item sharing selecred - %d",item.databaseID);
-    
-    
-    /*DWItemViewController *itemViewController = [[[DWItemViewController alloc] initWithItem:item] autorelease];
-    [itemViewController setItemsDelegate:self];
-    [itemViewController setUsersDelegate:self];
-    
-    [self.navigationController pushViewController:itemViewController
-                                         animated:YES];
-     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -239,7 +247,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)usersLogicUserSelected:(DWUser *)user {
-    [self userSelected:user];
+    [self userSelected:user.databaseID];
 }
 
 
@@ -314,6 +322,22 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     
     [self.navigationController pushViewController:userTeamsViewController
                                          animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNotificationsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsUserSelected:(NSInteger)userID {
+    [self userSelected:userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsItemSelected:(NSInteger)itemID {
+    [self itemSelected:itemID];
 }
 
 
