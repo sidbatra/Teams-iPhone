@@ -92,6 +92,9 @@ static NSString* const kModelNamePrefix     = @"DW";
     else if([clientClassName isEqualToString:[DWItem className]]) {
         [self.delegate notificationsItemSelected:notification.resourceID];
     }
+    else if([clientClassName isEqualToString:[DWTeam className]]) {
+        [self.delegate notificationsTeamSelected:notification.resourceID];
+    }
 }
 
 
