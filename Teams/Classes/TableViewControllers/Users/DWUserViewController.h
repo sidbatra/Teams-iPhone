@@ -71,6 +71,11 @@
  */
 - (void)userViewShowTeamsWatchedBy:(DWUser*)user;
 
+/**
+ * Display the edit user details view
+ */
+- (void)showEditUserDetailsView:(DWUser*)user;
+
 @end
 
 

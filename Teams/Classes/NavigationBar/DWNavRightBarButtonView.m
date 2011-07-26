@@ -18,7 +18,8 @@ static NSString* const kImgDoneButton = @"button_blue.png";
     self = [super initWithFrame:frame];
     
     if (self) {
-        rightNavBarButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.clipsToBounds  = YES;
+        rightNavBarButton   = [UIButton buttonWithType:UIButtonTypeCustom];
         
         [rightNavBarButton addTarget:target
                               action:@selector(didTapDoneButton:event:) 

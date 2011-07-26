@@ -142,13 +142,9 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDoneButton:(id)sender event:(id)event {
-    DWUpdateUserDetailsViewController *updateUserDetailsViewController = [[[DWUpdateUserDetailsViewController alloc] 
-                                                                          initWithUser:[DWUser fetch:self.userViewDataSource.userID]]
-                                                                          autorelease];
-    
-    [self.navigationController pushViewController:updateUserDetailsViewController 
-                                         animated:YES];
+    [self.delegate showEditUserDetailsView:[DWUser fetch:self.userViewDataSource.userID]];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -195,6 +191,16 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     [self provideResourceToVisibleCells:kResourceTypeLargeUserImage
                                resource:resource
                              resourceID:resourceID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark FullScreenMode
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
+    
 }
 
 

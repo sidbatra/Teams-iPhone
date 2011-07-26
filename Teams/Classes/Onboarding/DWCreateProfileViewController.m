@@ -202,7 +202,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
         [self.lastNameTextField resignFirstResponder];
         [self.byLineTextField becomeFirstResponder];
     }
-	if(textField == self.byLineTextField) {
+	else if(textField == self.byLineTextField) {
 		[self.byLineTextField resignFirstResponder];
 		[self.passwordTextField becomeFirstResponder];
 	}

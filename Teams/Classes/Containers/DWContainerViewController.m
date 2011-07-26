@@ -11,6 +11,7 @@
 #import "DWTeamFollowersViewController.h"
 #import "DWItemViewController.h"
 #import "DWUserTeamsViewController.h"
+#import "DWUpdateUserDetailsViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -305,7 +306,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark TeamViewControllerDelegate
+#pragma mark UserViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)userViewShowTeam:(DWTeam*)team {
@@ -323,6 +324,18 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     [self.navigationController pushViewController:userTeamsViewController
                                          animated:YES];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)showEditUserDetailsView:(DWUser*)user {
+    
+    DWUpdateUserDetailsViewController *updateUserDetailsViewController  = [[[DWUpdateUserDetailsViewController alloc]
+                                                                            initWithUserToEdit:user] autorelease];
+    
+    updateUserDetailsViewController.displayMediaPickerController        = self.customTabBarController;
+
+    [self.navigationController pushViewController:updateUserDetailsViewController 
+                                         animated:YES];
+} 
 
 
 //----------------------------------------------------------------------------------------------------
