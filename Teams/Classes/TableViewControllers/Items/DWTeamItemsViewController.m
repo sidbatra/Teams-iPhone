@@ -42,12 +42,12 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithTeam:(DWTeam*)team {
+- (id)initWithTeamID:(NSInteger)teamID {
     self =  [super init];
     
     if(self) {
         self.teamItemsDataSource        = [[[DWTeamItemsDataSource alloc] init] autorelease];
-        self.teamItemsDataSource.teamID = team.databaseID;
+        self.teamItemsDataSource.teamID = teamID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
                                         forKey:[[DWItem class] className]];

@@ -53,4 +53,9 @@
  */
 - (void)notificationsItemSelected:(NSInteger)itemID;
 
+/**
+ * Fired when a team view is to be displayed
+ */
+- (void)notificationsTeamSelected:(NSInteger)teamID;
+
 @end

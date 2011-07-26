@@ -187,13 +187,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {
-    NSLog(@"updateD");
     [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString*)error {
-    NSLog(@"updat errir %@",error);
 }
 
 @end

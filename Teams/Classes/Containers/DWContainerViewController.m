@@ -51,7 +51,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 /**
  * Displays the designated view controller for a team whenever one is selected
  */
-- (void)teamSelected:(DWTeam*)team;
+- (void)teamSelected:(NSInteger)teamID;
 
 /**
  * Displays the designated view controller for a user whenever one is selected
@@ -126,10 +126,10 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamSelected:(DWTeam*)team {
+- (void)teamSelected:(NSInteger)teamID {
     
     DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
-                                                       initWithTeam:team]
+                                                       initWithTeamID:teamID]
                                                       autorelease];
     teamItemsController.delegate = self;
     [teamItemsController setItemsDelegate:self];
@@ -211,7 +211,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)itemsLogicTeamSelected:(DWTeam*)team {
-    [self teamSelected:team];
+    [self teamSelected:team.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -237,7 +237,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamsLogicTeamSelected:(DWTeam*)team {
-    [self teamSelected:team];
+    [self teamSelected:team.databaseID];
 }
 
 
@@ -310,7 +310,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userViewShowTeam:(DWTeam*)team {
-    [self teamSelected:team];
+    [self teamSelected:team.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -351,6 +351,11 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsItemSelected:(NSInteger)itemID {
     [self itemSelected:itemID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsTeamSelected:(NSInteger)teamID {
+    [self teamSelected:teamID];
 }
 
 
