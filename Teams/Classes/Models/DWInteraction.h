@@ -5,38 +5,32 @@
 
 #import <Foundation/Foundation.h>
 
-
-/**
- * enum for the different kinds of interactions
- */
-typedef enum {
-    kInteractionTypeEvent       = 0,
-    kInteractionTypePageview    = 1
-}
-DWInteractionType;
-
-
 /**
  * Stores a unit of interaction a user has had with the 
  * application
  */
 @interface DWInteraction : NSObject {
-    NSInteger           _type;
+    
     NSTimeInterval      _createdAt;
     
     NSString*           _viewName;
-    NSInteger           _viewResourceID;
+    NSInteger           _viewID;
     
     NSString*           _actionName;
-    NSInteger           _actionResourceID;
+    NSString*           _extra;
 }
 
 /**
- * Create a page view type interaction 
+ * Create an interaction
  */
-- (void)createPageviewForViewNamed:(NSString*)viewName
-                    withResourceID:(NSInteger)viewResourceID
-                    withActionName:(NSString*)actionName
-               withActionResoureID:(NSInteger)actionResourceID;
+- (void)createInteractionForViewNamed:(NSString*)viewName
+                           withViewID:(NSInteger)viewID
+                       withActionName:(NSString*)actionName
+                         andExtraInfo:(NSString*)extra;
+
+/**
+ * Convert the interaction object to JSON
+ */ 
+- (NSString*)toJSON;
 
 @end

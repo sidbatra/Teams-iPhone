@@ -18,7 +18,7 @@
 @interface DWTableViewDataSource : NSObject {
     NSMutableArray  *_objects;
     
-    id<DWTableViewDataSourceDelegate> _delegate;
+    id<DWTableViewDataSourceDelegate,NSObject> _delegate;
 }
 
 /**
@@ -29,7 +29,7 @@
 /**
  * Delegate for communicating with the table view
  */
-@property (nonatomic,assign) id<DWTableViewDataSourceDelegate> delegate;
+@property (nonatomic,assign) id<DWTableViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

@@ -4,6 +4,7 @@
 //
 
 #import "DWFollowedItemsDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -33,6 +34,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followedItemsLoaded:(NSMutableArray *)items { 
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",(NSInteger)_oldestTimestamp]];
+    
     [self populateItems:items];
 }
 
