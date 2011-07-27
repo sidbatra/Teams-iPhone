@@ -12,6 +12,7 @@
 		26000219130DFB0100366CE3 /* KTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26000218130DFB0100366CE3 /* KTTextView.m */; };
 		2612D62C13639610005AE9E5 /* static_button_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62A13639610005AE9E5 /* static_button_active.png */; };
 		2612D62D13639610005AE9E5 /* static_button_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62B13639610005AE9E5 /* static_button_active@2x.png */; };
+		261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261FAA7D13DFBB1500A2CB08 /* DWMediaController.m */; };
 		2620294613D9F6F90003B7C0 /* DWSpinnerOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2620294513D9F6F90003B7C0 /* DWSpinnerOverlayView.m */; };
 		2620296113DD10660003B7C0 /* DWInvitePeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2620295E13DD10660003B7C0 /* DWInvitePeopleViewController.xib */; };
 		2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2620296013DD10660003B7C0 /* DWInvitePeopleViewController.m */; };
@@ -125,7 +126,6 @@
 		263319B4135E68410014AF70 /* button_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 263319AC135E683C0014AF70 /* button_map@2x.png */; };
 		2640A40E130A2A5700E0AEAF /* arrow_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2640A40C130A2A5700E0AEAF /* arrow_button.png */; };
 		2640A40F130A2A5700E0AEAF /* arrow_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */; };
-		26434C5D13DF998D00513A1D /* DWMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26434C5C13DF998C00513A1D /* DWMediaController.m */; };
 		265C6B0B135D082500331AD0 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B09135D082500331AD0 /* timer.png */; };
 		265C6B0C135D082500331AD0 /* timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B0A135D082500331AD0 /* timer@2x.png */; };
 		265CBE2113665B0900CC2C83 /* button_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 265CBE1F13665B0900CC2C83 /* button_camera.png */; };
@@ -401,6 +401,7 @@
 		BBC0C6E612F4C56000291C33 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6DE12F4C56000291C33 /* whiteArrow.png */; };
 		BBC0C6E712F4C56000291C33 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6DF12F4C56000291C33 /* whiteArrow@2x.png */; };
 		BBC0C6EB12F4C57800291C33 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0C6EA12F4C57800291C33 /* EGORefreshTableHeaderView.m */; };
+		BBC395AC13DF965700A2A8F6 /* DWAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC395AB13DF965700A2A8F6 /* DWAnalyticsManager.m */; };
 		BBC7CCCB13664BF80003CE02 /* DWVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC7CCCA13664BF80003CE02 /* DWVideoView.m */; };
 		BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */; };
 		BBCE3A65131CC38D008BDA82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A63131CC38D008BDA82 /* Default.png */; };
@@ -550,6 +551,8 @@
 		26000218130DFB0100366CE3 /* KTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTextView.m; sourceTree = "<group>"; };
 		2612D62A13639610005AE9E5 /* static_button_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = static_button_active.png; path = resources/static_button_active.png; sourceTree = "<group>"; };
 		2612D62B13639610005AE9E5 /* static_button_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "static_button_active@2x.png"; path = "resources/static_button_active@2x.png"; sourceTree = "<group>"; };
+		261FAA7C13DFBB1500A2CB08 /* DWMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaController.h; sourceTree = "<group>"; };
+		261FAA7D13DFBB1500A2CB08 /* DWMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMediaController.m; sourceTree = "<group>"; };
 		2620294413D9F6F90003B7C0 /* DWSpinnerOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSpinnerOverlayView.h; path = Classes/DWSpinnerOverlayView.h; sourceTree = "<group>"; };
 		2620294513D9F6F90003B7C0 /* DWSpinnerOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSpinnerOverlayView.m; path = Classes/DWSpinnerOverlayView.m; sourceTree = "<group>"; };
 		2620295E13DD10660003B7C0 /* DWInvitePeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWInvitePeopleViewController.xib; path = Classes/DWInvitePeopleViewController.xib; sourceTree = "<group>"; };
@@ -678,8 +681,6 @@
 		263319AC135E683C0014AF70 /* button_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_map@2x.png"; path = "resources/button_map@2x.png"; sourceTree = "<group>"; };
 		2640A40C130A2A5700E0AEAF /* arrow_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_button.png; path = resources/arrow_button.png; sourceTree = "<group>"; };
 		2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_button@2x.png"; path = "resources/arrow_button@2x.png"; sourceTree = "<group>"; };
-		26434C5B13DF998C00513A1D /* DWMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaController.h; sourceTree = "<group>"; };
-		26434C5C13DF998C00513A1D /* DWMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMediaController.m; sourceTree = "<group>"; };
 		265C6B09135D082500331AD0 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timer.png; path = resources/timer.png; sourceTree = "<group>"; };
 		265C6B0A135D082500331AD0 /* timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timer@2x.png"; path = "resources/timer@2x.png"; sourceTree = "<group>"; };
 		265CBE1F13665B0900CC2C83 /* button_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_camera.png; path = resources/button_camera.png; sourceTree = "<group>"; };
@@ -1078,6 +1079,8 @@
 		BBC0C6DF12F4C56000291C33 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		BBC0C6E912F4C57800291C33 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		BBC0C6EA12F4C57800291C33 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		BBC395AA13DF965700A2A8F6 /* DWAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAnalyticsManager.h; sourceTree = "<group>"; };
+		BBC395AB13DF965700A2A8F6 /* DWAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnalyticsManager.m; sourceTree = "<group>"; };
 		BBC7CCC913664BF80003CE02 /* DWVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWVideoView.h; path = Classes/DWVideoView.h; sourceTree = "<group>"; };
 		BBC7CCCA13664BF80003CE02 /* DWVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWVideoView.m; path = Classes/DWVideoView.m; sourceTree = "<group>"; };
 		BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenter.h; sourceTree = "<group>"; };
@@ -2364,6 +2367,8 @@
 		BBF350D113DC985A00B339A8 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				BBC395AA13DF965700A2A8F6 /* DWAnalyticsManager.h */,
+				BBC395AB13DF965700A2A8F6 /* DWAnalyticsManager.m */,
 				BBF350D213DC985B00B339A8 /* DWGUIManager.h */,
 				BBF350D313DC985B00B339A8 /* DWGUIManager.m */,
 				BBF350D413DC985B00B339A8 /* DWLocationManager.h */,
@@ -2456,8 +2461,8 @@
 				269FC70313D5EEF4004892D0 /* DWContactsController.m */,
 				BBD113D913D908B4002D7352 /* DWInvitesController.h */,
 				BBD113DA13D908B4002D7352 /* DWInvitesController.m */,
-				26434C5B13DF998C00513A1D /* DWMediaController.h */,
-				26434C5C13DF998C00513A1D /* DWMediaController.m */,
+				261FAA7C13DFBB1500A2CB08 /* DWMediaController.h */,
+				261FAA7D13DFBB1500A2CB08 /* DWMediaController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -3119,7 +3124,8 @@
 				BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */,
 				BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */,
 				2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */,
-				26434C5D13DF998D00513A1D /* DWMediaController.m in Sources */,
+				BBC395AC13DF965700A2A8F6 /* DWAnalyticsManager.m in Sources */,
+				261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
