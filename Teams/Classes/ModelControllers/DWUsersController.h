@@ -27,12 +27,16 @@
  */
 - (void)createUserWithEmail:(NSString*)email
                 andPassword:(NSString*)password;
-
 /**
  * Update the user's email
  */
 - (void)updateUserHavingID:(NSInteger)userID 
                  withEmail:(NSString*)email;
+/**
+ * Update the user's image
+ */
+- (void)updateUserHavingID:(NSInteger)userID
+              withFilename:(NSString*)filename;
 
 /**
  * Update the user's detail during onboarding

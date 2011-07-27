@@ -12,6 +12,9 @@
 
 static NSString* const kNewUserURI                          = @"/users.json?user[email]=%@&user[password]=%@";
 static NSString* const kUpdateUserURI                       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@&user[filename]=%@";
+
+static NSString* const kUpdateUserEmailURI                  = @"/users/%d.json?user[email]=%@";
+static NSString* const kUpdateUserImageURI                  = @"/users/%d.json?user[filename]=%@";
 static NSString* const kUpdateUserDeviceURI                 = @"/users/%d.json?user[iphone_device_id]=%@";
 static NSString* const kUpdateUserNotificationsCountURI     = @"/users/%d.json?user[unread_notifications_count]=%d";
 static NSString* const kUserURI                             = @"/users/%d.json?";
@@ -188,13 +191,28 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 - (void)updateUserHavingID:(NSInteger)userID 
                  withEmail:(NSString*)email {
     
-    [self updateUserHavingID:userID 
-                   withEmail:email 
-                andFirstName:kEmptyString 
-                    lastName:kEmptyString 
-                      byline:kEmptyString 
-                    password:kEmptyString 
-                 andFilename:kEmptyString];
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserEmailURI,
+                          userID,
+                          [email stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID
+              withFilename:(NSString *)filename {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserImageURI,
+                          userID,
+                          [filename stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];
 }
 
 //----------------------------------------------------------------------------------------------------
