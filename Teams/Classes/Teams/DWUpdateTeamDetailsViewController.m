@@ -15,7 +15,7 @@
 
 
 static NSString* const kUpdateTeamDetailsText           = @"Edit Team";
-static NSString* const kRightNavBarButtonText           = @"Save";
+static NSString* const kNavBarRightButtonText           = @"Save";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
 static NSString* const kMsgErrorTitle                   = @"Error";
@@ -107,7 +107,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
                                         initWithFrame:CGRectMake(260,0,
                                                                  kNavRightButtonWidth,
                                                                  kNavRightButtonHeight) 
-                                                title:kRightNavBarButtonText 
+                                                title:kNavBarRightButtonText 
                                             andTarget:self] autorelease];
     
     self.teamNameTextField.text     = self.team.name;

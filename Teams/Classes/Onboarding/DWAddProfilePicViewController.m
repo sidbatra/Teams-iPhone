@@ -17,7 +17,7 @@ static NSString* const kMsgIncomplete           = @"Please upload a picture";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
-static NSString* const kRightNavBarButtonText   = @"Next";
+static NSString* const kNavBarRightButtonText   = @"Next";
 static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 
@@ -100,7 +100,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     if (!self.spinnerOverlayView)
         self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)

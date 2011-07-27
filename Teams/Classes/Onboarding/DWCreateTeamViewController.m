@@ -13,7 +13,7 @@
 #import "DWGUIManager.h"
 
 static NSString* const kCreateTeamText                  = @"Create New Team";
-static NSString* const kRightNavBarButtonText           = @"Next";
+static NSString* const kNavBarRightButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
 static NSString* const kMsgErrorTitle                   = @"Error";
@@ -104,7 +104,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)

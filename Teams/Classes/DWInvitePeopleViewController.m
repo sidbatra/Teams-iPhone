@@ -14,7 +14,7 @@
 
 static NSString* const kAddPeopleText                       = @"Add People";
 static NSString* const kAddPeopleSubText                    = @"to the %@ Team";
-static NSString* const kRightNavBarButtonText               = @"Done";
+static NSString* const kNavBarRightButtonText               = @"Done";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
@@ -86,7 +86,7 @@ static NSInteger const kTableViewHeight						= 200;
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                                andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kAddPeopleText 
                         andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,self.teamName]];    
@@ -96,7 +96,7 @@ static NSInteger const kTableViewHeight						= 200;
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
     

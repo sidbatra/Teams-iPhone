@@ -19,7 +19,7 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kCreateProfileText       = @"Add Yourself";
 static NSString* const kCreateProfileSubText    = @"to the %@ Team";
-static NSString* const kRightNavBarButtonText   = @"Next";
+static NSString* const kNavBarRightButtonText   = @"Next";
 static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 
@@ -102,7 +102,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     if (!self.spinnerOverlayView)
         self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)

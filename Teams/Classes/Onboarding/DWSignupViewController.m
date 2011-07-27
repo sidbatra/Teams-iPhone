@@ -16,7 +16,7 @@
 
 
 static NSString* const kSignupText                      = @"Sign Up";
-static NSString* const kRightNavBarButtonText           = @"Next";
+static NSString* const kNavBarRightButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter your work email";
 static NSString* const kMsgErrorTitle                   = @"Error";
@@ -106,7 +106,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)

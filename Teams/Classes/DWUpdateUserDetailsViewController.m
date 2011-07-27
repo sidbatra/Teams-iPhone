@@ -19,7 +19,7 @@ static NSString* const kMsgIncomplete           = @"Enter first name, last name 
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kUpdateUserDetailsText   = @"Edit Your Details";
-static NSString* const kRightNavBarButtonText   = @"Save";
+static NSString* const kNavBarRightButtonText   = @"Save";
 static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 
 
@@ -137,7 +137,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
