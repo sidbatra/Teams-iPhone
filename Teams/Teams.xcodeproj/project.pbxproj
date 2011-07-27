@@ -125,6 +125,7 @@
 		263319B4135E68410014AF70 /* button_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 263319AC135E683C0014AF70 /* button_map@2x.png */; };
 		2640A40E130A2A5700E0AEAF /* arrow_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 2640A40C130A2A5700E0AEAF /* arrow_button.png */; };
 		2640A40F130A2A5700E0AEAF /* arrow_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */; };
+		26434C5D13DF998D00513A1D /* DWMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26434C5C13DF998C00513A1D /* DWMediaController.m */; };
 		265C6B0B135D082500331AD0 /* timer.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B09135D082500331AD0 /* timer.png */; };
 		265C6B0C135D082500331AD0 /* timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 265C6B0A135D082500331AD0 /* timer@2x.png */; };
 		265CBE2113665B0900CC2C83 /* button_camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 265CBE1F13665B0900CC2C83 /* button_camera.png */; };
@@ -677,6 +678,8 @@
 		263319AC135E683C0014AF70 /* button_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_map@2x.png"; path = "resources/button_map@2x.png"; sourceTree = "<group>"; };
 		2640A40C130A2A5700E0AEAF /* arrow_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_button.png; path = resources/arrow_button.png; sourceTree = "<group>"; };
 		2640A40D130A2A5700E0AEAF /* arrow_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "arrow_button@2x.png"; path = "resources/arrow_button@2x.png"; sourceTree = "<group>"; };
+		26434C5B13DF998C00513A1D /* DWMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaController.h; sourceTree = "<group>"; };
+		26434C5C13DF998C00513A1D /* DWMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMediaController.m; sourceTree = "<group>"; };
 		265C6B09135D082500331AD0 /* timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = timer.png; path = resources/timer.png; sourceTree = "<group>"; };
 		265C6B0A135D082500331AD0 /* timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "timer@2x.png"; path = "resources/timer@2x.png"; sourceTree = "<group>"; };
 		265CBE1F13665B0900CC2C83 /* button_camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_camera.png; path = resources/button_camera.png; sourceTree = "<group>"; };
@@ -2453,6 +2456,8 @@
 				269FC70313D5EEF4004892D0 /* DWContactsController.m */,
 				BBD113D913D908B4002D7352 /* DWInvitesController.h */,
 				BBD113DA13D908B4002D7352 /* DWInvitesController.m */,
+				26434C5B13DF998C00513A1D /* DWMediaController.h */,
+				26434C5C13DF998C00513A1D /* DWMediaController.m */,
 			);
 			name = ModelControllers;
 			path = Classes/ModelControllers;
@@ -3114,6 +3119,7 @@
 				BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */,
 				BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */,
 				2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */,
+				26434C5D13DF998D00513A1D /* DWMediaController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

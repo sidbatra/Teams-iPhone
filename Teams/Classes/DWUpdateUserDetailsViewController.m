@@ -48,6 +48,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
+@synthesize mediaController                 = _mediaController;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -57,6 +58,9 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 	if(self) {        
         self.usersController            = [[[DWUsersController alloc] init] autorelease];        
         self.usersController.delegate   = self;
+        
+        self.mediaController            = [[[DWMediaController alloc] init] autorelease];
+        self.mediaController.delegate   = self;
         
         _userID                         = user.databaseID;        
         self.firstName                  = user.firstName;
@@ -76,7 +80,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
+    	
 	self.firstNameTextField             = nil;
     self.lastNameTextField              = nil;
 	self.byLineTextField                = nil;
@@ -96,6 +100,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
+    self.mediaController                = nil;
 	
     [super dealloc];
 }
@@ -104,12 +109,13 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem           = [DWGUIManager customBackButton:self];
-    self.navigationItem.hidesBackButton             = YES;
+    self.navigationController.navigationBar.clipsToBounds   = NO;
+    self.navigationItem.leftBarButtonItem                   = [DWGUIManager customBackButton:self];
+    self.navigationItem.hidesBackButton                     = YES;
     
-    self.firstNameTextField.text                    = self.firstName;
-    self.lastNameTextField.text                     = self.lastName;
-    self.byLineTextField.text                       = self.byline;
+    self.firstNameTextField.text                            = self.firstName;
+    self.lastNameTextField.text                             = self.lastName;
+    self.byLineTextField.text                               = self.byline;
     
     
     if (self.userImage) 
@@ -136,7 +142,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
                                        andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
+        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,100)
                                                                             andMessageText:kMsgProcesssing] autorelease];
     
     [self.firstNameTextField becomeFirstResponder];
@@ -189,8 +195,18 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 		[alert show];
 		[alert release];
 	}
-	else {			
+	else {		
+        [self freezeUI];
         
+        if (_hasChangedPicture) 
+            _mediaResourceID = [self.mediaController postImage:self.userImageView.image
+                                                      toFolder:kS3UsersFolder];
+        else
+            [self.usersController updateUserHavingID:_userID 
+                                       withFirstName:self.firstNameTextField.text 
+                                            lastName:self.lastNameTextField.text 
+                                              byline:self.byLineTextField.text 
+                                         andFilename:kEmptyString];
 	}
 }
 
@@ -228,6 +244,11 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)didTapDoneButton:(id)sender event:(id)event {
+	[self updateUser];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	
 	if(textField == self.firstNameTextField) {
@@ -254,12 +275,78 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWMediaController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)mediaResourceID {
+    return _mediaResourceID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)mediaUploaded:(NSString *)filename {
+    [self.usersController updateUserHavingID:_userID 
+                               withFirstName:self.firstNameTextField.text 
+                                    lastName:self.lastNameTextField.text 
+                                      byline:self.byLineTextField.text 
+                                 andFilename:filename];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)mediaUploadError:(NSString *)error {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+    
+    [self unfreezeUI];
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    
+    if (_hasChangedPicture) 
+        [user updateImages:self.userImage];
+
+    [[DWSession sharedDWSession] update];
+    
+    [self unfreezeUI];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString *)error {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+    
+    [self unfreezeUI];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWMediaPickerControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)didFinishPickingImage:(UIImage*)originalImage andEditedTo:(UIImage*)editedImage {
 	self.userImageView.image    = editedImage;
     self.userImage              = editedImage;
+    
+    _hasChangedPicture          = YES;
     
 	[self.displayMediaPickerController dismissModalViewControllerAnimated:NO];
 }
@@ -298,6 +385,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
 }
 
 @end

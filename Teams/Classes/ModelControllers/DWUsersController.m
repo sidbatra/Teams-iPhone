@@ -11,7 +11,7 @@
 #import "DWUser.h"
 
 static NSString* const kNewUserURI                          = @"/users.json?user[email]=%@&user[password]=%@";
-static NSString* const kUpdateUserURI                       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@";
+static NSString* const kUpdateUserURI                       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@&user[filename]=%@";
 static NSString* const kUpdateUserDeviceURI                 = @"/users/%d.json?user[iphone_device_id]=%@";
 static NSString* const kUpdateUserNotificationsCountURI     = @"/users/%d.json?user[unread_notifications_count]=%d";
 static NSString* const kUserURI                             = @"/users/%d.json?";
@@ -165,7 +165,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
               andFirstName:(NSString*)firstName 
                   lastName:(NSString*)lastName
                     byline:(NSString*)byline
-               andPassword:(NSString*)password {
+                  password:(NSString*)password 
+               andFilename:(NSString*)filename{
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
                           userID,
@@ -173,7 +174,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                           [firstName stringByEncodingHTMLCharacters],
                           [lastName stringByEncodingHTMLCharacters],
                           [byline stringByEncodingHTMLCharacters],
-                          [password stringByEncodingHTMLCharacters]];
+                          [password stringByEncodingHTMLCharacters],
+                          [filename stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
@@ -191,7 +193,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                 andFirstName:kEmptyString 
                     lastName:kEmptyString 
                       byline:kEmptyString 
-                 andPassword:kEmptyString];
+                    password:kEmptyString 
+                 andFilename:kEmptyString];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -206,7 +209,24 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                 andFirstName:firstName 
                     lastName:lastName 
                       byline:byline     
-                 andPassword:password];
+                    password:password 
+                 andFilename:kEmptyString];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+             withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName
+                    byline:(NSString*)byline
+               andFilename:(NSString*)filename {
+    
+    [self updateUserHavingID:userID 
+                   withEmail:kEmptyString 
+                andFirstName:firstName 
+                    lastName:lastName 
+                      byline:byline     
+                    password:kEmptyString 
+                 andFilename:filename];
 }
 
 //----------------------------------------------------------------------------------------------------

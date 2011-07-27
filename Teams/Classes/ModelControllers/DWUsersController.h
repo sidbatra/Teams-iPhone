@@ -35,13 +35,22 @@
                  withEmail:(NSString*)email;
 
 /**
- * Update the user's detail
+ * Update the user's detail during onboarding
  */
 - (void)updateUserHavingID:(NSInteger)userID 
              withFirstName:(NSString*)firstName 
                   lastName:(NSString*)lastName  
                     byline:(NSString*)byline 
                andPassword:(NSString*)password;
+
+/**
+ * Update the user's detail and profile picture
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+             withFirstName:(NSString*)firstName 
+                  lastName:(NSString*)lastName
+                    byline:(NSString*)byline
+               andFilename:(NSString*)filename;
 
 /**
  * Update the iphone device id for the given userID

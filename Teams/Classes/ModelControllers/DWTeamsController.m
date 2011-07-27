@@ -281,9 +281,7 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
     if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
         return;
     
-    
-    NSDictionary *info	= [notification userInfo];
-    NSDictionary *data  = [info objectForKey:kKeyData];
+    NSDictionary *data  = [userInfo objectForKey:kKeyData];
     
     DWTeam *team = nil;
     

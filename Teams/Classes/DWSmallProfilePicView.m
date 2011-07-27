@@ -22,11 +22,11 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
 - (id)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     
-    if (self) {
-        self.clipsToBounds          = YES;
+    if (self) {       
+        self.clipsToBounds              = YES;
         
-        profilePicButton            = [UIButton buttonWithType:UIButtonTypeCustom];
-        profilePicButton.alpha      = kProfileButtonAlpha;
+        profilePicButton                = [UIButton buttonWithType:UIButtonTypeCustom];
+        profilePicButton.alpha          = kProfileButtonAlpha;
         
         [profilePicButton addTarget:self 
                              action:@selector(didTapSmallUserImage:event:) 

@@ -5,6 +5,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DWUsersController.h"
+#import "DWMediaController.h"
 #import "DWMediaPickerController.h"
 
 @class DWUser;
@@ -15,8 +16,7 @@
 /*
  * Provides an interface for editing user details
  */
-@interface DWUpdateUserDetailsViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate,
-DWMediaPickerControllerDelegate> {
+@interface DWUpdateUserDetailsViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate> {
     
 	UITextField                 *_firstNameTextField;
     UITextField                 *_lastNameTextField;
@@ -25,6 +25,8 @@ DWMediaPickerControllerDelegate> {
     UIButton                    *_changeUserImageButton;
     UIView                      *_spinnerContainerView;
     
+    BOOL                        _hasChangedPicture;
+    NSInteger                   _mediaResourceID;
     NSInteger                   _userID;
     NSString                    *_firstName;
     NSString                    *_lastName;    
@@ -38,6 +40,7 @@ DWMediaPickerControllerDelegate> {
     DWSpinnerOverlayView        *_spinnerOverlayView;    
     
     DWUsersController           *_usersController;
+    DWMediaController           *_mediaController;
 }
 
 /**
@@ -84,6 +87,10 @@ DWMediaPickerControllerDelegate> {
  */
 @property (nonatomic,retain) DWUsersController *usersController;
 
+/**
+ * Controller for handling media uploading request
+ */
+@property (nonatomic,retain) DWMediaController *mediaController;
 
 /**
  * Custom init with user

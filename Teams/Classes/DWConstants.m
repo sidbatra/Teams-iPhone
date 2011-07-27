@@ -261,7 +261,7 @@ NSInteger const kNavTitleViewWidth              = 200;
 NSInteger const kNavTitleViewHeight             = 44;
 NSInteger const kNavRightButtonX                = 260;
 NSInteger const kNavRightButtonY                = 0;
-NSInteger const kNavRightButtonWidth            = 44;
+NSInteger const kNavRightButtonWidth            = 60;
 NSInteger const kNavRightButtonHeight           = 44;
 
 //----------------------------------------------------------------------------------------------------
