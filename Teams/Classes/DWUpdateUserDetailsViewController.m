@@ -6,7 +6,7 @@
 #import "DWUpdateUserDetailsViewController.h"
 #import "DWUser.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWRequestsManager.h"
 #import "NSString+Helpers.h"
@@ -44,7 +44,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 @synthesize displayMediaPickerController    = _displayMediaPickerController;
 
 @synthesize navTitleView                    = _navTitleView;
-@synthesize navRightBarButtonView           = _navRightBarButtonView;
+@synthesize navBarRightButtonView           = _navBarRightButtonView;
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
@@ -96,7 +96,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
     self.displayMediaPickerController   = nil;
     
     self.navTitleView                   = nil;
-	self.navRightBarButtonView          = nil;
+	self.navBarRightButtonView          = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
@@ -133,8 +133,8 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
     
     [self.navTitleView displayTitle:kUpdateUserDetailsText];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -244,7 +244,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
 	[self updateUser];
 }
 
@@ -384,7 +384,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
 }
 

@@ -10,7 +10,7 @@
 #import "DWTeam.h"
 #import "DWUser.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
 
@@ -35,7 +35,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
 @synthesize password                    = _password;
 
 @synthesize navTitleView                = _navTitleView;
-@synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize navBarRightButtonView       = _navBarRightButtonView;
 @synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize usersController             = _usersController;
@@ -70,7 +70,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
     self.password                   = nil;
     
     self.navTitleView               = nil;
-    self.navRightBarButtonView      = nil;
+    self.navBarRightButtonView      = nil;
     self.spinnerOverlayView         = nil;
     
     self.usersController            = nil;
@@ -101,8 +101,8 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
     
     [self.navTitleView displayTitle:kSignupText];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -198,7 +198,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self createOrUdateUser];
 }
 
@@ -309,7 +309,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];        
 }
 

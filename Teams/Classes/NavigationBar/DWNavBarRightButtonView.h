@@ -1,5 +1,5 @@
 //
-//  DWRightNavBarButtonView.h
+//  DWNavBarRightButtonView.h
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
@@ -9,8 +9,8 @@
 /**
  * Custom done button view for the login/signup nav bar
  */
-@interface DWNavRightBarButtonView : UIView {
-    UIButton *rightNavBarButton;
+@interface DWNavBarRightButtonView : UIView {
+    UIButton *navBarRightButton;
 }
 
 /**

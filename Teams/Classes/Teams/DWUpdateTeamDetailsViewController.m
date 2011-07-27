@@ -9,7 +9,7 @@
 #import "DWSession.h"
 #import "DWTeam.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
 
@@ -37,7 +37,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
 @synthesize team                        = _team;
 
 @synthesize navTitleView                = _navTitleView;
-@synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize navBarRightButtonView       = _navBarRightButtonView;
 @synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize teamsController             = _teamsController;
@@ -67,7 +67,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
     self.team                       = nil;
         
     self.navTitleView               = nil;
-    self.navRightBarButtonView      = nil;
+    self.navBarRightButtonView      = nil;
     self.spinnerOverlayView         = nil;
     
     self.teamsController            = nil;
@@ -102,8 +102,8 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
     
     [self.navTitleView displayTitle:kUpdateTeamDetailsText];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView  = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView  = [[[DWNavBarRightButtonView alloc]
                                         initWithFrame:CGRectMake(260,0,
                                                                  kNavRightButtonWidth,
                                                                  kNavRightButtonHeight) 
@@ -179,7 +179,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self updateTeam];
 }
 
@@ -248,7 +248,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];                
 }
 

@@ -11,7 +11,7 @@
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
 #import "DWSession.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWUpdateUserDetailsViewController.h"
 
 
@@ -44,7 +44,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
 @synthesize userViewDataSource      = _userViewDataSource;
 
 @synthesize navTitleView            = _navTitleView;
-@synthesize navRightBarButtonView   = _navRightBarButtonView;
+@synthesize navBarRightButtonView   = _navBarRightButtonView;
 
 @synthesize delegate                = _delegate;
 
@@ -88,7 +88,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     self.userViewDataSource     = nil;
     
     self.navTitleView           = nil;
-    self.navRightBarButtonView  = nil;
+    self.navBarRightButtonView  = nil;
     
     [super dealloc];
 }
@@ -108,7 +108,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     
     [self.userViewDataSource loadUser];
     
-    if (_isCurrentUser && !self.navRightBarButtonView)
+    if (_isCurrentUser && !self.navBarRightButtonView)
         [self loadNavRightBarButtonView];
 }
 
@@ -126,7 +126,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNavRightBarButtonView {
-    self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                    initWithFrame:CGRectMake(260,0,
                                                             kNavRightButtonWidth,
                                                             kNavRightButtonHeight)
@@ -141,7 +141,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
 #pragma mark IBAction methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self.delegate showEditUserDetailsView:[DWUser fetch:self.userViewDataSource.userID]];
 }
 
@@ -214,7 +214,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     [self.navigationController.navigationBar addSubview:self.navTitleView];
     
     if(_isCurrentUser)
-        [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+        [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
 }
 
 

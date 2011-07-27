@@ -9,7 +9,7 @@
 
 @class DWUser;
 @class DWNavTitleView;
-@class DWNavRightBarButtonView;
+@class DWNavBarRightButtonView;
 @class DWSpinnerOverlayView;
 
 @protocol DWCreateProfileViewControllerDelegate;
@@ -32,7 +32,7 @@
     BOOL                        _hasPasswordChanged;
 			  	
     DWNavTitleView              *_navTitleView;
-    DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWNavBarRightButtonView     *_navBarRightButtonView;
     DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWUsersController           *_usersController;
@@ -69,7 +69,7 @@
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view

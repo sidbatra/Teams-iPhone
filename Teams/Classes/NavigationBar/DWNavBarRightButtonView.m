@@ -1,12 +1,12 @@
 //
-//  DWRightNavBarButtonView.m
+//  DWNavBarRightButtonView.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 
 
-@implementation DWNavRightBarButtonView
+@implementation DWNavBarRightButtonView
 
 static NSString* const kImgDoneButton = @"button_blue.png";
 
@@ -18,26 +18,26 @@ static NSString* const kImgDoneButton = @"button_blue.png";
     self = [super initWithFrame:frame];
     
     if (self) {
-        rightNavBarButton   = [UIButton buttonWithType:UIButtonTypeCustom];
+        navBarRightButton   = [UIButton buttonWithType:UIButtonTypeCustom];
         
-        [rightNavBarButton addTarget:target
-                              action:@selector(didTapDoneButton:event:) 
+        [navBarRightButton addTarget:target
+                              action:@selector(didTapNavBarRightButton:event:) 
                     forControlEvents:UIControlEventTouchUpInside];
         
-        [rightNavBarButton setFrame:CGRectMake(0, 0, 60, 44)];
+        [navBarRightButton setFrame:CGRectMake(0, 0, 60, 44)];
         
-        [rightNavBarButton setBackgroundImage:[UIImage imageNamed:kImgDoneButton] 
-                              forState:UIControlStateNormal];
+        [navBarRightButton setBackgroundImage:[UIImage imageNamed:kImgDoneButton]
+                                     forState:UIControlStateNormal];
         
-        [rightNavBarButton setTitle:title 
+        [navBarRightButton setTitle:title 
                            forState:UIControlStateNormal];
 
         
-        rightNavBarButton.titleLabel.textColor  = [UIColor whiteColor];        
-        rightNavBarButton.titleLabel.font       = [UIFont fontWithName:@"HelveticaNeue-Bold"
+        navBarRightButton.titleLabel.textColor  = [UIColor whiteColor];        
+        navBarRightButton.titleLabel.font       = [UIFont fontWithName:@"HelveticaNeue-Bold"
                                                                   size:13];
         
-        [self addSubview:rightNavBarButton];
+        [self addSubview:navBarRightButton];
     }
     return self;
 }

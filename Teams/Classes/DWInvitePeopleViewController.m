@@ -9,7 +9,7 @@
 #import "DWContact.h"
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWGUIManager.h"
 
 
@@ -33,7 +33,7 @@ static NSInteger const kTableViewHeight						= 200;
 @synthesize teamName                        = _teamName;
 
 @synthesize navTitleView                    = _navTitleView;
-@synthesize navRightBarButtonView           = _navRightBarButtonView;
+@synthesize navBarRightButtonView           = _navBarRightButtonView;
 
 @synthesize queryContactsViewController     = _queryContactsViewController;
 @synthesize addedContactsViewController     = _addedContactsViewController;
@@ -57,7 +57,7 @@ static NSInteger const kTableViewHeight						= 200;
     self.teamName                       = nil;
     
     self.navTitleView                   = nil;
-    self.navRightBarButtonView          = nil;    
+    self.navBarRightButtonView          = nil;    
     
     self.queryContactsViewController    = nil;
     self.addedContactsViewController    = nil;    
@@ -92,8 +92,8 @@ static NSInteger const kTableViewHeight						= 200;
     [self.navTitleView displayTitle:kAddPeopleText 
                         andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,self.teamName]];    
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -164,7 +164,7 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self.addedContactsViewController triggerInvites];
 }
 
@@ -205,7 +205,7 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
 }
 
 @end

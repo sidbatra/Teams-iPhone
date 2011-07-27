@@ -9,7 +9,7 @@
 #import "DWConstants.h"
 #import "DWUser.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 
 
@@ -39,7 +39,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 @synthesize userID                          = _userID;
 
 @synthesize navTitleView                    = _navTitleView;
-@synthesize navRightBarButtonView           = _navRightBarButtonView;
+@synthesize navBarRightButtonView           = _navBarRightButtonView;
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
@@ -73,7 +73,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     self.teamName                       = nil;
     
     self.navTitleView                   = nil;
-	self.navRightBarButtonView          = nil;
+	self.navBarRightButtonView          = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
@@ -97,8 +97,8 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     [self.navTitleView displayTitle:kCreateProfileText 
                         andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.teamName]];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -187,7 +187,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 #pragma mark IBAction methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
 	[self updateUser];
 }
 
@@ -262,7 +262,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     [self.firstNameTextField becomeFirstResponder];    
     
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];
 }
 

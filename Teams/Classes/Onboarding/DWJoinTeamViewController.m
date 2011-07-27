@@ -8,7 +8,7 @@
 #import "DWConstants.h"
 #import "DWMembership.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWGUIManager.h"
 
 
@@ -26,7 +26,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize team                        = _team;
 
 @synthesize navTitleView                = _navTitleView;
-@synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize navBarRightButtonView       = _navBarRightButtonView;
 
 @synthesize membershipsController       = _membershipsController;
 
@@ -49,7 +49,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.team                   = nil;
     
     self.navTitleView           = nil;
-    self.navRightBarButtonView  = nil;
+    self.navBarRightButtonView  = nil;
     
     self.membershipsController  = nil;
     
@@ -83,8 +83,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.team.name] 
                         andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,self.team.membersCount+1]];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -137,7 +137,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self joinTeam];
 }
 
@@ -150,7 +150,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
 }
 
 @end

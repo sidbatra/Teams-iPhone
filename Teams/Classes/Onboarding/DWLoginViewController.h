@@ -10,7 +10,7 @@
 
 @class DWUser;
 @class DWNavTitleView;
-@class DWNavRightBarButtonView;
+@class DWNavBarRightButtonView;
 @class DWSpinnerOverlayView;
 
 @protocol DWLoginViewControllerDelegate;
@@ -27,7 +27,7 @@
 	NSString                    *_password;
     
     DWNavTitleView              *_navTitleView;
-    DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWNavBarRightButtonView     *_navBarRightButtonView;
     DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWSessionController         *_sessionController;
@@ -52,7 +52,7 @@
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view

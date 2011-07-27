@@ -9,7 +9,7 @@
 #import "DWContactsViewController.h"
 
 @class DWNavTitleView;
-@class DWNavRightBarButtonView;
+@class DWNavBarRightButtonView;
 
 @protocol DWInvitePeopleViewControllerDelegate;
 
@@ -23,7 +23,7 @@
     NSString                    *_teamName;
         
     DWNavTitleView              *_navTitleView;
-    DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWNavBarRightButtonView     *_navBarRightButtonView;
     
     DWContactsViewController    *_queryContactsViewController;
     DWContactsViewController    *_addedContactsViewController;    
@@ -46,7 +46,7 @@
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Controllers for quering and added contacts from the address book

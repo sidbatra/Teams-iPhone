@@ -8,7 +8,7 @@
 #import "DWConstants.h"
 #import "DWTeam.h"
 #import "DWNavTitleView.h"
-#import "DWNavRightBarButtonView.h"
+#import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
 
@@ -35,7 +35,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
 @synthesize domain                      = _domain;
 
 @synthesize navTitleView                = _navTitleView;
-@synthesize navRightBarButtonView       = _navRightBarButtonView;
+@synthesize navBarRightButtonView       = _navBarRightButtonView;
 @synthesize spinnerOverlayView          = _spinnerOverlayView;
 
 @synthesize teamsController             = _teamsController;
@@ -65,7 +65,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
     self.domain                     = nil;
     
     self.navTitleView               = nil;
-    self.navRightBarButtonView      = nil;
+    self.navBarRightButtonView      = nil;
     self.spinnerOverlayView         = nil;
     
     self.teamsController            = nil;
@@ -99,8 +99,8 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
     
     [self.navTitleView displayTitle:kCreateTeamText];
     
-    if (!self.navRightBarButtonView)
-        self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
@@ -170,7 +170,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapDoneButton:(id)sender event:(id)event {
+- (void)didTapNavBarRightButton:(id)sender event:(id)event {
     [self createTeam];
 }
 
@@ -222,7 +222,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
-    [self.navigationController.navigationBar addSubview:self.navRightBarButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];            
 }
 

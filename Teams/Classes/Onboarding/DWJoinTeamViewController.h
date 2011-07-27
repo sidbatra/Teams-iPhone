@@ -9,7 +9,7 @@
 
 @class DWTeam;
 @class DWNavTitleView;
-@class DWNavRightBarButtonView;
+@class DWNavBarRightButtonView;
 
 @protocol DWJoinTeamViewControllerDelegate;
 
@@ -21,7 +21,7 @@
     DWTeam                      *_team;
     
     DWNavTitleView              *_navTitleView;
-    DWNavRightBarButtonView     *_navRightBarButtonView;
+    DWNavBarRightButtonView     *_navBarRightButtonView;
     
     DWMembershipsController     *_membershipsController;
     
@@ -38,7 +38,7 @@
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavRightBarButtonView *navRightBarButtonView;
+@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Controller for handling memberships requests
