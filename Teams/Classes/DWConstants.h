@@ -328,6 +328,8 @@ extern NSString* const kNPaginationCellReached;
 extern NSString* const kNEnteringLowMemoryState;
 extern NSString* const kNNotificationsLoaded;
 extern NSString* const kNNotificationsError;
+extern NSString* const kNInteractionsCreated;
+extern NSString* const kNInteractionsError;
 
 
 /**

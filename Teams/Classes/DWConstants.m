@@ -252,6 +252,8 @@ NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
 NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
 NSString* const kNNotificationsLoaded           = @"NNotificationsLoaded";
 NSString* const kNNotificationsError            = @"NNotificationsError";
+NSString* const kNInteractionsCreated           = @"NInteractionsCreated";
+NSString* const kNInteractionsError             = @"NInteractionsError";
 
 
 //----------------------------------------------------------------------------------------------------

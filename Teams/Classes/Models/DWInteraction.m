@@ -14,12 +14,17 @@
 /**
  * Name of the view where the interaction took place
  */
-@property (nonatomic,retain) NSString *viewName;
+@property (nonatomic,copy) NSString *viewName;
 
 /**
- * Optional name of the action taking place
+ * Name of the action taking place
  */
-@property (nonatomic,retain) NSString* actionName;
+@property (nonatomic,copy) NSString* actionName;
+
+/**
+ * Extra information about the interaction
+ */
+@property (nonatomic,copy) NSString* extra;
 
 @end
 
@@ -32,6 +37,7 @@
 
 @synthesize viewName    = _viewName;
 @synthesize actionName  = _actionName;
+@synthesize extra       = _extra;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -51,25 +57,41 @@
     
     self.viewName   = nil;
     self.actionName = nil;
+    self.extra      = nil;
     
     [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createPageviewForViewNamed:(NSString*)viewName
-                    withResourceID:(NSInteger)viewResourceID
-                    withActionName:(NSString*)actionName
-               withActionResoureID:(NSInteger)actionResourceID {
-    
-    _type               = kInteractionTypePageview;
+- (void)createInteractionForViewNamed:(NSString*)viewName
+                           withViewID:(NSInteger)viewID
+                       withActionName:(NSString*)actionName
+                         andExtraInfo:(NSString*)extra {
     
     self.viewName       = viewName;
-    _viewResourceID     = viewResourceID;
+    _viewID             = viewID;
     
     self.actionName     = actionName;
-    _actionResourceID   = actionResourceID;
+    self.extra          = extra;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSString*)toJSON {
+    NSString *jsonFormat = @"{"
+                            "\"created_at\":\"%d\","
+                            "\"view_name\":\"%@\","
+                            "\"view_id\":\"%d\","
+                            "\"action\":\"%@\","
+                            "\"extra\":\"%@\""
+                            "}";
+    
+    return [NSString stringWithFormat:jsonFormat,
+            (NSInteger)_createdAt,
+            self.viewName,
+            _viewID,
+            self.actionName,
+            self.extra];
+}
 
 @end
 
