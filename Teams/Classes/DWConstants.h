@@ -210,6 +210,7 @@ extern NSString* const kKeyResourceType;
 extern NSString* const kKeyAPS;
 extern NSString* const kKeyBadge;
 extern NSString* const kKeyAlert;
+extern NSString* const kKeyCount;
 
 /**
  * Notification names

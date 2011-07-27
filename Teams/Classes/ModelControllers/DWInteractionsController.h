@@ -35,10 +35,12 @@
  */
 @protocol DWInteractionsControllerDelegate
 
+@optional
+
 /**
- * Interactions successfully created
+ * Interactions successfully created along with the total number of interactions created
  */
-- (void)interactionsCreated;
+- (void)interactionsCreated:(NSInteger)count;
 
 /**
  * Error creating interactions

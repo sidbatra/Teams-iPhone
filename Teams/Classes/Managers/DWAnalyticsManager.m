@@ -34,7 +34,8 @@ static NSString* const kDefaultExtra        = @"";
 //----------------------------------------------------------------------------------------------------
 @implementation DWAnalyticsManager
 
-@synthesize interactions    = _interactions;
+@synthesize interactions            = _interactions;
+@synthesize interactionsController  = _interactionsController;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 
@@ -43,7 +44,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 	self = [super init];
 	
 	if(self) {
-        self.interactions  = [NSMutableArray array];
+        self.interactions                       = [NSMutableArray array];
+        
+        self.interactionsController             = [[[DWInteractionsController alloc] init] autorelease];
+        self.interactionsController.delegate    = self;
 	}
 	
 	return self;
@@ -51,7 +55,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-	self.interactions    = nil;
+	self.interactions           = nil;
+    self.interactionsController = nil;
     
 	[super dealloc];
 }
@@ -118,6 +123,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                     withActionName:actionName
                         withViewID:kDefaultViewID
                       andExtraInfo:kDefaultExtra];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWInteractionsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)interactionsCreated:(NSInteger)count {
+    [self.interactions removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,count-1)]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)interactionsCreationError:(NSString *)error {
+    NSLog(@"error creating interactions %@",error);
 }
 
 @end

@@ -136,6 +136,8 @@ NSString* const kKeyResourceType            = @"resource_type";
 NSString* const kKeyAPS                     = @"aps";
 NSString* const kKeyBadge                   = @"badge";
 NSString* const kKeyAlert                   = @"alert";
+NSString* const kKeyCount                   = @"count";
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kNPopularPlacesLoaded			= @"NPopularPlacesLoaded";

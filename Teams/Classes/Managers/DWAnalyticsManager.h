@@ -5,14 +5,19 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DWInteractionsController.h"
+
+
 static NSString* const kActionNameForLoad   = @"load";
 
 /**
  * Interface to store interactions locally and push to the
  * server when appropiate
  */
-@interface DWAnalyticsManager : NSObject {
-    NSMutableArray  *_interactions;
+@interface DWAnalyticsManager : NSObject<DWInteractionsControllerDelegate> {
+    
+    NSMutableArray              *_interactions;
+    DWInteractionsController    *_interactionsController;
 }
 
 /**
@@ -26,6 +31,11 @@ static NSString* const kActionNameForLoad   = @"load";
  * yet been successfully uploaded to the server
  */
 @property (nonatomic,retain) NSMutableArray *interactions;
+
+/**
+ * Interface to the interactions service
+ */
+@property (nonatomic,retain) DWInteractionsController  *interactionsController;
 
 
 /**

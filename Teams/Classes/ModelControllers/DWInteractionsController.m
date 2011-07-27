@@ -69,13 +69,16 @@ static NSString* const kCreateInteractionsURI   = @"/interactions.json?data=%@";
 //----------------------------------------------------------------------------------------------------
 - (void)interactionsCreated:(NSNotification*)notification {
     
-    SEL sel = @selector(interactionsCreated);
+    SEL sel = @selector(interactionsCreated:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
+    NSDictionary *data      = [[notification userInfo] objectForKey:kKeyData];
+    NSInteger count         = [[data objectForKey:kKeyCount] integerValue];
     
-    [self.delegate performSelector:sel];
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInt:count]];
 }
 
 //----------------------------------------------------------------------------------------------------
