@@ -136,7 +136,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userEmailUpdated:(DWUser*)user {
-    [[DWSession sharedDWSession] create:user];     
+    [[DWSession sharedDWSession] update];     
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -195,7 +195,7 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 - (void)userDetailsUpdated:(DWUser*)user {
-    [[DWSession sharedDWSession] create:user];     
+    [[DWSession sharedDWSession] update];     
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
     invitePeopleViewController.delegate                         = self;
