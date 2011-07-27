@@ -128,8 +128,8 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
 - (void)loadNavRightBarButtonView {
     self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
                                    initWithFrame:CGRectMake(260,0,
-                                                            kNavTitleViewWidth,
-                                                            kNavTitleViewHeight)
+                                                            kNavRightButtonWidth,
+                                                            kNavRightButtonHeight)
                                            title:kRightNavBarButtonText 
                                        andTarget:self] autorelease];
 }

@@ -122,8 +122,8 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
     if (_isUsersTeam && !self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
-                                                                kNavTitleViewWidth,
-                                                                kNavTitleViewHeight)
+                                                                kNavRightButtonWidth,
+                                                                kNavRightButtonHeight)
                                                title:kRightNavBarButtonText 
                                            andTarget:self] autorelease];
 }

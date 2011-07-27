@@ -86,8 +86,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     if (!self.navRightBarButtonView)
         self.navRightBarButtonView = [[[DWNavRightBarButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
-                                                                kNavTitleViewWidth,
-                                                                kNavTitleViewHeight)
+                                                                kNavRightButtonWidth,
+                                                                kNavRightButtonHeight)
                                        title:kRightNavBarButtonText 
                                        andTarget:self] autorelease];    
 }
