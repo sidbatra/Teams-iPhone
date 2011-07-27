@@ -115,12 +115,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWMembershipsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)membershipCreated:(DWMembership *)membership {
+- (void)membershipCreated:(DWMembership*)membership {
     [self.delegate teamJoined:membership.team];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)membershipCreationError:(NSString *)error {
+- (void)membershipCreationError:(NSString*)error {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 

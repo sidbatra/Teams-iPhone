@@ -99,7 +99,7 @@
 /*
  * Fired when a user is updated
  */
-- (void)userEmailUpdated:(DWUser*)user;
+- (void)userEmailUpdated;
 
 /*
  * Fired when information about a team is fetched

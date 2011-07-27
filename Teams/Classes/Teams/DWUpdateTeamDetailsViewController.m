@@ -189,7 +189,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
 	
 	if(textField == self.teamNameTextField) {
 		[self.teamNameTextField resignFirstResponder];

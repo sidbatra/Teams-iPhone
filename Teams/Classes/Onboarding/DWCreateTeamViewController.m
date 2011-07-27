@@ -175,7 +175,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
 	
 	if(textField == self.teamNameTextField) {
 		[self.teamNameTextField resignFirstResponder];

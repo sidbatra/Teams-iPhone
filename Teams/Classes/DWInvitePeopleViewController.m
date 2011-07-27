@@ -10,7 +10,6 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
-#import "DWGUIManager.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
@@ -80,7 +79,7 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.hidesBackButton = YES;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -175,7 +174,7 @@ static NSInteger const kTableViewHeight						= 200;
 #pragma mark DWContactsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactSelected:(DWContact *)contact fromObject:(id)object {
+- (void)contactSelected:(DWContact*)contact fromObject:(id)object {
     if ([object isEqual:self.queryContactsViewController ] ) {
         [self displayAddedContacts];
         [self.addedContactsViewController addContact:contact];

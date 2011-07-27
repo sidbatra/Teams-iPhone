@@ -160,7 +160,7 @@ static NSString* const kMsgProcesssing          = @"Logging In";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
 	
 	if(textField == self.emailTextField) {
 		[self.emailTextField resignFirstResponder];

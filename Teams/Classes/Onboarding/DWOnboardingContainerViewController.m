@@ -135,7 +135,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userEmailUpdated:(DWUser*)user {
+- (void)userEmailUpdated {
     [[DWSession sharedDWSession] update];     
 }
 
@@ -174,6 +174,7 @@
     [self displayCreateProfileView:team];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -187,14 +188,32 @@
     [self displayCreateProfileView:team];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWCreateProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)userDetailsUpdated {
+    [[DWSession sharedDWSession] update];     
+    
+    DWAddProfilePicViewController *addProfilePicViewController  = [[[DWAddProfilePicViewController alloc] init] autorelease];
+    addProfilePicViewController.delegate                        = self;
+    addProfilePicViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID; 
+    
+    [self.navigationController pushViewController:addProfilePicViewController 
+                                         animated:YES];
+}
+
+
 //----------------------------------------------------------------------------------------------------
-- (void)userDetailsUpdated:(DWUser*)user {
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWAddProfilePicViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userPhotoUpdated {
     [[DWSession sharedDWSession] update];     
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];

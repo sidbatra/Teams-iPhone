@@ -203,7 +203,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
 	if(textField == self.emailTextField)
 		[self createOrUdateUser];
@@ -249,7 +249,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
         
     if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"]) {
 
-        [self.delegate userEmailUpdated:user];
+        [self.delegate userEmailUpdated];
     
         NSString *domain = [user getDomainFromEmail];        
         [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
@@ -257,7 +257,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdateError:(NSString *)error {
+- (void)userUpdateError:(NSString*)error {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
