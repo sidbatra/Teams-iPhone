@@ -13,6 +13,11 @@
 @implementation NSObject (DWHelpers)
 
 //----------------------------------------------------------------------------------------------------
+- (NSString*)className {
+    return NSStringFromClass([self class]);
+}
+
+//----------------------------------------------------------------------------------------------------
 + (NSString*)className {
     return NSStringFromClass([self class]);
 }

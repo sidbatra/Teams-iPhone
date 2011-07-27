@@ -402,6 +402,7 @@
 		BBC0C6E712F4C56000291C33 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6DF12F4C56000291C33 /* whiteArrow@2x.png */; };
 		BBC0C6EB12F4C57800291C33 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0C6EA12F4C57800291C33 /* EGORefreshTableHeaderView.m */; };
 		BBC395AC13DF965700A2A8F6 /* DWAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC395AB13DF965700A2A8F6 /* DWAnalyticsManager.m */; };
+		BBC3964A13E0897300A2A8F6 /* DWInteraction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC3964913E0897300A2A8F6 /* DWInteraction.m */; };
 		BBC7CCCB13664BF80003CE02 /* DWVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC7CCCA13664BF80003CE02 /* DWVideoView.m */; };
 		BBC8D8F113CCB5D300A224F5 /* DWItemPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */; };
 		BBCE3A65131CC38D008BDA82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A63131CC38D008BDA82 /* Default.png */; };
@@ -1081,6 +1082,8 @@
 		BBC0C6EA12F4C57800291C33 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		BBC395AA13DF965700A2A8F6 /* DWAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAnalyticsManager.h; sourceTree = "<group>"; };
 		BBC395AB13DF965700A2A8F6 /* DWAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnalyticsManager.m; sourceTree = "<group>"; };
+		BBC3964813E0897300A2A8F6 /* DWInteraction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInteraction.h; sourceTree = "<group>"; };
+		BBC3964913E0897300A2A8F6 /* DWInteraction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInteraction.m; sourceTree = "<group>"; };
 		BBC7CCC913664BF80003CE02 /* DWVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWVideoView.h; path = Classes/DWVideoView.h; sourceTree = "<group>"; };
 		BBC7CCCA13664BF80003CE02 /* DWVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWVideoView.m; path = Classes/DWVideoView.m; sourceTree = "<group>"; };
 		BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenter.h; sourceTree = "<group>"; };
@@ -2191,6 +2194,8 @@
 				BB572A2813D391F40060A351 /* DWResource.m */,
 				269FC6FE13D5EB68004892D0 /* DWContact.h */,
 				269FC6FF13D5EB68004892D0 /* DWContact.m */,
+				BBC3964813E0897300A2A8F6 /* DWInteraction.h */,
+				BBC3964913E0897300A2A8F6 /* DWInteraction.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -3126,6 +3131,7 @@
 				2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */,
 				BBC395AC13DF965700A2A8F6 /* DWAnalyticsManager.m in Sources */,
 				261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */,
+				BBC3964A13E0897300A2A8F6 /* DWInteraction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

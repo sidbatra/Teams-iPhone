@@ -95,7 +95,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	if(self.tabBarController == nil) 
 		[self setupApplication];
     
-	[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleBackgroundNotification];
+	[[DWPushNotificationsManager sharedDWPushNotificationsManager] handleBackgroundNotification];    
 }
 
 //----------------------------------------------------------------------------------------------------

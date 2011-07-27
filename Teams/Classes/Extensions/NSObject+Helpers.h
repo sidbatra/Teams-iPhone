@@ -13,6 +13,12 @@
 /**
  * Returns the class name as a string
  */
+- (NSString*)className;
+
+
+/**
+ * Returns the class name as a string
+ */
 + (NSString*)className;
 
 @end

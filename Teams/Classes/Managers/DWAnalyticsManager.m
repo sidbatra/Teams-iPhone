@@ -4,8 +4,14 @@
 //
 
 #import "DWAnalyticsManager.h"
+#import "DWInteraction.h"
+#import "NSObject+Helpers.h"
 
 #import "SynthesizeSingleton.h"
+
+
+static NSInteger const kDefaultResourceID   = 0;
+static NSString* const kDefaultName         = @"";
 
 
 
@@ -34,6 +40,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 	self.interactions    = nil;
     
 	[super dealloc];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createPageviewForView:(NSObject*)view
+               withResourceID:(NSInteger)viewResourceID {
+    
+    DWInteraction *interaction = [[DWInteraction alloc] init];
+    
+    [interaction createPageviewForViewNamed:[view className]
+                             withResourceID:viewResourceID
+                             withActionName:kDefaultName
+                        withActionResoureID:kDefaultResourceID];
+    
+    [self.interactions addObject:interaction];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createPageviewForView:(NSObject*)view {
+    
+    [self createPageviewForView:view
+                 withResourceID:kDefaultResourceID];
 }
 
 @end
