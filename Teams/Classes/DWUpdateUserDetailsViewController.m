@@ -4,12 +4,11 @@
 //
 
 #import "DWUpdateUserDetailsViewController.h"
+
 #import "DWUser.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
-#import "DWRequestsManager.h"
-#import "NSString+Helpers.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 #import "DWGUIManager.h"
@@ -20,7 +19,7 @@ static NSString* const kMsgIncomplete           = @"Enter first name, last name 
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kUpdateUserDetailsText   = @"Edit Your Details";
-static NSString* const kRightNavBarButtonText   = @"Save";
+static NSString* const kNavBarRightButtonText   = @"Save";
 static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 
 
@@ -129,7 +128,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                                andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kUpdateUserDetailsText];
     
@@ -138,8 +137,8 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                       title:kRightNavBarButtonText 
-                                       andTarget:self] autorelease];
+                                               title:kNavBarRightButtonText 
+                                           andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
         self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,100)
@@ -198,7 +197,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 	else {		
         [self freezeUI];
         
-        if (_hasChangedPicture) 
+        if (_hasChangedImage) 
             _mediaResourceID = [self.mediaController postImage:self.userImageView.image
                                                       toFolder:kS3UsersFolder];
         else
@@ -211,10 +210,16 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
--(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
-    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] autorelease];
-    [picker prepareForImageWithPickerMode:pickerMode withPreview:NO];
-    [self.displayMediaPickerController presentModalViewController:picker animated:NO];   
+- (void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
+    
+    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] 
+                                       autorelease];
+    
+    [picker prepareForImageWithPickerMode:pickerMode 
+                              withPreview:NO];
+    
+    [self.displayMediaPickerController presentModalViewController:picker 
+                                                         animated:NO];   
 }
 
 
@@ -249,7 +254,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
 	
 	if(textField == self.firstNameTextField) {
 		[self.firstNameTextField resignFirstResponder];
@@ -283,7 +288,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)mediaUploaded:(NSString *)filename {
+- (void)mediaUploaded:(NSString*)filename {
     [self.usersController updateUserHavingID:_userID 
                                withFirstName:self.firstNameTextField.text 
                                     lastName:self.lastNameTextField.text 
@@ -292,7 +297,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)mediaUploadError:(NSString *)error {
+- (void)mediaUploadError:(NSString*)error {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
@@ -305,15 +310,16 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
     [self unfreezeUI];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWUsersController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdated:(DWUser *)user {
+- (void)userUpdated:(DWUser*)user {
     
-    if (_hasChangedPicture) 
+    if (_hasChangedImage) 
         [user updateImages:self.userImage];
 
     [[DWSession sharedDWSession] update];
@@ -322,7 +328,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdateError:(NSString *)error {
+- (void)userUpdateError:(NSString*)error {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
@@ -346,7 +352,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 	self.userImageView.image    = editedImage;
     self.userImage              = editedImage;
     
-    _hasChangedPicture          = YES;
+    _hasChangedImage            = YES;
     
 	[self.displayMediaPickerController dismissModalViewControllerAnimated:NO];
 }

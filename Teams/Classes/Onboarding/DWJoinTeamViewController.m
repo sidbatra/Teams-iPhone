@@ -14,7 +14,7 @@
 
 static NSString* const kJoinTeamText                    = @"Join %@";
 static NSString* const kJoinTeamSubText                 = @"as the %d member";
-static NSString* const kRightNavBarButtonText           = @"Join";
+static NSString* const kNavBarRightButtonText           = @"Join";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
 
@@ -88,7 +88,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                       title:kRightNavBarButtonText 
+                                       title:kNavBarRightButtonText 
                                        andTarget:self] autorelease];    
 }
 
@@ -115,12 +115,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 #pragma mark DWMembershipsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)membershipCreated:(DWMembership *)membership {
+- (void)membershipCreated:(DWMembership*)membership {
     [self.delegate teamJoined:membership.team];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)membershipCreationError:(NSString *)error {
+- (void)membershipCreationError:(NSString*)error {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 

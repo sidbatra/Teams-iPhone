@@ -10,12 +10,11 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
-#import "DWGUIManager.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
 static NSString* const kAddPeopleSubText                    = @"to the %@ Team";
-static NSString* const kRightNavBarButtonText               = @"Done";
+static NSString* const kNavBarRightButtonText               = @"Done";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
@@ -80,14 +79,14 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.hidesBackButton = YES;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                                andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:kAddPeopleText 
                         andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,self.teamName]];    
@@ -97,7 +96,7 @@ static NSInteger const kTableViewHeight						= 200;
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
     
@@ -175,7 +174,7 @@ static NSInteger const kTableViewHeight						= 200;
 #pragma mark DWContactsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactSelected:(DWContact *)contact fromObject:(id)object {
+- (void)contactSelected:(DWContact*)contact fromObject:(id)object {
     if ([object isEqual:self.queryContactsViewController ] ) {
         [self displayAddedContacts];
         [self.addedContactsViewController addContact:contact];

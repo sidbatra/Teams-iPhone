@@ -1,41 +1,36 @@
 //
-//  DWCreateProfileViewController.m
+//  DWAddProfilePicViewController.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWCreateProfileViewController.h"
+#import "DWAddProfilePicViewController.h"
 
-#import "NSString+Helpers.h"
-#import "DWConstants.h"
 #import "DWUser.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
+#import "DWConstants.h"
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
-static NSString* const kMsgIncomplete           = @"Enter first name, last name, email and password";
+static NSString* const kMsgIncomplete           = @"Please upload a picture";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
-static NSString* const kCreateProfileText       = @"Add Yourself";
-static NSString* const kCreateProfileSubText    = @"to the %@ Team";
+static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
 static NSString* const kNavBarRightButtonText   = @"Next";
-static NSString* const kMsgProcesssing          = @"Creating your profile...";
+static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWCreateProfileViewController
+@implementation DWAddProfilePicViewController
 
-@synthesize firstNameTextField              = _firstNameTextField;
-@synthesize lastNameTextField               = _lastNameTextField;
-@synthesize byLineTextField                 = _byLineTextField;
-@synthesize passwordTextField               = _passwordTextField;
+@synthesize addProfilePicButton             = _addProfilePicButton;
+@synthesize useFacebookPhotoButton          = _useFacebookPhotoButton;
 @synthesize spinnerContainerView            = _spinnerContainerView;
 
-@synthesize password                        = _password;
-@synthesize teamName                        = _teamName;
+@synthesize userImage                       = _userImage;
 @synthesize userID                          = _userID;
 
 @synthesize navTitleView                    = _navTitleView;
@@ -43,6 +38,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
+@synthesize mediaController                 = _mediaController;
 
 @synthesize delegate                        = _delegate;
 
@@ -55,7 +51,9 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
         self.usersController            = [[[DWUsersController alloc] init] autorelease];        
         self.usersController.delegate   = self;
         
-        _hasPasswordChanged             = NO;
+        self.mediaController            = [[[DWMediaController alloc] init] autorelease];
+        self.mediaController.delegate   = self;
+            
 	}
 	return self;
 }
@@ -63,20 +61,18 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {	
 	
-	self.firstNameTextField             = nil;
-    self.lastNameTextField              = nil;
-	self.byLineTextField                = nil;
-	self.passwordTextField              = nil;
+    self.addProfilePicButton            = nil;
+    self.useFacebookPhotoButton         = nil;
     self.spinnerContainerView           = nil;
     
-    self.password                       = nil;    
-    self.teamName                       = nil;
+    self.userImage                      = nil;
     
     self.navTitleView                   = nil;
 	self.navBarRightButtonView          = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
+    self.mediaController                = nil;
 	
     [super dealloc];
 }
@@ -87,6 +83,9 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     
     self.navigationItem.hidesBackButton = YES;
     
+    [self.addProfilePicButton setBackgroundImage:self.userImage 
+                                        forState:UIControlStateNormal];
+    
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
@@ -94,8 +93,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
                                                        kNavTitleViewHeight) 
                                 andDelegate:self] autorelease];
     
-    [self.navTitleView displayTitle:kCreateProfileText 
-                        andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.teamName]];
+    [self.navTitleView displayTitle:kAddProfilePicText];
     
     if (!self.navBarRightButtonView)
         self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
@@ -108,8 +106,6 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
         self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)
                                                                         andMessageText:kMsgProcesssing] autorelease];
     
-    
-	[self.firstNameTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -122,16 +118,6 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     [super didReceiveMemoryWarning];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)prePopulateViewWithFirstName:(NSString*)firstName lastName:(NSString*)lastName 
-                              byLine:(NSString*)byLine andPassword:(NSString*)password {
-    
-    self.firstNameTextField.text        = firstName;
-    self.lastNameTextField.text         = lastName;
-    self.byLineTextField.text           = byLine;
-    self.passwordTextField.text         = @"random";
-    self.password                       = password;
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -152,12 +138,8 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateUser {
-
-	if (self.byLineTextField.text.length == 0 || 
-        self.firstNameTextField.text.length == 0 ||
-        self.lastNameTextField.text.length == 0 ||
-        self.passwordTextField.text.length == 0) {
-        
+    
+	if (!_hasChangedImage) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
 														message:kMsgIncomplete
 													   delegate:nil 
@@ -166,25 +148,31 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 		[alert show];
 		[alert release];
 	}
-	else {			
-        [self freezeUI];
-        
-        if(_hasPasswordChanged)
-            self.password = [self.passwordTextField.text encrypt];
+	else {		
+        [self freezeUI];   
+        _mediaResourceID = [self.mediaController postImage:self.userImage 
+                                                  toFolder:kS3UsersFolder];
+    }
+}
 
-        [self.usersController updateUserHavingID:self.userID 
-                                   withFirstName:self.firstNameTextField.text 
-                                        lastName:self.lastNameTextField.text 
-                                          byline:self.byLineTextField.text 
-                                     andPassword:self.password];                                  
-	}
+//----------------------------------------------------------------------------------------------------
+- (void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
+    
+    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] 
+                                       autorelease];
+    
+    [picker prepareForImageWithPickerMode:pickerMode 
+                              withPreview:NO];
+    
+    [self presentModalViewController:picker 
+                            animated:NO];   
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark IBAction methods
+#pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
@@ -192,56 +180,35 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldReturn:(UITextField*)textField {
-	
-	if(textField == self.firstNameTextField) {
-		[self.firstNameTextField resignFirstResponder];
-		[self.lastNameTextField becomeFirstResponder];
-	}
-    else if(textField == self.lastNameTextField) {
-        [self.lastNameTextField resignFirstResponder];
-        [self.byLineTextField becomeFirstResponder];
-    }
-	else if(textField == self.byLineTextField) {
-		[self.byLineTextField resignFirstResponder];
-		[self.passwordTextField becomeFirstResponder];
-	}
-	else if(textField == self.passwordTextField) {
-		[self updateUser];
-	}
-	
-	return YES;
+- (IBAction)addProfilePicButtonTapped:(id)sender {
+    [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)textFieldShouldBeginEditing:(UITextField*)textField {
-    
-    if (textField == self.passwordTextField) {
-        self.passwordTextField.text = kEmptyString;
-        _hasPasswordChanged         = YES;
-    }
-    return YES;
+- (IBAction)useFacebookPhotoButtonTapped:(id)sender {
+    NSLog(@"to implement facebook integration");
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUsersController Delegate
+#pragma mark DWMediaController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdated:(DWUser*)user {
-    if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWCreateProfileViewController"]) {
-        user.encryptedPassword = self.password;
-    
-        [self.delegate userDetailsUpdated];
-        [self unfreezeUI];
-    }
+- (NSInteger)mediaResourceID {
+    return _mediaResourceID;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userUpdateError:(NSString*)error {
+- (void)mediaUploaded:(NSString*)filename {
+    [self.usersController updateUserHavingID:self.userID 
+                                withFilename:filename];
+}
 
+//----------------------------------------------------------------------------------------------------
+- (void)mediaUploadError:(NSString*)error {
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
 												   delegate:nil 
@@ -257,15 +224,73 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWUsersController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    
+    [user updateImages:self.userImage];    
+    
+    [self.delegate userPhotoUpdated];
+    [self unfreezeUI];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString*)error {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+    
+    [self unfreezeUI];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWMediaPickerControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)didFinishPickingImage:(UIImage*)originalImage andEditedTo:(UIImage*)editedImage {
+    _hasChangedImage            = YES;
+    self.userImage              = editedImage;
+    
+    [self.addProfilePicButton setBackgroundImage:editedImage 
+                                        forState:UIControlStateNormal];
+    
+	[self dismissModalViewControllerAnimated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode {    
+    [self dismissModalViewControllerAnimated:NO];  
+    
+    if (imagePickerMode == kMediaPickerLibraryMode)
+        [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)photoLibraryModeSelected {
+    [self dismissModalViewControllerAnimated:NO];
+    [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark Nav Stack Selectors
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
-    [self.firstNameTextField becomeFirstResponder];    
-    
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
-    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
 }
 
 

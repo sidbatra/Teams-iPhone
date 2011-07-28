@@ -16,7 +16,7 @@
 #import "DWGUIManager.h"
 
 
-static NSString* const kRightNavBarButtonText   = @"Edit";
+static NSString* const kNavBarRightButtonText   = @"Edit";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -124,7 +124,7 @@ static NSString* const kRightNavBarButtonText   = @"Edit";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                               title:kRightNavBarButtonText 
+                                               title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
 }
 

@@ -107,7 +107,7 @@
 /*
  * Fired when user details are updated.
  */
-- (void)userDetailsUpdated:(DWUser*)user;
+- (void)userDetailsUpdated;
 
 @end
 

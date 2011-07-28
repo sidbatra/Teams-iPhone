@@ -25,7 +25,7 @@
     UIButton                    *_changeUserImageButton;
     UIView                      *_spinnerContainerView;
     
-    BOOL                        _hasChangedPicture;
+    BOOL                        _hasChangedImage;
     NSInteger                   _mediaResourceID;
     NSInteger                   _userID;
     NSString                    *_firstName;
