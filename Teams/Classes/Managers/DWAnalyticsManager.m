@@ -48,6 +48,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
         
         self.interactionsController             = [[[DWInteractionsController alloc] init] autorelease];
         self.interactionsController.delegate    = self;
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(applicationIsActive:) 
+                                                     name:UIApplicationDidBecomeActiveNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(applicationWillResignActive:) 
+                                                     name:UIApplicationWillResignActiveNotification
+                                                   object:nil];
 	}
 	
 	return self;
@@ -55,6 +66,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 	self.interactions           = nil;
     self.interactionsController = nil;
     
@@ -98,7 +111,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                                 withActionName:actionName
                                   andExtraInfo:extra];
         
-     [self.interactions addObject:interaction];
+    [self.interactions addObject:interaction];
     
     
     NSLog(@"JSON - %@", [self toJSON]);
@@ -132,8 +145,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 #pragma mark DWInteractionsControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)interactionsCreated:(NSInteger)count {
-    [self.interactions removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,count-1)]];
+- (void)interactionsCreated:(NSString*)countString {
+    NSInteger count = [countString integerValue];
+    [self.interactions removeObjectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0,count)]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -141,4 +155,26 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
     NSLog(@"error creating interactions %@",error);
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)applicationIsActive:(NSNotification*)notification {
+    [self createInteractionForView:[UIApplication sharedApplication]
+                    withActionName:@"session_started"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)applicationWillResignActive:(NSNotification*)notification {
+    [self createInteractionForView:[UIApplication sharedApplication]
+                    withActionName:@"session_ended"];
+    
+    [self.interactionsController postInteractions:[self toJSON]];
+}
+
 @end
+
+

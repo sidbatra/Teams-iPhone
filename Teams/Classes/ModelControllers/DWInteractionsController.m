@@ -8,7 +8,8 @@
 #import "NSString+Helpers.h"
 #import "DWConstants.h"
 
-static NSString* const kCreateInteractionsURI   = @"/interactions.json?data=%@";
+static NSString* const kCreateInteractionsURI   = @"/interactions.json?";
+static NSString* const kDataParamName          = @"data";
 
 
 
@@ -51,13 +52,12 @@ static NSString* const kCreateInteractionsURI   = @"/interactions.json?data=%@";
 //----------------------------------------------------------------------------------------------------
 - (void)postInteractions:(NSString*)interactionsJSON {
     
-    NSString *localURL = [NSString stringWithFormat:kCreateInteractionsURI,
-                          [interactionsJSON stringByEncodingHTMLCharacters]];
-    
-    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
-                                                 successNotification:kNInteractionsCreated
-                                                   errorNotification:kNInteractionsError
-                                                       requestMethod:kPost];
+    [[DWRequestsManager sharedDWRequestsManager] createPostBodyBasedDenwenRequest:kCreateInteractionsURI
+                                                                       withParams:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                                   interactionsJSON,kDataParamName,
+                                                                                   nil]
+                                                              successNotification:kNInteractionsCreated
+                                                                errorNotification:kNInteractionsError];
 }
 
 
@@ -74,11 +74,10 @@ static NSString* const kCreateInteractionsURI   = @"/interactions.json?data=%@";
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    NSDictionary *data      = [[notification userInfo] objectForKey:kKeyData];
-    NSInteger count         = [[data objectForKey:kKeyCount] integerValue];
-    
+    NSInteger data  = [[[notification userInfo] objectForKey:kKeyData] integerValue];
+        
     [self.delegate performSelector:sel
-                        withObject:[NSNumber numberWithInt:count]];
+                        withObject:[NSString stringWithFormat:@"%d",data]];
 }
 
 //----------------------------------------------------------------------------------------------------

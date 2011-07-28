@@ -7,6 +7,7 @@
 #import "DWContainerViewController.h"
 #import "DWCreateViewController.h"
 #import "DWPushNotificationsManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 #import "DWSession.h"
 
@@ -41,6 +42,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     	    
     [DWPushNotificationsManager sharedDWPushNotificationsManager].backgroundNotificationInfo = [launchOptions objectForKey:
                                                                                     UIApplicationLaunchOptionsRemoteNotificationKey];
+    
+    [DWAnalyticsManager sharedDWAnalyticsManager];
     
 	[[NSNotificationCenter defaultCenter] addObserver:self 
 											 selector:@selector(userLogsIn:) 

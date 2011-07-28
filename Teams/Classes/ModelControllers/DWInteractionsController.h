@@ -40,7 +40,7 @@
 /**
  * Interactions successfully created along with the total number of interactions created
  */
-- (void)interactionsCreated:(NSInteger)count;
+- (void)interactionsCreated:(NSString*)countString;
 
 /**
  * Error creating interactions
