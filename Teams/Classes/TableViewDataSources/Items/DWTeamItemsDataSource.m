@@ -6,6 +6,7 @@
 #import "DWTeamItemsDataSource.h"
 #import "DWFollowing.h"
 #import "DWSession.h"
+#import "DWAnalyticsManager.h"
 
 /**
  * Private method and property declarations
@@ -157,6 +158,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsLoaded:(NSMutableArray *)items {  
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",(NSInteger)_oldestTimestamp]];
+    
     [self populateItems:items];
 }
 
