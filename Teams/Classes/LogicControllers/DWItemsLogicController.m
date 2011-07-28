@@ -9,6 +9,7 @@
 #import "DWItem.h"
 #import "DWTeam.h"
 #import "DWUser.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -75,9 +76,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)shouldTouchItemWithID:(NSInteger)itemID {
-	
-    DWItem *item = [DWItem fetch:itemID];
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"touch"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
+    
+    DWItem *item = [DWItem fetch:itemID];
     return !item.isTouched;
 	//return YES;
     //!item.isTouched && ![item.user isCurrentUser];
@@ -111,6 +115,11 @@
     
     [self.delegate performSelector:sel
                         withObject:item.team];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"team_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -126,6 +135,11 @@
     
     [self.delegate performSelector:sel
                         withObject:item.user];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"user_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -141,6 +155,11 @@
     
     [self.delegate performSelector:sel
                         withObject:item];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"share_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 @end
