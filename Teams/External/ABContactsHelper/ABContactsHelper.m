@@ -106,16 +106,6 @@
 	return [contacts filteredArrayUsingPredicate:pred];
 }
 
-+ (NSArray *) contactsWithPropertiesContaining: (NSString *) string
-{
-	NSPredicate *pred;
-	NSArray *contacts = [ABContactsHelper contacts];
-	pred = [NSPredicate predicateWithFormat:
-            @"emailaddresses contains[cd] %@ OR lastname contains[cd] %@ OR firstname contains[cd] %@",string,string,string];
-            
-	return [contacts filteredArrayUsingPredicate:pred];
-}
-
 + (NSArray *) contactsMatchingName: (NSString *) fname andName: (NSString *) lname
 {
 	NSPredicate *pred;

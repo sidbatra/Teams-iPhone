@@ -17,6 +17,8 @@
  */
 @interface DWContactsDataSource : DWTableViewDataSource<DWContactsControllerDelegate,DWInvitesControllerDelegate> {
     
+    NSArray                     *_allContacts;
+    
     DWContactsController        *_contactsController;
     DWInvitesController         *_invitesController;    
 }
@@ -26,15 +28,27 @@
  */
 @property (nonatomic,assign) id<DWContactsDataSourceDelegate> delegate;
 
+
+/**
+ * All Address Book Contacts
+ */
+@property (nonatomic,retain) DWContactsController *contactsController;
+
 /**
  * Controller for address book contacts requests
  */
-@property (nonatomic,retain) DWContactsController *contactsController;
+@property (nonatomic,retain) NSArray *allContacts;
 
 /**
  * Interface to invite service
  */
 @property (nonatomic,retain) DWInvitesController *invitesController;
+
+
+/*
+ * Load all contacts from the address book
+ */
+- (void)loadAllContacts;
 
 /*
  * Load contacts whose properties contain a 
