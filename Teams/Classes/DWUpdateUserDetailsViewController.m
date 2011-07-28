@@ -367,7 +367,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)photoLibraryModeSelected {
-    [self dismissModalViewControllerAnimated:NO];
+    [self.displayMediaPickerController dismissModalViewControllerAnimated:NO];
     [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
 }
 
