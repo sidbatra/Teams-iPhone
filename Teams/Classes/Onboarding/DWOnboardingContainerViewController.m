@@ -201,6 +201,7 @@
     DWAddProfilePicViewController *addProfilePicViewController  = [[[DWAddProfilePicViewController alloc] init] autorelease];
     addProfilePicViewController.delegate                        = self;
     addProfilePicViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID; 
+    addProfilePicViewController.teamID                          = [DWSession sharedDWSession].currentUser.team.databaseID; 
     
     [self.navigationController pushViewController:addProfilePicViewController 
                                          animated:YES];
@@ -215,6 +216,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userPhotoUpdated {
     [[DWSession sharedDWSession] update];     
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreated {
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
     invitePeopleViewController.delegate                         = self;
@@ -223,7 +228,6 @@
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];
 }
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

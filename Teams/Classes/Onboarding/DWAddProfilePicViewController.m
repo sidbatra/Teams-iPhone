@@ -32,6 +32,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 @synthesize userImage                       = _userImage;
 @synthesize userID                          = _userID;
+@synthesize teamID                          = _teamID;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
@@ -39,6 +40,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 @synthesize usersController                 = _usersController;
 @synthesize mediaController                 = _mediaController;
+@synthesize membershipsController           = _membershipsController;
 
 @synthesize delegate                        = _delegate;
 
@@ -48,12 +50,14 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 	self = [super init];
 	
 	if(self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
-        self.usersController.delegate   = self;
+        self.usersController                = [[[DWUsersController alloc] init] autorelease];        
+        self.usersController.delegate       = self;
         
-        self.mediaController            = [[[DWMediaController alloc] init] autorelease];
-        self.mediaController.delegate   = self;
-            
+        self.mediaController                = [[[DWMediaController alloc] init] autorelease];
+        self.mediaController.delegate       = self;
+        
+        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
+        self.membershipsController.delegate = self;
 	}
 	return self;
 }
@@ -73,6 +77,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
     
     self.usersController                = nil;
     self.mediaController                = nil;
+    self.membershipsController          = nil;
 	
     [super dealloc];
 }
@@ -232,7 +237,8 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
     [user updateImages:self.userImage];    
     
     [self.delegate userPhotoUpdated];
-    [self unfreezeUI];
+    
+    [self.membershipsController createMembershipForTeamID:self.teamID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -247,6 +253,30 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 	[alert release];
     
     [self unfreezeUI];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWMembershipsController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreated:(DWMembership*)membership {
+    [self.delegate membershipCreated];
+    [self unfreezeUI];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)membershipCreationError:(NSString*)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:error
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+    [self unfreezeUI];    
 }
 
 

@@ -8,6 +8,7 @@
 #import "DWUsersController.h"
 #import "DWMediaController.h"
 #import "DWMediaPickerController.h"
+#import "DWMembershipsController.h"
 
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
@@ -19,7 +20,7 @@
 /**
  * Provides an interface for adding profile picture.
  */
-@interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate> {
+@interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate> {
     
     UIButton                    *_addProfilePicButton;
     UIButton                    *_useFacebookPhotoButton;
@@ -27,6 +28,7 @@
     
     UIImage                     *_userImage;
     NSInteger                   _userID;    
+    NSInteger                   _teamID;
     NSInteger                   _mediaResourceID;  
     BOOL                        _hasChangedImage;
     
@@ -36,6 +38,7 @@
     
     DWUsersController           *_usersController;
     DWMediaController           *_mediaController;
+    DWMembershipsController     *_membershipsController;    
     
     id <DWAddProfilePicViewControllerDelegate>  _delegate;
 }
@@ -64,6 +67,11 @@
 @property (nonatomic,assign) NSInteger userID;
 
 /**
+ * Database ID for the user's team
+ */
+@property (nonatomic,assign) NSInteger teamID;
+
+/**
  * Custom subviews for navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
@@ -85,6 +93,11 @@
 @property (nonatomic,retain) DWMediaController *mediaController;
 
 /**
+ * Controller for handling memberships requests
+ */
+@property (nonatomic,retain) DWMembershipsController *membershipsController;
+
+/**
  * Delegate to send updates to
  */
 @property (nonatomic,assign) id<DWAddProfilePicViewControllerDelegate> delegate;
@@ -103,6 +116,11 @@
  * user model is updated.
  */
 - (void)userPhotoUpdated;
+
+/*
+ * Fired when the membership is created
+ */
+- (void)membershipCreated;
 
 @end
 

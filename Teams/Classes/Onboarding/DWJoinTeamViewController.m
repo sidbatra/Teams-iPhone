@@ -28,8 +28,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navBarRightButtonView       = _navBarRightButtonView;
 
-@synthesize membershipsController       = _membershipsController;
-
 @synthesize delegate                    = _delegate;
 
 
@@ -38,8 +36,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
-        self.membershipsController.delegate = self;
+        //Custom initialization
     }
     return self;
 }
@@ -50,9 +47,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     self.navTitleView           = nil;
     self.navBarRightButtonView  = nil;
-    
-    self.membershipsController  = nil;
-    
+        
     [super dealloc];
 }
 
@@ -78,7 +73,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                                andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.team.name] 
                         andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,self.team.membersCount+1]];
@@ -88,8 +83,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
-                                       title:kNavBarRightButtonText 
-                                       andTarget:self] autorelease];    
+                                               title:kNavBarRightButtonText 
+                                           andTarget:self] autorelease];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -101,44 +96,11 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Private Methods
-
-//----------------------------------------------------------------------------------------------------
-- (void)joinTeam {  
-    [self.membershipsController createMembershipForTeamID:self.team.databaseID];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWMembershipsController Delegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)membershipCreated:(DWMembership*)membership {
-    [self.delegate teamJoined:membership.team];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)membershipCreationError:(NSString*)error {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-													message:error
-												   delegate:nil 
-										  cancelButtonTitle:kMsgCancelTitle
-										  otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-    [self joinTeam];
+    [self.delegate teamJoined:self.team];
 }
 
 

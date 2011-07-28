@@ -5,8 +5,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DWMembershipsController.h"
-
 @class DWTeam;
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
@@ -16,15 +14,13 @@
 /**
  * Provides an interface for joining an existing team.
  */
-@interface DWJoinTeamViewController : UIViewController <DWMembershipsControllerDelegate> {
+@interface DWJoinTeamViewController : UIViewController {
     
     DWTeam                      *_team;
     
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
-    
-    DWMembershipsController     *_membershipsController;
-    
+        
     id<DWJoinTeamViewControllerDelegate>   _delegate;
 }
 
@@ -39,12 +35,6 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
-
-/**
- * Controller for handling memberships requests
- */
-@property (nonatomic,retain) DWMembershipsController *membershipsController;
-
 
 /**
  * Delegate to send updates to
