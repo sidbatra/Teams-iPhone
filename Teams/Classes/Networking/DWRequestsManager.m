@@ -71,6 +71,36 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 #pragma mark Denwen Requests
 
 //----------------------------------------------------------------------------------------------------
+- (NSInteger)createPostBodyBasedDenwenRequest:(NSString*)localRequestURL
+                                   withParams:(NSDictionary*)params
+                          successNotification:(NSString*)successNotification
+                            errorNotification:(NSString*)errorNotification {
+    
+    NSString *requestURL = [self createDenwenRequestURL:localRequestURL
+                                           authenticate:YES];
+    
+    DWDenwenRequest *request  = [DWDenwenRequest requestWithRequestURL:requestURL
+                                                   successNotification:successNotification
+                                                     errorNotification:errorNotification];
+    
+    NSEnumerator *enumerator = [params keyEnumerator];
+    id key;
+    
+    while ((key = [enumerator nextObject])) {
+        [request addPostValue:[params objectForKey:key] 
+                       forKey:key];
+    }
+    
+    [request setDelegate:self];
+	[request setRequestMethod:kPost];
+    [request setShouldContinueWhenAppEntersBackground:YES];
+    
+	[request startAsynchronous];
+    
+    return request.resourceID;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
              successNotification:(NSString*)successNotification
                errorNotification:(NSString*)errorNotification
@@ -151,6 +181,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                         authenticate:authenticate];
 }
 			
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

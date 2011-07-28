@@ -20,6 +20,15 @@
 
 
 /**
+ * Create a post request to be sent to the app server. The post params are sent
+ * via the request body and not the URL to accomodate large params.
+ */
+- (NSInteger)createPostBodyBasedDenwenRequest:(NSString*)localRequestURL
+                                   withParams:(NSDictionary*)params
+                          successNotification:(NSString*)successNotification
+                            errorNotification:(NSString*)errorNotification;
+
+/**
  * Create a request to be sent to the app server.
  * resourceID is bundled with the success/error notification for identification
  * authentcate indicates the need to append the current user's email password
