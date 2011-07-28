@@ -426,6 +426,7 @@
 		BBD837681363D88700326E1F /* button_notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837661363D88700326E1F /* button_notifications@2x.png */; };
 		BBDB664512EF92D50051A45C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB664412EF92D50051A45C /* MapKit.framework */; };
 		BBDB66A312EF9A0F0051A45C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB66A212EF9A0F0051A45C /* QuartzCore.framework */; };
+		BBE0067313E0EAAF00232EA4 /* DWInteractionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE0067213E0EAAF00232EA4 /* DWInteractionsController.m */; };
 		BBE24F7E13562E4700A90B44 /* nav_bar.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE24F7C13562E4700A90B44 /* nav_bar.png */; };
 		BBE24F7F13562E4700A90B44 /* nav_bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE24F7D13562E4700A90B44 /* nav_bar@2x.png */; };
 		BBE24FD213563C5100A90B44 /* button_blue_done_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE24FCC13563C5100A90B44 /* button_blue_done_active.png */; };
@@ -1125,6 +1126,8 @@
 		BBD837661363D88700326E1F /* button_notifications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_notifications@2x.png"; path = "resources/button_notifications@2x.png"; sourceTree = "<group>"; };
 		BBDB664412EF92D50051A45C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BBDB66A212EF9A0F0051A45C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BBE0067113E0EAAF00232EA4 /* DWInteractionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInteractionsController.h; sourceTree = "<group>"; };
+		BBE0067213E0EAAF00232EA4 /* DWInteractionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInteractionsController.m; sourceTree = "<group>"; };
 		BBE24F7C13562E4700A90B44 /* nav_bar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nav_bar.png; path = resources/nav_bar.png; sourceTree = "<group>"; };
 		BBE24F7D13562E4700A90B44 /* nav_bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nav_bar@2x.png"; path = "resources/nav_bar@2x.png"; sourceTree = "<group>"; };
 		BBE24FCC13563C5100A90B44 /* button_blue_done_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_blue_done_active.png; path = resources/button_blue_done_active.png; sourceTree = "<group>"; };
@@ -2452,6 +2455,8 @@
 		BBF8989913CA3F1300D5C5FB /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBE0067113E0EAAF00232EA4 /* DWInteractionsController.h */,
+				BBE0067213E0EAAF00232EA4 /* DWInteractionsController.m */,
 				BBEE2E4F13CE720A00AEAC83 /* DWSessionController.h */,
 				BBEE2E5013CE720A00AEAC83 /* DWSessionController.m */,
 				2632E59113CCE0D7005B1B1E /* DWUsersController.h */,
@@ -3142,6 +3147,7 @@
 				261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */,
 				BBC3964A13E0897300A2A8F6 /* DWInteraction.m in Sources */,
 				26C7C0E813E0D29F000BD2F8 /* DWAddProfilePicViewController.m in Sources */,
+				BBE0067313E0EAAF00232EA4 /* DWInteractionsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
