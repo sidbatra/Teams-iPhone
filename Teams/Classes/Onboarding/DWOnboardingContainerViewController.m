@@ -120,6 +120,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
     [[DWSession sharedDWSession] create:user];    
+    [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
+    [[DWSession sharedDWSession] update];
+    
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
 

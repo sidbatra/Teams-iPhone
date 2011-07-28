@@ -15,10 +15,10 @@
 static NSString* const kFacebookURLPrefix			= @"fb";
 static NSInteger const kTabBarWidth					= 320;
 static NSInteger const kTabBarHeight				= 49;
-static NSString* const kImgPlacesOn					= @"tab_places_on.png";
-static NSString* const kImgPlacesOff				= @"tab_places_off.png";
-static NSString* const kImgCreateOn					= @"tab_create_active.png";
-static NSString* const kImgCreateOff				= @"tab_create_on.png";
+static NSString* const kImgPlacesOn					= @"tab_teams_on.png";
+static NSString* const kImgPlacesOff				= @"tab_teams_off.png";
+static NSString* const kImgCreateOn					= @"tab_create_off.png";
+static NSString* const kImgCreateOff				= @"tab_create_off.png";
 static NSString* const kImgFeedOn					= @"tab_feed_on.png";
 static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
