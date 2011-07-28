@@ -32,12 +32,12 @@
 /**
  * All Address Book Contacts
  */
-@property (nonatomic,retain) DWContactsController *contactsController;
+@property (nonatomic,retain) NSArray *allContacts;
 
 /**
  * Controller for address book contacts requests
  */
-@property (nonatomic,retain) NSArray *allContacts;
+@property (nonatomic,retain) DWContactsController *contactsController;
 
 /**
  * Interface to invite service
