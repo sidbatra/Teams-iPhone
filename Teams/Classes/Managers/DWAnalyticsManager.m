@@ -113,8 +113,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
         
     [self.interactions addObject:interaction];
     
-    
-    NSLog(@"JSON - %@", [self toJSON]);
+    NSLog(@"JSON - %@", [interaction toJSON]);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -172,7 +171,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
     [self createInteractionForView:[UIApplication sharedApplication]
                     withActionName:@"session_ended"];
     
-    [self.interactionsController postInteractions:[self toJSON]];
+    [self.interactionsController postInteractions:[self toJSON]
+                                        withCount:[self.interactions count]];
 }
 
 @end
