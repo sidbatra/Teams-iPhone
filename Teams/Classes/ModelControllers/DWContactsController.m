@@ -6,7 +6,10 @@
 #import "DWContactsController.h"
 #import "ABContactsHelper.h"
 #import "DWContact.h"
+#import "DWConstants.h"
 
+
+static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName contains[cd] %@ OR firstName contains[cd] %@";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -31,31 +34,47 @@
     [super dealloc];
 }
 
+
 //----------------------------------------------------------------------------------------------------
-- (void)getContactsMatching:(NSString*)string {
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Index
+
+//----------------------------------------------------------------------------------------------------
+- (NSArray*)getAllContacts {
+
+    NSArray *contacts               = [ABContactsHelper contacts];
+    NSMutableArray  *dWContacts     = [NSMutableArray arrayWithCapacity:[contacts count]];    
+    
+    for(id contact in contacts) {
+        
+        DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
+        
+        dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
+        dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 
+        dWContact.email         = [[contact emailaddresses] length] == 0    ?   @"" : [contact emailaddresses]; 
+        
+        if (dWContact.email) 
+            [dWContacts addObject:dWContact];
+    }
+    
+    return dWContacts;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)getContactsForQuery:(NSString*)query withCache:(NSArray*)contacts {
     
     SEL sel = @selector(contactsLoaded:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
+    
+    NSPredicate *pred       = [NSPredicate predicateWithFormat:kContactsQuery,query,query,query];
+	NSMutableArray *results = [NSMutableArray arrayWithArray:[contacts filteredArrayUsingPredicate:pred]];
 
-    
-    NSArray *contacts           = [ABContactsHelper contactsWithPropertiesContaining:string];
-    NSMutableArray  *results    = [NSMutableArray arrayWithCapacity:[contacts count]];
-    
-    for(id contact in contacts) {
-        
-        DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
-        dWContact.firstName     = [contact firstname]; 
-        dWContact.lastName      = [contact lastname];
-        dWContact.email         = [contact emailaddresses];
-        
-        if (dWContact.email) 
-            [results addObject:dWContact];
-    }
-    
     [self.delegate performSelector:sel
-                        withObject:results];    
+                        withObject:results]; 
 }
 
 @end

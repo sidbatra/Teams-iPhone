@@ -20,11 +20,18 @@
  */
 @property (nonatomic,assign) id<DWContactsControllerDelegate,NSObject> delegate;
 
+
+/**
+ * Get all contacts
+ */
+- (NSArray*)getAllContacts;
+
 /**
  * Get contacts whose properties contain a 
  * given string
  */
-- (void)getContactsMatching:(NSString*)string;
+- (void)getContactsForQuery:(NSString*)query 
+                  withCache:(NSArray*)allContacts;
 
 @end
 

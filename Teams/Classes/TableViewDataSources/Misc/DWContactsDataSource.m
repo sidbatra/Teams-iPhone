@@ -12,8 +12,11 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWContactsDataSource
 
+@synthesize allContacts             = _allContacts;
+
 @synthesize contactsController      = _contactsController;
 @synthesize invitesController       = _invitesController;
+
 @dynamic delegate;
 
 
@@ -26,7 +29,9 @@
         self.contactsController.delegate    = self;
         
         self.invitesController              = [[[DWInvitesController alloc] init] autorelease];
-        self.invitesController.delegate     = self;
+        self.invitesController.delegate     = self; 
+        
+        self.allContacts = [self.contactsController getAllContacts];
     }
     
     return self;
@@ -34,15 +39,28 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    self.allContacts            = nil;
+    
     self.contactsController     = nil;
     self.invitesController      = nil;
     
     [super dealloc];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Data requests
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadAllContacts {
+    self.allContacts = [self.contactsController getAllContacts];
+}
+
 //----------------------------------------------------------------------------------------------------
 - (void)loadContactsMatching:(NSString*)string {
-    [self.contactsController getContactsMatching:string];
+    [self.contactsController getContactsForQuery:string withCache:self.allContacts];
 }
 
 //----------------------------------------------------------------------------------------------------
