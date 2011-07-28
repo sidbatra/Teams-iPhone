@@ -9,7 +9,8 @@
 #import "DWConstants.h"
 
 static NSString* const kCreateInteractionsURI   = @"/interactions.json?";
-static NSString* const kDataParamName          = @"data";
+static NSString* const kDataParamName           = @"data";
+static NSString* const kCountParamName          = @"count";
 
 
 
@@ -50,11 +51,13 @@ static NSString* const kDataParamName          = @"data";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)postInteractions:(NSString*)interactionsJSON {
+- (void)postInteractions:(NSString*)interactionsJSON
+               withCount:(NSInteger)count {
     
     [[DWRequestsManager sharedDWRequestsManager] createPostBodyBasedDenwenRequest:kCreateInteractionsURI
                                                                        withParams:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                                    interactionsJSON,kDataParamName,
+                                                                                   [NSNumber numberWithInteger:count],kCountParamName,
                                                                                    nil]
                                                               successNotification:kNInteractionsCreated
                                                                 errorNotification:kNInteractionsError];

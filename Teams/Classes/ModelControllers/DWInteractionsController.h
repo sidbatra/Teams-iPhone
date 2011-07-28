@@ -23,9 +23,10 @@
 
 /**
  * Post new interactions. interactionsJSON is a JSON representation of of an array 
- * of interactions.
+ * of interactions. Count is the total interactions in the JSON.
  */
-- (void)postInteractions:(NSString*)interactionsJSON;
+- (void)postInteractions:(NSString*)interactionsJSON
+               withCount:(NSInteger)count;
 
 @end
 
