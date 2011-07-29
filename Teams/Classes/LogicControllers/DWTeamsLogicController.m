@@ -7,6 +7,7 @@
 #import "DWTableViewController.h"
 #import "DWConstants.h"
 #import "DWTeam.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -57,6 +58,12 @@
     
     if(!self.navigationEnabled)
         return;
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"team_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"team_id=%d",
+                                                                             team.databaseID]];
     
     [self.delegate teamsLogicTeamSelected:team];
 }
