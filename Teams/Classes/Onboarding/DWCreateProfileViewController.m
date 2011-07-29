@@ -105,7 +105,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
                                                title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,134)
                                                                         andMessageText:kMsgProcesssing] autorelease];
     
     
@@ -188,7 +188,8 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-	[self updateUser];
+	//[self updateUser];
+    [self freezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
