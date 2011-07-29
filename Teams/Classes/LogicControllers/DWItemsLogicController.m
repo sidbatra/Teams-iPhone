@@ -105,6 +105,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamSelectedForItemID:(NSInteger)itemID {
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"team_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
+    
+    
     SEL sel = @selector(itemsLogicTeamSelected:);
     
     if(![self.delegate respondsToSelector:sel])
@@ -115,16 +120,16 @@
     
     [self.delegate performSelector:sel
                         withObject:item.team];
-    
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
-                                                             withActionName:@"team_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userSelectedForItemID:(NSInteger)itemID {
 	
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"user_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
+    
+    
     SEL sel = @selector(itemsLogicUserSelected:);
     
     if(![self.delegate respondsToSelector:sel])
@@ -135,15 +140,15 @@
     
     [self.delegate performSelector:sel
                         withObject:item.user];
-    
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
-                                                             withActionName:@"user_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareSelectedForItemID:(NSInteger)itemID {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"share_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
+    
     
     SEL sel = @selector(itemsLogicShareSelectedForItem:);
     
@@ -155,11 +160,6 @@
     
     [self.delegate performSelector:sel
                         withObject:item];
-    
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
-                                                             withActionName:@"share_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
 }
 
 @end

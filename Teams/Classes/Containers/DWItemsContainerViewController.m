@@ -286,6 +286,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 - (void)profilePictureTouched {
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
+                                                             withActionName:@"profile_photo_clicked"];
+    
+    
     DWUserViewController *userViewController = [[[DWUserViewController alloc] 
                                                  initWithUserID:[DWSession sharedDWSession].currentUser.databaseID]
                                                 autorelease];
@@ -294,10 +298,6 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     [self.navigationController pushViewController:userViewController
                                          animated:YES];
-    
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
-                                                             withActionName:@"profile_photo_clicked"];
 }
 
 
@@ -323,10 +323,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
-    [self displayNotifications];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
                                                              withActionName:@"notifications_clicked"];
+    
+    [self displayNotifications];
 }
 
 
