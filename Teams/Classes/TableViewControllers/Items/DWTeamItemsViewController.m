@@ -158,7 +158,7 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                              withActionName:@"details_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"team_id=%d",team.databaseID]];
+                                                                 withViewID:team.databaseID];
     
     
     [self.delegate teamDetailsSelected:team];

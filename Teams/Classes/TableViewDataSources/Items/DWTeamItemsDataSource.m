@@ -161,7 +161,9 @@
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
                                                              withActionName:kActionNameForLoad
-                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",(NSInteger)_oldestTimestamp]];
+                                                                 withViewID:_teamID
+                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",
+                                                                             (NSInteger)_oldestTimestamp]];
     
     [self populateItems:items];
 }
@@ -224,6 +226,11 @@
 - (void)followingCreated:(DWFollowing *)following {
     [self applyFollowing:following];
     [self fireTeamAndFollowingDelegate];    
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:@"following_created"
+                                                                 withViewID:_teamID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -236,6 +243,11 @@
 - (void)followingDestroyed {
     [self applyFollowing:nil];
     [self fireTeamAndFollowingDelegate];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:@"following_destroyed"
+                                                                 withViewID:_teamID];
 }
 
 //----------------------------------------------------------------------------------------------------
