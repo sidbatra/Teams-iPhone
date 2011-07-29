@@ -21,7 +21,7 @@ static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter your work email";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
-static NSString* const kMsgProcesssing                  = @"Searching existing teams ...";
+static NSString* const kMsgProcesssing                  = @"Searching existing Teams...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -110,7 +110,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing t
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(52,134)
                                                                         andMessageText:kMsgProcesssing] autorelease];
     
     [self.emailTextField becomeFirstResponder];

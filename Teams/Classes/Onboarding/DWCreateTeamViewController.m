@@ -18,8 +18,8 @@ static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
-static NSString* const kMessageLabelText                = @"Open to friends and colleagues with a @%@ address:";
-static NSString* const kMsgProcesssing                  = @"Creating new Team ...";
+static NSString* const kMessageLabelText                = @"@%@";
+static NSString* const kMsgProcesssing                  = @"Creating new Team...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -108,7 +108,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team ..
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,156)
                                                                         andMessageText:kMsgProcesssing] autorelease];
 
     

@@ -8,6 +8,7 @@
 #import "DWUser.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWNavBarFillerView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWConstants.h"
 
@@ -36,6 +37,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
+@synthesize navBarFillerView                = _navBarFillerView;
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
@@ -73,6 +75,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
     
     self.navTitleView                   = nil;
 	self.navBarRightButtonView          = nil;
+    self.navBarFillerView               = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
@@ -87,6 +90,12 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    if (!self.navBarFillerView) 
+        self.navBarFillerView = [[[DWNavBarFillerView alloc] 
+                                  initWithFrame:CGRectMake(0, 0, 
+                                                           kNavRightButtonWidth, 
+                                                           kNavRightButtonHeight)] autorelease];
     
     [self.addProfilePicButton setBackgroundImage:self.userImage 
                                         forState:UIControlStateNormal];
@@ -320,6 +329,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarFillerView];    
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
 }
 

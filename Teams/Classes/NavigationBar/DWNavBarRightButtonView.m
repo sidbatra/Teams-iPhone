@@ -8,7 +8,8 @@
 
 @implementation DWNavBarRightButtonView
 
-static NSString* const kImgDoneButton = @"button_blue.png";
+static NSString* const kImgButton           = @"button_blue.png";
+static NSString* const kImgButtonActive     = @"button_blue_active.png";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -26,8 +27,12 @@ static NSString* const kImgDoneButton = @"button_blue.png";
         
         [navBarRightButton setFrame:CGRectMake(0, 0, 60, 44)];
         
-        [navBarRightButton setBackgroundImage:[UIImage imageNamed:kImgDoneButton]
+        
+        [navBarRightButton setBackgroundImage:[UIImage imageNamed:kImgButton]
                                      forState:UIControlStateNormal];
+        
+        [navBarRightButton setBackgroundImage:[UIImage imageNamed:kImgButtonActive]
+                                     forState:UIControlStateHighlighted];        
         
         [navBarRightButton setTitle:title 
                            forState:UIControlStateNormal];

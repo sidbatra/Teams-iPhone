@@ -53,7 +53,7 @@ static NSInteger const kSpinnerSize = 20;
         [self disable];
         [self createSpinnerWithOrigin:origin andStyle:spinnerStyle];
         
-        [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y)
+        [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y + 1)
                             andText:text];
     }
     return self;
@@ -93,12 +93,12 @@ static NSInteger const kSpinnerSize = 20;
 - (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text {
     
     UILabel *messageLabel			= [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(origin.x,origin.y,200,20)] 
+                                        initWithFrame:CGRectMake(origin.x,origin.y,270,20)] 
                                        autorelease];	
     
 	messageLabel.backgroundColor	= [UIColor clearColor];
-	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
-	messageLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
+	messageLabel.textColor			= [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
 	messageLabel.textAlignment		= UITextAlignmentLeft;
 	messageLabel.text				= text;
     
