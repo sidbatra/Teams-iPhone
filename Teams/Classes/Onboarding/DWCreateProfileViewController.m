@@ -10,6 +10,7 @@
 #import "DWUser.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWNavBarFillerView.h"
 #import "DWSpinnerOverlayView.h"
 
 
@@ -40,6 +41,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
+@synthesize navBarFillerView                = _navBarFillerView;
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
@@ -74,6 +76,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     
     self.navTitleView                   = nil;
 	self.navBarRightButtonView          = nil;
+    self.navBarFillerView               = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
@@ -86,6 +89,12 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
+    
+    if (!self.navBarFillerView) 
+        self.navBarFillerView = [[[DWNavBarFillerView alloc] 
+                                  initWithFrame:CGRectMake(0, 0, 
+                                                           kNavRightButtonWidth, 
+                                                           kNavRightButtonHeight)] autorelease];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -188,8 +197,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-	//[self updateUser];
-    [self freezeUI];
+	[self updateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -266,6 +274,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarFillerView];    
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];
 }
 
