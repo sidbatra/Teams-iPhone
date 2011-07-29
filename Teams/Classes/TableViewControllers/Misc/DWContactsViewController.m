@@ -24,7 +24,7 @@ static NSString* const kMsgActionSheetDelete                = @"Delete";
     self = [super init];
     
     if(self) {        
-        self.contactsDataSource = [[[DWContactsDataSource alloc] init] autorelease];        
+        self.contactsDataSource     = [[[DWContactsDataSource alloc] init] autorelease];
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:style]
                                         forKey:[[DWContact class] className]];
@@ -50,7 +50,9 @@ static NSString* const kMsgActionSheetDelete                = @"Delete";
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.view.hidden = YES;
+    self.view.hidden            = YES;
+    self.view.backgroundColor   = [UIColor clearColor];
+    self.tableView.bounces      = NO;
 }
 
 

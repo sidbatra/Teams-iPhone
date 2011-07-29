@@ -24,6 +24,7 @@
 @interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate> {
     
     UIButton                    *_addProfilePicButton;
+    UIImageView                 *_underlayImageView;
     UIButton                    *_useFacebookPhotoButton;
 	UIView                      *_spinnerContainerView;                
     
@@ -49,6 +50,7 @@
  * IBOutlet properties
  */
 @property (nonatomic, retain) IBOutlet UIButton *addProfilePicButton;
+@property (nonatomic, retain) IBOutlet UIImageView *underlayImageView;
 @property (nonatomic, retain) IBOutlet UIButton *useFacebookPhotoButton;
 @property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
 

@@ -19,7 +19,6 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
 static NSString* const kNavBarRightButtonText   = @"Next";
-static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -28,6 +27,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 @implementation DWAddProfilePicViewController
 
 @synthesize addProfilePicButton             = _addProfilePicButton;
+@synthesize underlayImageView               = _underlayImageView;
 @synthesize useFacebookPhotoButton          = _useFacebookPhotoButton;
 @synthesize spinnerContainerView            = _spinnerContainerView;
 
@@ -68,6 +68,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 - (void)dealloc {	
 	
     self.addProfilePicButton            = nil;
+    self.underlayImageView              = nil;
     self.useFacebookPhotoButton         = nil;
     self.spinnerContainerView           = nil;
     
@@ -97,8 +98,8 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
                                                            kNavRightButtonWidth, 
                                                            kNavRightButtonHeight)] autorelease];
     
-    [self.addProfilePicButton setBackgroundImage:self.userImage 
-                                        forState:UIControlStateNormal];
+    if (self.userImage) 
+        self.underlayImageView.image = self.userImage;
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -117,8 +118,9 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
                                                title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,120)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(150,180) 
+                                                                          spinnerStyle:UIActivityIndicatorViewStyleWhite 
+                                                                        andMessageText:kEmptyString] autorelease];
     
 }
 
@@ -190,7 +192,7 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-	[self updateUser];
+    [self updateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -296,11 +298,10 @@ static NSString* const kMsgProcesssing          = @"Uploading your photo..";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didFinishPickingImage:(UIImage*)originalImage andEditedTo:(UIImage*)editedImage {
-    _hasChangedImage            = YES;
-    self.userImage              = editedImage;
+    _hasChangedImage                = YES;
     
-    [self.addProfilePicButton setBackgroundImage:editedImage 
-                                        forState:UIControlStateNormal];
+    self.userImage                  = editedImage;
+    self.underlayImageView.image    = editedImage;
     
 	[self dismissModalViewControllerAnimated:NO];
 }

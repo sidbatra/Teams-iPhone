@@ -47,15 +47,15 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
     NSMutableArray  *dWContacts     = [NSMutableArray arrayWithCapacity:[contacts count]];    
     
     for(id contact in contacts) {
-        
-        DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
-        
-        dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
-        dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 
-        dWContact.email         = [[contact emailaddresses] length] == 0    ?   @"" : [contact emailaddresses]; 
-        
-        if (dWContact.email) 
+        for(id email in [contact emailArray]) {
+            DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
+            
+            dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
+            dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 
+            dWContact.email         = email;
+
             [dWContacts addObject:dWContact];
+        }
     }
     
     return dWContacts;
