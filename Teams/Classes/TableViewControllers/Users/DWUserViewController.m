@@ -13,6 +13,7 @@
 #import "DWSession.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWUpdateUserDetailsViewController.h"
+#import "DWAnalyticsManager.h"
 
 
 /**
@@ -142,7 +143,14 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-    [self.delegate showEditUserDetailsView:[DWUser fetch:self.userViewDataSource.userID]];
+    
+    DWUser *user = [DWUser fetch:self.userViewDataSource.userID];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"edit_selected"
+                                                                 withViewID:user.databaseID];
+    
+    [self.delegate showEditUserDetailsView:user];
 }
 
 
@@ -169,10 +177,22 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     DWUser *user = [DWUser fetch:self.userViewDataSource.userID];
     
-    if(message == self.userViewDataSource.teamMessage)
+    if(message == self.userViewDataSource.teamMessage) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"user_team_selected"
+                                                                     withViewID:user.databaseID];
+        
         [self.delegate userViewShowTeam:user.team];
-    else if(message == self.userViewDataSource.watchingMessage)
+    }
+    else if(message == self.userViewDataSource.watchingMessage) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"watching_selected"
+                                                                     withViewID:user.databaseID];
+        
         [self.delegate userViewShowTeamsWatchedBy:user];
+    }
 }
 
 

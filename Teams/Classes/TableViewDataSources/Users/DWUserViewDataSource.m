@@ -125,7 +125,8 @@
     [self.usersController getUserWithID:self.userID];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
-                                                             withActionName:kActionNameForLoad];
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:self.userID];
 }
 
 //----------------------------------------------------------------------------------------------------
