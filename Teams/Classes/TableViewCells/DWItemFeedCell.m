@@ -707,9 +707,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)highlightCell {	
     
-    BOOL isTextOnly = _attachmentType == kAttachmentNone;
+    BOOL isTextOnly     = _attachmentType == kAttachmentNone;
+    BOOL shouldTouch    = [self shouldTouch];
     
-    if([self shouldTouch])
+    if(shouldTouch)
         _isTouching = YES;
     
     userButton.enabled      = NO;
@@ -736,7 +737,7 @@
     if(_attachmentType == kAttachmentVideo)
         [videoView startPlayingVideoAtURL:[_delegate getVideoAttachmentURLForItemID:_itemID]];
     
-    if([self shouldTouch]) {
+    if(shouldTouch) {
         [_delegate cellTouched:_itemID];
         [self touchCell];
     }
