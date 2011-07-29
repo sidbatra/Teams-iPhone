@@ -180,7 +180,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     if(message == self.userViewDataSource.teamMessage) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                 withActionName:@"user_team_selected"
+                                                                 withActionName:@"team_selected"
                                                                      withViewID:user.databaseID];
         
         [self.delegate userViewShowTeam:user.team];
@@ -188,7 +188,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     else if(message == self.userViewDataSource.watchingMessage) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                 withActionName:@"watching_selected"
+                                                                 withActionName:@"user_watching_selected"
                                                                      withViewID:user.databaseID];
         
         [self.delegate userViewShowTeamsWatchedBy:user];
