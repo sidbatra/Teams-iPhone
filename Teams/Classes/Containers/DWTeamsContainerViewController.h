@@ -9,6 +9,7 @@
 
 @class DWPopularTeamsViewController;
 @class DWSearchViewController;
+@class DWNavTitleView;
 
 /**
  * Root view for the teams navigation controller
@@ -16,6 +17,9 @@
 @interface DWTeamsContainerViewController : DWContainerViewController<UISearchBarDelegate> {
     DWPopularTeamsViewController    *_popularTeamsViewController;
     DWSearchViewController          *_searchViewController;
+    
+    DWNavTitleView                  *_navTitleView;
+    
     UISearchBar                     *_searchBar;
 }
 
@@ -28,6 +32,11 @@
  * Show results from search queries
  */
 @property (nonatomic,retain) DWSearchViewController *searchViewController;
+
+/**
+ * Title view for the navigation bar
+ */
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
 
 /**
  * Search bar for issuing global searches

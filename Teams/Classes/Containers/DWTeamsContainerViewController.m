@@ -6,12 +6,14 @@
 #import "DWTeamsContainerViewController.h"
 #import "DWPopularTeamsViewController.h"
 #import "DWSearchViewController.h"
+#import "DWNavTitleView.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 
 static NSString* const kImgInvite                   = @"button_invite.png";
 static NSString* const kImgSearch                   = @"button_search.png";
 static NSString* const kMsgUnload					= @"Unload called on teams container";
+static NSString* const kMsgTitle                    = @"Teams";
 static NSString* const kSearchBarText				= @"Search teams and people";
 static NSString* const kSearchBarBackgroundClass	= @"UISearchBarBackground";
 static NSInteger const kMinimumQueryLength			= 1;
@@ -27,6 +29,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadPopularTeamsViewController;
 - (void)loadSearchViewController;
 - (void)loadSideButtons;
+- (void)loadTitleView;
 - (void)loadSearchBar;
 @end
 
@@ -39,6 +42,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 
 @synthesize popularTeamsViewController  = _popularTeamsViewController;
 @synthesize searchViewController        = _searchViewController;
+@synthesize navTitleView                = _navTitleView;
 @synthesize searchBar                   = _searchBar;
 
 //----------------------------------------------------------------------------------------------------
@@ -50,6 +54,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)dealloc {
     self.popularTeamsViewController = nil;
     self.searchViewController       = nil;
+    self.navTitleView               = nil;
     self.searchBar                  = nil;
     
 	[super dealloc];
@@ -121,14 +126,29 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadTitleView {
+    
+    if (!self.navTitleView)
+        self.navTitleView = [[[DWNavTitleView alloc]
+                              initWithFrame:CGRectMake(kNavTitleViewX,0,
+                                                       kNavTitleViewWidth,
+                                                       kNavTitleViewHeight) 
+                              andDelegate:self] autorelease];
+    
+    [self.navTitleView displayTitle:kMsgTitle];       
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadPopularTeamsViewController];
     [self loadSearchViewController];
     [self loadSideButtons];
+    [self loadTitleView];
     //[self loadSearchBar];
     
+
 	self.navigationItem.titleView = nil;
 }
 
@@ -230,4 +250,18 @@ static NSInteger const kMinimumQueryLength			= 1;
          willShowViewController:viewController 
                        animated:animated];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    
+    [self.navigationController.navigationBar addSubview:self.navTitleView];    
+}
+
+
 @end
