@@ -4,6 +4,7 @@
 //
 
 #import "DWPopularTeamsDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -25,6 +26,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)popularTeamsLoaded:(NSMutableArray *)teams {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad];
+    
     [self populateTeams:teams];
 }
 
