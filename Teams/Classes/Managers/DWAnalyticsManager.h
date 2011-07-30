@@ -48,16 +48,24 @@ static NSString* const kActionNameForLoad   = @"load";
                     andExtraInfo:(NSString*)extra;
 
 /**
- * Overloaded method for createInteractionView. 
- * Default resourceID is applied.
+ * Overloaded method for createInteractionForView. 
+ * Default viewID is applied.
  */
 - (void)createInteractionForView:(NSObject*)view
                   withActionName:(NSString*)actionName
                     andExtraInfo:(NSString*)extra;
 
 /**
- * Overloaded method for createInteractionView. 
- * Default resoureID and extra info is applied
+ * Overloaded method for createInteractionForView.
+ * Default extra info is applied.
+ */
+- (void)createInteractionForView:(NSObject*)view
+                  withActionName:(NSString*)actionName
+                      withViewID:(NSInteger)viewID;
+
+/**
+ * Overloaded method for createInteractionForView. 
+ * Default viewID and extra info is applied
  */
 - (void)createInteractionForView:(NSObject*)view
                   withActionName:(NSString*)actionName;

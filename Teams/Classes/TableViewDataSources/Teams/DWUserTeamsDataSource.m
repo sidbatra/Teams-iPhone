@@ -4,6 +4,7 @@
 //
 
 #import "DWUserTeamsDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -32,6 +33,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userTeamsLoaded:(NSMutableArray *)teams {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:_userID];
+    
+    
     [self populateTeams:teams];
 }
 

@@ -37,7 +37,8 @@
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
                                                              withActionName:kActionNameForLoad
-                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",(NSInteger)_oldestTimestamp]];
+                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",
+                                                                             (NSInteger)_oldestTimestamp]];
     
     [self populateItems:items];
 }

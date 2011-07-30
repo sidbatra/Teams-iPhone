@@ -12,6 +12,7 @@
 #import "DWSession.h"
 #import "DWConstants.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
@@ -109,7 +110,7 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
     [super viewDidLoad];
     
     self.navigationController.navigationBar.clipsToBounds   = NO;
-    self.navigationItem.leftBarButtonItem                   = [DWGUIManager customBackButton:self];
+    self.navigationItem.leftBarButtonItem                   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     self.navigationItem.hidesBackButton                     = YES;
     
     self.firstNameTextField.text                            = self.firstName;
@@ -145,6 +146,12 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
                                                                             andMessageText:kMsgProcesssing] autorelease];
     
     [self.firstNameTextField becomeFirstResponder];
+    
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:_userID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -207,6 +214,16 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
                                               byline:self.byLineTextField.text 
                                          andFilename:kEmptyString];
 	}
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"user_updated"
+                                                                 withViewID:_userID
+                                                               andExtraInfo:[NSString stringWithFormat:@"first=%@&last=%@&byline=%@&photo=%d",
+                                                                             self.firstNameTextField.text,
+                                                                             self.lastNameTextField.text,
+                                                                             self.byLineTextField.text,
+                                                                             _hasChangedImage]];
 }
 
 //----------------------------------------------------------------------------------------------------

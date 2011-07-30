@@ -8,6 +8,7 @@
 #import "DWResource.h"
 #import "DWMessage.h"
 #import "DWUsersHelper.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 /**
@@ -122,6 +123,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadUser {
     [self.usersController getUserWithID:self.userID];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:self.userID];
 }
 
 //----------------------------------------------------------------------------------------------------

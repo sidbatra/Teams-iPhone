@@ -11,6 +11,7 @@
 #import "DWUsersHelper.h"
 #import "DWCreationQueue.h"
 #import "DWPushNotificationsManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWGUIManager.h"
 #import "DWSession.h"
 
@@ -285,6 +286,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 - (void)profilePictureTouched {
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
+                                                             withActionName:@"profile_photo_clicked"];
+    
+    
     DWUserViewController *userViewController = [[[DWUserViewController alloc] 
                                                  initWithUserID:[DWSession sharedDWSession].currentUser.databaseID]
                                                 autorelease];
@@ -318,6 +323,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark UITouchEvents
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNotificationsButton:(UIButton*)button {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
+                                                             withActionName:@"notifications_clicked"];
+    
     [self displayNotifications];
 }
 

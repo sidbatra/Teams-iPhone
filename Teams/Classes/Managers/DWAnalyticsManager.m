@@ -129,6 +129,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)createInteractionForView:(NSObject*)view
+                  withActionName:(NSString*)actionName
+                      withViewID:(NSInteger)viewID  {
+    
+    [self createInteractionForView:view
+                    withActionName:actionName
+                        withViewID:viewID
+                      andExtraInfo:kDefaultExtra];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createInteractionForView:(NSObject*)view
                   withActionName:(NSString*)actionName {
     
     [self createInteractionForView:view

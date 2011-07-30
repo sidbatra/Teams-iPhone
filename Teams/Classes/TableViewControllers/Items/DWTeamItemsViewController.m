@@ -12,6 +12,7 @@
 #import "DWGUIManager.h"
 #import "DWNavTitleView.h"
 #import "DWSession.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
@@ -152,7 +153,14 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapDetailsButton:(UIButton*)button {  
+    
     DWTeam *team = [DWTeam fetch:self.teamItemsDataSource.teamID];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"details_selected"
+                                                                 withViewID:team.databaseID];
+    
+    
     [self.delegate teamDetailsSelected:team];
 }
 

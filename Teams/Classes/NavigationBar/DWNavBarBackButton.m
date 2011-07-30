@@ -4,6 +4,7 @@
 //
 
 #import "DWNavBarBackButton.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kImgBackButton                   = @"button_back.png";
@@ -69,6 +70,9 @@ static NSString* const kImgBackButton                   = @"button_back.png";
 //----------------------------------------------------------------------------------------------------
 - (void)didTapButton:(id)sender 
                event:(id)event {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.navController.topViewController
+                                                             withActionName:@"back"];
     
 	[self.navController popViewControllerAnimated:YES];
 }
