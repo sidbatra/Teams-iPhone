@@ -7,7 +7,7 @@
 #import "DWNavBarBackButton.h"
 
 static NSString* const kImgBackButton               = @"button_back.png";
-static NSString* const kImgNotificationsButton      = @"button_notifications.png";
+static NSString* const kImgNotificationsButton      = @"button_more.png";
 
 
 
