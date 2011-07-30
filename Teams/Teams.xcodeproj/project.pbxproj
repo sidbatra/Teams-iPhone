@@ -2318,6 +2318,8 @@
 		BBFFF5D313E4B01600739D9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BBFFF5E313E4B03500739D9F /* DWSearchBar.h */,
+				BBFFF5E413E4B03500739D9F /* DWSearchBar.m */,
 				BBFFF5D413E4B01600739D9F /* DWErrorView.h */,
 				BBFFF5D513E4B01600739D9F /* DWErrorView.m */,
 				BBFFF5D613E4B01600739D9F /* DWLoadingView.h */,
@@ -2328,8 +2330,6 @@
 				BBFFF5DB13E4B01600739D9F /* DWSpinnerOverlayView.m */,
 				BBFFF5DC13E4B01600739D9F /* DWVideoView.h */,
 				BBFFF5DD13E4B01600739D9F /* DWVideoView.m */,
-				BBFFF5E313E4B03500739D9F /* DWSearchBar.h */,
-				BBFFF5E413E4B03500739D9F /* DWSearchBar.m */,
 			);
 			name = Views;
 			path = Classes/Views;

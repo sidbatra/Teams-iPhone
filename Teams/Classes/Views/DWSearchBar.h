@@ -1,14 +1,13 @@
 //
 //  DWSearchBar.h
-//  Teams
-//
-//  Created by Siddharth Batra on 7/30/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Denwen. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-
+/**
+ * Custom search bar - UITextField with a cancel button
+ */
 @interface DWSearchBar : UIView {
     
 }
