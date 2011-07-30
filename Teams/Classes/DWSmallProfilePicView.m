@@ -6,7 +6,7 @@
 #import "DWSmallProfilePicView.h"
 
 
-static NSString* const kImgOverlayImage         = @"user_photo_gloss.png";
+static NSString* const kImgOverlayImage         = @"button_more_user.png";
 static CGFloat   const kProfileButtonAlpha      = 0.98;
 
 
@@ -41,7 +41,7 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
         
         profilePicOverlay.image                     = [UIImage imageNamed:kImgOverlayImage];
         profilePicOverlay.userInteractionEnabled    = NO;
-        profilePicOverlay.hidden                    = YES;
+        profilePicOverlay.hidden                    = NO;
         
         [self addSubview:profilePicOverlay];
         [profilePicOverlay release];
