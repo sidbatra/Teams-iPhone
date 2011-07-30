@@ -4,6 +4,7 @@
 //
 
 #import "DWSearchDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -43,6 +44,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadDataForQuery:(NSString*)query {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                               andExtraInfo:[NSString stringWithFormat:@"query=%@",
+                                                                             query]];
+    
     self.query  = query;
     [self.searchController getSearchResultsForQuery:query];
 }
