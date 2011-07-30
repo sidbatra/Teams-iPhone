@@ -11,7 +11,6 @@
 @class DWTeam;
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
-@class DWNavBarFillerView;
 @protocol DWUserViewControllerDelegate;
 
 /**
@@ -24,7 +23,6 @@
     
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
-    DWNavBarFillerView          *_navBarFillerView;
     
     id<DWUserViewControllerDelegate>    _delegate;
 }
@@ -39,7 +37,6 @@
  */ 
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
-@property (nonatomic,retain) DWNavBarFillerView *navBarFillerView;
 
 /**
  * Delegate receives events based on DWUserViewControllerDelegate
