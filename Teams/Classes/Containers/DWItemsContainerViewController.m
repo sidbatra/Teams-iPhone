@@ -58,6 +58,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 @synthesize postProgressView        = _postProgressView;
 @synthesize smallProfilePicView     = _smallProfilePicView;
 @synthesize navTitleView            = _navTitleView;
+@synthesize navBarNotificationsView = _navBarNotificationsView;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -92,6 +93,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     self.postProgressView           = nil;
     self.smallProfilePicView        = nil;
     self.navTitleView               = nil;
+    self.navBarNotificationsView    = nil;
     
 	[super dealloc];
 }
@@ -127,10 +129,13 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 - (void)loadNotificationsButton {
     
-    UIBarButtonItem *button = [DWGUIManager navBarDetailsButtonWithTarget:self
-                                                              andSelector:@selector(didTapNotificationsButton:)];
+    if(!self.navBarNotificationsView) {
+        self.navBarNotificationsView = [[[DWNavBarNotificationsView alloc] initWithFrame:CGRectMake(0,0,55,44)] autorelease];
+        self.navBarNotificationsView.delegate = self;
+    }
     
-    self.navigationItem.leftBarButtonItem   = button;
+    UIBarButtonItem *barButtonitem          = [[[UIBarButtonItem alloc] initWithCustomView:self.navBarNotificationsView] autorelease];
+    self.navigationItem.leftBarButtonItem   = barButtonitem;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -272,9 +277,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 - (void)newApplicationBadge:(NSNotification*)notification {
     NSDictionary *info          = [notification userInfo];	
-    NSInteger badegeNumber      = [[info objectForKey:kKeyBadge] integerValue];
+    NSInteger badgeNumber       = [[info objectForKey:kKeyBadge] integerValue];
     
-    NSLog(@"new badge number is %d",badegeNumber);
+    NSLog(@"new badge number is %d",badgeNumber);
+    [self.navBarNotificationsView setUnreadCount:badgeNumber];
 }
 
 
@@ -316,14 +322,13 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 	[[DWCreationQueue sharedDWCreationQueue] retryRequests];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark UITouchEvents
+#pragma mark DWNavBarNotificationsViewClicked
+
 //----------------------------------------------------------------------------------------------------
-- (void)didTapNotificationsButton:(UIButton*)button {
-    
+- (void)notificationsButtonClicked {
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
                                                              withActionName:@"notifications_clicked"];
     

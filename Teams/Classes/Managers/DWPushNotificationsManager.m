@@ -81,14 +81,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
     if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 
         if(alert) {
-
-             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
-                                                                 message:[alert objectForKey:kKeyBody] 
-                                                                delegate:self 
-                                                       cancelButtonTitle:kCancelTitle
-                                                       otherButtonTitles:kActionTitle,nil];
-             [alertView show];
-             [alertView release];
+            
+            NSString *message = [alert objectForKey:kKeyBody];
+            
+            if(message && [message length]) {
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
+                                                                    message:message
+                                                                   delegate:self 
+                                                          cancelButtonTitle:kCancelTitle
+                                                          otherButtonTitles:kActionTitle,nil];
+                [alertView show];
+                [alertView release];
+            }
         }
         
         if(badge) {
