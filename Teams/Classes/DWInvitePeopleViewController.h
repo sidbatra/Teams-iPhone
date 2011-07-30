@@ -10,6 +10,7 @@
 
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
+@class DWNavBarFillerView;
 
 @protocol DWInvitePeopleViewControllerDelegate;
 
@@ -24,6 +25,7 @@
         
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
+    DWNavBarFillerView          *_navBarFillerView;
     
     DWContactsViewController    *_queryContactsViewController;
     DWContactsViewController    *_addedContactsViewController;    
@@ -47,6 +49,7 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic,retain) DWNavBarFillerView *navBarFillerView;
 
 /**
  * Controllers for quering and added contacts from the address book

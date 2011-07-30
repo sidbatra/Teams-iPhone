@@ -10,6 +10,7 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWNavBarFillerView.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
@@ -33,6 +34,7 @@ static NSInteger const kTableViewHeight						= 200;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
+@synthesize navBarFillerView                = _navBarFillerView;
 
 @synthesize queryContactsViewController     = _queryContactsViewController;
 @synthesize addedContactsViewController     = _addedContactsViewController;
@@ -56,7 +58,8 @@ static NSInteger const kTableViewHeight						= 200;
     self.teamName                       = nil;
     
     self.navTitleView                   = nil;
-    self.navBarRightButtonView          = nil;    
+    self.navBarRightButtonView          = nil;
+    self.navBarFillerView               = nil;
     
     self.queryContactsViewController    = nil;
     self.addedContactsViewController    = nil;    
@@ -81,6 +84,11 @@ static NSInteger const kTableViewHeight						= 200;
     
     self.navigationItem.hidesBackButton = YES;
     
+    if (!self.navBarFillerView) 
+        self.navBarFillerView = [[[DWNavBarFillerView alloc] 
+                                  initWithFrame:CGRectMake(0, 0, 
+                                                           kNavRightButtonWidth, 
+                                                           kNavRightButtonHeight)] autorelease];
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
@@ -113,12 +121,16 @@ static NSInteger const kTableViewHeight						= 200;
     self.queryContactsViewController.delegate       = self;
     self.addedContactsViewController.delegate       = self;
        
-    CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);
-    self.queryContactsViewController.view.frame     = frame;
+    
+    CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);    
+    self.queryContactsViewController.view.frame     = frame;    
     self.addedContactsViewController.view.frame     = frame;
+
     
     [self.view addSubview:self.queryContactsViewController.view];    
     [self.view addSubview:self.addedContactsViewController.view];    
+    
+    [self.searchContactsTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -155,7 +167,9 @@ static NSInteger const kTableViewHeight						= 200;
     
     if ([self.searchContactsTextField.text length]) {        
         [self displayQueriedContacts];        
-        [self.queryContactsViewController loadContactsMatching:self.searchContactsTextField.text];
+        [self.queryContactsViewController 
+         loadContactsMatching:[self.searchContactsTextField.text 
+                               stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
     }
     else {
         [self displayAddedContacts];
@@ -205,6 +219,7 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
+    [self.navigationController.navigationBar addSubview:self.navBarFillerView];    
 }
 
 @end

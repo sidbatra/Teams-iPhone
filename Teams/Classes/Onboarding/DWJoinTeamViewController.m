@@ -13,7 +13,7 @@
 
 
 static NSString* const kJoinTeamText                    = @"Join %@";
-static NSString* const kJoinTeamSubText                 = @"as the %d member";
+static NSString* const kJoinTeamSubText                 = @"as member number %d";
 static NSString* const kNavBarRightButtonText           = @"Join";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
