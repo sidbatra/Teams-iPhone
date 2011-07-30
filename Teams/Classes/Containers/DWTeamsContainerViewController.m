@@ -6,8 +6,11 @@
 #import "DWTeamsContainerViewController.h"
 #import "DWPopularTeamsViewController.h"
 #import "DWSearchViewController.h"
+#import "DWGUIManager.h"
 #import "DWConstants.h"
 
+static NSString* const kImgInvite                   = @"button_invite.png";
+static NSString* const kImgSearch                   = @"button_search.png";
 static NSString* const kMsgUnload					= @"Unload called on teams container";
 static NSString* const kSearchBarText				= @"Search teams and people";
 static NSString* const kSearchBarBackgroundClass	= @"UISearchBarBackground";
@@ -23,6 +26,7 @@ static NSInteger const kMinimumQueryLength			= 1;
  */
 - (void)loadPopularTeamsViewController;
 - (void)loadSearchViewController;
+- (void)loadSideButtons;
 - (void)loadSearchBar;
 @end
 
@@ -105,12 +109,25 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadSideButtons {
+    
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarButtonWithImageName:kImgSearch
+                                                                               target:self
+                                                                          andSelector:@selector(didTapSearchButton:)];
+    
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgInvite
+                                                                               target:self
+                                                                          andSelector:@selector(didTapInviteButton:)];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self loadPopularTeamsViewController];
     [self loadSearchViewController];
-    [self loadSearchBar];
+    [self loadSideButtons];
+    //[self loadSearchBar];
     
 	self.navigationItem.titleView = nil;
 }
@@ -178,6 +195,22 @@ static NSInteger const kMinimumQueryLength			= 1;
 	
 	if([searchText isEqualToString:kEmptyString]) {
 	}
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITouchEvents
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapSearchButton:(UIButton*)button {  
+    NSLog(@"Search");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapInviteButton:(UIButton*)button {  
+    NSLog(@"invite");
 }
 
 
