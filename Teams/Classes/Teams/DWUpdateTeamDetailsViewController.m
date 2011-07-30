@@ -12,6 +12,7 @@
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kUpdateTeamDetailsText           = @"Edit Team";
@@ -90,7 +91,7 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem                   = [DWGUIManager customBackButton:self];
+    self.navigationItem.leftBarButtonItem                   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     self.navigationController.navigationBar.clipsToBounds   = NO;
     
     if (!self.navTitleView)
@@ -122,6 +123,11 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
                                        [[DWSession sharedDWSession].currentUser getDomainFromEmail]];
     
     [self.teamBylineTextField becomeFirstResponder];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:self.team.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -170,6 +176,14 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
                                         withName:self.teamNameTextField.text 
                                        andByline:self.teamBylineTextField.text];
     }
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"team_updated"
+                                                                 withViewID:self.team.databaseID
+                                                               andExtraInfo:[NSString stringWithFormat:@"name=%@&byline=%@",
+                                                                             self.teamNameTextField.text,
+                                                                             self.teamBylineTextField.text]];
 }
 
 
