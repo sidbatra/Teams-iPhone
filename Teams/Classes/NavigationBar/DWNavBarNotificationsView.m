@@ -63,14 +63,14 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUnreadCountLabel {
-    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(0,10,self.frame.size.width,20)] autorelease];
+    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width-5,20)] autorelease];
     unreadCountLabel.userInteractionEnabled = NO;
     unreadCountLabel.text                   = kDefaultText;
     unreadCountLabel.backgroundColor        = [UIColor clearColor];
-    unreadCountLabel.textColor              = [UIColor blackColor];
+    unreadCountLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     unreadCountLabel.textAlignment          = UITextAlignmentCenter;
     unreadCountLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
-                                                              size:15];
+                                                              size:13];
     
 
     [self addSubview:unreadCountLabel];
