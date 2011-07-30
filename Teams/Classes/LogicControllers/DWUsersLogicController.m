@@ -7,6 +7,7 @@
 #import "DWTableViewController.h"
 #import "DWConstants.h"
 #import "DWUser.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -57,6 +58,12 @@
     
     if(!self.navigationEnabled)
         return;
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tableViewController
+                                                             withActionName:@"user_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"user_id=%d",
+                                                                             user.databaseID]];
+    
     
     [self.delegate usersLogicUserSelected:user];
 }

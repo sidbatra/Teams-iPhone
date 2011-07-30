@@ -185,7 +185,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     if(resource == self.teamViewDataSource.members) {
         [self.delegate showMembersOfTeam:team];
-
+        
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"members_selected"

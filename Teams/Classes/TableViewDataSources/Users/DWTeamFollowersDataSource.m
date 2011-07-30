@@ -4,6 +4,7 @@
 //
 
 #import "DWTeamFollowersDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -32,6 +33,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamFollowersLoaded:(NSMutableArray *)users {
+        
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:self.teamID];
+    
     [self populateUsers:users];
 }
 
