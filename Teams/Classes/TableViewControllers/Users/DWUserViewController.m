@@ -188,7 +188,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     else if(message == self.userViewDataSource.watchingMessage) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                 withActionName:@"user_watching_selected"
+                                                                 withActionName:@"following_selected"
                                                                      withViewID:user.databaseID];
         
         [self.delegate userViewShowTeamsWatchedBy:user];

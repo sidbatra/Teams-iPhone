@@ -14,6 +14,7 @@
 #import "DWUpdateTeamDetailsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kNavBarRightButtonText   = @"Edit";
@@ -136,8 +137,17 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
+    
+    DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"edit_selected"
+                                                                 withViewID:team.databaseID];
+    
+    
     DWUpdateTeamDetailsViewController *updateTeamDetailsViewController  = [[[DWUpdateTeamDetailsViewController alloc] 
-                                                                            initWithTeam:[DWTeam fetch:self.teamViewDataSource.teamID]] 
+                                                                            initWithTeam:team] 
                                                                            autorelease];
     
     [self.navigationController pushViewController:updateTeamDetailsViewController 
@@ -173,12 +183,31 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
     
-    if(resource == self.teamViewDataSource.members)
+    if(resource == self.teamViewDataSource.members) {
         [self.delegate showMembersOfTeam:team];
-    else if(resource == self.teamViewDataSource.followers)
+
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"members_selected"
+                                                                     withViewID:team.databaseID];
+
+    }
+    else if(resource == self.teamViewDataSource.followers) {
         [self.delegate showFollowersOfTeam:team];
-    else if(resource == self.teamViewDataSource.invite)
+        
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"followers_selected"
+                                                                     withViewID:team.databaseID];
+    }
+    else if(resource == self.teamViewDataSource.invite) {
         [self.delegate showInvitePeople];
+        
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"invite_selected"
+                                                                     withViewID:team.databaseID];
+    }
 }
 
 

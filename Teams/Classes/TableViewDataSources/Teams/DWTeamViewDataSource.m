@@ -9,6 +9,7 @@
 #import "DWMessage.h"
 #import "DWUser.h"
 #import "DWConstants.h"
+#import "DWAnalyticsManager.h"
 
 static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
 
@@ -181,6 +182,13 @@ static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
     
     
     [self.delegate reloadTableView];
+
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:_teamID];
+
 }
 
 //----------------------------------------------------------------------------------------------------
