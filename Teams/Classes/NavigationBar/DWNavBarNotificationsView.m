@@ -50,8 +50,8 @@ static CGFloat   const kEnabledOpacity      = 0.98;
     backgroundButton.alpha          = kDisabledOpacity;
     backgroundButton.frame          = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
     
-    [backgroundButton setBackgroundImage:[UIImage imageNamed:kImgBackground]
-                                forState:UIControlStateNormal];
+    //[backgroundButton setBackgroundImage:[UIImage imageNamed:kImgBackground]
+    //                            forState:UIControlStateNormal];
     
     [backgroundButton addTarget:self 
                          action:@selector(didTapBackgroundButton:event:) 
@@ -63,10 +63,11 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUnreadCountLabel {
-    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width-5,20)] autorelease];
+    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(14,11,24,22)] autorelease];
     unreadCountLabel.userInteractionEnabled = NO;
+    unreadCountLabel.alpha                  = kDisabledOpacity;
+    unreadCountLabel.layer.cornerRadius     = 3;
     unreadCountLabel.text                   = kDefaultText;
-    unreadCountLabel.backgroundColor        = [UIColor clearColor];
     unreadCountLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     unreadCountLabel.textAlignment          = UITextAlignmentCenter;
     unreadCountLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
@@ -86,7 +87,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 //----------------------------------------------------------------------------------------------------
 - (void)setUnreadCount:(NSInteger)unreadCount {
     unreadCountLabel.text   = [NSString stringWithFormat:@"%d",unreadCount];
-    backgroundButton.alpha  = unreadCount ? kEnabledOpacity : kDisabledOpacity;
+    unreadCountLabel.alpha  = unreadCount ? kEnabledOpacity : kDisabledOpacity;
 }
 
 
