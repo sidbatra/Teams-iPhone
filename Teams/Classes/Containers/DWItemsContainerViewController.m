@@ -279,8 +279,16 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     NSDictionary *info          = [notification userInfo];	
     NSInteger badgeNumber       = [[info objectForKey:kKeyBadge] integerValue];
     
-    NSLog(@"new badge number is %d",badgeNumber);
-    [self.navBarNotificationsView setUnreadCount:badgeNumber];
+
+    if(!self.navBarNotificationsView) {
+        
+        [self performSelector:@selector(newApplicationBadge:) 
+                   withObject:notification 
+                   afterDelay:1.0];
+    }
+    else {
+        [self.navBarNotificationsView setUnreadCount:badgeNumber];
+    }
 }
 
 
