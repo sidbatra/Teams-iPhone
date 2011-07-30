@@ -7,7 +7,6 @@
 #import "DWNavBarBackButton.h"
 
 static NSString* const kImgBackButton               = @"button_back.png";
-static NSString* const kImgNotificationsButton      = @"button_more.png";
 
 
 
@@ -47,12 +46,13 @@ static NSString* const kImgNotificationsButton      = @"button_more.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (UIBarButtonItem*)navBarDetailsButtonWithTarget:(id)target
-                                      andSelector:(SEL)sel {
++ (UIBarButtonItem*)navBarButtonWithImageName:(NSString*)imageName
+                                       target:(id)target
+                                  andSelector:(SEL)sel {
 
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgNotificationsButton] 
+    [button setBackgroundImage:[UIImage imageNamed:imageName] 
                       forState:UIControlStateNormal];
     
 	[button addTarget:target

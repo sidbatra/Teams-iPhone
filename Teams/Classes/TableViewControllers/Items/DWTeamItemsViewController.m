@@ -14,8 +14,8 @@
 #import "DWSession.h"
 #import "DWAnalyticsManager.h"
 
-
-static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
+static NSString* const kImgNotificationsButton      = @"button_more.png";
+static NSString* const kMsgFollowAction             = @"Tap to start watching this Team";
 
 
 /**
@@ -87,8 +87,9 @@ static NSString* const kMsgFollowAction = @"Tap to start watching this Team";
 	[super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
-    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDetailsButtonWithTarget:self
-                                                                              andSelector:@selector(didTapDetailsButton:)];
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarButtonWithImageName:kImgNotificationsButton
+                                                                               target:self
+                                                                          andSelector:@selector(didTapDetailsButton:)];
     
     [self loadNavTitleView];
     

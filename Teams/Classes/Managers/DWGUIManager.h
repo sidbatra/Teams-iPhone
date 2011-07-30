@@ -25,12 +25,13 @@
 + (UIBarButtonItem*)navBarBackButtonForNavController:(UINavigationController*)navController;
 
 /**
- * Creates a UIBarButtonItem with a details icon. 
+ * Creates a UIBarButtonItem using the given image as icon. 
  * Target is the object that receives on click event.
  * sel is the selector sent to the target.
  */
-+ (UIBarButtonItem*)navBarDetailsButtonWithTarget:(id)target
-                                      andSelector:(SEL)sel;
++ (UIBarButtonItem*)navBarButtonWithImageName:(NSString*)imageName
+                                       target:(id)target
+                                  andSelector:(SEL)sel;
 
 /**
  * Creates a UILabel to act as the title view for the navigation bar
