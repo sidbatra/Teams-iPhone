@@ -12,6 +12,7 @@
 #import "DWUsersHelper.h"
 #import "DWSession.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWNavBarFillerView.h"
 #import "DWUpdateUserDetailsViewController.h"
 
 
@@ -28,7 +29,12 @@
 /**
  * Create a nav right bar button
  */
-- (void)loadNavRightBarButtonView;
+- (void)loadNavBarRightButtonView;
+
+/**
+ * Create a nav bar filler view
+ */
+- (void)loadNavBarFillerView;
 
 @end
 
@@ -45,6 +51,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 @synthesize navTitleView            = _navTitleView;
 @synthesize navBarRightButtonView   = _navBarRightButtonView;
+@synthesize navBarFillerView        = _navBarFillerView;
 
 @synthesize delegate                = _delegate;
 
@@ -89,6 +96,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     self.navTitleView           = nil;
     self.navBarRightButtonView  = nil;
+    self.navBarFillerView       = nil;
     
     [super dealloc];
 }
@@ -109,7 +117,9 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     [self.userViewDataSource loadUser];
     
     if (_isCurrentUser && !self.navBarRightButtonView)
-        [self loadNavRightBarButtonView];
+        [self loadNavBarRightButtonView];
+    else if(!self.navBarFillerView)
+        [self loadNavBarFillerView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -125,13 +135,21 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadNavRightBarButtonView {
+- (void)loadNavBarRightButtonView {
     self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
                                    initWithFrame:CGRectMake(260,0,
                                                             kNavRightButtonWidth,
                                                             kNavRightButtonHeight)
                                            title:kNavBarRightButtonText 
                                        andTarget:self] autorelease];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadNavBarFillerView {
+    self.navBarFillerView = [[[DWNavBarFillerView alloc] 
+                              initWithFrame:CGRectMake(260, 0, 
+                                                       kNavRightButtonWidth, 
+                                                       kNavRightButtonHeight)] autorelease];
 }
 
 
@@ -153,9 +171,8 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
-    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
-                                         andSubTitle:user.team.name
-                                    withEnabledState:NO];
+    [self.navTitleView displayTitle:[DWUsersHelper displayName:user]
+                        andSubTitle:user.team.name];
 }
 
 
@@ -215,6 +232,8 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     if(_isCurrentUser)
         [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
+    else
+        [self.navigationController.navigationBar addSubview:self.navBarFillerView];
 }
 
 

@@ -19,7 +19,7 @@ static NSString* const kImgFillerImageView = @"nav_bar_empty_block.png";
     
     if (self) {
         fillerImageView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgFillerImageView]];
-        fillerImageView.frame     = frame;
+        fillerImageView.frame     = CGRectMake(0, 0, 60, 44);
         
         [self addSubview:fillerImageView];
         [fillerImageView release];

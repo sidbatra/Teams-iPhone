@@ -20,8 +20,8 @@ static NSString* const kMsgIncompleteTitle              = @"Incomplete";
 static NSString* const kMsgIncomplete                   = @"Enter team name and byline";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
-static NSString* const kMessageLabelText                = @"Open to friends and colleagues with a @%@ address:";
-static NSString* const kMsgProcesssing                  = @"Editing Team Details ...";
+static NSString* const kMessageLabelText                = @"@%@";
+static NSString* const kMsgProcesssing                  = @"Updating team details...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -114,14 +114,14 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
     self.teamBylineTextField.text   = self.team.byline;
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,170)
+        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,156)
                                                                             andMessageText:kMsgProcesssing] autorelease];
     
     
     self.messageLabel.text          = [NSString stringWithFormat:kMessageLabelText,
                                        [[DWSession sharedDWSession].currentUser getDomainFromEmail]];
     
-    [self.teamNameTextField becomeFirstResponder];
+    [self.teamBylineTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -214,6 +214,7 @@ static NSString* const kMsgProcesssing                  = @"Editing Team Details
     [[DWSession sharedDWSession] update];
 
     [self unfreezeUI];
+	[self.navigationController popViewControllerAnimated:YES];    
 }
 
 //----------------------------------------------------------------------------------------------------

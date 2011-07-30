@@ -52,7 +52,8 @@ static NSString* const kMsgActionSheetDelete                = @"Delete";
     
     self.view.hidden            = YES;
     self.view.backgroundColor   = [UIColor clearColor];
-    self.tableView.bounces      = NO;
+    self.refreshHeaderView      = nil;
+    //self.tableView.bounces      = NO;
 }
 
 

@@ -20,7 +20,7 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kUpdateUserDetailsText   = @"Edit Your Details";
 static NSString* const kNavBarRightButtonText   = @"Save";
-static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
+static NSString* const kMsgProcesssing          = @"Updating your details...";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -141,7 +141,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(50,100)
+        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(70,134)
                                                                             andMessageText:kMsgProcesssing] autorelease];
     
     [self.firstNameTextField becomeFirstResponder];
@@ -250,7 +250,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-	[self updateUser];
+    [self updateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -325,6 +325,7 @@ static NSString* const kMsgProcesssing          = @"Editing Your Details ...";
     [[DWSession sharedDWSession] update];
     
     [self unfreezeUI];
+	[self.navigationController popViewControllerAnimated:YES];    
 }
 
 //----------------------------------------------------------------------------------------------------
