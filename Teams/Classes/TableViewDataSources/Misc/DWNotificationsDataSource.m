@@ -5,6 +5,7 @@
 
 #import "DWNotificationsDataSource.h"
 #import "DWNotification.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -74,6 +75,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNotifications {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                               andExtraInfo:[NSString stringWithFormat:@"before=%d",
+                                                                             (NSInteger)_oldestTimestamp]];
+    
     [self.notificationsController getNotificationsForCurrentUserBefore:_oldestTimestamp];
 }
 

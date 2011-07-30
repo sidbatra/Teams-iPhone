@@ -10,6 +10,7 @@
 #import "DWUser.h"
 #import "DWItem.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "NSObject+Helpers.h"
 
 static NSString* const kTitle               = @"Notifications";
@@ -87,12 +88,30 @@ static NSString* const kModelNamePrefix     = @"DW";
     NSString *clientClassName = [NSString stringWithFormat:@"%@%@",kModelNamePrefix,notification.resourceType];
     
     if([clientClassName isEqualToString:[DWUser className]]) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"user_selected"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"user_id=%d",
+                                                                                 notification.resourceID]];
+        
         [self.delegate notificationsUserSelected:notification.resourceID];
     }
     else if([clientClassName isEqualToString:[DWItem className]]) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"item_selected"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"item_id=%d",
+                                                                                 notification.resourceID]];
+        
         [self.delegate notificationsItemSelected:notification.resourceID];
     }
     else if([clientClassName isEqualToString:[DWTeam className]]) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"team_selected"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"team_id=%d",
+                                                                                 notification.resourceID]];
+        
         [self.delegate notificationsTeamSelected:notification.resourceID];
     }
 }
