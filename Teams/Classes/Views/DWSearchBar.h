@@ -9,7 +9,7 @@
  * Custom search bar - UITextField with a cancel button
  */
 @interface DWSearchBar : UIView {
-    
+    UITextField     *_searchTextField;
 }
 
 @end

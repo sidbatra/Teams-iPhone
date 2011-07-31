@@ -5,6 +5,28 @@
 
 #import "DWSearchBar.h"
 
+/**
+ * Private method and property declarations
+ */
+@interface DWSearchBar()
+
+/**
+ * White background image behind the text field
+ */
+- (void)createBackground;
+
+/**
+ * Text field for writing search queries
+ */
+- (void)createSearchField;
+
+/**
+ * Cancel button for wiping the search view
+ */
+- (void)createCancelButton;
+
+@end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -20,6 +42,21 @@
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createBackground {
+    //UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,, <#CGFloat height#>)]
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createSearchField {
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createCancelButton {
+    
 }
 
 //----------------------------------------------------------------------------------------------------
