@@ -42,7 +42,7 @@
 /**
  * Extend the original delegate
  */
-@property (nonatomic,assign) id<DWItemViewDataSourceDelegate> delegate;
+@property (nonatomic,assign) id<DWItemViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

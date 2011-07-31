@@ -4,6 +4,7 @@
 //
 
 #import "DWItemViewDataSource.h"
+#import "DWAnalyticsManager.h"
 
 
 
@@ -49,6 +50,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadData {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:_itemID];
+    
+    
     _itemLoaded     = NO;
     _usersLoaded    = NO;
 
