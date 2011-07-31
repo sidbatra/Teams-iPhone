@@ -4,6 +4,7 @@
 //
 
 #import "DWLocationManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 #import "SynthesizeSingleton.h"
@@ -78,12 +79,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWLocationManager);
                                                                         kKeyLocation,newLocation,
                                                                         nil]];
 	}
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"new_location"
+                                                               andExtraInfo:[NSString stringWithFormat:@"lat=%f&lon=%f",
+                                                                             newLocation.coordinate.latitude,
+                                                                             newLocation.coordinate.longitude]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     
     if([error code] == kCLErrorDenied) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"location_denied"];
+        
         [[NSNotificationCenter defaultCenter] postNotificationName:kNUserRejectedLocation 
 															object:nil];
     }        
