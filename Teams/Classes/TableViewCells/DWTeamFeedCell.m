@@ -5,13 +5,13 @@
 
 #import "DWTeamFeedCell.h"
 
-static NSString* const kImgSeparator	= @"hr_team_list.png";
+static NSString* const kImgSeparator	= @"hr_dark.png";
 static NSString* const kImgChevron		= @"chevron.png";
 
 #define kAnimationDuration              0.05
 #define kNoAnimationDuration            0.0
 #define kFadeDelay                      0.3
-#define kNormalAlpha                	0.65
+#define kNormalAlpha                	0.6
 #define kNormalNoAttachmentAlpha        1.0
 #define kHighlightAlpha                 0.45
 #define kColorNormalBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor

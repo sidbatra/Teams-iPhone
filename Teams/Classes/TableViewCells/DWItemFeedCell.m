@@ -14,7 +14,7 @@
 #define kImgShare                           @"share.png"
 #define kImgShare230                        @"share_text.png"
 #define kImgHalo                            @"halo.png"
-#define kImgSeparator                       @"hr_team_list.png"
+#define kImgSeparator                       @"hr_dark.png"
 #define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
 #define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
