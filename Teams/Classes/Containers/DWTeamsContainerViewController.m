@@ -9,6 +9,7 @@
 #import "DWNavTitleView.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
+#import "DWAnalyticsManager.h"
 
 static NSString* const kImgInvite                   = @"button_invite.png";
 static NSString* const kImgSearch                   = @"button_search.png";
@@ -155,50 +156,14 @@ static NSInteger const kMinimumQueryLength			= 1;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark UISearchBarDelegate
-
-/*
-//----------------------------------------------------------------------------------------------------
-- (void)searchBarCancelButtonClicked:(UISearchBar*)searchBar {
-    
-    [self.searchBar setShowsCancelButton:NO 
-                                animated:YES];    
-    
-    [self.searchBar setText:kEmptyString];
-    
-    [self.searchBar resignFirstResponder];
-    
-    self.searchViewController.view.hidden = YES;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchBarSearchButtonClicked:(UISearchBar*)theSearchBar {
-	
-	if(theSearchBar.text.length >= kMinimumQueryLength) {
-		
-		[self.searchBar resignFirstResponder];
-        [self.searchViewController search:theSearchBar.text];
-        
-        
-        for (UIView *view in self.searchBar.subviews) {
-            if ([view isKindOfClass:[UIButton class]]) {
-                ((UIButton*)view).enabled = YES;
-                break;
-            }
-        }
-	}
-	
-}
-*/
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWSearchBarDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchCancelled {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"search_cancelled"];
+    
     
     self.searchViewController.view.hidden   = YES;
     self.searchBar.hidden                   = YES;
@@ -223,6 +188,10 @@ static NSInteger const kMinimumQueryLength			= 1;
 //----------------------------------------------------------------------------------------------------
 - (void)didTapSearchButton:(UIButton*)button {  
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"search_selected"];
+    
+    
     self.searchViewController.view.hidden = NO;
     self.searchBar.hidden                 = NO;
     
@@ -233,7 +202,11 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapInviteButton:(UIButton*)button {  
+- (void)didTapInviteButton:(UIButton*)button { 
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"invite_selected"];
+    
     NSLog(@"invite");
 }
 
