@@ -79,7 +79,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(20,0,
+    messageLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(20,-1,
                                                                                  self.contentView.frame.size.width-40,
                                                                                  kMessageCellHeight)] autorelease];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	

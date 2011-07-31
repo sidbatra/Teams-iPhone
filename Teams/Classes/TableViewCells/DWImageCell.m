@@ -71,7 +71,7 @@
     [self.contentView addSubview:background];
     
     
-    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(7,kImageCellHeight-47,
+    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(7,kImageCellHeight-47-1,
                                                                                  320-14,47)] autorelease];
     bylineLabel.backgroundColor     = [UIColor clearColor];
     bylineLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	

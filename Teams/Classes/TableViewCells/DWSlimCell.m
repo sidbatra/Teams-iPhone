@@ -13,14 +13,14 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kAnimationDuration          0.05
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
-#define kColorNormalBg              [UIColor colorWithRed:0.2588 green:0.2588 blue:0.2627 alpha:1.0].CGColor
-#define kColorHighlightBg           [UIColor colorWithRed:0.2784 green:0.2784 blue:0.2784 alpha:1.0].CGColor
+#define kColorNormalBg              [UIColor colorWithRed:0.2156 green:0.2196 blue:0.2196 alpha:1.0].CGColor
+#define kColorHighlightBg           [UIColor colorWithRed:0.1725 green:0.1764 blue:0.1764 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kTextX                      58
-#define kTextY                      15
+#define kTextX                      60
+#define kTextY                      13
 
 
 
