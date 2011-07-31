@@ -9,6 +9,7 @@
 #import "DWLocationManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
+#import "DWAnalyticsManager.h"
 
 static NSString* const kMsgDataTextViewPlaceholder			= @"What are you upto?";
 static NSInteger const kTableViewX							= 0;
@@ -95,6 +96,10 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     [self.dataTextView becomeFirstResponder];
     
     [[DWLocationManager sharedDWLocationManager] startLocationTracking];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -192,6 +197,10 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 
 //----------------------------------------------------------------------------------------------------
 - (void)cancelButtonClicked:(id)sender {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"cancel_selected"];
+     
 	[self.parentViewController dismissModalViewControllerAnimated:NO];
 }
 
@@ -235,6 +244,13 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
                                                                 [NSNumber numberWithInteger:kResetHard],kKeyResetType,
                                                                 nil]];
 	
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"item_created"
+                                                               andExtraInfo:[NSString stringWithFormat:@"data=%@&attachment=%d",
+                                                                             self.dataTextView.text,
+                                                                             _attachmentType]];
+    
 	
     [self.parentViewController dismissModalViewControllerAnimated:NO];
 }
