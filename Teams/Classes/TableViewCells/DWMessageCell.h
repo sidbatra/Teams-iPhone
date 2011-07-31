@@ -11,6 +11,7 @@
 @interface DWMessageCell : UITableViewCell {
 	UILabel         *messageLabel;
     UIImageView     *chevronView;
+    UIImageView     *separatorView;
     
     BOOL            _interactive;
     BOOL            _highlighted;

@@ -394,8 +394,8 @@ NSInteger const kStatusBarStyle					= UIStatusBarStyleBlackOpaque;
 NSInteger const kURLTagMultipler				= 100;
 NSInteger const kPaginationCellHeight			= 60;
 NSInteger const kSlimCellHeight                 = 60;
-NSInteger const kMessageCellHeight              = 60;
-NSInteger const kImageCellHeight                = 200;
+NSInteger const kMessageCellHeight              = 47;
+NSInteger const kImageCellHeight                = 275;
 NSString* const kEmptyString					= @"";
 
 @implementation DWConstants

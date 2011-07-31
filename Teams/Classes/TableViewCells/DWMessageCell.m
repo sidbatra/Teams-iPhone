@@ -6,10 +6,11 @@
 #import "DWMessageCell.h"
 #import "DWConstants.h"
 
-#define kColorBgInteractive         [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:1.0]
-#define kColorBgInteractiveSelected [UIColor colorWithRed:0.75 green:0.75 blue:0.75 alpha:1.0]
+#define kColorBgInteractive         [UIColor colorWithRed:0.2156 green:0.2196 blue:0.2196 alpha:1.0]
+#define kColorBgInteractiveSelected [UIColor colorWithRed:0.1725 green:0.1764 blue:0.1764 alpha:1.0]
 
 static NSString* const kImgChevron		= @"chevron.png";
+static NSString* const kImgSeparator    = @"hr_dark.png";
 static CGFloat   const kFadeDelay       = 0.3;
 
 
@@ -27,6 +28,11 @@ static CGFloat   const kFadeDelay       = 0.3;
  * Create image view with a chevron image
  */
 - (void)createChevron;
+
+/**
+ * Add a separator at the end of the cell
+ */
+- (void)createSeparator;
 
 /**
  * Return the cell back to its normal interactive state
@@ -58,6 +64,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 		
 		[self createMessageLabel];
         [self createChevron];
+        [self createSeparator];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -72,11 +79,11 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(0,0,
-                                                                                 self.contentView.frame.size.width,
+    messageLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(20,0,
+                                                                                 self.contentView.frame.size.width-40,
                                                                                  kMessageCellHeight)] autorelease];
-    messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
-    messageLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+    messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     messageLabel.backgroundColor	= [UIColor clearColor];
     messageLabel.textAlignment		= UITextAlignmentCenter;
     
@@ -85,7 +92,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createChevron {
-    chevronView             = [[[UIImageView alloc] initWithFrame:CGRectMake(308,24,6,11)] autorelease];
+    chevronView             = [[[UIImageView alloc] initWithFrame:CGRectMake(307,18,6,11)] autorelease];
     chevronView.image       = [UIImage imageNamed:kImgChevron];
     chevronView.hidden      = YES;
     
@@ -93,13 +100,23 @@ static CGFloat   const kFadeDelay       = 0.3;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createSeparator {
+    separatorView           = [[[UIImageView alloc] initWithFrame:CGRectMake(0,46,320,1)] autorelease];
+    separatorView.image     = [UIImage imageNamed:kImgSeparator];
+    separatorView.hidden    = YES;
+    
+    [self.contentView addSubview:separatorView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)enableInteractiveMode {
-    messageLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
+    messageLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
     messageLabel.textColor              = [UIColor whiteColor];
     
     self.contentView.backgroundColor    = kColorBgInteractive;
     
 	chevronView.hidden                  = NO;
+    separatorView.hidden                = NO;
     _interactive                        = YES;
 }
 

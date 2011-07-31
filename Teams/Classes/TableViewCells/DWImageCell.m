@@ -64,11 +64,18 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createByline {
-    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(0,kImageCellHeight-40,
-                                                                                 320,40)] autorelease];
-    bylineLabel.backgroundColor     = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    UILabel *background             = [[[UILabel alloc] initWithFrame:CGRectMake(0,kImageCellHeight-47,
+                                                                                 320,47)] autorelease];
+    background.backgroundColor      = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+    
+    [self.contentView addSubview:background];
+    
+    
+    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(7,kImageCellHeight-47,
+                                                                                 320-14,47)] autorelease];
+    bylineLabel.backgroundColor     = [UIColor clearColor];
     bylineLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
-    bylineLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+    bylineLabel.textColor			= [UIColor whiteColor];
     bylineLabel.textAlignment		= UITextAlignmentCenter;
     
     [self.contentView addSubview:bylineLabel];
