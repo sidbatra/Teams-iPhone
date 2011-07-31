@@ -165,7 +165,6 @@
 		26ECECBB136B9CFF00019A5D /* navbar_transparent@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26ECECB9136B9CFF00019A5D /* navbar_transparent@2x.png */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		8FEB0DFC13E4E0FD0019B03D /* search_box_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8FEB0DFB13E4E0FD0019B03D /* search_box_bg.png */; };
-		8FEB0E0013E4E3870019B03D /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FEB0DFF13E4E3870019B03D /* libz.1.2.5.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BB05BAD4131B28E00068331E /* nearby_off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05BACC131B28E00068331E /* nearby_off.png */; };
 		BB05BAD5131B28E00068331E /* nearby_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05BACD131B28E00068331E /* nearby_off@2x.png */; };
 		BB05BAD6131B28E00068331E /* nearby_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB05BACE131B28E00068331E /* nearby_on.png */; };
@@ -301,6 +300,7 @@
 		BB9D3FCC13D92FE200CC8F07 /* DWUserTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCB13D92FE200CC8F07 /* DWUserTeamsDataSource.m */; };
 		BB9D3FD013D9313900CC8F07 /* DWUserTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */; };
 		BBA03C18132DBD970073105B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA03C17132DBD970073105B /* AVFoundation.framework */; };
+		BBA2178113E4F17E00FAB8AC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */; };
 		BBAEA5DA137113BD006A50C8 /* icon_video.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5D8137113BD006A50C8 /* icon_video.png */; };
 		BBAEA5DB137113BD006A50C8 /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */; };
 		BBB1A8AB13D4F8F400C08315 /* DWSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */; };
@@ -884,6 +884,7 @@
 		BB9D3FCE13D9313900CC8F07 /* DWUserTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserTeamsViewController.h; sourceTree = "<group>"; };
 		BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserTeamsViewController.m; sourceTree = "<group>"; };
 		BBA03C17132DBD970073105B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		BBAEA5D8137113BD006A50C8 /* icon_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_video.png; path = resources/icon_video.png; sourceTree = "<group>"; };
 		BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_video@2x.png"; path = "resources/icon_video@2x.png"; sourceTree = "<group>"; };
 		BBB1A8A913D4F8F400C08315 /* DWSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchController.h; sourceTree = "<group>"; };
@@ -1135,7 +1136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FEB0E0013E4E3870019B03D /* libz.1.2.5.dylib in Frameworks */,
+				BBA2178113E4F17E00FAB8AC /* libz.1.2.3.dylib in Frameworks */,
 				2632E5AF13CCE48C005B1B1E /* AddressBook.framework in Frameworks */,
 				BBFD29441386FE6B0077904A /* MessageUI.framework in Frameworks */,
 				BB379DCE12ED50CE0071CE08 /* CoreGraphics.framework in Frameworks */,
@@ -1527,6 +1528,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */,
 				2632E5AE13CCE48C005B1B1E /* AddressBook.framework */,
 				BBFD29431386FE6B0077904A /* MessageUI.framework */,
 				BB379DCD12ED50CE0071CE08 /* CoreGraphics.framework */,

@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DWContainerViewController.h"
+#import "DWSearchBar.h"
 
 @class DWPopularTeamsViewController;
 @class DWSearchViewController;
@@ -14,13 +15,12 @@
 /**
  * Root view for the teams navigation controller
  */
-@interface DWTeamsContainerViewController : DWContainerViewController<UISearchBarDelegate> {
+@interface DWTeamsContainerViewController : DWContainerViewController<UISearchBarDelegate,DWSearchBarDelegate> {
     DWPopularTeamsViewController    *_popularTeamsViewController;
     DWSearchViewController          *_searchViewController;
     
+    DWSearchBar                     *_searchBar;
     DWNavTitleView                  *_navTitleView;
-    
-    UISearchBar                     *_searchBar;
 }
 
 /**
@@ -34,13 +34,13 @@
 @property (nonatomic,retain) DWSearchViewController *searchViewController;
 
 /**
+ * Custom search bar
+ */
+@property (nonatomic,retain) DWSearchBar *searchBar;
+
+/**
  * Title view for the navigation bar
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-
-/**
- * Search bar for issuing global searches
- */
-@property (nonatomic,retain) UISearchBar *searchBar;
 
 @end

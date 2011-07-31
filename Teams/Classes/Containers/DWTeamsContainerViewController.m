@@ -24,6 +24,11 @@ static NSInteger const kMinimumQueryLength			= 1;
 @interface DWTeamsContainerViewController()
 
 /**
+ * Compliment of the loadSideButtons method
+ */
+- (void)removeSideButtons;
+
+/**
  * View creation methods
  */
 - (void)loadPopularTeamsViewController;
@@ -75,30 +80,10 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadSearchBar {
     
     if(!self.searchBar) {
-        self.searchBar					= [[[UISearchBar alloc] initWithFrame:CGRectMake(0,0,320,0)] autorelease];
+        self.searchBar					= [[[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)] autorelease];
         self.searchBar.delegate			= self;
-        self.searchBar.placeholder		= kSearchBarText;
-        self.searchBar.tintColor        = [UIColor colorWithRed:0.1764 
-                                                          green:0.1764
-                                                           blue:0.1764
-                                                          alpha:1.0];
-        
-        self.searchBar.backgroundColor	= [UIColor colorWithRed:0.1764 
-                                                         green:0.1764
-                                                          blue:0.1764
-                                                         alpha:1.0];
-        [self.searchBar sizeToFit];	
-        
-        
-        for (UIView *subview in self.searchBar.subviews) {
-            if ([subview isKindOfClass:NSClassFromString(kSearchBarBackgroundClass)]) {
-                [subview removeFromSuperview];
-                break;
-            }
-        }
+        self.searchBar.hidden           = YES;
     }
-    
-    [self.navigationController.navigationBar addSubview:self.searchBar];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -126,6 +111,12 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)removeSideButtons {
+    self.navigationItem.leftBarButtonItem   = nil;
+    self.navigationItem.rightBarButtonItem  = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)loadTitleView {
     
     if (!self.navTitleView)
@@ -146,7 +137,7 @@ static NSInteger const kMinimumQueryLength			= 1;
     [self loadSearchViewController];
     [self loadSideButtons];
     [self loadTitleView];
-    //[self loadSearchBar];
+    [self loadSearchBar];
     
 
 	self.navigationItem.titleView = nil;
@@ -165,15 +156,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 #pragma mark -
 #pragma mark UISearchBarDelegate
 
-//----------------------------------------------------------------------------------------------------
-- (void)searchBarTextDidBeginEditing:(UISearchBar*)searchBar {
-    
-    [self.searchBar setShowsCancelButton:YES 
-                                animated:YES];
-    
-    self.searchViewController.view.hidden = NO;
-}
-
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)searchBarCancelButtonClicked:(UISearchBar*)searchBar {
     
@@ -196,9 +179,6 @@ static NSInteger const kMinimumQueryLength			= 1;
         [self.searchViewController search:theSearchBar.text];
         
         
-        /**
-         * Keep the cancel button enabled
-         */
         for (UIView *view in self.searchBar.subviews) {
             if ([view isKindOfClass:[UIButton class]]) {
                 ((UIButton*)view).enabled = YES;
@@ -208,13 +188,29 @@ static NSInteger const kMinimumQueryLength			= 1;
 	}
 	
 }
+*/
+
 
 //----------------------------------------------------------------------------------------------------
-- (void)searchBar:(UISearchBar*)searchBar
-	textDidChange:(NSString*)searchText {
-	
-	if([searchText isEqualToString:kEmptyString]) {
-	}
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWSearchBarDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchCancelled {
+    
+    self.searchViewController.view.hidden   = YES;
+    self.searchBar.hidden                   = YES;
+    
+    [self.searchBar resignActive];
+    
+    self.navTitleView.hidden                = NO;
+    [self loadSideButtons];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchWithQuery:(NSString*)query {
+    [self.searchViewController search:query];
 }
 
 
@@ -225,7 +221,14 @@ static NSInteger const kMinimumQueryLength			= 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapSearchButton:(UIButton*)button {  
-    NSLog(@"Search");
+    
+    self.searchViewController.view.hidden = NO;
+    self.searchBar.hidden                 = NO;
+    
+    [self.searchBar becomeActive];
+    
+    self.navTitleView.hidden              = YES;
+    [self removeSideButtons];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -244,7 +247,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 	  willShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
     
-    self.searchBar.hidden = viewController != self;
+    self.searchBar.hidden = viewController != self || self.searchViewController.view.hidden;
     
     [super navigationController:navigationController 
          willShowViewController:viewController 
@@ -261,6 +264,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)willShowOnNav {
     
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
+    [self.navigationController.navigationBar addSubview:self.searchBar];
 }
 
 
