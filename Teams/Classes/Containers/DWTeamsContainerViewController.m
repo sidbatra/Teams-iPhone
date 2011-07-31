@@ -80,9 +80,10 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadSearchBar {
     
     if(!self.searchBar) {
-        self.searchBar					= [[[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)] autorelease];
-        self.searchBar.delegate			= self;
-        self.searchBar.hidden           = YES;
+        self.searchBar                      = [[[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)] autorelease];
+        self.searchBar.minimumQueryLength   = 1;
+        self.searchBar.delegate             = self;
+        self.searchBar.hidden               = YES;
     }
 }
 

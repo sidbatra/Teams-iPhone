@@ -7,7 +7,7 @@
 #import "DWConstants.h"
 
 static NSString* const kImgCancelButton         = @"button_cancel.png";
-static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
+static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 
 /**
  * Private method and property declarations
@@ -38,7 +38,8 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 //----------------------------------------------------------------------------------------------------
 @implementation DWSearchBar
 
-@synthesize delegate    = _delegate;
+@synthesize minimumQueryLength  = _minimumQueryLength;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithFrame:(CGRect)frame {
@@ -55,8 +56,9 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UILabel *label                  = [[[UILabel alloc] initWithFrame:CGRectMake(0,0,265,30)] autorelease];
+    UILabel *label                  = [[[UILabel alloc] initWithFrame:CGRectMake(7,6,253,32)] autorelease];
     label.backgroundColor           = [UIColor whiteColor];
+    label.layer.cornerRadius        = 1.5;
     label.userInteractionEnabled    = NO;
     
     
@@ -65,8 +67,11 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                 = [[[UITextField alloc] initWithFrame:CGRectMake(0,0,200,30)] autorelease];
+    searchTextField                 = [[[UITextField alloc] initWithFrame:CGRectMake(12,11,246,30)] autorelease];
     searchTextField.delegate        = self;
+    searchTextField.font            = [UIFont fontWithName:@"HelveticaNeue" size:17];	
+	searchTextField.textColor       = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+	searchTextField.textAlignment   = UITextAlignmentLeft;
     searchTextField.placeholder     = kMsgSearchPlaceholder;
     
     
@@ -76,7 +81,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 //----------------------------------------------------------------------------------------------------
 - (void)createCancelButton {
     UIButton *button    = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame        = CGRectMake(265,0,55,44);
+    button.frame        = CGRectMake(260,0,60,44);
     
     [button setBackgroundImage:[UIImage imageNamed:kImgCancelButton]
                                           forState:UIControlStateNormal];
@@ -113,6 +118,9 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    if([searchTextField.text length] < _minimumQueryLength)
+        return NO;
     
     [searchTextField resignFirstResponder];
     

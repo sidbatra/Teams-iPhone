@@ -4,6 +4,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @protocol DWSearchBarDelegate;
 
@@ -13,8 +14,15 @@
 @interface DWSearchBar : UIView<UITextFieldDelegate> {
     UITextField     *searchTextField;
     
+    NSInteger       _minimumQueryLength;
+    
     id<DWSearchBarDelegate> _delegate;
 }
+
+/**
+ * Search success delegate isn't fired until these many chars are entered
+ */
+@property (nonatomic,assign) NSInteger minimumQueryLength;
 
 /**
  * Delegate property
