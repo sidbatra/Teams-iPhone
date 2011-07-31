@@ -4,6 +4,7 @@
 //
 
 #import "DWSearchBar.h"
+#import "DWConstants.h"
 
 static NSString* const kImgCancelButton         = @"button_cancel.png";
 static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
@@ -100,6 +101,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 
 //----------------------------------------------------------------------------------------------------
 - (void)resignActive {
+    searchTextField.text = kEmptyString;
     [searchTextField resignFirstResponder];
 }
 
@@ -112,7 +114,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and People";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
-    [self resignActive];
+    [searchTextField resignFirstResponder];
     
     [self.delegate searchWithQuery:searchTextField.text];
     
