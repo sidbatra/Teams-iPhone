@@ -67,7 +67,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUnreadCountLabel {
-    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(13,11,24,22)] autorelease];
+    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
     unreadCountLabel.userInteractionEnabled = NO;
     unreadCountLabel.alpha                  = kDisabledOpacity;
     unreadCountLabel.layer.cornerRadius     = 2.5;

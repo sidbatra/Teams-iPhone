@@ -300,7 +300,6 @@
 		BB9D3FCC13D92FE200CC8F07 /* DWUserTeamsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCB13D92FE200CC8F07 /* DWUserTeamsDataSource.m */; };
 		BB9D3FD013D9313900CC8F07 /* DWUserTeamsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */; };
 		BBA03C18132DBD970073105B /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA03C17132DBD970073105B /* AVFoundation.framework */; };
-		BBA2178113E4F17E00FAB8AC /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */; };
 		BBAEA5DA137113BD006A50C8 /* icon_video.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5D8137113BD006A50C8 /* icon_video.png */; };
 		BBAEA5DB137113BD006A50C8 /* icon_video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */; };
 		BBB1A8AB13D4F8F400C08315 /* DWSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A8AA13D4F8F400C08315 /* DWSearchController.m */; };
@@ -327,6 +326,7 @@
 		BBB3C3D9135FB21A00EA6087 /* shadow_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D1135FB21A00EA6087 /* shadow_top@2x.png */; };
 		BBB3C3DC135FB21A00EA6087 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D4135FB21A00EA6087 /* share.png */; };
 		BBB3C3DD135FB21A00EA6087 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D5135FB21A00EA6087 /* share@2x.png */; };
+		BBBDCAEC13E50A8100022AE3 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */; };
 		BBC0C6E012F4C56000291C33 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6D812F4C56000291C33 /* blackArrow.png */; };
 		BBC0C6E112F4C56000291C33 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6D912F4C56000291C33 /* blackArrow@2x.png */; };
 		BBC0C6E212F4C56000291C33 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6DA12F4C56000291C33 /* blueArrow.png */; };
@@ -660,7 +660,6 @@
 		32CA4F630368D1EE00C91783 /* Teams_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teams_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Teams-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Teams-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		8FEB0DFB13E4E0FD0019B03D /* search_box_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = search_box_bg.png; path = resources/search_box_bg.png; sourceTree = "<group>"; };
-		8FEB0DFF13E4E3870019B03D /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		BB05BACC131B28E00068331E /* nearby_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nearby_off.png; path = resources/nearby_off.png; sourceTree = "<group>"; };
 		BB05BACD131B28E00068331E /* nearby_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nearby_off@2x.png"; path = "resources/nearby_off@2x.png"; sourceTree = "<group>"; };
 		BB05BACE131B28E00068331E /* nearby_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nearby_on.png; path = resources/nearby_on.png; sourceTree = "<group>"; };
@@ -743,7 +742,6 @@
 		BB379DE912ED51220071CE08 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB379DF012ED51310071CE08 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		BB3A43BD13CD3B2900316EE6 /* DWPagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPagination.h; sourceTree = "<group>"; };
 		BB3A43BE13CD3B2900316EE6 /* DWPagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPagination.m; sourceTree = "<group>"; };
 		BB3A43C113CD3B8700316EE6 /* DWPaginationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationPresenter.h; sourceTree = "<group>"; };
@@ -884,7 +882,6 @@
 		BB9D3FCE13D9313900CC8F07 /* DWUserTeamsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserTeamsViewController.h; sourceTree = "<group>"; };
 		BB9D3FCF13D9313900CC8F07 /* DWUserTeamsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserTeamsViewController.m; sourceTree = "<group>"; };
 		BBA03C17132DBD970073105B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		BBAEA5D8137113BD006A50C8 /* icon_video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_video.png; path = resources/icon_video.png; sourceTree = "<group>"; };
 		BBAEA5D9137113BD006A50C8 /* icon_video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon_video@2x.png"; path = "resources/icon_video@2x.png"; sourceTree = "<group>"; };
 		BBB1A8A913D4F8F400C08315 /* DWSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchController.h; sourceTree = "<group>"; };
@@ -929,6 +926,7 @@
 		BBB3C3D4135FB21A00EA6087 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = resources/share.png; sourceTree = "<group>"; };
 		BBB3C3D5135FB21A00EA6087 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "resources/share@2x.png"; sourceTree = "<group>"; };
 		BBB8ADE9132F337A00AC0566 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = External/SynthesizeSingleton.h; sourceTree = "<group>"; };
+		BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		BBC0C6D812F4C56000291C33 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		BBC0C6D912F4C56000291C33 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		BBC0C6DA12F4C56000291C33 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -1136,7 +1134,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBA2178113E4F17E00FAB8AC /* libz.1.2.3.dylib in Frameworks */,
+				BBBDCAEC13E50A8100022AE3 /* libz.1.2.3.dylib in Frameworks */,
 				2632E5AF13CCE48C005B1B1E /* AddressBook.framework in Frameworks */,
 				BBFD29441386FE6B0077904A /* MessageUI.framework in Frameworks */,
 				BB379DCE12ED50CE0071CE08 /* CoreGraphics.framework in Frameworks */,
@@ -1528,7 +1526,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBA2178013E4F17E00FAB8AC /* libz.1.2.3.dylib */,
+				BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */,
 				2632E5AE13CCE48C005B1B1E /* AddressBook.framework */,
 				BBFD29431386FE6B0077904A /* MessageUI.framework */,
 				BB379DCD12ED50CE0071CE08 /* CoreGraphics.framework */,
@@ -1538,8 +1536,6 @@
 				BB379DE912ED51220071CE08 /* CFNetwork.framework */,
 				BB379DF012ED51310071CE08 /* SystemConfiguration.framework */,
 				BB379DF612ED513B0071CE08 /* MobileCoreServices.framework */,
-				BB379E0312ED51B50071CE08 /* libz.1.2.3.dylib */,
-				8FEB0DFF13E4E3870019B03D /* libz.1.2.5.dylib */,
 				BBDB664412EF92D50051A45C /* MapKit.framework */,
 				BBDB66A212EF9A0F0051A45C /* QuartzCore.framework */,
 				26B977C312F16511000F8F1F /* libicucore.A.dylib */,
@@ -2858,7 +2854,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Teams_Prefix.pch;
 				INFOPLIST_FILE = "Teams-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+				);
 				PRODUCT_NAME = Teams;
 				PROVISIONING_PROFILE = "D45909C7-11EA-4BA2-B5FE-BFF3E2CC8178";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D45909C7-11EA-4BA2-B5FE-BFF3E2CC8178";
@@ -2877,7 +2876,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Teams_Prefix.pch;
 				INFOPLIST_FILE = "Teams-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+				);
 				PRODUCT_NAME = Teams;
 				PROVISIONING_PROFILE = "EAB2D597-BAF8-4376-9960-21A2501FB508";
 				SDKROOT = iphoneos;
@@ -2917,7 +2919,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Teams_Prefix.pch;
 				INFOPLIST_FILE = "Teams-Info.plist";
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External\"",
+				);
 				PRODUCT_NAME = Teams;
 				PROVISIONING_PROFILE = "4BAD23BD-EB37-4A16-8403-5874930C2D24";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4BAD23BD-EB37-4A16-8403-5874930C2D24";
