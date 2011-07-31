@@ -11,7 +11,7 @@
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
 
-static NSString* const kImgInvite		= @"profile_pic_placeholder.png";
+static NSString* const kImgInvite		= @"button_invite.png";
 
 
 

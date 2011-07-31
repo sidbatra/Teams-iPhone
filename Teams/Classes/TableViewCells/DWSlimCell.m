@@ -6,7 +6,7 @@
 #import "DWSlimCell.h"
 #import "DWConstants.h"
 
-static NSString* const kImgSeparator	= @"hr_place_list.png";
+static NSString* const kImgSeparator	= @"hr_dark.png";
 static NSString* const kImgChevron		= @"chevron.png";
 
 
@@ -16,11 +16,11 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kColorNormalBg              [UIColor colorWithRed:0.2588 green:0.2588 blue:0.2627 alpha:1.0].CGColor
 #define kColorHighlightBg           [UIColor colorWithRed:0.2784 green:0.2784 blue:0.2784 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
-#define kColorTextPlain             [UIColor colorWithRed:0.9019 green:0.9019 blue:0.9019 alpha:1.0].CGColor
+#define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kTextX                      70
-#define kTextY                      21
+#define kTextX                      58
+#define kTextY                      15
 
 
 
@@ -78,7 +78,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 	if (self) {
         
         self.clipsToBounds  = YES;
-		CGRect frame        = CGRectMake(0,0,320,60);
+		CGRect frame        = CGRectMake(0,0,320,47);
 		
 		drawingLayer					= [DWSlimCellDrawingLayer layer];
 		drawingLayer.slimCell			= self;
@@ -90,7 +90,7 @@ static NSString* const kImgChevron		= @"chevron.png";
         [[self layer] addSublayer:drawingLayer];
         
         imageLayer					= [CALayer layer];
-		imageLayer.frame			= CGRectMake(0,0,60,60);
+		imageLayer.frame			= CGRectMake(0,0,47,47);
 		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
@@ -98,13 +98,13 @@ static NSString* const kImgChevron		= @"chevron.png";
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
-		chevronLayer.frame				= CGRectMake(308,24,6,11);
+		chevronLayer.frame				= CGRectMake(307,18,6,11);
 		chevronLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		chevronLayer.contents			= (id)[UIImage imageNamed:kImgChevron].CGImage;
 		[[self layer] addSublayer:chevronLayer];
 		
 		CALayer *separatorLayer			= [CALayer layer];
-		separatorLayer.frame			= CGRectMake(0,59,320,1);
+		separatorLayer.frame			= CGRectMake(0,46,320,1);
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
 		[[self layer] addSublayer:separatorLayer];
