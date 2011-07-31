@@ -11,7 +11,7 @@
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
 
-static NSString* const kImgInvite		= @"button_invite.png";
+static NSString* const kImgInvite		= @"slice_invite.png";
 
 
 

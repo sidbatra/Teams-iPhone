@@ -327,6 +327,8 @@
 		BBB3C3DC135FB21A00EA6087 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D4135FB21A00EA6087 /* share.png */; };
 		BBB3C3DD135FB21A00EA6087 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D5135FB21A00EA6087 /* share@2x.png */; };
 		BBBDCAEC13E50A8100022AE3 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */; };
+		BBBDCAF913E51F9C00022AE3 /* slice_invite.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBDCAF713E51F9C00022AE3 /* slice_invite.png */; };
+		BBBDCAFA13E51F9D00022AE3 /* slice_invite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBDCAF813E51F9C00022AE3 /* slice_invite@2x.png */; };
 		BBC0C6E012F4C56000291C33 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6D812F4C56000291C33 /* blackArrow.png */; };
 		BBC0C6E112F4C56000291C33 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6D912F4C56000291C33 /* blackArrow@2x.png */; };
 		BBC0C6E212F4C56000291C33 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6DA12F4C56000291C33 /* blueArrow.png */; };
@@ -927,6 +929,8 @@
 		BBB3C3D5135FB21A00EA6087 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share@2x.png"; path = "resources/share@2x.png"; sourceTree = "<group>"; };
 		BBB8ADE9132F337A00AC0566 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SynthesizeSingleton.h; path = External/SynthesizeSingleton.h; sourceTree = "<group>"; };
 		BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
+		BBBDCAF713E51F9C00022AE3 /* slice_invite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slice_invite.png; path = resources/slice_invite.png; sourceTree = "<group>"; };
+		BBBDCAF813E51F9C00022AE3 /* slice_invite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slice_invite@2x.png"; path = "resources/slice_invite@2x.png"; sourceTree = "<group>"; };
 		BBC0C6D812F4C56000291C33 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		BBC0C6D912F4C56000291C33 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		BBC0C6DA12F4C56000291C33 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -1222,6 +1226,8 @@
 		267A0DA112E818AC001B0604 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BBBDCAF713E51F9C00022AE3 /* slice_invite.png */,
+				BBBDCAF813E51F9C00022AE3 /* slice_invite@2x.png */,
 				8FEB0DFB13E4E0FD0019B03D /* search_box_bg.png */,
 				BBFFF5C713E4A8EF00739D9F /* button_cancel.png */,
 				BBFFF5C813E4A8EF00739D9F /* button_cancel@2x.png */,
@@ -2636,6 +2642,8 @@
 				BBFFF5CC13E4A8EF00739D9F /* button_cancel@2x.png in Resources */,
 				BBFFF5CD13E4A8EF00739D9F /* search_box_bg@2x.png in Resources */,
 				8FEB0DFC13E4E0FD0019B03D /* search_box_bg.png in Resources */,
+				BBBDCAF913E51F9C00022AE3 /* slice_invite.png in Resources */,
+				BBBDCAFA13E51F9D00022AE3 /* slice_invite@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
