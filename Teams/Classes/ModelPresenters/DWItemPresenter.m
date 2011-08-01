@@ -9,7 +9,8 @@
 #import "DWItemsHelper.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 320;
+static CGFloat const kCellHeight            = 320;
+static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
 
 
 
@@ -53,7 +54,7 @@ static CGFloat const kCellHeight  = 320;
             cell.attachmentType = kAttachmentImage;
     }
     else {
-        [cell setItemImage:nil];
+        [cell setItemImage:[UIImage imageNamed:kImgTextBackground]];
         
         cell.attachmentType = kAttachmentNone;
     }

@@ -8,22 +8,25 @@
 #import "DWConstants.h"
 
 #define kImgTouchIcon                       @"hand.png"
-#define kImgTouchIcon230                    @"hand_text.png"
+#define kImgTouchIcon230                    @"hand.png"
 #define kImgTouched                         @"touched.png"
 #define kImgPlay                            @"icon_video.png"
 #define kImgShare                           @"share.png"
-#define kImgShare230                        @"share_text.png"
+#define kImgShare230                        @"share.png"
 #define kImgHalo                            @"halo.png"
 #define kImgSeparator                       @"hr_dark.png"
+#define kOpacityImagesWithAttachment        1.0
+#define kOpacityImagesNoAttachment          0.5
 #define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
 #define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorLinkPressedWithAttachment     [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.2000 green:0.2000 blue:0.2000 alpha:1.0].CGColor
 #define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
-#define kColorTextNoAttachment              [UIColor colorWithRed:0.4000 green:0.4000 blue:0.4000 alpha:1.0].CGColor
-#define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
-#define kColorByLine                        [UIColor colorWithRed:0.2000 green:0.2000 blue:0.2000 alpha:1.0].CGColor
+#define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
+#define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
+#define kColorSubTextNoAttachment           [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
+#define kColorByLine                        [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
@@ -97,7 +100,8 @@
     
     BOOL isTextOnly = [itemCell attachmentType] == kAttachmentNone;
     
-    CGColorRef textColor = isTextOnly ? kColorTextNoAttachment : kColorTextWithAttachment;
+    CGColorRef textColor    = isTextOnly ? kColorTextNoAttachment : kColorTextWithAttachment;
+    CGColorRef subTextColor = isTextOnly ? kColorSubTextNoAttachment : textColor;
     
 	
 	if(![itemCell isHighlighted]) {
@@ -159,7 +163,7 @@
 
 		
 		//----------------------------------	
-		CGContextSetFillColorWithColor(context,textColor);
+		CGContextSetFillColorWithColor(context,subTextColor);
         
 		[itemCell.itemCreatedAt drawInRect:itemCell.createdAtRect 
                                   withFont:kFontItemCreatedAt];
@@ -186,7 +190,8 @@
     
     //----------------------------------
     if(![itemCell isHighlighted] || itemCell.isTouching) {
-        CGContextSetFillColorWithColor(context,textColor);
+        
+        CGContextSetFillColorWithColor(context,subTextColor);
         
         [itemCell.itemTouchesCountString drawInRect:itemCell.touchesCountRect
                                            withFont:kFontItemTouchesCount];
@@ -574,9 +579,11 @@
     
 	shareImageLayer.hidden			= NO;
 	shareImageLayer.contents		= (id)[UIImage imageNamed:_attachmentType == kAttachmentNone ? kImgShare230 : kImgShare].CGImage;
+    shareImageLayer.opacity         = _attachmentType == kAttachmentNone ? kOpacityImagesNoAttachment : kOpacityImagesWithAttachment;
 	
 	touchIconImageLayer.hidden		= NO;
 	touchIconImageLayer.contents	= (id)[UIImage imageNamed:_attachmentType == kAttachmentNone ? kImgTouchIcon230 : kImgTouchIcon].CGImage;
+    touchIconImageLayer.opacity     = _attachmentType == kAttachmentNone ? kOpacityImagesNoAttachment : kOpacityImagesWithAttachment;
 	
 	[self resetTouchImageIconPosition];
     [self resetCreatedAtPosition];
