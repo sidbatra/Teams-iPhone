@@ -11,7 +11,7 @@
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
 
-static NSString* const kMsgDataTextViewPlaceholder			= @"What are you upto?";
+static NSString* const kMsgDataTextViewPlaceholder			= @"What's happening?";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
@@ -91,6 +91,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     [super viewDidLoad];
     
     self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
+    self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
     
     [self.dataTextView becomeFirstResponder];
@@ -126,23 +127,23 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	/**
 	 * Revamp the entire UI when media is selected
 	 */
-	self.coverLabel.backgroundColor		= [UIColor blackColor];
+	//self.coverLabel.backgroundColor		= [UIColor blackColor];
 	
-	self.previewImageView.hidden		= NO;
+	//self.previewImageView.hidden		= NO;
 	self.transImageView.hidden			= NO;
 	
-	[self.cancelButton setBackgroundImage:[UIImage imageNamed:kImgDarkBackgroundCancelButton] 
-								 forState:UIControlStateNormal];
-	[self.cancelButton setBackgroundImage:[UIImage imageNamed:kImgDarkBackgroundCancelButtonActive]
-								 forState:UIControlStateHighlighted];
+	//[self.cancelButton setBackgroundImage:[UIImage imageNamed:kImgDarkBackgroundCancelButton] 
+	//							 forState:UIControlStateNormal];
+	//[self.cancelButton setBackgroundImage:[UIImage imageNamed:kImgDarkBackgroundCancelButtonActive]
+	//							 forState:UIControlStateHighlighted];
 	
-	[self.cameraButton setBackgroundImage:[UIImage imageNamed:kImgLightCameraButton]
-								 forState:UIControlStateNormal];
+	//[self.cameraButton setBackgroundImage:[UIImage imageNamed:kImgLightCameraButton]
+	//							 forState:UIControlStateNormal];
 
-	self.dataTextView.placeholderColor = [UIColor clearColor];
-	[self.dataTextView setNeedsDisplay];
+	//self.dataTextView.placeholderColor = [UIColor clearColor];
+	//[self.dataTextView setNeedsDisplay];
 	
-    self.dataTextView.textColor	= [UIColor whiteColor];
+    //self.dataTextView.textColor	= [UIColor whiteColor];
 }
 
 //----------------------------------------------------------------------------------------------------

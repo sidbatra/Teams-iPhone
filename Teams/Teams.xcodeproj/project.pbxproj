@@ -377,6 +377,8 @@
 		BBF350D813DC985B00B339A8 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D313DC985B00B339A8 /* DWGUIManager.m */; };
 		BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D513DC985B00B339A8 /* DWLocationManager.m */; };
 		BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */; };
+		BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */; };
+		BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */; };
 		BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */; };
 		BBF89636135022BA00B332CA /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89623135022BA00B332CA /* button_blue.png */; };
 		BBF89637135022BA00B332CA /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89624135022BA00B332CA /* button_blue@2x.png */; };
@@ -1003,6 +1005,8 @@
 		BBF350D513DC985B00B339A8 /* DWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLocationManager.m; sourceTree = "<group>"; };
 		BBF350D613DC985B00B339A8 /* DWPushNotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPushNotificationsManager.h; sourceTree = "<group>"; };
 		BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPushNotificationsManager.m; sourceTree = "<group>"; };
+		BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_dark_gradient_square.png; path = resources/bg_dark_gradient_square.png; sourceTree = "<group>"; };
+		BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_dark_gradient_square@2x.png"; path = "resources/bg_dark_gradient_square@2x.png"; sourceTree = "<group>"; };
 		BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWMediaPickerController.h; path = Classes/DWMediaPickerController.h; sourceTree = "<group>"; };
 		BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWMediaPickerController.m; path = Classes/DWMediaPickerController.m; sourceTree = "<group>"; };
 		BBF89623135022BA00B332CA /* button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_blue.png; path = resources/button_blue.png; sourceTree = "<group>"; };
@@ -1226,6 +1230,8 @@
 		267A0DA112E818AC001B0604 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */,
+				BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */,
 				BBBDCAF713E51F9C00022AE3 /* slice_invite.png */,
 				BBBDCAF813E51F9C00022AE3 /* slice_invite@2x.png */,
 				8FEB0DFB13E4E0FD0019B03D /* search_box_bg.png */,
@@ -2644,6 +2650,8 @@
 				8FEB0DFC13E4E0FD0019B03D /* search_box_bg.png in Resources */,
 				BBBDCAF913E51F9C00022AE3 /* slice_invite.png in Resources */,
 				BBBDCAFA13E51F9D00022AE3 /* slice_invite@2x.png in Resources */,
+				BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */,
+				BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
