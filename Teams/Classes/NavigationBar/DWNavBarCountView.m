@@ -3,7 +3,7 @@
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWNavBarNotificationsView.h"
+#import "DWNavBarCountView.h"
 
 static NSString* const kImgBackground       = @"button_notifications";
 static NSString* const kDefaultText         = @"0";
@@ -13,7 +13,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 /**
  * Private method and property declarations
  */
-@interface DWNavBarNotificationsView()
+@interface DWNavBarCountView()
 
 /**
  * Add the background button to the view
@@ -21,9 +21,9 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 - (void)createBackgroundButton;
 
 /**
- * Add the unread count to the view
+ * Add the count label to the view
  */
-- (void)createUnreadCountLabel;
+- (void)createCountLabel;
 
 @end
 
@@ -32,7 +32,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWNavBarNotificationsView
+@implementation DWNavBarCountView
 
 @synthesize delegate = _delegate;
 
@@ -42,7 +42,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
     
     if (self) {       
         [self createBackgroundButton];
-        [self createUnreadCountLabel];
+        [self createCountLabel];
     }
     
     return self;
@@ -66,19 +66,19 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUnreadCountLabel {
-    unreadCountLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
-    unreadCountLabel.userInteractionEnabled = NO;
-    unreadCountLabel.alpha                  = kDisabledOpacity;
-    unreadCountLabel.layer.cornerRadius     = 2.5;
-    unreadCountLabel.text                   = kDefaultText;
-    unreadCountLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    unreadCountLabel.textAlignment          = UITextAlignmentCenter;
-    unreadCountLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
-                                                              size:13];
+- (void)createCountLabel {
+    countLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
+    countLabel.userInteractionEnabled = NO;
+    countLabel.alpha                  = kDisabledOpacity;
+    countLabel.layer.cornerRadius     = 2.5;
+    countLabel.text                   = kDefaultText;
+    countLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    countLabel.textAlignment          = UITextAlignmentCenter;
+    countLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
+                                                        size:13];
     
 
-    [self addSubview:unreadCountLabel];
+    [self addSubview:countLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -89,9 +89,9 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setUnreadCount:(NSInteger)unreadCount {
-    unreadCountLabel.text   = [NSString stringWithFormat:@"%d",unreadCount];
-    unreadCountLabel.alpha  = unreadCount ? kEnabledOpacity : kDisabledOpacity;
+- (void)setCount:(NSInteger)count {
+    countLabel.text   = [NSString stringWithFormat:@"%d",count];
+    countLabel.alpha  = count ? kEnabledOpacity : kDisabledOpacity;
 }
 
 
@@ -104,7 +104,7 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 - (void)didTapBackgroundButton:(id)sender 
                          event:(id)event {
     
-    [self.delegate notificationsButtonClicked];
+    [self.delegate countButtonClicked];
 }
 
 @end

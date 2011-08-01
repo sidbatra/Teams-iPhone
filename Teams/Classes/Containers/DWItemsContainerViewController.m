@@ -130,7 +130,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadNotificationsButton {
     
     if(!self.navBarNotificationsView) {
-        self.navBarNotificationsView = [[[DWNavBarNotificationsView alloc] initWithFrame:CGRectMake(0,0,55,44)] autorelease];
+        self.navBarNotificationsView = [[[DWNavBarCountView alloc] initWithFrame:CGRectMake(0,0,55,44)] autorelease];
         self.navBarNotificationsView.delegate = self;
     }
     
@@ -287,7 +287,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
                    afterDelay:1.0];
     }
     else {
-        [self.navBarNotificationsView setUnreadCount:badgeNumber];
+        [self.navBarNotificationsView setCount:badgeNumber];
     }
 }
 
@@ -333,10 +333,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWNavBarNotificationsViewClicked
+#pragma mark DWNavBarCountViewDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)notificationsButtonClicked {
+- (void)countButtonClicked {
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.followedViewController
                                                              withActionName:@"notifications_clicked"];
     

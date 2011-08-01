@@ -8,7 +8,7 @@
 #import "DWContainerViewController.h"
 #import "DWSmallProfilePicView.h"
 #import "DWPostProgressView.h"
-#import "DWNavBarNotificationsView.h"
+#import "DWNavBarCountView.h"
 
 
 @class DWFollowedItemsViewController;
@@ -18,14 +18,14 @@
  * Primary view for the Feed tab and container for followed 
  * items view
  */
-@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWSmallProfilePicViewDelegate,DWNavBarNotificationsViewDelegate> {
+@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWSmallProfilePicViewDelegate,DWNavBarCountViewDelegate> {
     
 	DWFollowedItemsViewController	*_followedViewController;
     
 	DWPostProgressView				*_postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
     DWNavTitleView                  *_navTitleView;
-    DWNavBarNotificationsView       *_navBarNotificationsView;
+    DWNavBarCountView               *_navBarNotificationsView;
     
     BOOL                            _isProgressBarActive;
 }
@@ -48,7 +48,7 @@
 /**
  * Notifications view displaying the number of unread notifications
  */
-@property (nonatomic,retain) DWNavBarNotificationsView *navBarNotificationsView;
+@property (nonatomic,retain) DWNavBarCountView *navBarNotificationsView;
 
 /**
  * Nav bar title view for displaying user name and byline

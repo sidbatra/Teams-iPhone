@@ -359,7 +359,6 @@
 		BBD837681363D88700326E1F /* button_notifications@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBD837661363D88700326E1F /* button_notifications@2x.png */; };
 		BBDAFE3413E481E8009BC952 /* button_more_user.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDAFE3213E481E8009BC952 /* button_more_user.png */; };
 		BBDAFE3513E481E8009BC952 /* button_more_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBDAFE3313E481E8009BC952 /* button_more_user@2x.png */; };
-		BBDAFE3913E482DE009BC952 /* DWNavBarNotificationsView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDAFE3813E482DD009BC952 /* DWNavBarNotificationsView.m */; };
 		BBDB664512EF92D50051A45C /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB664412EF92D50051A45C /* MapKit.framework */; };
 		BBDB66A312EF9A0F0051A45C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBDB66A212EF9A0F0051A45C /* QuartzCore.framework */; };
 		BBE0067313E0EAAF00232EA4 /* DWInteractionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE0067213E0EAAF00232EA4 /* DWInteractionsController.m */; };
@@ -379,6 +378,7 @@
 		BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */; };
 		BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */; };
 		BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */; };
+		BBF670B713E7424700803B17 /* DWNavBarCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF670B613E7424700803B17 /* DWNavBarCountView.m */; };
 		BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */; };
 		BBF89636135022BA00B332CA /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89623135022BA00B332CA /* button_blue.png */; };
 		BBF89637135022BA00B332CA /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89624135022BA00B332CA /* button_blue@2x.png */; };
@@ -979,8 +979,6 @@
 		BBD837661363D88700326E1F /* button_notifications@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_notifications@2x.png"; path = "resources/button_notifications@2x.png"; sourceTree = "<group>"; };
 		BBDAFE3213E481E8009BC952 /* button_more_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_more_user.png; path = resources/button_more_user.png; sourceTree = "<group>"; };
 		BBDAFE3313E481E8009BC952 /* button_more_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_more_user@2x.png"; path = "resources/button_more_user@2x.png"; sourceTree = "<group>"; };
-		BBDAFE3713E482DD009BC952 /* DWNavBarNotificationsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavBarNotificationsView.h; sourceTree = "<group>"; };
-		BBDAFE3813E482DD009BC952 /* DWNavBarNotificationsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavBarNotificationsView.m; sourceTree = "<group>"; };
 		BBDB664412EF92D50051A45C /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		BBDB66A212EF9A0F0051A45C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BBE0067113E0EAAF00232EA4 /* DWInteractionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInteractionsController.h; sourceTree = "<group>"; };
@@ -1007,6 +1005,8 @@
 		BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPushNotificationsManager.m; sourceTree = "<group>"; };
 		BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_dark_gradient_square.png; path = resources/bg_dark_gradient_square.png; sourceTree = "<group>"; };
 		BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_dark_gradient_square@2x.png"; path = "resources/bg_dark_gradient_square@2x.png"; sourceTree = "<group>"; };
+		BBF670B513E7424700803B17 /* DWNavBarCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavBarCountView.h; sourceTree = "<group>"; };
+		BBF670B613E7424700803B17 /* DWNavBarCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavBarCountView.m; sourceTree = "<group>"; };
 		BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWMediaPickerController.h; path = Classes/DWMediaPickerController.h; sourceTree = "<group>"; };
 		BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWMediaPickerController.m; path = Classes/DWMediaPickerController.m; sourceTree = "<group>"; };
 		BBF89623135022BA00B332CA /* button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_blue.png; path = resources/button_blue.png; sourceTree = "<group>"; };
@@ -1673,8 +1673,8 @@
 				BBB1A8EF13D6050F00C08315 /* DWNavBarRightButtonView.m */,
 				2695C23513E3318000504B10 /* DWNavBarFillerView.h */,
 				2695C23613E3318000504B10 /* DWNavBarFillerView.m */,
-				BBDAFE3713E482DD009BC952 /* DWNavBarNotificationsView.h */,
-				BBDAFE3813E482DD009BC952 /* DWNavBarNotificationsView.m */,
+				BBF670B513E7424700803B17 /* DWNavBarCountView.h */,
+				BBF670B613E7424700803B17 /* DWNavBarCountView.m */,
 			);
 			name = NavigationBar;
 			path = Classes/NavigationBar;
@@ -2843,7 +2843,6 @@
 				26C7C0E813E0D29F000BD2F8 /* DWAddProfilePicViewController.m in Sources */,
 				BBE0067313E0EAAF00232EA4 /* DWInteractionsController.m in Sources */,
 				2695C23713E3318100504B10 /* DWNavBarFillerView.m in Sources */,
-				BBDAFE3913E482DE009BC952 /* DWNavBarNotificationsView.m in Sources */,
 				BBFFF5D213E4AFF000739D9F /* DWSmallProfilePicView.m in Sources */,
 				BBFFF5DE13E4B01600739D9F /* DWErrorView.m in Sources */,
 				BBFFF5DF13E4B01600739D9F /* DWLoadingView.m in Sources */,
@@ -2851,6 +2850,7 @@
 				BBFFF5E113E4B01600739D9F /* DWSpinnerOverlayView.m in Sources */,
 				BBFFF5E213E4B01600739D9F /* DWVideoView.m in Sources */,
 				BBFFF5E513E4B03500739D9F /* DWSearchBar.m in Sources */,
+				BBF670B713E7424700803B17 /* DWNavBarCountView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
