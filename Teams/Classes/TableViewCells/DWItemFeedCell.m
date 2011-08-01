@@ -21,7 +21,7 @@
 #define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorLinkPressedWithAttachment     [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
-#define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.2000 green:0.2000 blue:0.2000 alpha:1.0].CGColor
+#define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.6000 green:0.6000 blue:0.6000 alpha:1.0].CGColor
 #define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
 #define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
@@ -44,7 +44,7 @@
 #define kUnderlineHeight                    0.75
 #define kAtXOffset                          3
 #define kAtWidth                            7
-#define kByLineXOffset                      6
+#define kByLineXOffset                      8
 #define kTeamNameXOffset                    2
 #define kMaxTeamNameWidth                   305
 #define kItemDataX                          30
@@ -123,7 +123,7 @@
             if(![itemCell userButtonDisabled])
                 CGContextFillRect(context,CGRectMake(itemCell.userNameRect.origin.x,
                                                      itemCell.userNameRect.origin.y+kUnderlineYOffset,
-                                                     itemCell.userNameRect.size.width,
+                                                     itemCell.userNameRect.size.width-1,
                                                      kUnderlineHeight));
             
             
@@ -160,7 +160,7 @@
         if(![itemCell teamButtonDisabled])
             CGContextFillRect(context,CGRectMake(itemCell.teamNameRect.origin.x,
                                                  itemCell.teamNameRect.origin.y+kUnderlineYOffset,
-                                                 itemCell.teamNameRect.size.width,
+                                                 itemCell.teamNameRect.size.width-1,
                                                  kUnderlineHeight));
 		
 
