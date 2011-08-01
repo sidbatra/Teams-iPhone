@@ -26,7 +26,8 @@
 #define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
 #define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorSubTextNoAttachment           [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
-#define kColorByLine                        [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
+#define kColorByLineWithAttachment          [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
+#define kColorByLineNoAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
@@ -135,7 +136,9 @@
         }
         else {
             
-            CGContextSetFillColorWithColor(context,kColorByLine);
+            CGColorRef bylineTextColor = isTextOnly ? kColorByLineNoAttachment : kColorByLineWithAttachment;
+
+            CGContextSetFillColorWithColor(context,bylineTextColor);
             
             [itemCell.byline drawInRect:itemCell.bylineRect
                                withFont:kFontByline
