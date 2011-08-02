@@ -22,7 +22,7 @@
 /**
  * Provides an interface for adding profile picture.
  */
-@interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate,DWFacebookConnectDelegate> {
+@interface DWAddProfilePicViewController : UIViewController<UIActionSheetDelegate,DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate,DWFacebookConnectDelegate> {
     
     UIButton                    *_addProfilePicButton;
     UIImageView                 *_underlayImageView;

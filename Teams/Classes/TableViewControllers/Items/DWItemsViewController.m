@@ -8,10 +8,6 @@
 #import "DWItem.h"
 #import "NSObject+Helpers.h"
 
-static NSString* const kMsgActionSheetCancel        = @"Cancel";
-static NSString* const kMsgActionSheetDelete		= @"Delete";
-
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

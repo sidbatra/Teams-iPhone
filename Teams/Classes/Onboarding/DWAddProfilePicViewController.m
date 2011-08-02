@@ -186,7 +186,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
                                        autorelease];
     
     [picker prepareForImageWithPickerMode:pickerMode 
-                              withPreview:NO];
+                              withPreview:pickerMode == kMediaPickerLibraryMode];
     
     [self presentModalViewController:picker 
                             animated:NO];   
@@ -205,12 +205,36 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)addProfilePicButtonTapped:(id)sender {
-    [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
+    UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
+                                                              delegate:self 
+                                                     cancelButtonTitle:kMsgActionSheetCancel
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:kMsgActionSheetCamera,kMsgActionSheetLibrary,nil];
+    
+    [actionSheet showInView:self.view];
+    [actionSheet release];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender {
     [self.facebookConnect authenticate];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+    
+    if (buttonIndex == 0) 
+        [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+    
+    else if(buttonIndex == 1) 
+        [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];        
+    
 }
 
 
@@ -316,10 +340,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode {    
-    [self dismissModalViewControllerAnimated:NO];  
-    
-    if (imagePickerMode == kMediaPickerLibraryMode)
-        [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+    [self dismissModalViewControllerAnimated:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

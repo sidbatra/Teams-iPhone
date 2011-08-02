@@ -233,7 +233,7 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
                                        autorelease];
     
     [picker prepareForImageWithPickerMode:pickerMode 
-                              withPreview:NO];
+                              withPreview:pickerMode == kMediaPickerLibraryMode];
     
     [self.displayMediaPickerController presentModalViewController:picker 
                                                          animated:NO];   
@@ -290,7 +290,32 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)changeUserImageButtonTapped:(id)sender {
-    [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+        
+    UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
+                                                              delegate:self 
+                                                     cancelButtonTitle:kMsgActionSheetCancel
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:kMsgActionSheetCamera,kMsgActionSheetLibrary,nil];
+    
+    [actionSheet showInView:self.view];
+    [actionSheet release];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+    
+    if (buttonIndex == 0) 
+        [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+    
+    else if(buttonIndex == 1) 
+        [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];        
+    
 }
 
 
@@ -377,10 +402,7 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode {    
-    [self.displayMediaPickerController dismissModalViewControllerAnimated:NO];  
-    
-    if (imagePickerMode == kMediaPickerLibraryMode)
-        [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+    [self.displayMediaPickerController dismissModalViewControllerAnimated:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

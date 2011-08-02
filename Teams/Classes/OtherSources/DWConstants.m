@@ -258,6 +258,11 @@ NSString* const kNNotificationsError            = @"NNotificationsError";
 NSString* const kNInteractionsCreated           = @"NInteractionsCreated";
 NSString* const kNInteractionsError             = @"NInteractionsError";
 
+//----------------------------------------------------------------------------------------------------
+NSString* const kMsgActionSheetCancel           = @"Cancel";
+NSString* const kMsgActionSheetDelete           = @"Delete";
+NSString* const kMsgActionSheetCamera           = @"Take Photo";
+NSString* const kMsgActionSheetLibrary          = @"Choose from Library";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kNavTitleViewX                  = 60;

@@ -7,8 +7,6 @@
 #import "NSObject+Helpers.h"
 #import "DWContact.h"
 
-static NSString* const kMsgActionSheetCancel                = @"Cancel";
-static NSString* const kMsgActionSheetDelete                = @"Delete";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -333,6 +333,13 @@ extern NSString* const kNNotificationsError;
 extern NSString* const kNInteractionsCreated;
 extern NSString* const kNInteractionsError;
 
+/**
+ * Action sheet button text
+ */
+extern NSString* const kMsgActionSheetCancel;
+extern NSString* const kMsgActionSheetDelete;
+extern NSString* const kMsgActionSheetCamera;
+extern NSString* const kMsgActionSheetLibrary;
 
 /**
  * Nav bar sub view dimensions

@@ -16,7 +16,7 @@
 /*
  * Provides an interface for editing user details
  */
-@interface DWUpdateUserDetailsViewController : UIViewController<UITextFieldDelegate,DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate> {
+@interface DWUpdateUserDetailsViewController : UIViewController<UITextFieldDelegate,UIActionSheetDelegate,DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate> {
     
 	UITextField                 *_firstNameTextField;
     UITextField                 *_lastNameTextField;
