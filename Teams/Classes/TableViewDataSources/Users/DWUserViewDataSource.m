@@ -70,6 +70,9 @@
     self.teamMessage        = nil;
     self.watchingMessage    = nil;
     
+    DWUser *user = [DWUser fetch:_userID];
+    [user destroy];
+    
     [super dealloc];
 }
 
@@ -160,8 +163,6 @@
       
     [self.delegate userLoaded:user];
     [self.delegate reloadTableView];
-    
-    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
