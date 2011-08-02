@@ -164,7 +164,7 @@ static NSString* const kMsgProcesssing                  = @"Searching existing T
 	}
 	else {			
         [self freezeUI];
-        self.password = [@"password" encrypt];        
+        self.password = [[NSString randomString] encrypt];        
         
         [self.usersController createUserWithEmail:self.emailTextField.text 
                                       andPassword:self.password];	
