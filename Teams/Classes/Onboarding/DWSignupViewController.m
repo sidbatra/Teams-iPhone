@@ -15,6 +15,7 @@
 #import "DWGUIManager.h"
 
 
+static NSString* const kRegexNonWorkEmails              = @"@(gmail|yahoo|aim|hotmail|aol|live|msn)";
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kNavBarRightButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
@@ -22,6 +23,7 @@ static NSString* const kMsgIncomplete                   = @"Enter your work emai
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
 static NSString* const kMsgProcesssing                  = @"Searching existing Teams...";
+static NSString* const kMsgEmailError                   = @"Enter your work email";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -135,6 +137,20 @@ static NSString* const kMsgProcesssing                  = @"Searching existing T
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isWorkEmail:(NSString*)email {
+    
+    NSError *error              = NULL;
+    NSRegularExpression *regex  = [NSRegularExpression regularExpressionWithPattern:kRegexNonWorkEmails
+                                                                            options:NSRegularExpressionCaseInsensitive
+                                                                             error:&error];
+    NSUInteger numberOfMatches  = [regex numberOfMatchesInString:email
+                                                         options:0
+                                                           range:NSMakeRange(0, [email length])];
+    
+    return numberOfMatches == 0;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)freezeUI {	
     self.spinnerContainerView.hidden = NO;
     [self.spinnerOverlayView enable];
@@ -158,16 +174,33 @@ static NSString* const kMsgProcesssing                  = @"Searching existing T
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayIncorrectEmailError {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgEmailError
+                                                   delegate:nil 
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles: nil];
+    [alert show];
+    [alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createUser {	
 	if (self.emailTextField.text.length == 0) {        
         [self displayEmptyFieldsError];
 	}
 	else {			
-        [self freezeUI];
-        self.password = [[NSString randomString] encrypt];        
-        
-        [self.usersController createUserWithEmail:self.emailTextField.text 
-                                      andPassword:self.password];	
+        if ([self isWorkEmail:self.emailTextField.text]) {
+            
+            [self freezeUI];
+            self.password = [[NSString randomString] encrypt];        
+            
+            [self.usersController createUserWithEmail:self.emailTextField.text 
+                                          andPassword:self.password];	
+        }
+        else {
+            [self displayIncorrectEmailError];
+        }
     }
 }
 
@@ -177,9 +210,15 @@ static NSString* const kMsgProcesssing                  = @"Searching existing T
         [self displayEmptyFieldsError];
 	}
 	else {		
-        [self freezeUI];
-        [self.usersController updateUserHavingID:_userID 
-                                       withEmail:self.emailTextField.text];
+        if ([self isWorkEmail:self.emailTextField.text]) {
+            
+            [self freezeUI];
+            [self.usersController updateUserHavingID:_userID 
+                                           withEmail:self.emailTextField.text];
+        }
+        else {
+            [self displayIncorrectEmailError];
+        }
     }    
 }
 
