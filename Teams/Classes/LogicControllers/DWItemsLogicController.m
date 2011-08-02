@@ -82,9 +82,7 @@
                                                                andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
     
     DWItem *item = [DWItem fetch:itemID];
-    return !item.isTouched;
-	//return YES;
-    //!item.isTouched && ![item.user isCurrentUser];
+    return !item.isTouched && ![item.user isCurrentUser];
 }
 
 //----------------------------------------------------------------------------------------------------
