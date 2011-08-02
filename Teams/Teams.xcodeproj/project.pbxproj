@@ -254,6 +254,9 @@
 		BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */; };
 		BB4D03C613E799B200A1E791 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03C313E799B200A1E791 /* DWFacebookConnect.m */; };
 		BB4D03C713E799B200A1E791 /* DWTwitterConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03C513E799B200A1E791 /* DWTwitterConnect.m */; };
+		BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */; };
+		BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */; };
+		BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CD13E799E400A1E791 /* DWSharingManager.m */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
@@ -430,9 +433,6 @@
 		BBF89D4F1352CB5400B332CA /* chevron.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89D4D1352CB5400B332CA /* chevron.png */; };
 		BBF89D501352CB5400B332CA /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89D4E1352CB5400B332CA /* chevron@2x.png */; };
 		BBFD29441386FE6B0077904A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBFD29431386FE6B0077904A /* MessageUI.framework */; };
-		BBFD2948138701280077904A /* DWSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFD2947138701280077904A /* DWSharingManager.m */; };
-		BBFD298C1387A6D20077904A /* DWShareItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFD298A1387A6D20077904A /* DWShareItemViewController.m */; };
-		BBFD298D1387A6D20077904A /* DWShareItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFD298B1387A6D20077904A /* DWShareItemViewController.xib */; };
 		BBFD299B1387A7190077904A /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = BBFD29911387A7190077904A /* Facebook.m */; };
 		BBFD299C1387A7190077904A /* FBConnect.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBFD29921387A7190077904A /* FBConnect.bundle */; };
 		BBFD299D1387A7190077904A /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BBFD29941387A7190077904A /* FBDialog.bundle */; };
@@ -818,6 +818,11 @@
 		BB4D03C313E799B200A1E791 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFacebookConnect.m; sourceTree = "<group>"; };
 		BB4D03C413E799B200A1E791 /* DWTwitterConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTwitterConnect.h; sourceTree = "<group>"; };
 		BB4D03C513E799B200A1E791 /* DWTwitterConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTwitterConnect.m; sourceTree = "<group>"; };
+		BB4D03C913E799E400A1E791 /* DWShareItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWShareItemViewController.h; sourceTree = "<group>"; };
+		BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareItemViewController.m; sourceTree = "<group>"; };
+		BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareItemViewController.xib; sourceTree = "<group>"; };
+		BB4D03CC13E799E400A1E791 /* DWSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSharingManager.h; sourceTree = "<group>"; };
+		BB4D03CD13E799E400A1E791 /* DWSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSharingManager.m; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
@@ -1076,11 +1081,6 @@
 		BBF89D4D1352CB5400B332CA /* chevron.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = chevron.png; path = resources/chevron.png; sourceTree = "<group>"; };
 		BBF89D4E1352CB5400B332CA /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "resources/chevron@2x.png"; sourceTree = "<group>"; };
 		BBFD29431386FE6B0077904A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		BBFD2946138701280077904A /* DWSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSharingManager.h; path = Classes/DWSharingManager.h; sourceTree = "<group>"; };
-		BBFD2947138701280077904A /* DWSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSharingManager.m; path = Classes/DWSharingManager.m; sourceTree = "<group>"; };
-		BBFD29891387A6D20077904A /* DWShareItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWShareItemViewController.h; path = Classes/DWShareItemViewController.h; sourceTree = "<group>"; };
-		BBFD298A1387A6D20077904A /* DWShareItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWShareItemViewController.m; path = Classes/DWShareItemViewController.m; sourceTree = "<group>"; };
-		BBFD298B1387A6D20077904A /* DWShareItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWShareItemViewController.xib; path = Classes/DWShareItemViewController.xib; sourceTree = "<group>"; };
 		BBFD29901387A7190077904A /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		BBFD29911387A7190077904A /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		BBFD29921387A7190077904A /* FBConnect.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FBConnect.bundle; sourceTree = "<group>"; };
@@ -1500,8 +1500,8 @@
 				BBF8988013C901F900D5C5FB /* Networking */,
 				BB8499C113C27AA400D9789D /* Onboarding */,
 				BB272C0D13D0B77300FDACA1 /* SegmentedControl */,
-				BBFD29A11388241D0077904A /* Sharing */,
 				BBF8987413C6B47300D5C5FB /* Session */,
+				BB4D03C813E799E400A1E791 /* Sharing */,
 				BBF8986D13C6B45500D5C5FB /* TabBar */,
 				BB272B3D13CFCDE100FDACA1 /* TableViewCells */,
 				BB272B2713CFCC4E00FDACA1 /* TableViewControllers */,
@@ -1888,6 +1888,19 @@
 			);
 			name = Connect;
 			path = Classes/Connect;
+			sourceTree = "<group>";
+		};
+		BB4D03C813E799E400A1E791 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D03C913E799E400A1E791 /* DWShareItemViewController.h */,
+				BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */,
+				BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */,
+				BB4D03CC13E799E400A1E791 /* DWSharingManager.h */,
+				BB4D03CD13E799E400A1E791 /* DWSharingManager.m */,
+			);
+			name = Sharing;
+			path = Classes/Sharing;
 			sourceTree = "<group>";
 		};
 		BB572A0513D25C020060A351 /* LogicControllers */ = {
@@ -2305,18 +2318,6 @@
 			path = External/Facebook;
 			sourceTree = "<group>";
 		};
-		BBFD29A11388241D0077904A /* Sharing */ = {
-			isa = PBXGroup;
-			children = (
-				BBFD2946138701280077904A /* DWSharingManager.h */,
-				BBFD2947138701280077904A /* DWSharingManager.m */,
-				BBFD29891387A6D20077904A /* DWShareItemViewController.h */,
-				BBFD298A1387A6D20077904A /* DWShareItemViewController.m */,
-				BBFD298B1387A6D20077904A /* DWShareItemViewController.xib */,
-			);
-			name = Sharing;
-			sourceTree = "<group>";
-		};
 		BBFD29BD1388462E0077904A /* Twitter */ = {
 			isa = PBXGroup;
 			children = (
@@ -2588,7 +2589,6 @@
 				BBAEA5DB137113BD006A50C8 /* icon_video@2x.png in Resources */,
 				BB8397201373B02D00343955 /* onboarding.png in Resources */,
 				BB8397211373B02D00343955 /* onboarding@2x.png in Resources */,
-				BBFD298D1387A6D20077904A /* DWShareItemViewController.xib in Resources */,
 				BBFD299C1387A7190077904A /* FBConnect.bundle in Resources */,
 				BBFD299D1387A7190077904A /* FBDialog.bundle in Resources */,
 				BBFD29AD13883BB70077904A /* intro_pane_1.png in Resources */,
@@ -2665,6 +2665,7 @@
 				BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */,
 				BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */,
 				BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */,
+				BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2708,8 +2709,6 @@
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
 				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
-				BBFD2948138701280077904A /* DWSharingManager.m in Sources */,
-				BBFD298C1387A6D20077904A /* DWShareItemViewController.m in Sources */,
 				BBFD299B1387A7190077904A /* Facebook.m in Sources */,
 				BBFD299E1387A7190077904A /* FBDialog.m in Sources */,
 				BBFD299F1387A7190077904A /* FBLoginDialog.m in Sources */,
@@ -2864,6 +2863,8 @@
 				BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */,
 				BB4D03C613E799B200A1E791 /* DWFacebookConnect.m in Sources */,
 				BB4D03C713E799B200A1E791 /* DWTwitterConnect.m in Sources */,
+				BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */,
+				BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
