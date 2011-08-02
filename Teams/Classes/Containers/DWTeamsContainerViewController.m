@@ -168,6 +168,7 @@ static NSInteger const kMinimumQueryLength			= 1;
     self.searchViewController.view.hidden   = YES;
     self.searchBar.hidden                   = YES;
     
+    [self.searchViewController resetWithSpinnerHidden:YES];
     [self.searchBar resignActive];
     
     self.navTitleView.hidden                = NO;

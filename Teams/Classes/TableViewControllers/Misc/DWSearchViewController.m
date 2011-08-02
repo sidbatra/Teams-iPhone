@@ -85,14 +85,23 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)search:(NSString*)query {
+    [self resetWithSpinnerHidden:NO];
     [self.searchDataSource loadDataForQuery:query];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)resetWithSpinnerHidden:(BOOL)isSpinning {
+    [self.searchDataSource clean];
+    [self reloadTableView];
+    self.loadingView.hidden = isSpinning;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.view.hidden = YES;
+    self.view.hidden        = YES;
+    self.loadingView.hidden = YES;
 }
 
 @end

@@ -55,4 +55,9 @@
  */
 - (void)search:(NSString*)query;
 
+/**
+ * Reset the table view to an empty state with or without a spinner
+ */
+- (void)resetWithSpinnerHidden:(BOOL)isSpinning;
+
 @end
