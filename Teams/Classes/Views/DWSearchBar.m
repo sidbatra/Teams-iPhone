@@ -67,12 +67,14 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                 = [[[UITextField alloc] initWithFrame:CGRectMake(12,11,246,30)] autorelease];
-    searchTextField.delegate        = self;
-    searchTextField.font            = [UIFont fontWithName:@"HelveticaNeue" size:17];	
-	searchTextField.textColor       = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-	searchTextField.textAlignment   = UITextAlignmentLeft;
-    searchTextField.placeholder     = kMsgSearchPlaceholder;
+    searchTextField                         = [[[UITextField alloc] initWithFrame:CGRectMake(12,11,246,30)] autorelease];
+    searchTextField.delegate                = self;
+    searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
+    searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;
+    searchTextField.font                    = [UIFont fontWithName:@"HelveticaNeue" size:17];	
+	searchTextField.textColor               = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+	searchTextField.textAlignment           = UITextAlignmentLeft;
+    searchTextField.placeholder             = kMsgSearchPlaceholder;
     
     
     [self addSubview:searchTextField];
