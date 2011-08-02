@@ -114,8 +114,6 @@
 		267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */; };
 		2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */; };
 		2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */; };
-		268B56831356682800BB43DC /* DWCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268B56811356682800BB43DC /* DWCameraOverlayViewController.m */; };
-		268B56841356682800BB43DC /* DWCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 268B56821356682800BB43DC /* DWCameraOverlayViewController.xib */; };
 		2695C22C13E21C7600504B10 /* button_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 2695C22813E21C7600504B10 /* button_more.png */; };
 		2695C22D13E21C7600504B10 /* button_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2695C22913E21C7600504B10 /* button_more@2x.png */; };
 		2695C22E13E21C7600504B10 /* hr_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 2695C22A13E21C7600504B10 /* hr_gray.png */; };
@@ -251,6 +249,9 @@
 		BB4051CF12F2377500916688 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051B412F2377500916688 /* MBProgressHUD.m */; };
 		BB4051D112F2377500916688 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BA12F2377500916688 /* RegexKitLite.m */; };
 		BB4051D212F2377500916688 /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */; };
+		BB4D03BE13E7996500A1E791 /* DWCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BA13E7996500A1E791 /* DWCameraOverlayViewController.m */; };
+		BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03BB13E7996500A1E791 /* DWCameraOverlayViewController.xib */; };
+		BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
@@ -379,7 +380,6 @@
 		BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */; };
 		BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */; };
 		BBF670B713E7424700803B17 /* DWNavBarCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF670B613E7424700803B17 /* DWNavBarCountView.m */; };
-		BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */; };
 		BBF89636135022BA00B332CA /* button_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89623135022BA00B332CA /* button_blue.png */; };
 		BBF89637135022BA00B332CA /* button_blue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89624135022BA00B332CA /* button_blue@2x.png */; };
 		BBF89638135022BA00B332CA /* button_gray_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF89625135022BA00B332CA /* button_gray_dark.png */; };
@@ -603,9 +603,6 @@
 		2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSplashScreenViewController.h; path = Classes/Onboarding/DWSplashScreenViewController.h; sourceTree = "<group>"; };
 		2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSplashScreenViewController.m; path = Classes/Onboarding/DWSplashScreenViewController.m; sourceTree = "<group>"; };
 		2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSplashScreenViewController.xib; path = Classes/Onboarding/DWSplashScreenViewController.xib; sourceTree = "<group>"; };
-		268B56801356682800BB43DC /* DWCameraOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCameraOverlayViewController.h; path = Classes/DWCameraOverlayViewController.h; sourceTree = "<group>"; };
-		268B56811356682800BB43DC /* DWCameraOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCameraOverlayViewController.m; path = Classes/DWCameraOverlayViewController.m; sourceTree = "<group>"; };
-		268B56821356682800BB43DC /* DWCameraOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCameraOverlayViewController.xib; path = Classes/DWCameraOverlayViewController.xib; sourceTree = "<group>"; };
 		2695C22813E21C7600504B10 /* button_more.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_more.png; path = resources/button_more.png; sourceTree = "<group>"; };
 		2695C22913E21C7600504B10 /* button_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_more@2x.png"; path = "resources/button_more@2x.png"; sourceTree = "<group>"; };
 		2695C22A13E21C7600504B10 /* hr_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hr_gray.png; path = resources/hr_gray.png; sourceTree = "<group>"; };
@@ -812,6 +809,11 @@
 		BB4051BA12F2377500916688 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		BB4051BB12F2377500916688 /* RKLMatchEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLMatchEnumerator.h; sourceTree = "<group>"; };
 		BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLMatchEnumerator.m; sourceTree = "<group>"; };
+		BB4D03B913E7996500A1E791 /* DWCameraOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCameraOverlayViewController.h; sourceTree = "<group>"; };
+		BB4D03BA13E7996500A1E791 /* DWCameraOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCameraOverlayViewController.m; sourceTree = "<group>"; };
+		BB4D03BB13E7996500A1E791 /* DWCameraOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWCameraOverlayViewController.xib; sourceTree = "<group>"; };
+		BB4D03BC13E7996500A1E791 /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaPickerController.h; sourceTree = "<group>"; };
+		BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMediaPickerController.m; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
@@ -1007,8 +1009,6 @@
 		BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_dark_gradient_square@2x.png"; path = "resources/bg_dark_gradient_square@2x.png"; sourceTree = "<group>"; };
 		BBF670B513E7424700803B17 /* DWNavBarCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavBarCountView.h; sourceTree = "<group>"; };
 		BBF670B613E7424700803B17 /* DWNavBarCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavBarCountView.m; sourceTree = "<group>"; };
-		BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWMediaPickerController.h; path = Classes/DWMediaPickerController.h; sourceTree = "<group>"; };
-		BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWMediaPickerController.m; path = Classes/DWMediaPickerController.m; sourceTree = "<group>"; };
 		BBF89623135022BA00B332CA /* button_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_blue.png; path = resources/button_blue.png; sourceTree = "<group>"; };
 		BBF89624135022BA00B332CA /* button_blue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_blue@2x.png"; path = "resources/button_blue@2x.png"; sourceTree = "<group>"; };
 		BBF89625135022BA00B332CA /* button_gray_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_gray_dark.png; path = resources/button_gray_dark.png; sourceTree = "<group>"; };
@@ -1480,11 +1480,14 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BB4D03B813E7996500A1E791 /* Camera */,
 				080E96DDFE201D6D7F000001 /* App Delegate */,
-				BB641D7E134D446F002A2325 /* Camera */,
 				BB272B3613CFCCFE00FDACA1 /* Containers */,
 				BBF898A013CAC53400D5C5FB /* Creation */,
+				BB0CFE711302701900F38552 /* Entitlements */,
 				BB272B5013CFCE3400FDACA1 /* Extensions */,
+				BB40518412F2373E00916688 /* External */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				BBF8989513CA305400D5C5FB /* Helpers */,
 				BB572A0513D25C020060A351 /* LogicControllers */,
 				BBF350D113DC985A00B339A8 /* Managers */,
@@ -1506,9 +1509,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				267A0DA112E818AC001B0604 /* Images */,
-				BB0CFE711302701900F38552 /* Entitlements */,
-				BB40518412F2373E00916688 /* External */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				BBFFF5D313E4B01600739D9F /* Views */,
 			);
@@ -1864,6 +1864,19 @@
 			path = External/REGEXKIT;
 			sourceTree = "<group>";
 		};
+		BB4D03B813E7996500A1E791 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D03B913E7996500A1E791 /* DWCameraOverlayViewController.h */,
+				BB4D03BA13E7996500A1E791 /* DWCameraOverlayViewController.m */,
+				BB4D03BB13E7996500A1E791 /* DWCameraOverlayViewController.xib */,
+				BB4D03BC13E7996500A1E791 /* DWMediaPickerController.h */,
+				BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */,
+			);
+			name = Camera;
+			path = Classes/Camera;
+			sourceTree = "<group>";
+		};
 		BB572A0513D25C020060A351 /* LogicControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1891,18 +1904,6 @@
 				BB572A4D13D40F690060A351 /* DWTeamMembersViewController.m */,
 			);
 			path = Users;
-			sourceTree = "<group>";
-		};
-		BB641D7E134D446F002A2325 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				BBF893E8134FC0DE00B332CA /* DWMediaPickerController.h */,
-				BBF893E9134FC0DE00B332CA /* DWMediaPickerController.m */,
-				268B56801356682800BB43DC /* DWCameraOverlayViewController.h */,
-				268B56811356682800BB43DC /* DWCameraOverlayViewController.m */,
-				268B56821356682800BB43DC /* DWCameraOverlayViewController.xib */,
-			);
-			name = Camera;
 			sourceTree = "<group>";
 		};
 		BB8499C113C27AA400D9789D /* Onboarding */ = {
@@ -2487,7 +2488,6 @@
 				BBE24FD513563C5100A90B44 /* button_gray_dark_cancel_active@2x.png in Resources */,
 				BBE24FD613563C5100A90B44 /* button_gray_light_cancel_active.png in Resources */,
 				BBE24FD713563C5100A90B44 /* button_gray_light_cancel_active@2x.png in Resources */,
-				268B56841356682800BB43DC /* DWCameraOverlayViewController.xib in Resources */,
 				BB7658A41358F21A00ABB926 /* main_bg.png in Resources */,
 				BB7658A51358F21A00ABB926 /* main_bg@2x.png in Resources */,
 				BB76591D1358F89D00ABB926 /* search_off.png in Resources */,
@@ -2655,6 +2655,7 @@
 				BBBDCAFA13E51F9D00022AE3 /* slice_invite@2x.png in Resources */,
 				BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */,
 				BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */,
+				BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2698,8 +2699,6 @@
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
 				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
-				BBF893EA134FC0DE00B332CA /* DWMediaPickerController.m in Sources */,
-				268B56831356682800BB43DC /* DWCameraOverlayViewController.m in Sources */,
 				BBFD2948138701280077904A /* DWSharingManager.m in Sources */,
 				BBFD298C1387A6D20077904A /* DWShareItemViewController.m in Sources */,
 				BBFD299B1387A7190077904A /* Facebook.m in Sources */,
@@ -2854,6 +2853,8 @@
 				BBFFF5E213E4B01600739D9F /* DWVideoView.m in Sources */,
 				BBFFF5E513E4B03500739D9F /* DWSearchBar.m in Sources */,
 				BBF670B713E7424700803B17 /* DWNavBarCountView.m in Sources */,
+				BB4D03BE13E7996500A1E791 /* DWCameraOverlayViewController.m in Sources */,
+				BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
