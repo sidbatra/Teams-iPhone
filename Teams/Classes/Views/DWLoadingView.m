@@ -43,7 +43,7 @@ static NSString* const kImgBackground	= @"main_bg.png";
     self = [super initWithFrame:frame];
     
     if (self) {
-        [self createBackground];
+        //[self createBackground];
         [self createSpinner];
         [self createText];
     }
