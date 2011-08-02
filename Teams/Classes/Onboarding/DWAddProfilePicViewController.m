@@ -219,6 +219,8 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender {
+    
+    [self freezeUI];
     self.facebookConnect.accessToken = self.userFBToken;
     
     if ([self.facebookConnect authenticate])
@@ -264,7 +266,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
-												   delegate:nil 
+												   delegate:nil
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
@@ -366,11 +368,6 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)fbAuthenticating {
-    
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticationFailed {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:kMsgFacebookError
@@ -379,6 +376,8 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 										  otherButtonTitles: nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -388,6 +387,8 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
     
     self.userImage                  = [UIImage imageWithData:result];
     self.underlayImageView.image    = [UIImage imageWithData:result];
+    
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -399,6 +400,8 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 										  otherButtonTitles: nil];
 	[alert show];
 	[alert release];
+    
+    [self unfreezeUI];
 }
 
 
