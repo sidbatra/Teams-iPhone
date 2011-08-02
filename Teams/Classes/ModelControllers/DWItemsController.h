@@ -80,6 +80,11 @@
  */
 - (void)getItemWithID:(NSInteger)itemID;
 
+/**
+ * Destroy the given itemID
+ */
+- (void)deleteItemWithID:(NSInteger)itemID;
+
 @end
 
 
@@ -147,5 +152,15 @@
  * Error message encourntered while fetching an individual item
  */
 - (void)itemError:(NSString*)error;
+
+/**
+ * Item succesfully deleted
+ */
+- (void)itemDeleted:(DWItem*)item;
+
+/**
+ * Error deleting item
+ */
+- (void)itemDeleteError:(NSString*)error;
 
 @end

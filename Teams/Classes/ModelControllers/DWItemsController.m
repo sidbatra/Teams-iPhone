@@ -19,6 +19,7 @@ static NSString* const kFollowedItemsURI    = @"/followed/items.json?before=%d";
 static NSString* const kUserItemsURI        = @"/users/%d/items.json?before=%d";
 static NSString* const kTeamItemsURI        = @"/teams/%d/items.json?before=%d";
 static NSString* const kItemURI             = @"/items/%d.json?";
+static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 
 
 /**
@@ -97,6 +98,16 @@ static NSString* const kItemURI             = @"/items/%d.json?";
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(itemError:) 
                                                      name:kNItemError
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(itemDeleted:) 
+                                                     name:kNItemDeleted
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(itemDeleteError:) 
+                                                     name:kNItemDeleteError
                                                    object:nil];
     }
     
@@ -262,6 +273,25 @@ static NSString* const kItemURI             = @"/items/%d.json?";
                                                  successNotification:kNItemLoaded
                                                    errorNotification:kNItemError
                                                        requestMethod:kGet
+                                                          resourceID:itemID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Destroy
+
+//----------------------------------------------------------------------------------------------------
+- (void)deleteItemWithID:(NSInteger)itemID {
+    
+    NSString *localURL = [NSString stringWithFormat:kItemDeleteURI,
+                          itemID];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNItemDeleted
+                                                   errorNotification:kNItemDeleteError
+                                                       requestMethod:kDelete
                                                           resourceID:itemID];
 }
 
@@ -471,6 +501,39 @@ static NSString* const kItemURI             = @"/items/%d.json?";
     NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
     
     if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:errorSel
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemDeleted:(NSNotification*)notification {
+    
+    SEL itemsSel = @selector(itemDeleted:);
+    
+    if(![self.delegate respondsToSelector:itemsSel])
+        return;
+    
+    
+    NSDictionary *userInfo  = [notification userInfo];    
+    NSDictionary *data      = [userInfo objectForKey:kKeyData];
+    
+    DWItem *item            = [DWItem create:data];
+    
+    [self.delegate performSelector:itemsSel
+                        withObject:item];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemDeleteError:(NSNotification*)notification {
+    
+    SEL errorSel = @selector(itemDeleteError:);
+    
+    if(![self.delegate respondsToSelector:errorSel])
         return;
     
     
