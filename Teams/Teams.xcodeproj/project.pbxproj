@@ -13,8 +13,6 @@
 		2612D62C13639610005AE9E5 /* static_button_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62A13639610005AE9E5 /* static_button_active.png */; };
 		2612D62D13639610005AE9E5 /* static_button_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62B13639610005AE9E5 /* static_button_active@2x.png */; };
 		261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */ = {isa = PBXBuildFile; fileRef = 261FAA7D13DFBB1500A2CB08 /* DWMediaController.m */; };
-		2620296113DD10660003B7C0 /* DWInvitePeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2620295E13DD10660003B7C0 /* DWInvitePeopleViewController.xib */; };
-		2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2620296013DD10660003B7C0 /* DWInvitePeopleViewController.m */; };
 		262415F213D21F1E00474D4B /* DWRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 262415F113D21F1E00474D4B /* DWRequestHelper.m */; };
 		26254CFD13029E6F00D83345 /* image_placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CD713029E6F00D83345 /* image_placeholder.png */; };
 		26254CFE13029E6F00D83345 /* media_bar_camera_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 26254CD813029E6F00D83345 /* media_bar_camera_button.png */; };
@@ -69,10 +67,6 @@
 		2632E57613CCDFCA005B1B1E /* DWOnboardingContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */; };
 		2632E57913CCDFCA005B1B1E /* DWSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */; };
 		2632E57A13CCDFCA005B1B1E /* DWSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */; };
-		2632E58113CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E57F13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m */; };
-		2632E58213CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E58013CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib */; };
-		2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E58513CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m */; };
-		2632E58813CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2632E58613CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib */; };
 		2632E59313CCE0D7005B1B1E /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E59213CCE0D7005B1B1E /* DWUsersController.m */; };
 		2632E5AB13CCE39B005B1B1E /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E5A613CCE39B005B1B1E /* ABContact.m */; };
 		2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2632E5A813CCE39B005B1B1E /* ABContactsHelper.m */; };
@@ -257,6 +251,12 @@
 		BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */; };
 		BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */; };
 		BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CD13E799E400A1E791 /* DWSharingManager.m */; };
+		BB4D03DB13E79A6900A1E791 /* DWInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D313E79A6900A1E791 /* DWInvitePeopleViewController.m */; };
+		BB4D03DC13E79A6900A1E791 /* DWInvitePeopleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03D413E79A6900A1E791 /* DWInvitePeopleViewController.xib */; };
+		BB4D03DD13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D613E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m */; };
+		BB4D03DE13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03D713E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib */; };
+		BB4D03DF13E79A6900A1E791 /* DWUpdateUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D913E79A6900A1E791 /* DWUpdateUserDetailsViewController.m */; };
+		BB4D03E013E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03DA13E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
@@ -481,9 +481,6 @@
 		2612D62B13639610005AE9E5 /* static_button_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "static_button_active@2x.png"; path = "resources/static_button_active@2x.png"; sourceTree = "<group>"; };
 		261FAA7C13DFBB1500A2CB08 /* DWMediaController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMediaController.h; sourceTree = "<group>"; };
 		261FAA7D13DFBB1500A2CB08 /* DWMediaController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMediaController.m; sourceTree = "<group>"; };
-		2620295E13DD10660003B7C0 /* DWInvitePeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWInvitePeopleViewController.xib; path = Classes/DWInvitePeopleViewController.xib; sourceTree = "<group>"; };
-		2620295F13DD10660003B7C0 /* DWInvitePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWInvitePeopleViewController.h; path = Classes/DWInvitePeopleViewController.h; sourceTree = "<group>"; };
-		2620296013DD10660003B7C0 /* DWInvitePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWInvitePeopleViewController.m; path = Classes/DWInvitePeopleViewController.m; sourceTree = "<group>"; };
 		262415F013D21F1E00474D4B /* DWRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestHelper.h; sourceTree = "<group>"; };
 		262415F113D21F1E00474D4B /* DWRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestHelper.m; sourceTree = "<group>"; };
 		26254CD713029E6F00D83345 /* image_placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = image_placeholder.png; path = resources/image_placeholder.png; sourceTree = "<group>"; };
@@ -545,12 +542,6 @@
 		2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSignupViewController.h; path = Classes/Onboarding/DWSignupViewController.h; sourceTree = "<group>"; };
 		2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSignupViewController.m; path = Classes/Onboarding/DWSignupViewController.m; sourceTree = "<group>"; };
 		2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSignupViewController.xib; path = Classes/Onboarding/DWSignupViewController.xib; sourceTree = "<group>"; };
-		2632E57E13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUpdateUserDetailsViewController.h; path = Classes/DWUpdateUserDetailsViewController.h; sourceTree = "<group>"; };
-		2632E57F13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUpdateUserDetailsViewController.m; path = Classes/DWUpdateUserDetailsViewController.m; sourceTree = "<group>"; };
-		2632E58013CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWUpdateUserDetailsViewController.xib; path = Classes/DWUpdateUserDetailsViewController.xib; sourceTree = "<group>"; };
-		2632E58413CCE017005B1B1E /* DWUpdateTeamDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWUpdateTeamDetailsViewController.h; path = Classes/Teams/DWUpdateTeamDetailsViewController.h; sourceTree = "<group>"; };
-		2632E58513CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWUpdateTeamDetailsViewController.m; path = Classes/Teams/DWUpdateTeamDetailsViewController.m; sourceTree = "<group>"; };
-		2632E58613CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWUpdateTeamDetailsViewController.xib; path = Classes/Teams/DWUpdateTeamDetailsViewController.xib; sourceTree = "<group>"; };
 		2632E59113CCE0D7005B1B1E /* DWUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersController.h; sourceTree = "<group>"; };
 		2632E59213CCE0D7005B1B1E /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
 		2632E5A513CCE39B005B1B1E /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
@@ -823,6 +814,15 @@
 		BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareItemViewController.xib; sourceTree = "<group>"; };
 		BB4D03CC13E799E400A1E791 /* DWSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSharingManager.h; sourceTree = "<group>"; };
 		BB4D03CD13E799E400A1E791 /* DWSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSharingManager.m; sourceTree = "<group>"; };
+		BB4D03D213E79A6900A1E791 /* DWInvitePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInvitePeopleViewController.h; sourceTree = "<group>"; };
+		BB4D03D313E79A6900A1E791 /* DWInvitePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInvitePeopleViewController.m; sourceTree = "<group>"; };
+		BB4D03D413E79A6900A1E791 /* DWInvitePeopleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWInvitePeopleViewController.xib; sourceTree = "<group>"; };
+		BB4D03D513E79A6900A1E791 /* DWUpdateTeamDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUpdateTeamDetailsViewController.h; sourceTree = "<group>"; };
+		BB4D03D613E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUpdateTeamDetailsViewController.m; sourceTree = "<group>"; };
+		BB4D03D713E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUpdateTeamDetailsViewController.xib; sourceTree = "<group>"; };
+		BB4D03D813E79A6900A1E791 /* DWUpdateUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUpdateUserDetailsViewController.h; sourceTree = "<group>"; };
+		BB4D03D913E79A6900A1E791 /* DWUpdateUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUpdateUserDetailsViewController.m; sourceTree = "<group>"; };
+		BB4D03DA13E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUpdateUserDetailsViewController.xib; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
@@ -1193,26 +1193,6 @@
 			path = External/KTTEXTVIEW;
 			sourceTree = "<group>";
 		};
-		2620295D13DD104C0003B7C0 /* Invites */ = {
-			isa = PBXGroup;
-			children = (
-				2620295F13DD10660003B7C0 /* DWInvitePeopleViewController.h */,
-				2620296013DD10660003B7C0 /* DWInvitePeopleViewController.m */,
-				2620295E13DD10660003B7C0 /* DWInvitePeopleViewController.xib */,
-			);
-			name = Invites;
-			sourceTree = "<group>";
-		};
-		2632E58313CCDFFB005B1B1E /* Teams */ = {
-			isa = PBXGroup;
-			children = (
-				2632E58413CCE017005B1B1E /* DWUpdateTeamDetailsViewController.h */,
-				2632E58513CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m */,
-				2632E58613CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib */,
-			);
-			name = Teams;
-			sourceTree = "<group>";
-		};
 		2632E5A413CCE39B005B1B1E /* ABContactsHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1467,22 +1447,12 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		26EF03AD12E77BCB00E7BA76 /* View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				2620295D13DD104C0003B7C0 /* Invites */,
-				BB3311F412F24A2600B713F9 /* Users */,
-				2632E58313CCDFFB005B1B1E /* Teams */,
-			);
-			name = "View Controllers";
-			sourceTree = "<group>";
-		};
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				080E96DDFE201D6D7F000001 /* App Delegate */,
 				BB4D03B813E7996500A1E791 /* Camera */,
 				BB4D03C113E799B200A1E791 /* Connect */,
-				080E96DDFE201D6D7F000001 /* App Delegate */,
 				BB272B3613CFCCFE00FDACA1 /* Containers */,
 				BBF898A013CAC53400D5C5FB /* Creation */,
 				BB0CFE711302701900F38552 /* Entitlements */,
@@ -1506,12 +1476,12 @@
 				BB272B3D13CFCDE100FDACA1 /* TableViewCells */,
 				BB272B2713CFCC4E00FDACA1 /* TableViewControllers */,
 				BBB1A8AD13D50EBB00C08315 /* TableViewDataSources */,
-				26EF03AD12E77BCB00E7BA76 /* View Controllers */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				267A0DA112E818AC001B0604 /* Images */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				BBFFF5D313E4B01600739D9F /* Views */,
+				BB4D03D113E79A6900A1E791 /* ViewControllers */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -1710,16 +1680,6 @@
 			path = Teams;
 			sourceTree = "<group>";
 		};
-		BB3311F412F24A2600B713F9 /* Users */ = {
-			isa = PBXGroup;
-			children = (
-				2632E57E13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.h */,
-				2632E57F13CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m */,
-				2632E58013CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib */,
-			);
-			name = Users;
-			sourceTree = "<group>";
-		};
 		BB3BE17E133AB65F0055FED0 /* ASI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1901,6 +1861,23 @@
 			);
 			name = Sharing;
 			path = Classes/Sharing;
+			sourceTree = "<group>";
+		};
+		BB4D03D113E79A6900A1E791 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D03D213E79A6900A1E791 /* DWInvitePeopleViewController.h */,
+				BB4D03D313E79A6900A1E791 /* DWInvitePeopleViewController.m */,
+				BB4D03D413E79A6900A1E791 /* DWInvitePeopleViewController.xib */,
+				BB4D03D513E79A6900A1E791 /* DWUpdateTeamDetailsViewController.h */,
+				BB4D03D613E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m */,
+				BB4D03D713E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib */,
+				BB4D03D813E79A6900A1E791 /* DWUpdateUserDetailsViewController.h */,
+				BB4D03D913E79A6900A1E791 /* DWUpdateUserDetailsViewController.m */,
+				BB4D03DA13E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib */,
+			);
+			name = ViewControllers;
+			path = Classes/ViewControllers;
 			sourceTree = "<group>";
 		};
 		BB572A0513D25C020060A351 /* LogicControllers */ = {
@@ -2614,11 +2591,8 @@
 				2632E57013CCDFCA005B1B1E /* DWCreateProfileViewController.xib in Resources */,
 				2632E57513CCDFCA005B1B1E /* DWLoginViewController.xib in Resources */,
 				2632E57A13CCDFCA005B1B1E /* DWSignupViewController.xib in Resources */,
-				2632E58213CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.xib in Resources */,
-				2632E58813CCE017005B1B1E /* DWUpdateTeamDetailsViewController.xib in Resources */,
 				2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */,
 				267690B913D4DFB500D328A6 /* DWJoinTeamViewController.xib in Resources */,
-				2620296113DD10660003B7C0 /* DWInvitePeopleViewController.xib in Resources */,
 				26C7C0E913E0D29F000BD2F8 /* DWAddProfilePicViewController.xib in Resources */,
 				26D85D3D13E207B200819EF3 /* tab_create_off.png in Resources */,
 				26D85D3E13E207B200819EF3 /* tab_teams_off.png in Resources */,
@@ -2666,6 +2640,9 @@
 				BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */,
 				BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */,
 				BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */,
+				BB4D03DC13E79A6900A1E791 /* DWInvitePeopleViewController.xib in Resources */,
+				BB4D03DE13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib in Resources */,
+				BB4D03E013E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2749,8 +2726,6 @@
 				2632E57413CCDFCA005B1B1E /* DWLoginViewController.m in Sources */,
 				2632E57613CCDFCA005B1B1E /* DWOnboardingContainerViewController.m in Sources */,
 				2632E57913CCDFCA005B1B1E /* DWSignupViewController.m in Sources */,
-				2632E58113CCDFF3005B1B1E /* DWUpdateUserDetailsViewController.m in Sources */,
-				2632E58713CCE017005B1B1E /* DWUpdateTeamDetailsViewController.m in Sources */,
 				2632E59313CCE0D7005B1B1E /* DWUsersController.m in Sources */,
 				2632E5AB13CCE39B005B1B1E /* ABContact.m in Sources */,
 				2632E5AC13CCE39B005B1B1E /* ABContactsHelper.m in Sources */,
@@ -2844,7 +2819,6 @@
 				BBF350D813DC985B00B339A8 /* DWGUIManager.m in Sources */,
 				BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */,
 				BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */,
-				2620296213DD10660003B7C0 /* DWInvitePeopleViewController.m in Sources */,
 				BBC395AC13DF965700A2A8F6 /* DWAnalyticsManager.m in Sources */,
 				261FAA7E13DFBB1500A2CB08 /* DWMediaController.m in Sources */,
 				BBC3964A13E0897300A2A8F6 /* DWInteraction.m in Sources */,
@@ -2865,6 +2839,9 @@
 				BB4D03C713E799B200A1E791 /* DWTwitterConnect.m in Sources */,
 				BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */,
 				BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */,
+				BB4D03DB13E79A6900A1E791 /* DWInvitePeopleViewController.m in Sources */,
+				BB4D03DD13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m in Sources */,
+				BB4D03DF13E79A6900A1E791 /* DWUpdateUserDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
