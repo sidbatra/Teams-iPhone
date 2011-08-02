@@ -58,7 +58,8 @@
 - (void)createImageView {
     imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(0,-(320-kImageCellHeight)/2,
                                                                   320,320)] autorelease];
-    
+
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:imageView];
 }
 
