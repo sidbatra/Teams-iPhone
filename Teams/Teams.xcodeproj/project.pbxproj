@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* DWAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		26000219130DFB0100366CE3 /* KTTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26000218130DFB0100366CE3 /* KTTextView.m */; };
 		2612D62C13639610005AE9E5 /* static_button_active.png in Resources */ = {isa = PBXBuildFile; fileRef = 2612D62A13639610005AE9E5 /* static_button_active.png */; };
@@ -257,6 +256,8 @@
 		BB4D03DE13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03D713E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib */; };
 		BB4D03DF13E79A6900A1E791 /* DWUpdateUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D913E79A6900A1E791 /* DWUpdateUserDetailsViewController.m */; };
 		BB4D03E013E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03DA13E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib */; };
+		BB4D03E413E79B0300A1E791 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03E313E79B0300A1E791 /* DWAppDelegate.m */; };
+		BB4D03E713E79B2700A1E791 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03E613E79B2700A1E791 /* DWConstants.m */; };
 		BB537BDA132C560E0018B942 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB537BD9132C560E0018B942 /* MediaPlayer.framework */; };
 		BB572A0913D25C390060A351 /* DWItemsLogicController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0813D25C390060A351 /* DWItemsLogicController.m */; };
 		BB572A0C13D25C860060A351 /* DWItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB572A0B13D25C860060A351 /* DWItemsViewController.m */; };
@@ -350,7 +351,6 @@
 		BBCE3A65131CC38D008BDA82 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A63131CC38D008BDA82 /* Default.png */; };
 		BBCE3A66131CC38D008BDA82 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A64131CC38D008BDA82 /* Default@2x.png */; };
 		BBCE3A86131CC6AF008BDA82 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */; };
-		BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD0BFDA1344487C00BCFB96 /* DWConstants.m */; };
 		BBD113B313D7C044002D7352 /* DWNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B213D7C044002D7352 /* DWNotificationsController.m */; };
 		BBD113B713D7C120002D7352 /* DWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B613D7C120002D7352 /* DWNotification.m */; };
 		BBD113BA13D7D4E4002D7352 /* DWNotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBD113B913D7D4E4002D7352 /* DWNotificationsDataSource.m */; };
@@ -472,8 +472,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D3623240D0F684500981E51 /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* Teams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Teams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26000217130DFB0100366CE3 /* KTTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTTextView.h; sourceTree = "<group>"; };
 		26000218130DFB0100366CE3 /* KTTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KTTextView.m; sourceTree = "<group>"; };
@@ -823,6 +821,10 @@
 		BB4D03D813E79A6900A1E791 /* DWUpdateUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUpdateUserDetailsViewController.h; sourceTree = "<group>"; };
 		BB4D03D913E79A6900A1E791 /* DWUpdateUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUpdateUserDetailsViewController.m; sourceTree = "<group>"; };
 		BB4D03DA13E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUpdateUserDetailsViewController.xib; sourceTree = "<group>"; };
+		BB4D03E213E79B0300A1E791 /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
+		BB4D03E313E79B0300A1E791 /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
+		BB4D03E513E79B2700A1E791 /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWConstants.h; path = Classes/OtherSources/DWConstants.h; sourceTree = "<group>"; };
+		BB4D03E613E79B2700A1E791 /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWConstants.m; path = Classes/OtherSources/DWConstants.m; sourceTree = "<group>"; };
 		BB537BD9132C560E0018B942 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BB572A0713D25C390060A351 /* DWItemsLogicController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWItemsLogicController.h; sourceTree = "<group>"; };
 		BB572A0813D25C390060A351 /* DWItemsLogicController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWItemsLogicController.m; sourceTree = "<group>"; };
@@ -964,8 +966,6 @@
 		BBCE3A63131CC38D008BDA82 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = resources/Default.png; sourceTree = "<group>"; };
 		BBCE3A64131CC38D008BDA82 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "resources/Default@2x.png"; sourceTree = "<group>"; };
 		BBCE3A85131CC6AF008BDA82 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = resources/iTunesArtwork; sourceTree = "<group>"; };
-		BBD0BFD91344487C00BCFB96 /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWConstants.h; path = Classes/DWConstants.h; sourceTree = "<group>"; };
-		BBD0BFDA1344487C00BCFB96 /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWConstants.m; path = Classes/DWConstants.m; sourceTree = "<group>"; };
 		BBD113B113D7C044002D7352 /* DWNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsController.h; sourceTree = "<group>"; };
 		BBD113B213D7C044002D7352 /* DWNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsController.m; sourceTree = "<group>"; };
 		BBD113B513D7C120002D7352 /* DWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotification.h; sourceTree = "<group>"; };
@@ -1165,16 +1165,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* App Delegate */ = {
-			isa = PBXGroup;
-			children = (
-				1D3623240D0F684500981E51 /* DWAppDelegate.h */,
-				1D3623250D0F684500981E51 /* DWAppDelegate.m */,
-			);
-			name = "App Delegate";
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1450,7 +1440,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				080E96DDFE201D6D7F000001 /* App Delegate */,
+				BB4D03E113E79B0300A1E791 /* AppDelegate */,
 				BB4D03B813E7996500A1E791 /* Camera */,
 				BB4D03C113E799B200A1E791 /* Connect */,
 				BB272B3613CFCCFE00FDACA1 /* Containers */,
@@ -1489,8 +1479,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BBD0BFD91344487C00BCFB96 /* DWConstants.h */,
-				BBD0BFDA1344487C00BCFB96 /* DWConstants.m */,
+				BB4D03E513E79B2700A1E791 /* DWConstants.h */,
+				BB4D03E613E79B2700A1E791 /* DWConstants.m */,
 				32CA4F630368D1EE00C91783 /* Teams_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -1878,6 +1868,16 @@
 			);
 			name = ViewControllers;
 			path = Classes/ViewControllers;
+			sourceTree = "<group>";
+		};
+		BB4D03E113E79B0300A1E791 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D03E213E79B0300A1E791 /* DWAppDelegate.h */,
+				BB4D03E313E79B0300A1E791 /* DWAppDelegate.m */,
+			);
+			name = AppDelegate;
+			path = Classes/AppDelegate;
 			sourceTree = "<group>";
 		};
 		BB572A0513D25C020060A351 /* LogicControllers */ = {
@@ -2654,7 +2654,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* DWAppDelegate.m in Sources */,
 				BB4051C612F2377500916688 /* DDAnnotation.m in Sources */,
 				BB4051C712F2377500916688 /* DDAnnotationView.m in Sources */,
 				BB4051C812F2377500916688 /* InteractiveLabel.m in Sources */,
@@ -2685,7 +2684,6 @@
 				BB3BE1E2133AB65F0055FED0 /* ASIS3Request.m in Sources */,
 				BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */,
 				BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */,
-				BBD0BFDB1344487C00BCFB96 /* DWConstants.m in Sources */,
 				BBFD299B1387A7190077904A /* Facebook.m in Sources */,
 				BBFD299E1387A7190077904A /* FBDialog.m in Sources */,
 				BBFD299F1387A7190077904A /* FBLoginDialog.m in Sources */,
@@ -2842,6 +2840,8 @@
 				BB4D03DB13E79A6900A1E791 /* DWInvitePeopleViewController.m in Sources */,
 				BB4D03DD13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m in Sources */,
 				BB4D03DF13E79A6900A1E791 /* DWUpdateUserDetailsViewController.m in Sources */,
+				BB4D03E413E79B0300A1E791 /* DWAppDelegate.m in Sources */,
+				BB4D03E713E79B2700A1E791 /* DWConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
