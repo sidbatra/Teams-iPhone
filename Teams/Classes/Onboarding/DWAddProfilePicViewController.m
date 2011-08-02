@@ -19,6 +19,7 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
 static NSString* const kNavBarRightButtonText   = @"Next";
+static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -44,6 +45,8 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 @synthesize mediaController                 = _mediaController;
 @synthesize membershipsController           = _membershipsController;
 
+@synthesize facebookConnect                 = _facebookConnect;
+
 @synthesize delegate                        = _delegate;
 
 
@@ -60,6 +63,9 @@ static NSString* const kNavBarRightButtonText   = @"Next";
         
         self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
         self.membershipsController.delegate = self;
+        
+        self.facebookConnect                = [[[DWFacebookConnect alloc] init] autorelease];
+        self.facebookConnect.delegate       = self;
 	}
 	return self;
 }
@@ -82,6 +88,8 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     self.usersController                = nil;
     self.mediaController                = nil;
     self.membershipsController          = nil;
+    
+    self.facebookConnect                = nil;
 	
     [super dealloc];
 }
@@ -202,7 +210,7 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender {
-    NSLog(@"to implement facebook integration");
+    [self.facebookConnect authenticate];
 }
 
 
@@ -318,6 +326,53 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 - (void)photoLibraryModeSelected {
     [self dismissModalViewControllerAnimated:NO];
     [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFacebookConnectDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticated {
+    [self.facebookConnect getProfilePicture];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticating {
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticationFailed {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:kMsgFacebookError
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles: nil];
+	[alert show];
+	[alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbRequestLoaded:(id)result {
+    
+    _hasChangedImage                = YES;
+    
+    self.userImage                  = [UIImage imageWithData:result];
+    self.underlayImageView.image    = [UIImage imageWithData:result];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbRequestFailed:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+													message:[error localizedDescription]
+												   delegate:nil 
+										  cancelButtonTitle:kMsgCancelTitle
+										  otherButtonTitles: nil];
+	[alert show];
+	[alert release];
 }
 
 

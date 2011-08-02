@@ -9,6 +9,7 @@
 #import "DWMediaController.h"
 #import "DWMediaPickerController.h"
 #import "DWMembershipsController.h"
+#import "DWFacebookConnect.h"
 
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
@@ -21,7 +22,7 @@
 /**
  * Provides an interface for adding profile picture.
  */
-@interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate> {
+@interface DWAddProfilePicViewController : UIViewController<DWUsersControllerDelegate,DWMediaControllerDelegate,DWMediaPickerControllerDelegate,DWMembershipsControllerDelegate,DWFacebookConnectDelegate> {
     
     UIButton                    *_addProfilePicButton;
     UIImageView                 *_underlayImageView;
@@ -42,6 +43,8 @@
     DWUsersController           *_usersController;
     DWMediaController           *_mediaController;
     DWMembershipsController     *_membershipsController;    
+    
+    DWFacebookConnect           *_facebookConnect;
     
     id <DWAddProfilePicViewControllerDelegate>  _delegate;
 }
@@ -101,6 +104,11 @@
  * Controller for handling memberships requests
  */
 @property (nonatomic,retain) DWMembershipsController *membershipsController;
+
+/**
+ * Instance of the facebook connect wrapper
+ */
+@property (nonatomic,retain) DWFacebookConnect *facebookConnect;
 
 /**
  * Delegate to send updates to

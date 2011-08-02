@@ -142,7 +142,7 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
     NSError *error              = NULL;
     NSRegularExpression *regex  = [NSRegularExpression regularExpressionWithPattern:kRegexNonWorkEmails
                                                                             options:NSRegularExpressionCaseInsensitive
-                                                                             error:&error];
+                                                                              error:&error];
     NSUInteger numberOfMatches  = [regex numberOfMatchesInString:email
                                                          options:0
                                                            range:NSMakeRange(0, [email length])];
