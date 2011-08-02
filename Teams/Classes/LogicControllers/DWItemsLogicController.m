@@ -91,7 +91,7 @@
 - (void)cellTouched:(NSInteger)itemID {
     
     DWItem *item    = [DWItem fetch:itemID];
-    item.isTouched  = YES;
+    [item touched];
     
     [self.touchesController postWithItemID:item.databaseID];
 }
