@@ -124,8 +124,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.view addSubview:self.loadingView];
     
     
-    if(!self.errorView)
-        self.errorView  = [self getTableErrorView];
+    if(!self.errorView) {
+        self.errorView          = [self getTableErrorView];
+        self.errorView.hidden   = YES;
+    }
     
     [self.view addSubview:self.errorView];
 }
@@ -191,7 +193,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (UIView*)getTableErrorView {
     DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
     errorView.delegate      = self;
-    errorView.hidden        = YES;
     
     return errorView;
 }
