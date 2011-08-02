@@ -119,9 +119,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
-    [[DWSession sharedDWSession] create:user];    
+    
+    [[DWSession sharedDWSession] create:user];
+    
     [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
     [[DWSession sharedDWSession] update];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
+                                                        object:nil];
     
     [self.parentViewController dismissModalViewControllerAnimated:YES];
 }
@@ -240,8 +245,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)peopleInvited {
+    
     [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
     [[DWSession sharedDWSession] update]; 
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
+                                                        object:nil];
     
     [self.parentViewController dismissModalViewControllerAnimated:YES];    
 }
