@@ -138,7 +138,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     self.firstNameTextField.text        = firstName;
     self.lastNameTextField.text         = lastName;
     self.byLineTextField.text           = byLine;
-    self.passwordTextField.text         = @"random";
+    self.passwordTextField.text         = [NSString randomString];
     self.password                       = password;
 }
 

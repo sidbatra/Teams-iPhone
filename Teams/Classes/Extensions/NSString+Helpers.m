@@ -5,7 +5,11 @@
 
 #import "NSString+Helpers.h"
 
-static NSString* const kEncryptionPhrase = @"9u124hgd35677";
+static NSString* const kEncryptionPhrase        = @"9u124hgd35677";
+static NSString* const kAlphanumericLetters     = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+static NSInteger const kRandomStringMinLength   = 7;
+static NSInteger const kRandomStringMaxLength   = 10;
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -56,6 +60,17 @@ static NSString* const kEncryptionPhrase = @"9u124hgd35677";
     CC_SHA256( [self UTF8String], [self lengthOfBytesUsingEncoding: NSUTF8StringEncoding], buffer );
 	
     return [NSData dataWithBytesNoCopy: buffer length: CC_SHA256_DIGEST_LENGTH];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)randomString {
+    NSInteger length = (arc4random() % (kRandomStringMaxLength - kRandomStringMinLength)) + kRandomStringMinLength;
+    NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
+    
+    for(int i = 0; i < length; i++) 
+        [randomString appendFormat: @"%c", [kAlphanumericLetters characterAtIndex:rand()%[kAlphanumericLetters length]]];
+         
+    return randomString;
 }
 
 @end
