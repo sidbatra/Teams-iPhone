@@ -19,7 +19,6 @@ static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
 static NSString* const kNavBarRightButtonText   = @"Next";
-static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -368,15 +367,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)fbAuthenticationFailed {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-													message:kMsgFacebookError
-												   delegate:nil 
-										  cancelButtonTitle:kMsgCancelTitle
-										  otherButtonTitles: nil];
-	[alert show];
-	[alert release];
-    
+- (void)fbAuthenticationFailed {    
     [self unfreezeUI];
 }
 
