@@ -5,6 +5,7 @@
 
 #import "DWFacebookConnect.h"
 #import "DWConstants.h"
+#import "DWSession.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -123,7 +124,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)fbDidLogin {
     
-    self.accessToken = self.facebook.accessToken;
+    self.accessToken                                                = self.facebook.accessToken;
+    [DWSession sharedDWSession].currentUser.facebookAccessToken     = self.accessToken;    
+    [[DWSession sharedDWSession] update];
     
     SEL sel = @selector(fbAuthenticated);
     

@@ -33,6 +33,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 @synthesize spinnerContainerView            = _spinnerContainerView;
 
 @synthesize userImage                       = _userImage;
+@synthesize userFBToken                     = _userFBToken;
 @synthesize userID                          = _userID;
 @synthesize teamID                          = _teamID;
 
@@ -79,6 +80,7 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
     self.spinnerContainerView           = nil;
     
     self.userImage                      = nil;
+    self.userFBToken                    = nil;
     
     self.navTitleView                   = nil;
 	self.navBarRightButtonView          = nil;
@@ -217,7 +219,10 @@ static NSString* const kMsgFacebookError        = @"Can't connect to Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender {
-    [self.facebookConnect authenticate];
+    self.facebookConnect.accessToken = self.userFBToken;
+    
+    if ([self.facebookConnect authenticate])
+        [self.facebookConnect getProfilePicture];
 }
 
 

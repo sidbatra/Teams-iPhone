@@ -204,7 +204,8 @@
     DWAddProfilePicViewController *addProfilePicViewController  = [[[DWAddProfilePicViewController alloc] init] autorelease];
     addProfilePicViewController.delegate                        = self;
     addProfilePicViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID; 
-    addProfilePicViewController.teamID                          = [DWSession sharedDWSession].currentUser.team.databaseID; 
+    addProfilePicViewController.userFBToken                     = [DWSession sharedDWSession].currentUser.facebookAccessToken;    
+    addProfilePicViewController.teamID                          = [DWSession sharedDWSession].currentUser.team.databaseID;  
     
     [self.navigationController pushViewController:addProfilePicViewController 
                                          animated:YES];

@@ -30,6 +30,7 @@
 	UIView                      *_spinnerContainerView;                
     
     UIImage                     *_userImage;
+    NSString                    *_userFBToken;    
     NSInteger                   _userID;    
     NSInteger                   _teamID;
     NSInteger                   _mediaResourceID;  
@@ -62,6 +63,11 @@
  */
 - (IBAction)addProfilePicButtonTapped:(id)sender;
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender;
+
+/**
+ * User's Facebook Access Token
+ */
+@property (nonatomic,copy) NSString *userFBToken;
 
 /**
  * User image
