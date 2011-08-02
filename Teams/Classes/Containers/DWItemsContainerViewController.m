@@ -151,7 +151,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadFollowedView {
     
     if(!self.followedViewController) {
-        self.followedViewController             = [[[DWFollowedItemsViewController alloc] init] autorelease];
+        self.followedViewController                     = [[[DWFollowedItemsViewController alloc] init] autorelease];
+        self.followedViewController.shellViewController = (UIViewController*)self.customTabBarController;
         [self.followedViewController setItemsDelegate:self];
     }
     

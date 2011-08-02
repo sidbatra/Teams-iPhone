@@ -13,8 +13,9 @@
 /**
  * Base controller for all table views that display only a list of items
  */
-@interface DWItemsViewController : DWTableViewController {
+@interface DWItemsViewController : DWTableViewController<UIActionSheetDelegate> {
     DWItemsLogicController      *_itemsLogicController;
+    UIViewController            *_shellViewController;
 }
 
 
@@ -23,6 +24,11 @@
  * of a list of items
  */
 @property (nonatomic,retain) DWItemsLogicController *itemsLogicController;
+
+/**
+ * Shell view controller for displaying modal UI elements
+ */
+@property (nonatomic,assign) UIViewController *shellViewController;
 
 
 /**

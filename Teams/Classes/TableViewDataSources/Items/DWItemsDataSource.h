@@ -29,6 +29,17 @@
 - (void)populateItems:(NSMutableArray*)items;
 
 /**
+ * Get the item object at the given index path
+ */
+- (DWItem*)getItemAtIndexPath:(NSIndexPath*)indexPath;
+
+/**
+ * Delete item with the given databaseID from the table view and 
+ * initiate request to delete it on the server.
+ */
+- (void)deleteItemWithDatabaseID:(NSInteger)databaseID;
+
+/**
  * Stub method overriden by base class to start the loading of items into the table view
  */
 - (void)loadItems;

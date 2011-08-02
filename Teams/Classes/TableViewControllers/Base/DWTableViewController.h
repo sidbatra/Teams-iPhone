@@ -53,6 +53,7 @@
 
 @end
 
+
 @interface DWTableViewController ()
 /**
  * Pass the newly available resource to all visible cells to check
@@ -67,4 +68,10 @@
  * returns the table view itself.
  */
 - (id)getDelegateForClassName:(NSString*)className;
+
+/**
+ * Get the data source object for the table view controller
+ */
+- (DWTableViewDataSource*)getDataSource;
+
 @end

@@ -131,6 +131,7 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
                                                        initWithTeamID:teamID]
                                                       autorelease];
+    teamItemsController.shellViewController = (UIViewController*)self.customTabBarController;
     teamItemsController.delegate = self;
     [teamItemsController setItemsDelegate:self];
     

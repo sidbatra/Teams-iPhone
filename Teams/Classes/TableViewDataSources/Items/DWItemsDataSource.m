@@ -67,6 +67,25 @@
     [self.delegate reloadTableView];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (DWItem*)getItemAtIndexPath:(NSIndexPath*)indexPath {
+    return [self.objects objectAtIndex:indexPath.row];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)deleteItemWithDatabaseID:(NSInteger)databaseID {
+    
+    DWItem *item = [DWItem fetch:databaseID];
+    
+    if(!item)
+        return;
+    
+    [self.itemsController deleteItemWithID:item.databaseID];
+    
+    [self removeObject:item 
+         withAnimation:UITableViewScrollPositionBottom];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -93,6 +112,25 @@
 //----------------------------------------------------------------------------------------------------
 - (void)paginate {
     [self loadItems];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWItemsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemDeleted:(DWItem*)item {
+    
+    [self removeObject:item 
+         withAnimation:UITableViewScrollPositionBottom];
+    
+    [item destroy];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)itemDeleteError:(NSString *)error {
 }
 
 

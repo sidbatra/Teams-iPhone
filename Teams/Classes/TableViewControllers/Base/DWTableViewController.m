@@ -28,11 +28,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  * Get a UIView which is displayed when an error occurs
  */
 - (UIView*)getTableErrorView;
-   
-/**
- * Get the data source object for the table view controller
- */
-- (DWTableViewDataSource*)getDataSource;
 
 /**
  * Get an object of the presenter class for the given className
