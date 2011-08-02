@@ -76,22 +76,22 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)setErrorMessage:(NSString *)message {
-    _messageLabel.text = message;
+    messageLabel.text = message;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createText {
     
-    _messageLabel                   = [[[UILabel alloc] initWithFrame:CGRectMake(0,
+    messageLabel                   = [[[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                                  self.frame.size.height / 2 - 35,
                                                                                  self.frame.size.width,
                                                                                  20)] autorelease];	
-	_messageLabel.backgroundColor	= [UIColor clearColor];
-	_messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
-	_messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-	_messageLabel.textAlignment		= UITextAlignmentCenter;
+	messageLabel.backgroundColor	= [UIColor clearColor];
+	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
+	messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+	messageLabel.textAlignment		= UITextAlignmentCenter;
     
-	[self addSubview:_messageLabel];
+	[self addSubview:messageLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshImage {
-    UIImageView *refreshImageView       = [[[UIImageView alloc] initWithFrame:CGRectMake(112,
+    refreshImageView                    = [[[UIImageView alloc] initWithFrame:CGRectMake(112,
                                                                                          self.frame.size.height / 2 - 10,
                                                                                          13,
                                                                                          15)] autorelease];	
@@ -117,7 +117,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshText {
-    UILabel *refreshLabel           = [[[UILabel alloc] initWithFrame:CGRectMake(8,
+    refreshLabel                    = [[[UILabel alloc] initWithFrame:CGRectMake(8,
                                                                                  self.frame.size.height / 2 - 10,
                                                                                  self.frame.size.width,
                                                                                  20)] autorelease];	
@@ -132,15 +132,31 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createViewButton {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame     = self.frame;
+    viewButton          = [UIButton buttonWithType:UIButtonTypeCustom];
+    viewButton.frame    = self.frame;
     
-    [button addTarget:self
-               action:@selector(didTapViewButton:)
-     forControlEvents:UIControlEventTouchDown];
+    [viewButton addTarget:self
+                   action:@selector(didTapViewButton:)
+         forControlEvents:UIControlEventTouchDown];
     
-    [self addSubview:button];
+    [self addSubview:viewButton];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideRefreshUI {
+    refreshLabel.hidden     = YES;
+    refreshImageView.hidden = YES;
+    viewButton.enabled      = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showRefreshUI {
+    refreshLabel.hidden     = NO;
+    refreshImageView.hidden = NO;
+    viewButton.enabled      = YES;
+}
+
+
 
 
 //----------------------------------------------------------------------------------------------------

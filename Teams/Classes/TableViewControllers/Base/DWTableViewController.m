@@ -332,7 +332,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayError:(NSString *)message {
+- (void)displayError:(NSString *)message 
+       withRefreshUI:(BOOL)showRefreshUI {
+    
     SEL sel = @selector(setErrorMessage:);
     
     if(![self.errorView respondsToSelector:sel])
@@ -340,6 +342,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     [self.errorView performSelector:sel
                          withObject:message];
+    
+    
+    sel = showRefreshUI ? @selector(showRefreshUI) : @selector(hideRefreshUI);
+    
+    if(![self.errorView respondsToSelector:sel])
+        return;
+    
+    [self.errorView performSelector:sel];
+    
+
     
     [self scrollToTop];
     
@@ -349,6 +361,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     _isPullToRefreshActive          = NO;
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayError:(NSString *)message {
+    
+    [self displayError:message
+         withRefreshUI:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
