@@ -20,6 +20,7 @@
 
 @synthesize touchesController       = _touchesController;
 @synthesize usersController         = _usersController;
+@synthesize teamsController         = _teamsController;
 @synthesize tableViewController     = _tableViewController;
 @synthesize delegate                = _delegate;
 
@@ -33,6 +34,9 @@
         
         self.usersController            = [[[DWUsersController alloc] init] autorelease];
         self.usersController.delegate   = self;
+        
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate   = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(largeAttachmentLoaded:) 
@@ -49,6 +53,7 @@
     
     self.touchesController      = nil;
     self.usersController        = nil;
+    self.teamsController        = nil;
     self.tableViewController    = nil;
     self.delegate               = nil;
         
@@ -180,6 +185,22 @@
     
     [user destroy];
 }
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated:(DWTeam *)team {
+    
+    [self.tableViewController provideResourceToVisibleCells:kResourceTypeTeam
+                                                   resource:team
+                                                 resourceID:team.databaseID];
+    
+    [team destroy];
+}
+
 
 
 @end

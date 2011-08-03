@@ -115,6 +115,16 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
         [cell resetItemNavigation];
         [cell redisplay];
     }
+    else if(resourceType == kResourceTypeTeam && item.team.databaseID == resourceID) {
+        
+        DWItemFeedCell *cell	= base;
+        DWTeam *team            = resource;
+        
+        cell.itemUserName		= team.name;
+        
+        [cell resetItemNavigation];
+        [cell redisplay];
+    }
 
 }
 

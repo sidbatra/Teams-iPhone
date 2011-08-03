@@ -7,6 +7,7 @@
 
 #import "DWItemsDataSource.h"
 #import "DWUsersController.h"
+#import "DWTeamsController.h"
 #import "DWTouchesController.h"
 
 @class DWItem;
@@ -19,10 +20,11 @@
 /**
  * Base class for table views that display a list of items
  */
-@interface DWItemsLogicController : NSObject<DWTouchesControllerDelegate,DWUsersControllerDelegate> {
+@interface DWItemsLogicController : NSObject<DWTouchesControllerDelegate,DWUsersControllerDelegate,DWTeamsControllerDelegate> {
 
     DWTouchesController     *_touchesController;
     DWUsersController       *_usersController;
+    DWTeamsController       *_teamsController;
     
     DWTableViewController   *_tableViewController;
     
@@ -45,6 +47,11 @@
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
+
+/**
+ * Interface to the teams service
+ */
+@property (nonatomic,retain) DWTeamsController *teamsController;
 
 
 /**
