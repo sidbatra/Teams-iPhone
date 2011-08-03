@@ -17,6 +17,7 @@
 @implementation DWUsersLogicController
 
 @synthesize tableViewController     = _tableViewController;
+@synthesize usersController         = _usersController;
 @synthesize navigationEnabled       = _navigationEnabled;
 @synthesize delegate                = _delegate;
 
@@ -27,6 +28,9 @@
     if(self) {        
         
         _navigationEnabled  = YES;
+        
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userSmallImageLoaded:) 
@@ -42,6 +46,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.tableViewController    = nil;
+    self.usersController        = nil;
     self.delegate               = nil;
     
     [super dealloc];
@@ -85,6 +90,23 @@
                                                    resource:resource
                                                  resourceID:resourceID];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    
+    [self.tableViewController provideResourceToVisibleCells:kResourceTypeUser
+                                                   resource:user
+                                                 resourceID:user.databaseID];
+    
+    [user destroy];
+}
+
 
 
 @end

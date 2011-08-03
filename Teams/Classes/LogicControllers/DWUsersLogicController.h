@@ -5,6 +5,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DWUsersController.h"
+
 @class DWUser;
 @class DWTableViewController;
 @protocol DWUsersLogicControllerDelegate;
@@ -13,9 +15,10 @@
  * Encapsulates logic for handling display and interactions
  * of a list of users
  */
-@interface DWUsersLogicController : NSObject {
+@interface DWUsersLogicController : NSObject<DWUsersControllerDelegate> {
     
     DWTableViewController   *_tableViewController;
+    DWUsersController       *_usersController;
 
     BOOL                    _navigationEnabled;
 
@@ -27,6 +30,12 @@
  * The table view controller which contains the teams view controller object
  */
 @property (nonatomic,assign) DWTableViewController *tableViewController;
+
+/**
+ * Interface to the users service
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+
 
 /**
  * Controls the navigation from user cells

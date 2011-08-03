@@ -75,6 +75,21 @@
         [cell setImage:(UIImage*)resource];
         [cell redisplay];
     }
+    else if(resourceType == kResourceTypeUser && user.databaseID == resourceID) {
+        
+        DWSlimCell *cell    = base;
+        DWUser *newUser     = resource;
+        
+        if(style == KUserPresenterStyleFullSignature)
+            cell.boldText   = [DWUsersHelper shortSignatureWithTeamName:newUser]; 
+        else
+            cell.boldText   = newUser.firstName;
+        
+        cell.plainText  = newUser.byline;
+        
+        [cell reset];
+        [cell redisplay];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
