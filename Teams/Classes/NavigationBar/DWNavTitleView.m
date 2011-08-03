@@ -6,8 +6,8 @@
 #import "DWNavTitleView.h"
 #import "DWConstants.h"
 
-static NSString* const kImgPassiveButton                    = @"loading_bar_fail.png";
-static NSString* const kImgPassiveButtonHighlighted         = @"static_button_active.png";
+static NSString* const kImgPassiveButton                    = @"button_unfollow.png";
+static NSString* const kImgPassiveButtonHighlighted         = @"button_unfollow_active.png";
 static NSString* const kImgActiveButton                     = @"button_follow.png";
 static NSString* const kImgActiveButtonHighlighted          = @"button_follow_active.png";
 

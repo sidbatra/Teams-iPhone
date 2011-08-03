@@ -127,12 +127,9 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNavBarRightButtonView {
-    self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
-                                   initWithFrame:CGRectMake(260,0,
-                                                            kNavRightButtonWidth,
-                                                            kNavRightButtonHeight)
-                                           title:kNavBarRightButtonText 
-                                       andTarget:self] autorelease];
+    self.navigationItem.rightBarButtonItem   = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
+                                                                                target:self 
+                                                                           andSelector:@selector(didTapEditButton:)];
 }
 
 
@@ -142,7 +139,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 #pragma mark IBAction methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapNavBarRightButton:(id)sender event:(id)event {
+- (void)didTapEditButton:(UIButton*)button {
     
     DWUser *user = [DWUser fetch:self.userViewDataSource.userID];
     
