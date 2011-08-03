@@ -357,11 +357,6 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 #pragma mark DWItemsControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)usersResourceID {
-    return [DWSession sharedDWSession].currentUser.databaseID;
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
     [self updateNavTitleView];
     [user destroy];

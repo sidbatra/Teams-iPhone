@@ -151,6 +151,11 @@
  */
 - (void)redisplay;
 
+/**
+ * Reset positioning of items in the top navigation area
+ */
+- (void)resetItemNavigation;
+
 @end
 
 

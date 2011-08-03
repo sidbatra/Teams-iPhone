@@ -102,6 +102,20 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
         [cell setItemImage:(UIImage*)resource];
         [cell redisplay];
     }
+    else if(resourceType == kResourceTypeUser && item.user.databaseID == resourceID) {
+        
+        DWItemFeedCell *cell	= base;
+        DWUser *user            = resource;
+        
+        cell.itemTeamName		= user.firstName;
+        
+        if(style == kItemPresenterStyleTeamItems)
+            [cell setupBylineMode:user.byline];
+        
+        [cell resetItemNavigation];
+        [cell redisplay];
+    }
+
 }
 
 //----------------------------------------------------------------------------------------------------

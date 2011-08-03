@@ -19,6 +19,7 @@
 @implementation DWItemsLogicController
 
 @synthesize touchesController       = _touchesController;
+@synthesize usersController         = _usersController;
 @synthesize tableViewController     = _tableViewController;
 @synthesize delegate                = _delegate;
 
@@ -28,7 +29,10 @@
     
     if(self) {        
         
-        self.touchesController  = [[[DWTouchesController alloc] init] autorelease];
+        self.touchesController          = [[[DWTouchesController alloc] init] autorelease];
+        
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(largeAttachmentLoaded:) 
@@ -44,6 +48,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.touchesController      = nil;
+    self.usersController        = nil;
     self.tableViewController    = nil;
     self.delegate               = nil;
         
@@ -159,6 +164,23 @@
     [self.delegate performSelector:sel
                         withObject:item];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersController
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    
+    [self.tableViewController provideResourceToVisibleCells:kResourceTypeUser
+                                                   resource:user
+                                                 resourceID:user.databaseID];
+    
+    [user destroy];
+}
+
 
 @end
 

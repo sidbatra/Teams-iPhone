@@ -6,6 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DWItemsDataSource.h"
+#import "DWUsersController.h"
 #import "DWTouchesController.h"
 
 @class DWItem;
@@ -18,9 +19,13 @@
 /**
  * Base class for table views that display a list of items
  */
-@interface DWItemsLogicController : NSObject<DWTouchesControllerDelegate> {
+@interface DWItemsLogicController : NSObject<DWTouchesControllerDelegate,DWUsersControllerDelegate> {
+
     DWTouchesController     *_touchesController;
+    DWUsersController       *_usersController;
+    
     DWTableViewController   *_tableViewController;
+    
 
     
     id<DWItemsLogicControllerDelegate,NSObject> _delegate;
@@ -35,6 +40,12 @@
  * Record the touches made on items by the current user
  */
 @property (nonatomic,retain) DWTouchesController *touchesController;
+
+/**
+ * Interface to the users service
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
+
 
 /**
  * Delegate fires events about the ItemsLogicController lifecycle
