@@ -52,6 +52,12 @@
 - (void)hideCameraCaptureModeButtonForPickingImages;
 
 /**
+ * Hide the photo library button when the media picker 
+ * is used only for images
+ */
+- (void)hidePhotoLibraryButton;
+
+/**
  * Properties
  */
 @property (nonatomic, retain) IBOutlet NSTimer *timer;

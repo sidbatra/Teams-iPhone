@@ -122,9 +122,15 @@ static NSString* const kMsgFollowAction             = @"Tap to start watching th
      withFollowing:(DWFollowing*)following {
     
     if(following) {
-        [self.navTitleView displayPassiveButtonWithTitle:team.name
-                                             andSubTitle:team.byline
-                                        withEnabledState:[DWSession sharedDWSession].currentUser.team != team];
+        if ([DWSession sharedDWSession].currentUser.team != team) {
+            [self.navTitleView displayPassiveButtonWithTitle:team.name
+                                                 andSubTitle:team.byline
+                                            withEnabledState:YES];
+        }
+        else {
+            [self.navTitleView displayTitle:team.name
+                                andSubTitle:team.byline];
+        }
     }
     else {
         [self.navTitleView displayActiveButtonWithTitle:team.name
