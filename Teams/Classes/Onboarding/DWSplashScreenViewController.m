@@ -5,6 +5,7 @@
 
 #import "DWSplashScreenViewController.h"
 #import "DWIntroPaneViewController.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -70,6 +71,10 @@ static NSInteger kNumberOfPages = 4;
     
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 
@@ -156,11 +161,19 @@ static NSInteger kNumberOfPages = 4;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loginButtonClicked:(id)sender {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"login_selected"];
+    
     [self.delegate loginInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)signupButtonClicked:(id)sender {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"signup_selected"];
+    
     [self.delegate signupInitiated];
 }
 
