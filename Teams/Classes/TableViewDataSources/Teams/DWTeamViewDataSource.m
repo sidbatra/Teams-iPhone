@@ -58,6 +58,8 @@ static NSString* const kImgInvite		= @"slice_invite.png";
 @synthesize invite              = _invite;
 @synthesize teamID              = _teamID;
 
+@dynamic delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -192,9 +194,16 @@ static NSString* const kImgInvite		= @"slice_invite.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamLoadError:(NSString *)error {
+- (void)teamLoadError:(NSString*)error {
     NSLog(@"Team load error - %@",error);
     [self.delegate displayError:error];        
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated:(DWTeam*)team {
+    [self.delegate reloadTableView];
+    [self.delegate teamUpdated];
+    [team destroy];
 }
 
 

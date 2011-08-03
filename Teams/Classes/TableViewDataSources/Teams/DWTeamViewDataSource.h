@@ -10,6 +10,7 @@
 #import "DWUsersController.h"
 
 @class DWResource;
+@protocol DWTeamViewDataSourceDelegate;
 
 /**
  * Datasource for the team view data source
@@ -56,10 +57,28 @@
  */
 @property (nonatomic,assign) NSInteger teamID;
 
+/**
+ * Redefined delegate object
+ */
+@property (nonatomic,assign) id<DWTeamViewDataSourceDelegate,NSObject> delegate;
+
 
 /**
  * Initiate the process to load data for the table view
  */
 - (void)loadData;
+
+@end
+
+
+/**
+ * Additional delegate methods for the data source
+ */
+@protocol DWTeamViewDataSourceDelegate<DWTableViewDataSourceDelegate>
+
+/**
+ * Fired when the current team has been updated
+ */
+- (void)teamUpdated;
 
 @end

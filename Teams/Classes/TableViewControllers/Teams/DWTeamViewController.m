@@ -15,6 +15,18 @@
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 
+/**
+ * Private method and property declarations
+ */
+@interface DWTeamViewController()
+
+/**
+ * Update the title view with the name of the team being displayed
+ */
+- (void)setupTitleView;
+
+@end
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -106,9 +118,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
-    
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:team.name];
+    [self setupTitleView];
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self.teamViewDataSource loadData];
@@ -117,6 +127,12 @@
         self.navigationItem.rightBarButtonItem   = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
                                                                                     target:self 
                                                                                andSelector:@selector(didTapEditButton:)];        
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupTitleView {
+    DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
+    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewForText:team.name];
 }
 
 
@@ -198,6 +214,17 @@
                                                                  withActionName:@"invite_selected"
                                                                      withViewID:team.databaseID];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated {
+    [self setupTitleView];
 }
 
 
