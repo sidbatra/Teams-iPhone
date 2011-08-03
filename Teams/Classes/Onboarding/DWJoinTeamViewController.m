@@ -12,13 +12,14 @@
 #import "DWTeamsLogicController.h"
 #import "DWUsersLogicController.h"
 #import "NSObject+Helpers.h"
+#import "DWApplicationHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWGUIManager.h"
 
 
 static NSString* const kJoinTeamText                    = @"Join %@";
-static NSString* const kJoinTeamSubText                 = @"as member number %d";
+static NSString* const kJoinTeamSubText                 = @"as the %@ member";
 static NSString* const kNavBarRightButtonText           = @"Join";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
@@ -104,7 +105,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                 andDelegate:self] autorelease];
     
     [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.team.name] 
-                        andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,self.team.membersCount+1]];
+                        andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,
+                                     [DWApplicationHelper generateOrdinalFrom:(self.team.membersCount+1)]]];
     
     if (!self.navBarRightButtonView)
         self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
