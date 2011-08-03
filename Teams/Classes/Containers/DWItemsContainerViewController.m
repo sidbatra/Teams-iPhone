@@ -55,6 +55,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 @implementation DWItemsContainerViewController
 
 @synthesize followedViewController  = _followedViewController;
+@synthesize usersController         = _usersController;
 @synthesize postProgressView        = _postProgressView;
 @synthesize smallProfilePicView     = _smallProfilePicView;
 @synthesize navTitleView            = _navTitleView;
@@ -90,6 +91,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.followedViewController     = nil;
+    self.usersController            = nil;
     self.postProgressView           = nil;
     self.smallProfilePicView        = nil;
     self.navTitleView               = nil;
@@ -117,6 +119,12 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     [self loadFollowedView];
     [self loadProfilePicView];
     [self loadNavTitleView];
+    
+    
+    if(!self.usersController) {
+        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController.delegate   = self;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -341,6 +349,22 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
                                                              withActionName:@"notifications_clicked"];
     
     [self displayNotifications];
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWItemsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)usersResourceID {
+    return [DWSession sharedDWSession].currentUser.databaseID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    [self updateNavTitleView];
+    [user destroy];
 }
 
 

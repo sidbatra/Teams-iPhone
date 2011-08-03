@@ -6,6 +6,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DWContainerViewController.h"
+#import "DWUsersController.h"
 #import "DWSmallProfilePicView.h"
 #import "DWPostProgressView.h"
 #import "DWNavBarCountView.h"
@@ -18,9 +19,10 @@
  * Primary view for the Feed tab and container for followed 
  * items view
  */
-@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWSmallProfilePicViewDelegate,DWNavBarCountViewDelegate> {
+@interface DWItemsContainerViewController : DWContainerViewController<DWPostProgressViewDelegate,DWSmallProfilePicViewDelegate,DWNavBarCountViewDelegate,DWUsersControllerDelegate> {
     
 	DWFollowedItemsViewController	*_followedViewController;
+    DWUsersController               *_usersController;
     
 	DWPostProgressView				*_postProgressView;
     DWSmallProfilePicView           *_smallProfilePicView;
@@ -34,6 +36,11 @@
  * Table view for the items followed by the current user
  */
 @property (nonatomic,retain) DWFollowedItemsViewController *followedViewController;
+
+/**
+ * Interface to the users service
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
 
 /**
  * Progress bar view for displaying the progress of the creation queue
