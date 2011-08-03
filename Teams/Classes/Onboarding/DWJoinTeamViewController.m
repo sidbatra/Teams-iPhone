@@ -113,8 +113,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                title:kNavBarRightButtonText 
                                            andTarget:self] autorelease];
     
-    [self.joinTeamDataSource addTeam:self.team];
-    [self.joinTeamDataSource loadMembers];
+    self.joinTeamDataSource.teamID  = self.team.databaseID;
+    [self.joinTeamDataSource loadData];
 }
 
 //----------------------------------------------------------------------------------------------------

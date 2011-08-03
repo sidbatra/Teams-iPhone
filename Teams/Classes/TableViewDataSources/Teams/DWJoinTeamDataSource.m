@@ -16,6 +16,8 @@
 
 @synthesize usersController     = _usersController;
 
+@synthesize teamID              = _teamID;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -43,14 +45,9 @@
 #pragma mark Data requests
 
 //----------------------------------------------------------------------------------------------------
-- (void)addTeam:(DWTeam*)team {   
-    _teamID = team.databaseID;     
-    [self.objects addObject:team];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)loadMembers {
-    [self.usersController getMembersOfTeam:_teamID];
+- (void)loadData {
+    [self.objects addObject:[DWTeam fetch:self.teamID]];  
+    [self.usersController getMembersOfTeam:self.teamID];
 }
 
 
@@ -71,7 +68,7 @@
     [self.objects insertObjects:users atIndexes:indexSet];          
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.content     = [DWTeamsHelper createdAtLineForTeam:[self.objects objectAtIndex:0]];
+    message.content     = [DWTeamsHelper createdAtLineForTeam:[DWTeam fetch:_teamID]];
     [self.objects addObject:message];
 
     [self.delegate reloadTableView];

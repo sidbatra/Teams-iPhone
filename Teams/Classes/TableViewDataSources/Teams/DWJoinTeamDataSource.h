@@ -22,14 +22,15 @@
  */
 @property (nonatomic,retain) DWUsersController *usersController;
 
-/*
- * Add the team to the beginning of the objects array
+/**
+ * TeamID for the team being displayed
  */
-- (void)addTeam:(DWTeam*)team;
+@property (nonatomic,assign) NSInteger teamID;
 
-/*
- * Load the members for a team
+
+/**
+ * Initiate the process to load data for the table view
  */
-- (void)loadMembers;
+- (void)loadData;
 
 @end
