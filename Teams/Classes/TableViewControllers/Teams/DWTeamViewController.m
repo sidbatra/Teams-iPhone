@@ -10,7 +10,6 @@
 #import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
 #import "DWSession.h"
-#import "DWNavBarRightButtonView.h"
 #import "DWUpdateTeamDetailsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
@@ -27,8 +26,6 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
 @synthesize teamsLogicController    = _teamsLogicController;
-
-@synthesize navBarRightButtonView   = _navBarRightButtonView;
 
 @synthesize delegate                = _delegate;
 
@@ -78,9 +75,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
-    
-    self.navBarRightButtonView      = nil;
-    
+        
     self.delegate                   = nil;
     
     [super dealloc];
@@ -120,13 +115,10 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     [self.teamViewDataSource loadData];
     
-    if (_isUsersTeam && !self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
-                                       initWithFrame:CGRectMake(260,0,
-                                                                kNavRightButtonWidth,
-                                                                kNavRightButtonHeight)
-                                               title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+    if (_isUsersTeam)
+        self.navigationItem.rightBarButtonItem   = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
+                                                                                    target:self 
+                                                                               andSelector:@selector(didTapEditButton:)];        
 }
 
 
@@ -136,7 +128,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 #pragma mark IBAction methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapNavBarRightButton:(id)sender event:(id)event {
+- (void)didTapEditButton:(UIButton*)button {
     
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
     
@@ -218,18 +210,6 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 //----------------------------------------------------------------------------------------------------
 - (void)requiresFullScreenMode {
     
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Nav Stack Selectors
-
-//----------------------------------------------------------------------------------------------------
-- (void)willShowOnNav {
-    if (_isUsersTeam) 
-        [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
 }
 
 @end

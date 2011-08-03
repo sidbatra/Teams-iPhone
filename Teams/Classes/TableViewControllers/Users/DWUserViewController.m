@@ -11,7 +11,6 @@
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
 #import "DWSession.h"
-#import "DWNavBarRightButtonView.h"
 #import "DWUpdateUserDetailsViewController.h"
 #import "DWAnalyticsManager.h"
 
@@ -34,8 +33,6 @@
 @end
 
 
-static NSString* const kNavBarRightButtonText   = @"Edit";
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -45,7 +42,6 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 @synthesize userViewDataSource      = _userViewDataSource;
 
 @synthesize navTitleView            = _navTitleView;
-@synthesize navBarRightButtonView   = _navBarRightButtonView;
 
 @synthesize delegate                = _delegate;
 
@@ -89,7 +85,6 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     self.userViewDataSource     = nil;
     
     self.navTitleView           = nil;
-    self.navBarRightButtonView  = nil;
     
     [super dealloc];
 }
@@ -109,7 +104,7 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
     
     [self.userViewDataSource loadUser];
     
-    if (_isCurrentUser && !self.navBarRightButtonView)
+    if (_isCurrentUser)
         [self loadNavBarRightButtonView];
 }
 
@@ -228,9 +223,6 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
-    
-    if(_isCurrentUser)
-        [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
 }
 
 

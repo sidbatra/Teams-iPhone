@@ -10,7 +10,6 @@
 
 @class DWTeam;
 @class DWNavTitleView;
-@class DWNavBarRightButtonView;
 @protocol DWUserViewControllerDelegate;
 
 /**
@@ -22,7 +21,6 @@
     DWUserViewDataSource        *_userViewDataSource;
     
     DWNavTitleView              *_navTitleView;
-    DWNavBarRightButtonView     *_navBarRightButtonView;
     
     id<DWUserViewControllerDelegate>    _delegate;
 }
@@ -36,7 +34,6 @@
  * Custom nav bar items
  */ 
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Delegate receives events based on DWUserViewControllerDelegate

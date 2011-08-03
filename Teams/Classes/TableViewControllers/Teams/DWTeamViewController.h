@@ -10,7 +10,6 @@
 @class DWTeam;
 @class DWTeamViewDataSource;
 @class DWTeamsLogicController;
-@class DWNavBarRightButtonView;
 @protocol DWTeamsLogicControllerDelegate;
 @protocol DWTeamViewControllerDelegate;
 
@@ -22,9 +21,7 @@
     
     DWTeamViewDataSource        *_teamViewDataSource;
     DWTeamsLogicController      *_teamsLogicController;
-    
-    DWNavBarRightButtonView     *_navBarRightButtonView;
-    
+        
     id<DWTeamViewControllerDelegate>    _delegate;
 }
 
@@ -37,11 +34,6 @@
  * Encapsulates functionality to display one or more teams
  */
 @property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
-
-/**
- * Custom right button for navigation bar
- */
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Delegate based on the DWTeamViewControllerDelegate protocol
