@@ -8,7 +8,6 @@
 #import "DWUser.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
-#import "DWNavBarFillerView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWConstants.h"
 
@@ -38,7 +37,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
-@synthesize navBarFillerView                = _navBarFillerView;
 @synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize usersController                 = _usersController;
@@ -83,7 +81,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     
     self.navTitleView                   = nil;
 	self.navBarRightButtonView          = nil;
-    self.navBarFillerView               = nil;
     self.spinnerOverlayView             = nil;
     
     self.usersController                = nil;
@@ -100,12 +97,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
-    
-    if (!self.navBarFillerView) 
-        self.navBarFillerView = [[[DWNavBarFillerView alloc] 
-                                  initWithFrame:CGRectMake(0, 0, 
-                                                           kNavRightButtonWidth, 
-                                                           kNavRightButtonHeight)] autorelease];
     
     if (self.userImage) 
         self.underlayImageView.image = self.userImage;
@@ -405,7 +396,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];    
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
-    [self.navigationController.navigationBar addSubview:self.navBarFillerView];    
     [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];    
 }
 

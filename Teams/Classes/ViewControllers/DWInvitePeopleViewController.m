@@ -10,7 +10,6 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
-#import "DWNavBarFillerView.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
@@ -34,7 +33,6 @@ static NSInteger const kTableViewHeight						= 200;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
-@synthesize navBarFillerView                = _navBarFillerView;
 
 @synthesize queryContactsViewController     = _queryContactsViewController;
 @synthesize addedContactsViewController     = _addedContactsViewController;
@@ -59,7 +57,6 @@ static NSInteger const kTableViewHeight						= 200;
     
     self.navTitleView                   = nil;
     self.navBarRightButtonView          = nil;
-    self.navBarFillerView               = nil;
     
     self.queryContactsViewController    = nil;
     self.addedContactsViewController    = nil;    
@@ -83,12 +80,7 @@ static NSInteger const kTableViewHeight						= 200;
     [super viewDidLoad];
     
     self.navigationItem.hidesBackButton = YES;
-    
-    if (!self.navBarFillerView) 
-        self.navBarFillerView = [[[DWNavBarFillerView alloc] 
-                                  initWithFrame:CGRectMake(0, 0, 
-                                                           kNavRightButtonWidth, 
-                                                           kNavRightButtonHeight)] autorelease];
+
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
@@ -219,7 +211,6 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
-    [self.navigationController.navigationBar addSubview:self.navBarFillerView];    
 }
 
 @end

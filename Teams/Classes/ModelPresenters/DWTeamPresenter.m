@@ -7,9 +7,11 @@
 #import "DWTeam.h"
 #import "DWAttachment.h"
 #import "DWTeamFeedCell.h"
+#import "DWFatCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 92;
+static CGFloat const kTeamFeedCellHeight    = 92;
+static CGFloat const kTeamFatCellHeight     = 275;
 
 
 
@@ -19,20 +21,19 @@ static CGFloat const kCellHeight  = 92;
 @implementation DWTeamPresenter
 
 //----------------------------------------------------------------------------------------------------
-+ (UITableViewCell*)cellForObject:(id)object
-                     withBaseCell:(id)base
-               withCellIdentifier:(NSString*)identifier
-                     withDelegate:(id)delegate
-             andPresentationStyle:(NSInteger)style {
++ (UITableViewCell*)teamFeedCellForObject:(id)object
+                             withBaseCell:(id)base
+                       withCellIdentifier:(NSString*)identifier 
+                     andPresentationStyle:(NSInteger)style {
     
     DWTeam *team			= object;
     DWTeamFeedCell *cell	= base;
     
     if(!cell) 
         cell = [[[DWTeamFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                                   reuseIdentifier:identifier] autorelease];
+                                      reuseIdentifier:identifier] autorelease];
     
-	    
+    
     cell.teamName       = team.name;
     cell.teamDetails    = team.byline;
     cell.hasAttachment  = team.attachment ? YES : NO;
@@ -56,10 +57,76 @@ static CGFloat const kCellHeight  = 92;
 }
 
 //----------------------------------------------------------------------------------------------------
++ (UITableViewCell*)fatCellForObject:(id)object
+                        withBaseCell:(id)base
+                  withCellIdentifier:(NSString*)identifier {
+    
+    DWTeam *team                = object;
+    DWFatCell *cell             = base;
+    
+    if(!cell)
+        cell = [[[DWFatCell alloc] initWithStyle:UITableViewStylePlain
+                                 reuseIdentifier:identifier] autorelease];
+    
+    
+    [team startLargeImageDownload];
+    
+    [cell setImage:team.attachment.largeImage];
+    [cell setFirstLine:team.name];
+    [cell setSecondLine:team.byline];
+        
+    return cell;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UITableViewCell*)cellForObject:(id)object
+                     withBaseCell:(id)base
+               withCellIdentifier:(NSString*)identifier
+                     withDelegate:(id)delegate
+             andPresentationStyle:(NSInteger)style {
+    
+    UITableViewCell *cell = nil;
+    
+    if(style == kTeamPresenterStyleFat) {
+        cell = [self fatCellForObject:object
+                         withBaseCell:base
+                   withCellIdentifier:identifier];
+    }
+    else {
+        cell = [self teamFeedCellForObject:object
+                              withBaseCell:base
+                        withCellIdentifier:identifier 
+                      andPresentationStyle:style];
+    }
+    
+    return cell;
+}
+
+
+//----------------------------------------------------------------------------------------------------
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return style == kTeamPresenterStyleFat ? kTeamFatCellHeight : kTeamFeedCellHeight;
+}
+
+
+//----------------------------------------------------------------------------------------------------
++ (void)updateSlimCell:(id)base 
+             withImage:(UIImage*)image {
+    
+    DWTeamFeedCell *cell = base;
+    
+    [cell setTeamImage:image];
+    [cell redisplay];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)updateFatCell:(id)base 
+            withImage:(UIImage*)image {
+    
+    DWFatCell *cell = base;
+    [cell setImage:image];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -72,14 +139,21 @@ static CGFloat const kCellHeight  = 92;
     
     DWTeam *team = object;
     
-    if(resourceType == kResourceTypeSliceAttachmentImage && team.attachment && team.attachment.databaseID == resourceID) {
+    if (resourceType == kResourceTypeLargeAttachmentImage && team.attachment && 
+        team.attachment.databaseID == resourceID && style == kTeamPresenterStyleFat) {
         
-        DWTeamFeedCell *cell = base;
+        [self updateFatCell:base 
+                  withImage:(UIImage*)resource];
+    }
+    
+    else if (resourceType == kResourceTypeSliceAttachmentImage && 
+             team.attachment && team.attachment.databaseID == resourceID && style != kTeamPresenterStyleFat) {
         
-        [cell setTeamImage:(UIImage*)resource];
-        [cell redisplay];
+        [self updateSlimCell:base 
+                   withImage:(UIImage*)resource];
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------
 + (void)cellClickedForObject:(id)object

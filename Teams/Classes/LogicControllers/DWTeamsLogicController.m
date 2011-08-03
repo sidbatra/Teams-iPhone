@@ -32,6 +32,11 @@
 												 selector:@selector(sliceAttachmentLoaded:) 
 													 name:kNImgSliceAttachmentFinalized
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(largeAttachmentLoaded:) 
+													 name:kNImgLargeAttachmentLoaded
+												   object:nil];
     }
     
     return self;
@@ -86,5 +91,16 @@
                                                  resourceID:resourceID];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)largeAttachmentLoaded:(NSNotification*)notification {
+	
+	NSDictionary *info		= [notification userInfo];
+	NSInteger resourceID	= [[info objectForKey:kKeyResourceID] integerValue];
+    id resource             = [info objectForKey:kKeyImage];
+    
+    [self.tableViewController provideResourceToVisibleCells:kResourceTypeLargeAttachmentImage
+                                                   resource:resource
+                                                 resourceID:resourceID];
+}
 
 @end

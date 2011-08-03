@@ -6,7 +6,12 @@
 #import "DWJoinTeamViewController.h"
 
 #import "DWConstants.h"
-#import "DWMembership.h"
+#import "DWTeam.h"
+#import "DWUser.h"
+#import "DWJoinTeamDataSource.h"
+#import "DWTeamsLogicController.h"
+#import "DWUsersLogicController.h"
+#import "NSObject+Helpers.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWGUIManager.h"
@@ -28,6 +33,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize navTitleView                = _navTitleView;
 @synthesize navBarRightButtonView       = _navBarRightButtonView;
 
+@synthesize joinTeamDataSource          = _joinTeamDataSource;
+@synthesize teamsLogicController        = _teamsLogicController;
+@synthesize usersLogicController        = _usersLogicController;
+
 @synthesize delegate                    = _delegate;
 
 
@@ -36,17 +45,34 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        //Custom initialization
+        self.joinTeamDataSource                         = [[[DWJoinTeamDataSource alloc] init] autorelease];
+        
+        self.teamsLogicController                       = [[[DWTeamsLogicController alloc] init] autorelease];
+        self.teamsLogicController.tableViewController   = self;
+        
+        self.usersLogicController                       = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController.tableViewController   = self;
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleFat]
+                                        forKey:[[DWTeam class] className]];   
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleNavigationDisabled]
+                                        forKey:[[DWUser class] className]];   
     }
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    NSLog(@"join team view controller freed");
     self.team                   = nil;
     
     self.navTitleView           = nil;
     self.navBarRightButtonView  = nil;
+    
+    self.joinTeamDataSource     = nil;
+    self.teamsLogicController   = nil;
+    self.usersLogicController   = nil;
         
     [super dealloc];
 }
@@ -68,6 +94,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
     
+    [self disablePullToRefresh];
+    
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
@@ -84,12 +112,20 @@ static NSString* const kMsgCancelTitle                  = @"OK";
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];    
+                                           andTarget:self] autorelease];
+    
+    self.joinTeamDataSource.teamID  = self.team.databaseID;
+    [self.joinTeamDataSource loadData];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (DWTableViewDataSource*)getDataSource {
+    return self.joinTeamDataSource;
 }
 
 

@@ -36,7 +36,9 @@
     else
         cell.boldText   = user.firstName;
     
-    
+    if (style == kUserPresenterStyleNavigationDisabled) 
+        [cell disableCellInteraction];
+        
     cell.plainText  = user.byline;
     
     [user startSmallImageDownload];

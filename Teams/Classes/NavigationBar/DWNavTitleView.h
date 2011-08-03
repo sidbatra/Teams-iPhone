@@ -15,7 +15,6 @@
     UILabel                     *titleLabel;
     UILabel                     *subtitleLabel;
     UILabel                     *standaloneTitleLabel;
-    UIImageView                 *underlayImageView;
     UIButton                    *underlayButton;
     UIActivityIndicatorView     *spinner;
     
