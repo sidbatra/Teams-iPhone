@@ -118,13 +118,9 @@ static NSString* const kImgSelectPhoto          = @"select_photo.png";
 #pragma mark -
 #pragma mark Customize views
 //----------------------------------------------------------------------------------------------------
-- (void)hideCameraCaptureModeButtonForPickingImages {
+- (void)prepareForImageOnlyMode {
     self.cameraCaptureModeButton.hidden = YES;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)hidePhotoLibraryButton {
-    self.photoLibraryButton.hidden = YES;
+    self.photoLibraryButton.hidden      = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
