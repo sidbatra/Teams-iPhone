@@ -94,11 +94,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
                                                       otherButtonTitles:kActionTitle,nil];
             [alertView show];
             [alertView release];
+            
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                     withActionName:@"live_notification"
+                                                                       andExtraInfo:[NSString stringWithFormat:@"body=%@",
+                                                                                     body]];
+            
         }
         
         if(badge) {
+            
             _unreadNotificationsCount = [badge integerValue];
             [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
+            
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                     withActionName:@"live_badge"
+                                                                       andExtraInfo:[NSString stringWithFormat:@"badge=%d",
+                                                                                     _unreadNotificationsCount]];
         }
         
 	}
@@ -200,8 +214,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 //----------------------------------------------------------------------------------------------------
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	    
-	if (buttonIndex == kActionButtonIndex)
+	if (buttonIndex == kActionButtonIndex) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"live_notification_viewed"];
+        
         [self displayNotifications];
+    }
+    else {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"live_notification_rejected"];
+    }
 }
 
 
