@@ -210,12 +210,19 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+
     [[DWPushNotificationsManager sharedDWPushNotificationsManager] setDeviceToken:deviceToken
                                                                         forUserID:[DWSession sharedDWSession].currentUser.databaseID];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:[DWPushNotificationsManager sharedDWPushNotificationsManager]
+                                                             withActionName:@"push_notifications_registered"];   
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:[DWPushNotificationsManager sharedDWPushNotificationsManager]
+                                                             withActionName:@"push_notifications_rejected"];   
 }
 
 
