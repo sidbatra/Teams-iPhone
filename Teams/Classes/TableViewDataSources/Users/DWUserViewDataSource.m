@@ -48,6 +48,7 @@
 @synthesize usersController     = _usersController;
 @synthesize teamMessage         = _teamMessage;
 @synthesize watchingMessage     = _watchingMessage;
+@synthesize imageResource       = _imageResource;
 @synthesize userID              = _userID;
 
 @dynamic delegate;
@@ -69,6 +70,7 @@
     self.usersController    = nil;
     self.teamMessage        = nil;
     self.watchingMessage    = nil;
+    self.imageResource      = nil;
     
     DWUser *user = [DWUser fetch:_userID];
     [user destroy];
@@ -79,13 +81,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)addImageResource:(DWUser*)user {
     
-    DWResource *resource            = [[[DWResource alloc] init] autorelease];
-    resource.text                   = user.byline;
-    resource.image                  = user.largeImage;
-    resource.imageResourceType      = kResourceTypeLargeUserImage;
-    resource.imageResourceID        = user.databaseID;
+    self.imageResource                        = [[[DWResource alloc] init] autorelease];
+    self.imageResource.text                   = user.byline;
+    self.imageResource.image                  = user.largeImage;
+    self.imageResource.imageResourceType      = kResourceTypeLargeUserImage;
+    self.imageResource.imageResourceID        = user.databaseID;
     
-    [self.objects addObject:resource];
+    [self.objects addObject:self.imageResource];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -169,6 +171,21 @@
 - (void)userLoadError:(NSString*)error {
     NSLog(@"User load error - %@",error);
     [self.delegate displayError:error];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    
+    [user startLargeImageDownload];
+    
+    self.imageResource.text = user.byline;
+    self.imageResource.image = user.largeImage;
+    
+    
+    [self.delegate userLoaded:user];
+    [self.delegate reloadTableView];
+    
+    [user destroy];
 }
 
 @end

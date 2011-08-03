@@ -9,6 +9,7 @@
 #import "DWUsersController.h"
 
 @class DWUser;
+@class DWResource;
 @class DWMessage;
 @protocol DWUserViewDataSourceDelegate;
 
@@ -21,6 +22,8 @@
     
     DWMessage           *_teamMessage;
     DWMessage           *_watchingMessage;
+    
+    DWResource          *_imageResource;
     
     NSInteger           _userID;
 }
@@ -39,6 +42,11 @@
  * Message displaying the total teams being watched
  */
 @property (nonatomic,retain) DWMessage *watchingMessage;
+
+/**
+ * Image + byline for the profile pic cell
+ */
+@property (nonatomic,retain) DWResource *imageResource;
 
 
 /**
