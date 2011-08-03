@@ -61,6 +61,7 @@ enum {
  */
 typedef enum {
     KUserPresenterStyleFullSignature = 1,
+    kUserPresenterStyleNavigationDisabled = 2,    
 } DWUserPresenterStyle;
 
 /**
@@ -76,6 +77,7 @@ typedef enum {
  */
 typedef enum {
     kTeamPresenterStyleNavigationDisabled = 1,
+    kTeamPresenterStyleFat = 2,    
 } DWTeamPresenterStyle;
 
 /**

@@ -132,4 +132,10 @@ static NSString* const kDiskKeyByline       = @"DWTeam_byline";
 		[self.attachment startSliceDownload];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)startLargeImageDownload {
+	if(self.attachment)
+		[self.attachment startLargeDownload];
+}
+
 @end

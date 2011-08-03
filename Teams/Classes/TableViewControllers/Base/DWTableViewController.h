@@ -74,4 +74,9 @@
  */
 - (DWTableViewDataSource*)getDataSource;
 
+/**
+ * Method to disable pull to refresh for certain table views
+ */
+- (void)disablePullToRefresh;
+
 @end

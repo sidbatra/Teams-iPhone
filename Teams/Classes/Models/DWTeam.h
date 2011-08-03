@@ -60,6 +60,11 @@
  */
 - (void)startImageDownload;
 
+/**
+ * Start downloading the attachment large image
+ */
+- (void)startLargeImageDownload;
+
 @end
 
 

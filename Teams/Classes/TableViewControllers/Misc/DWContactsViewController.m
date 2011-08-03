@@ -50,8 +50,8 @@
     
     self.view.hidden            = YES;
     self.view.backgroundColor   = [UIColor clearColor];
-    self.refreshHeaderView      = nil;
-    //self.tableView.bounces      = NO;
+    
+    [self disablePullToRefresh];
 }
 
 

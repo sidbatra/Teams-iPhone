@@ -74,6 +74,11 @@
  */
 - (void)redisplay;
 
+/**
+ * Disables the cell interaction
+ */
+- (void)disableCellInteraction;
+
 @end
 
 

@@ -213,4 +213,10 @@ static NSString* const kImgChevron		= @"chevron.png";
 	[CATransaction commit];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)disableCellInteraction {
+    self.userInteractionEnabled     = NO;
+    chevronLayer.hidden             = YES;
+}
+
 @end
