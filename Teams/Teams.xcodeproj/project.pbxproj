@@ -342,7 +342,6 @@
 		BBB3C3D9135FB21A00EA6087 /* shadow_top@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D1135FB21A00EA6087 /* shadow_top@2x.png */; };
 		BBB3C3DC135FB21A00EA6087 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D4135FB21A00EA6087 /* share.png */; };
 		BBB3C3DD135FB21A00EA6087 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBB3C3D5135FB21A00EA6087 /* share@2x.png */; };
-		BBBDCAEC13E50A8100022AE3 /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */; };
 		BBBDCAF913E51F9C00022AE3 /* slice_invite.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBDCAF713E51F9C00022AE3 /* slice_invite.png */; };
 		BBBDCAFA13E51F9D00022AE3 /* slice_invite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBDCAF813E51F9C00022AE3 /* slice_invite@2x.png */; };
 		BBC0C6E012F4C56000291C33 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = BBC0C6D812F4C56000291C33 /* blackArrow.png */; };
@@ -391,6 +390,7 @@
 		BBF350D813DC985B00B339A8 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D313DC985B00B339A8 /* DWGUIManager.m */; };
 		BBF350D913DC985B00B339A8 /* DWLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D513DC985B00B339A8 /* DWLocationManager.m */; };
 		BBF350DA13DC985B00B339A8 /* DWPushNotificationsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */; };
+		BBF498CE13E9D42B008C0D7E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BBF498CD13E9D42B008C0D7E /* libz.dylib */; };
 		BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */; };
 		BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */; };
 		BBF670B713E7424700803B17 /* DWNavBarCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF670B613E7424700803B17 /* DWNavBarCountView.m */; };
@@ -1034,6 +1034,7 @@
 		BBF350D513DC985B00B339A8 /* DWLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLocationManager.m; sourceTree = "<group>"; };
 		BBF350D613DC985B00B339A8 /* DWPushNotificationsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPushNotificationsManager.h; sourceTree = "<group>"; };
 		BBF350D713DC985B00B339A8 /* DWPushNotificationsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPushNotificationsManager.m; sourceTree = "<group>"; };
+		BBF498CD13E9D42B008C0D7E /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BBF670A713E730D100803B17 /* bg_dark_gradient_square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bg_dark_gradient_square.png; path = resources/bg_dark_gradient_square.png; sourceTree = "<group>"; };
 		BBF670A813E730D100803B17 /* bg_dark_gradient_square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_dark_gradient_square@2x.png"; path = "resources/bg_dark_gradient_square@2x.png"; sourceTree = "<group>"; };
 		BBF670B513E7424700803B17 /* DWNavBarCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavBarCountView.h; sourceTree = "<group>"; };
@@ -1162,7 +1163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBBDCAEC13E50A8100022AE3 /* libz.1.2.3.dylib in Frameworks */,
+				BBF498CE13E9D42B008C0D7E /* libz.dylib in Frameworks */,
 				2632E5AF13CCE48C005B1B1E /* AddressBook.framework in Frameworks */,
 				BBFD29441386FE6B0077904A /* MessageUI.framework in Frameworks */,
 				BB379DCE12ED50CE0071CE08 /* CoreGraphics.framework in Frameworks */,
@@ -1468,6 +1469,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				BBF498CD13E9D42B008C0D7E /* libz.dylib */,
 				BB4D03E113E79B0300A1E791 /* AppDelegate */,
 				BB4D03B813E7996500A1E791 /* Camera */,
 				BB4D03C113E799B200A1E791 /* Connect */,
