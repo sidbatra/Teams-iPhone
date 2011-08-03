@@ -9,7 +9,13 @@
  * Plain view for displaying error messages
  */
 @interface DWErrorView : UIView {
-    UILabel         *_messageLabel;
+    UILabel         *messageLabel;
+    UILabel         *refreshLabel;
+    
+    UIButton        *viewButton;
+    
+    UIImageView     *refreshImageView;
+    
     id<NSObject>    _delegate;
 }
 
@@ -23,5 +29,15 @@
  * Apply a custom error message
  */
 - (void)setErrorMessage:(NSString*)message;
+
+/**
+ * Hide the refresh label and image view
+ */
+- (void)hideRefreshUI;
+
+/**
+ * Display the refresh label and image view 
+ */
+- (void)showRefreshUI;
 
 @end

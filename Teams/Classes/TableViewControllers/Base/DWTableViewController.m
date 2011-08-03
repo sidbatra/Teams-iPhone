@@ -129,8 +129,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.view addSubview:self.loadingView];
     
     
-    if(!self.errorView)
-        self.errorView  = [self getTableErrorView];
+    if(!self.errorView) {
+        self.errorView          = [self getTableErrorView];
+        self.errorView.hidden   = YES;
+    }
     
     [self.view addSubview:self.errorView];
 }
@@ -201,7 +203,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (UIView*)getTableErrorView {
     DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
     errorView.delegate      = self;
-    errorView.hidden        = YES;
     
     return errorView;
 }
@@ -341,7 +342,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayError:(NSString *)message {
+- (void)displayError:(NSString *)message 
+       withRefreshUI:(BOOL)showRefreshUI {
+    
     SEL sel = @selector(setErrorMessage:);
     
     if(![self.errorView respondsToSelector:sel])
@@ -349,6 +352,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     [self.errorView performSelector:sel
                          withObject:message];
+    
+    
+    sel = showRefreshUI ? @selector(showRefreshUI) : @selector(hideRefreshUI);
+    
+    if(![self.errorView respondsToSelector:sel])
+        return;
+    
+    [self.errorView performSelector:sel];
+    
+
     
     [self scrollToTop];
     
@@ -358,6 +371,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     _isPullToRefreshActive          = NO;
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayError:(NSString *)message {
+    
+    [self displayError:message
+         withRefreshUI:YES];
 }
 
 //----------------------------------------------------------------------------------------------------

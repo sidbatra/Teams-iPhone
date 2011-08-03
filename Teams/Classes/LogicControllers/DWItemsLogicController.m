@@ -82,16 +82,14 @@
                                                                andExtraInfo:[NSString stringWithFormat:@"item_id=%d",itemID]];
     
     DWItem *item = [DWItem fetch:itemID];
-    return !item.isTouched;
-	//return YES;
-    //!item.isTouched && ![item.user isCurrentUser];
+    return !item.isTouched && ![item.user isCurrentUser];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)cellTouched:(NSInteger)itemID {
     
     DWItem *item    = [DWItem fetch:itemID];
-    item.isTouched  = YES;
+    [item touched];
     
     [self.touchesController postWithItemID:item.databaseID];
 }

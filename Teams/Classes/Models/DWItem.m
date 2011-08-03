@@ -103,4 +103,10 @@
 		[self.attachment startLargeDownload];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)touched {
+    _touchesCount++;
+    _isTouched = YES;
+}
+
 @end

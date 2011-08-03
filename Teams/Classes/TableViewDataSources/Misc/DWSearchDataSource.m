@@ -7,6 +7,9 @@
 #import "DWAnalyticsManager.h"
 
 
+static NSString* const kMsgNoResults    = @"No Teams or people found";
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -70,7 +73,13 @@
     [self clean];
     self.objects = results;
     
-    [self.delegate reloadTableView];
+    if([self.objects count]) {
+        [self.delegate reloadTableView];
+    }
+    else {
+        [self.delegate displayError:kMsgNoResults 
+                      withRefreshUI:NO];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------

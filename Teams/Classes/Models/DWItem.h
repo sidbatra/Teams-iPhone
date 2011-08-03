@@ -67,5 +67,10 @@
  */
 - (void)startImagesDownload;
 
+/**
+ * Mark the item as touched
+ */
+- (void)touched;
+
 @end
 

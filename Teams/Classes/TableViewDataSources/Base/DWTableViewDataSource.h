@@ -116,9 +116,15 @@
 - (void)reloadTableView;
 
 /**
- * Display an error message
+ * Display an error message with the refresh UI
  */
 - (void)displayError:(NSString*)message;
+
+/**
+ * Display an error message and control display of refresh UI
+ */
+- (void)displayError:(NSString*)message 
+       withRefreshUI:(BOOL)showRefreshUI;
 
 /**
  * Inserts a new row into the table view

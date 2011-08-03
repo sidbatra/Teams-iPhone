@@ -33,6 +33,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.usersController    = nil;
+
+    DWUser *user = [DWUser fetch:_userID];
+    [user destroy];
     
     [super dealloc];
 }
@@ -94,7 +97,6 @@
     [self.delegate userLoaded:user];
     
     [user startSmallImageDownload];
-    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
