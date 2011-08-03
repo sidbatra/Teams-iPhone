@@ -10,7 +10,6 @@
 @class DWUser;
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
-@class DWNavBarFillerView;
 @class DWSpinnerOverlayView;
 
 @protocol DWCreateProfileViewControllerDelegate;
@@ -34,7 +33,6 @@
 			  	
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
-    DWNavBarFillerView          *_navBarFillerView;
     DWSpinnerOverlayView        *_spinnerOverlayView;
     
     DWUsersController           *_usersController;
@@ -72,7 +70,6 @@
  */
 @property (nonatomic,retain) DWNavTitleView *navTitleView;
 @property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
-@property (nonatomic,retain) DWNavBarFillerView *navBarFillerView;
 
 /**
  * Custom overlay spinner view

@@ -199,7 +199,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	[[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | 
                                                                             UIRemoteNotificationTypeSound | 
                                                                             UIRemoteNotificationTypeAlert];
-    
+    self.onboardingNavController = nil;
 }
 
 

@@ -10,7 +10,6 @@ static NSString* const kImgPassiveButton                    = @"loading_bar_fail
 static NSString* const kImgPassiveButtonHighlighted         = @"static_button_active.png";
 static NSString* const kImgActiveButton                     = @"button_follow.png";
 static NSString* const kImgActiveButtonHighlighted          = @"button_follow_active.png";
-static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.png";
 
 
 /**
@@ -39,7 +38,6 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
  * View creation methods
  */
 - (void)createUnderlayButton;
-- (void)createUnderlayImageView;
 - (void)createTitleLabel;
 - (void)createSubtitleLabel;
 - (void)createStandaloneTitleLabel;
@@ -62,7 +60,6 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
     if (self) {
         
         [self createUnderlayButton];
-        [self createUnderlayImageView];
         [self createTitleLabel];
         [self createSubtitleLabel];            
         [self createStandaloneTitleLabel];
@@ -110,18 +107,6 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
      forControlEvents:UIControlEventTouchDragInside];*/
     
     [self addSubview:underlayButton];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-- (void)createUnderlayImageView {    
-    underlayImageView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgUnderlayImageView]];
-    
-    underlayImageView.frame     = CGRectMake(0, 0, 200, 44);
-    underlayImageView.hidden    = YES;
-    
-    [self addSubview:underlayImageView];
-    [underlayImageView release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -208,9 +193,7 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
     titleLabel.hidden                   = YES;
     subtitleLabel.hidden                = YES;
     standaloneTitleLabel.hidden         = YES;
-    
-    underlayImageView.hidden            = YES;
-    
+        
     spinner.hidden                      = YES;
     [spinner stopAnimating];
 }
@@ -228,8 +211,6 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
     
     standaloneTitleLabel.hidden     = NO;
     standaloneTitleLabel.text       = title;
-    
-    underlayImageView.hidden        = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -243,8 +224,6 @@ static NSString* const kImgUnderlayImageView                = @"nav_bar_middle.p
     
     subtitleLabel.hidden        = NO;
     subtitleLabel.text          = subTitle;
-    
-    underlayImageView.hidden    = NO;
 }
 
 //----------------------------------------------------------------------------------------------------

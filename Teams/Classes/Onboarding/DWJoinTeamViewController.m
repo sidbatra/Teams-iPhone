@@ -64,6 +64,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    NSLog(@"join team view controller freed");
     self.team                   = nil;
     
     self.navTitleView           = nil;

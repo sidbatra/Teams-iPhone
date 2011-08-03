@@ -198,9 +198,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateNavTitleView {
-    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:[DWSession sharedDWSession].currentUser]
-                                         andSubTitle:[DWSession sharedDWSession].currentUser.byline
-                                    withEnabledState:NO];
+    [self.navTitleView displayTitle:[DWUsersHelper displayName:[DWSession sharedDWSession].currentUser]
+                        andSubTitle:[DWSession sharedDWSession].currentUser.byline];
 }
 
 //----------------------------------------------------------------------------------------------------

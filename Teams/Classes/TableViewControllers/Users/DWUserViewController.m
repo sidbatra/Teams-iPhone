@@ -12,7 +12,6 @@
 #import "DWUsersHelper.h"
 #import "DWSession.h"
 #import "DWNavBarRightButtonView.h"
-#import "DWNavBarFillerView.h"
 #import "DWUpdateUserDetailsViewController.h"
 #import "DWAnalyticsManager.h"
 
@@ -162,9 +161,8 @@ static NSString* const kNavBarRightButtonText   = @"Edit";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
-    [self.navTitleView displayPassiveButtonWithTitle:[DWUsersHelper displayName:user]
-                                         andSubTitle:user.team.name 
-                                    withEnabledState:NO];
+    [self.navTitleView displayTitle:[DWUsersHelper displayName:user] 
+                        andSubTitle:user.team.name];
 }
 
 

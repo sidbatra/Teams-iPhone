@@ -147,7 +147,7 @@ static CGFloat const kTeamFatCellHeight     = 275;
     }
     
     else if (resourceType == kResourceTypeSliceAttachmentImage && 
-             team.attachment && team.attachment.databaseID == resourceID) {
+             team.attachment && team.attachment.databaseID == resourceID && style != kTeamPresenterStyleFat) {
         
         [self updateSlimCell:base 
                    withImage:(UIImage*)resource];
