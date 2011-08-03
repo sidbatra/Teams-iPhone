@@ -112,11 +112,11 @@
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:nil];
+                                                      andDelegate:nil] autorelease];
     }
 }
 

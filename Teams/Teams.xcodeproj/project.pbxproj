@@ -1469,7 +1469,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				BBF498CD13E9D42B008C0D7E /* libz.dylib */,
 				BB4D03E113E79B0300A1E791 /* AppDelegate */,
 				BB4D03B813E7996500A1E791 /* Camera */,
 				BB4D03C113E799B200A1E791 /* Connect */,
@@ -1529,6 +1528,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBF498CD13E9D42B008C0D7E /* libz.dylib */,
 				BBBDCAEB13E50A8100022AE3 /* libz.1.2.3.dylib */,
 				2632E5AE13CCE48C005B1B1E /* AddressBook.framework */,
 				BBFD29431386FE6B0077904A /* MessageUI.framework */,

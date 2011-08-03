@@ -102,11 +102,11 @@ static NSString* const kMsgFollowAction             = @"Tap to start watching th
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:self];       
+                                                      andDelegate:self] autorelease];       
         
         [self.navTitleView displaySpinnerWithUnderlay:YES];
     }

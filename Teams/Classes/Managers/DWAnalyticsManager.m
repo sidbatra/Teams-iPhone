@@ -104,7 +104,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                       withViewID:(NSInteger)viewID
                     andExtraInfo:(NSString*)extra {
     
-    DWInteraction *interaction = [[DWInteraction alloc] init];
+    DWInteraction *interaction = [[[DWInteraction alloc] init] autorelease];
     
     [interaction createInteractionForViewNamed:[view className]
                                     withViewID:viewID
