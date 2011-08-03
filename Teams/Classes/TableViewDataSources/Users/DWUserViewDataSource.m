@@ -176,14 +176,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {
     
-    [user startLargeImageDownload];
-    
-    self.imageResource.text = user.byline;
-    self.imageResource.image = user.largeImage;
-    
-    
-    [self.delegate userLoaded:user];
-    [self.delegate reloadTableView];
+    if(user.databaseID == _userID) {
+        
+        [user startLargeImageDownload];
+        
+        self.imageResource.text     = user.byline;
+        self.imageResource.image    = user.largeImage;
+        
+        
+        [self.delegate userLoaded:user];
+        [self.delegate reloadTableView];
+    }
     
     [user destroy];
 }
