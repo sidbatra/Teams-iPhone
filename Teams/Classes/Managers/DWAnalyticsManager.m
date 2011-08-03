@@ -173,12 +173,16 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationIsActive:(NSNotification*)notification {
+    
     [self createInteractionForView:[UIApplication sharedApplication]
-                    withActionName:@"session_started"];
+                    withActionName:@"session_started"
+                      andExtraInfo:[NSString stringWithFormat:@"badge=%d",
+                                    [UIApplication sharedApplication].applicationIconBadgeNumber]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationWillResignActive:(NSNotification*)notification {
+    
     [self createInteractionForView:[UIApplication sharedApplication]
                     withActionName:@"session_ended"];
     

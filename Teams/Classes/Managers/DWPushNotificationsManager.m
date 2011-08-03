@@ -8,6 +8,7 @@
 #import "DWNotification.h"
 #import "DWSession.h"
 #import "DWConstants.h"
+#import "DWAnalyticsManager.h"
 
 #import "SynthesizeSingleton.h"
 
@@ -76,24 +77,23 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 	NSDictionary *aps		= (NSDictionary*)[info objectForKey:kKeyAPS];
 	NSDictionary *alert     = [aps objectForKey:kKeyAlert];
     NSString *badge         = [aps objectForKey:kKeyBadge];
-
+    NSString *body          = kEmptyString;
+    
+    if(alert)
+        body = [alert objectForKey:kKeyBody];
+    
 
     if([UIApplication sharedApplication].applicationState == UIApplicationStateActive) {
 
-        if(alert) {
+        if(alert && [body length]) {
             
-            NSString *message = [alert objectForKey:kKeyBody];
-            
-            if(message && [message length]) {
-                
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
-                                                                    message:message
-                                                                   delegate:self 
-                                                          cancelButtonTitle:kCancelTitle
-                                                          otherButtonTitles:kActionTitle,nil];
-                [alertView show];
-                [alertView release];
-            }
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kAlertTitle
+                                                                message:body
+                                                               delegate:self 
+                                                      cancelButtonTitle:kCancelTitle
+                                                      otherButtonTitles:kActionTitle,nil];
+            [alertView show];
+            [alertView release];
         }
         
         if(badge) {
@@ -104,6 +104,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 	}
     else {
         _unreadNotificationsCount = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:[UIApplication sharedApplication]
+                                                                 withActionName:@"session_started_via_notification"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"badge=%d&body=%@",
+                                                                                 _unreadNotificationsCount,
+                                                                                 body]];
         
         [self displayNotifications];
     }
@@ -121,6 +127,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
     
     
     if(self.backgroundNotificationInfo) {
+        
+        NSDictionary *aps		= (NSDictionary*)[self.backgroundNotificationInfo objectForKey:kKeyAPS];
+        NSDictionary *alert     = [aps objectForKey:kKeyAlert];
+        NSString *body          = kEmptyString;
+        
+        if(alert)
+            body = [alert objectForKey:kKeyBody];
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:[UIApplication sharedApplication]
+                                                                 withActionName:@"session_started_via_notification"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"badge=%d&body=%@",
+                                                                                 _unreadNotificationsCount,
+                                                                                 body]];   
+        
         [self displayNotifications];
         self.backgroundNotificationInfo = nil;
     }
