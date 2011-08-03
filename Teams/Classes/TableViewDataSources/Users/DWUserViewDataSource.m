@@ -46,6 +46,7 @@
 @implementation DWUserViewDataSource
 
 @synthesize usersController     = _usersController;
+@synthesize teamsController     = _teamsController;
 @synthesize teamMessage         = _teamMessage;
 @synthesize watchingMessage     = _watchingMessage;
 @synthesize imageResource       = _imageResource;
@@ -60,6 +61,9 @@
     if(self) {
         self.usersController            = [[[DWUsersController alloc] init] autorelease];
         self.usersController.delegate   = self;
+        
+        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController.delegate   = self;
     }
     
     return self;
@@ -68,6 +72,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.usersController    = nil;
+    self.teamsController    = nil;
     self.teamMessage        = nil;
     self.watchingMessage    = nil;
     self.imageResource      = nil;
@@ -189,6 +194,33 @@
     }
     
     [user destroy];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamUpdated:(DWTeam*)team {
+    
+    DWUser *user = [DWUser fetch:_userID];
+    
+    if(user.team.databaseID == team.databaseID) {
+        
+        [user startLargeImageDownload];
+        
+        self.imageResource.text     = user.byline;
+        self.imageResource.image    = user.largeImage;
+        
+        self.teamMessage.content  = [DWUsersHelper currentTeamLine:user];
+        
+        [self.delegate userLoaded:user];
+        [self.delegate reloadTableView];
+    }
+    
+    [team destroy];
 }
 
 @end

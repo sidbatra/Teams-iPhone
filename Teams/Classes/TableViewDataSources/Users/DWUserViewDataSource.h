@@ -7,6 +7,7 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWUsersController.h"
+#import "DWTeamsController.h"
 
 @class DWUser;
 @class DWResource;
@@ -16,9 +17,10 @@
 /**
  * Data source for the user table view
  */
-@interface DWUserViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate> {
+@interface DWUserViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate,DWTeamsControllerDelegate> {
     
     DWUsersController   *_usersController;
+    DWTeamsController   *_teamsController;
     
     DWMessage           *_teamMessage;
     DWMessage           *_watchingMessage;
@@ -32,6 +34,11 @@
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
+
+/**
+ * Interface to the teams service
+ */
+@property (nonatomic,retain) DWTeamsController *teamsController;
 
 /**
  * Message displaying the current team

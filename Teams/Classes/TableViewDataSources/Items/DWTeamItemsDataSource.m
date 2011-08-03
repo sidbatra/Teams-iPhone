@@ -205,6 +205,8 @@
     
     [self.delegate teamLoaded:self.team
                 withFollowing:self.following];
+    
+    [team destroy];
 }
 
 
