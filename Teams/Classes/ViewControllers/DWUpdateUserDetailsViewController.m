@@ -310,11 +310,28 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 //----------------------------------------------------------------------------------------------------
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
     
-    if (buttonIndex == 0) 
+    if (buttonIndex == 0) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"camera_selected"
+                                                                     withViewID:_userID];
+        
         [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
-    
-    else if(buttonIndex == 1) 
+    }
+    else if(buttonIndex == 1) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"library_selected"
+                                                                     withViewID:_userID];
+        
         [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];        
+    }
+    else {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"cancel_selected"
+                                                                     withViewID:_userID];
+    }
     
 }
 
@@ -382,6 +399,11 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 	[alert release];
     
     [self unfreezeUI];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"update_failed"
+                                                                 withViewID:_userID];
 }
 
 
@@ -392,6 +414,11 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didFinishPickingImage:(UIImage*)originalImage andEditedTo:(UIImage*)editedImage {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"phone_image_selected"
+                                                                 withViewID:_userID];
+    
 	self.userImageView.image    = editedImage;
     self.userImage              = editedImage;
     
@@ -401,7 +428,12 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode {    
+- (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode { 
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"phone_image_rejected"
+                                                                 withViewID:_userID];
+    
     [self.displayMediaPickerController dismissModalViewControllerAnimated:NO];
 }
 
