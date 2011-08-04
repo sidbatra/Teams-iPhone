@@ -46,7 +46,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadData {
-    [self.objects addObject:[DWTeam fetch:self.teamID]];  
     [self.usersController getMembersOfTeam:self.teamID];
 }
 
@@ -64,6 +63,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamMembersLoaded:(NSMutableArray*)users {
 
+    [self.objects addObject:[DWTeam fetch:self.teamID]];  
+    
     NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,[users count])];
     [self.objects insertObjects:users atIndexes:indexSet];          
     
