@@ -233,6 +233,13 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
 							 to:(NSInteger)newSelectedIndex {
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.tabBarController
+                                                             withActionName:@"tab_selection_changed"
+                                                               andExtraInfo:[NSString stringWithFormat:@"old=%d&new=%d",
+                                                                             oldSelectedIndex,
+                                                                             newSelectedIndex]];   
+    
+    
     if(newSelectedIndex == kTabBarCreateIndex) {
 		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];
 		[self.tabBarController presentModalViewController:createView 
