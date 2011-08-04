@@ -45,6 +45,7 @@
  * Array contains objects for DWContact having 
  * fullname and email of the contact.
  */
-- (void)contactsLoaded:(NSMutableArray*)contacts;
+- (void)contactsLoaded:(NSMutableArray*)contacts 
+             fromQuery:(NSString*)query;
 
 @end

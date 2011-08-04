@@ -18,6 +18,7 @@
 @interface DWContactsDataSource : DWTableViewDataSource<DWContactsControllerDelegate,DWInvitesControllerDelegate> {
     
     NSArray                     *_allContacts;
+    NSString                    *_latestQuery;
     
     DWContactsController        *_contactsController;
     DWInvitesController         *_invitesController;    
@@ -33,6 +34,11 @@
  * All Address Book Contacts
  */
 @property (nonatomic,retain) NSArray *allContacts;
+
+/**
+ * Latest query for retrieving contacts
+ */
+@property (nonatomic,copy) NSString *latestQuery;
 
 /**
  * Controller for address book contacts requests
@@ -83,6 +89,11 @@
  * Provide the fetched user object to the table view to update the UI
  */
 - (void)invitesCreated;
+
+/**
+ * Fired when the queried contacts are loaded
+ */
+- (void)contactsLoaded;
 
 @end
 

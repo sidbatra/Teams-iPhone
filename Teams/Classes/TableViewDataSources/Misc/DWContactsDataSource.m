@@ -13,6 +13,7 @@
 @implementation DWContactsDataSource
 
 @synthesize allContacts             = _allContacts;
+@synthesize latestQuery             = _latestQuery;
 
 @synthesize contactsController      = _contactsController;
 @synthesize invitesController       = _invitesController;
@@ -40,6 +41,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.allContacts            = nil;
+    self.latestQuery            = nil;
     
     self.contactsController     = nil;
     self.invitesController      = nil;
@@ -60,6 +62,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadContactsMatching:(NSString*)string {
+    self.latestQuery = string;
     [self.contactsController getContactsForQuery:string withCache:self.allContacts];
 }
 
@@ -85,11 +88,15 @@
 #pragma mark DWContactsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactsLoaded:(NSMutableArray *)contacts {
-    [self clean];
-    self.objects = contacts;
+- (void)contactsLoaded:(NSMutableArray *)contacts fromQuery:(NSString*)query {    
     
-    [self.delegate reloadTableView];
+    if (query == self.latestQuery) {
+        
+        [self clean];
+        self.objects = contacts;
+        
+        [self.delegate contactsLoaded];
+    }
 }
 
 
