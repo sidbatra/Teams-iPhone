@@ -21,6 +21,14 @@
     
     if(self) {
         self.popularTeamsDataSource = [[[DWPopularTeamsDataSource alloc] init] autorelease];
+        
+        
+        if(&UIApplicationWillEnterForegroundNotification != NULL) {
+            [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                     selector:@selector(applicationEnteringForeground:) 
+                                                         name:UIApplicationWillEnterForegroundNotification
+                                                       object:nil];
+        }
     }
     
     return self;
@@ -28,6 +36,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.popularTeamsDataSource     = nil;
 
     
@@ -44,6 +54,17 @@
 	[super viewDidLoad];
     
     [self.popularTeamsDataSource loadTeams];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)applicationEnteringForeground:(NSNotification*)notification {
+    [self.popularTeamsDataSource refreshInitiated];
 }
 
 
