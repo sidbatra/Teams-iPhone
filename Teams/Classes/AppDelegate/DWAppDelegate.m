@@ -178,12 +178,10 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 	[self.window addSubview:self.tabBarController.view];
 	[self.window makeKeyAndVisible];
     
+    
     if(![[DWSession sharedDWSession] isExhaustive])
         [self.tabBarController presentModalViewController:self.onboardingNavController
                                                  animated:NO];
-    
-    NSLog(@"state is %d", [[DWSession sharedDWSession] state]);
-    NSLog(@"name is %@", [DWSession sharedDWSession].currentUser.firstName);
 }
 
 
