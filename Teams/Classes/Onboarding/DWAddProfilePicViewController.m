@@ -10,6 +10,7 @@
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWConstants.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
@@ -122,6 +123,10 @@ static NSString* const kNavBarRightButtonText   = @"Next";
                                                                           spinnerStyle:UIActivityIndicatorViewStyleWhite 
                                                                         andMessageText:kEmptyString] autorelease];
     
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -169,6 +174,12 @@ static NSString* const kNavBarRightButtonText   = @"Next";
         _mediaResourceID = [self.mediaController postImage:self.userImage 
                                                   toFolder:kS3UsersFolder];
     }
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"user_updated"
+                                                               andExtraInfo:[NSString stringWithFormat:@"image=%d",
+                                                                             _hasChangedImage]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -210,6 +221,10 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 - (IBAction)useFacebookPhotoButtonTapped:(id)sender {
     
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"facebook_selected"];
+    
+    
     [self freezeUI];
     self.facebookConnect.accessToken = self.userFBToken;
     
@@ -226,11 +241,25 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
     
-    if (buttonIndex == 0) 
+    if (buttonIndex == 0) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"camera_selected"];
+        
         [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
-    
-    else if(buttonIndex == 1) 
+    }
+    else if(buttonIndex == 1)  {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"library_selected"];
+        
         [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];        
+    }
+    else if(buttonIndex == 2) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"cancel_selected"];
+    }
     
 }
 
@@ -327,6 +356,11 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didFinishPickingImage:(UIImage*)originalImage andEditedTo:(UIImage*)editedImage {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"phone_image_selected"];
+    
+    
     _hasChangedImage                = YES;
     
     self.userImage                  = editedImage;
@@ -337,6 +371,11 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)mediaPickerCancelledFromMode:(NSInteger)imagePickerMode {    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"phone_image_rejected"];
+    
+    
     [self dismissModalViewControllerAnimated:NO];
 }
 
@@ -354,16 +393,27 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticated {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"facebook_authenticated"];
+    
     [self.facebookConnect getProfilePicture];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticationFailed {    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"facebook_rejected"];
+    
     [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbRequestLoaded:(id)result {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"facebook_image_loaded"];
     
     _hasChangedImage                = YES;
     
