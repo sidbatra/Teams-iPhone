@@ -74,7 +74,7 @@ static NSInteger kNumberOfPages = 4;
     
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:kActionNameForLoad];
+                                                             withActionName:@"session_started_signed_out"];
 }
 
 
