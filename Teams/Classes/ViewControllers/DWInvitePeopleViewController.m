@@ -10,6 +10,7 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kAddPeopleText                       = @"Add People";
@@ -123,6 +124,11 @@ static NSInteger const kTableViewHeight						= 200;
     [self.view addSubview:self.addedContactsViewController.view];    
     
     [self.searchContactsTextField becomeFirstResponder];
+    
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -179,6 +185,10 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"invite_selected"];
+    
     [self.addedContactsViewController triggerInvites];
 }
 
@@ -194,9 +204,19 @@ static NSInteger const kTableViewHeight						= 200;
         [self displayAddedContacts];
         [self.addedContactsViewController addContact:contact];
         
-        self.searchContactsTextField.text = kEmptyString;        
+        self.searchContactsTextField.text = kEmptyString;   
+        
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"contact_selected_for_invite"
+                                                                   andExtraInfo:[contact debugString]];
     }
     else {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"contact_selected_for_deletion"
+                                                                   andExtraInfo:[contact debugString]];
+        
         [self.addedContactsViewController showActionSheetInView:self.parentViewController.view
                                                     forRemoving:contact];
     }

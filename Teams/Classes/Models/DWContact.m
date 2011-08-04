@@ -44,4 +44,13 @@
     return [NSString stringWithFormat:@"%@ %@",self.firstName,self.lastName];
 }
 
+//---------------------------------------------------------------------------------------------------
+- (NSString*)debugString {
+    
+    return [NSString stringWithFormat:@"first_name=%@&last_name=%@&email=%@",
+            self.firstName,
+            self.lastName,
+            self.email];    
+}
+
 @end

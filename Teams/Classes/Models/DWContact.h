@@ -36,4 +36,9 @@
  */
 - (NSString*)fullName;
 
+/**
+ * Generates URL style string containing all the members for debugging
+ */
+- (NSString*)debugString;
+
 @end

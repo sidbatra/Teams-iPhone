@@ -6,6 +6,8 @@
 #import "DWContactsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWContact.h"
+#import "DWAnalyticsManager.h"
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -103,8 +105,19 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
-	if (buttonIndex == 0) 
+	
+    if (buttonIndex == 0) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"contact_deleted"];
+        
         [self.contactsDataSource removeContact:_contactToRemove];
+    }
+    else if(buttonIndex == 1) {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"contact_deletion_cancelled"];
+    }
 }
 
 
