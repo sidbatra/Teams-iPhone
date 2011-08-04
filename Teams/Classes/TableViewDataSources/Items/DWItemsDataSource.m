@@ -124,7 +124,7 @@
 - (void)itemDeleted:(DWItem*)item {
     
     [self removeObject:item 
-         withAnimation:UITableViewScrollPositionBottom];
+         withAnimation:UITableViewRowAnimationBottom];
     
     [item destroy];
 }
