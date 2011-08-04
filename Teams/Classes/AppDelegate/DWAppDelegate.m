@@ -128,12 +128,12 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 //----------------------------------------------------------------------------------------------------
 - (void)setupTabBarController {
     
-    BOOL isLoggedIn     = [[DWSession sharedDWSession] isExhaustive];
+    //BOOL isLoggedIn     = [[DWSession sharedDWSession] isExhaustive];
 	
 	NSArray *tabBarInfo	= [NSArray arrayWithObjects:
 						   [NSDictionary dictionaryWithObjectsAndKeys:
 							[NSNumber numberWithInt:114]				,kKeyWidth,
-							[NSNumber numberWithBool:!isLoggedIn]		,kKeyIsSelected,
+							[NSNumber numberWithBool:NO]		,kKeyIsSelected,
 							[NSNumber numberWithInt:kTabBarNormalTag]	,kKeyTag,
 							kImgPlacesOn								,kKeySelectedImageName,
 							kImgPlacesOff								,kKeyNormalImageName,
@@ -148,7 +148,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 							nil],
 						   [NSDictionary dictionaryWithObjectsAndKeys:
 							[NSNumber numberWithInt:114]				,kKeyWidth,
-							[NSNumber numberWithBool:isLoggedIn]		,kKeyIsSelected,
+							[NSNumber numberWithBool:YES]		,kKeyIsSelected,
 							[NSNumber numberWithInt:kTabBarNormalTag]	,kKeyTag,
 							kImgFeedOn									,kKeySelectedImageName,
 							kImgFeedOff									,kKeyNormalImageName,
