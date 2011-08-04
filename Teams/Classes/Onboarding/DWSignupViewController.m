@@ -210,10 +210,10 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
     
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:@"done_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"update=%d&email=%@",
-                                                                             NO,
+                                                             withActionName:@"user_created"
+                                                               andExtraInfo:[NSString stringWithFormat:@"email=%@",
                                                                              self.emailTextField.text]];
+
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -235,9 +235,8 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
     
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:@"done_selected"
-                                                               andExtraInfo:[NSString stringWithFormat:@"update=%d&email=%@",
-                                                                             YES,
+                                                             withActionName:@"user_updated"
+                                                               andExtraInfo:[NSString stringWithFormat:@"email=%@",
                                                                              self.emailTextField.text]];
 }
 

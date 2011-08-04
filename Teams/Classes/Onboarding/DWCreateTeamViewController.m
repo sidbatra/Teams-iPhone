@@ -11,6 +11,7 @@
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 static NSString* const kCreateTeamText                  = @"Create New Team";
 static NSString* const kNavBarRightButtonText           = @"Next";
@@ -88,7 +89,7 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc]
@@ -114,6 +115,10 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
     
     self.messageLabel.text = [NSString stringWithFormat:kMessageLabelText,self.domain];
     [self.teamNameTextField becomeFirstResponder];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -161,6 +166,13 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
                                           byline:self.teamBylineTextField.text 
                                        andDomain:self.domain];        
     }
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"team_created"
+                                                               andExtraInfo:[NSString stringWithFormat:@"name=%@&byline=%@",
+                                                                             self.teamNameTextField.text,
+                                                                             self.teamBylineTextField.text]];
 }
 
 
@@ -211,6 +223,10 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
 	[alert release];
     
     [self unfreezeUI];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"create_failed"];
 }
 
 
