@@ -16,6 +16,7 @@
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kJoinTeamText                    = @"Join %@";
@@ -93,7 +94,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self disablePullToRefresh];
     
@@ -118,6 +119,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     self.joinTeamDataSource.teamID  = self.team.databaseID;
     [self.joinTeamDataSource loadData];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -138,6 +143,10 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"join_selected"];
+    
     [self.delegate teamJoined:self.team];
 }
 
