@@ -13,6 +13,7 @@
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kRegexNonWorkEmails              = @"@(gmail|yahoo|aim|hotmail|aol|live|msn)";
@@ -92,7 +93,7 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
-    self.navigationItem.leftBarButtonItem   =   [DWGUIManager customBackButton:self.delegate];
+    self.navigationItem.leftBarButtonItem  = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
@@ -116,6 +117,10 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
                                                                         andMessageText:kMsgProcesssing] autorelease];
     
     [self.emailTextField becomeFirstResponder];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -202,6 +207,13 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
             [self displayIncorrectEmailError];
         }
     }
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"done_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"update=%d&email=%@",
+                                                                             NO,
+                                                                             self.emailTextField.text]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -220,6 +232,13 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
             [self displayIncorrectEmailError];
         }
     }    
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"done_selected"
+                                                               andExtraInfo:[NSString stringWithFormat:@"update=%d&email=%@",
+                                                                             YES,
+                                                                             self.emailTextField.text]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -281,6 +300,10 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
 	[alert release];
     
     [self unfreezeUI];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"create_failed"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -307,6 +330,10 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
 	[alert release];
     
     [self unfreezeUI];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"update_failed"];
 }
 
 
