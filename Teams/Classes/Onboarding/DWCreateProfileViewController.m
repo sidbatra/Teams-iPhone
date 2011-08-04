@@ -11,7 +11,7 @@
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
-
+#import "DWAnalyticsManager.h"
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
 static NSString* const kMsgIncomplete           = @"Enter first name, last name, email and password";
@@ -110,6 +110,10 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     
     
 	[self.firstNameTextField becomeFirstResponder];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -178,6 +182,15 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
                                           byline:self.byLineTextField.text 
                                      andPassword:self.password];                                  
 	}
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"user_updated"
+                                                               andExtraInfo:[NSString stringWithFormat:@"byline=%@&first_name=%@&last_name=%@&password=%d",
+                                                                             self.byLineTextField.text,
+                                                                             self.firstNameTextField.text,
+                                                                             self.lastNameTextField.text,
+                                                                             [self.passwordTextField.text length]]];
 }
 
 
@@ -251,6 +264,10 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 	[alert release];
     
     [self unfreezeUI];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"update_failed"];
 }
 
 

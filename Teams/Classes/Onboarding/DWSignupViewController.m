@@ -308,17 +308,20 @@ static NSString* const kMsgEmailError                   = @"Enter your work emai
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {    
         
-    if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"]) {
+    if (![NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"])
+        return;
 
-        [self.delegate userEmailUpdated];
-    
-        NSString *domain = [user getDomainFromEmail];        
-        [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
-    }
+    [self.delegate userEmailUpdated];
+
+    NSString *domain = [user getDomainFromEmail];        
+    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString*)error {
+    
+    if (![NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"])
+        return;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error
