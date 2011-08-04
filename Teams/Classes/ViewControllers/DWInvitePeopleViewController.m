@@ -148,6 +148,16 @@ static NSInteger const kTableViewHeight						= 200;
     self.addedContactsViewController.view.hidden    = YES;    
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadContacts:(NSString*)query {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    
+    [self.queryContactsViewController loadContactsMatching:[query stringByTrimmingCharactersInSet:
+                                                            [NSCharacterSet whitespaceAndNewlineCharacterSet]]];    
+    [pool release];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -158,10 +168,9 @@ static NSInteger const kTableViewHeight						= 200;
 - (IBAction)searchContactsTextFieldEditingChanged:(id)sender {
     
     if ([self.searchContactsTextField.text length]) {        
-        [self displayQueriedContacts];        
-        [self.queryContactsViewController 
-         loadContactsMatching:[self.searchContactsTextField.text 
-                               stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]]];
+        [self displayQueriedContacts];    
+        [self performSelectorInBackground:@selector(loadContacts:) 
+                               withObject:self.searchContactsTextField.text];
     }
     else {
         [self displayAddedContacts];

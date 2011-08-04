@@ -129,5 +129,12 @@
     [self.delegate invitesTriggeredFromObject:self];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)contactsLoaded {
+    [self performSelectorOnMainThread:@selector(reloadTableView) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+}
+
 
 @end

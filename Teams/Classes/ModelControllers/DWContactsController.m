@@ -65,7 +65,7 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
 //----------------------------------------------------------------------------------------------------
 - (void)getContactsForQuery:(NSString*)query withCache:(NSArray*)contacts {
     
-    SEL sel = @selector(contactsLoaded:);
+    SEL sel = @selector(contactsLoaded:fromQuery:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -74,7 +74,8 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
 	NSMutableArray *results = [NSMutableArray arrayWithArray:[contacts filteredArrayUsingPredicate:pred]];
 
     [self.delegate performSelector:sel
-                        withObject:results]; 
+                        withObject:results 
+                        withObject:query]; 
 }
 
 @end

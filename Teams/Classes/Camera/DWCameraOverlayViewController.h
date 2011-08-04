@@ -46,16 +46,10 @@
 - (void)displayRecordingTimer;
 
 /**
- * Hide the camera capture mode button when the overlay is used
- * only for images
+ * Customize the view when the camera is used only for
+ * images
  */
-- (void)hideCameraCaptureModeButtonForPickingImages;
-
-/**
- * Hide the photo library button when the media picker 
- * is used only for images
- */
-- (void)hidePhotoLibraryButton;
+- (void)prepareForImageOnlyMode;
 
 /**
  * Properties
