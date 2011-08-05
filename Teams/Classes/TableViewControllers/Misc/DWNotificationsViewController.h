@@ -58,4 +58,9 @@
  */
 - (void)notificationsTeamSelected:(NSInteger)teamID;
 
+/**
+ * Fired when a request to display create view is fired
+ */
+- (void)notificationsCreateSelectedWithText:(NSString*)text;
+
 @end

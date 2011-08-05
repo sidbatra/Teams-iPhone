@@ -12,6 +12,7 @@
 #import "DWItemViewController.h"
 #import "DWUserTeamsViewController.h"
 #import "DWUpdateUserDetailsViewController.h"
+#import "DWCreateViewController.h"
 
 #import "DWSharingManager.h"
 #import "DWItem.h"
@@ -57,6 +58,11 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
  * Displays the designated view controller for a user whenever one is selected
  */
 - (void)userSelected:(NSInteger)userID;
+
+/**
+ * Display the create item view
+ */
+- (void)createItemSelected:(NSString*)text;
 
 @end
 
@@ -143,6 +149,17 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
     userViewController.delegate =  self;
     
     [self.navigationController pushViewController:userViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createItemSelected:(NSString *)text {
+    
+    DWCreateViewController *createViewController = [[[DWCreateViewController alloc] 
+                                                     init] autorelease];
+    
+    
+    [self.navigationController pushViewController:createViewController
                                          animated:YES];
 }
 
@@ -359,6 +376,11 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsTeamSelected:(NSInteger)teamID {
     [self teamSelected:teamID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsCreateSelectedWithText:(NSString *)text {
+    [self createItemSelected:text];
 }
 
 

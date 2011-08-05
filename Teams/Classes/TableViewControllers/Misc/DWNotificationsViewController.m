@@ -17,6 +17,7 @@
 static NSString* const kTitle               = @"Notifications";
 static NSString* const kModelNamePrefix     = @"DW";
 static NSString* const kImgDone             = @"button_done.png";
+static NSString* const kNewItemName         = @"DWNewItem";
 
 
 
@@ -91,7 +92,7 @@ static NSString* const kImgDone             = @"button_done.png";
 - (void)notificationClicked:(DWNotification*)notification {
     
     NSString *clientClassName = [NSString stringWithFormat:@"%@%@",kModelNamePrefix,notification.resourceType];
-    
+
     if([clientClassName isEqualToString:[DWUser className]]) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
@@ -119,7 +120,17 @@ static NSString* const kImgDone             = @"button_done.png";
         
         [self.delegate notificationsTeamSelected:notification.resourceID];
     }
+    else if([clientClassName isEqualToString:kNewItemName])  {
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"create_item_selected"
+                                                                   andExtraInfo:[NSString stringWithFormat:@"message=%@",
+                                                                                 notification.eventData]];
+        
+        [self.delegate notificationsCreateSelectedWithText:kEmptyString];
+    }
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
