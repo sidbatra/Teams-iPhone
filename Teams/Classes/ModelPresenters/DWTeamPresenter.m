@@ -35,7 +35,7 @@ static CGFloat const kTeamFatCellHeight     = 275;
     
     
     cell.teamName       = team.name;
-    cell.teamDetails    = team.byline;
+    cell.teamDetails    = style == kTeamPresenterStyleEventBased ? team.eventText : team.byline;
     cell.hasAttachment  = team.attachment ? YES : NO;
     
     if (team.attachment && team.attachment.sliceImage)
@@ -65,7 +65,7 @@ static CGFloat const kTeamFatCellHeight     = 275;
     DWFatCell *cell             = base;
     
     if(!cell)
-        cell = [[[DWFatCell alloc] initWithStyle:UITableViewStylePlain
+        cell = [[[DWFatCell alloc] initWithStyle:UITableViewCellStyleDefault
                                  reuseIdentifier:identifier] autorelease];
     
     

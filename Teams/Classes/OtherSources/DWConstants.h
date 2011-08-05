@@ -78,6 +78,7 @@ typedef enum {
 typedef enum {
     kTeamPresenterStyleNavigationDisabled = 1,
     kTeamPresenterStyleFat = 2,    
+    kTeamPresenterStyleEventBased = 3,    
 } DWTeamPresenterStyle;
 
 /**

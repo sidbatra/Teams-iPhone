@@ -5,6 +5,8 @@
 
 #import "DWPopularTeamsViewController.h"
 #import "DWPopularTeamsDataSource.h"
+#import "DWTeam.h"
+#import "NSObject+Helpers.h"
 
 
 
@@ -21,6 +23,10 @@
     
     if(self) {
         self.popularTeamsDataSource = [[[DWPopularTeamsDataSource alloc] init] autorelease];
+        
+        
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleEventBased]
+                                        forKey:[[DWTeam class] className]];
         
         
         if(&UIApplicationWillEnterForegroundNotification != NULL) {
