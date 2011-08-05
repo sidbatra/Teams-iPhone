@@ -15,6 +15,7 @@
 @interface DWTeam : DWPoolObject<NSCoding> {
 	NSString		*_name;
     NSString		*_byline;
+    NSString        *_eventText;
 	
     NSInteger		_followersCount;
     NSInteger		_membersCount;
@@ -33,6 +34,11 @@
  * Byline of the team
  */
 @property (nonatomic,copy) NSString *byline;
+
+/**
+ * Text of the most recent event about the team
+ */
+@property (nonatomic,copy) NSString *eventText;
 
 /**
  * Total users following the team
