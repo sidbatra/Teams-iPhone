@@ -219,7 +219,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     notificationsViewController.delegate = self;
     
     [self.navigationController pushViewController:notificationsViewController
-                                         animated:YES];
+                                         animated:NO];
 }
 
 

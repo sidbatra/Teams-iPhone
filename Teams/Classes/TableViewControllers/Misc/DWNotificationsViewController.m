@@ -13,8 +13,10 @@
 #import "DWAnalyticsManager.h"
 #import "NSObject+Helpers.h"
 
+
 static NSString* const kTitle               = @"Notifications";
 static NSString* const kModelNamePrefix     = @"DW";
+static NSString* const kImgDone             = @"button_done.png";
 
 
 
@@ -63,8 +65,11 @@ static NSString* const kModelNamePrefix     = @"DW";
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.navigationItem.hidesBackButton     = YES;
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:kTitle];
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarButtonWithImageName:kImgDone
+                                                                               target:self
+                                                                          andSelector:@selector(didTapDoneButton:)];
 
     [self.notificationsDataSource loadNotifications];
     [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
@@ -114,6 +119,16 @@ static NSString* const kModelNamePrefix     = @"DW";
         
         [self.delegate notificationsTeamSelected:notification.resourceID];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITouchEvents
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapDoneButton:(UIButton*)button {  
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
