@@ -9,6 +9,9 @@
 #import "DWConstants.h"
 
 
+static NSString* const kMsgInviteAlertText = @"There is no I in Team";
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -55,6 +58,17 @@
                                                          lastName:[DWSession sharedDWSession].currentUser.lastName  
                                                            byLine:[DWSession sharedDWSession].currentUser.byline  
                                                       andPassword:[DWSession sharedDWSession].currentUser.encryptedPassword]; 
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dismissInviteController {
+    [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
+    [[DWSession sharedDWSession] update]; 
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
+                                                        object:nil];
+    
+    [self.parentViewController dismissModalViewControllerAnimated:YES]; 
 }
 
 
@@ -176,6 +190,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
+    team.membersCount = 1;
+    
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];
     
@@ -229,30 +245,44 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)membershipCreated {
+    [[DWSession sharedDWSession] update]; 
     
     DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
     invitePeopleViewController.delegate                         = self;
-    invitePeopleViewController.teamName                         = [DWSession sharedDWSession].currentUser.team.name;
+    
+    invitePeopleViewController.showTopShadow                    = YES;
+        
+    invitePeopleViewController.navBarTitle                      = kAddPeopleText;
+    invitePeopleViewController.navBarSubTitle                   = [NSString 
+                                                                   stringWithFormat:kAddPeopleSubText,
+                                                                                    [DWSession sharedDWSession].currentUser.team.name];
+    
+    NSLog(@"%d",[DWSession sharedDWSession].currentUser.team.membersCount);
+    
+    if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
+        invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 
+    else
+        invitePeopleViewController.enforceInvite = NO;
+    
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreateUserProfileViewControllerDelegate
+#pragma mark DWInvitePeopleViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)peopleInvited {
-    
-    [DWSession sharedDWSession].currentUser.hasInvitedPeople = YES;
-    [[DWSession sharedDWSession] update]; 
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
-                                                        object:nil];
-    
-    [self.parentViewController dismissModalViewControllerAnimated:YES];    
+- (void)peopleInvitedToATeam {
+    [self dismissInviteController];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)inviteSkipped {
+    [self dismissInviteController];    
 }
 
 

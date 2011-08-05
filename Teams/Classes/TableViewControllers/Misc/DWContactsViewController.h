@@ -39,6 +39,11 @@
 - (id)initWithPresentationStyle:(NSInteger)style;
 
 /**
+ * Load all contacts from the address book
+ */
+- (void)loadAllContacts;
+
+/**
  * Load contacts whose properties contain a 
  * given string
  */
@@ -68,6 +73,11 @@
  * Protocol for delegates of DWContactsViewController
  */
 @protocol DWContactsViewControllerDelegate
+
+/**
+ * Fired when all the contacts are loaded
+ */
+- (void)allContactsLoaded;
 
 /**
  * Fired when a contact is selected along with 

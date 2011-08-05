@@ -6,6 +6,7 @@
 #import "DWContactsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWContact.h"
+#import "DWLoadingView.h"
 #import "DWAnalyticsManager.h"
 
 
@@ -49,24 +50,34 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    self.view.hidden            = YES;
+
+    self.loadingView.hidden     = YES;    
     self.view.backgroundColor   = [UIColor clearColor];
     
     [self disablePullToRefresh];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getTableLoadingView {
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,180)] autorelease];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Datasource Methods
 
+
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return self.contactsDataSource;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)loadAllContacts {
+    self.loadingView.hidden = NO;    
+    [self.contactsDataSource loadAllContacts];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadContactsMatching:(NSString *)string {
@@ -138,16 +149,21 @@
 #pragma mark DWContactDataSourceDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)allContactsLoaded {
+    self.loadingView.hidden = YES;
+    [self.delegate allContactsLoaded];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)invitesCreated {
     [self.delegate invitesTriggeredFromObject:self];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactsLoaded {
+- (void)contactsLoadedFromQuery {
     [self performSelectorOnMainThread:@selector(reloadTableView) 
                            withObject:nil 
                         waitUntilDone:NO];
 }
-
 
 @end

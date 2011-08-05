@@ -41,7 +41,12 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
 #pragma mark Index
 
 //----------------------------------------------------------------------------------------------------
-- (NSArray*)getAllContacts {
+- (void)getAllContacts {
+    
+    SEL sel = @selector(allContactsLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
 
     NSArray *contacts               = [ABContactsHelper contacts];
     NSMutableArray  *dWContacts     = [NSMutableArray arrayWithCapacity:[contacts count]];    
@@ -58,7 +63,8 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
         }
     }
     
-    return dWContacts;
+    [self.delegate performSelector:sel 
+                        withObject:dWContacts]; 
 }
 
 

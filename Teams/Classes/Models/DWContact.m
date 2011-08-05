@@ -29,9 +29,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    
-    NSLog(@"contact released");
-    
+
     self.firstName      = nil;
     self.lastName       = nil;
     self.email          = nil;

@@ -12,6 +12,7 @@
 #import "DWTeamViewController.h"
 #import "DWUserViewController.h"
 #import "DWNotificationsViewController.h"
+#import "DWInvitePeopleViewController.h"
 
 
 @class DWTabBarController;
@@ -22,7 +23,7 @@
  */
 @interface DWContainerViewController : UIViewController <UINavigationControllerDelegate,DWItemsLogicControllerDelegate,
 DWTeamsLogicControllerDelegate,DWUsersLogicControllerDelegate,DWTeamItemsViewControllerDelegate,
-DWTeamViewControllerDelegate,DWUserViewControllerDelegate,DWNotificationsViewControllerDelegate> {
+DWTeamViewControllerDelegate,DWUserViewControllerDelegate,DWNotificationsViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
     
 	DWTabBarController    *_customTabBarController;
 }

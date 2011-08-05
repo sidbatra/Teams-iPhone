@@ -10,6 +10,7 @@
 static NSString* const kDiskKeyID			= @"DWTeam_id";
 static NSString* const kDiskKeyName			= @"DWTeam_name";
 static NSString* const kDiskKeyByline       = @"DWTeam_byline";
+static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 
 
 
@@ -34,6 +35,7 @@ static NSString* const kDiskKeyByline       = @"DWTeam_byline";
         self.databaseID             = [[coder decodeObjectForKey:kDiskKeyID] integerValue];
         self.name                   = [coder decodeObjectForKey:kDiskKeyName];
         self.byline                 = [coder decodeObjectForKey:kDiskKeyByline];
+        self.membersCount           = [[coder decodeObjectForKey:kDiskKeyMembersCount] integerValue];
     }
     
     if(self.databaseID)
@@ -50,6 +52,7 @@ static NSString* const kDiskKeyByline       = @"DWTeam_byline";
     [coder encodeObject:[NSNumber numberWithInt:self.databaseID]    	forKey:kDiskKeyID];
     [coder encodeObject:self.name                                       forKey:kDiskKeyName];
     [coder encodeObject:self.byline                                     forKey:kDiskKeyByline];    
+    [coder encodeObject:[NSNumber numberWithInt:self.membersCount]      forKey:kDiskKeyMembersCount];    
 }
 
 //----------------------------------------------------------------------------------------------------
