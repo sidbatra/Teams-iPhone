@@ -25,7 +25,7 @@
     DWSlimCell *cell            = base;
 
     if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewStylePlain 
+        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                   reuseIdentifier:identifier] autorelease];
 
     cell.boldText   = resource.text;
@@ -47,7 +47,7 @@
     DWImageCell *cell           = base;
     
     if(!cell)
-        cell = [[[DWImageCell alloc] initWithStyle:UITableViewStylePlain 
+        cell = [[[DWImageCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                    reuseIdentifier:identifier] autorelease];
     
     [cell setImage:resource.image];
