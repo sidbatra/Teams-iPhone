@@ -11,6 +11,7 @@
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
 
+static NSString* const kInvitePeopleText            = @"Invite People";
 static NSString* const kImgInvite                   = @"button_invite.png";
 static NSString* const kImgSearch                   = @"button_search.png";
 static NSString* const kMsgUnload					= @"Unload called on teams container";
@@ -208,7 +209,29 @@ static NSInteger const kMinimumQueryLength			= 1;
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                              withActionName:@"invite_selected"];
     
-    NSLog(@"invite");
+    self.navigationController.navigationBar.clipsToBounds       = NO;
+    
+    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    invitePeopleViewController.delegate                         = self;
+    
+    invitePeopleViewController.teamSpecificInvite               = NO;
+    invitePeopleViewController.showCancelButton                 = YES;
+    
+    invitePeopleViewController.navBarTitle                      = kInvitePeopleText;
+    
+    [self.navigationController pushViewController:invitePeopleViewController 
+                                         animated:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWInvitePeopleViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)peopleInvited {
+    [self.navigationController popViewControllerAnimated:NO];    
 }
 
 

@@ -91,9 +91,14 @@
 - (void)invitesCreated;
 
 /**
+ * Fired when all the contacts are loaded
+ */
+- (void)allContactsLoaded;
+
+/**
  * Fired when the queried contacts are loaded
  */
-- (void)contactsLoaded;
+- (void)contactsLoadedFromQuery;
 
 @end
 

@@ -31,8 +31,6 @@
         
         self.invitesController              = [[[DWInvitesController alloc] init] autorelease];
         self.invitesController.delegate     = self; 
-        
-        self.allContacts = [self.contactsController getAllContacts];
     }
     
     return self;
@@ -57,7 +55,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadAllContacts {
-    self.allContacts = [self.contactsController getAllContacts];
+    [self.contactsController getAllContacts];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -88,6 +86,12 @@
 #pragma mark DWContactsController Delegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)allContactsLoaded:(NSArray*)contacts {
+    self.allContacts = contacts;
+    [self.delegate allContactsLoaded];         
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)contactsLoaded:(NSMutableArray *)contacts fromQuery:(NSString*)query {    
     
     if (query == self.latestQuery) {
@@ -95,7 +99,7 @@
         [self clean];
         self.objects = contacts;
         
-        [self.delegate contactsLoaded];
+        [self.delegate contactsLoadedFromQuery];
     }
 }
 

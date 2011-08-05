@@ -338,6 +338,12 @@ extern NSString* const kNInteractionsCreated;
 extern NSString* const kNInteractionsError;
 
 /**
+ * Add people title and subtitle text for navigation bar
+ */
+extern NSString* const kAddPeopleText;
+extern NSString* const kAddPeopleSubText;
+
+/**
  * Action sheet button text
  */
 extern NSString* const kMsgActionSheetCancel;

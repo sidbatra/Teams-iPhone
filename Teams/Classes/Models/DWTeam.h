@@ -42,7 +42,7 @@
 /**
  * Total members of the team
  */ 
-@property (nonatomic,readonly) NSInteger membersCount;
+@property (nonatomic,assign) NSInteger membersCount;
 
 /**
  * Timestamp of the creation of the team

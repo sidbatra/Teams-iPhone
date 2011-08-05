@@ -10,12 +10,18 @@
 #import "ABContactsHelper.h"
 #import "DWNavTitleView.h"
 #import "DWNavBarRightButtonView.h"
+#import "DWSpinnerOverlayView.h"
 #import "DWAnalyticsManager.h"
+#import "DWGUIManager.h"
 
 
-static NSString* const kAddPeopleText                       = @"Add People";
-static NSString* const kAddPeopleSubText                    = @"to the %@ Team";
+static NSString* const kImgTopShadow                        = @"shadow_top.png";
+static NSString* const kImgCancel                           = @"button_cancel.png";
 static NSString* const kNavBarRightButtonText               = @"Done";
+static NSString* const kMsgErrorTitle                       = @"Error";
+static NSString* const kMsgCancelTitle                      = @"OK";
+static NSString* const kMsgDefaultInviteAlertText           = @"You haven't invited anyone yet";
+static NSString* const kMsgProcessingText                   = @"Inviting...";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
@@ -28,12 +34,20 @@ static NSInteger const kTableViewHeight						= 200;
 @implementation DWInvitePeopleViewController
 
 @synthesize searchContactsTextField         = _searchContactsTextField;
-@synthesize resultsLabel                    = _resultsLabel;
+@synthesize topShadowView                   = _topShadowView;
 
-@synthesize teamName                        = _teamName;
+@synthesize navBarTitle                     = _navBarTitle;
+@synthesize navBarSubTitle                  = _navBarSubTitle;
+@synthesize inviteAlertText                 = _inviteAlertText;
+@synthesize enforceInvite                   = _enforceInvite;
+@synthesize teamSpecificInvite              = _teamSpecificInvite;
+@synthesize showTopShadow                   = _showTopShadow;
+@synthesize showBackButton                  = _showBackButton;
+@synthesize showCancelButton                = _showCancelButton;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
+@synthesize spinnerOverlayView              = _spinnerOverlayView;
 
 @synthesize queryContactsViewController     = _queryContactsViewController;
 @synthesize addedContactsViewController     = _addedContactsViewController;
@@ -43,8 +57,11 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
+    
     if (self) {
-        //custom initialization
+        self.enforceInvite              = YES;
+        self.teamSpecificInvite         = YES;
+        self.inviteAlertText            = kMsgDefaultInviteAlertText;
     }
     return self;
 }
@@ -52,12 +69,15 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.searchContactsTextField        = nil;
-    self.resultsLabel                   = nil;
+    self.topShadowView                  = nil;
     
-    self.teamName                       = nil;
+    self.navBarTitle                    = nil;
+    self.navBarSubTitle                 = nil;
+    self.inviteAlertText                = nil;
     
     self.navTitleView                   = nil;
     self.navBarRightButtonView          = nil;
+    self.spinnerOverlayView             = nil;
     
     self.queryContactsViewController    = nil;
     self.addedContactsViewController    = nil;    
@@ -74,73 +94,17 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark View Lifecycle
-
-//----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.navigationItem.hidesBackButton = YES;
-
-    if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
-                              initWithFrame:CGRectMake(kNavTitleViewX,0,
-                                                       kNavTitleViewWidth,
-                                                       kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
-    
-    [self.navTitleView displayTitle:kAddPeopleText 
-                        andSubTitle:[NSString stringWithFormat:kAddPeopleSubText,self.teamName]];    
-    
-    if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
-                                       initWithFrame:CGRectMake(260,0,
-                                                                kNavRightButtonWidth,
-                                                                kNavRightButtonHeight)
-                                               title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
-    
-    
-
-    if (!self.queryContactsViewController) 
-        self.queryContactsViewController = [[[DWContactsViewController alloc]
-                                             initWithPresentationStyle:kPresentationStyleDefault] autorelease];
-    
-    if (!self.addedContactsViewController) 
-        self.addedContactsViewController = [[[DWContactsViewController alloc]
-                                             initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
-
-
-    self.queryContactsViewController.delegate       = self;
-    self.addedContactsViewController.delegate       = self;
-       
-    
-    CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);    
-    self.queryContactsViewController.view.frame     = frame;    
-    self.addedContactsViewController.view.frame     = frame;
-
-    
-    [self.view addSubview:self.queryContactsViewController.view];    
-    [self.view addSubview:self.addedContactsViewController.view];    
-    
-    [self.searchContactsTextField becomeFirstResponder];
-    
-    
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:kActionNameForLoad];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)viewDidUnload {
-    [super viewDidUnload];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)freezeUI {	
+    [self.spinnerOverlayView enable];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unfreezeUI {
+    [self.spinnerOverlayView disable];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayAddedContacts {
@@ -155,6 +119,16 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadAllContacts {
+    
+    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];    
+    
+    [self.queryContactsViewController loadAllContacts];
+    
+    [pool release];    
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)loadContacts:(NSString*)query {
     
     NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
@@ -162,6 +136,108 @@ static NSInteger const kTableViewHeight						= 200;
     [self.queryContactsViewController loadContactsMatching:[query stringByTrimmingCharactersInSet:
                                                             [NSCharacterSet whitespaceAndNewlineCharacterSet]]];    
     [pool release];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayInviteAlert {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:self.inviteAlertText
+                                                   delegate:nil
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayKeyboard {
+    [self.searchContactsTextField becomeFirstResponder];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark View Lifecycle
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+        
+    if (self.showBackButton) 
+        self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
+    else 
+        self.navigationItem.hidesBackButton     = YES;
+    
+    
+    if (self.showCancelButton)
+        self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgCancel
+                                                                                   target:self
+                                                                              andSelector:@selector(didTapCancelButton:)];
+
+    
+    if(self.showTopShadow)
+        self.topShadowView.hidden = NO;
+
+    if (!self.navTitleView)
+        self.navTitleView = [[[DWNavTitleView alloc] 
+                              initWithFrame:CGRectMake(kNavTitleViewX,0,
+                                                       kNavTitleViewWidth,
+                                                       kNavTitleViewHeight) 
+                                andDelegate:self] autorelease];
+    
+    if (self.navBarSubTitle)
+        [self.navTitleView displayTitle:self.navBarTitle 
+                            andSubTitle:self.navBarSubTitle];    
+    else
+        [self.navTitleView displayTitle:self.navBarTitle];
+    
+    
+    if (!self.navBarRightButtonView)
+        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+                                       initWithFrame:CGRectMake(260,0,
+                                                                kNavRightButtonWidth,
+                                                                kNavRightButtonHeight)
+                                               title:kNavBarRightButtonText 
+                                           andTarget:self] autorelease];
+    
+    if (!self.spinnerOverlayView)
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(110,180) 
+                                                                          spinnerStyle:UIActivityIndicatorViewStyleWhite 
+                                                                        andMessageText:kMsgProcessingText] autorelease];
+        
+    if (!self.queryContactsViewController) 
+        self.queryContactsViewController = [[[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kPresentationStyleDefault] autorelease];
+    
+    if (!self.addedContactsViewController) 
+        self.addedContactsViewController = [[[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
+
+
+    self.queryContactsViewController.delegate       = self;
+    self.addedContactsViewController.delegate       = self;
+           
+    CGRect frame                                    = CGRectMake(kTableViewX,kTableViewY,kTableViewWidth,kTableViewHeight);    
+    self.queryContactsViewController.view.frame     = frame;    
+    self.addedContactsViewController.view.frame     = frame;
+
+    [self.view addSubview:self.queryContactsViewController.view];    
+    [self.view addSubview:self.addedContactsViewController.view];   
+    
+    [self displayQueriedContacts];
+    
+    [self performSelectorInBackground:@selector(loadAllContacts) 
+                           withObject:nil];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidUnload {
+    [super viewDidUnload];
 }
 
 
@@ -186,10 +262,27 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
     
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:@"invite_selected"];
+    if (self.enforceInvite) {
+        
+        if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
+            
+            [self freezeUI];
+            [self.addedContactsViewController triggerInvites];            
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                     withActionName:@"invite_selected"];
+        }
+        else 
+            [self displayInviteAlert];        
+    }
     
-    [self.addedContactsViewController triggerInvites];
+    else 
+        [self.delegate inviteSkipped];        
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCancelButton:(UIButton*)button {  
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
@@ -225,8 +318,35 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)invitesTriggeredFromObject:(id)object {
     
-    if ([object isEqual:self.addedContactsViewController]) 
-        [self.delegate peopleInvited];
+    if ([object isEqual:self.addedContactsViewController]) {
+        
+        if (self.teamSpecificInvite) 
+            [self.delegate peopleInvitedToATeam];
+        else
+            [self.delegate peopleInvited];
+        
+        [self unfreezeUI];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)allContactsLoaded {
+    [self performSelectorOnMainThread:@selector(unfreezeUI) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+    
+    [self performSelectorOnMainThread:@selector(displayKeyboard) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark FullScreenMode
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
     
 }
 
@@ -240,6 +360,7 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
     [self.navigationController.navigationBar addSubview:self.navBarRightButtonView];
+    [self.navigationController.navigationBar addSubview:self.spinnerOverlayView];
 }
 
 @end

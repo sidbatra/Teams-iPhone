@@ -24,7 +24,7 @@
 /**
  * Get all contacts
  */
-- (NSArray*)getAllContacts;
+- (void)getAllContacts;
 
 /**
  * Get contacts whose properties contain a 
@@ -39,6 +39,12 @@
  * Protocol for the delegate of DWContactsController
  */
 @protocol DWContactsControllerDelegate
+
+/**
+ * Fired when all contacts are loaded from the 
+ * address book
+ */
+- (void)allContactsLoaded:(NSArray*)contacts; 
 
 /**
  * Fired when the contacts are loaded in the memory

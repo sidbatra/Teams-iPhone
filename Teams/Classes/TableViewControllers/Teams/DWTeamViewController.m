@@ -207,7 +207,7 @@
                                                                      withViewID:team.databaseID];
     }
     else if(resource == self.teamViewDataSource.invite) {
-        [self.delegate showInvitePeople];
+        [self.delegate showInvitePeopleFor:team];
         
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self

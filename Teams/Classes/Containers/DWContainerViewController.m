@@ -19,7 +19,7 @@
 #import "DWSession.h"
 #import "NSString+Helpers.h"
 
-static NSString*  const kDenwenURLPrefix    = @"denwen://";
+static NSString* const kDenwenURLPrefix             = @"denwen://";
 
 
 /**
@@ -57,11 +57,6 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
  * Displays the designated view controller for a user whenever one is selected
  */
 - (void)userSelected:(NSInteger)userID;
-
-/**
- * Displays the invite people controller
- */
-- (void)invitePeople;
 
 @end
 
@@ -149,11 +144,6 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
     
     [self.navigationController pushViewController:userViewController
                                          animated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)invitePeople {
-    NSLog(@"invite people controller");
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -299,8 +289,20 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showInvitePeople {
-    [self invitePeople];
+- (void)showInvitePeopleFor:(DWTeam*)team {
+    
+    self.navigationController.navigationBar.clipsToBounds       = NO;
+    
+    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    invitePeopleViewController.delegate                         = self;
+    
+    invitePeopleViewController.showBackButton                   = YES;
+        
+    invitePeopleViewController.navBarTitle                      = kAddPeopleText;
+    invitePeopleViewController.navBarSubTitle                   = [NSString stringWithFormat:kAddPeopleSubText,team.name];
+    
+    [self.navigationController pushViewController:invitePeopleViewController 
+                                         animated:YES];
 }
 
 
@@ -357,6 +359,17 @@ static NSString*  const kDenwenURLPrefix    = @"denwen://";
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsTeamSelected:(NSInteger)teamID {
     [self teamSelected:teamID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWInvitePeopleViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)peopleInvitedToATeam {
+    [self.navigationController popViewControllerAnimated:YES];    
 }
 
 

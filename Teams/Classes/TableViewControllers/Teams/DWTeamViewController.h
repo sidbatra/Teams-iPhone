@@ -73,6 +73,6 @@
 /**
  * Fired when the invite people view is to be displayed
  */
-- (void)showInvitePeople;
+- (void)showInvitePeopleFor:(DWTeam*)team;;
 
 @end
