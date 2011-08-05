@@ -78,6 +78,7 @@ typedef enum {
 typedef enum {
     kTeamPresenterStyleNavigationDisabled = 1,
     kTeamPresenterStyleFat = 2,    
+    kTeamPresenterStyleEventBased = 3,    
 } DWTeamPresenterStyle;
 
 /**
@@ -162,6 +163,7 @@ extern NSString* const kKeyHasPhoto;
 extern NSString* const kKeyFirstName;
 extern NSString* const kKeyLastName;
 extern NSString* const kKeyByLine;
+extern NSString* const kKeyEventText;
 extern NSString* const kKeyEmail;
 extern NSString* const kKeyPhoto;
 extern NSString* const kKeySmallURL;

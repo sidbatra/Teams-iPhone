@@ -21,6 +21,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 
 @synthesize name                = _name;
 @synthesize byline              = _byline;
+@synthesize eventText           = _eventText;
 @synthesize followingsCount     = _followersCount;
 @synthesize membersCount        = _membersCount;
 @synthesize createdAtTimestamp  = _createdAtTimestamp;
@@ -81,6 +82,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 	
 	self.name			= nil;
     self.byline         = nil;
+    self.eventText      = nil;
     
     [self freeAttachment];
 	
@@ -93,6 +95,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 
     NSString *name                  = [team objectForKey:kKeyName];
     NSString *byline                = [team objectForKey:kKeyByLine];
+    NSString *eventText             = [team objectForKey:kKeyEventText];
     NSString *timestamp             = [team objectForKey:kKeyTimestamp];
     NSString *followingsCount       = [team objectForKey:kKeyFollowingsCount];
     NSString *membershipsCount      = [team objectForKey:kKeyMembershipsCount];    
@@ -104,6 +107,10 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
     
     if(byline && ![self.byline isEqualToString:byline])
        self.byline = byline;
+    
+    if(eventText && ![self.eventText isEqualToString:eventText])
+        self.eventText = eventText;
+    
        
     if(timestamp)
         _createdAtTimestamp = [timestamp integerValue];
