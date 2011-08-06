@@ -46,6 +46,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 @synthesize bylineLabel         = _bylineLabel;
 
 @synthesize data                = _data;
+@synthesize placeholder         = _placeholder;
 @synthesize cameraImage			= _cameraImage;
 @synthesize videoURL			= _videoURL;
 @synthesize videoOrientation	= _videoOrientation;
@@ -83,6 +84,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     self.bylineLabel            = nil;
 	
     self.data                   = nil;
+    self.placeholder            = nil;
 	self.cameraImage			= nil;
 	self.videoURL				= nil;
 	self.videoOrientation		= nil;
@@ -104,7 +106,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
     self.dataTextView.text              = self.data;
     self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
-	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
+	self.dataTextView.placeholderText	= self.placeholder ? self.placeholder : kMsgDataTextViewPlaceholder;
     
     [self.dataTextView becomeFirstResponder];
     

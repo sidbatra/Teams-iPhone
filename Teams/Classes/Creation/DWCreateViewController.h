@@ -28,6 +28,7 @@
 	
     BOOL                _inMediaMode;
     NSString            *_data;
+    NSString            *_placeholder;
 	UIImage				*_cameraImage;
 	NSURL				*_videoURL;
 	NSString			*_videoOrientation;
@@ -41,6 +42,11 @@
  * Text data entered by the user
  */
 @property (nonatomic,copy) NSString *data;
+
+/**
+ * Placeholder string when the user hasn't typed a post
+ */
+@property (nonatomic,copy) NSString *placeholder;
 
 /**
  * Image selected using mediaPicker
