@@ -255,7 +255,8 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
                                                  successNotification:kNTeamItemsLoaded
                                                    errorNotification:kNTeamItemsError
                                                        requestMethod:kGet
-                                                          resourceID:teamID];
+                                                          resourceID:teamID
+                                                              caller:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -419,6 +420,10 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsLoaded:(NSNotification*)notification {
     
+    if(notification.object != self)
+        return;
+    
+    
     SEL idSel    = @selector(itemsResourceID);
     SEL itemsSel = @selector(teamItemsLoaded:);
     
@@ -442,6 +447,10 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsError:(NSNotification*)notification {
+    
+    if(notification.object != self)
+        return;
+    
     
     SEL idSel    = @selector(itemsResourceID);
     SEL errorSel = @selector(teamItemsError:);
