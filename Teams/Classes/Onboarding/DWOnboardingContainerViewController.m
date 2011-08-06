@@ -68,7 +68,8 @@ static NSString* const kMsgInviteAlertText = @"There is no I in Team";
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
                                                         object:nil];
     
-    [self.parentViewController dismissModalViewControllerAnimated:YES]; 
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [self.parentViewController dismissModalViewControllerAnimated:NO]; 
 }
 
 
@@ -142,7 +143,7 @@ static NSString* const kMsgInviteAlertText = @"There is no I in Team";
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
                                                         object:nil];
     
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.parentViewController dismissModalViewControllerAnimated:NO];
 }
 
 
@@ -256,8 +257,6 @@ static NSString* const kMsgInviteAlertText = @"There is no I in Team";
     invitePeopleViewController.navBarSubTitle                   = [NSString 
                                                                    stringWithFormat:kAddPeopleSubText,
                                                                                     [DWSession sharedDWSession].currentUser.team.name];
-    
-    NSLog(@"%d",[DWSession sharedDWSession].currentUser.team.membersCount);
     
     if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
         invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 
