@@ -17,6 +17,7 @@
     NSString        *_eventData;
     NSString        *_resourceType;
     NSString        *_imageURL;
+    NSString        *_details;
     
     UIImage         *_image;
     
@@ -49,6 +50,11 @@
  * Optional URL of the attached image
  */
 @property (nonatomic,copy) NSString* imageURL;
+
+/**
+ * Optional details associated with the notification
+ */
+@property (nonatomic,copy) NSString* details;
 
 /**
  * Image location at imageURL

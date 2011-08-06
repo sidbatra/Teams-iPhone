@@ -213,6 +213,7 @@ extern NSString* const kKeyUserImage;
 extern NSString* const kKeyEntityData;
 extern NSString* const kKeyEventData;
 extern NSString* const kKeyResourceType;
+extern NSString* const kKeyDetails;
 extern NSString* const kKeyAPS;
 extern NSString* const kKeyBadge;
 extern NSString* const kKeyAlert;

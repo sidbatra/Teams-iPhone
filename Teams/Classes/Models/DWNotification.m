@@ -20,6 +20,7 @@
 @synthesize resourceType        = _resourceType;
 @synthesize imageURL            = _imageURL;
 @synthesize image               = _image;
+@synthesize details             = _details;
 @synthesize createdAtTimestamp  = _createdAtTimestamp;
 
 //----------------------------------------------------------------------------------------------------
@@ -52,6 +53,7 @@
     self.eventData      = nil;
     self.resourceType   = nil;
     self.imageURL       = nil;
+    self.details        = nil;
     self.image          = nil;
     
 	[super dealloc];
@@ -70,6 +72,7 @@
 	NSString *entityData        = [notification objectForKey:kKeyEntityData];
     NSString *eventData         = [notification objectForKey:kKeyEventData];
     NSString *resourceType      = [notification objectForKey:kKeyResourceType];
+    NSString *details           = [notification objectForKey:kKeyDetails];
     NSString *timestamp         = [notification objectForKey:kKeyTimestamp];
     NSDictionary *image         = [notification objectForKey:kKeyImage];
     
@@ -88,6 +91,9 @@
 
     if(resourceType && ![self.resourceType isEqualToString:resourceType])
         self.resourceType = resourceType;
+    
+    if(details && ![self.details isEqualToString:details])
+        self.details = details;
 
     
     if(image) {
