@@ -15,6 +15,8 @@
     
 	NSString		*_successNotification;
 	NSString		*_errorNotification;
+    
+    id              _caller;
 }
 
 
@@ -35,6 +37,10 @@
  */
 @property (nonatomic,copy) NSString* errorNotification;
 
+/**
+ * Assign reference to the caller of the request. nil by default
+ */
+@property (nonatomic,assign) id caller;
 
 
 /**
@@ -54,6 +60,24 @@
 		  errorNotification:(NSString*)theErrorNotification
 				 resourceID:(NSInteger)theResourceID;
 
+/**
+ * Overloaded version of requestWithRequestURL that sets the caller
+ * object that initiated the request
+ */
++ (id)requestWithRequestURL:(NSString*)requestURL
+		successNotification:(NSString*)theSuccessNotification
+		  errorNotification:(NSString*)theErrorNotification
+                     caller:(id)caller;
+/**
+ * Overloaded version of requestWithRequestURL that sets the caller
+ * object that initiated the request and a request resource id
+ */
++ (id)requestWithRequestURL:(NSString*)requestURL
+		successNotification:(NSString*)theSuccessNotification
+		  errorNotification:(NSString*)theErrorNotification
+				 resourceID:(NSInteger)theResourceID 
+                     caller:(id)caller;
+
 
 /**
  * Init with request url and notification names to be invoked
@@ -67,7 +91,8 @@
  * Stub method overriden by each child class to process the response
  * of a successful request
  */
-- (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData;
+- (void)processResponse:(NSString*)responseString 
+        andResponseData:(NSData*)responseData;
 
 /**
  * Stub method overriden by each child class to process an error

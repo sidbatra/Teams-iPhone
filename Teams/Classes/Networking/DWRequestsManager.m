@@ -106,7 +106,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID
-                    authenticate:(NSInteger)authenticate {
+                    authenticate:(NSInteger)authenticate
+                          caller:(id)caller {
 	
 	
 	NSString *requestURL = [self createDenwenRequestURL:localRequestURL
@@ -117,13 +118,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
     if(resourceID == kDefaultResourceID) {
         request = [DWDenwenRequest requestWithRequestURL:requestURL
                                      successNotification:successNotification
-                                       errorNotification:errorNotification];
+                                       errorNotification:errorNotification
+                                                  caller:caller];
     }
     else {
         request = [DWDenwenRequest requestWithRequestURL:requestURL
                                      successNotification:successNotification
                                        errorNotification:errorNotification
-                                              resourceID:resourceID];
+                                              resourceID:resourceID
+                                                  caller:caller];
     }
     
 	[request setDelegate:self];
@@ -148,7 +151,24 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                    errorNotification:errorNotification
                        requestMethod:requestMethod
                           resourceID:kDefaultResourceID
-                        authenticate:YES];
+                        authenticate:YES
+                              caller:nil];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                          caller:(id)caller {
+    
+    return [self createDenwenRequest:localRequestURL
+                 successNotification:successNotification
+                   errorNotification:errorNotification
+                       requestMethod:requestMethod
+                          resourceID:kDefaultResourceID
+                        authenticate:YES
+                              caller:caller];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -163,8 +183,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                    errorNotification:errorNotification
                        requestMethod:requestMethod
                           resourceID:resourceID
-                        authenticate:YES];
+                        authenticate:YES
+                              caller:nil];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                      resourceID:(NSInteger)resourceID 
+                          caller:(id)caller {
+    
+    return [self createDenwenRequest:localRequestURL
+                 successNotification:successNotification
+                   errorNotification:errorNotification
+                       requestMethod:requestMethod
+                          resourceID:resourceID
+                        authenticate:YES
+                              caller:caller];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
@@ -178,7 +217,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                    errorNotification:errorNotification
                        requestMethod:requestMethod
                           resourceID:kDefaultResourceID
-                        authenticate:authenticate];
+                        authenticate:authenticate
+                              caller:nil];
 }
 			
 
