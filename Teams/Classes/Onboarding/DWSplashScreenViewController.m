@@ -9,7 +9,7 @@
 #import "DWConstants.h"
 
 
-static NSInteger kNumberOfPages = 4;
+static NSInteger kNumberOfPages = 1;
 
 
 @interface DWSplashScreenViewController(PrivateMethods)
@@ -68,6 +68,7 @@ static NSInteger kNumberOfPages = 4;
                                                  self.scrollView.frame.size.height);
     self.scrollView.scrollsToTop    = NO;
     
+    self.pageControl.hidden         = YES;
     
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
