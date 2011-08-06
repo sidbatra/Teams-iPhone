@@ -18,6 +18,8 @@ static NSInteger const kTableViewWidth						= 320;
 static NSInteger const kTableViewHeight						= 200;
 static NSInteger const kMaxPlaceNameLength					= 32;
 static NSInteger const kMaxPostLength						= 140;
+static NSString* const kImgImagePreviewBackground           = @"bg_dark_gradient_square.png";
+static NSString* const kImgTransBackground                  = @"trans55.png";
 static NSString* const kImgLightBackgroundButton			= @"button_gray_light.png";
 static NSString* const kImgDarkBackgroundCancelButton		= @"button_gray_dark_cancel.png";
 static NSString* const kImgDarkBackgroundCancelButtonActive	= @"button_gray_dark_cancel_active.png";
@@ -43,6 +45,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 @synthesize coverLabel			= _coverLabel;
 @synthesize bylineLabel         = _bylineLabel;
 
+@synthesize data                = _data;
 @synthesize cameraImage			= _cameraImage;
 @synthesize videoURL			= _videoURL;
 @synthesize videoOrientation	= _videoOrientation;
@@ -56,6 +59,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	if (self) {
 		_attachmentType         = kAttachmentNone;
         self.itemsController    = [[[DWItemsController alloc] init] autorelease];
+        
+        self.cameraImage        = [UIImage imageNamed:kImgImagePreviewBackground];
 	}
     
 	return self;
@@ -77,6 +82,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.coverLabel				= nil;
     self.bylineLabel            = nil;
 	
+    self.data                   = nil;
 	self.cameraImage			= nil;
 	self.videoURL				= nil;
 	self.videoOrientation		= nil;
@@ -96,10 +102,16 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     
     
     self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
+    self.dataTextView.text              = self.data;
     self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
     
     [self.dataTextView becomeFirstResponder];
+    
+    self.previewImageView.image         = self.cameraImage;
+    self.transImageView.image           = [UIImage imageNamed:kImgTransBackground];
+    self.transImageView.hidden			= !_inMediaMode;
+
     
     [[DWLocationManager sharedDWLocationManager] startLocationTracking];
     
@@ -111,6 +123,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];	
+    
+    self.data   = self.dataTextView.text;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -132,6 +146,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	/**
 	 * Revamp the entire UI when media is selected
 	 */
+    _inMediaMode = YES;
 	//self.coverLabel.backgroundColor		= [UIColor blackColor];
 	
 	//self.previewImageView.hidden		= NO;

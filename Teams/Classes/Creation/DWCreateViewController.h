@@ -26,6 +26,8 @@
 	UILabel				*_coverLabel;
     UILabel             *_bylineLabel;
 	
+    BOOL                _inMediaMode;
+    NSString            *_data;
 	UIImage				*_cameraImage;
 	NSURL				*_videoURL;
 	NSString			*_videoOrientation;
@@ -34,6 +36,11 @@
     
     DWItemsController   *_itemsController;
 }
+
+/**
+ * Text data entered by the user
+ */
+@property (nonatomic,copy) NSString *data;
 
 /**
  * Image selected using mediaPicker
