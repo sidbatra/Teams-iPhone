@@ -158,7 +158,6 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
     DWCreateViewController *createViewController = [[[DWCreateViewController alloc] 
                                                      init] autorelease];
     
-    
     [self.navigationController pushViewController:createViewController
                                          animated:YES];
 }
@@ -428,6 +427,17 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
         [self.customTabBarController enableFullScreen];
     else
         [self.customTabBarController disableFullScreen];
+    
+    
+    if ([viewController respondsToSelector:@selector(hideTopShadowOnTabBar)])
+        [self.customTabBarController hideTopShadowView];
+    else
+        [self.customTabBarController showTopShadowView];
+        /*
+        [self.customTabBarController performSelector:@selector(showTopShadowView) 
+                                          withObject:nil
+                                          afterDelay:0.5];
+         */
 }
 
 @end

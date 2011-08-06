@@ -66,6 +66,16 @@
  */
 - (void)dimTabAtIndex:(NSInteger)index;
 
+/**
+ * Hide the top show shadow image
+ */
+- (void)hideTopShadowView;
+
+/**
+ * Display the top shadow image
+ */
+- (void)showTopShadowView;
+
 @end
 
 

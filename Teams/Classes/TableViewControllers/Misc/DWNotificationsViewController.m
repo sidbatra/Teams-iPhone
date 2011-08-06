@@ -163,7 +163,18 @@ static NSString* const kNewItemName         = @"DWNewItem";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark FullScreenMode
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    
+    //Ensure nav bar is always displayed
+    if(self.navigationController.navigationBarHidden) {
+        [self.navigationController setNavigationBarHidden:NO 
+                                                 animated:YES];
+    }
+}
+
 //----------------------------------------------------------------------------------------------------
 - (void)requiresFullScreenMode {
     

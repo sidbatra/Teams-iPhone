@@ -377,7 +377,14 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
         [self.navigationController.navigationBar addSubview:self.navTitleView];
 
     
-    [self.navigationController.navigationBar addSubview:self.smallProfilePicView];    
+    [self.navigationController.navigationBar addSubview:self.smallProfilePicView]; 
+    
+    
+    //Ensure nav bar is always displayed
+    if(self.navigationController.navigationBarHidden) {
+        [self.navigationController setNavigationBarHidden:NO 
+                                                 animated:YES];
+    }
 }
 
 @end

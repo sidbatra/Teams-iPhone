@@ -90,6 +90,11 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    if(self.navigationController)
+        [self.navigationController setNavigationBarHidden:YES
+                                                 animated:YES];
+    
+    
     self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
     self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
 	self.dataTextView.placeholderText	= kMsgDataTextViewPlaceholder;
@@ -190,6 +195,17 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     [self presentModalViewController:picker animated:NO];   
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)exit {
+    
+    if(self.navigationController) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    else {
+        [self.parentViewController dismissModalViewControllerAnimated:NO];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -202,7 +218,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                              withActionName:@"cancel_selected"];
      
-	[self.parentViewController dismissModalViewControllerAnimated:NO];
+    
+    [self exit];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -253,7 +270,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
                                                                              _attachmentType]];
     
 	
-    [self.parentViewController dismissModalViewControllerAnimated:NO];
+    [self exit];
 }
 
 
@@ -316,6 +333,22 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 - (void)photoLibraryModeSelected {
     [self dismissModalViewControllerAnimated:NO];
     [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideTopShadowOnTabBar {
+    
 }
 
 @end
