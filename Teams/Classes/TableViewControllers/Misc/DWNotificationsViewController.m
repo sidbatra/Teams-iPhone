@@ -127,7 +127,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
                                                                    andExtraInfo:[NSString stringWithFormat:@"message=%@",
                                                                                  notification.eventData]];
         
-        [self.delegate notificationsCreateSelectedWithText:kEmptyString];
+        [self.delegate notificationsCreateSelectedWithText:notification.details];
     }
 }
 

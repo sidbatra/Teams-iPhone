@@ -158,6 +158,8 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
     DWCreateViewController *createViewController = [[[DWCreateViewController alloc] 
                                                      init] autorelease];
     
+    createViewController.placeholder = text;
+    
     [self.navigationController pushViewController:createViewController
                                          animated:YES];
 }

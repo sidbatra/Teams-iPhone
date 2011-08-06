@@ -62,6 +62,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
         self.itemsController    = [[[DWItemsController alloc] init] autorelease];
         
         self.cameraImage        = [UIImage imageNamed:kImgImagePreviewBackground];
+        
+        self.placeholder        = kMsgDataTextViewPlaceholder;
 	}
     
 	return self;
@@ -106,7 +108,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
     self.dataTextView.text              = self.data;
     self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
-	self.dataTextView.placeholderText	= self.placeholder ? self.placeholder : kMsgDataTextViewPlaceholder;
+	self.dataTextView.placeholderText	= self.placeholder;
     
     [self.dataTextView becomeFirstResponder];
     
