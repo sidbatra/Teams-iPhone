@@ -69,6 +69,19 @@
     withNotificationsCount:(NSInteger)unreadNotificationsCount;
 
 /**
+ * Update the facebook token of the given user ID
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+         withFacebookToken:(NSString*)facebookToken;
+
+/**
+ * Update the twitter token and secret of the given user ID
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+          withTwitterToken:(NSString*)twitterToken
+          andTwitterSecret:(NSString*)twitterSecret;
+
+/**
  * Get the user with the given userID
  */
 - (void)getUserWithID:(NSInteger)userID;

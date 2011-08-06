@@ -17,6 +17,8 @@ static NSString* const kUpdateUserEmailURI                  = @"/users/%d.json?u
 static NSString* const kUpdateUserImageURI                  = @"/users/%d.json?user[filename]=%@";
 static NSString* const kUpdateUserDeviceURI                 = @"/users/%d.json?user[iphone_device_id]=%@";
 static NSString* const kUpdateUserNotificationsCountURI     = @"/users/%d.json?user[unread_notifications_count]=%d";
+static NSString* const kUpdateUserFacebookTokenURI          = @"/users/%d.json?user[facebook_token]=%@";
+static NSString* const kUpdateUserTwitterTokenURI           = @"/users/%d.json?user[twitter_token]=%@&user[twitter_secret]=%@";
 static NSString* const kUserURI                             = @"/users/%d.json?";
 static NSString* const kTeamFollowersURI                    = @"/teams/%d/followers.json?limit=%d";
 static NSString* const kTeamMembersURI                      = @"/teams/%d/members.json?limit=%d";
@@ -273,6 +275,36 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
                                                        requestMethod:kPut];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+         withFacebookToken:(NSString*)facebookToken {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserFacebookTokenURI,
+                          userID,
+                          facebookToken];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+          withTwitterToken:(NSString*)twitterToken
+          andTwitterSecret:(NSString*)twitterSecret {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserTwitterTokenURI,
+                          userID,
+                          twitterToken,
+                          twitterSecret];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNUserUpdated
+                                                   errorNotification:kNUserUpdateError
+                                                       requestMethod:kPut];
 }
 
 
