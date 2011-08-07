@@ -38,7 +38,8 @@
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID
-                    authenticate:(NSInteger)authenticate;
+                    authenticate:(NSInteger)authenticate
+                          caller:(id)caller;
 
 /**
  * Overloaded method for createDenwenRequest. Generates a unique
@@ -61,6 +62,17 @@
                       resourceID:(NSInteger)resourceID;
 
 /**
+ * Overloaded method for createDenwenRequest. Authentication defaults
+ * to YES and a caller object is specified
+ */
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                      resourceID:(NSInteger)resourceID 
+                          caller:(id)caller;
+
+/**
  * Overloaded method for createDenwenRequest. Generates a unique
  * resourceID and authentication is on by default
  */
@@ -69,6 +81,16 @@
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod;
 
+/**
+ * Overloaded method for createDenwenRequest. Generates a unique
+ * resourceID and authentication is on by default and 
+ * a caller object is specified
+ */
+- (NSInteger)createDenwenRequest:(NSString*)localRequestURL 
+             successNotification:(NSString*)successNotification
+               errorNotification:(NSString*)errorNotification
+                   requestMethod:(NSString*)requestMethod
+                          caller:(id)caller;
 
 /**
  * Download the image from the given URL and fire the given

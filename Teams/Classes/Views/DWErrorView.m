@@ -112,7 +112,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshImage {
     refreshImageView                    = [[[UIImageView alloc] initWithFrame:CGRectMake(112,
-                                                                                         self.frame.size.height / 2 - 10,
+                                                                                         self.frame.size.height / 2 - 9,
                                                                                          13,
                                                                                          15)] autorelease];	
 	refreshImageView.image              = [UIImage imageNamed:kImgRefresh];

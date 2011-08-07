@@ -35,7 +35,7 @@ static NSString* const kDWErrorDomain		= @"DWError";
                               nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
-                                                            object:nil
+                                                            object:self.caller
                                                           userInfo:info];
     }
 }
@@ -49,7 +49,7 @@ static NSString* const kDWErrorDomain		= @"DWError";
 								nil];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:self.errorNotification
-														object:nil
+														object:self.caller
 													  userInfo:info];
 }
 

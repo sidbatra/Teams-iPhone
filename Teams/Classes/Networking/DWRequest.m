@@ -21,6 +21,7 @@ static NSInteger const kRandomStringBase    = 100000000;
 @synthesize resourceID				= _resourceID;
 @synthesize successNotification		= _successNotification;
 @synthesize errorNotification		= _errorNotification;
+@synthesize caller                  = _caller;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -102,6 +103,36 @@ static NSInteger const kRandomStringBase    = 100000000;
 	request.resourceID	= theResourceID;
 	
 	return request;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (id)requestWithRequestURL:(NSString*)requestURL
+		successNotification:(NSString*)theSuccessNotification
+		  errorNotification:(NSString*)theErrorNotification
+                     caller:(id)caller {
+    
+    DWRequest *request  = [self requestWithRequestURL:requestURL
+                                  successNotification:theSuccessNotification
+                                    errorNotification:theErrorNotification];
+    request.caller      = caller;
+    
+    return request;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (id)requestWithRequestURL:(NSString*)requestURL
+		successNotification:(NSString*)theSuccessNotification
+		  errorNotification:(NSString*)theErrorNotification
+				 resourceID:(NSInteger)theResourceID 
+                     caller:(id)caller {
+    
+    DWRequest *request  = [self requestWithRequestURL:requestURL
+                                  successNotification:theSuccessNotification
+                                    errorNotification:theErrorNotification
+                                           resourceID:theResourceID];
+    request.caller      = caller;
+    
+    return request;
 }
 
 @end
