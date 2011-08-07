@@ -102,8 +102,8 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     if (self.userImage) 
         self.underlayImageView.image = self.userImage;
     
-    [[self.underlayImageView layer] setCornerRadius:2.5f];
-    [[self.addProfilePicButton layer] setCornerRadius:2.5f];
+    [[self.underlayImageView layer] setCornerRadius:4.0f];
+    [[self.addProfilePicButton layer] setCornerRadius:4.0f];
     
     self.underlayImageView.clipsToBounds = YES;
     
