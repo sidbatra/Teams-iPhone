@@ -15,7 +15,7 @@
 #import "DWAnalyticsManager.h"
 
 static NSString* const kImgNotificationsButton      = @"button_more.png";
-static NSString* const kMsgFollowAction             = @"Tap to start watching this Team";
+static NSString* const kMsgFollowAction             = @"Tap to follow this Team";
 
 
 /**

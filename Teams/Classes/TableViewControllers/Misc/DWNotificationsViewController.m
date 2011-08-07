@@ -16,7 +16,7 @@
 
 static NSString* const kTitle               = @"Notifications";
 static NSString* const kModelNamePrefix     = @"DW";
-static NSString* const kImgCancel           = @"button_cancel_left.png";
+static NSString* const kImgClose            = @"button_close_left.png";
 static NSString* const kNewItemName         = @"DWNewItem";
 
 
@@ -68,7 +68,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
     
     self.navigationItem.hidesBackButton     = YES;
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:kTitle];
-    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgCancel
+    self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgClose
                                                                                target:self
                                                                           andSelector:@selector(didTapDoneButton:)];
 
