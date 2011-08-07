@@ -16,6 +16,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWContactsViewController
 
+@synthesize contactToRemove             = _contactToRemove;
 @synthesize contactsDataSource          = _contactsDataSource;
 
 @synthesize delegate                    = _delegate;
@@ -36,6 +37,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
+    self.contactToRemove    = nil;
     self.contactsDataSource = nil;
     
     [super dealloc];
@@ -90,6 +92,21 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)removeContact:(DWContact *)contact {
+    [self.contactsDataSource removeContact:contact];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addContactToCache:(DWContact *)contact {
+    [self.contactsDataSource addContactToCache:contact];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeContactFromCache:(DWContact *)contact {
+    [self.contactsDataSource removeContactFromCache:contact];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)triggerInvites {
     [self.contactsDataSource triggerInvites];
 }
@@ -102,7 +119,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)showActionSheetInView:(UIView*)view forRemoving:(DWContact*)contact {
-    _contactToRemove  = contact;
+    self.contactToRemove = contact;
     
     UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
                                                               delegate:self 
@@ -122,7 +139,8 @@
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"contact_deleted"];
         
-        [self.contactsDataSource removeContact:_contactToRemove];
+        [self.contactsDataSource removeContact:self.contactToRemove];
+        [self.delegate contactRemoved:self.contactToRemove];
     }
     else if(buttonIndex == 1) {
         

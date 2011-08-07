@@ -296,6 +296,7 @@ static NSInteger const kTableViewHeight						= 200;
     if ([object isEqual:self.queryContactsViewController ] ) {
         [self displayAddedContacts];
         [self.addedContactsViewController addContact:contact];
+        [self.queryContactsViewController removeContactFromCache:contact];
         
         self.searchContactsTextField.text = kEmptyString;   
         
@@ -338,6 +339,11 @@ static NSInteger const kTableViewHeight						= 200;
     [self performSelectorOnMainThread:@selector(displayKeyboard) 
                            withObject:nil 
                         waitUntilDone:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactRemoved:(DWContact*)contact {
+    [self.queryContactsViewController addContactToCache:contact];
 }
 
 

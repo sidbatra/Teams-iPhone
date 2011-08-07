@@ -76,9 +76,25 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)removeContactFromCache:(DWContact*)contact {
+    NSUInteger index = [self.allContacts indexOfObject:contact];
+    
+    if(index == NSNotFound)
+        return;
+    
+    [self.allContacts removeObjectAtIndex:index];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addContactToCache:(DWContact*)contact {
+    [self.allContacts addObject:contact];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)triggerInvites {
     [self.invitesController createInvitesFrom:self.objects];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -86,7 +102,7 @@
 #pragma mark DWContactsController Delegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)allContactsLoaded:(NSArray*)contacts {
+- (void)allContactsLoaded:(NSMutableArray*)contacts {
     self.allContacts = contacts;
     [self.delegate allContactsLoaded];         
 }

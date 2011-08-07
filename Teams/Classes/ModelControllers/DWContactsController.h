@@ -44,7 +44,7 @@
  * Fired when all contacts are loaded from the 
  * address book
  */
-- (void)allContactsLoaded:(NSArray*)contacts; 
+- (void)allContactsLoaded:(NSMutableArray*)contacts; 
 
 /**
  * Fired when the contacts are loaded in the memory

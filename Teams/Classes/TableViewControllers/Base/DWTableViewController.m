@@ -96,9 +96,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     self.tableView.scrollEnabled = NO;
 
-    self.tableView.backgroundColor          =  [UIColor colorWithRed:0.1568
-                                                               green:0.1607 
-                                                                blue:0.1607
+    self.tableView.backgroundColor          =  [UIColor colorWithRed:0.1372549
+                                                               green:0.1372549 
+                                                                blue:0.1372549
                                                                alpha:1.0];
     
 	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;

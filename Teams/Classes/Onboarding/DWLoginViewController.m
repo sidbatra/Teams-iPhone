@@ -16,7 +16,7 @@
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
-static NSString* const kMsgIncomplete           = @"Enter email and password";
+static NSString* const kMsgIncomplete           = @"Please enter your login email and password";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kLoginText               = @"Log In";

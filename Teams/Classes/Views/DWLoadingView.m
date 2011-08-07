@@ -43,6 +43,11 @@ static NSString* const kImgBackground	= @"main_bg.png";
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.backgroundColor =  [UIColor colorWithRed:0.1372549
+                                                green:0.1372549
+                                                 blue:0.1372549
+                                                alpha:1.0];
+        
         //[self createBackground];
         [self createSpinner];
         [self createText];

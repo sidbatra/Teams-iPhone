@@ -24,6 +24,11 @@
 }
 
 /**
+ * Contact selected to be removed by the user
+ */
+@property (nonatomic,retain) DWContact *contactToRemove;
+
+/**
  * Data source for the table view
  */
 @property (nonatomic,retain) DWContactsDataSource *contactsDataSource;
@@ -53,6 +58,21 @@
  * Add the given contact to the datasource and the tableview
  */
 - (void)addContact:(DWContact*)contact;
+
+/**
+ * Remove the given contact from the datasource and the tableview
+ */
+- (void)removeContact:(DWContact*)contact;
+
+/**
+ * Add the given contact to the datasource cache
+ */
+- (void)addContactToCache:(DWContact*)contact;
+
+/**
+ * Remove the given contact from the datasource cache
+ */
+- (void)removeContactFromCache:(DWContact*)contact;
 
 /**
  * Show the action sheet to confirm removing a contact from 
@@ -91,5 +111,11 @@
  * successfully sent to the server
  */
 - (void)invitesTriggeredFromObject:(id)object;
+
+/**
+ * Fired when a contact is removed from the 
+ * added contacts list
+ */
+- (void)contactRemoved:(DWContact*)contact;
 
 @end

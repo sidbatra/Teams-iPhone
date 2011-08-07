@@ -17,7 +17,7 @@
  */
 @interface DWContactsDataSource : DWTableViewDataSource<DWContactsControllerDelegate,DWInvitesControllerDelegate> {
     
-    NSArray                     *_allContacts;
+    NSMutableArray              *_allContacts;
     NSString                    *_latestQuery;
     
     DWContactsController        *_contactsController;
@@ -33,7 +33,7 @@
 /**
  * All Address Book Contacts
  */
-@property (nonatomic,retain) NSArray *allContacts;
+@property (nonatomic,retain) NSMutableArray *allContacts;
 
 /**
  * Latest query for retrieving contacts
@@ -71,6 +71,16 @@
  * Remove the given contact from the objects array
  */
 - (void)removeContact:(DWContact*)contact;
+
+/*
+ * Remove the given contact from all contacts cache
+ */
+- (void)removeContactFromCache:(DWContact*)contact;
+
+/*
+ * Add the given contact to all contacts cache
+ */
+- (void)addContactToCache:(DWContact*)contact;
 
 /**
  * Send invite information to server

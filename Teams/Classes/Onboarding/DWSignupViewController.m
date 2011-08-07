@@ -20,11 +20,11 @@ static NSString* const kRegexNonWorkEmails              = @"@(gmail|yahoo|aim|ho
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kNavBarRightButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";
-static NSString* const kMsgIncomplete                   = @"Enter your work email";
+static NSString* const kMsgIncomplete                   = @"Please enter the email you use at your organization";
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
 static NSString* const kMsgProcesssing                  = @"Searching existing Teams...";
-static NSString* const kMsgEmailError                   = @"Enter your work email";
+static NSString* const kMsgEmailError                   = @"Please enter the email you use at your organization";
 
 
 //----------------------------------------------------------------------------------------------------
