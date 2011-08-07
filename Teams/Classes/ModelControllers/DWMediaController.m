@@ -51,9 +51,11 @@
 #pragma mark Creation
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)postImage:(UIImage*)image toFolder:(NSString*)folder {
+- (NSInteger)postImage:(UIImage*)image 
+            withPrefix:(NSString*)prefix {
+    
     return [[DWRequestsManager sharedDWRequestsManager] createImageWithData:image
-                                                                   toFolder:kS3UsersFolder
+                                                                 withPrefix:prefix
                                                          withUploadDelegate:self];
 }
 

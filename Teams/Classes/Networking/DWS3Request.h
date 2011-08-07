@@ -26,7 +26,7 @@
  * and setup custom properties for uploading an image
  */
 + (id)requestNewImage:(UIImage*)image
-			 toFolder:(NSString*)folder;
+           withPrefix:(NSString*)prefix;
 
 /**
  * Use the requestWithRequestURL method in the parent class
@@ -34,6 +34,6 @@
  */
 + (id)requestNewVideo:(NSURL*)theURL
 		atOrientation:(NSString*)orientation
-			 toFolder:(NSString*)folder;
+           withPrefix:(NSString*)prefix;
 
 @end

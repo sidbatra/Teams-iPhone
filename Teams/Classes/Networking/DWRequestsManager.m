@@ -253,11 +253,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)createImageWithData:(UIImage*)image
-						toFolder:(NSString*)folder
+                      withPrefix:(NSString*)prefix
 			  withUploadDelegate:(id)uploadDelegate {
 	
 	DWS3Request *request			= [DWS3Request requestNewImage:image
-														  toFolder:folder];
+                                                        withPrefix:prefix];
 	request.showAccurateProgress	= YES;
 	[request setDelegate:self];
 	[request setUploadProgressDelegate:uploadDelegate];
@@ -270,12 +270,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)createVideoUsingURL:(NSURL*)theURL
 				   atOrientation:(NSString*)orientation 
-						toFolder:(NSString*)folder
+                      withPrefix:(NSString*)prefix
 			  withUploadDelegate:(id)uploadDelegate {
 	
 	DWS3Request *request			= [DWS3Request requestNewVideo:theURL 
 													 atOrientation:orientation
-														  toFolder:folder];
+                                                        withPrefix:prefix];
 	request.showAccurateProgress	= YES;
 	[request setDelegate:self];
 	[request setShouldContinueWhenAppEntersBackground:YES];

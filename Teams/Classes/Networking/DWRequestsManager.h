@@ -108,7 +108,7 @@
  * uploadDelegate receive events about the upload progress
  */
 - (NSInteger)createImageWithData:(UIImage*)image 
-						toFolder:(NSString*)folder
+                      withPrefix:(NSString*)prefix
 			  withUploadDelegate:(id)uploadDelegate;
 
 /**
@@ -118,7 +118,7 @@
  */
 - (NSInteger)createVideoUsingURL:(NSURL*)theURL
 				   atOrientation:(NSString*)orientation 
-						toFolder:(NSString*)folder
+                      withPrefix:(NSString*)prefix
 			  withUploadDelegate:(id)uploadDelegate;
 
 @end

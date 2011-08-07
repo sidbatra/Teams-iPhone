@@ -91,14 +91,14 @@
 	if(self.image) {
 		
 		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createImageWithData:self.image
-																				 toFolder:kS3ItemsFolder
+																				 withPrefix:kS3ItemsPrefix
 																	   withUploadDelegate:self];
 	}
 	else {
         
 		_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createVideoUsingURL:self.videoURL
 																			atOrientation:self.videoOrietation
-																				 toFolder:kS3ItemsFolder
+                                                                               withPrefix:kS3ItemsPrefix
 																	   withUploadDelegate:self];
          
 	}

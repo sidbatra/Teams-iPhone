@@ -25,7 +25,7 @@
  * Post image to the specified folder
  */
 - (NSInteger)postImage:(UIImage*)image
-              toFolder:(NSString*)folder;
+            withPrefix:(NSString*)prefix;
 
 @end
 

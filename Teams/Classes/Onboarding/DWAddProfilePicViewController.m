@@ -177,7 +177,7 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 	else {		
         [self freezeUI];   
         _mediaResourceID = [self.mediaController postImage:self.userImage 
-                                                  toFolder:kS3UsersFolder];
+                                                withPrefix:kS3UsersPrefix];
     }
     
     

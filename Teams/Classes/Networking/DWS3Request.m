@@ -10,11 +10,11 @@
 static NSInteger const kRandomStringLength	= 20;
 static NSInteger const kRandomStringBase	= 10;
 
-static NSString* const kImageSuffix			= @"photo.jpg";
+static NSString* const kImageSuffix			= @".jpg";
 static NSString* const kImageContentType	= @"image/jpeg";
 static float	 const kImageCompression	= 0.5;
 static NSString* const kVideoContentType	= @"video/quicktime";
-static NSString* const kVideoSuffixFormat	= @"video_o_%@.mov";
+static NSString* const kVideoSuffixFormat	= @"_video_o_%@.mov";
 
 static NSString* const kS3KeyPolicy			= @"policy";
 static NSString* const kS3KeySignature		= @"signature";
@@ -41,7 +41,7 @@ static NSString* const kS3SuccessResponse	= @"";
 
 //----------------------------------------------------------------------------------------------------
 + (id)createRequestWithSuffix:(NSString*)suffix 
-					 toFolder:(NSString*)folder {
+                   withPrefix:(NSString*)prefix {
 	
 	DWS3Request *s3Request = [super requestWithRequestURL:kS3Server
 									  successNotification:kNS3UploadDone
@@ -53,13 +53,13 @@ static NSString* const kS3SuccessResponse	= @"";
 	for(int i=0;i<kRandomStringLength;i++)
 		[randomString appendFormat:@"%d",arc4random() % kRandomStringBase];
 	
-	s3Request.filename = [NSString stringWithFormat:@"%d_%@_%@",s3Request.resourceID,randomString,suffix];
+	s3Request.filename = [NSString stringWithFormat:@"%@_%d_%@%@",prefix,s3Request.resourceID,randomString,suffix];
 	
 	
 	[s3Request setShouldStreamPostDataFromDisk:YES];
 	
 	
-	NSString *key = [NSString stringWithFormat:@"%@/${filename}",folder];
+	NSString *key = [NSString stringWithFormat:@"%${filename}"];
 	
 	[s3Request setPostValue:kS3Policy		forKey:kS3KeyPolicy];
 	[s3Request setPostValue:kS3Signature	forKey:kS3KeySignature];
@@ -129,10 +129,10 @@ static NSString* const kS3SuccessResponse	= @"";
 
 //----------------------------------------------------------------------------------------------------
 + (id)requestNewImage:(UIImage*)image
-			 toFolder:(NSString*)folder {
+           withPrefix:(NSString*)prefix {
 	
 	DWS3Request *s3Request = [self createRequestWithSuffix:kImageSuffix 
-												  toFolder:folder];
+                                                withPrefix:prefix];
 	
 	[s3Request setData:(NSData*)UIImageJPEGRepresentation(image,kImageCompression) 
 		  withFileName:s3Request.filename
@@ -145,10 +145,11 @@ static NSString* const kS3SuccessResponse	= @"";
 //----------------------------------------------------------------------------------------------------
 + (id)requestNewVideo:(NSURL*)theURL
 		atOrientation:(NSString*)orientation
-			 toFolder:(NSString*)folder {
+           withPrefix:(NSString*)prefix {
 
-	DWS3Request *s3Request = [self createRequestWithSuffix:[NSString stringWithFormat:kVideoSuffixFormat,orientation]
-												  toFolder:folder];
+	DWS3Request *s3Request = [self createRequestWithSuffix:[NSString stringWithFormat:kVideoSuffixFormat,
+                                                            orientation]
+                                                withPrefix:prefix];
 
 	[s3Request setFile:[theURL relativePath]
 		  withFileName:s3Request.filename 

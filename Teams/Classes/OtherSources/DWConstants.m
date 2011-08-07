@@ -38,8 +38,8 @@ NSString* const kDelete				= @"DELETE";
 	NSString* const kS3Server		= @"http://denwen-teams-development.s3.amazonaws.com/";
 #endif
 
-NSString* const kS3UsersFolder	= @"user_photos";
-NSString* const kS3ItemsFolder	= @"items";
+NSString* const kS3UsersPrefix	= @"u";
+NSString* const kS3ItemsPrefix	= @"i";
 
 
 //----------------------------------------------------------------------------------------------------

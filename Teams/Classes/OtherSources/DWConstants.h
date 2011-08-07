@@ -22,8 +22,8 @@ extern NSString* const kS3Signature;
 extern NSString* const kS3AccessID;
 extern NSString* const kS3ACL;
 extern NSString* const kS3Server;
-extern NSString* const kS3UsersFolder;
-extern NSString* const kS3ItemsFolder;
+extern NSString* const kS3UsersPrefix;
+extern NSString* const kS3ItemsPrefix;
 
 /**
  * Atachment types

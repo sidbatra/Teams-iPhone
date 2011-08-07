@@ -99,9 +99,9 @@ static NSString* const kQueueErrorDomain		= @"DWQueueError";
 - (void)startMediaUpload {
 	[super startMediaUpload];
     
-    _mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createImageWithData:self.image
-                                                                             toFolder:kS3UsersFolder
-                                                                   withUploadDelegate:nil];
+    //_mediaUploadID = [[DWRequestsManager sharedDWRequestsManager] createImageWithData:self.image
+     //                                                                        toFolder:kS3UsersFolder
+      //                                                             withUploadDelegate:nil];
 }
 
 //----------------------------------------------------------------------------------------------------

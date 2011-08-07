@@ -206,7 +206,7 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
         
         if (_hasChangedImage) 
             _mediaResourceID = [self.mediaController postImage:self.userImageView.image
-                                                      toFolder:kS3UsersFolder];
+                                                    withPrefix:kS3UsersPrefix];
         else
             [self.usersController updateUserHavingID:_userID 
                                        withFirstName:self.firstNameTextField.text 
