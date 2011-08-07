@@ -104,6 +104,10 @@
 		2672240E131B3F9600654D88 /* modalview_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2672240C131B3F9600654D88 /* modalview_bg@2x.png */; };
 		267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */; };
 		267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */; };
+		26802E1613EE11EE003F7EF6 /* button_cancel_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1213EE11EE003F7EF6 /* button_cancel_left.png */; };
+		26802E1713EE11EE003F7EF6 /* button_cancel_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1313EE11EE003F7EF6 /* button_cancel_left@2x.png */; };
+		26802E1813EE11EE003F7EF6 /* button_close_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1413EE11EE003F7EF6 /* button_close_left.png */; };
+		26802E1913EE11EE003F7EF6 /* button_close_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1513EE11EE003F7EF6 /* button_close_left@2x.png */; };
 		2683E2C213CD11B500BF509E /* DWSplashScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */; };
 		2683E2C313CD11B500BF509E /* DWSplashScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */; };
 		2695C22C13E21C7600504B10 /* button_more.png in Resources */ = {isa = PBXBuildFile; fileRef = 2695C22813E21C7600504B10 /* button_more.png */; };
@@ -597,6 +601,10 @@
 		267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWJoinTeamViewController.m; path = Classes/Onboarding/DWJoinTeamViewController.m; sourceTree = "<group>"; };
 		267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMembershipsController.h; sourceTree = "<group>"; };
 		267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMembershipsController.m; sourceTree = "<group>"; };
+		26802E1213EE11EE003F7EF6 /* button_cancel_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_cancel_left.png; path = resources/button_cancel_left.png; sourceTree = "<group>"; };
+		26802E1313EE11EE003F7EF6 /* button_cancel_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_cancel_left@2x.png"; path = "resources/button_cancel_left@2x.png"; sourceTree = "<group>"; };
+		26802E1413EE11EE003F7EF6 /* button_close_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_close_left.png; path = resources/button_close_left.png; sourceTree = "<group>"; };
+		26802E1513EE11EE003F7EF6 /* button_close_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button_close_left@2x.png"; path = "resources/button_close_left@2x.png"; sourceTree = "<group>"; };
 		2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSplashScreenViewController.h; path = Classes/Onboarding/DWSplashScreenViewController.h; sourceTree = "<group>"; };
 		2683E2C013CD11B400BF509E /* DWSplashScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSplashScreenViewController.m; path = Classes/Onboarding/DWSplashScreenViewController.m; sourceTree = "<group>"; };
 		2683E2C113CD11B500BF509E /* DWSplashScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSplashScreenViewController.xib; path = Classes/Onboarding/DWSplashScreenViewController.xib; sourceTree = "<group>"; };
@@ -1221,6 +1229,10 @@
 		267A0DA112E818AC001B0604 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				26802E1213EE11EE003F7EF6 /* button_cancel_left.png */,
+				26802E1313EE11EE003F7EF6 /* button_cancel_left@2x.png */,
+				26802E1413EE11EE003F7EF6 /* button_close_left.png */,
+				26802E1513EE11EE003F7EF6 /* button_close_left@2x.png */,
 				26E1016E13E8E28800F2C32C /* button_unfollow_active.png */,
 				26E1016F13E8E28800F2C32C /* button_unfollow_active@2x.png */,
 				26E1017013E8E28900F2C32C /* button_unfollow.png */,
@@ -2683,6 +2695,10 @@
 				26E1017313E8E28E00F2C32C /* button_unfollow_active@2x.png in Resources */,
 				26E1017413E8E28E00F2C32C /* button_unfollow.png in Resources */,
 				26E1017513E8E28E00F2C32C /* button_unfollow@2x.png in Resources */,
+				26802E1613EE11EE003F7EF6 /* button_cancel_left.png in Resources */,
+				26802E1713EE11EE003F7EF6 /* button_cancel_left@2x.png in Resources */,
+				26802E1813EE11EE003F7EF6 /* button_close_left.png in Resources */,
+				26802E1913EE11EE003F7EF6 /* button_close_left@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

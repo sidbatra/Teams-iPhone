@@ -16,7 +16,7 @@
 
 
 static NSString* const kImgTopShadow                        = @"shadow_top.png";
-static NSString* const kImgCancel                           = @"button_cancel.png";
+static NSString* const kImgCancel                           = @"button_cancel_left.png";
 static NSString* const kNavBarRightButtonText               = @"Done";
 static NSString* const kMsgErrorTitle                       = @"Error";
 static NSString* const kMsgCancelTitle                      = @"OK";
