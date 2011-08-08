@@ -383,11 +383,13 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)invitesTriggerErrorFromObject:(id)object {
-    
-    self.messageLabel.text      = @"No Internet Connection. Please try again";
-    self.messageLabel.hidden    = NO;
-    
-    [self unfreezeUI];
+  
+    if ([object isEqual:self.addedContactsViewController]) {
+        self.messageLabel.text      = @"No Internet Connection. Please try again";
+        self.messageLabel.hidden    = NO;
+        
+        [self unfreezeUI];
+    }
 }
 
 
