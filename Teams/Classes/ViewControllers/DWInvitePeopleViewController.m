@@ -256,7 +256,7 @@ static NSInteger const kTableViewHeight						= 200;
     
     
     if (!self.spinnerContainerView) 
-        self.spinnerContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+        self.spinnerContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 480)] autorelease];
     
     self.spinnerContainerView.hidden            = YES;
     self.spinnerContainerView.backgroundColor   = [UIColor colorWithRed:0.0 

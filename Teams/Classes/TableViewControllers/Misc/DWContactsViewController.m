@@ -67,11 +67,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,153)] autorelease];
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,175)] autorelease];
     errorView.delegate      = self;
     
     return errorView;
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
