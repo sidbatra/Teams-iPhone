@@ -9,7 +9,8 @@
 #import "DWConstants.h"
 
 
-static NSString* const kMsgInviteAlertText = @"There is no I in Team";
+static NSString* const kMsgInviteAlertText      = @"There is no I in Team";
+static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -257,6 +258,8 @@ static NSString* const kMsgInviteAlertText = @"There is no I in Team";
     invitePeopleViewController.navBarSubTitle                   = [NSString 
                                                                    stringWithFormat:kAddPeopleSubText,
                                                                                     [DWSession sharedDWSession].currentUser.team.name];
+    
+    invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
     
     if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
         invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 

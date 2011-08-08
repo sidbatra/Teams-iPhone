@@ -108,7 +108,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactsLoaded:(NSMutableArray *)contacts fromQuery:(NSString*)query {    
+- (void)contactsLoaded:(NSMutableArray*)contacts fromQuery:(NSString*)query {    
     
     if (query == self.latestQuery) {
         
@@ -131,8 +131,8 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)invitesCreationError:(NSString *)error {
-    [self.delegate displayError:error];
+- (void)invitesCreationError:(NSString*)error {
+    [self.delegate invitesCreationError:error];
 }
 
 

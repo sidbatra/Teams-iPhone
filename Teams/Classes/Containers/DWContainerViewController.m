@@ -21,6 +21,7 @@
 #import "NSString+Helpers.h"
 
 static NSString* const kDenwenURLPrefix             = @"denwen://";
+static NSString* const kMsgInviteMessageText        = @"Invite people onto this Team, or grow your own.";
 
 
 /**
@@ -318,6 +319,8 @@ static NSString* const kDenwenURLPrefix             = @"denwen://";
         
     invitePeopleViewController.navBarTitle                      = kAddPeopleText;
     invitePeopleViewController.navBarSubTitle                   = [NSString stringWithFormat:kAddPeopleSubText,team.name];
+    
+    invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];

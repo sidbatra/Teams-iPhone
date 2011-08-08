@@ -61,7 +61,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,180)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,167)] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -173,15 +173,21 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)contactsLoadedFromQuery {
+    [self performSelectorOnMainThread:@selector(reloadTableView) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)invitesCreated {
     [self.delegate invitesTriggeredFromObject:self];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)contactsLoadedFromQuery {
-    [self performSelectorOnMainThread:@selector(reloadTableView) 
-                           withObject:nil 
-                        waitUntilDone:NO];
+- (void)invitesCreationError:(NSString*)error {    
+    //[self displayError:error withRefreshUI:YES];
+    [self.delegate invitesTriggerErrorFromObject:self];
 }
 
 @end

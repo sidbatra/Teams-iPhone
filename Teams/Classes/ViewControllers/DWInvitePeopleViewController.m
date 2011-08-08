@@ -35,10 +35,13 @@ static NSInteger const kTableViewHeight						= 200;
 
 @synthesize searchContactsTextField         = _searchContactsTextField;
 @synthesize topShadowView                   = _topShadowView;
+@synthesize messageLabel                    = _messageLabel;
+@synthesize spinnerContainerView            = _spinnerContainerView;
 
 @synthesize navBarTitle                     = _navBarTitle;
 @synthesize navBarSubTitle                  = _navBarSubTitle;
 @synthesize inviteAlertText                 = _inviteAlertText;
+@synthesize messageLabelText                = _messageLabelText;
 @synthesize enforceInvite                   = _enforceInvite;
 @synthesize teamSpecificInvite              = _teamSpecificInvite;
 @synthesize showTopShadow                   = _showTopShadow;
@@ -70,10 +73,13 @@ static NSInteger const kTableViewHeight						= 200;
 - (void)dealloc {
     self.searchContactsTextField        = nil;
     self.topShadowView                  = nil;
+    self.messageLabel                   = nil;
+    self.spinnerContainerView           = nil;
     
     self.navBarTitle                    = nil;
     self.navBarSubTitle                 = nil;
     self.inviteAlertText                = nil;
+    self.messageLabelText               = nil;
     
     self.navTitleView                   = nil;
     self.navBarRightButtonView          = nil;
@@ -98,11 +104,13 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)freezeUI {	
+    self.spinnerContainerView.hidden = NO;
     [self.spinnerOverlayView enable];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unfreezeUI {
+    self.spinnerContainerView.hidden = YES;
     [self.spinnerOverlayView disable];
 }
 
@@ -164,6 +172,8 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.messageLabel.text = self.messageLabelText;
         
     if (self.showBackButton) 
         self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
@@ -175,11 +185,9 @@ static NSInteger const kTableViewHeight						= 200;
         self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgCancel
                                                                                    target:self
                                                                               andSelector:@selector(didTapCancelButton:)];
-
-    
     if(self.showTopShadow)
         self.topShadowView.hidden = NO;
-
+    
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
@@ -226,8 +234,19 @@ static NSInteger const kTableViewHeight						= 200;
     [self.view addSubview:self.queryContactsViewController.view];    
     [self.view addSubview:self.addedContactsViewController.view];   
     
-    [self displayQueriedContacts];
     
+    if (!self.spinnerContainerView) 
+        self.spinnerContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)] autorelease];
+    
+    self.spinnerContainerView.hidden            = YES;
+    self.spinnerContainerView.backgroundColor   = [UIColor colorWithRed:0.0 
+                                                                  green:0.0 
+                                                                   blue:0.0 
+                                                                  alpha:0.8];
+    [self.view addSubview:self.spinnerContainerView];   
+    
+    
+    [self displayQueriedContacts];
     [self performSelectorInBackground:@selector(loadAllContacts) 
                            withObject:nil];
     
@@ -248,6 +267,8 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)searchContactsTextFieldEditingChanged:(id)sender {
+    
+    self.messageLabel.hidden = YES;
     
     if ([self.searchContactsTextField.text length]) {        
         [self displayQueriedContacts];    
@@ -317,6 +338,23 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)allContactsLoaded {
+    [self performSelectorOnMainThread:@selector(unfreezeUI) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+    
+    [self performSelectorOnMainThread:@selector(displayKeyboard) 
+                           withObject:nil 
+                        waitUntilDone:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactRemoved:(DWContact*)contact {
+    [self.queryContactsViewController addContactToCache:contact];
+}
+
+
+//----------------------------------------------------------------------------------------------------
 - (void)invitesTriggeredFromObject:(id)object {
     
     if ([object isEqual:self.addedContactsViewController]) {
@@ -331,19 +369,12 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)allContactsLoaded {
-    [self performSelectorOnMainThread:@selector(unfreezeUI) 
-                           withObject:nil 
-                        waitUntilDone:NO];
+- (void)invitesTriggerErrorFromObject:(id)object {
     
-    [self performSelectorOnMainThread:@selector(displayKeyboard) 
-                           withObject:nil 
-                        waitUntilDone:NO];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)contactRemoved:(DWContact*)contact {
-    [self.queryContactsViewController addContactToCache:contact];
+    self.messageLabel.text      = @"No Internet Connection. Please try again";
+    self.messageLabel.hidden    = NO;
+    
+    [self unfreezeUI];
 }
 
 

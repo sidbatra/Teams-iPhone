@@ -107,15 +107,21 @@
              fromObject:(id)object;
 
 /**
+ * Fired when a contact is removed from the 
+ * added contacts list
+ */
+- (void)contactRemoved:(DWContact*)contact;
+
+/**
  * Fired when the invite information is 
  * successfully sent to the server
  */
 - (void)invitesTriggeredFromObject:(id)object;
 
 /**
- * Fired when a contact is removed from the 
- * added contacts list
+ * Fired when there is an error while creating invites
  */
-- (void)contactRemoved:(DWContact*)contact;
+- (void)invitesTriggerErrorFromObject:(id)object;
+
 
 @end

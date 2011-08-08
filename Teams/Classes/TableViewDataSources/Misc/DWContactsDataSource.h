@@ -96,11 +96,6 @@
 @protocol DWContactsDataSourceDelegate<DWTableViewDataSourceDelegate>
 
 /**
- * Provide the fetched user object to the table view to update the UI
- */
-- (void)invitesCreated;
-
-/**
  * Fired when all the contacts are loaded
  */
 - (void)allContactsLoaded;
@@ -109,6 +104,16 @@
  * Fired when the queried contacts are loaded
  */
 - (void)contactsLoadedFromQuery;
+
+/**
+ * Provide the fetched user object to the table view to update the UI
+ */
+- (void)invitesCreated;
+
+/**
+ * Fired when there is an error while creating invites
+ */
+- (void)invitesCreationError:(NSString*)error;
 
 @end
 

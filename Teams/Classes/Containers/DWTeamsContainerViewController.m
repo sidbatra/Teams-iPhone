@@ -17,6 +17,7 @@ static NSString* const kImgSearch                   = @"button_search.png";
 static NSString* const kMsgUnload					= @"Unload called on teams container";
 static NSString* const kMsgTitle                    = @"Teams";
 static NSString* const kSearchBarText				= @"Search teams and people";
+static NSString* const kMsgInviteMessageText        = @"Grow your Team or invite others to start new Teams.";
 static NSString* const kSearchBarBackgroundClass	= @"UISearchBarBackground";
 static NSInteger const kMinimumQueryLength			= 1;
 
@@ -218,6 +219,7 @@ static NSInteger const kMinimumQueryLength			= 1;
     invitePeopleViewController.showCancelButton                 = YES;
     
     invitePeopleViewController.navBarTitle                      = kInvitePeopleText;
+    invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:NO];

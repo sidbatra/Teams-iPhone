@@ -20,10 +20,13 @@
 @interface DWInvitePeopleViewController : UIViewController<DWContactsViewControllerDelegate> {
     UITextField                 *_searchContactsTextField;
     UIImageView                 *_topShadowView;
+    UILabel                     *_messageLabel;
+    UIView                      *_spinnerContainerView;            
     
     NSString                    *_navBarTitle;
     NSString                    *_navBarSubTitle;    
     NSString                    *_inviteAlertText;  
+    NSString                    *_messageLabelText;
     BOOL                        _enforceInvite;
     BOOL                        _teamSpecificInvite;      
     BOOL                        _showTopShadow;
@@ -45,6 +48,8 @@
  */
 @property (nonatomic, retain) IBOutlet UITextField *searchContactsTextField;
 @property (nonatomic, retain) IBOutlet UIImageView *topShadowView;
+@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
+@property (nonatomic, retain) UIView *spinnerContainerView;
 
 /**
  * Titles for navigation bar
@@ -56,6 +61,11 @@
  * Text to show in the invite alert message
  */
 @property (nonatomic,copy) NSString *inviteAlertText;
+
+/**
+ * Text to show in the message label
+ */
+@property (nonatomic,copy) NSString *messageLabelText;
 
 /**
  * Property to enforce invite. YES by default.
