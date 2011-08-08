@@ -159,6 +159,26 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createInvites {
+    
+    if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
+        
+        [self freezeUI];
+        [self.addedContactsViewController triggerInvites];            
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"invite_selected"];
+    }
+    else {
+        if (self.enforceInvite) 
+            [self displayInviteAlert];
+        else
+            [self.delegate inviteSkipped];
+        
+    }    
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayKeyboard {
     [self.searchContactsTextField becomeFirstResponder];
 }
@@ -282,28 +302,21 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-    
-    if (self.enforceInvite) {
-        
-        if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
-            
-            [self freezeUI];
-            [self.addedContactsViewController triggerInvites];            
-            
-            [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                     withActionName:@"invite_selected"];
-        }
-        else 
-            [self displayInviteAlert];        
-    }
-    
-    else 
-        [self.delegate inviteSkipped];        
+    [self createInvites];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCancelButton:(UIButton*)button {  
     [self.navigationController popViewControllerAnimated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
+    
+	if(textField == self.searchContactsTextField)
+        [self createInvites];
+    
+	return YES;
 }
 
 

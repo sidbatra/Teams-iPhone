@@ -17,7 +17,7 @@
 /**
  * View for adding people throughout the app.
  */
-@interface DWInvitePeopleViewController : UIViewController<DWContactsViewControllerDelegate> {
+@interface DWInvitePeopleViewController : UIViewController<UITextFieldDelegate,DWContactsViewControllerDelegate> {
     UITextField                 *_searchContactsTextField;
     UIImageView                 *_topShadowView;
     UILabel                     *_messageLabel;
