@@ -33,10 +33,12 @@
 - (void)updateUserHavingID:(NSInteger)userID 
                  withEmail:(NSString*)email;
 /**
- * Update the user's image
+ * Update the user's image and facebook token
+ * for add profile pic controller
  */
 - (void)updateUserHavingID:(NSInteger)userID
-              withFilename:(NSString*)filename;
+              withFilename:(NSString*)filename 
+          andFacebookToken:(NSString*)facebookToken;
 
 /**
  * Update the user's detail during onboarding

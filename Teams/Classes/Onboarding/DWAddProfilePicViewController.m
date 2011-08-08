@@ -281,8 +281,11 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)mediaUploaded:(NSString*)filename {
+    
     [self.usersController updateUserHavingID:self.userID 
-                                withFilename:filename];
+                                withFilename:filename 
+                            andFacebookToken:[[DWUser fetch:self.userID] facebookAccessToken] ? 
+                                                [[DWUser fetch:self.userID] facebookAccessToken] : kEmptyString];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -208,6 +208,8 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamJoined:(DWTeam*)team {
+    team.membersCount = team.membersCount + 1;
+    
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];    
     
@@ -260,6 +262,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
                                                                                     [DWSession sharedDWSession].currentUser.team.name];
     
     invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
+    
     
     if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
         invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 
