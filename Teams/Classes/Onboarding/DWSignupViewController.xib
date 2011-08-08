@@ -66,9 +66,9 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor" id="1016519517">
+						<object class="NSColor" key="IBUITextColor" id="875746490">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zNDkwMTk2MDc4IDAuMzQ5MDE5NjA3OCAwLjM0OTAxOTYwNzgAA</bytes>
+							<bytes key="NSRGB">MSAxIDEgMC41AA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -184,7 +184,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">you use at your organization:</string>
 						<reference key="IBUIFont" ref="437167564"/>
-						<reference key="IBUITextColor" ref="1016519517"/>
+						<reference key="IBUITextColor" ref="875746490"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
