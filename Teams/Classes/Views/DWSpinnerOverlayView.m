@@ -22,8 +22,9 @@ static NSInteger const kSpinnerSize = 20;
 /**
  * Create and add the text label to the view
  */
-- (void)createLabelWithOrigin:(CGPoint)origin 
-                      andText:(NSString*)text;
+- (void)createLabelWithOrigin:(CGPoint)origin  
+                      andText:(NSString*)text 
+              forSpinnerStyle:(NSInteger)spinnerStyle;
 
 @end
 
@@ -53,8 +54,9 @@ static NSInteger const kSpinnerSize = 20;
         [self disable];
         [self createSpinnerWithOrigin:origin andStyle:spinnerStyle];
         
-        [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y + 1)
-                            andText:text];
+        [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y + 1) 
+                            andText:text 
+                    forSpinnerStyle:spinnerStyle];
     }
     return self;
 }
@@ -90,15 +92,24 @@ static NSInteger const kSpinnerSize = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text {
+- (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text forSpinnerStyle:(NSInteger)spinnerStyle {
     
     UILabel *messageLabel			= [[[UILabel alloc] 
                                         initWithFrame:CGRectMake(origin.x,origin.y,270,20)] 
                                        autorelease];	
     
 	messageLabel.backgroundColor	= [UIColor clearColor];
-	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
-	messageLabel.textColor			= [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    
+    
+    if (spinnerStyle == UIActivityIndicatorViewStyleGray) {
+        messageLabel.font           = [UIFont fontWithName:@"HelveticaNeue" size:15];	
+        messageLabel.textColor		= [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    }
+    else {
+        messageLabel.font			= [UIFont fontWithName:@"HelveticaNeue" size:17];	
+        messageLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+    }
+        
 	messageLabel.textAlignment		= UITextAlignmentLeft;
 	messageLabel.text				= text;
     
