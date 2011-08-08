@@ -21,7 +21,7 @@
 #import "NSString+Helpers.h"
 
 static NSString* const kDenwenURLPrefix             = @"denwen://";
-static NSString* const kMsgInviteMessageText        = @"Invite people onto this Team, or grow your own.";
+static NSString* const kMsgInviteMessageText        = @"Invite people to join this Team.";
 
 
 /**
