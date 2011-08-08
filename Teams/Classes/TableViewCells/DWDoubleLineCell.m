@@ -87,7 +87,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
         [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set];
         [self drawSecondLine];
         
-        [[UIImage imageNamed:kImgCheckMarkIcon] drawInRect:CGRectMake(285, 13, 13, 14)];
+        [[UIImage imageNamed:kImgCheckMarkIcon] drawInRect:CGRectMake(285, 15, 13, 14)];
         [[UIImage imageNamed:kImgSeparatorDark] drawInRect:CGRectMake(0, 43, 320, 1)];        
     }
     else {
