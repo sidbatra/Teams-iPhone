@@ -231,7 +231,7 @@ static NSInteger const kTableViewHeight						= 200;
                                            andTarget:self] autorelease];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(110,180) 
+        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(109,154) 
                                                                           spinnerStyle:UIActivityIndicatorViewStyleWhite 
                                                                         andMessageText:kMsgProcessingText] autorelease];
         
@@ -383,13 +383,15 @@ static NSInteger const kTableViewHeight						= 200;
 
 //----------------------------------------------------------------------------------------------------
 - (void)invitesTriggerErrorFromObject:(id)object {
-  
+    
     if ([object isEqual:self.addedContactsViewController]) {
-        self.messageLabel.text      = @"No Internet Connection. Please try again";
-        self.messageLabel.hidden    = NO;
-        
         [self unfreezeUI];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)resendInvites {
+    [self createInvites];
 }
 
 

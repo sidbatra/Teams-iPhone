@@ -7,6 +7,7 @@
 #import "NSObject+Helpers.h"
 #import "DWContact.h"
 #import "DWLoadingView.h"
+#import "DWErrorView.h"
 #import "DWAnalyticsManager.h"
 
 
@@ -61,7 +62,15 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,167)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,153)] autorelease];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)getTableErrorView {
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,153)] autorelease];
+    errorView.delegate      = self;
+    
+    return errorView;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -108,6 +117,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)triggerInvites {
+    self.errorView.hidden = YES;
     [self.contactsDataSource triggerInvites];
 }
 
@@ -186,8 +196,20 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)invitesCreationError:(NSString*)error {    
-    //[self displayError:error withRefreshUI:YES];
+    [self displayError:error withRefreshUI:YES];
     [self.delegate invitesTriggerErrorFromObject:self];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Error view delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)errorViewTouched {
+    self.errorView.hidden = YES;    
+    [self.delegate resendInvites];
 }
 
 @end

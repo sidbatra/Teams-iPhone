@@ -123,5 +123,10 @@
  */
 - (void)invitesTriggerErrorFromObject:(id)object;
 
+/**
+ * Fired when the user decides to resend the 
+ * invites in case of network failures
+ */
+- (void)resendInvites;
 
 @end
