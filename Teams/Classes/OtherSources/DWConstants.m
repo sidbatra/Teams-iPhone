@@ -359,6 +359,15 @@ NSInteger const kMPDefaultDatabaseID        = -1;
 
 
 //----------------------------------------------------------------------------------------------------
+NSInteger const kMaxUserFirstNameLength     = 40;
+NSInteger const kMaxUserLastNameLength      = 40;
+NSInteger const kMaxUserBylineLength        = 45;
+NSInteger const kMaxUserPasswordLength      = 40;
+NSInteger const kMaxTeamNameLength          = 40;
+NSInteger const kMaxTeamBylineLength        = 45;
+
+
+//----------------------------------------------------------------------------------------------------
 NSString* const kMsgNoPlacesNearby				= @"No places nearby";
 NSString* const kMsgNoFollowPlacesCurrentUser	= @"You aren't following any places yet";
 NSString* const kMsgNoFollowPlacesNormalUser	= @"This user isn't following any places yet";

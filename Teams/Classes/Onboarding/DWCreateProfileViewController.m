@@ -236,6 +236,27 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     return YES;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string {
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    
+    if (textField == self.firstNameTextField) 
+        return (newLength > kMaxUserFirstNameLength) ? NO : YES;
+    
+    else if (textField == self.lastNameTextField) 
+        return (newLength > kMaxUserLastNameLength) ? NO : YES;        
+    
+    else if (textField == self.byLineTextField) 
+        return (newLength > kMaxUserBylineLength) ? NO : YES;
+    
+    else if (textField == self.passwordTextField)
+        return (newLength > kMaxUserPasswordLength) ? NO : YES;                
+    
+    else
+        return YES;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

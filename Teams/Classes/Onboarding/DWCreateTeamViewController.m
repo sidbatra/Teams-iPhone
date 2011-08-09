@@ -200,6 +200,21 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
 	return YES;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string {
+    
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    
+    if (textField == self.teamNameTextField) 
+        return (newLength > kMaxTeamNameLength) ? NO : YES;
+    
+    else if (textField == self.teamBylineTextField) 
+        return (newLength > kMaxTeamBylineLength) ? NO : YES;        
+
+    else
+        return YES;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

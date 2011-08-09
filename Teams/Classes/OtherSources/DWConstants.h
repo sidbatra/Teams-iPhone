@@ -458,6 +458,18 @@ extern NSInteger const kMPDefaultDatabaseID;
 
 
 /**
+ * Validation max lengths for user 
+ * and team attributes       
+ */
+extern NSInteger const kMaxUserFirstNameLength;
+extern NSInteger const kMaxUserLastNameLength;
+extern NSInteger const kMaxUserBylineLength;
+extern NSInteger const kMaxUserPasswordLength;
+extern NSInteger const kMaxTeamNameLength;
+extern NSInteger const kMaxTeamBylineLength;
+
+
+/**
  * Messages
  */
 extern NSString* const kMsgNoPlacesNearby;
