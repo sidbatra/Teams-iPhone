@@ -14,7 +14,7 @@
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
-static NSString* const kMsgIncomplete           = @"Please upload a picture";
+static NSString* const kMsgIncomplete           = @"Please add a picture";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
