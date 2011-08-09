@@ -12,7 +12,7 @@ extern NSString* const kPost;
 extern NSString* const kPut;
 extern NSString* const kDelete;
 extern NSString* const kDenwenServer;
-
+extern NSString* const kEnvPrefix;
 
 /**
  * Configuration for uploading to Amazon S3

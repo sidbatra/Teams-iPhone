@@ -3,7 +3,12 @@
 //  Copyright 2011 Denwen. All rights reserved.
 //	
 
-//#define PRODUCTION 1 
+#define DEVELOPMENT 0
+#define STAGING     1
+#define PRODUCTION  2
+
+#define ENVIRONMENT DEVELOPMENT
+
 
 
 #import "DWConstants.h"
@@ -17,27 +22,24 @@ NSString* const kPut				= @"PUT";
 NSString* const kDelete				= @"DELETE";
 
 
-#ifdef PRODUCTION
+#if ENVIRONMENT == DEVELOPMENT
 	NSString* const kDenwenServer	= @"teams.denwen.com";
-	
-	//----------------------------------------------------------------------------------------------------
-	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDgtMDhUMjM6NTc6MjkuMDAwWicsCiAgICAgICAgJ2NvbmRpdGlvbnMnOiBbCiAgICAgICAgICB7J2J1Y2tldCc6ICdkZW53ZW4tdGVhbXMtZmlsZXN5c3RlbSd9LAogICAgICAgICAgeydhY2wnOiAncHVibGljLXJlYWQnfSwKICAgICAgICAgIFsnY29udGVudC1sZW5ndGgtcmFuZ2UnLCAwLCA1MjQyODgwMF0sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJyRrZXknLCAnJ10sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJycsICcnXQogICAgICAgIF0KICAgICAgfQ==";
-	NSString* const kS3Signature	= @"4vOB6eYCgWadNpf8zpFOc/WrDE8=";
-	NSString* const kS3AccessID		= @"AKIAJWYCAWDPAAKLNKSQ";
-	NSString* const kS3ACL			= @"public-read";
-	NSString* const kS3Server		= @"http://denwen-teams-filesystem.s3.amazonaws.com/";
-#else
-    //NSString* const kDenwenServer	= @"ec2-50-19-68-158.compute-1.amazonaws.com";//@"sbat.denwen.com";
-    NSString* const kDenwenServer	= @"teamd.denwen.com";
-	
-	//----------------------------------------------------------------------------------------------------
-	NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDgtMDhUMjM6NTc6MjkuMDAwWicsCiAgICAgICAgJ2NvbmRpdGlvbnMnOiBbCiAgICAgICAgICB7J2J1Y2tldCc6ICdkZW53ZW4tdGVhbXMtZmlsZXN5c3RlbSd9LAogICAgICAgICAgeydhY2wnOiAncHVibGljLXJlYWQnfSwKICAgICAgICAgIFsnY29udGVudC1sZW5ndGgtcmFuZ2UnLCAwLCA1MjQyODgwMF0sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJyRrZXknLCAnJ10sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJycsICcnXQogICAgICAgIF0KICAgICAgfQ==";
-	NSString* const kS3Signature	= @"4vOB6eYCgWadNpf8zpFOc/WrDE8=";
-	NSString* const kS3AccessID		= @"AKIAJWYCAWDPAAKLNKSQ";
-	NSString* const kS3ACL			= @"public-read";
-	NSString* const kS3Server		= @"http://denwen-teams-filesystem.s3.amazonaws.com/";
+    NSString* const kEnvPrefix      = @"d";
+#elif ENVIRONMENT == STAGING
+    NSString* const kDenwenServer	= @"staging.denwen.com";
+    NSString* const kEnvPrefix      = @"s";
+#elif ENVIRONMENT == PRODUCTION
+    NSString* const kDenwenServer	= @"teams.com";
+    NSString* const kEnvPrefix      = @"p";
 #endif
-
+	
+	
+//----------------------------------------------------------------------------------------------------
+NSString* const kS3Policy		= @"eydleHBpcmF0aW9uJzogJzIwMTctMDgtMDhUMjM6NTc6MjkuMDAwWicsCiAgICAgICAgJ2NvbmRpdGlvbnMnOiBbCiAgICAgICAgICB7J2J1Y2tldCc6ICdkZW53ZW4tdGVhbXMtZmlsZXN5c3RlbSd9LAogICAgICAgICAgeydhY2wnOiAncHVibGljLXJlYWQnfSwKICAgICAgICAgIFsnY29udGVudC1sZW5ndGgtcmFuZ2UnLCAwLCA1MjQyODgwMF0sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJyRrZXknLCAnJ10sCiAgICAgICAgICBbJ3N0YXJ0cy13aXRoJywgJycsICcnXQogICAgICAgIF0KICAgICAgfQ==";
+NSString* const kS3Signature	= @"4vOB6eYCgWadNpf8zpFOc/WrDE8=";
+NSString* const kS3AccessID		= @"AKIAJWYCAWDPAAKLNKSQ";
+NSString* const kS3ACL			= @"public-read";
+NSString* const kS3Server		= @"http://denwen-teams-filesystem.s3.amazonaws.com/";
 NSString* const kS3UsersPrefix	= @"u";
 NSString* const kS3ItemsPrefix	= @"i";
 
@@ -384,8 +386,6 @@ NSString* const kMsgCancelMedia					= @"Cancel";
 NSString* const kImgGenericPlaceHolder			= @"generic_placeholder.png";
 
 //----------------------------------------------------------------------------------------------------
-#ifdef PRODUCTION
-
 /**
  * Denwen Twitter and Facebook apps made by sbat
  */
@@ -393,12 +393,11 @@ NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
 NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
 NSString* const kFacebookAppID					= @"142023125881016";
 
-#else
+//#else
 
-NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
-NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
-NSString* const kFacebookAppID					= @"142023125881016";
-
+//NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
+//NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
+//NSString* const kFacebookAppID					= @"142023125881016";
 
 /**
  * Tenwen Twitter and Facebook apps made by drao
@@ -406,8 +405,6 @@ NSString* const kFacebookAppID					= @"142023125881016";
 //NSString* const kTwitterOAuthConsumerKey		= @"kC2Kv9gsqYdZGwHHzx4bTQ";
 //NSString* const kTwitterOAuthConsumerSecret		= @"CO7MYDyF2TyzBAVPzARIWt7GI6SLSb1fgAcMPhLgE";
 //NSString* const kFacebookAppID					= @"176869555684965";
-
-#endif
 
 
 //----------------------------------------------------------------------------------------------------

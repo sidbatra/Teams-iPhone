@@ -53,7 +53,12 @@ static NSString* const kS3SuccessResponse	= @"";
 	for(int i=0;i<kRandomStringLength;i++)
 		[randomString appendFormat:@"%d",arc4random() % kRandomStringBase];
 	
-	s3Request.filename = [NSString stringWithFormat:@"%@_%d_%@%@",prefix,s3Request.resourceID,randomString,suffix];
+	s3Request.filename = [NSString stringWithFormat:@"%@_%@_%d_%@%@",
+                          kEnvPrefix,
+                          prefix,
+                          s3Request.resourceID,
+                          randomString,
+                          suffix];
 	
 	
 	[s3Request setShouldStreamPostDataFromDisk:YES];
