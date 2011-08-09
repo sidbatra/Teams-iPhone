@@ -175,7 +175,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	
 	BOOL status = YES;
 	
-    if(!(self.dataTextView.text.length > 0 || self.cameraImage || self.videoURL)) {
+    if(!(self.dataTextView.text.length > 0 || _attachmentType != kAttachmentNone)) {
 
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgMissingFieldsTitle
 														message:kMsgDataMissing
