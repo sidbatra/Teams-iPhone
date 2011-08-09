@@ -72,6 +72,7 @@ static CGFloat   const kDisabledOpacity     = 0.5;
     countLabel.layer.cornerRadius     = 2.5;
     countLabel.text                   = kDefaultText;
     countLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    countLabel.backgroundColor        = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];    
     countLabel.textAlignment          = UITextAlignmentCenter;
     countLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
                                                         size:13];
