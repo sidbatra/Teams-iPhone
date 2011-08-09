@@ -16,7 +16,7 @@
 #import "DWAnalyticsManager.h"
 
 
-static NSString* const kRegexNonWorkEmails              = @"@(gmail|yahoo|aim|hotmail|aol|live|msn)";
+static NSString* const kRegexNonWorkEmails              = @"@(gmail|yahoo|aim|hotmail|aol|live|msn)\\.";
 static NSString* const kSignupText                      = @"Sign Up";
 static NSString* const kNavBarRightButtonText           = @"Next";
 static NSString* const kMsgIncompleteTitle              = @"Incomplete";

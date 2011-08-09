@@ -14,7 +14,7 @@ static NSString* const kNewUserURI                          = @"/users.json?user
 static NSString* const kUpdateUserURI                       = @"/users/%d.json?user[email]=%@&user[first_name]=%@&user[last_name]=%@&user[byline]=%@&user[password]=%@&user[filename]=%@";
 
 static NSString* const kUpdateUserEmailURI                  = @"/users/%d.json?user[email]=%@";
-static NSString* const kUpdateUserImageURI                  = @"/users/%d.json?user[filename]=%@";
+static NSString* const kUpdateUserImageAndFBTokenURI        = @"/users/%d.json?user[filename]=%@&user[facebook_token]=%@";
 static NSString* const kUpdateUserDeviceURI                 = @"/users/%d.json?user[iphone_device_id]=%@";
 static NSString* const kUpdateUserNotificationsCountURI     = @"/users/%d.json?user[unread_notifications_count]=%d";
 static NSString* const kUpdateUserFacebookTokenURI          = @"/users/%d.json?user[facebook_token]=%@";
@@ -205,11 +205,13 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateUserHavingID:(NSInteger)userID
-              withFilename:(NSString *)filename {
+              withFilename:(NSString *)filename 
+          andFacebookToken:(NSString*)facebookToken {
     
-    NSString *localURL = [NSString stringWithFormat:kUpdateUserImageURI,
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserImageAndFBTokenURI,
                           userID,
-                          [filename stringByEncodingHTMLCharacters]];
+                          [filename stringByEncodingHTMLCharacters],
+                          [facebookToken stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
@@ -283,7 +285,7 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserFacebookTokenURI,
                           userID,
-                          facebookToken];
+                          [facebookToken stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
@@ -298,8 +300,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserTwitterTokenURI,
                           userID,
-                          twitterToken,
-                          twitterSecret];
+                          [twitterToken stringByEncodingHTMLCharacters],
+                          [twitterSecret stringByEncodingHTMLCharacters]];
     
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated

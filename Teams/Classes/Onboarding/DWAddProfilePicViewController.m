@@ -14,7 +14,7 @@
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
-static NSString* const kMsgIncomplete           = @"Please upload a picture";
+static NSString* const kMsgIncomplete           = @"Please add a picture";
 static NSString* const kMsgErrorTitle           = @"Error";
 static NSString* const kMsgCancelTitle          = @"OK";
 static NSString* const kAddProfilePicText       = @"Add a Profile Picture";
@@ -281,8 +281,11 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)mediaUploaded:(NSString*)filename {
+    
     [self.usersController updateUserHavingID:self.userID 
-                                withFilename:filename];
+                                withFilename:filename 
+                            andFacebookToken:[[DWUser fetch:self.userID] facebookAccessToken] ? 
+                                                [[DWUser fetch:self.userID] facebookAccessToken] : kEmptyString];
 }
 
 //----------------------------------------------------------------------------------------------------
