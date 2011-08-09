@@ -123,12 +123,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     if (!self.currentUser) 
         return kSessionStateEmpty;
     
+    
     if (self.currentUser.hasInvitedPeople) 
         state = kSessionStateComplete;
 
-    else if (self.currentUser.firstName) {
+    else if (self.currentUser.firstName) 
         state = kSessionStateTillUserDetails;
-    }
     
     else if(self.currentUser.team) 
         state = kSessionStateTillTeamDetails;

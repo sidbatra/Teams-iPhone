@@ -548,8 +548,8 @@
 		2632E55F13CCDFCA005B1B1E /* DWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWLoginViewController.h; path = Classes/Onboarding/DWLoginViewController.h; sourceTree = "<group>"; };
 		2632E56013CCDFCA005B1B1E /* DWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWLoginViewController.m; path = Classes/Onboarding/DWLoginViewController.m; sourceTree = "<group>"; };
 		2632E56113CCDFCA005B1B1E /* DWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWLoginViewController.xib; path = Classes/Onboarding/DWLoginViewController.xib; sourceTree = "<group>"; };
-		2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWOnboardingContainerViewController.h; path = Classes/Onboarding/DWOnboardingContainerViewController.h; sourceTree = "<group>"; };
-		2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWOnboardingContainerViewController.m; path = Classes/Onboarding/DWOnboardingContainerViewController.m; sourceTree = "<group>"; };
+		2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWOnboardingContainerViewController.h; path = ../Onboarding/DWOnboardingContainerViewController.h; sourceTree = "<group>"; };
+		2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWOnboardingContainerViewController.m; path = ../Onboarding/DWOnboardingContainerViewController.m; sourceTree = "<group>"; };
 		2632E56713CCDFCA005B1B1E /* DWSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWSignupViewController.h; path = Classes/Onboarding/DWSignupViewController.h; sourceTree = "<group>"; };
 		2632E56813CCDFCA005B1B1E /* DWSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWSignupViewController.m; path = Classes/Onboarding/DWSignupViewController.m; sourceTree = "<group>"; };
 		2632E56913CCDFCA005B1B1E /* DWSignupViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWSignupViewController.xib; path = Classes/Onboarding/DWSignupViewController.xib; sourceTree = "<group>"; };
@@ -1618,6 +1618,8 @@
 				BB272B3A13CFCD4500FDACA1 /* DWItemsContainerViewController.m */,
 				BB272C0A13D0B41700FDACA1 /* DWTeamsContainerViewController.h */,
 				BB272C1713D0BC9A00FDACA1 /* DWTeamsContainerViewController.m */,
+				2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */,
+				2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */,
 			);
 			name = Containers;
 			path = Classes/Containers;
@@ -1954,8 +1956,6 @@
 		BB8499C113C27AA400D9789D /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				2632E56213CCDFCA005B1B1E /* DWOnboardingContainerViewController.h */,
-				2632E56313CCDFCA005B1B1E /* DWOnboardingContainerViewController.m */,
 				2632E55A13CCDFCA005B1B1E /* DWIntroPaneViewController.h */,
 				2632E55B13CCDFCA005B1B1E /* DWIntroPaneViewController.m */,
 				2683E2BF13CD11B400BF509E /* DWSplashScreenViewController.h */,

@@ -136,6 +136,7 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     _userID                     = userID;
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -284,7 +285,8 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     [self.delegate userCreated:user];
    
     NSString *domain = [user getDomainFromEmail];
-    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
+    [self.teamsController getTeamFromDomain:domain 
+                              andResourceID:_teamResourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -311,7 +313,8 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     [self.delegate userEmailUpdated];
 
     NSString *domain = [user getDomainFromEmail];        
-    [self.teamsController getTeamFromDomain:domain andResourceID:_teamResourceID];
+    [self.teamsController getTeamFromDomain:domain 
+                              andResourceID:_teamResourceID];
 }
 
 //----------------------------------------------------------------------------------------------------
