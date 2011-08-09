@@ -244,12 +244,11 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {
-    if ([NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWCreateProfileViewController"]) {
-        user.encryptedPassword = self.password;
-    
-        [self.delegate userDetailsUpdated];
-        [self unfreezeUI];
-    }
+
+    user.encryptedPassword = self.password;
+
+    [self.delegate userDetailsUpdated];
+    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------

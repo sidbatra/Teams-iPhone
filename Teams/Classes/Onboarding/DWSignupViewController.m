@@ -307,9 +307,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser*)user {    
-        
-    if (![NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"])
-        return;
 
     [self.delegate userEmailUpdated];
 
@@ -319,9 +316,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString*)error {
-    
-    if (![NSStringFromClass([self.navigationController.topViewController class]) isEqualToString:@"DWSignupViewController"])
-        return;
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
 													message:error

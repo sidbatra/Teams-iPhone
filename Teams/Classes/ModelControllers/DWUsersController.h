@@ -28,13 +28,14 @@
 - (void)createUserWithEmail:(NSString*)email
                 andPassword:(NSString*)password;
 /**
- * Update the user's email
+ * Update the user's email during onboarding
  */
 - (void)updateUserHavingID:(NSInteger)userID 
                  withEmail:(NSString*)email;
+
 /**
  * Update the user's image and facebook token
- * for add profile pic controller
+ * during onboarding.
  */
 - (void)updateUserHavingID:(NSInteger)userID
               withFilename:(NSString*)filename 
@@ -50,7 +51,8 @@
                andPassword:(NSString*)password;
 
 /**
- * Update the user's detail and profile picture
+ * Update the user details and profile picture
+ * in the logged in edit user profile view
  */
 - (void)updateUserHavingID:(NSInteger)userID 
              withFirstName:(NSString*)firstName 

@@ -8,7 +8,6 @@
 static NSString* const kImgBackground       = @"button_notifications";
 static NSString* const kDefaultText         = @"0";
 static CGFloat   const kDisabledOpacity     = 0.5;
-static CGFloat   const kEnabledOpacity      = 0.98;
 
 /**
  * Private method and property declarations
@@ -91,7 +90,15 @@ static CGFloat   const kEnabledOpacity      = 0.98;
 //----------------------------------------------------------------------------------------------------
 - (void)setCount:(NSInteger)count {
     countLabel.text   = [NSString stringWithFormat:@"%d",count];
-    countLabel.alpha  = count ? kEnabledOpacity : kDisabledOpacity;
+    
+    if (count) {
+        countLabel.textColor        = [UIColor whiteColor];        
+        countLabel.backgroundColor  = [UIColor colorWithRed:0.8 
+                                                      green:0.0 
+                                                       blue:0.0 
+                                                      alpha:1.0];
+        countLabel.alpha            = 1.0;
+    }
 }
 
 

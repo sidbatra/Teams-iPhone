@@ -171,7 +171,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                   lastName:(NSString*)lastName
                     byline:(NSString*)byline
                   password:(NSString*)password 
-               andFilename:(NSString*)filename{
+               andFilename:(NSString*)filename 
+              withCallBack:(BOOL)callback {
     
     NSString *localURL = [NSString stringWithFormat:kUpdateUserURI,
                           userID,
@@ -185,7 +186,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
-                                                       requestMethod:kPut];
+                                                       requestMethod:kPut 
+                                                              caller:callback ? self : nil];
     
 }
 
@@ -200,7 +202,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
-                                                       requestMethod:kPut];
+                                                       requestMethod:kPut 
+                                                              caller:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -216,7 +219,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
-                                                       requestMethod:kPut];
+                                                       requestMethod:kPut 
+                                                              caller:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -232,7 +236,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                     lastName:lastName 
                       byline:byline     
                     password:password 
-                 andFilename:kEmptyString];
+                 andFilename:kEmptyString 
+                withCallBack:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -248,7 +253,8 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                     lastName:lastName 
                       byline:byline     
                     password:kEmptyString 
-                 andFilename:filename];
+                 andFilename:filename 
+                withCallBack:NO];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -460,6 +466,9 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(NSNotification*)notification {
     
+    if (notification.object && notification.object != self)
+        return;
+    
     SEL sel = @selector(userUpdated:);
     
     if(![self.delegate respondsToSelector:sel])
@@ -487,6 +496,9 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSNotification*)notification {
+    
+    if (notification.object && notification.object != self)
+        return;
     
     SEL sel = @selector(userUpdateError:);
     
