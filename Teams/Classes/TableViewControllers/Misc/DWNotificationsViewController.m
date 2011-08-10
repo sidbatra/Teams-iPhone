@@ -97,7 +97,8 @@ static NSString* const kNewItemName         = @"DWNewItem";
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"user_selected"
-                                                                   andExtraInfo:[NSString stringWithFormat:@"user_id=%d",
+                                                                   andExtraInfo:[NSString stringWithFormat:@"notification_id=%d&user_id=%d",
+                                                                                 notification.databaseID,
                                                                                  notification.resourceID]];
         
         [self.delegate notificationsUserSelected:notification.resourceID];
@@ -106,7 +107,8 @@ static NSString* const kNewItemName         = @"DWNewItem";
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"item_selected"
-                                                                   andExtraInfo:[NSString stringWithFormat:@"item_id=%d",
+                                                                   andExtraInfo:[NSString stringWithFormat:@"notification_id=%d&item_id=%d",
+                                                                                 notification.databaseID,
                                                                                  notification.resourceID]];
         
         [self.delegate notificationsItemSelected:notification.resourceID];
@@ -115,7 +117,8 @@ static NSString* const kNewItemName         = @"DWNewItem";
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"team_selected"
-                                                                   andExtraInfo:[NSString stringWithFormat:@"team_id=%d",
+                                                                   andExtraInfo:[NSString stringWithFormat:@"notification_id=%d&team_id=%d",
+                                                                                 notification.databaseID,
                                                                                  notification.resourceID]];
         
         [self.delegate notificationsTeamSelected:notification.resourceID];
@@ -124,7 +127,8 @@ static NSString* const kNewItemName         = @"DWNewItem";
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"create_item_selected"
-                                                                   andExtraInfo:[NSString stringWithFormat:@"message=%@",
+                                                                   andExtraInfo:[NSString stringWithFormat:@"notification_id=%d&message=%@",
+                                                                                 notification.databaseID,
                                                                                  notification.eventData]];
         
         [self.delegate notificationsCreateSelectedWithText:notification.details];
