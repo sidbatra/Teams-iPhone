@@ -13,6 +13,7 @@
 #import "DWUpdateTeamDetailsViewController.h"
 #import "NSObject+Helpers.h"
 #import "DWGUIManager.h"
+#import "DWNavTitleView.h"
 #import "DWAnalyticsManager.h"
 
 /**
@@ -36,6 +37,8 @@
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
 @synthesize teamsLogicController    = _teamsLogicController;
+
+@synthesize navTitleView            = _navTitleView;
 
 @synthesize delegate                = _delegate;
 
@@ -85,6 +88,8 @@
 
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
+    
+    self.navTitleView               = nil;
         
     self.delegate                   = nil;
     
@@ -132,7 +137,16 @@
 //----------------------------------------------------------------------------------------------------
 - (void)setupTitleView {
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
-    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewForText:team.name];
+
+    if(!self.navTitleView) 
+        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+                                                                              kNavTitleViewY,
+                                                                              kNavTitleViewWidth,
+                                                                              kNavTitleViewHeight) 
+                                                       andDelegate:nil] autorelease];    
+    
+    [self.navTitleView displayTitle:team.name 
+                        andSubTitle:team.byline];
 }
 
 
@@ -188,30 +202,21 @@
 - (void)resourceClicked:(id)resource {
     
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
-    
-    if(resource == self.teamViewDataSource.members) {
-        [self.delegate showMembersOfTeam:team];
-        
-        
-        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                 withActionName:@"members_selected"
-                                                                     withViewID:team.databaseID];
 
-    }
-    else if(resource == self.teamViewDataSource.followers) {
-        [self.delegate showFollowersOfTeam:team];
-        
-        
-        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                                 withActionName:@"followers_selected"
-                                                                     withViewID:team.databaseID];
-    }
-    else if(resource == self.teamViewDataSource.invite) {
+    if(resource == self.teamViewDataSource.invite) {
         [self.delegate showInvitePeopleFor:team];
         
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"invite_selected"
+                                                                     withViewID:team.databaseID];
+    }
+    else if(resource == self.teamViewDataSource.share) {
+        [self.delegate shareTeam:team];
+        
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                                 withActionName:@"share_selected"
                                                                      withViewID:team.databaseID];
     }
 }
@@ -235,6 +240,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)requiresFullScreenMode {
     
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end

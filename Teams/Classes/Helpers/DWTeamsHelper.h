@@ -31,6 +31,11 @@
 + (NSString*)totalMembersLineForTeam:(DWTeam*)team;
 
 /**
+ * Generate the weburi for sharing a team
+ */
++ (NSString*)webURIForTeam:(DWTeam*)team;
+
+/**
  * Title for watchers of team
  */
 + (NSString*)watchersOfTeam:(DWTeam*)team;
