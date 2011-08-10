@@ -11,6 +11,7 @@
 @interface DWResource : NSObject {
     UIImage     *_image;
     NSString    *_text;
+    NSString    *_subText;
     
     NSInteger   _imageResourceType;
     NSInteger   _imageResourceID;
@@ -25,6 +26,11 @@
  * Text of the resource
  */
 @property (nonatomic,copy) NSString *text;
+
+/**
+ * Optional secondary text - blank by default
+ */
+@property (nonatomic,copy) NSString *subText;
 
 /**
  * Resoure type for the image of the resource

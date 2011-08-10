@@ -15,6 +15,7 @@
 
 @synthesize image               = _image;
 @synthesize text                = _text;
+@synthesize subText             = _subText;
 @synthesize imageResourceType   = _imageResourceType;
 @synthesize imageResourceID     = _imageResourceID;
 
@@ -24,6 +25,7 @@
     
     if(self) {
         _imageResourceType  = kResourceTypeEmpty;
+        self.subText        = kEmptyString;
     }
     
     return self;
@@ -34,8 +36,9 @@
     
     NSLog(@"resource released");
     
-    self.image  = nil;
-    self.text   = nil;
+    self.image      = nil;
+    self.text       = nil;
+    self.subText    = nil;
     
     [super dealloc];
 }

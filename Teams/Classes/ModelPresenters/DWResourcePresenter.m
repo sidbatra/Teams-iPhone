@@ -29,6 +29,7 @@
                                   reuseIdentifier:identifier] autorelease];
 
     cell.boldText   = resource.text;
+    cell.plainText  = resource.subText;
 
     [cell setImage:resource.image];
 
