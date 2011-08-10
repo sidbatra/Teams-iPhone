@@ -79,4 +79,9 @@
  */
 - (void)disablePullToRefresh;
 
+/**
+ * Method to disable scrolling for certain table views
+ */
+- (void)disableScrolling;
+
 @end

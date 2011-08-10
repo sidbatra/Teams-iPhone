@@ -411,9 +411,11 @@ NSString* const kFacebookAppID					= @"142023125881016";
 NSInteger const kStatusBarStyle					= UIStatusBarStyleBlackOpaque;
 NSInteger const kURLTagMultipler				= 100;
 NSInteger const kPaginationCellHeight			= 60;
+
 NSInteger const kSlimCellHeight                 = 80;
-NSInteger const kMessageCellHeight              = 47;
-NSInteger const kImageCellHeight                = 275;
+NSInteger const kMessageCellHeight              = 67;
+NSInteger const kImageCellHeight                = 282;
+
 NSString* const kEmptyString					= @"";
 
 @implementation DWConstants

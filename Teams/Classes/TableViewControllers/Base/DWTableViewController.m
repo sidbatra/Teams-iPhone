@@ -45,11 +45,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (NSString*)identifierForClassName:(NSString*)className 
                           withStyle:(NSInteger)style;
 
-/**
- * Method to disable pull to refresh for certain table views
- */
-- (void)disablePullToRefresh;
-
 @end
 
 
@@ -192,6 +187,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)disablePullToRefresh {
     self.refreshHeaderView = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disableScrolling {
+    self.tableView.scrollEnabled    = NO;    
+    self.tableView.bounces          = NO;
 }
 
 //----------------------------------------------------------------------------------------------------

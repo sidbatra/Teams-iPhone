@@ -106,6 +106,8 @@
     
     if (_isCurrentUser)
         [self loadNavBarRightButtonView];
+    
+    [self disableScrolling];
 }
 
 //----------------------------------------------------------------------------------------------------
