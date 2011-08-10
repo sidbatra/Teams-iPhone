@@ -144,6 +144,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLogsIn 
                                                         object:nil];
     
+    [self.navigationController popToRootViewControllerAnimated:NO];    
     [self.parentViewController dismissModalViewControllerAnimated:NO];
 }
 

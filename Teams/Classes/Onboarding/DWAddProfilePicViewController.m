@@ -316,6 +316,8 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     [self.delegate userPhotoUpdated];
     
     [self.membershipsController createMembershipForTeamID:self.teamID];
+    
+    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -340,8 +342,8 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 
 //----------------------------------------------------------------------------------------------------
 - (void)membershipCreated:(DWMembership*)membership {
+    [self unfreezeUI];    
     [self.delegate membershipCreated];
-    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------

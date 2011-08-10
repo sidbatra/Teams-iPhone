@@ -372,12 +372,12 @@ static NSInteger const kTableViewHeight						= 200;
     
     if ([object isEqual:self.addedContactsViewController]) {
         
+        [self unfreezeUI];
+        
         if (self.teamSpecificInvite) 
             [self.delegate peopleInvitedToATeam];
         else
-            [self.delegate peopleInvited];
-        
-        [self unfreezeUI];
+            [self.delegate peopleInvited];        
     }
 }
 

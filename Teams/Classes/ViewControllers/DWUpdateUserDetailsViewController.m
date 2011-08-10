@@ -401,6 +401,8 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 
     [[DWSession sharedDWSession] update];
     
+    [user destroy];
+    
     [self unfreezeUI];
 	[self.navigationController popViewControllerAnimated:YES];    
 }

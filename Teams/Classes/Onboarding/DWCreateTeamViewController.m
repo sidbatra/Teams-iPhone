@@ -223,8 +223,8 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
-    [self.delegate teamCreated:team];
-    [self unfreezeUI];    
+    [self unfreezeUI];
+    [self.delegate teamCreated:team];    
 }
 
 //----------------------------------------------------------------------------------------------------

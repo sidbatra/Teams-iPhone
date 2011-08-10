@@ -268,8 +268,10 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 
     user.encryptedPassword = self.password;
 
+    [user destroy];
+    
+    [self unfreezeUI];        
     [self.delegate userDetailsUpdated];
-    [self unfreezeUI];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -242,6 +242,8 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];
 
+    [team destroy];
+    
     [self unfreezeUI];
 	[self.navigationController popViewControllerAnimated:YES];    
 }

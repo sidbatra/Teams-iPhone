@@ -315,6 +315,8 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     NSString *domain = [user getDomainFromEmail];        
     [self.teamsController getTeamFromDomain:domain 
                               andResourceID:_teamResourceID];
+    
+    [user destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -348,8 +350,8 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam*)team {
-    [self.delegate teamLoaded:team];
     [self unfreezeUI];
+    [self.delegate teamLoaded:team];    
 }
 
 //----------------------------------------------------------------------------------------------------
