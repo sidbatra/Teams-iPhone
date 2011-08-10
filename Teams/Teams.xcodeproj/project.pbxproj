@@ -302,6 +302,7 @@
 		BB7A68C4131CB7260000157E /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7A68BD131CB7260000157E /* Icon-Small@2x.png */; };
 		BB7A68C5131CB7260000157E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7A68BE131CB7260000157E /* Icon.png */; };
 		BB7A68C6131CB7260000157E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7A68BF131CB7260000157E /* Icon@2x.png */; };
+		BB7E1E1813F321A000294A23 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */; };
 		BB8397201373B02D00343955 /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83971E1373B02D00343955 /* onboarding.png */; };
 		BB8397211373B02D00343955 /* onboarding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83971F1373B02D00343955 /* onboarding@2x.png */; };
 		BB8499E213C6B09E00D9789D /* DWAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8499D713C6B09E00D9789D /* DWAttachment.m */; };
@@ -899,6 +900,8 @@
 		BB7A68BD131CB7260000157E /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "resources/Icon-Small@2x.png"; sourceTree = "<group>"; };
 		BB7A68BE131CB7260000157E /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = resources/Icon.png; sourceTree = "<group>"; };
 		BB7A68BF131CB7260000157E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "resources/Icon@2x.png"; sourceTree = "<group>"; };
+		BB7E1E1613F321A000294A23 /* DWNotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsHelper.h; sourceTree = "<group>"; };
+		BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsHelper.m; sourceTree = "<group>"; };
 		BB83971E1373B02D00343955 /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onboarding.png; path = resources/onboarding.png; sourceTree = "<group>"; };
 		BB83971F1373B02D00343955 /* onboarding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "onboarding@2x.png"; path = "resources/onboarding@2x.png"; sourceTree = "<group>"; };
 		BB8499D613C6B09E00D9789D /* DWAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAttachment.h; sourceTree = "<group>"; };
@@ -2245,16 +2248,18 @@
 		BBF8989513CA305400D5C5FB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				26E1017613E8F46900F2C32C /* DWApplicationHelper.h */,
+				26E1017713E8F46A00F2C32C /* DWApplicationHelper.m */,
 				BBB1A8EA13D5F9E800C08315 /* DWItemsHelper.h */,
 				BBB1A8EB13D5F9E800C08315 /* DWItemsHelper.m */,
 				BBF8989613CA306600D5C5FB /* DWUsersHelper.h */,
 				BBF8989713CA306600D5C5FB /* DWUsersHelper.m */,
 				BB572A2113D371D00060A351 /* DWTeamsHelper.h */,
 				BB572A2213D371D00060A351 /* DWTeamsHelper.m */,
+				BB7E1E1613F321A000294A23 /* DWNotificationsHelper.h */,
+				BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */,
 				262415F013D21F1E00474D4B /* DWRequestHelper.h */,
 				262415F113D21F1E00474D4B /* DWRequestHelper.m */,
-				26E1017613E8F46900F2C32C /* DWApplicationHelper.h */,
-				26E1017713E8F46A00F2C32C /* DWApplicationHelper.m */,
 			);
 			name = Helpers;
 			path = Classes/Helpers;
@@ -2900,6 +2905,7 @@
 				26E1015E13E8A70300F2C32C /* DWJoinTeamDataSource.m in Sources */,
 				26E1016113E8C14A00F2C32C /* DWFatCell.m in Sources */,
 				26E1017813E8F46D00F2C32C /* DWApplicationHelper.m in Sources */,
+				BB7E1E1813F321A000294A23 /* DWNotificationsHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

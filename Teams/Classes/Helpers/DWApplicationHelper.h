@@ -17,4 +17,9 @@
  */
 + (NSString*)generateOrdinalFrom:(NSInteger)num;
 
+/**
+ * Generate human friendly time ago in words from timestamp
+ */
++ (NSString*)timeAgoInWordsForTimestamp:(NSTimeInterval)timestamp;
+
 @end

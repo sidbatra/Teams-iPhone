@@ -4,6 +4,7 @@
 //
 
 #import "DWNotificationPresenter.h"
+#import "DWNotificationsHelper.h"
 #import "DWNotification.h"
 #import "DWSlimCell.h"
 #import "DWConstants.h"
@@ -26,11 +27,12 @@
     DWSlimCell *cell                = base;
     
     if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewStylePlain 
+        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
                                   reuseIdentifier:identifier] autorelease];
     
     cell.boldText   = notification.entityData;
     cell.plainText  = notification.eventData;
+    cell.extraText  = [DWNotificationsHelper createdAgoInWordsForNotification:notification];
     
     [notification startImageDownload];
     
