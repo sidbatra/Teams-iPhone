@@ -6,8 +6,8 @@
 #import "DWMessageCell.h"
 #import "DWConstants.h"
 
-#define kColorBgInteractive         [UIColor colorWithRed:0.2156 green:0.2196 blue:0.2196 alpha:1.0]
-#define kColorBgInteractiveSelected [UIColor colorWithRed:0.1725 green:0.1764 blue:0.1764 alpha:1.0]
+#define kColorBgInteractive         [UIColor colorWithRed:0.1098 green:0.1098 blue:0.1098 alpha:1.0]
+#define kColorBgInteractiveSelected [UIColor blackColor]
 
 static NSString* const kImgChevron		= @"chevron.png";
 static NSString* const kImgSeparator    = @"hr_dark.png";
@@ -92,7 +92,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createChevron {
-    chevronView             = [[[UIImageView alloc] initWithFrame:CGRectMake(307,18,6,11)] autorelease];
+    chevronView             = [[[UIImageView alloc] initWithFrame:CGRectMake(307,28,6,11)] autorelease];
     chevronView.image       = [UIImage imageNamed:kImgChevron];
     chevronView.hidden      = YES;
     
@@ -101,7 +101,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSeparator {
-    separatorView           = [[[UIImageView alloc] initWithFrame:CGRectMake(0,46,320,1)] autorelease];
+    separatorView           = [[[UIImageView alloc] initWithFrame:CGRectMake(0,66,320,1)] autorelease];
     separatorView.image     = [UIImage imageNamed:kImgSeparator];
     separatorView.hidden    = YES;
     

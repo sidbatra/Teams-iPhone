@@ -31,10 +31,6 @@
  */
 - (void)addWatchingTeamsMessage:(DWUser*)user;
 
-/**
- * Adds an object with the date of joining displayed
- */
-- (void)addJoiningMessage:(DWUser*)user;
 
 @end
 
@@ -115,15 +111,6 @@
     [self.objects addObject:self.watchingMessage];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)addJoiningMessage:(DWUser*)user {
-    
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
-    message.content     = [DWUsersHelper createdAtLine:user];
-    
-    [self.objects addObject:message];
-}
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -166,7 +153,6 @@
     [self addImageResource:user];
     [self addCurrentTeamMessage:user];
     [self addWatchingTeamsMessage:user];
-    [self addJoiningMessage:user];
       
     [self.delegate userLoaded:user];
     [self.delegate reloadTableView];

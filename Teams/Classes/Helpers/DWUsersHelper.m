@@ -36,7 +36,7 @@
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)currentTeamLine:(DWUser*)user {
-    return [NSString stringWithFormat:@"%@ Team",user.team.name];
+    return [NSString stringWithFormat:@"Part of %@",user.team.name];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@
     
     NSInteger otherCount = user.followingCount - 1;
     
-    return [NSString stringWithFormat:@"Watching %d other %@",
+    return [NSString stringWithFormat:@"Following %d %@",
             otherCount,
             otherCount == 1 ? @"Team" : @"Teams"];
 }

@@ -38,7 +38,8 @@
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.clipsToBounds = YES;
+        self.clipsToBounds                  = YES;
+        self.contentView.backgroundColor    = [UIColor blackColor];
         
         [self createImageView];
         [self createByline];
@@ -56,8 +57,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createImageView {
-    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(0,-(320-kImageCellHeight)/2,
-                                                                  320,320)] autorelease];
+    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(60,36,200,200)] autorelease];
 
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.contentView addSubview:imageView];
@@ -65,22 +65,16 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createByline {
-    UILabel *background             = [[[UILabel alloc] initWithFrame:CGRectMake(0,kImageCellHeight-47,
-                                                                                 320,47)] autorelease];
-    background.backgroundColor      = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     
-    [self.contentView addSubview:background];
-    
-    
-    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(7,kImageCellHeight-47-1,
-                                                                                 320-14,47)] autorelease];
+    bylineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(7,235,306,46)] autorelease];
     bylineLabel.backgroundColor     = [UIColor clearColor];
     bylineLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:15];	
-    bylineLabel.textColor			= [UIColor whiteColor];
+    bylineLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
     bylineLabel.textAlignment		= UITextAlignmentCenter;
     
     [self.contentView addSubview:bylineLabel];
 }
+
 //----------------------------------------------------------------------------------------------------
 - (void)setByline:(NSString*)byline {
     bylineLabel.text = byline;
