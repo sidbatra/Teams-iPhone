@@ -54,10 +54,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
         
         self.usersLogicController                       = [[[DWUsersLogicController alloc] init] autorelease];
         self.usersLogicController.tableViewController   = self;
-        
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleFat]
-                                        forKey:[[DWTeam class] className]];   
-        
+                
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleNavigationDisabled]
                                         forKey:[[DWUser class] className]];   
     }

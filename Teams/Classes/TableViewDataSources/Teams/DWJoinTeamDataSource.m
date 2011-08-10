@@ -62,11 +62,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamMembersLoaded:(NSMutableArray*)users {
-
-    [self.objects addObject:[DWTeam fetch:self.teamID]];  
     
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,[users count])];
-    [self.objects insertObjects:users atIndexes:indexSet];          
+    [self.objects addObjectsFromArray:users];
     
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
     message.content     = [DWTeamsHelper createdAtLineForTeam:[DWTeam fetch:_teamID]];
