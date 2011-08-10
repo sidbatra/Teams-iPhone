@@ -5,9 +5,13 @@
 
 #import "DWSearchDataSource.h"
 #import "DWAnalyticsManager.h"
+#import "DWTeam.h"
+#import "DWResource.h"
+#import "NSObject+Helpers.h"
 
 
 static NSString* const kMsgNoResults    = @"No Teams or people found";
+static NSString* const kImgTeamIcon     = @"slice_button_people.png";
 
 
 
@@ -37,6 +41,17 @@ static NSString* const kMsgNoResults    = @"No Teams or people found";
     self.query              = nil;
     
     [super dealloc];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (DWResource*)resourceForTeam:(DWTeam*)team {
+    
+    DWResource *resource    = [[[DWResource alloc] init] autorelease];
+    resource.text           = team.name;
+    resource.subText        = team.byline;
+    resource.image          = [UIImage imageNamed:kImgTeamIcon];
+    
+    return resource;
 }
 
 
@@ -71,7 +86,20 @@ static NSString* const kMsgNoResults    = @"No Teams or people found";
 //----------------------------------------------------------------------------------------------------
 - (void)searchLoaded:(NSMutableArray*)results {
     [self clean];
-    self.objects = results;
+    self.objects = [NSMutableArray array];
+    
+    for(DWPoolObject *object in results) {
+        if([[object className] isEqualToString:[DWTeam className]]) {
+            
+            DWResource *resource = [self resourceForTeam:(DWTeam*)object];
+            [self.objects addObject:resource];
+            
+            [object destroy];
+        }
+        else {
+            [self.objects addObject:object];
+        }
+    }
     
     if([self.objects count]) {
         [self.delegate reloadTableView];
