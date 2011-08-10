@@ -17,13 +17,17 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kColorHighlightBg           [UIColor colorWithRed:0.1725 green:0.1764 blue:0.1764 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
+#define kColorTextExtra             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
+#define kFontExtraText              [UIFont fontWithName:@"HelveticaNeue" size:13]
 #define kTextX                      70
 #define kBoldTextTopY               5
 #define kPlainTextTopY              25
 #define kBoldTextMiddleY            15
 #define kPlainTextMiddleY           30
+#define kExtraTextXOffset           10
+#define kExtraTextY                 5
 
 
 
@@ -54,6 +58,13 @@ static NSString* const kImgChevron		= @"chevron.png";
                      lineBreakMode:UILineBreakModeTailTruncation];
     
     
+    CGContextSetFillColorWithColor(context,kColorTextExtra);
+    
+    [slimCell.extraText drawInRect:slimCell.extraTextRect
+                          withFont:kFontExtraText
+                     lineBreakMode:UILineBreakModeTailTruncation];
+    
+    
 	UIGraphicsPopContext();
 }
 
@@ -68,8 +79,10 @@ static NSString* const kImgChevron		= @"chevron.png";
 
 @synthesize boldText			= _boldText;
 @synthesize plainText           = _plainText;
+@synthesize extraText           = _extraText;
 @synthesize boldTextRect        = _boldTextRect;
 @synthesize plainTextRect       = _plainTextRect;
+@synthesize extraTextRect       = _extraTextRect;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style
@@ -82,6 +95,8 @@ static NSString* const kImgChevron		= @"chevron.png";
         
         self.clipsToBounds  = YES;
 		CGRect frame        = CGRectMake(0,0,320,kSlimCellHeight);
+        
+        self.extraText      = kEmptyString;
 		
 		drawingLayer					= [DWSlimCellDrawingLayer layer];
 		drawingLayer.slimCell			= self;
@@ -124,6 +139,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 - (void)dealloc {
     self.boldText       = nil;
 	self.plainText		= nil;
+    self.extraText      = nil;
 	
     [super dealloc];
 }
@@ -132,14 +148,16 @@ static NSString* const kImgChevron		= @"chevron.png";
 - (void)reset {
 	_highlighted            = NO;
     
+    CGSize extraTextSize    = [self.extraText sizeWithFont:kFontExtraText
+                                         constrainedToSize:CGSizeMake(80,20)
+                                             lineBreakMode:UILineBreakModeTailTruncation];
+    
     CGSize plainTextSize    = [self.plainText sizeWithFont:kFontPlainText
                                          constrainedToSize:CGSizeMake(225,40) 
                                              lineBreakMode:UILineBreakModeTailTruncation];
-    
-    NSLog(@"plain height - %f",plainTextSize.height);
-    
+        
     CGSize boldTextSize     = [self.boldText sizeWithFont:kFontBoldText 
-                                        constrainedToSize:CGSizeMake(225,20)
+                                        constrainedToSize:CGSizeMake(225-extraTextSize.width,20)
                                             lineBreakMode:UILineBreakModeTailTruncation];
     
     BOOL isMultiLineMode    = plainTextSize.height > 20;
@@ -152,11 +170,16 @@ static NSString* const kImgChevron		= @"chevron.png";
                                          boldTextSize.height);
     
    
-    
     _plainTextRect           = CGRectMake(kTextX,
                                          isMultiLineMode ? kPlainTextTopY : kPlainTextMiddleY,
                                          plainTextSize.width,
                                          plainTextSize.height);
+    
+    
+    _extraTextRect          = CGRectMake(320-extraTextSize.width-kExtraTextXOffset,
+                                         kExtraTextY,
+                                         extraTextSize.width,
+                                         extraTextSize.height);
     
     
     [CATransaction begin];

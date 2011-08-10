@@ -40,6 +40,7 @@
 	
 	NSString						*_boldText;
     NSString                        *_plainText;
+    NSString                        *_extraText;
 }
 
 /**
@@ -53,10 +54,16 @@
 @property (nonatomic,copy) NSString* plainText;
 
 /**
+ * Extra text displayed on the top right hand side
+ */
+@property (nonatomic,copy) NSString* extraText;
+
+/**
  * CGRect's for all the individual text elements
  */
 @property (nonatomic,readonly) CGRect boldTextRect;
 @property (nonatomic,readonly) CGRect plainTextRect;
+@property (nonatomic,readonly) CGRect extraTextRect;
 
 
 /**
