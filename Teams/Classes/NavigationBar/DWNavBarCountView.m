@@ -68,7 +68,6 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 - (void)createCountLabel {
     countLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
     countLabel.userInteractionEnabled = NO;
-    countLabel.alpha                  = kDisabledOpacity;
     countLabel.layer.cornerRadius     = 2.5;
     countLabel.text                   = kDefaultText;
     countLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
@@ -95,12 +94,10 @@ static CGFloat   const kDisabledOpacity     = 0.5;
     if (count) {
         countLabel.textColor        = [UIColor whiteColor];        
         countLabel.backgroundColor  = [UIColor colorWithRed:0.8 green:0.0 blue:0.0 alpha:1.0];
-        countLabel.alpha            = 1.0;
     }
     else {
         countLabel.textColor        = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];        
         countLabel.backgroundColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-        countLabel.alpha            = kDisabledOpacity;
     }
 }
 
