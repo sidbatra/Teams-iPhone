@@ -19,8 +19,11 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kTextX                      60
-#define kTextY                      13
+#define kTextX                      70
+#define kBoldTextTopY               5
+#define kPlainTextTopY              25
+#define kBoldTextMiddleY            15
+#define kPlainTextMiddleY           30
 
 
 
@@ -78,7 +81,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 	if (self) {
         
         self.clipsToBounds  = YES;
-		CGRect frame        = CGRectMake(0,0,320,47);
+		CGRect frame        = CGRectMake(0,0,320,kSlimCellHeight);
 		
 		drawingLayer					= [DWSlimCellDrawingLayer layer];
 		drawingLayer.slimCell			= self;
@@ -90,7 +93,7 @@ static NSString* const kImgChevron		= @"chevron.png";
         [[self layer] addSublayer:drawingLayer];
         
         imageLayer					= [CALayer layer];
-		imageLayer.frame			= CGRectMake(0,0,47,47);
+		imageLayer.frame			= CGRectMake(5,5,60,60);
 		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
@@ -98,13 +101,13 @@ static NSString* const kImgChevron		= @"chevron.png";
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
-		chevronLayer.frame				= CGRectMake(307,18,6,11);
+		chevronLayer.frame				= CGRectMake(307,38,6,11);
 		chevronLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		chevronLayer.contents			= (id)[UIImage imageNamed:kImgChevron].CGImage;
 		[[self layer] addSublayer:chevronLayer];
 		
 		CALayer *separatorLayer			= [CALayer layer];
-		separatorLayer.frame			= CGRectMake(0,46,320,1);
+		separatorLayer.frame			= CGRectMake(0,kSlimCellHeight-1,320,1);
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
 		[[self layer] addSublayer:separatorLayer];
@@ -129,21 +132,29 @@ static NSString* const kImgChevron		= @"chevron.png";
 - (void)reset {
 	_highlighted            = NO;
     
+    CGSize plainTextSize    = [self.plainText sizeWithFont:kFontPlainText
+                                         constrainedToSize:CGSizeMake(225,40) 
+                                             lineBreakMode:UILineBreakModeTailTruncation];
+    
+    NSLog(@"plain height - %f",plainTextSize.height);
+    
     CGSize boldTextSize     = [self.boldText sizeWithFont:kFontBoldText 
                                         constrainedToSize:CGSizeMake(225,20)
                                             lineBreakMode:UILineBreakModeTailTruncation];
     
+    BOOL isMultiLineMode    = plainTextSize.height > 20;
+    
+
+    
     _boldTextRect           = CGRectMake(kTextX,
-                                         kTextY,
+                                         isMultiLineMode ? kBoldTextTopY : kBoldTextMiddleY,
                                          boldTextSize.width,
                                          boldTextSize.height);
     
-    CGSize plainTextSize    = [self.plainText sizeWithFont:kFontPlainText
-                                         constrainedToSize:CGSizeMake(225-boldTextSize.width,20) 
-                                             lineBreakMode:UILineBreakModeTailTruncation];
+   
     
-    _plainTextRect           = CGRectMake(kTextX + boldTextSize.width + 5,
-                                         kTextY,
+    _plainTextRect           = CGRectMake(kTextX,
+                                         isMultiLineMode ? kPlainTextTopY : kPlainTextMiddleY,
                                          plainTextSize.width,
                                          plainTextSize.height);
     
