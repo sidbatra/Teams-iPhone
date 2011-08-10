@@ -37,6 +37,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
++ (NSString*)webURIForTeam:(DWTeam*)team {
+    return [NSString stringWithFormat:@"Tea.ms/%@",team.name];
+}
+
+//----------------------------------------------------------------------------------------------------
 + (NSString*)watchersOfTeam:(DWTeam*)team {
     return [NSString stringWithFormat:@"Watching %@",team.name];
 }

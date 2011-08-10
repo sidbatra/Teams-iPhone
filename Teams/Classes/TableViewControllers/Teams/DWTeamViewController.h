@@ -8,6 +8,7 @@
 #import "DWTableViewController.h"
 
 @class DWTeam;
+@class DWNavTitleView;
 @class DWTeamViewDataSource;
 @class DWTeamsLogicController;
 @protocol DWTeamsLogicControllerDelegate;
@@ -21,6 +22,8 @@
     
     DWTeamViewDataSource        *_teamViewDataSource;
     DWTeamsLogicController      *_teamsLogicController;
+    
+    DWNavTitleView              *_navTitleView;
         
     id<DWTeamViewControllerDelegate>    _delegate;
 }
@@ -34,6 +37,11 @@
  * Encapsulates functionality to display one or more teams
  */
 @property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
+
+/**
+ * Custom nav bar title
+ */ 
+@property (nonatomic,retain) DWNavTitleView *navTitleView;
 
 /**
  * Delegate based on the DWTeamViewControllerDelegate protocol
@@ -61,18 +69,13 @@
 @protocol DWTeamViewControllerDelegate
 
 /**
- * Fired when the members of the given team are to be displayed
- */
-- (void)showMembersOfTeam:(DWTeam*)team;
-
-/**
- * Fired when the followers of the given team are to be displayed
- */ 
-- (void)showFollowersOfTeam:(DWTeam*)team;
-
-/**
  * Fired when the invite people view is to be displayed
  */
 - (void)showInvitePeopleFor:(DWTeam*)team;;
+
+/**
+ * Fired when the share team view is to be displayed
+ */
+- (void)shareTeam:(DWTeam*)team;;
 
 @end

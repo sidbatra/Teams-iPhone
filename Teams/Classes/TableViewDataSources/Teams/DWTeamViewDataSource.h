@@ -20,9 +20,8 @@
     DWTeamsController   *_teamsController;
     DWUsersController   *_usersController;
     
-    DWResource          *_followers;
-    DWResource          *_members;
     DWResource          *_invite;
+    DWResource          *_share;
     
     NSInteger           _teamID;
 }
@@ -38,19 +37,14 @@
 @property (nonatomic,retain) DWUsersController *usersController;
 
 /**
- * Resource object representing the followers cell
- */
-@property (nonatomic,retain) DWResource *followers;
-
-/**
- * Resource object representing the members cell
- */
-@property (nonatomic,retain) DWResource *members;
-
-/**
  * Resource object representing the invite people cell
  */
 @property (nonatomic,retain) DWResource *invite;
+
+/**
+ * Resource object representing the share team cell
+ */
+@property (nonatomic,retain) DWResource *share;
 
 /**
  * TeamID for the team being displayed

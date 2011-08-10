@@ -286,28 +286,6 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 #pragma mark TeamViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)showMembersOfTeam:(DWTeam*)team {
-    DWTeamMembersViewController *teamMembersViewController = [[[DWTeamMembersViewController alloc]
-                                                               initWithTeam:team] autorelease];
-    
-    [teamMembersViewController setUsersDelegate:self];
-    
-    [self.navigationController pushViewController:teamMembersViewController
-                                         animated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)showFollowersOfTeam:(DWTeam*)team {
-    DWTeamFollowersViewController *teamFollowersViewController = [[[DWTeamFollowersViewController alloc] 
-                                                                   initWithTeam:team] autorelease];
-    
-    [teamFollowersViewController setUsersDelegate:self];
-    
-    [self.navigationController pushViewController:teamFollowersViewController
-                                         animated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)showInvitePeopleFor:(DWTeam*)team {
     
     self.navigationController.navigationBar.clipsToBounds       = NO;
@@ -324,6 +302,11 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareTeam:(DWTeam*)team {
+    //sharing code
 }
 
 
