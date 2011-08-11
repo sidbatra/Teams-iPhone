@@ -35,7 +35,7 @@
 	CALayer							*itemImageLayer;
 	CALayer							*touchIconImageLayer;
 	CALayer							*playImageLayer;
-	CALayer							*shareImageLayer;
+	//CALayer						*shareImageLayer;
     
 
 	DWItemFeedCellDrawingLayer		*drawingLayer;
@@ -74,7 +74,7 @@
 	
 	UIButton						*teamButton;
 	UIButton						*userButton;
-	UIButton						*shareButton;
+	//UIButton						*shareButton;
     
     DWVideoView                     *videoView;
 	
@@ -178,6 +178,6 @@
 - (void)cellTouched:(NSInteger)itemID;
 - (void)teamSelectedForItemID:(NSInteger)itemID;
 - (void)userSelectedForItemID:(NSInteger)itemID;
-- (void)shareSelectedForItemID:(NSInteger)itemID;
 - (NSString*)getVideoAttachmentURLForItemID:(NSInteger)itemID;
+//- (void)shareSelectedForItemID:(NSInteger)itemID;
 @end

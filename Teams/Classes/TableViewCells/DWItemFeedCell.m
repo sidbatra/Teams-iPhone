@@ -288,7 +288,7 @@
 		
 		
 		playImageLayer					= [CALayer layer];
-		playImageLayer.frame			= CGRectMake(282,290,kPlayIconWidth,kPlayIconHeight);
+		playImageLayer.frame			= CGRectMake(282,kPlayIconY,kPlayIconWidth,kPlayIconHeight);
 		playImageLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		playImageLayer.contents			= (id)[UIImage imageNamed:kImgPlay].CGImage;
 		playImageLayer.hidden			= YES;
@@ -301,14 +301,15 @@
 										   nil];
 		[[self.contentView layer] addSublayer:playImageLayer];
 		
-
+        
+        /*
 		shareImageLayer						= [CALayer layer];
 		shareImageLayer.frame				= CGRectMake(280,283,24,19);
 		shareImageLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		shareImageLayer.actions				= [NSMutableDictionary dictionaryWithObjectsAndKeys:
 											   [NSNull null], @"contents",
 											   nil];
-		[[self.contentView layer] addSublayer:shareImageLayer];
+		[[self.contentView layer] addSublayer:shareImageLayer];*/
         
         
 		drawingLayer					= [DWItemFeedCellDrawingLayer layer];
@@ -379,7 +380,7 @@
 		
 		[self.contentView addSubview:userButton];
 		
-		
+		/*
 		shareButton						= [[[UIButton alloc] init] autorelease];
 		//shareButton.backgroundColor		= [UIColor greenColor];
 		shareButton.frame				= CGRectMake(shareImageLayer.frame.origin.x - 25,
@@ -391,7 +392,7 @@
 					   action:@selector(didTouchUpOnShareButton:) 
 			 forControlEvents:UIControlEventTouchUpInside];
 
-		[self.contentView addSubview:shareButton];
+		[self.contentView addSubview:shareButton];*/
 		
         
         videoView           = [[[DWVideoView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)] autorelease];
@@ -511,13 +512,14 @@
                                                  createdAtSize.height);
 }
 
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)resetPlayImageIconPosition {
     playImageLayer.frame		= CGRectMake(_createdAtRect.origin.x + _createdAtRect.size.width + kPlayIconXOffset,
                                              kPlayIconY,
                                              playImageLayer.frame.size.width,
                                              playImageLayer.frame.size.height);   
-}
+}*/
 
 //----------------------------------------------------------------------------------------------------
 - (void)reset {
@@ -577,12 +579,13 @@
 	itemImageLayer.backgroundColor	= _attachmentType == kAttachmentNone ? kColorNoAttachmentBg : kColorAttachmentBg;
 	playImageLayer.hidden			= _attachmentType != kAttachmentVideo;
     
-	
+	/*
     shareButton.enabled             = YES;
     
 	shareImageLayer.hidden			= NO;
 	shareImageLayer.contents		= (id)[UIImage imageNamed:_attachmentType == kAttachmentNone ? kImgShare230 : kImgShare].CGImage;
     shareImageLayer.opacity         = _attachmentType == kAttachmentNone ? kOpacityImagesNoAttachment : kOpacityImagesWithAttachment;
+    */
 	
 	touchIconImageLayer.hidden		= NO;
 	touchIconImageLayer.contents	= (id)[UIImage imageNamed:_attachmentType == kAttachmentNone ? kImgTouchIcon230 : kImgTouchIcon].CGImage;
@@ -590,7 +593,7 @@
 	
 	[self resetTouchImageIconPosition];
     [self resetCreatedAtPosition];
-    [self resetPlayImageIconPosition];
+    //[self resetPlayImageIconPosition];
     
 	[CATransaction commit];
 	
@@ -634,11 +637,13 @@
 	  andCreatedAt:(NSString*)createdAt {
 	
 	_itemTouchesCount               = touchesCount;
+    self.itemCreatedAt              = [NSString stringWithFormat:@"  |  %@",createdAt];
     
+    /*
     if(_attachmentType != kAttachmentVideo)
         self.itemCreatedAt          = [NSString stringWithFormat:@"  |  %@",createdAt];
     else
-        self.itemCreatedAt          = [NSString stringWithFormat:@"  |  %@  |  ",createdAt];
+        self.itemCreatedAt          = [NSString stringWithFormat:@"  |  %@",createdAt];*/
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -688,7 +693,7 @@
     [self resetItemDetailsPosition];
     [self resetTouchImageIconPosition];
     [self resetCreatedAtPosition];
-    [self resetPlayImageIconPosition];
+    //[self resetPlayImageIconPosition];
     [self redisplay];
     	
 	[CATransaction commit];
@@ -725,7 +730,7 @@
     
     userButton.enabled      = NO;
     teamButton.enabled     = NO;
-    shareButton.enabled     = NO;
+    //shareButton.enabled     = NO;
 	
 	[CATransaction begin];
 	[CATransaction setValue:[NSNumber numberWithFloat:kCellAnimationDuration] 
@@ -738,7 +743,7 @@
 	if(_attachmentType == kAttachmentVideo)
 		playImageLayer.hidden	= YES;
 	
-	shareImageLayer.hidden		= YES;
+	//shareImageLayer.hidden		= YES;
 	
 	[self redisplay];
 
@@ -772,7 +777,7 @@
 	if(_attachmentType == kAttachmentVideo)
 		playImageLayer.hidden	= NO;
 	
-	shareImageLayer.hidden		= NO;
+	//shareImageLayer.hidden		= NO;
 	
 	[self redisplay];
 	
@@ -780,7 +785,7 @@
     
     userButton.enabled      = YES;
     teamButton.enabled     = !_teamButtonDisabled;
-    shareButton.enabled     = !_userButtonDisabled;
+    //shareButton.enabled     = !_userButtonDisabled;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -863,10 +868,11 @@
 	[self highlightUserButton];
 }
 
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchUpOnShareButton:(UIButton*)button {
 	[_delegate shareSelectedForItemID:_itemID];
-}
+}*/
 
 
 //----------------------------------------------------------------------------------------------------
