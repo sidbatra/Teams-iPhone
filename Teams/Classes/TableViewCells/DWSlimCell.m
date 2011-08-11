@@ -13,7 +13,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kAnimationDuration          0.05
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
-#define kColorNormalBg              [UIColor colorWithRed:0.11372 green:0.11372 blue:0.11372 alpha:1.0].CGColor
+#define kColorNormalBg              [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor
 #define kColorHighlightBg           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
@@ -114,7 +114,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
                                        nil];
-        
+        imageLayer.cornerRadius     = 2.0;
+        imageLayer.masksToBounds    = YES;                
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
@@ -127,7 +128,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 		separatorLayer.frame			= CGRectMake(0,kSlimCellHeight-1,320,1);
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
-		[[self layer] addSublayer:separatorLayer];
+		//[[self layer] addSublayer:separatorLayer];
 		
 		
 		self.accessoryType				= UITableViewCellAccessoryNone;
