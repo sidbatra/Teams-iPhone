@@ -114,7 +114,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
                                        nil];
-        imageLayer.cornerRadius = 10.0;
+        
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
