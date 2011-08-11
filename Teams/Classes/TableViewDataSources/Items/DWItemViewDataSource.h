@@ -7,21 +7,21 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWItemsController.h"
-#import "DWUsersController.h"
+#import "DWTouchesController.h"
 
 @protocol DWItemViewDataSourceDelegate;
 
 /**
  * Data source for the item view controller
  */
-@interface DWItemViewDataSource : DWTableViewDataSource<DWItemsControllerDelegate,DWUsersControllerDelegate> {
-    DWItemsController   *_itemsController;
-    DWUsersController   *_usersController;
+@interface DWItemViewDataSource : DWTableViewDataSource<DWItemsControllerDelegate,DWTouchesControllerDelegate> {
+    DWItemsController       *_itemsController;
+    DWTouchesController     *_touchesController;
     
-    BOOL                _itemLoaded;
-    BOOL                _usersLoaded;
+    BOOL                    _itemLoaded;
+    BOOL                    _touchesLoaded;
     
-    NSInteger           _itemID;
+    NSInteger               _itemID;
 }
 
 /**
@@ -30,9 +30,9 @@
 @property (nonatomic,retain) DWItemsController *itemsController;
 
 /**
- * Interface to the users service
+ * Interface to the touches service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic,retain) DWTouchesController *touchesController;
 
 /**
  * ItemID for the item whose touchers are being displayed

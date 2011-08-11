@@ -4,7 +4,6 @@
 //
 
 #import "DWTouch.h"
-#import "DWUser.h"
 #import "DWConstants.h"
 
 

@@ -9,6 +9,7 @@
 #import "DWItemViewDataSource.h"
 #import "DWItem.h"
 #import "DWUser.h"
+#import "DWTouch.h"
 #import "DWGUIManager.h"
 #import "DWItemsHelper.h"
 #import "NSObject+Helpers.h"
@@ -80,7 +81,7 @@
     
     if([className isEqualToString:[[DWItem class] className]])
         delegate = self.itemsLogicController;
-    else  if([className isEqualToString:[[DWUser class] className]])
+    else  if([className isEqualToString:[DWUser className]] || [className isEqualToString:[DWTouch className]])
         delegate = self.usersLogicController;
     else
         delegate = [super getDelegateForClassName:className];

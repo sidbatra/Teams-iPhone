@@ -105,7 +105,8 @@ static NSString* const kItemTouchesURI       = @"/items/%d/touches.json?";
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNTouchesLoaded
                                                    errorNotification:kNTouchesError
-                                                       requestMethod:kGet];
+                                                       requestMethod:kGet
+                                                          resourceID:itemID];
 }
 
 

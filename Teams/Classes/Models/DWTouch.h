@@ -6,8 +6,7 @@
 #import <Foundation/Foundation.h>
 
 #import "DWPoolObject.h"
-
-@class DWUser;
+#import "DWUser.h"
 
 /**
  * Touch model reprsenting an interaction between an item and a user
