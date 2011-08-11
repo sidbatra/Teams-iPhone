@@ -31,11 +31,12 @@ static NSString* const kDWErrorDomain		= @"DWError";
     else {
         NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
+                              [NSNumber numberWithInt:self.callerID]    ,kKeyCallerID,
                               [response objectForKey:kKeyData]          ,kKeyData,
                               nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
-                                                            object:self.caller
+                                                            object:nil
                                                           userInfo:info];
     }
 }
@@ -45,11 +46,12 @@ static NSString* const kDWErrorDomain		= @"DWError";
 	
 	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
 								[NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
+                                [NSNumber numberWithInt:self.callerID]      ,kKeyCallerID,
 								theError									,kKeyError,
 								nil];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:self.errorNotification
-														object:self.caller
+														object:nil
 													  userInfo:info];
 }
 

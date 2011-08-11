@@ -107,7 +107,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID
                     authenticate:(NSInteger)authenticate
-                          caller:(id)caller {
+                        callerID:(NSUInteger)callerID {
 	
 	
 	NSString *requestURL = [self createDenwenRequestURL:localRequestURL
@@ -119,14 +119,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
         request = [DWDenwenRequest requestWithRequestURL:requestURL
                                      successNotification:successNotification
                                        errorNotification:errorNotification
-                                                  caller:caller];
+                                                callerID:callerID];
     }
     else {
         request = [DWDenwenRequest requestWithRequestURL:requestURL
                                      successNotification:successNotification
                                        errorNotification:errorNotification
                                               resourceID:resourceID
-                                                  caller:caller];
+                                                callerID:callerID];
     }
     
 	[request setDelegate:self];
@@ -152,7 +152,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                        requestMethod:requestMethod
                           resourceID:kDefaultResourceID
                         authenticate:YES
-                              caller:nil];
+                            callerID:0];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -160,7 +160,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
              successNotification:(NSString*)successNotification
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
-                          caller:(id)caller {
+                        callerID:(NSUInteger)callerID {
     
     return [self createDenwenRequest:localRequestURL
                  successNotification:successNotification
@@ -168,7 +168,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                        requestMethod:requestMethod
                           resourceID:kDefaultResourceID
                         authenticate:YES
-                              caller:caller];
+                            callerID:callerID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -184,7 +184,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                        requestMethod:requestMethod
                           resourceID:resourceID
                         authenticate:YES
-                              caller:nil];
+                            callerID:0];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -193,7 +193,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID 
-                          caller:(id)caller {
+                        callerID:(NSUInteger)callerID {
     
     return [self createDenwenRequest:localRequestURL
                  successNotification:successNotification
@@ -201,7 +201,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                        requestMethod:requestMethod
                           resourceID:resourceID
                         authenticate:YES
-                              caller:caller];
+                              callerID:callerID];
 }
 
 
@@ -218,7 +218,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                        requestMethod:requestMethod
                           resourceID:kDefaultResourceID
                         authenticate:authenticate
-                              caller:nil];
+                              callerID:0];
 }
 			
 

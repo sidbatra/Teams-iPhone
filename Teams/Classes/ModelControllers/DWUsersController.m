@@ -187,7 +187,7 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
                                                        requestMethod:kPut 
-                                                              caller:callback ? self : nil];
+                                                            callerID:callback ? self.hash : 0];
     
 }
 
@@ -203,7 +203,7 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
                                                        requestMethod:kPut 
-                                                              caller:self];
+                                                            callerID:self.hash];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -220,7 +220,7 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
                                                  successNotification:kNUserUpdated
                                                    errorNotification:kNUserUpdateError
                                                        requestMethod:kPut 
-                                                              caller:self];
+                                                            callerID:self.hash];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -466,15 +466,18 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(NSNotification*)notification {
     
-    if (notification.object && notification.object != self)
+    NSDictionary *info      = [notification userInfo];
+    NSUInteger callerID     = [[info objectForKey:kKeyCallerID] unsignedIntegerValue];
+    
+    if(callerID && callerID != self.hash)
         return;
+    
     
     SEL sel = @selector(userUpdated:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    NSDictionary *info	= [notification userInfo];
     NSDictionary *data  = [info objectForKey:kKeyData];
     NSArray *errors     = [data objectForKey:kKeyErrors];
     
@@ -497,15 +500,19 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSNotification*)notification {
     
-    if (notification.object && notification.object != self)
+    NSDictionary *info      = [notification userInfo];
+    NSUInteger callerID     = [[info objectForKey:kKeyCallerID] unsignedIntegerValue];
+    
+    if(callerID && callerID != self.hash)
         return;
+
     
     SEL sel = @selector(userUpdateError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    NSError *error = [info objectForKey:kKeyError];
     [self.delegate performSelector:sel 
                         withObject:[error localizedDescription]];
 }

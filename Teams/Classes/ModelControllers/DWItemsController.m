@@ -256,7 +256,7 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
                                                    errorNotification:kNTeamItemsError
                                                        requestMethod:kGet
                                                           resourceID:teamID
-                                                              caller:self];
+                                                            callerID:self.hash];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -420,7 +420,10 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsLoaded:(NSNotification*)notification {
     
-    if(notification.object != self)
+    NSDictionary *userInfo  = [notification userInfo];
+    NSUInteger callerID     = [[userInfo objectForKey:kKeyCallerID] unsignedIntegerValue];
+    
+    if(callerID != self.hash)
         return;
     
     
@@ -431,7 +434,6 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
         return;
     
     
-    NSDictionary *userInfo  = [notification userInfo];
     NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
     
     if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
@@ -448,7 +450,10 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 //----------------------------------------------------------------------------------------------------
 - (void)teamItemsError:(NSNotification*)notification {
     
-    if(notification.object != self)
+    NSDictionary *userInfo  = [notification userInfo];
+    NSUInteger callerID     = [[userInfo objectForKey:kKeyCallerID] unsignedIntegerValue];
+    
+    if(callerID != self.hash)
         return;
     
     
@@ -459,7 +464,6 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
         return;
     
     
-    NSDictionary *userInfo  = [notification userInfo];
     NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
     
     if(resourceID != (NSInteger)[self.delegate performSelector:idSel])

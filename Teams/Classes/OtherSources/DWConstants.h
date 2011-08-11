@@ -192,6 +192,7 @@ extern NSString* const kKeyTouches;
 extern NSString* const kKeyTouchesCount;
 extern NSString* const kKeyTouchID;
 extern NSString* const kKeyData;
+extern NSString* const kKeyCallerID;
 extern NSString* const kKeyAttachment;
 extern NSString* const kKeyURLs;
 extern NSString* const kKeyFollowing;

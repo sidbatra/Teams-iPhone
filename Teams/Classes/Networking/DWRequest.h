@@ -16,7 +16,7 @@
 	NSString		*_successNotification;
 	NSString		*_errorNotification;
     
-    id              _caller;
+    NSUInteger      _callerID;
 }
 
 
@@ -38,9 +38,9 @@
 @property (nonatomic,copy) NSString* errorNotification;
 
 /**
- * Assign reference to the caller of the request. nil by default
+ * Optional unique identifier for the calling object, 0 by default
  */
-@property (nonatomic,assign) id caller;
+@property (nonatomic,assign) NSUInteger callerID;
 
 
 /**
@@ -67,7 +67,7 @@
 + (id)requestWithRequestURL:(NSString*)requestURL
 		successNotification:(NSString*)theSuccessNotification
 		  errorNotification:(NSString*)theErrorNotification
-                     caller:(id)caller;
+                   callerID:(NSUInteger)callerID;
 /**
  * Overloaded version of requestWithRequestURL that sets the caller
  * object that initiated the request and a request resource id
@@ -76,7 +76,7 @@
 		successNotification:(NSString*)theSuccessNotification
 		  errorNotification:(NSString*)theErrorNotification
 				 resourceID:(NSInteger)theResourceID 
-                     caller:(id)caller;
+                   callerID:(NSUInteger)callerID;
 
 
 /**

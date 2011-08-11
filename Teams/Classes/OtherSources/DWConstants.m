@@ -115,6 +115,7 @@ NSString* const kKeyTouches                 = @"touches";
 NSString* const kKeyTouchesCount			= @"touches_count";
 NSString* const kKeyTouchID					= @"touch_id";
 NSString* const kKeyData					= @"data";
+NSString* const kKeyCallerID                = @"caller_id";
 NSString* const kKeyAttachment				= @"attachment";
 NSString* const kKeyURLs					= @"urls";
 NSString* const kKeyFollowing				= @"following";

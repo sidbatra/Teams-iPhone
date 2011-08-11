@@ -39,7 +39,7 @@
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID
                     authenticate:(NSInteger)authenticate
-                          caller:(id)caller;
+                        callerID:(NSUInteger)callerID;
 
 /**
  * Overloaded method for createDenwenRequest. Generates a unique
@@ -70,7 +70,7 @@
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
                       resourceID:(NSInteger)resourceID 
-                          caller:(id)caller;
+                        callerID:(NSUInteger)callerID;
 
 /**
  * Overloaded method for createDenwenRequest. Generates a unique
@@ -90,8 +90,7 @@
              successNotification:(NSString*)successNotification
                errorNotification:(NSString*)errorNotification
                    requestMethod:(NSString*)requestMethod
-                          caller:(id)caller;
-
+                        callerID:(NSUInteger)callerID;
 /**
  * Download the image from the given URL and fire the given
  * notifications
