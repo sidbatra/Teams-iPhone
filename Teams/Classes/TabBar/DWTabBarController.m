@@ -28,7 +28,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 /**
  * Image view with a shadow just above the tab bar
  */
-@property (nonatomic,retain) UIImageView *bottomShadowView;
+//@property (nonatomic,retain) UIImageView *bottomShadowView;
 
 /**
  * Tab bar object for managing for the buttons and their states
@@ -56,7 +56,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 
 @synthesize tabBar                  = _tabBar;
 @synthesize topShadowView           = _topShadowView;
-@synthesize bottomShadowView        = _bottomShadowView;
+//@synthesize bottomShadowView        = _bottomShadowView;
 @synthesize subControllers          = _subControllers;
 @synthesize delegate                = _delegate;
 
@@ -76,9 +76,10 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
                                             [UIImage imageNamed:kImgTopShadow]] autorelease];
         self.topShadowView.frame        = CGRectMake(0,44,320,5);
         
+        /*
         self.bottomShadowView           = [[[UIImageView alloc] initWithImage:
                                             [UIImage imageNamed:kImgBottomShadow]] autorelease];
-        self.bottomShadowView.frame     = CGRectMake(0,self.tabBar.frame.origin.y-5,320,5);
+        self.bottomShadowView.frame     = CGRectMake(0,self.tabBar.frame.origin.y-5,320,5);*/
 	}
 	
 	return self;
@@ -90,7 +91,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 	
 	self.tabBar             = nil;
     self.topShadowView      = nil;
-    self.bottomShadowView   = nil;
+    //self.bottomShadowView   = nil;
 	self.subControllers     = nil;
     self.delegate           = nil;
 	
@@ -102,7 +103,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
     [super viewDidLoad];
     
 	[self.view addSubview:self.topShadowView];
-    [self.view addSubview:self.bottomShadowView];
+    //[self.view addSubview:self.bottomShadowView];
 	[self.view addSubview:self.tabBar];
     
 	[self addViewAtIndex:self.tabBar.selectedIndex];
@@ -154,7 +155,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 //----------------------------------------------------------------------------------------------------
 - (void)enableFullScreen {
 	self.tabBar.hidden                      = YES;
-    self.bottomShadowView.hidden            = YES;
+    //self.bottomShadowView.hidden            = YES;
     
     [self getSelectedController].view.frame = kFullScreenFrame;
 }
@@ -162,7 +163,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 //----------------------------------------------------------------------------------------------------
 - (void)disableFullScreen {
 	self.tabBar.hidden                      = NO;
-    self.bottomShadowView.hidden            = NO;
+    //self.bottomShadowView.hidden            = NO;
     
     [self getSelectedController].view.frame = CGRectMake(0,0,
                                                          self.view.frame.size.width,

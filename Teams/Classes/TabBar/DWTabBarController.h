@@ -16,7 +16,7 @@
 @interface DWTabBarController : UIViewController<DWTabBarDelegate> {
 	DWTabBar			*_tabBar;
     UIImageView         *_topShadowView;
-    UIImageView         *_bottomShadowView;
+    //UIImageView       *_bottomShadowView;
 	NSArray				*_subControllers;
     	
 	id<DWTabBarControllerDelegate> _delegate;
