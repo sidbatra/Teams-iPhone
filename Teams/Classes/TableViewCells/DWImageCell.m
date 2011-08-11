@@ -59,7 +59,10 @@
 - (void)createImageView {
     imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(60,36,200,200)] autorelease];
 
-    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.contentMode   = UIViewContentModeScaleAspectFit;
+    imageView.clipsToBounds = YES;
+    [[imageView layer] setCornerRadius:4.0];
+    
     [self.contentView addSubview:imageView];
 }
 

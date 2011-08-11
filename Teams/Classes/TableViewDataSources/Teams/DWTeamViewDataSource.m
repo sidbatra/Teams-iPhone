@@ -162,9 +162,10 @@ static NSString* const kImgShare		= @"slice_button_share.png";
     [self addInviteResource];
     [self addShareResource];
     
+    /*
     DWMessage *message  = [[[DWMessage alloc] init] autorelease];
     message.content     = [DWTeamsHelper createdAtLineForTeam:[DWTeam fetch:self.teamID]];
-    [self.objects addObject:message];
+    [self.objects addObject:message];*/
     
     [self.delegate reloadTableView];
 }

@@ -4,6 +4,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 /**
  * Display an image along with an optional byline
