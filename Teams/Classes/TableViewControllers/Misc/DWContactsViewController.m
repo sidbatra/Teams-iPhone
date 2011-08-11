@@ -62,12 +62,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,153)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,255)] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,175)] autorelease];
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,273)] autorelease];
     errorView.delegate      = self;
     
     return errorView;
