@@ -147,7 +147,9 @@
     
     [self addImageResource:user];
     [self addCurrentTeamMessage:user];
-    [self addWatchingTeamsMessage:user];
+    
+    if (user.followingCount-1)
+        [self addWatchingTeamsMessage:user];
       
     [self.delegate userLoaded:user];
     [self.delegate reloadTableView];
