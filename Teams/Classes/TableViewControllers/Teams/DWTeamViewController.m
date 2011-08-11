@@ -6,7 +6,7 @@
 #import "DWTeamViewController.h"
 
 #import "DWConstants.h"
-#import "DWTeamsLogicController.h"
+#import "DWUsersLogicController.h"
 #import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
 #import "DWSession.h"
@@ -36,7 +36,7 @@
 @implementation DWTeamViewController
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
-@synthesize teamsLogicController    = _teamsLogicController;
+@synthesize usersLogicController    = _usersLogicController;
 
 @synthesize navTitleView            = _navTitleView;
 
@@ -53,14 +53,8 @@
         self.teamViewDataSource             = [[[DWTeamViewDataSource alloc] init] autorelease];
         self.teamViewDataSource.teamID      = team.databaseID;
         
-        self.teamsLogicController           = [[[DWTeamsLogicController alloc] init] autorelease];
-        self.teamsLogicController.tableViewController   = self;
-        self.teamsLogicController.navigationEnabled     = NO;
-        
-        
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleNavigationDisabled]
-                                        forKey:[[DWTeam class] className]];
-        
+        self.usersLogicController    = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController.tableViewController = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(smallUserImageLoaded:) 
@@ -87,7 +81,7 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
     self.teamViewDataSource         = nil;
-    self.teamsLogicController       = nil;
+    self.usersLogicController       = nil;
     
     self.navTitleView               = nil;
         
@@ -97,8 +91,8 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate {
-    self.teamsLogicController.delegate = delegate;
+- (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate {
+    self.usersLogicController.delegate = delegate;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -106,8 +100,9 @@
     
     id delegate = nil;
     
-    if([className isEqualToString:[[DWTeam class] className]])
-        delegate = self.teamsLogicController;
+    if([className isEqualToString:[[DWUser class] className]])
+        delegate = self.usersLogicController;
+    
     else
         delegate = [super getDelegateForClassName:className];
     

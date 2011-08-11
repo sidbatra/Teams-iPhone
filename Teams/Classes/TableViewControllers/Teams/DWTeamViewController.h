@@ -11,7 +11,8 @@
 @class DWNavTitleView;
 @class DWTeamViewDataSource;
 @class DWTeamsLogicController;
-@protocol DWTeamsLogicControllerDelegate;
+@class DWUsersLogicController;
+@protocol DWUsersLogicControllerDelegate;
 @protocol DWTeamViewControllerDelegate;
 
 /**
@@ -21,7 +22,7 @@
     BOOL                        _isUsersTeam;
     
     DWTeamViewDataSource        *_teamViewDataSource;
-    DWTeamsLogicController      *_teamsLogicController;
+    DWUsersLogicController      *_usersLogicController;
     
     DWNavTitleView              *_navTitleView;
         
@@ -34,9 +35,10 @@
 @property (nonatomic,retain) DWTeamViewDataSource *teamViewDataSource;
 
 /**
- * Encapsulates functionality to display one or more teams
+ * Users view controller encapsulates the common display and interaction 
+ * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
+@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
 
 /**
  * Custom nav bar title
@@ -56,9 +58,9 @@
 - (id)initWithTeam:(DWTeam*)team;
 
 /**
- * Set a delegate that responds to the DWTeamsLogicControllerDelegate protocol
+ * Set a users logic controller delegate
  */
-- (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate;
+- (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate;
 
 @end
 

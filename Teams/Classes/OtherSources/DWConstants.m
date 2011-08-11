@@ -23,7 +23,7 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"teams.denwen.com";
+	NSString* const kDenwenServer	= @"teamd.denwen.com";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
     NSString* const kDenwenServer	= @"staging.denwen.com";
@@ -412,7 +412,7 @@ NSInteger const kStatusBarStyle					= UIStatusBarStyleBlackOpaque;
 NSInteger const kURLTagMultipler				= 100;
 NSInteger const kPaginationCellHeight			= 60;
 
-NSInteger const kSlimCellHeight                 = 80;
+NSInteger const kSlimCellHeight                 = 68;
 NSInteger const kMessageCellHeight              = 67;
 NSInteger const kImageCellHeight                = 282;
 

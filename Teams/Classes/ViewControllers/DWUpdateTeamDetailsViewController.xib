@@ -145,9 +145,9 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor">
+						<object class="NSColor" key="IBUITextColor" id="495178585">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zNDkwMTk2MDc4IDAuMzQ5MDE5NjA3OCAwLjM0OTAxOTYwNzgAA</bytes>
+							<bytes key="NSRGB">MSAxIDEgMC41AA</bytes>
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -199,10 +199,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string key="IBUIText">email address can join:</string>
 						<reference key="IBUIFont" ref="11260618"/>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zNDkwMTk2MDc4IDAuMzQ5MDE5NjA3OCAwLjM0OTAxOTYwNzgAA</bytes>
-						</object>
+						<reference key="IBUITextColor" ref="495178585"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -229,10 +226,7 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC4zNDkwMTk2MDc4IDAuMzQ5MDE5NjA3OCAwLjM0OTAxOTYwNzgAA</bytes>
-						</object>
+						<reference key="IBUITextColor" ref="495178585"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
@@ -257,7 +251,6 @@
 						<string key="NSFrame">{{0, 166}, {320, 1}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<reference key="IBUIImage" ref="1052461587"/>
@@ -269,7 +262,7 @@
 				<reference key="NSNextKeyView" ref="1033751161"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MC45NzI1NDkwMTk2IDAuOTcyNTQ5MDE5NiAwLjk3MjU0OTAxOTYAA</bytes>
+					<bytes key="NSRGB">MC4xMzcyNTQ5MDIgMC4xMzcyNTQ5MDIgMC4xMzcyNTQ5MDIAA</bytes>
 				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>

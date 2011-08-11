@@ -34,7 +34,7 @@
     if(style == KUserPresenterStyleFullSignature)
         cell.boldText   = [DWUsersHelper shortSignatureWithTeamName:user]; 
     else
-        cell.boldText   = user.firstName;
+        cell.boldText   = [DWUsersHelper displayName:user];
     
     if (style == kUserPresenterStyleNavigationDisabled) 
         [cell disableCellInteraction];
@@ -83,7 +83,7 @@
         if(style == KUserPresenterStyleFullSignature)
             cell.boldText   = [DWUsersHelper shortSignatureWithTeamName:newUser]; 
         else
-            cell.boldText   = newUser.firstName;
+            cell.boldText   = [DWUsersHelper displayName:newUser];
         
         cell.plainText  = newUser.byline;
         
