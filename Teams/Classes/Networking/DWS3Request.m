@@ -4,7 +4,7 @@
 //
 
 #import "DWS3Request.h"
-
+#import "NSString+Helpers.h"
 #import "DWConstants.h"
 
 static NSInteger const kRandomStringLength	= 20;
@@ -48,16 +48,11 @@ static NSString* const kS3SuccessResponse	= @"";
 										errorNotification:kNS3UploadError
 											   resourceID:[[NSDate date] timeIntervalSince1970]];
 	
-	NSMutableString *randomString = [NSMutableString stringWithString:@""];
-	
-	for(int i=0;i<kRandomStringLength;i++)
-		[randomString appendFormat:@"%d",arc4random() % kRandomStringBase];
-	
-	s3Request.filename = [NSString stringWithFormat:@"%@_%@_%d_%@%@",
+	s3Request.filename = [NSString stringWithFormat:@"%@%@%d%@%@",
                           kEnvPrefix,
                           prefix,
                           s3Request.resourceID,
-                          randomString,
+                          [NSString stringWithRandomnessOfLength:30],
                           suffix];
 	
 	

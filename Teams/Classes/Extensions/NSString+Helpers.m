@@ -65,11 +65,18 @@ static NSInteger const kRandomStringMaxLength   = 10;
 //----------------------------------------------------------------------------------------------------
 + (NSString*)randomString {
     NSInteger length = (arc4random() % (kRandomStringMaxLength - kRandomStringMinLength)) + kRandomStringMinLength;
+    
+    return [self stringWithRandomnessOfLength:length];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSString*)stringWithRandomnessOfLength:(NSInteger)length {
+    
     NSMutableString *randomString = [NSMutableString stringWithCapacity:length];
     
     for(int i = 0; i < length; i++) 
         [randomString appendFormat: @"%c", [kAlphanumericLetters characterAtIndex:rand()%[kAlphanumericLetters length]]];
-         
+    
     return randomString;
 }
 

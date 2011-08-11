@@ -35,4 +35,9 @@
  */
 + (NSString*)randomString;
 
+/**
+ * Generate random alphanumeric string of the given length
+ */
++ (NSString*)stringWithRandomnessOfLength:(NSInteger)length;
+
 @end
