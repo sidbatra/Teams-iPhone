@@ -199,20 +199,20 @@
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
 
     if(resource == self.teamViewDataSource.invite) {
-        [self.delegate showInvitePeopleFor:team];
-        
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"invite_selected"
                                                                      withViewID:team.databaseID];
+        
+        [self.delegate showInvitePeopleFor:team];
     }
     else if(resource == self.teamViewDataSource.share) {
-        [self.delegate shareTeam:team];
-        
-        
+
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"share_selected"
                                                                      withViewID:team.databaseID];
+        
+        [self.delegate shareTeam:team];
     }
 }
 

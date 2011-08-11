@@ -168,6 +168,11 @@ static NSString* const kImgShare		= @"slice_button_share.png";
     [self.objects addObject:message];*/
     
     [self.delegate reloadTableView];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self.delegate
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:_teamID];
 }
 
 //----------------------------------------------------------------------------------------------------
