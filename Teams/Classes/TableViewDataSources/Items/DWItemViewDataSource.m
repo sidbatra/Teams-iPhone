@@ -14,7 +14,7 @@
 @implementation DWItemViewDataSource
 
 @synthesize itemsController     = _itemsController;
-@synthesize usersController     = _usersController;
+@synthesize touchesController   = _touchesController;
 @synthesize itemID              = _itemID;
 
 @dynamic delegate;
@@ -24,11 +24,11 @@
     self = [super init];
     
     if(self) {
-        self.itemsController            = [[[DWItemsController alloc] init] autorelease];
-        self.itemsController.delegate   = self;
+        self.itemsController                = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController.delegate       = self;
         
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
-        self.usersController.delegate   = self;
+        self.touchesController              = [[[DWTouchesController alloc] init] autorelease];
+        self.touchesController.delegate     = self;
     }
     
     return self;
@@ -36,8 +36,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.itemsController    = nil;
-    self.usersController    = nil;
+    self.itemsController        = nil;
+    self.touchesController      = nil;
     
     [super dealloc];
 }
@@ -57,10 +57,10 @@
     
     
     _itemLoaded     = NO;
-    _usersLoaded    = NO;
+    _touchesLoaded  = NO;
 
     [self.itemsController getItemWithID:self.itemID];
-    [self.usersController getTouchersOfItem:self.itemID];
+    [self.touchesController getTouchesOnItem:self.itemID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -82,7 +82,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)itemLoaded:(DWItem*)item {
 
-    if(!_usersLoaded) {
+    if(!_touchesLoaded) {
         [self clean];
         self.objects = [NSMutableArray array];
         [self.objects addObject:item];
@@ -108,33 +108,33 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUsersControllerDelegate
+#pragma mark DWTouchesControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)usersResourceID {
+- (NSInteger)touchesResourceID {
     return self.itemID;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)itemTouchersLoaded:(NSMutableArray*)users {
-    
+- (void)touchesLoaded:(NSMutableArray*)touches {
+
     if(!_itemLoaded) {
         [self clean];
-        self.objects = users;
+        self.objects = touches;
     }
     else {
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,[users count])];
-        [self.objects insertObjects:users atIndexes:indexSet];          
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1,[touches count])];
+        [self.objects insertObjects:touches atIndexes:indexSet];          
     }
     
     [self.delegate reloadTableView];
     
-    _usersLoaded = YES;
+    _touchesLoaded = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)itemTouchersError:(NSString *)error {
-    NSLog(@"Item touchers error - %@",error);
+- (void)touchesError:(NSString *)error {
+    NSLog(@"Item touches error - %@",error);
     [self.delegate displayError:error];    
 }
 

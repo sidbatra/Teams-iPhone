@@ -309,6 +309,8 @@
 		BB7A68C5131CB7260000157E /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7A68BE131CB7260000157E /* Icon.png */; };
 		BB7A68C6131CB7260000157E /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7A68BF131CB7260000157E /* Icon@2x.png */; };
 		BB7E1E1813F321A000294A23 /* DWNotificationsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */; };
+		BB7E1E3F13F35AE900294A23 /* DWTouchPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7E1E3E13F35AE900294A23 /* DWTouchPresenter.m */; };
+		BB7E1E4213F35CFF00294A23 /* DWTouchesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7E1E4113F35CFF00294A23 /* DWTouchesHelper.m */; };
 		BB8397201373B02D00343955 /* onboarding.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83971E1373B02D00343955 /* onboarding.png */; };
 		BB8397211373B02D00343955 /* onboarding@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB83971F1373B02D00343955 /* onboarding@2x.png */; };
 		BB8499E213C6B09E00D9789D /* DWAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = BB8499D713C6B09E00D9789D /* DWAttachment.m */; };
@@ -914,6 +916,10 @@
 		BB7A68BF131CB7260000157E /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "resources/Icon@2x.png"; sourceTree = "<group>"; };
 		BB7E1E1613F321A000294A23 /* DWNotificationsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsHelper.h; sourceTree = "<group>"; };
 		BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsHelper.m; sourceTree = "<group>"; };
+		BB7E1E3D13F35AE900294A23 /* DWTouchPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchPresenter.h; sourceTree = "<group>"; };
+		BB7E1E3E13F35AE900294A23 /* DWTouchPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchPresenter.m; sourceTree = "<group>"; };
+		BB7E1E4013F35CFF00294A23 /* DWTouchesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTouchesHelper.h; sourceTree = "<group>"; };
+		BB7E1E4113F35CFF00294A23 /* DWTouchesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTouchesHelper.m; sourceTree = "<group>"; };
 		BB83971E1373B02D00343955 /* onboarding.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = onboarding.png; path = resources/onboarding.png; sourceTree = "<group>"; };
 		BB83971F1373B02D00343955 /* onboarding@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "onboarding@2x.png"; path = "resources/onboarding@2x.png"; sourceTree = "<group>"; };
 		BB8499D613C6B09E00D9789D /* DWAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAttachment.h; sourceTree = "<group>"; };
@@ -2202,6 +2208,8 @@
 				BB572A2B13D3951E0060A351 /* DWResourcePresenter.m */,
 				BBD113BE13D7D9B8002D7352 /* DWNotificationPresenter.h */,
 				BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */,
+				BB7E1E3D13F35AE900294A23 /* DWTouchPresenter.h */,
+				BB7E1E3E13F35AE900294A23 /* DWTouchPresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2276,6 +2284,8 @@
 				BB572A2213D371D00060A351 /* DWTeamsHelper.m */,
 				BB7E1E1613F321A000294A23 /* DWNotificationsHelper.h */,
 				BB7E1E1713F321A000294A23 /* DWNotificationsHelper.m */,
+				BB7E1E4013F35CFF00294A23 /* DWTouchesHelper.h */,
+				BB7E1E4113F35CFF00294A23 /* DWTouchesHelper.m */,
 				262415F013D21F1E00474D4B /* DWRequestHelper.h */,
 				262415F113D21F1E00474D4B /* DWRequestHelper.m */,
 			);
@@ -2930,6 +2940,8 @@
 				26E1016113E8C14A00F2C32C /* DWFatCell.m in Sources */,
 				26E1017813E8F46D00F2C32C /* DWApplicationHelper.m in Sources */,
 				BB7E1E1813F321A000294A23 /* DWNotificationsHelper.m in Sources */,
+				BB7E1E3F13F35AE900294A23 /* DWTouchPresenter.m in Sources */,
+				BB7E1E4213F35CFF00294A23 /* DWTouchesHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

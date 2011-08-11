@@ -26,6 +26,11 @@
  */
 - (void)postWithItemID:(NSInteger)itemID;
 
+/**
+ * Get touches on the given itemID
+ */
+- (void)getTouchesOnItem:(NSInteger)itemID;
+
 @end
 
 
@@ -46,5 +51,20 @@
  * Fired when an error occurs during the creation of a touch
  */
 - (void)touchCreationError:(NSString*)error;
+
+/**
+ * Used for pinging delegates of the objects waiting for the right resourceID
+ */
+- (NSInteger)touchesResourceID;
+
+/**
+ * Array of parsed DWTouch objects
+ */
+- (void)touchesLoaded:(NSMutableArray*)touches;
+
+/**
+ * Error message encountered while loading touches
+ */
+- (void)touchesError:(NSString*)message;
 
 @end
