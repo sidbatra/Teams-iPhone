@@ -62,7 +62,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,255)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,251)] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------
