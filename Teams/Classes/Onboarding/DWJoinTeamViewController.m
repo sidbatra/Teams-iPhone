@@ -9,7 +9,6 @@
 #import "DWTeam.h"
 #import "DWUser.h"
 #import "DWJoinTeamDataSource.h"
-#import "DWTeamsLogicController.h"
 #import "DWUsersLogicController.h"
 #import "NSObject+Helpers.h"
 #import "DWApplicationHelper.h"
@@ -36,7 +35,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 @synthesize navBarRightButtonView       = _navBarRightButtonView;
 
 @synthesize joinTeamDataSource          = _joinTeamDataSource;
-@synthesize teamsLogicController        = _teamsLogicController;
 @synthesize usersLogicController        = _usersLogicController;
 
 @synthesize delegate                    = _delegate;
@@ -48,10 +46,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     if (self) {
         self.joinTeamDataSource                         = [[[DWJoinTeamDataSource alloc] init] autorelease];
-        
-        self.teamsLogicController                       = [[[DWTeamsLogicController alloc] init] autorelease];
-        self.teamsLogicController.tableViewController   = self;
-        
+
         self.usersLogicController                       = [[[DWUsersLogicController alloc] init] autorelease];
         self.usersLogicController.tableViewController   = self;
                 
@@ -69,7 +64,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.navBarRightButtonView  = nil;
     
     self.joinTeamDataSource     = nil;
-    self.teamsLogicController   = nil;
     self.usersLogicController   = nil;
         
     [super dealloc];
@@ -129,6 +123,25 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {
     return self.joinTeamDataSource;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate {
+    self.usersLogicController.delegate = delegate;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (id)getDelegateForClassName:(NSString *)className {
+    
+    id delegate = nil;
+    
+    if([className isEqualToString:[[DWUser class] className]])
+        delegate = self.usersLogicController;
+    
+    else
+        delegate = [super getDelegateForClassName:className];
+    
+    return delegate;
 }
 
 

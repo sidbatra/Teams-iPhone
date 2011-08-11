@@ -11,10 +11,9 @@
 @class DWNavTitleView;
 @class DWNavBarRightButtonView;
 @class DWJoinTeamDataSource;
-@class DWTeamsLogicController;
 @class DWUsersLogicController;
 
-
+@protocol DWUsersLogicControllerDelegate;
 @protocol DWJoinTeamViewControllerDelegate;
 
 /**
@@ -28,7 +27,6 @@
     DWNavBarRightButtonView     *_navBarRightButtonView;
     
     DWJoinTeamDataSource        *_joinTeamDataSource;
-    DWTeamsLogicController      *_teamsLogicController;
     DWUsersLogicController      *_usersLogicController;
         
     id<DWJoinTeamViewControllerDelegate>   _delegate;
@@ -51,12 +49,6 @@
 @property (nonatomic,retain) DWJoinTeamDataSource *joinTeamDataSource;
 
 /**
- * Teams logic controller encapsulates all the functionality for display and interaction
- * of a standalone or list of teams
- */
-@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
-
-/**
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
@@ -66,6 +58,12 @@
  * Delegate to send updates to
  */
 @property (nonatomic,assign) id<DWJoinTeamViewControllerDelegate> delegate;
+
+
+/**
+ * Set a users logic controller delegate
+ */
+- (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate;
 
 @end
 
