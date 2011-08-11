@@ -12,7 +12,6 @@
 @class DWTeamViewDataSource;
 @class DWTeamsLogicController;
 @class DWUsersLogicController;
-@protocol DWTeamsLogicControllerDelegate;
 @protocol DWUsersLogicControllerDelegate;
 @protocol DWTeamViewControllerDelegate;
 
@@ -23,7 +22,6 @@
     BOOL                        _isUsersTeam;
     
     DWTeamViewDataSource        *_teamViewDataSource;
-    DWTeamsLogicController      *_teamsLogicController;
     DWUsersLogicController      *_usersLogicController;
     
     DWNavTitleView              *_navTitleView;
@@ -35,11 +33,6 @@
  * Data source for the table view
  */
 @property (nonatomic,retain) DWTeamViewDataSource *teamViewDataSource;
-
-/**
- * Encapsulates functionality to display one or more teams
- */
-@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
 
 /**
  * Users view controller encapsulates the common display and interaction 
@@ -63,11 +56,6 @@
  * Init with the team whose details are being displayed
  */
 - (id)initWithTeam:(DWTeam*)team;
-
-/**
- * Set a delegate that responds to the DWTeamsLogicControllerDelegate protocol
- */
-- (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate;
 
 /**
  * Set a users logic controller delegate
