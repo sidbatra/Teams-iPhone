@@ -61,7 +61,7 @@
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)userTeamsTitle:(DWUser*)user {
-    return [NSString stringWithFormat:@"%@'s watching",user.firstName];
+    return user.isCurrentUser ? @"You are Following" : [NSString stringWithFormat:@"%@ is Following",user.firstName];
 }
 
 
