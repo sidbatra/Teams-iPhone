@@ -274,6 +274,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
     teamViewController.delegate                 = self;              
     
     [teamViewController setTeamsDelegate:self];
+    [teamViewController setUsersDelegate:self];
     
     [self.navigationController pushViewController:teamViewController
                                          animated:YES];

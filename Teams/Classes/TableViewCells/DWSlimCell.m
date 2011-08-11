@@ -13,21 +13,22 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kAnimationDuration          0.05
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
-#define kColorNormalBg              [UIColor colorWithRed:0.2156 green:0.2196 blue:0.2196 alpha:1.0].CGColor
-#define kColorHighlightBg           [UIColor colorWithRed:0.1725 green:0.1764 blue:0.1764 alpha:1.0].CGColor
+#define kColorNormalBg              [UIColor colorWithRed:0.11372 green:0.11372 blue:0.11372 alpha:1.0].CGColor
+#define kColorHighlightBg           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kColorTextExtra             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
-#define kFontExtraText              [UIFont fontWithName:@"HelveticaNeue" size:13]
-#define kTextX                      70
-#define kBoldTextTopY               5
-#define kPlainTextTopY              25
-#define kBoldTextMiddleY            15
-#define kPlainTextMiddleY           30
-#define kExtraTextXOffset           10
-#define kExtraTextY                 5
+#define kFontExtraText              [UIFont fontWithName:@"HelveticaNeue" size:10]
+#define kTextX                      78
+#define kBoldTextTopY               4
+#define kPlainTextTopY              24
+#define kBoldTextMiddleY            12
+#define kPlainTextMiddleY           32
+#define kExtraTextXOffset           21
+#define kExtraTextY                 6
+#define kTextSeparationXOffset      8
 
 
 
@@ -108,7 +109,7 @@ static NSString* const kImgChevron		= @"chevron.png";
         [[self layer] addSublayer:drawingLayer];
         
         imageLayer					= [CALayer layer];
-		imageLayer.frame			= CGRectMake(5,5,60,60);
+		imageLayer.frame			= CGRectMake(7,4,60,60);
 		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
@@ -116,7 +117,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
-		chevronLayer.frame				= CGRectMake(307,38,6,11);
+		chevronLayer.frame				= CGRectMake(307,28,6,11);
 		chevronLayer.contentsScale		= [[UIScreen mainScreen] scale];
 		chevronLayer.contents			= (id)[UIImage imageNamed:kImgChevron].CGImage;
 		[[self layer] addSublayer:chevronLayer];
@@ -153,11 +154,11 @@ static NSString* const kImgChevron		= @"chevron.png";
                                              lineBreakMode:UILineBreakModeTailTruncation];
     
     CGSize plainTextSize    = [self.plainText sizeWithFont:kFontPlainText
-                                         constrainedToSize:CGSizeMake(225,40) 
+                                         constrainedToSize:CGSizeMake(220,40) 
                                              lineBreakMode:UILineBreakModeTailTruncation];
         
     CGSize boldTextSize     = [self.boldText sizeWithFont:kFontBoldText 
-                                        constrainedToSize:CGSizeMake(225-extraTextSize.width,20)
+                                        constrainedToSize:CGSizeMake(220-extraTextSize.width - kTextSeparationXOffset,20)
                                             lineBreakMode:UILineBreakModeTailTruncation];
     
     BOOL isMultiLineMode    = plainTextSize.height > 20;

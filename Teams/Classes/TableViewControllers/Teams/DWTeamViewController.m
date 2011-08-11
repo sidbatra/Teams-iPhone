@@ -7,6 +7,7 @@
 
 #import "DWConstants.h"
 #import "DWTeamsLogicController.h"
+#import "DWUsersLogicController.h"
 #import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
 #import "DWSession.h"
@@ -37,6 +38,7 @@
 
 @synthesize teamViewDataSource      = _teamViewDataSource;
 @synthesize teamsLogicController    = _teamsLogicController;
+@synthesize usersLogicController    = _usersLogicController;
 
 @synthesize navTitleView            = _navTitleView;
 
@@ -57,6 +59,9 @@
         self.teamsLogicController.tableViewController   = self;
         self.teamsLogicController.navigationEnabled     = NO;
         
+        
+        self.usersLogicController    = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController.tableViewController = self;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleNavigationDisabled]
                                         forKey:[[DWTeam class] className]];
@@ -88,6 +93,7 @@
 
     self.teamViewDataSource         = nil;
     self.teamsLogicController       = nil;
+    self.usersLogicController       = nil;
     
     self.navTitleView               = nil;
         
@@ -102,12 +108,21 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate {
+    self.usersLogicController.delegate = delegate;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (id)getDelegateForClassName:(NSString *)className {
     
     id delegate = nil;
     
     if([className isEqualToString:[[DWTeam class] className]])
         delegate = self.teamsLogicController;
+    
+    else if([className isEqualToString:[[DWUser class] className]])
+        delegate = self.usersLogicController;
+    
     else
         delegate = [super getDelegateForClassName:className];
     
