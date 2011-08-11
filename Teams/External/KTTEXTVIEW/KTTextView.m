@@ -58,7 +58,7 @@
    [_placeholder setBackgroundColor:[UIColor clearColor]];
    [_placeholder setAlpha:0];
    [self addSubview:_placeholder];
-   [_placeholder sizeToFit];
+   //[_placeholder sizeToFit];
    [self sendSubviewToBack:_placeholder];
    
    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textChanged:) name:UITextViewTextDidChangeNotification object:nil];
