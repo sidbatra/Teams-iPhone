@@ -13,6 +13,7 @@
     NSString    *_text;
     NSString    *_subText;
     
+    NSInteger   _ownerID;
     NSInteger   _imageResourceType;
     NSInteger   _imageResourceID;
 }
@@ -41,5 +42,11 @@
  * Unique id identifying the image resource
  */
 @property (nonatomic,assign) NSInteger imageResourceID;
+
+/**
+ * ID for the owner of the resource
+ */
+@property (nonatomic,assign) NSInteger ownerID;
+
 
 @end

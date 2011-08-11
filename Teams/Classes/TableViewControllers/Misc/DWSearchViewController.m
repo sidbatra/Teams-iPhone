@@ -10,6 +10,7 @@
 #import "DWSearchDataSource.h"
 #import "DWUser.h"
 #import "DWTeam.h"
+#import "DWResource.h"
 #import "NSObject+Helpers.h"
 
 
@@ -108,7 +109,27 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark FullScreenMode
+#pragma mark DWResourcePresenterDelegate (via selectors)
+//----------------------------------------------------------------------------------------------------
+- (void)resourceClicked:(id)object {
+    
+    /**
+     * DWResource is used to represent a team.
+     * Use the clicked resource object to find the 
+     * corresponding team
+     */
+    DWResource *resource    = object;
+    DWTeam *team            = [DWTeam fetch:resource.ownerID];
+    
+    [self.teamsLogicController performSelector:@selector(teamSelected:)
+                                    withObject:team];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
 //----------------------------------------------------------------------------------------------------
 - (void)requiresFullScreenMode {
     

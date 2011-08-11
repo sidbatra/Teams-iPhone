@@ -49,6 +49,7 @@ static NSString* const kImgTeamIcon     = @"slice_button_people.png";
     DWResource *resource    = [[[DWResource alloc] init] autorelease];
     resource.text           = team.name;
     resource.subText        = team.byline;
+    resource.ownerID        = team.databaseID;
     resource.image          = [UIImage imageNamed:kImgTeamIcon];
     
     return resource;

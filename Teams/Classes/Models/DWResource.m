@@ -18,6 +18,7 @@
 @synthesize subText             = _subText;
 @synthesize imageResourceType   = _imageResourceType;
 @synthesize imageResourceID     = _imageResourceID;
+@synthesize ownerID             = _ownerID;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
