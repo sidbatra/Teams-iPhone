@@ -11,9 +11,9 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kAnimationDuration              0.05
 #define kNoAnimationDuration            0.0
 #define kFadeDelay                      0.3
-#define kNormalAlpha                	0.6
+#define kNormalAlpha                	0.5
 #define kNormalNoAttachmentAlpha        1.0
-#define kHighlightAlpha                 0.45
+#define kHighlightAlpha                 0.35
 #define kColorNormalBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
 #define kColorNoAttachmentBg            [UIColor colorWithRed:0.3490 green:0.3490 blue:0.3490 alpha:1.0].CGColor
 #define kColorNoAttachmentHighlightBg   [UIColor colorWithRed:0.2784 green:0.2784 blue:0.2784 alpha:1.0].CGColor
