@@ -197,12 +197,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:self.tableView.frame] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,367)] autorelease];
+    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:self.tableView.frame] autorelease];
     errorView.delegate      = self;
     
     return errorView;

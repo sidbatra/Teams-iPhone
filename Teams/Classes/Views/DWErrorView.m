@@ -88,7 +88,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 - (void)createText {
     
     messageLabel                   = [[[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                                 self.frame.size.height / 2 - 35,
+                                                                                 self.frame.size.height / 2 - 35 - 49,
                                                                                  self.frame.size.width,
                                                                                  20)] autorelease];	
 	messageLabel.backgroundColor	= [UIColor clearColor];
@@ -112,7 +112,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshImage {
     refreshImageView                    = [[[UIImageView alloc] initWithFrame:CGRectMake(112,
-                                                                                         self.frame.size.height / 2 - 9,
+                                                                                         self.frame.size.height / 2 - 9 - 49,
                                                                                          13,
                                                                                          15)] autorelease];	
 	refreshImageView.image              = [UIImage imageNamed:kImgRefresh];
@@ -123,7 +123,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshText {
     refreshLabel                    = [[[UILabel alloc] initWithFrame:CGRectMake(8,
-                                                                                 self.frame.size.height / 2 - 10,
+                                                                                 self.frame.size.height / 2 - 10 - 49,
                                                                                  self.frame.size.width,
                                                                                  20)] autorelease];	
 	refreshLabel.backgroundColor	= [UIColor clearColor];

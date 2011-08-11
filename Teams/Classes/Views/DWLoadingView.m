@@ -68,7 +68,7 @@ static NSString* const kImgBackground	= @"main_bg.png";
                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] 
                                            autorelease];
     spinner.alpha   = 0.5;
-	spinner.frame	= CGRectMake(109,(self.frame.size.height - kSpinnerSize) / 2,kSpinnerSize,kSpinnerSize);
+	spinner.frame	= CGRectMake(109,(self.frame.size.height - kSpinnerSize) / 2 - 49,kSpinnerSize,kSpinnerSize);
     
     [spinner startAnimating];
 	
@@ -79,7 +79,7 @@ static NSString* const kImgBackground	= @"main_bg.png";
 - (void)createText {
     
     UILabel *messageLabel			= [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(136,(self.frame.size.height - 20) / 2,90,20)] 
+                                        initWithFrame:CGRectMake(136,self.frame.size.height/ 2 - 10 - 49,90,20)] 
                                        autorelease];	
 	messageLabel.backgroundColor	= [UIColor clearColor];
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
