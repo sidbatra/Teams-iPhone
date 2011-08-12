@@ -12,6 +12,7 @@
 
 static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
+static NSString* const kImgTableViewBackground      = @"bg_glow.png";
 
 
 /**
@@ -84,17 +85,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+        
     CGRect frame		= self.view.frame;
 	frame.origin.y		= 0; 
 	self.view.frame		= frame;
     
     self.tableView.scrollEnabled = NO;
 
-    self.tableView.backgroundColor          =  [UIColor colorWithRed:0.1372549
-                                                               green:0.1372549
-                                                                blue:0.1372549
-                                                               alpha:1.0];
+    self.tableView.backgroundColor          = [UIColor clearColor];
+    
+    UIImageView *backgroundImageView        = [[[UIImageView alloc] initWithFrame:self.view.frame] autorelease];
+    [backgroundImageView setImage:[UIImage imageNamed:kImgTableViewBackground]];
+    
+    self.tableView.backgroundView           = backgroundImageView;
     
 	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;
     
@@ -107,11 +110,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
 	[self.refreshHeaderView applyBackgroundImage:nil 
 								   withFadeImage:nil
-							 withBackgroundColor:[UIColor colorWithRed:0.1764
-                                                                 green:0.1764 
-                                                                  blue:0.1764
-                                                                 alpha:1.0]];
-    
+							 withBackgroundColor:[UIColor clearColor]];
+     
 	[self.tableView addSubview:self.refreshHeaderView];
     
     [self getDataSource].delegate   = self;
