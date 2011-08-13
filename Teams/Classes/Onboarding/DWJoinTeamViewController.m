@@ -86,6 +86,8 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
+    self.tableView.backgroundView           = [DWGUIManager backgroundImageViewWithFrame:self.view.frame];
+    
     [self disablePullToRefresh];
     
     if (!self.navTitleView)

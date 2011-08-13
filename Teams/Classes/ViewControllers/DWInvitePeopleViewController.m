@@ -47,6 +47,7 @@ static NSInteger const kTableViewHeight						= 200;
 @synthesize showTopShadow                   = _showTopShadow;
 @synthesize showBackButton                  = _showBackButton;
 @synthesize showCancelButton                = _showCancelButton;
+@synthesize addBackgroundView               = _addBackgroundView;
 
 @synthesize navTitleView                    = _navTitleView;
 @synthesize navBarRightButtonView           = _navBarRightButtonView;
@@ -194,6 +195,10 @@ static NSInteger const kTableViewHeight						= 200;
     [super viewDidLoad];
             
     self.messageLabel.text = self.messageLabelText;
+    
+    if (self.addBackgroundView) 
+        [self.view insertSubview:[DWGUIManager backgroundImageViewWithFrame:self.view.frame] 
+                         atIndex:0];
         
     if (self.showBackButton) 
         self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];

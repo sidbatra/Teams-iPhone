@@ -82,10 +82,10 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
+        
     self.navigationController.navigationBarHidden           = YES;
     self.navigationController.navigationBar.clipsToBounds   = NO;
-    
+        
     self.splashScreenViewController                         = [[[DWSplashScreenViewController alloc] init] autorelease];
     self.splashScreenViewController.delegate                = self;
     
@@ -167,7 +167,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)teamLoaded:(DWTeam*)team {
     
-    if (team) {
+    if (team) {        
         DWJoinTeamViewController *joinTeamViewController        = [[[DWJoinTeamViewController alloc] init] autorelease];
         joinTeamViewController.delegate                         = self;
         joinTeamViewController.team                             = team;
@@ -258,6 +258,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     invitePeopleViewController.delegate                         = self;
     
     invitePeopleViewController.showTopShadow                    = YES;
+    invitePeopleViewController.addBackgroundView                = YES;
         
     invitePeopleViewController.navBarTitle                      = kAddPeopleText;
     invitePeopleViewController.navBarSubTitle                   = [NSString 

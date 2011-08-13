@@ -32,6 +32,7 @@
     BOOL                        _showTopShadow;
     BOOL                        _showBackButton;
     BOOL                        _showCancelButton;
+    BOOL                        _addBackgroundView;
         
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
@@ -92,6 +93,11 @@
  * Property to show nav bar close button. NO by default.
  */
 @property (nonatomic,assign) BOOL showCancelButton;
+
+/**
+ * Property to add its own background view. No by default.
+ */
+@property (nonatomic,assign) BOOL addBackgroundView;
 
 /**
  * Custom subviews for navigation bar
