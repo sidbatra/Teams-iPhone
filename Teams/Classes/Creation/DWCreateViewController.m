@@ -142,6 +142,12 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackTranslucent];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
 //----------------------------------------------------------------------------------------------------
 - (void)displayMediaUI {
 	/**
@@ -188,22 +194,6 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	return status;
 }
 
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark UITextViewDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (BOOL)textView:(UITextView *)theTextView shouldChangeTextInRange:(NSRange)range 
- replacementText:(NSString *)text{
-	
-	NSUInteger newLength = [self.dataTextView.text length] + [text length] - range.length;
-    return (newLength > kMaxPostLength) || [text isEqualToString:@"\n"] ? NO : YES;
-}
-
-
-//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 -(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
     DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] autorelease];
@@ -222,37 +212,15 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     }
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark IBActions
-
-//----------------------------------------------------------------------------------------------------
-- (void)cancelButtonClicked:(id)sender {
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:@"cancel_selected"];
-     
-    
-    [self exit];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)cameraButtonClicked:(id)sender {
-    [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)doneButtonClicked:(id)sender {
-	
-	if(![self isValidPost])
+- (void)createPost {
+    if(![self isValidPost])
 		return;
 	
     
     if(_attachmentType == kAttachmentNone) {        
         [self.itemsController queueWithData:self.dataTextView.text
-                                atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]];
+                                 atLocation:[[DWLocationManager sharedDWLocationManager] getCurrentLocation]];
         
     }
     else if(_attachmentType == kAttachmentImage) {
@@ -287,6 +255,52 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     
 	
     [self exit];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITextViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textView:(UITextView *)theTextView shouldChangeTextInRange:(NSRange)range 
+ replacementText:(NSString *)text{
+    
+    if([text isEqualToString:@"\n"]) {
+        [self createPost];
+        return NO;
+    }
+	
+	NSUInteger newLength = [self.dataTextView.text length] + [text length] - range.length;
+    return (newLength > kMaxPostLength) || [text isEqualToString:@"\n"] ? NO : YES;
+    
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (void)cancelButtonClicked:(id)sender {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"cancel_selected"];
+     
+    
+    [self exit];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)cameraButtonClicked:(id)sender {
+    [self presentMediaPickerControllerForPickerMode:kMediaPickerCaptureMode];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)doneButtonClicked:(id)sender {
+	[self createPost];
 }
 
 
