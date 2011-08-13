@@ -6,7 +6,7 @@
 #import "DWSlimCell.h"
 #import "DWConstants.h"
 
-static NSString* const kImgSeparator	= @"hr_dark.png";
+static NSString* const kImgSeparator	= @"hr_slim_cell.png";
 static NSString* const kImgChevron		= @"chevron.png";
 
 

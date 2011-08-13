@@ -4,10 +4,9 @@
 //
 
 #import "DWLoadingView.h"
+#import "DWGUIManager.h"
 
 static NSInteger const kSpinnerSize     = 20;
-static NSString* const kImgBackground	= @"main_bg.png";
-
 
 /**
  * Private method and property declarations
@@ -43,12 +42,9 @@ static NSString* const kImgBackground	= @"main_bg.png";
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.backgroundColor =  [UIColor colorWithRed:0.1372549
-                                                green:0.1372549
-                                                 blue:0.1372549
-                                                alpha:1.0];
-        
-        //[self createBackground];
+        self.backgroundColor =  [UIColor clearColor];
+
+        [self createBackground];
         [self createSpinner];
         [self createText];
     }
@@ -79,7 +75,7 @@ static NSString* const kImgBackground	= @"main_bg.png";
 - (void)createText {
     
     UILabel *messageLabel			= [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(136,self.frame.size.height/ 2 - 10 - 49,90,20)] 
+                                        initWithFrame:CGRectMake(135,self.frame.size.height/ 2 - 10 - 49,90,20)] 
                                        autorelease];	
 	messageLabel.backgroundColor	= [UIColor clearColor];
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
@@ -91,13 +87,8 @@ static NSString* const kImgBackground	= @"main_bg.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createBackground {
-	
-	UIImageView *backgroundImageView    = [[[UIImageView alloc] initWithFrame:self.frame] autorelease];
-	backgroundImageView.image			= [UIImage imageNamed:kImgBackground];
-	backgroundImageView.contentMode		= UIViewContentModeScaleToFill;
-	
-	[self addSubview:backgroundImageView];
+- (void)createBackground {	
+	[self addSubview:[DWGUIManager backgroundImageViewWithFrame:self.frame]];
 }
 
 @end

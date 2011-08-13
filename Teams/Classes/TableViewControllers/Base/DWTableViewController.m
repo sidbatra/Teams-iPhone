@@ -8,11 +8,10 @@
 #import "DWLoadingView.h"
 #import "DWErrorView.h"
 #import "NSObject+Helpers.h"
-#import "DWConstants.h"
+#import "DWGUIManager.h"
 
 static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
-static NSString* const kImgTableViewBackground      = @"bg_glow.png";
 
 
 /**
@@ -93,13 +92,8 @@ static NSString* const kImgTableViewBackground      = @"bg_glow.png";
     self.tableView.scrollEnabled = NO;
 
     self.tableView.backgroundColor          = [UIColor clearColor];
-    
-    UIImageView *backgroundImageView        = [[[UIImageView alloc] initWithFrame:self.view.frame] autorelease];
-    [backgroundImageView setImage:[UIImage imageNamed:kImgTableViewBackground]];
-    
-    self.tableView.backgroundView           = backgroundImageView;
-    
 	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;
+
     
     self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
 																						  0.0f - self.tableView.bounds.size.height,
@@ -107,8 +101,7 @@ static NSString* const kImgTableViewBackground      = @"bg_glow.png";
 																						  self.tableView.bounds.size.height)] autorelease];
 	self.refreshHeaderView.delegate = self;
     
-    
-	[self.refreshHeaderView applyBackgroundImage:nil 
+	[self.refreshHeaderView applyBackgroundImage:nil
 								   withFadeImage:nil
 							 withBackgroundColor:[UIColor clearColor]];
      
@@ -116,7 +109,6 @@ static NSString* const kImgTableViewBackground      = @"bg_glow.png";
     
     [self getDataSource].delegate   = self;
     
-
     
     if(!self.loadingView)
         self.loadingView = [self getTableLoadingView];

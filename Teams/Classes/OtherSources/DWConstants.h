@@ -489,6 +489,7 @@ extern NSString* const kMsgCancelMedia;
  * Images
  */
 extern NSString* const kImgGenericPlaceHolder;
+extern NSString* const kImgTableViewBackground;
 
 
 /**

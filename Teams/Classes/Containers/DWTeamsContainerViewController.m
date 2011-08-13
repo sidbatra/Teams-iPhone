@@ -167,13 +167,14 @@ static NSInteger const kMinimumQueryLength			= 1;
                                                              withActionName:@"search_cancelled"];
     
     
-    self.searchViewController.view.hidden   = YES;
-    self.searchBar.hidden                   = YES;
+    self.searchViewController.view.hidden           = YES;
+    self.searchBar.hidden                           = YES;
+    self.popularTeamsViewController.view.hidden     = NO;    
     
     [self.searchViewController resetWithSpinnerHidden:YES];
     [self.searchBar resignActive];
     
-    self.navTitleView.hidden                = NO;
+    self.navTitleView.hidden                        = NO;
     [self loadSideButtons];
 }
 
@@ -195,12 +196,13 @@ static NSInteger const kMinimumQueryLength			= 1;
                                                              withActionName:@"search_selected"];
     
     
-    self.searchViewController.view.hidden = NO;
-    self.searchBar.hidden                 = NO;
+    self.popularTeamsViewController.view.hidden     = YES;    
+    self.searchViewController.view.hidden           = NO;
+    self.searchBar.hidden                           = NO;
     
     [self.searchBar becomeActive];
     
-    self.navTitleView.hidden              = YES;
+    self.navTitleView.hidden                        = YES;
     [self removeSideButtons];
 }
 

@@ -38,4 +38,9 @@
  */
 + (UILabel*)navBarTitleViewForText:(NSString*)text;
 
+/**
+ * Creates a background image view for table views.
+ */
++ (UIImageView*)backgroundImageViewWithFrame:(CGRect)frame;
+
 @end

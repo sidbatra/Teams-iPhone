@@ -53,16 +53,15 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-
-    self.loadingView.hidden     = YES;    
-    self.view.backgroundColor   = [UIColor clearColor];
+    
+    self.loadingView.hidden = YES;    
     
     [self disablePullToRefresh];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,320,251)] autorelease];
+    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,-44,320,339)] autorelease];
 }
 
 //----------------------------------------------------------------------------------------------------

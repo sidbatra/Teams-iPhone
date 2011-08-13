@@ -19,6 +19,7 @@
 #import "DWConstants.h"
 #import "DWSession.h"
 #import "NSString+Helpers.h"
+#import "DWGUIManager.h"
 
 static NSString* const kDenwenURLPrefix             = @"denwen://";
 static NSString* const kMsgInviteMessageText        = @"Invite people to join this Team.";

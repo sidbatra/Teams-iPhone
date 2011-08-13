@@ -23,7 +23,7 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"teamd.denwen.com";
+	NSString* const kDenwenServer	= @"drao.tea.ms";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
     NSString* const kDenwenServer	= @"staging.tea.ms";
@@ -385,6 +385,7 @@ NSString* const kMsgCancelMedia					= @"Cancel";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kImgGenericPlaceHolder			= @"generic_placeholder.png";
+NSString* const kImgTableViewBackground         = @"bg_glow.png";
 
 //----------------------------------------------------------------------------------------------------
 /**

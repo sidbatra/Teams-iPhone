@@ -5,9 +5,9 @@
 
 #import "DWGUIManager.h"
 #import "DWNavBarBackButton.h"
+#import "DWConstants.h"
 
 static NSString* const kImgBackButton               = @"button_back.png";
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -77,6 +77,16 @@ static NSString* const kImgBackButton               = @"button_back.png";
     titleLabel.text                = text;
     
     return titleLabel;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIImageView*)backgroundImageViewWithFrame:(CGRect)frame {
+    
+    UIImageView *backgroundImageView    = [[[UIImageView alloc] initWithFrame:frame] autorelease];
+    backgroundImageView.image           = [UIImage imageNamed:kImgTableViewBackground];
+    backgroundImageView.contentMode     = UIViewContentModeTop;
+    
+    return backgroundImageView;
 }
 
 @end

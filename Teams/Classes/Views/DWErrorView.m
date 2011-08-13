@@ -4,10 +4,10 @@
 //
 
 #import "DWErrorView.h"
+#import "DWGUIManager.h"
 
 
 static NSInteger const kSpinnerSize     = 20;
-static NSString* const kImgBackground	= @"main_bg.png";
 static NSString* const kImgRefresh      = @"post_retry.png";
 static NSString* const kMsgRefreshText  = @"Try again";
 
@@ -59,12 +59,9 @@ static NSString* const kMsgRefreshText  = @"Try again";
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.backgroundColor =  [UIColor colorWithRed:0.1372549
-                                                green:0.1372549
-                                                 blue:0.1372549
-                                                alpha:1.0];
+        self.backgroundColor =  [UIColor clearColor];
         
-        //[self createBackground];
+        [self createBackground];
         [self createText];
         [self createRefreshImage];
         [self createRefreshText];
@@ -101,12 +98,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-	
-	UIImageView *backgroundImageView    = [[[UIImageView alloc] initWithFrame:self.frame] autorelease];
-	backgroundImageView.image			= [UIImage imageNamed:kImgBackground];
-	backgroundImageView.contentMode		= UIViewContentModeScaleToFill;
-	
-	[self addSubview:backgroundImageView];
+	[self addSubview:[DWGUIManager backgroundImageViewWithFrame:self.frame]];
 }
 
 //----------------------------------------------------------------------------------------------------
