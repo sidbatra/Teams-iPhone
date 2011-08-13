@@ -8,7 +8,6 @@
 #import "DWLoadingView.h"
 #import "DWErrorView.h"
 #import "NSObject+Helpers.h"
-#import "DWGUIManager.h"
 
 static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
