@@ -18,7 +18,6 @@ static NSInteger const kTableViewWidth						= 320;
 static NSInteger const kTableViewHeight						= 200;
 static NSInteger const kMaxPlaceNameLength					= 32;
 static NSInteger const kMaxPostLength						= 140;
-static NSString* const kImgImagePreviewBackground           = @"bg_dark_gradient_square.png";
 static NSString* const kImgTransBackground                  = @"trans55.png";
 static NSString* const kImgLightBackgroundButton			= @"button_gray_light.png";
 static NSString* const kImgDarkBackgroundCancelButton		= @"button_gray_dark_cancel.png";
@@ -60,9 +59,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	if (self) {
 		_attachmentType         = kAttachmentNone;
         self.itemsController    = [[[DWItemsController alloc] init] autorelease];
-        
-        self.cameraImage        = [UIImage imageNamed:kImgImagePreviewBackground];
-        
+            
         self.placeholder        = kMsgDataTextViewPlaceholder;
 	}
     
