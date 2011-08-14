@@ -172,6 +172,7 @@ extern NSString* const kKeyLargeURL;
 extern NSString* const kKeySliceURL;
 extern NSString* const kKeyIsProcessed;
 extern NSString* const kKeyName;
+extern NSString* const kKeyHandle;
 extern NSString* const kKeyHashedID;
 extern NSString* const kKeyFollowingsCount;
 extern NSString* const kKeyMembershipsCount;

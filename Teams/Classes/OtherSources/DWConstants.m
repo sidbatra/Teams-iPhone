@@ -23,7 +23,7 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"drao.tea.ms";
+	NSString* const kDenwenServer	= @"sbat.tea.ms";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
     NSString* const kDenwenServer	= @"staging.tea.ms";
@@ -95,6 +95,7 @@ NSString* const kKeyLargeURL				= @"large_url";
 NSString* const kKeySliceURL				= @"slice_url";
 NSString* const kKeyIsProcessed				= @"is_processed";
 NSString* const kKeyName					= @"name";
+NSString* const kKeyHandle					= @"handle";
 NSString* const kKeyHashedID				= @"hashed_id";
 NSString* const kKeyFollowingsCount			= @"followings_count";
 NSString* const kKeyMembershipsCount        = @"memberships_count";

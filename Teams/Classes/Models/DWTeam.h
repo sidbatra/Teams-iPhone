@@ -14,6 +14,7 @@
  */
 @interface DWTeam : DWPoolObject<NSCoding> {
 	NSString		*_name;
+    NSString		*_handle;
     NSString		*_byline;
     NSString        *_eventText;
 	
@@ -29,6 +30,11 @@
  * Name of the team
  */
 @property (nonatomic,copy) NSString *name;
+
+/**
+ * Handle used in URLs
+ */
+@property (nonatomic,copy) NSString *handle;
 
 /**
  * Byline of the team

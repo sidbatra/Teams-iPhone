@@ -20,6 +20,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 @implementation DWTeam
 
 @synthesize name                = _name;
+@synthesize handle              = _handle;
 @synthesize byline              = _byline;
 @synthesize eventText           = _eventText;
 @synthesize followingsCount     = _followersCount;
@@ -81,6 +82,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 	NSLog(@"team released %d",self.databaseID);
 	
 	self.name			= nil;
+    self.handle         = nil;
     self.byline         = nil;
     self.eventText      = nil;
     
@@ -94,6 +96,7 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
     [super update:team];
 
     NSString *name                  = [team objectForKey:kKeyName];
+    NSString *handle                = [team objectForKey:kKeyHandle];
     NSString *byline                = [team objectForKey:kKeyByLine];
     NSString *eventText             = [team objectForKey:kKeyEventText];
     NSString *timestamp             = [team objectForKey:kKeyTimestamp];
@@ -104,6 +107,9 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
     
     if(name && ![self.name isEqualToString:name])
         self.name = name;
+    
+    if(handle && ![self.handle isEqualToString:handle])
+        self.handle = handle;
     
     if(byline && ![self.byline isEqualToString:byline])
        self.byline = byline;
