@@ -8,7 +8,8 @@
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 
-static NSString* const kCurrentUserNotificationsURI           = @"/notifications.json?before=%d";
+static NSString* const kCurrentUserNotificationsURI             = @"/notifications.json?before=%d";
+static NSString* const kNotificationReadURI                     = @"/notifications/%d/read.json?";
 
 
 
@@ -34,6 +35,16 @@ static NSString* const kCurrentUserNotificationsURI           = @"/notifications
 												 selector:@selector(notificationsError:) 
 													 name:kNNotificationsError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(notificationUpdated:) 
+													 name:kNNotificationUpdated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(notificationUpdateError:) 
+													 name:kNNotificationUpdateError
+												   object:nil];
     }
     
     return self;
@@ -56,7 +67,7 @@ static NSString* const kCurrentUserNotificationsURI           = @"/notifications
 
 //----------------------------------------------------------------------------------------------------
 - (NSMutableArray*)populateNotificationsArrayFromJSON:(NSArray*)data {
-    
+
     NSMutableArray *notifications   = [NSMutableArray arrayWithCapacity:[data count]];
     
     for(NSDictionary *notification in data) {
@@ -75,6 +86,24 @@ static NSString* const kCurrentUserNotificationsURI           = @"/notifications
                                                  successNotification:kNNotificationsLoaded
                                                    errorNotification:kNNotificationsError
                                                        requestMethod:kGet];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Update
+
+//----------------------------------------------------------------------------------------------------
+- (void)markNotificationAsRead:(NSInteger)notificationID {
+
+    NSString *localURL = [NSString stringWithFormat:kNotificationReadURI,
+                          notificationID];
+
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNNotificationUpdated
+                                                   errorNotification:kNNotificationUpdateError
+                                                       requestMethod:kPut];
 }
 
 
@@ -107,6 +136,35 @@ static NSString* const kCurrentUserNotificationsURI           = @"/notifications
     if(![self.delegate respondsToSelector:sel])
         return;
     
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationUpdated:(NSNotification*)notification {
+    
+    SEL sel = @selector(notificationRead:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *data                      = [[notification userInfo] objectForKey:kKeyData];
+    DWNotification *notificationModelObj    = [DWNotification create:data];
+    
+    [self.delegate performSelector:sel 
+                        withObject:notificationModelObj];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationUpdateError:(NSNotification*)notification {
+
+    SEL sel = @selector(notificationReadError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
     

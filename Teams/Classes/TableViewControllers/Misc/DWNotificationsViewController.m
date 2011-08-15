@@ -73,13 +73,11 @@ static NSString* const kNewItemName         = @"DWNewItem";
                                                                           andSelector:@selector(didTapDoneButton:)];
 
     [self.notificationsDataSource loadNotifications];
-    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)softRefresh {
     [self.notificationsDataSource refreshInitiated];
-    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications]; 
 }
 
 
@@ -133,6 +131,9 @@ static NSString* const kNewItemName         = @"DWNewItem";
         
         [self.delegate notificationsCreateSelectedWithText:notification.details];
     }
+    
+    if (notification.unread) 
+        [[DWPushNotificationsManager sharedDWPushNotificationsManager] updateNotificationsAfterReading:notification.databaseID];
 }
 
 

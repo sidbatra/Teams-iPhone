@@ -216,6 +216,7 @@ extern NSString* const kKeyEntityData;
 extern NSString* const kKeyEventData;
 extern NSString* const kKeyResourceType;
 extern NSString* const kKeyDetails;
+extern NSString* const kKeyUnread;
 extern NSString* const kKeyAPS;
 extern NSString* const kKeyBadge;
 extern NSString* const kKeyAlert;
@@ -339,6 +340,8 @@ extern NSString* const kNPaginationCellReached;
 extern NSString* const kNEnteringLowMemoryState;
 extern NSString* const kNNotificationsLoaded;
 extern NSString* const kNNotificationsError;
+extern NSString* const kNNotificationUpdated;
+extern NSString* const kNNotificationUpdateError;
 extern NSString* const kNInteractionsCreated;
 extern NSString* const kNInteractionsError;
 

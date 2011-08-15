@@ -31,6 +31,7 @@
 	
 	CALayer							*imageLayer;
     CALayer                         *chevronLayer;
+    CALayer                         *overlayLayer;
 	DWSlimCellDrawingLayer          *drawingLayer;
 	
 	BOOL							_highlighted;
@@ -75,6 +76,16 @@
  * Set the image via the image layer
  */
 - (void)setImage:(UIImage*)image;
+
+/**
+ * Display the visited state for the cell
+ */
+- (void)displayVisitedState;
+
+/**
+ * Display the un-visited state for the cell
+ */
+- (void)displayUnvisitedState;
 
 /**
  * Mark layers for redisplay

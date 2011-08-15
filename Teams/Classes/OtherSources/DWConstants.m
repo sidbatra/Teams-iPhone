@@ -23,7 +23,7 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"sbat.tea.ms";
+	NSString* const kDenwenServer	= @"drao.tea.ms";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
     NSString* const kDenwenServer	= @"staging.tea.ms";
@@ -139,6 +139,7 @@ NSString* const kKeyEntityData              = @"entity_data";
 NSString* const kKeyEventData               = @"event_data";
 NSString* const kKeyResourceType            = @"resource_type";
 NSString* const kKeyDetails                 = @"details";
+NSString* const kKeyUnread					= @"unread";
 NSString* const kKeyAPS                     = @"aps";
 NSString* const kKeyBadge                   = @"badge";
 NSString* const kKeyAlert                   = @"alert";
@@ -261,6 +262,8 @@ NSString* const kNPaginationCellReached         = @"NPaginationCellReached";
 NSString* const kNEnteringLowMemoryState        = @"NEnteringLowMemoryState";
 NSString* const kNNotificationsLoaded           = @"NNotificationsLoaded";
 NSString* const kNNotificationsError            = @"NNotificationsError";
+NSString* const kNNotificationUpdated          = @"NNotificationsUpdated";
+NSString* const kNNotificationUpdateError      = @"NNotificationsUpdateError";
 NSString* const kNInteractionsCreated           = @"NInteractionsCreated";
 NSString* const kNInteractionsError             = @"NInteractionsError";
 

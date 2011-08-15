@@ -34,6 +34,11 @@
     cell.plainText  = notification.eventData;
     cell.extraText  = [DWNotificationsHelper createdAgoInWordsForNotification:notification];
     
+    if (notification.unread) 
+        [cell displayUnvisitedState];        
+    else
+        [cell displayVisitedState];
+
     [notification startImageDownload];
     
     [cell setImage:notification.image];

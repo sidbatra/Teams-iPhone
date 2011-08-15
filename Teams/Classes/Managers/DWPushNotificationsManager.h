@@ -16,6 +16,7 @@
     NSDictionary                *_backgroundNotificationInfo;
     
     DWUsersController           *_usersController;
+    DWNotificationsController   *_notificationsController;
     
     NSInteger                   _unreadNotificationsCount;
     BOOL                        _showNotifications;
@@ -36,6 +37,11 @@
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
+
+/**
+ * Interface to the notifications service
+ */
+@property (nonatomic,retain) DWNotificationsController *notificationsController;
 
 /**
  * Flag for unread notifications
@@ -69,6 +75,11 @@
  */
 - (void)resetNotifications;
 
+/**
+ * Update unread notification counts and badges after the 
+ * given notification is read.
+ */
+- (void)updateNotificationsAfterReading:(NSInteger)notificationID;
 
 @end
 

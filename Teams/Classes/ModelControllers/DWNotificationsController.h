@@ -5,6 +5,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class DWNotification;
 @protocol DWNotificationsControllerDelegate;
 
 /**
@@ -26,6 +27,11 @@
  */
 - (void)getNotificationsForCurrentUserBefore:(NSInteger)before;
 
+/**
+ * Mark the notification with the given ID as read.
+ */
+- (void)markNotificationAsRead:(NSInteger)notificationID;
+
 @end
 
 
@@ -45,5 +51,15 @@
  * Fired when there is an error loading notifications
  */
 - (void)notificationsError:(NSString*)error;
+
+/**
+ * Fired when the notification is read
+ */
+- (void)notificationRead:(DWNotification*)notification;
+
+/**
+ * Fired when there is an error in reading a notification
+ */
+- (void)notificationReadError:(NSString*)error;
 
 @end

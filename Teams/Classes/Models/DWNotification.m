@@ -21,6 +21,7 @@
 @synthesize imageURL            = _imageURL;
 @synthesize image               = _image;
 @synthesize details             = _details;
+@synthesize unread              = _unread;
 @synthesize createdAtTimestamp  = _createdAtTimestamp;
 
 //----------------------------------------------------------------------------------------------------
@@ -67,12 +68,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)update:(NSDictionary*)notification {
     [super update:notification];
-	
+
     NSString *resourceID        = [notification objectForKey:kKeyResourceID];
 	NSString *entityData        = [notification objectForKey:kKeyEntityData];
     NSString *eventData         = [notification objectForKey:kKeyEventData];
     NSString *resourceType      = [notification objectForKey:kKeyResourceType];
     NSString *details           = [notification objectForKey:kKeyDetails];
+    NSString *unread            = [notification objectForKey:kKeyUnread];    
     NSString *timestamp         = [notification objectForKey:kKeyTimestamp];
     NSDictionary *image         = [notification objectForKey:kKeyImage];
     
@@ -94,8 +96,10 @@
     
     if(details && ![self.details isEqualToString:details])
         self.details = details;
-
     
+    if(unread)
+        _unread = [unread boolValue];
+
     if(image) {
         NSString *imageURL = [image objectForKey:kKeySmallURL];
         

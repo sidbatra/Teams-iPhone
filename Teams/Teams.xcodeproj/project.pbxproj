@@ -2209,9 +2209,9 @@
 		BBC8D8E913CC1B6100A224F5 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				2666911913D652FD00FE630D /* DWContactPresenter.h */,
 				2666911A13D652FD00FE630D /* DWContactPresenter.m */,
-				BBC8D8EA13CC1B6100A224F5 /* DWModelPresenter.h */,
 				BBC8D8EF13CCB5D200A224F5 /* DWItemPresenter.h */,
 				BBC8D8F013CCB5D200A224F5 /* DWItemPresenter.m */,
 				BB272C2913D0F84100FDACA1 /* DWTeamPresenter.h */,

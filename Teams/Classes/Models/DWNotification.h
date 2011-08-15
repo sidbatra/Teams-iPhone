@@ -19,6 +19,8 @@
     NSString        *_imageURL;
     NSString        *_details;
     
+    BOOL            _unread;
+    
     UIImage         *_image;
     
     BOOL            _isImageDownloading;
@@ -55,6 +57,12 @@
  * Optional details associated with the notification
  */
 @property (nonatomic,copy) NSString* details;
+
+/**
+ * Checks whether the Notification has been read by 
+ * the current user or not
+ */
+@property (nonatomic,readonly) BOOL unread;
 
 /**
  * Image location at imageURL

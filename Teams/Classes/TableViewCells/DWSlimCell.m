@@ -14,7 +14,8 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
 #define kColorNormalBg              [UIColor clearColor].CGColor
-#define kColorHighlightBg           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor
+#define kColorHighlightBg           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2].CGColor
+#define kColorOverlayBg             [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kColorTextExtra             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
@@ -113,9 +114,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 		imageLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		imageLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        [NSNull null], @"contents",
-                                       nil];
-        //imageLayer.cornerRadius     = 2.0;
-        //imageLayer.masksToBounds    = YES;                
+                                       nil];                
 		[[self layer] addSublayer:imageLayer];
 		
 		chevronLayer                    = [CALayer layer];
@@ -129,6 +128,16 @@ static NSString* const kImgChevron		= @"chevron.png";
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
 		[[self layer] addSublayer:separatorLayer];
+        
+        overlayLayer					= [CALayer layer];
+		overlayLayer.frame              = frame;
+        overlayLayer.hidden             = YES;
+		overlayLayer.contentsScale      = [[UIScreen mainScreen] scale];
+        overlayLayer.backgroundColor    = kColorOverlayBg;
+		overlayLayer.actions			= [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           [NSNull null], @"contents",
+                                           nil];                
+		[[self layer] addSublayer:overlayLayer];
 		
 		
 		self.accessoryType				= UITableViewCellAccessoryNone;
@@ -189,7 +198,7 @@ static NSString* const kImgChevron		= @"chevron.png";
 	[CATransaction setValue:[NSNumber numberWithFloat:kNoAnimationDuration]
 					 forKey:kCATransactionAnimationDuration];		
     
-    drawingLayer.backgroundColor = kColorNormalBg;
+    drawingLayer.backgroundColor    = kColorNormalBg;
     
 	[CATransaction commit];
 }
@@ -217,6 +226,18 @@ static NSString* const kImgChevron		= @"chevron.png";
 //----------------------------------------------------------------------------------------------------
 - (void)setImage:(UIImage*)image {
 	imageLayer.contents = (id)image.CGImage;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayVisitedState {
+    overlayLayer.hidden = NO;
+    [self redisplay];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayUnvisitedState {
+    overlayLayer.hidden = YES;
+    [self redisplay];
 }
 
 //----------------------------------------------------------------------------------------------------
