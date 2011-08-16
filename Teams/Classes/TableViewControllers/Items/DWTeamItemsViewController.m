@@ -108,7 +108,7 @@ static NSString* const kMsgFollowAction             = @"Tap to follow this Team"
                                                                              kNavTitleViewHeight) 
                                                       andDelegate:self] autorelease];       
         
-        [self.navTitleView displaySpinnerWithUnderlay:NO];
+        //[self.navTitleView displaySpinnerWithUnderlay:NO];
     }
 }
 

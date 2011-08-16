@@ -9,7 +9,7 @@
 static float const kMinimumProgress     = 0.001;
 static NSString* const kImgDelete       = @"post_cancel.png";
 static NSString* const kImgRetry        = @"post_retry.png";
-static NSString* const kImgProgress     = @"button_follow.png";
+static NSString* const kImgProgress     = @"button_loading.png";
 static NSString* const kImgBackground   = @"loading_bar_fail.png";
 
 
@@ -45,7 +45,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 		statusLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width,20)] autorelease];
         statusLabel.text            = @"Posting...";
 		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue" size:15];
-		statusLabel.textColor		= [UIColor whiteColor];
+		statusLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
 		statusLabel.backgroundColor	= [UIColor clearColor];
 		statusLabel.textAlignment	= UITextAlignmentCenter;
 		[self addSubview:statusLabel];
