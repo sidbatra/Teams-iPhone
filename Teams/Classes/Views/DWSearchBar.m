@@ -74,7 +74,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
     searchTextField.font                    = [UIFont fontWithName:@"HelveticaNeue" size:17];	
 	searchTextField.textColor               = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
 	searchTextField.textAlignment           = UITextAlignmentLeft;
-    //searchTextField.clearButtonMode         = UITextFieldViewModeWhileEditing;
+    searchTextField.clearButtonMode         = UITextFieldViewModeWhileEditing;
     searchTextField.placeholder             = kMsgSearchPlaceholder;
     searchTextField.returnKeyType           = UIReturnKeySearch;    
     

@@ -18,7 +18,7 @@
 /**
  * Table view displaying search results
  */
-@interface DWSearchViewController : DWTableViewController<UISearchBarDelegate> {
+@interface DWSearchViewController : DWTableViewController<UISearchBarDelegate,UIScrollViewDelegate> {
     DWUsersLogicController      *_usersLogicController;
     DWTeamsLogicController      *_teamsLogicController;
     DWSearchDataSource          *_searchDataSource;
@@ -84,6 +84,11 @@
  * Fired when the user taps the search table view
  */
 - (void)searchTableViewTapped;
+
+/**
+ * Fired when the user scrolls the search table view
+ */
+- (void)searchTableViewScrolled;
 
 @end
 

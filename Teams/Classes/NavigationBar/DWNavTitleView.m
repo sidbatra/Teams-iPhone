@@ -7,7 +7,7 @@
 #import "DWConstants.h"
 
 static NSString* const kImgPassiveButton                    = @"button_unfollow.png";
-static NSString* const kImgPassiveButtonHighlighted         = @"button_unfollow_active.png";
+static NSString* const kImgPassiveButtonHighlighted         = @"button_loading.png";
 static NSString* const kImgActiveButton                     = @"button_follow.png";
 static NSString* const kImgActiveButtonHighlighted          = @"button_follow_active.png";
 
@@ -302,7 +302,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     subtitleLabel.textColor = [UIColor colorWithRed:255
                                               green:255 
                                                blue:255 
-                                              alpha:0.5];
+                                              alpha:1.0];
     [self titleViewButtonTapped];
 }
 
@@ -311,7 +311,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     subtitleLabel.textColor = [UIColor colorWithRed:255 
                                               green:255 
                                                blue:255 
-                                              alpha:0.5]; 
+                                              alpha:1.0]; 
 }
 
 
