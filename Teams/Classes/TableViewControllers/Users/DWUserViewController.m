@@ -156,7 +156,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
     [self.navTitleView displayTitle:[DWUsersHelper displayName:user] 
-                        andSubTitle:user.team.name];
+                        andSubTitle:user.byline];
 }
 
 

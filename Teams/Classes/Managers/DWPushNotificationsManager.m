@@ -35,6 +35,11 @@ static NSInteger const kNotificationTypeItem    = 2;
  */
 - (void)broadcastNewBadgeNumber;
 
+/**
+ * Update the unread notification count and the application badge.
+ */
+- (void)updateUnreadNotificationsBy:(NSInteger)delta;
+
 @end
 
 
@@ -188,15 +193,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)updateNotificationsAfterReading:(NSInteger)notificationID {
-    
-    _showNotifications = NO;    
-    _unreadNotificationsCount--;
-    
-    [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
-    
-    [self broadcastNewBadgeNumber];
-    
+- (void)updateNotificationWithID:(NSInteger)notificationID {
     [self.notificationsController markNotificationAsRead:notificationID];
 }
 
@@ -221,6 +218,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                 [NSNumber numberWithInteger:_unreadNotificationsCount],kKeyBadge,
                                                                 nil]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUnreadNotificationsBy:(NSInteger)delta {
+    
+    _showNotifications          = NO;    
+    _unreadNotificationsCount   = _unreadNotificationsCount + delta;
+    
+    if (_unreadNotificationsCount < 0)
+        _unreadNotificationsCount = 0;
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
+    
+    [self broadcastNewBadgeNumber];
 }
 
 
@@ -269,6 +280,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)notificationRead:(DWNotification*)notification {
+    
+    [self updateUnreadNotificationsBy:-1];
+    
     [notification destroy];
 }
 
@@ -276,12 +290,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 - (void)notificationReadError:(NSString*)error {
     
     NSLog(@"notification read error");
- 
-    _unreadNotificationsCount++;    
     
-    [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
-    
-    [self broadcastNewBadgeNumber];
+    [self updateUnreadNotificationsBy:1];
 }
 
 @end

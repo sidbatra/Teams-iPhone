@@ -76,10 +76,9 @@
 - (void)resetNotifications;
 
 /**
- * Update unread notification counts and badges after the 
- * given notification is read.
+ * Mark the given notification as read
  */
-- (void)updateNotificationsAfterReading:(NSInteger)notificationID;
+- (void)updateNotificationWithID:(NSInteger)notificationID;
 
 @end
 

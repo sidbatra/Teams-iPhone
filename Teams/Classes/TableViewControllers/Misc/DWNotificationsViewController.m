@@ -133,7 +133,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
     }
     
     if (notification.unread) 
-        [[DWPushNotificationsManager sharedDWPushNotificationsManager] updateNotificationsAfterReading:notification.databaseID];
+        [[DWPushNotificationsManager sharedDWPushNotificationsManager] updateNotificationWithID:notification.databaseID];
 }
 
 
