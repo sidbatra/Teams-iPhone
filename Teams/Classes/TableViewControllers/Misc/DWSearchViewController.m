@@ -40,7 +40,7 @@
         self.searchDataSource           = [[[DWSearchDataSource alloc] init] autorelease];
         
         
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleSearchResult]
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleFullNameWithTeam]
                                         forKey:[[DWUser class] className]];
     }
     

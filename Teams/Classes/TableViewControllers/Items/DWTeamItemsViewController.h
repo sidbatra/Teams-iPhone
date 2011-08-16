@@ -16,7 +16,7 @@
 /**
  * Table view for the items crated by a team
  */
-@interface DWTeamItemsViewController : DWItemsViewController {
+@interface DWTeamItemsViewController : DWItemsViewController<UIActionSheetDelegate> {
     DWTeamItemsDataSource       *_teamItemsDataSource;
     
     DWNavTitleView              *_navTitleView;

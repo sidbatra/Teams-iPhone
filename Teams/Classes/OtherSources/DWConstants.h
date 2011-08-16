@@ -62,7 +62,7 @@ enum {
 typedef enum {
     KUserPresenterStyleFullSignature = 1,
     kUserPresenterStyleNavigationDisabled = 2,    
-    kUserPresenterStyleSearchResult = 3
+    kUserPresenterStyleFullNameWithTeam = 3
 } DWUserPresenterStyle;
 
 /**

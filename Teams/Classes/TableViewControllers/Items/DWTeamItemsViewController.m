@@ -16,6 +16,7 @@
 
 static NSString* const kImgNotificationsButton      = @"button_more.png";
 static NSString* const kMsgFollowAction             = @"Tap to follow this Team";
+static NSString* const kMsgActionSheetUnfollow      = @"Unfollow";
 
 
 /**
@@ -143,13 +144,49 @@ static NSString* const kMsgFollowAction             = @"Tap to follow this Team"
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)invertFollowingState {
+    [self.navTitleView displaySpinnerWithUnderlay:YES];
+    [self.teamItemsDataSource invertFollowingState];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWNavTitleViewDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleView {
-        
-    [self.navTitleView displaySpinnerWithUnderlay:YES];
-    [self.teamItemsDataSource invertFollowingState];
+    
+    if (self.teamItemsDataSource.following) {
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
+                                                                 delegate:self 
+                                                        cancelButtonTitle:kMsgActionSheetCancel
+                                                   destructiveButtonTitle:kMsgActionSheetUnfollow
+                                                        otherButtonTitles:nil];
+    
+        [actionSheet showInView:self.view];
+        [actionSheet release];  
+    }
+    else
+        [self invertFollowingState];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+	
+    if (buttonIndex == 0) 
+        [self invertFollowingState];
+    
 }
 
 

@@ -40,7 +40,7 @@
         [cell disableCellInteraction];
 
     
-    if (style == kUserPresenterStyleSearchResult) 
+    if (style == kUserPresenterStyleFullNameWithTeam) 
         cell.plainText = user.team.name;
     else
         cell.plainText  = user.byline;
@@ -90,7 +90,7 @@
         else
             cell.boldText   = [DWUsersHelper displayName:newUser];
         
-        if (style == kUserPresenterStyleSearchResult) 
+        if (style == kUserPresenterStyleFullNameWithTeam) 
             cell.plainText  = newUser.team.name;
         else
             cell.plainText  = newUser.byline;
