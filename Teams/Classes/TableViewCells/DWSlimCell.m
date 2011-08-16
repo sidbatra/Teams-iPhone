@@ -23,10 +23,10 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontExtraText              [UIFont fontWithName:@"HelveticaNeue" size:10]
 #define kTextX                      78
-#define kBoldTextTopY               4
-#define kPlainTextTopY              24
-#define kBoldTextMiddleY            12
-#define kPlainTextMiddleY           32
+#define kBoldTextTopY               5
+#define kPlainTextTopY              25
+#define kBoldTextMiddleY            13
+#define kPlainTextMiddleY           33
 #define kExtraTextXOffset           21
 #define kExtraTextY                 6
 #define kTextSeparationXOffset      8
