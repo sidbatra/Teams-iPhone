@@ -136,8 +136,10 @@ static NSString* const kNewItemName         = @"DWNewItem";
         [self.delegate notificationsCreateSelectedWithText:notification.details];
     }
     
-    if (notification.unread) 
+    if(notification.unread) {
+        notification.unread = NO;
         [[DWPushNotificationsManager sharedDWPushNotificationsManager] updateNotificationWithID:notification.databaseID];
+    }
 }
 
 

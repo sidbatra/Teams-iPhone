@@ -277,11 +277,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)notificationReadError:(NSString*)error {
+- (void)notificationReadError:(NSString*)error
+            forNotificationID:(NSNumber*)notificationID {
     
-    NSLog(@"notification read error");
+    DWNotification *notification = [DWNotification fetch:[notificationID integerValue]];
     
-    [self updateUnreadNotificationsBy:1];
+    if(notification)
+        notification.unread = YES;
 }
 
 @end

@@ -60,6 +60,7 @@
 /**
  * Fired when there is an error in reading a notification
  */
-- (void)notificationReadError:(NSString*)error;
+- (void)notificationReadError:(NSString*)error 
+            forNotificationID:(NSNumber*)notificationID;
 
 @end

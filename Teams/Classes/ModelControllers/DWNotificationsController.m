@@ -103,7 +103,8 @@ static NSString* const kNotificationReadURI                     = @"/notificatio
     [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
                                                  successNotification:kNNotificationUpdated
                                                    errorNotification:kNNotificationUpdateError
-                                                       requestMethod:kPut];
+                                                       requestMethod:kPut
+                                                          resourceID:notificationID];
 }
 
 
@@ -151,6 +152,7 @@ static NSString* const kNotificationReadURI                     = @"/notificatio
     if(![self.delegate respondsToSelector:sel])
         return;
     
+    
     NSDictionary *data                      = [[notification userInfo] objectForKey:kKeyData];
     DWNotification *notificationModelObj    = [DWNotification create:data];
     
@@ -161,15 +163,19 @@ static NSString* const kNotificationReadURI                     = @"/notificatio
 //----------------------------------------------------------------------------------------------------
 - (void)notificationUpdateError:(NSNotification*)notification {
 
-    SEL sel = @selector(notificationReadError:);
+    SEL sel = @selector(notificationReadError:forNotificationID:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    NSDictionary *info          = [notification userInfo];
+    NSInteger notificationID    = [[info objectForKey:kKeyResourceID] integerValue];
+    NSError *error              = [info objectForKey:kKeyError];
     
     [self.delegate performSelector:sel 
-                        withObject:[error localizedDescription]];
+                        withObject:[error localizedDescription]
+                        withObject:[NSNumber numberWithInt:notificationID]];
 }
 
 
