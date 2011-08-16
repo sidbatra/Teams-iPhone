@@ -73,11 +73,15 @@ static NSString* const kNewItemName         = @"DWNewItem";
                                                                           andSelector:@selector(didTapDoneButton:)];
 
     [self.notificationsDataSource loadNotifications];
+    
+    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)softRefresh {
     [self.notificationsDataSource refreshInitiated];
+    
+    [[DWPushNotificationsManager sharedDWPushNotificationsManager] resetNotifications];
 }
 
 
