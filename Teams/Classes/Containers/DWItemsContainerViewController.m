@@ -251,7 +251,10 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 	}
 	else if(_isProgressBarActive) {
             _isProgressBarActive = NO;
-            [self.navigationController.navigationBar addSubview:self.navTitleView];
+            
+            if(self.navigationController.topViewController == self)
+                [self.navigationController.navigationBar addSubview:self.navTitleView];
+        
             [self.postProgressView removeFromSuperview];
     }        
 }
