@@ -104,6 +104,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)addWatchingTeamsMessage:(DWUser*)user {
     
+    if (user.followingCount < 2)
+        return;
+        
+    
     self.watchingMessage                = [[[DWMessage alloc] init] autorelease];
     self.watchingMessage.interactive    = YES;
     self.watchingMessage.content        = [DWUsersHelper watchingTeamsLine:user];
@@ -147,9 +151,7 @@
     
     [self addImageResource:user];
     [self addCurrentTeamMessage:user];
-    
-    if (user.followingCount-1)
-        [self addWatchingTeamsMessage:user];
+    [self addWatchingTeamsMessage:user];
       
     [self.delegate userLoaded:user];
     [self.delegate reloadTableView];
