@@ -106,6 +106,8 @@
     self.view.hidden        = YES;
     self.loadingView.hidden = YES;
     
+    [self disablePullToRefresh];
+    
     UITapGestureRecognizer *tapRecognizer     = [[[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                          action:@selector(handleTapGesture:)] 
                                                  autorelease];

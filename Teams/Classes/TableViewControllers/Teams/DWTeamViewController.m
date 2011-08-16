@@ -118,6 +118,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    [self disablePullToRefresh];
+    
     [self setupTitleView];
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
