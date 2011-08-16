@@ -62,7 +62,7 @@
  * Checks whether the Notification has been read by 
  * the current user or not
  */
-@property (nonatomic,readonly) BOOL unread;
+@property (nonatomic,assign) BOOL unread;
 
 /**
  * Image location at imageURL

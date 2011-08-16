@@ -23,7 +23,7 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"drao.tea.ms";
+	NSString* const kDenwenServer	= @"sbat.tea.ms";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
     NSString* const kDenwenServer	= @"staging.tea.ms";

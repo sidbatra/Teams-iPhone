@@ -179,17 +179,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)resetNotifications {
-    
+- (void)resetNotifications {    
     _showNotifications          = NO;
-    _unreadNotificationsCount   = 0;
-    
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-    
-    [self broadcastNewBadgeNumber];
-    
-    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
-                      withNotificationsCount:0];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -223,7 +214,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 //----------------------------------------------------------------------------------------------------
 - (void)updateUnreadNotificationsBy:(NSInteger)delta {
     
-    _showNotifications          = NO;    
     _unreadNotificationsCount   = _unreadNotificationsCount + delta;
     
     if (_unreadNotificationsCount < 0)
@@ -287,11 +277,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)notificationReadError:(NSString*)error {
+- (void)notificationReadError:(NSString*)error
+            forNotificationID:(NSNumber*)notificationID {
     
-    NSLog(@"notification read error");
+    DWNotification *notification = [DWNotification fetch:[notificationID integerValue]];
     
-    [self updateUnreadNotificationsBy:1];
+    if(notification)
+        notification.unread = YES;
 }
 
 @end

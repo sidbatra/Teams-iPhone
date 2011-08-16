@@ -118,6 +118,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)touchesLoaded:(NSMutableArray*)touches {
 
+    if(![touches count])
+        return;
+    
     if(!_itemLoaded) {
         [self clean];
         self.objects = touches;
