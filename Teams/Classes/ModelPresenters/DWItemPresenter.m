@@ -130,6 +130,8 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
 
 //----------------------------------------------------------------------------------------------------
 + (void)cellClickedForObject:(id)object
+                withBaseCell:(id)base
+       withPresentationStyle:(NSInteger)style
                 withDelegate:(id)delegate {
     
 }

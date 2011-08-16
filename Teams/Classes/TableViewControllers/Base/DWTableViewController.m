@@ -288,10 +288,14 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                                          forSection:indexPath.section];
     
     NSString *className     = [[object class] className];
+    NSInteger style         = [self presentationStyleForClassName:className];
+    id cell                 = [self.tableView cellForRowAtIndexPath:indexPath];
     
     Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
     
     [modelPresenter cellClickedForObject:object
+                            withBaseCell:cell
+                   withPresentationStyle:style
                             withDelegate:[self getDelegateForClassName:className]];
 }
 

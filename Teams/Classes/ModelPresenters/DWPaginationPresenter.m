@@ -59,6 +59,8 @@
 
 //----------------------------------------------------------------------------------------------------
 + (void)cellClickedForObject:(id)object
+                withBaseCell:(id)base
+       withPresentationStyle:(NSInteger)style
                 withDelegate:(id)delegate {
     
 }
