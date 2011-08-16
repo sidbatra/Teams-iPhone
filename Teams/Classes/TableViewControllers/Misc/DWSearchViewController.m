@@ -141,11 +141,16 @@
      * Use the clicked resource object to find the 
      * corresponding team
      */
-    DWResource *resource    = object;
-    DWTeam *team            = [DWTeam fetch:resource.ownerID];
+    DWResource *resource = object;
     
-    [self.teamsLogicController performSelector:@selector(teamSelected:)
-                                    withObject:team];
+    if(resource == self.searchDataSource.invite) 
+        [self.delegate invitePeople];        
+    
+    else {
+        DWTeam *team = [DWTeam fetch:resource.ownerID];
+        [self.teamsLogicController performSelector:@selector(teamSelected:)
+                                        withObject:team];
+    }
 }
 
 

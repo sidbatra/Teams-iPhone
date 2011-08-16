@@ -137,6 +137,28 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayInviteViewAnimated:(BOOL)animated andShowBackButton:(BOOL)showBackButton {
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"invite_selected"];
+    
+    self.navigationController.navigationBar.clipsToBounds       = NO;
+    
+    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    invitePeopleViewController.delegate                         = self;
+    
+    invitePeopleViewController.teamSpecificInvite               = NO;
+    invitePeopleViewController.showCancelButton                 = !showBackButton;
+    invitePeopleViewController.showBackButton                   = showBackButton;
+    
+    invitePeopleViewController.navBarTitle                      = kInvitePeopleText;
+    invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
+    
+    [self.navigationController pushViewController:invitePeopleViewController 
+                                         animated:animated];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -204,6 +226,12 @@ static NSInteger const kMinimumQueryLength			= 1;
     [self.searchBar hideKeyboard];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)invitePeople {
+    [self displayInviteViewAnimated:YES
+                  andShowBackButton:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -229,23 +257,8 @@ static NSInteger const kMinimumQueryLength			= 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapInviteButton:(UIButton*)button { 
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
-                                                             withActionName:@"invite_selected"];
-    
-    self.navigationController.navigationBar.clipsToBounds       = NO;
-    
-    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
-    invitePeopleViewController.delegate                         = self;
-    
-    invitePeopleViewController.teamSpecificInvite               = NO;
-    invitePeopleViewController.showCancelButton                 = YES;
-    
-    invitePeopleViewController.navBarTitle                      = kInvitePeopleText;
-    invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
-    
-    [self.navigationController pushViewController:invitePeopleViewController 
-                                         animated:NO];
+    [self displayInviteViewAnimated:NO
+                  andShowBackButton:NO];
 }
 
 
@@ -256,7 +269,10 @@ static NSInteger const kMinimumQueryLength			= 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)peopleInvited {
-    [self.navigationController popViewControllerAnimated:NO];    
+    if (self.searchViewController.view.hidden) 
+        [self.navigationController popViewControllerAnimated:NO];    
+    else
+        [self.navigationController popViewControllerAnimated:YES];    
 }
 
 

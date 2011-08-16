@@ -90,6 +90,11 @@
  */
 - (void)searchTableViewScrolled;
 
+/**
+ * Fired when the user chooses to invite someone
+ */
+- (void)invitePeople;
+
 @end
 
 

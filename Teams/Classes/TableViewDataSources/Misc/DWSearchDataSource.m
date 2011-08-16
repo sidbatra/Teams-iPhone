@@ -10,8 +10,8 @@
 #import "NSObject+Helpers.h"
 
 
-static NSString* const kMsgNoResults    = @"No Teams or people found.";
 static NSString* const kImgTeamIcon     = @"slice_button_people.png";
+static NSString* const kImgInvite		= @"slice_button_addpeople.png";
 
 
 
@@ -21,6 +21,7 @@ static NSString* const kImgTeamIcon     = @"slice_button_people.png";
 @implementation DWSearchDataSource
 
 @synthesize searchController    = _searchController;
+@synthesize invite              = _invite;
 @synthesize query               = _query;
 
 //----------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ static NSString* const kImgTeamIcon     = @"slice_button_people.png";
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.searchController   = nil;
+    self.invite             = nil;
     self.query              = nil;
     
     [super dealloc];
@@ -82,6 +84,25 @@ static NSString* const kImgTeamIcon     = @"slice_button_people.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)addInviteResource {
+    
+    if(!self.invite)
+        self.invite                 = [[[DWResource alloc] init] autorelease];
+    
+    self.invite.text                = @"Team or person not here?";
+    self.invite.subText             = @"Invite them";
+    self.invite.image               = [UIImage imageNamed:kImgInvite];
+    
+    [self.objects addObject:self.invite];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWSearchControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -102,13 +123,10 @@ static NSString* const kImgTeamIcon     = @"slice_button_people.png";
         }
     }
     
-    if([self.objects count]) {
-        [self.delegate reloadTableView];
-    }
-    else {
-        [self.delegate displayError:kMsgNoResults 
-                      withRefreshUI:NO];
-    }
+    [self addInviteResource];
+    
+    [self.delegate reloadTableView];
+
 }
 
 //----------------------------------------------------------------------------------------------------

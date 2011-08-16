@@ -8,11 +8,15 @@
 #import "DWTableViewDataSource.h"
 #import "DWSearchController.h"
 
+@class DWResource;
+
 /**
  * Data source for the search table view controller
  */
 @interface DWSearchDataSource : DWTableViewDataSource<DWSearchControllerDelegate> {
     DWSearchController      *_searchController;
+    
+    DWResource              *_invite;
     
     NSString                *_query;
 }
@@ -21,6 +25,11 @@
  * Interface to the search service
  */ 
 @property (nonatomic,retain) DWSearchController *searchController;
+
+/**
+ * Resource object representing the invite people cell
+ */
+@property (nonatomic,retain) DWResource *invite;
 
 /**
  * The query for which search results are being fetched
