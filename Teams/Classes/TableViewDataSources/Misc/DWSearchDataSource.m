@@ -10,7 +10,7 @@
 #import "NSObject+Helpers.h"
 
 
-static NSString* const kMsgNoResults    = @"No Teams or people found";
+static NSString* const kMsgNoResults    = @"No Teams or people found.";
 static NSString* const kImgTeamIcon     = @"slice_button_people.png";
 
 

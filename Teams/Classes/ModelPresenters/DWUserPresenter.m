@@ -38,8 +38,13 @@
     
     if (style == kUserPresenterStyleNavigationDisabled) 
         [cell disableCellInteraction];
-        
-    cell.plainText  = user.byline;
+
+    
+    if (style == kUserPresenterStyleSearchResult) 
+        cell.plainText = user.team.name;
+    else
+        cell.plainText  = user.byline;
+    
     
     [user startSmallImageDownload];
     
@@ -85,7 +90,10 @@
         else
             cell.boldText   = [DWUsersHelper displayName:newUser];
         
-        cell.plainText  = newUser.byline;
+        if (style == kUserPresenterStyleSearchResult) 
+            cell.plainText  = newUser.team.name;
+        else
+            cell.plainText  = newUser.byline;
         
         [cell reset];
         [cell redisplay];

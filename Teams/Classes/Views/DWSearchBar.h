@@ -40,6 +40,11 @@
  */
 - (void)resignActive;
 
+/**
+ * Hide the keyboard
+ */
+- (void)hideKeyboard;
+
 @end
 
 

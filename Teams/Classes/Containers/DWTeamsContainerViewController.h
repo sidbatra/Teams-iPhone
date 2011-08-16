@@ -7,15 +7,16 @@
 
 #import "DWContainerViewController.h"
 #import "DWSearchBar.h"
+#import "DWSearchViewController.h"
 
 @class DWPopularTeamsViewController;
-@class DWSearchViewController;
 @class DWNavTitleView;
 
 /**
  * Root view for the teams navigation controller
  */
-@interface DWTeamsContainerViewController : DWContainerViewController<UISearchBarDelegate,DWSearchBarDelegate> {
+@interface DWTeamsContainerViewController : DWContainerViewController<UISearchBarDelegate,DWSearchBarDelegate,DWSearchViewControllerDelegate> {
+    
     DWPopularTeamsViewController    *_popularTeamsViewController;
     DWSearchViewController          *_searchViewController;
     

@@ -24,6 +24,8 @@
 @synthesize teamsLogicController    = _teamsLogicController;
 @synthesize searchDataSource        = _searchDataSource;
 
+@synthesize delegate                = _delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -38,7 +40,7 @@
         self.searchDataSource           = [[[DWSearchDataSource alloc] init] autorelease];
         
         
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:KUserPresenterStyleFullSignature]
+        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleSearchResult]
                                         forKey:[[DWUser class] className]];
     }
     
@@ -103,6 +105,15 @@
     
     self.view.hidden        = YES;
     self.loadingView.hidden = YES;
+    
+    UITapGestureRecognizer *tapRecognizer     = [[[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                         action:@selector(handleTapGesture:)] 
+                                                 autorelease];
+    tapRecognizer.cancelsTouchesInView        = NO;
+    
+    [(UITapGestureRecognizer*)tapRecognizer setNumberOfTouchesRequired:1];
+    
+    [self.tableView addGestureRecognizer:tapRecognizer];
 }
 
 
@@ -123,6 +134,17 @@
     
     [self.teamsLogicController performSelector:@selector(teamSelected:)
                                     withObject:team];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)handleTapGesture:(UIGestureRecognizer*)sender {
+    [self.delegate searchTableViewTapped];
 }
 
 

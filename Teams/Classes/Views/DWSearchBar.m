@@ -76,6 +76,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 	searchTextField.textAlignment           = UITextAlignmentLeft;
     //searchTextField.clearButtonMode         = UITextFieldViewModeWhileEditing;
     searchTextField.placeholder             = kMsgSearchPlaceholder;
+    searchTextField.returnKeyType           = UIReturnKeySearch;    
     
     
     [self addSubview:searchTextField];
@@ -111,6 +112,12 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 - (void)resignActive {
     searchTextField.text = kEmptyString;
     [searchTextField resignFirstResponder];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideKeyboard {
+    if ([searchTextField isFirstResponder])
+        [searchTextField resignFirstResponder];    
 }
 
 

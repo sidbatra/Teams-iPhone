@@ -10,6 +10,7 @@
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
+#import "DWTabBarController.h"
 
 static NSString* const kInvitePeopleText            = @"Invite People";
 static NSString* const kImgInvite                   = @"button_invite.png";
@@ -94,7 +95,9 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadSearchViewController {
     
     if(!self.searchViewController) {
-        self.searchViewController = [[[DWSearchViewController alloc] init] autorelease];
+        self.searchViewController           = [[[DWSearchViewController alloc] init] autorelease];
+        self.searchViewController.delegate  = self;
+        
         [self.searchViewController setUsersDelegate:self];
         [self.searchViewController setTeamsDelegate:self];
     }
@@ -171,6 +174,8 @@ static NSInteger const kMinimumQueryLength			= 1;
     self.searchBar.hidden                           = YES;
     self.popularTeamsViewController.view.hidden     = NO;    
     
+    [self.customTabBarController disableFullScreen];
+    
     [self.searchViewController resetWithSpinnerHidden:YES];
     [self.searchBar resignActive];
     
@@ -187,6 +192,17 @@ static NSInteger const kMinimumQueryLength			= 1;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWSearchViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchTableViewTapped {
+    [self.searchBar hideKeyboard];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark UITouchEvents
 
 //----------------------------------------------------------------------------------------------------
@@ -195,7 +211,7 @@ static NSInteger const kMinimumQueryLength			= 1;
     [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                              withActionName:@"search_selected"];
     
-    
+    [self.customTabBarController enableFullScreen];
     self.popularTeamsViewController.view.hidden     = YES;    
     self.searchViewController.view.hidden           = NO;
     self.searchBar.hidden                           = NO;
@@ -254,6 +270,9 @@ static NSInteger const kMinimumQueryLength			= 1;
     [super navigationController:navigationController 
          willShowViewController:viewController 
                        animated:animated];
+    
+    if (!self.searchViewController.view.hidden) 
+        [self.customTabBarController enableFullScreen];
 }
 
 
