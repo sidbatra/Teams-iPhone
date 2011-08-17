@@ -11,7 +11,7 @@
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
 
-static NSString* const kMsgDataTextViewPlaceholder			= @"What's happening?";
+static NSString* const kMsgDataTextViewPlaceholder			= @"What's the story?";
 static NSInteger const kTableViewX							= 0;
 static NSInteger const kTableViewY							= 44;
 static NSInteger const kTableViewWidth						= 320;
