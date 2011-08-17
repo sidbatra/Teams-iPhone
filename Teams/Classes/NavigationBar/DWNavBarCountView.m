@@ -9,6 +9,12 @@ static NSString* const kImgBackground       = @"button_notifications";
 static NSString* const kDefaultText         = @"0";
 static CGFloat   const kDisabledOpacity     = 0.5;
 
+#define kColorTextDisabled  [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0]
+#define kColorBgDisabled    [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]
+#define kColorTextEnabled   [UIColor whiteColor]
+#define kColorBgEnabled     [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0]
+
+
 /**
  * Private method and property declarations
  */
@@ -23,6 +29,16 @@ static CGFloat   const kDisabledOpacity     = 0.5;
  * Add the count label to the view
  */
 - (void)createCountLabel;
+
+/**
+ * Display active UI - usually decided as a function of the count
+ */
+- (void)displayActiveUI;
+
+/**
+ * Display inactive UI - usually decided as a function of the count
+ */
+- (void)displayInactiveUI;
 
 @end
 
@@ -69,15 +85,13 @@ static CGFloat   const kDisabledOpacity     = 0.5;
     countLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
     countLabel.userInteractionEnabled = NO;
     countLabel.layer.cornerRadius     = 2.5;
-    countLabel.text                   = kDefaultText;
-    countLabel.textColor              = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    countLabel.backgroundColor        = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];    
+    countLabel.text                   = kDefaultText;  
     countLabel.textAlignment          = UITextAlignmentCenter;
     countLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
                                                         size:13];
     
-
     [self addSubview:countLabel];
+    [self displayInactiveUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -88,17 +102,25 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayActiveUI {
+    countLabel.textColor        = kColorTextEnabled;        
+    countLabel.backgroundColor  = kColorBgEnabled;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayInactiveUI {
+    countLabel.textColor        = kColorTextDisabled;        
+    countLabel.backgroundColor  = kColorBgDisabled;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setCount:(NSInteger)count {
     countLabel.text   = [NSString stringWithFormat:@"%d",count];
     
-    if (count) {
-        countLabel.textColor        = [UIColor whiteColor];        
-        countLabel.backgroundColor  = [UIColor colorWithRed:0.8 green:0.0 blue:0.0 alpha:1.0];
-    }
-    else {
-        countLabel.textColor        = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];        
-        countLabel.backgroundColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
-    }
+    if (count)
+        [self displayActiveUI];
+    else
+        [self displayInactiveUI];
 }
 
 
