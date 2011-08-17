@@ -13,6 +13,7 @@
 #import "DWUserViewController.h"
 #import "DWNotificationsViewController.h"
 #import "DWInvitePeopleViewController.h"
+#import "DWTabBarController.h"
 
 
 @class DWTabBarController;

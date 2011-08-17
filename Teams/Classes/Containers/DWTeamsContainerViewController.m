@@ -10,7 +10,6 @@
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 #import "DWAnalyticsManager.h"
-#import "DWTabBarController.h"
 
 static NSString* const kInvitePeopleText            = @"Invite People";
 static NSString* const kImgInvite                   = @"button_invite.png";
