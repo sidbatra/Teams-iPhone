@@ -125,7 +125,7 @@
 #pragma mark UIScrollViewDelegate
 //----------------------------------------------------------------------------------------------------
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    [self.delegate searchTableViewScrolled];
+    [self.delegate didInteractWithTableView];
 }
 
 
@@ -161,7 +161,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)handleTapGesture:(UIGestureRecognizer*)sender {
-    [self.delegate searchTableViewTapped];
+    [self.delegate didInteractWithTableView];
 }
 
 

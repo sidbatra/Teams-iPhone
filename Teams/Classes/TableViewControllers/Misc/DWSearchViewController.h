@@ -81,14 +81,9 @@
 @optional
 
 /**
- * Fired when the user taps the search table view
+ * Fired whenever the user interact with table view
  */
-- (void)searchTableViewTapped;
-
-/**
- * Fired when the user scrolls the search table view
- */
-- (void)searchTableViewScrolled;
+- (void)didInteractWithTableView;
 
 /**
  * Fired when the user chooses to invite someone

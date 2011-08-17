@@ -216,12 +216,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 #pragma mark DWSearchViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)searchTableViewTapped {
-    [self.searchBar hideKeyboard];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchTableViewScrolled {
+- (void)didInteractWithTableView {
     [self.searchBar hideKeyboard];
 }
 
