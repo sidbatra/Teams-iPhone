@@ -395,8 +395,8 @@ NSString* const kImgTableViewBackground         = @"bg_glow.png";
 /**
  * Denwen Twitter and Facebook apps made by sbat
  */
-NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
-NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
+NSString* const kTwitterOAuthConsumerKey		= @"ZYFy5zrte9fKABpNqRE3IQ";
+NSString* const kTwitterOAuthConsumerSecret		= @"oxYih93ZJRMhyD538iyCMRrxU4MUAsXK7cmDNEwdIww";
 NSString* const kFacebookAppID					= @"142023125881016";
 
 //#else
