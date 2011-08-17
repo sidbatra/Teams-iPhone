@@ -17,7 +17,7 @@
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 
-
+static NSString* const kImgTopShadow                    = @"shadow_top.png";
 static NSString* const kJoinTeamText                    = @"Join %@";
 static NSString* const kJoinTeamSubText                 = @"as the %@ member";
 static NSString* const kNavBarRightButtonText           = @"Join";
@@ -31,6 +31,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 
 @synthesize team                        = _team;
 
+@synthesize topShadowView               = _topShadowView;
 @synthesize navTitleView                = _navTitleView;
 @synthesize navBarRightButtonView       = _navBarRightButtonView;
 
@@ -60,6 +61,7 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 - (void)dealloc {
     self.team                   = nil;
     
+    self.topShadowView          = nil;
     self.navTitleView           = nil;
     self.navBarRightButtonView  = nil;
     
@@ -89,6 +91,12 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self.tableView.backgroundView           = [DWGUIManager backgroundImageViewWithFrame:self.view.frame];
     
     [self disablePullToRefresh];
+    
+    if(!self.topShadowView)
+        self.topShadowView      = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]] autorelease];
+    
+    self.topShadowView.frame    = CGRectMake(0,0,320,5);
+    [self.view addSubview:self.topShadowView];
     
     if (!self.navTitleView)
         self.navTitleView = [[[DWNavTitleView alloc]

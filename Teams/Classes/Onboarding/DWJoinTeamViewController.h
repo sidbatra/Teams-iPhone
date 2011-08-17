@@ -23,6 +23,7 @@
     
     DWTeam                      *_team;
     
+    UIImageView                 *_topShadowView;    
     DWNavTitleView              *_navTitleView;
     DWNavBarRightButtonView     *_navBarRightButtonView;
     
@@ -36,6 +37,11 @@
  * Team which the user will join
  */
 @property (nonatomic,retain) DWTeam *team;
+
+/**
+ * Image view with a shadow just below the navigation bar
+ */
+@property (nonatomic,retain) UIImageView *topShadowView;
 
 /**
  * Custom subviews for navigation bar
