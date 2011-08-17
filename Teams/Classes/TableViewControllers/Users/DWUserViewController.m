@@ -11,7 +11,6 @@
 #import "DWNavTitleView.h"
 #import "DWUsersHelper.h"
 #import "DWSession.h"
-#import "DWUpdateUserDetailsViewController.h"
 #import "DWAnalyticsManager.h"
 
 

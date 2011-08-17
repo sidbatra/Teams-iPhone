@@ -17,6 +17,7 @@
 static NSString* const kImgNotificationsButton      = @"button_more.png";
 static NSString* const kMsgFollowAction             = @"Tap to follow this Team";
 static NSString* const kMsgActionSheetUnfollow      = @"Unfollow";
+static NSInteger const kTagUnfollowActionSheet      = -1;
 
 
 /**
@@ -162,11 +163,12 @@ static NSString* const kMsgActionSheetUnfollow      = @"Unfollow";
 - (void)didTapTitleView {
     
     if (self.teamItemsDataSource.following) {
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
-                                                                 delegate:self 
-                                                        cancelButtonTitle:kMsgActionSheetCancel
-                                                   destructiveButtonTitle:kMsgActionSheetUnfollow
-                                                        otherButtonTitles:nil];
+        UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
+                                                                  delegate:self 
+                                                         cancelButtonTitle:kMsgActionSheetCancel
+                                                    destructiveButtonTitle:kMsgActionSheetUnfollow
+                                                         otherButtonTitles:nil];
+        actionSheet.tag             = kTagUnfollowActionSheet;
     
         [actionSheet showInView:self.view];
         [actionSheet release];  
@@ -184,9 +186,14 @@ static NSString* const kMsgActionSheetUnfollow      = @"Unfollow";
 //----------------------------------------------------------------------------------------------------
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
 	
-    if (buttonIndex == 0) 
-        [self invertFollowingState];
-    
+    if (buttonIndex == 0) {
+        
+        if (actionSheet.tag == kTagUnfollowActionSheet) 
+            [self invertFollowingState];        
+        else
+            [super actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+        
+    }
 }
 
 
