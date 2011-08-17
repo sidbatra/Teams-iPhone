@@ -12,7 +12,7 @@
 
 #import "SynthesizeSingleton.h"
 
-static NSString* const kAlertTitle              = @"Denwen";
+static NSString* const kAlertTitle              = @"Teams";
 static NSString* const kCancelTitle             = @"OK";
 static NSString* const kActionTitle             = @"View";
 static NSInteger const kActionButtonIndex       = 1;
