@@ -107,6 +107,8 @@ static NSInteger const kHighlightViewTag    = 3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
     self.buttons    = nil;
     self.delegate   = nil;
     
