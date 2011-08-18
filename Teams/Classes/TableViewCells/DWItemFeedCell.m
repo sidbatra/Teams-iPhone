@@ -26,12 +26,13 @@
 #define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
 #define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorSubTextNoAttachment           [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
-#define kColorByLineWithAttachment          [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
+#define kColorByLineWithAttachment          [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorByLineNoAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTeamName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
+#define kFontItemTeamNameMuted              [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTeamNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontByline                         [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemData                       [UIFont fontWithName:@"HelveticaNeue" size:23]
@@ -42,9 +43,9 @@
 #define kBylineY                            13
 #define kUnderlineYOffset                   17
 #define kUnderlineHeight                    0.75
-#define kAtXOffset                          3
-#define kAtWidth                            7
-#define kByLineXOffset                      8
+#define kAtXOffset                          0
+#define kAtWidth                            6
+#define kByLineXOffset                      6
 #define kTeamNameXOffset                    2
 #define kMaxTeamNameWidth                   305
 #define kItemDataX                          30
@@ -130,7 +131,7 @@
             //----------------------------------
             CGContextSetFillColorWithColor(context,textColor);
             
-            [@"/" drawInRect:itemCell.atRect
+            [@"" drawInRect:itemCell.atRect
                      withFont:kFontAt];
             
         }
@@ -155,7 +156,7 @@
 		
 		
 		[itemCell.itemTeamName drawInRect:itemCell.teamNameRect
-								  withFont:itemCell.teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName];
+                                 withFont:itemCell.teamButtonDisabled ? kFontItemTeamNameDisabled : (itemCell.byline ? kFontItemTeamName : kFontItemTeamNameMuted)];
 		
         if(![itemCell teamButtonDisabled])
             CGContextFillRect(context,CGRectMake(itemCell.teamNameRect.origin.x,
@@ -441,7 +442,7 @@
         
         
         
-        CGSize teamNameSize		= [self.itemTeamName sizeWithFont:_teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamName
+        CGSize teamNameSize		= [self.itemTeamName sizeWithFont:_teamButtonDisabled ? kFontItemTeamNameDisabled : kFontItemTeamNameMuted
                                                constrainedToSize:CGSizeMake(kMaxTeamNameWidth-(_atRect.origin.x + _atRect.size.width),
                                                                             kDefaultTextHeight)
                                                    lineBreakMode:UILineBreakModeTailTruncation];
