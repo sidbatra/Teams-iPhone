@@ -65,9 +65,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    [self disablePullToRefresh];
-    
+
     self.navigationItem.hidesBackButton     = YES;
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:kTitle];
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarButtonWithImageName:kImgClose
