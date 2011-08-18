@@ -395,22 +395,24 @@ NSString* const kImgTableViewBackground         = @"bg_glow.png";
 /**
  * Denwen Twitter and Facebook apps made by sbat
  */
-NSString* const kTwitterOAuthConsumerKey		= @"ZYFy5zrte9fKABpNqRE3IQ";
-NSString* const kTwitterOAuthConsumerSecret		= @"oxYih93ZJRMhyD538iyCMRrxU4MUAsXK7cmDNEwdIww";
+NSString* const kTwitterOAuthConsumerKey        = @"Y8wcijb0orzZSbkd3fQ4g";
+NSString* const kTwitterOAuthConsumerSecret     = @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
+//NSString* const kTwitterOAuthConsumerKey		= @"ZYFy5zrte9fKABpNqRE3IQ";
+//NSString* const kTwitterOAuthConsumerSecret	= @"oxYih93ZJRMhyD538iyCMRrxU4MUAsXK7cmDNEwdIww";
 NSString* const kFacebookAppID					= @"142023125881016";
 
 //#else
 
 //NSString* const kTwitterOAuthConsumerKey		= @"Y8wcijb0orzZSbkd3fQ4g";
-//NSString* const kTwitterOAuthConsumerSecret		= @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
-//NSString* const kFacebookAppID					= @"142023125881016";
+//NSString* const kTwitterOAuthConsumerSecret   = @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
+//NSString* const kFacebookAppID				= @"142023125881016";
 
 /**
  * Tenwen Twitter and Facebook apps made by drao
  */
 //NSString* const kTwitterOAuthConsumerKey		= @"kC2Kv9gsqYdZGwHHzx4bTQ";
-//NSString* const kTwitterOAuthConsumerSecret		= @"CO7MYDyF2TyzBAVPzARIWt7GI6SLSb1fgAcMPhLgE";
-//NSString* const kFacebookAppID					= @"176869555684965";
+//NSString* const kTwitterOAuthConsumerSecret	= @"CO7MYDyF2TyzBAVPzARIWt7GI6SLSb1fgAcMPhLgE";
+//NSString* const kFacebookAppID				= @"176869555684965";
 
 
 //----------------------------------------------------------------------------------------------------

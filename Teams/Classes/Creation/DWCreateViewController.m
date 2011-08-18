@@ -273,7 +273,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     }
 	
 	NSUInteger newLength = [self.dataTextView.text length] + [text length] - range.length;
-    return (newLength > kMaxPostLength) || [text isEqualToString:@"\n"] ? NO : YES;
+    return (newLength > kMaxPostLength) ? NO : YES;
     
 }
 

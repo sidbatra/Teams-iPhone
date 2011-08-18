@@ -25,6 +25,7 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
 @synthesize consumer        = _consumer;
 @synthesize authenticator   = _authenticator;
 @synthesize poster          = _poster;
+@synthesize xAuthToken      = _xAuthToken;
 @synthesize xAuthAlertView  = _xAuthAlertView;
 @synthesize delegate        = _delegate;
 
@@ -45,6 +46,7 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     self.consumer           = nil;
     self.authenticator      = nil;
     self.poster             = nil;
+    self.xAuthToken         = nil;
     self.xAuthAlertView     = nil;
     
     [super dealloc];
@@ -106,14 +108,16 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)authenticate {
-
-    if([DWSession sharedDWSession].currentUser.twitterXAuthToken) {
-        [_delegate twAuthenticated];
-    }
-    else {
+- (BOOL)authenticate {
+    
+    BOOL isAuthenticated = NO;
+    
+    if(self.xAuthToken) 
+        isAuthenticated = YES;
+    else 
         [self displayAuthenticationUI];
-    }
+    
+    return isAuthenticated;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -158,11 +162,17 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
         self.authenticator.delegate     = self;
         
         [_authenticator authenticate];
+
+        SEL sel = @selector(twAuthenticating);
         
-        [_delegate twAuthenticating];
+        if([_delegate respondsToSelector:sel])
+            [_delegate performSelector:sel];
     }
     else {
-        [_delegate twAuthenticationFailed];
+        SEL sel = @selector(twAuthenticationFailed);
+        
+        if([_delegate respondsToSelector:sel])
+            [_delegate performSelector:sel];
     }
 }
 
@@ -201,19 +211,25 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
              didFailWithError:(NSError*)error {
     
     [self displayAuthenticationUI];
-    [_delegate twAuthenticationFailed];
+    
+    SEL sel = @selector(twAuthenticationFailed);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void) twitterAuthenticator:(TwitterAuthenticator*)twitterAuthenticator
           didSucceedWithToken:(TwitterToken*)token {
     
-   // [[DWSession sharedDWSession].currentUser storeTwitterData:[NSKeyedArchiver archivedDataWithRootObject:token]];
+    self.xAuthToken                                             = [NSKeyedArchiver archivedDataWithRootObject:token]; 
+    [DWSession sharedDWSession].currentUser.twitterXAuthToken   = self.xAuthToken;
+    [[DWSession sharedDWSession] update];
+        
+    SEL sel = @selector(twAuthenticated);
     
-   // [[DWRequestsManager sharedDWRequestsManager] updateTwitterDataForCurrentUser:token.token
-   //                                                                twitterSecret:token.secret];
-    
-    [_delegate twAuthenticated];
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 
@@ -224,14 +240,21 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)twitterTweetPosterDidSucceed:(TwitterTweetPoster*)twitterTweetPoster {
-    [_delegate twSharingDone];
+    
+    SEL sel = @selector(twSharingDone);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void) twitterTweetPoster:(TwitterTweetPoster*)twitterTweetPoster 
-           didFailWithError:(NSError*)error {
+- (void)twitterTweetPoster:(TwitterTweetPoster*)twitterTweetPoster 
+          didFailWithError:(NSError*)error {
     
-    [_delegate twSharingFailed];
+    SEL sel = @selector(twSharingFailed);
+    
+    if([_delegate respondsToSelector:sel])
+        [_delegate performSelector:sel];
 }
 
 @end

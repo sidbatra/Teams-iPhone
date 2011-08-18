@@ -19,10 +19,10 @@
     TwitterAuthenticator    *_authenticator;
     TwitterTweetPoster      *_poster;
     
+    NSData                  *_xAuthToken;
     UIAlertView             *_xAuthAlertView;
 
-    
-    id<DWTwitterConnectDelegate>    _delegate;
+    id<DWTwitterConnectDelegate,NSObject>   _delegate;
 }
 
 /**
@@ -41,6 +41,11 @@
 @property (nonatomic,retain) TwitterTweetPoster *poster;
 
 /**
+ * Access token to make requests on behalf of the user
+ */
+@property (nonatomic,retain) NSData *xAuthToken;
+
+/**
  * Customized alert view for getting the user's xauth info
  */
 @property (nonatomic,retain) UIAlertView *xAuthAlertView;
@@ -48,13 +53,13 @@
 /**
  * DWTwitterConnectDelegate
  */
-@property (nonatomic,assign) id<DWTwitterConnectDelegate> delegate;
+@property (nonatomic,assign) id<DWTwitterConnectDelegate,NSObject> delegate;
 
 
 /**
- * Obtain token and secret for disptaching tweets
+ * Test authentication status and authenticate if needed. Returns YES if authenticated
  */
-- (void)authenticate;
+- (BOOL)authenticate;
 
 /**
  * Send tweet on behalf of the user

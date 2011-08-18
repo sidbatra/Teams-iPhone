@@ -11,7 +11,8 @@
  * screen and displays an animating spinner with a text message
  */
 @interface DWSpinnerOverlayView : UIView {
-    
+    UILabel *messageLabel;
+    UIActivityIndicatorView *spinner;
 }
 
 /**
@@ -36,5 +37,10 @@
  * Hides the view and disables all interaction
  */
 - (void)disable;
+
+/**
+ * Set the text for the message label
+ */
+- (void)setMessageText:(NSString*)text;
 
 @end

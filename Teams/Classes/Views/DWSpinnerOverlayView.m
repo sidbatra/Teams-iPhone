@@ -56,12 +56,12 @@ static NSInteger const kSpinnerSize = 20;
         
         
         if (spinnerStyle == UIActivityIndicatorViewStyleGray) 
-            [self createLabelWithOrigin:CGPointMake(origin.x + 30, origin.y + 1) 
+            [self createLabelWithOrigin:CGPointMake(origin.x + 25, origin.y) 
                                 andText:text 
                         forSpinnerStyle:spinnerStyle];
         
         else 
-            [self createLabelWithOrigin:CGPointMake(origin.x + 26, origin.y + 1) 
+            [self createLabelWithOrigin:CGPointMake(origin.x + 25, origin.y) 
                                 andText:text 
                         forSpinnerStyle:spinnerStyle];
         
@@ -90,11 +90,8 @@ static NSInteger const kSpinnerSize = 20;
 //----------------------------------------------------------------------------------------------------
 - (void)createSpinnerWithOrigin:(CGPoint)origin andStyle:(NSInteger)spinnerStyle {
 	
-    UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:spinnerStyle] 
-                                           autorelease];
-    
-	spinner.frame                       = CGRectMake(origin.x,origin.y,kSpinnerSize,kSpinnerSize);
+    spinner                         = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:spinnerStyle] autorelease];
+	spinner.frame                   = CGRectMake(origin.x,origin.y,kSpinnerSize,kSpinnerSize);
     [spinner startAnimating];
     
 	[self addSubview:spinner];	
@@ -103,7 +100,7 @@ static NSInteger const kSpinnerSize = 20;
 //----------------------------------------------------------------------------------------------------
 - (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text forSpinnerStyle:(NSInteger)spinnerStyle {
     
-    UILabel *messageLabel			= [[[UILabel alloc] 
+    messageLabel                    = [[[UILabel alloc] 
                                         initWithFrame:CGRectMake(origin.x,origin.y,270,20)] 
                                        autorelease];	
     
@@ -125,6 +122,10 @@ static NSInteger const kSpinnerSize = 20;
 	[self addSubview:messageLabel];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)setMessageText:(NSString*)text {
+    messageLabel.text = text;
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

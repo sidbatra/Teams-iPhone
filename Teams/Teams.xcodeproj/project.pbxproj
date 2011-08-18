@@ -108,6 +108,10 @@
 		26754E5013F331B500824D68 /* slice_button_people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26754E4A13F331B500824D68 /* slice_button_people@2x.png */; };
 		26754E5113F331B500824D68 /* slice_button_share.png in Resources */ = {isa = PBXBuildFile; fileRef = 26754E4B13F331B500824D68 /* slice_button_share.png */; };
 		26754E5213F331B500824D68 /* slice_button_share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26754E4C13F331B500824D68 /* slice_button_share@2x.png */; };
+		267669BF13FC5CAF00465943 /* share_facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BB13FC5CAF00465943 /* share_facebook.png */; };
+		267669C013FC5CAF00465943 /* share_facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BC13FC5CAF00465943 /* share_facebook@2x.png */; };
+		267669C113FC5CAF00465943 /* share_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BD13FC5CAF00465943 /* share_twitter.png */; };
+		267669C213FC5CAF00465943 /* share_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BE13FC5CAF00465943 /* share_twitter@2x.png */; };
 		267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */; };
 		267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */; };
 		26802E1613EE11EE003F7EF6 /* button_cancel_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1213EE11EE003F7EF6 /* button_cancel_left.png */; };
@@ -275,9 +279,8 @@
 		BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */; };
 		BB4D03C613E799B200A1E791 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03C313E799B200A1E791 /* DWFacebookConnect.m */; };
 		BB4D03C713E799B200A1E791 /* DWTwitterConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03C513E799B200A1E791 /* DWTwitterConnect.m */; };
-		BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */; };
-		BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */; };
-		BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CD13E799E400A1E791 /* DWSharingManager.m */; };
+		BB4D03CE13E799E400A1E791 /* DWShareTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03CA13E799E400A1E791 /* DWShareTeamViewController.m */; };
+		BB4D03CF13E799E400A1E791 /* DWShareTeamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03CB13E799E400A1E791 /* DWShareTeamViewController.xib */; };
 		BB4D03DB13E79A6900A1E791 /* DWInvitePeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D313E79A6900A1E791 /* DWInvitePeopleViewController.m */; };
 		BB4D03DD13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03D613E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m */; };
 		BB4D03DE13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03D713E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib */; };
@@ -620,6 +623,10 @@
 		26754E4A13F331B500824D68 /* slice_button_people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slice_button_people@2x.png"; path = "resources/slice_button_people@2x.png"; sourceTree = "<group>"; };
 		26754E4B13F331B500824D68 /* slice_button_share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slice_button_share.png; path = resources/slice_button_share.png; sourceTree = "<group>"; };
 		26754E4C13F331B500824D68 /* slice_button_share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slice_button_share@2x.png"; path = "resources/slice_button_share@2x.png"; sourceTree = "<group>"; };
+		267669BB13FC5CAF00465943 /* share_facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_facebook.png; path = resources/share_facebook.png; sourceTree = "<group>"; };
+		267669BC13FC5CAF00465943 /* share_facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_facebook@2x.png"; path = "resources/share_facebook@2x.png"; sourceTree = "<group>"; };
+		267669BD13FC5CAF00465943 /* share_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_twitter.png; path = resources/share_twitter.png; sourceTree = "<group>"; };
+		267669BE13FC5CAF00465943 /* share_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_twitter@2x.png"; path = "resources/share_twitter@2x.png"; sourceTree = "<group>"; };
 		267690B513D4DFB200D328A6 /* DWJoinTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWJoinTeamViewController.h; path = Classes/Onboarding/DWJoinTeamViewController.h; sourceTree = "<group>"; };
 		267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWJoinTeamViewController.m; path = Classes/Onboarding/DWJoinTeamViewController.m; sourceTree = "<group>"; };
 		267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMembershipsController.h; sourceTree = "<group>"; };
@@ -867,11 +874,9 @@
 		BB4D03C313E799B200A1E791 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFacebookConnect.m; sourceTree = "<group>"; };
 		BB4D03C413E799B200A1E791 /* DWTwitterConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTwitterConnect.h; sourceTree = "<group>"; };
 		BB4D03C513E799B200A1E791 /* DWTwitterConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTwitterConnect.m; sourceTree = "<group>"; };
-		BB4D03C913E799E400A1E791 /* DWShareItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWShareItemViewController.h; sourceTree = "<group>"; };
-		BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareItemViewController.m; sourceTree = "<group>"; };
-		BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareItemViewController.xib; sourceTree = "<group>"; };
-		BB4D03CC13E799E400A1E791 /* DWSharingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSharingManager.h; sourceTree = "<group>"; };
-		BB4D03CD13E799E400A1E791 /* DWSharingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSharingManager.m; sourceTree = "<group>"; };
+		BB4D03C913E799E400A1E791 /* DWShareTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWShareTeamViewController.h; sourceTree = "<group>"; };
+		BB4D03CA13E799E400A1E791 /* DWShareTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareTeamViewController.m; sourceTree = "<group>"; };
+		BB4D03CB13E799E400A1E791 /* DWShareTeamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareTeamViewController.xib; sourceTree = "<group>"; };
 		BB4D03D213E79A6900A1E791 /* DWInvitePeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInvitePeopleViewController.h; sourceTree = "<group>"; };
 		BB4D03D313E79A6900A1E791 /* DWInvitePeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInvitePeopleViewController.m; sourceTree = "<group>"; };
 		BB4D03D513E79A6900A1E791 /* DWUpdateTeamDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUpdateTeamDetailsViewController.h; sourceTree = "<group>"; };
@@ -1266,6 +1271,10 @@
 		267A0DA112E818AC001B0604 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				267669BB13FC5CAF00465943 /* share_facebook.png */,
+				267669BC13FC5CAF00465943 /* share_facebook@2x.png */,
+				267669BD13FC5CAF00465943 /* share_twitter.png */,
+				267669BE13FC5CAF00465943 /* share_twitter@2x.png */,
 				26EF72A113FA0C68000C448E /* button_loading.png */,
 				26EF72A213FA0C68000C448E /* button_loading@2x.png */,
 				26B1917913F614BB00431ABF /* bg_glow_create.png */,
@@ -1938,11 +1947,9 @@
 		BB4D03C813E799E400A1E791 /* Sharing */ = {
 			isa = PBXGroup;
 			children = (
-				BB4D03C913E799E400A1E791 /* DWShareItemViewController.h */,
-				BB4D03CA13E799E400A1E791 /* DWShareItemViewController.m */,
-				BB4D03CB13E799E400A1E791 /* DWShareItemViewController.xib */,
-				BB4D03CC13E799E400A1E791 /* DWSharingManager.h */,
-				BB4D03CD13E799E400A1E791 /* DWSharingManager.m */,
+				BB4D03C913E799E400A1E791 /* DWShareTeamViewController.h */,
+				BB4D03CA13E799E400A1E791 /* DWShareTeamViewController.m */,
+				BB4D03CB13E799E400A1E791 /* DWShareTeamViewController.xib */,
 			);
 			name = Sharing;
 			path = Classes/Sharing;
@@ -2738,7 +2745,7 @@
 				BBF670A913E730D100803B17 /* bg_dark_gradient_square.png in Resources */,
 				BBF670AA13E730D100803B17 /* bg_dark_gradient_square@2x.png in Resources */,
 				BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */,
-				BB4D03CF13E799E400A1E791 /* DWShareItemViewController.xib in Resources */,
+				BB4D03CF13E799E400A1E791 /* DWShareTeamViewController.xib in Resources */,
 				BB4D03DE13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.xib in Resources */,
 				BB4D03E013E79A6900A1E791 /* DWUpdateUserDetailsViewController.xib in Resources */,
 				26E1016813E8E11A00F2C32C /* button_close.png in Resources */,
@@ -2770,6 +2777,10 @@
 				26B1917C13F614BB00431ABF /* bg_glow_create@2x.png in Resources */,
 				26EF72A313FA0C68000C448E /* button_loading.png in Resources */,
 				26EF72A413FA0C68000C448E /* button_loading@2x.png in Resources */,
+				267669BF13FC5CAF00465943 /* share_facebook.png in Resources */,
+				267669C013FC5CAF00465943 /* share_facebook@2x.png in Resources */,
+				267669C113FC5CAF00465943 /* share_twitter.png in Resources */,
+				267669C213FC5CAF00465943 /* share_twitter@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2961,8 +2972,7 @@
 				BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */,
 				BB4D03C613E799B200A1E791 /* DWFacebookConnect.m in Sources */,
 				BB4D03C713E799B200A1E791 /* DWTwitterConnect.m in Sources */,
-				BB4D03CE13E799E400A1E791 /* DWShareItemViewController.m in Sources */,
-				BB4D03D013E799E400A1E791 /* DWSharingManager.m in Sources */,
+				BB4D03CE13E799E400A1E791 /* DWShareTeamViewController.m in Sources */,
 				BB4D03DB13E79A6900A1E791 /* DWInvitePeopleViewController.m in Sources */,
 				BB4D03DD13E79A6900A1E791 /* DWUpdateTeamDetailsViewController.m in Sources */,
 				BB4D03DF13E79A6900A1E791 /* DWUpdateUserDetailsViewController.m in Sources */,

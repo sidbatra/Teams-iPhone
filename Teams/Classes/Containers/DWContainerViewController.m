@@ -12,8 +12,8 @@
 #import "DWUserTeamsViewController.h"
 #import "DWUpdateUserDetailsViewController.h"
 #import "DWCreateViewController.h"
+#import "DWShareTeamViewController.h"
 
-#import "DWSharingManager.h"
 #import "DWItem.h"
 #import "DWConstants.h"
 #import "DWSession.h"
@@ -305,7 +305,13 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareTeam:(DWTeam*)team {
-    //sharing code
+    self.navigationController.navigationBar.clipsToBounds       = NO;
+    
+    DWShareTeamViewController *shareTeamViewController          = [[[DWShareTeamViewController alloc] init] autorelease];
+    shareTeamViewController.team                                = team;
+    
+    [self.navigationController pushViewController:shareTeamViewController 
+                                         animated:YES];    
 }
 
 

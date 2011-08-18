@@ -294,24 +294,26 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchDownOnButton:(UIButton*)button {
-	subtitleLabel.textColor = [UIColor whiteColor]; 
+	//subtitleLabel.textColor = [UIColor whiteColor]; 
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchUpInsideButton:(UIButton*)button {
+    /*
     subtitleLabel.textColor = [UIColor colorWithRed:255
                                               green:255 
                                                blue:255 
-                                              alpha:1.0];
+                                              alpha:0.5];*/
     [self titleViewButtonTapped];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didOtherTouchesToButton:(UIButton*)button {
+    /*
     subtitleLabel.textColor = [UIColor colorWithRed:255 
                                               green:255 
                                                blue:255 
-                                              alpha:1.0]; 
+                                              alpha:0.5]; */
 }
 
 
