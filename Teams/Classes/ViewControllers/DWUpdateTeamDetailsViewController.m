@@ -115,7 +115,7 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
     self.teamBylineTextField.text   = self.team.byline;
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,156)
+        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,178)
                                                                             andMessageText:kMsgProcesssing] autorelease];
     
     
