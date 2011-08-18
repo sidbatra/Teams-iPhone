@@ -274,6 +274,7 @@
 		BB4051CF12F2377500916688 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051B412F2377500916688 /* MBProgressHUD.m */; };
 		BB4051D112F2377500916688 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BA12F2377500916688 /* RegexKitLite.m */; };
 		BB4051D212F2377500916688 /* RKLMatchEnumerator.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */; };
+		BB4654A113FD8E72006EBC16 /* sound.wav in Resources */ = {isa = PBXBuildFile; fileRef = BB4654A013FD8E72006EBC16 /* sound.wav */; };
 		BB4D03BE13E7996500A1E791 /* DWCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BA13E7996500A1E791 /* DWCameraOverlayViewController.m */; };
 		BB4D03BF13E7996500A1E791 /* DWCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D03BB13E7996500A1E791 /* DWCameraOverlayViewController.xib */; };
 		BB4D03C013E7996500A1E791 /* DWMediaPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4D03BD13E7996500A1E791 /* DWMediaPickerController.m */; };
@@ -865,6 +866,7 @@
 		BB4051BA12F2377500916688 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		BB4051BB12F2377500916688 /* RKLMatchEnumerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RKLMatchEnumerator.h; sourceTree = "<group>"; };
 		BB4051BC12F2377500916688 /* RKLMatchEnumerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RKLMatchEnumerator.m; sourceTree = "<group>"; };
+		BB4654A013FD8E72006EBC16 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = sound.wav; path = resources/sound.wav; sourceTree = "<group>"; };
 		BB4D03B913E7996500A1E791 /* DWCameraOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCameraOverlayViewController.h; sourceTree = "<group>"; };
 		BB4D03BA13E7996500A1E791 /* DWCameraOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCameraOverlayViewController.m; sourceTree = "<group>"; };
 		BB4D03BB13E7996500A1E791 /* DWCameraOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWCameraOverlayViewController.xib; sourceTree = "<group>"; };
@@ -1591,6 +1593,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB4654A013FD8E72006EBC16 /* sound.wav */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Teams-Info.plist */,
 			);
@@ -2781,6 +2784,7 @@
 				267669C013FC5CAF00465943 /* share_facebook@2x.png in Resources */,
 				267669C113FC5CAF00465943 /* share_twitter.png in Resources */,
 				267669C213FC5CAF00465943 /* share_twitter@2x.png in Resources */,
+				BB4654A113FD8E72006EBC16 /* sound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
