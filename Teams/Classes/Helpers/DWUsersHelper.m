@@ -44,7 +44,7 @@
     
     NSInteger otherCount = user.followingCount - 1;
     
-    return [NSString stringWithFormat:@"Following %d %@",
+    return [NSString stringWithFormat:@"Following %d other %@",
             otherCount,
             otherCount == 1 ? @"Team" : @"Teams"];
 }

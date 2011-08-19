@@ -19,7 +19,7 @@
 /**
  * Add a label to contain the byline
  */
-- (void)createByline;
+//- (void)createByline;
 
 @end
 
@@ -39,10 +39,10 @@
 	
     if (self) {
         self.clipsToBounds                  = YES;
-        self.contentView.backgroundColor    = [UIColor blackColor];
+        self.contentView.backgroundColor    = [UIColor clearColor];
         
         [self createImageView];
-        [self createByline];
+        //[self createByline];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -57,7 +57,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createImageView {
-    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(60,36,200,200)] autorelease];
+    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(60,18,200,200)] autorelease];
 
     imageView.contentMode   = UIViewContentModeScaleAspectFit;
     imageView.clipsToBounds = YES;
@@ -66,6 +66,7 @@
     [self.contentView addSubview:imageView];
 }
 
+/*
 //----------------------------------------------------------------------------------------------------
 - (void)createByline {
     
@@ -81,7 +82,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)setByline:(NSString*)byline {
     bylineLabel.text = byline;
-}
+}*/
+
 //----------------------------------------------------------------------------------------------------
 - (void)setImage:(UIImage*)image {
     imageView.image = image;

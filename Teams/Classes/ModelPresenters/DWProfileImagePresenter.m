@@ -1,19 +1,18 @@
 //
-//  DWResourcePresenter.m
+//  DWProfileImagePresenter.m
 //  Copyright 2011 Denwen. All rights reserved.
 //
 
-#import "DWResourcePresenter.h"
-#import "DWResource.h"
-#import "DWSlimCell.h"
+#import "DWProfileImagePresenter.h"
+#import "DWProfileImage.h"
+#import "DWImageCell.h"
 #import "DWConstants.h"
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWResourcePresenter
+@implementation DWProfileImagePresenter
 
 //----------------------------------------------------------------------------------------------------
 + (UITableViewCell*)cellForObject:(id)object
@@ -22,23 +21,14 @@
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
     
-    DWResource *resource        = object;
-    DWSlimCell *cell            = base;
+    DWProfileImage *profileImage    = object;
+    DWImageCell *cell               = base;
     
     if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                  reuseIdentifier:identifier] autorelease];
+        cell = [[[DWImageCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                   reuseIdentifier:identifier] autorelease];
     
-    cell.boldText   = resource.text;
-    cell.plainText  = resource.subText;
-    
-    if ([resource hasImage]) 
-        [cell setImage:resource.image];
-    else
-        cell.largeText = resource.statText;
-    
-    [cell reset];
-    [cell redisplay];
+    [cell setImage:profileImage.image];
     
     return cell;
 }
@@ -47,7 +37,7 @@
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kSlimCellHeight;
+    return kImageCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -58,17 +48,13 @@
                  havingResourceID:(NSInteger)resourceID
                            ofType:(NSInteger)resourceType { 
     
-    DWResource *resourceObject = object;
+    DWProfileImage *profileImage = object;
     
-    if(resourceType != resourceObject.imageResourceType || resourceID != resourceObject.imageResourceID)
+    if(resourceType != kResourceTypeLargeUserImage || resourceID != profileImage.imageID)
         return;
     
-    DWSlimCell *cell = base;
-    
+    DWImageCell *cell = base;
     [cell setImage:resource];
-    [cell redisplay];
-    
-    resourceObject.image = resource;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -81,7 +67,7 @@
     
     if(![delegate respondsToSelector:sel])
         return;
-        
+    
     
     [delegate performSelector:sel 
                    withObject:object];

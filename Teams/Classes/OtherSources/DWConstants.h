@@ -83,14 +83,6 @@ typedef enum {
 } DWTeamPresenterStyle;
 
 /**
- * Presentation styles for the resource presenter
- */
-typedef enum {
-    kResourcePresenterStyleFat = 1,
-} DWResourcePresenterStyle;
-
-
-/**
  * Presentation styles for the contacts presenter
  */
 typedef enum {

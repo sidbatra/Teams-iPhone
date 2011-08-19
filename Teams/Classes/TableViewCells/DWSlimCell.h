@@ -38,10 +38,13 @@
     
     CGRect                          _boldTextRect;
     CGRect                          _plainTextRect;
+    CGRect                          _extraTextRect;
+    CGRect                          _largeTextRect;
 	
 	NSString						*_boldText;
     NSString                        *_plainText;
     NSString                        *_extraText;
+    NSString                        *_largeText;
 }
 
 /**
@@ -60,11 +63,18 @@
 @property (nonatomic,copy) NSString* extraText;
 
 /**
+ * Large text displayed on the left side instead 
+ * of the image
+ */
+@property (nonatomic,copy) NSString* largeText;
+
+/**
  * CGRect's for all the individual text elements
  */
 @property (nonatomic,readonly) CGRect boldTextRect;
 @property (nonatomic,readonly) CGRect plainTextRect;
 @property (nonatomic,readonly) CGRect extraTextRect;
+@property (nonatomic,readonly) CGRect largeTextRect;
 
 
 /**

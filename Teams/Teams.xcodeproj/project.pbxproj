@@ -112,6 +112,10 @@
 		267669C013FC5CAF00465943 /* share_facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BC13FC5CAF00465943 /* share_facebook@2x.png */; };
 		267669C113FC5CAF00465943 /* share_twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BD13FC5CAF00465943 /* share_twitter.png */; };
 		267669C213FC5CAF00465943 /* share_twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669BE13FC5CAF00465943 /* share_twitter@2x.png */; };
+		267669D713FDB98300465943 /* slice_button_user_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669D513FDB98300465943 /* slice_button_user_white.png */; };
+		267669D813FDB98300465943 /* slice_button_user_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267669D613FDB98300465943 /* slice_button_user_white@2x.png */; };
+		267669DC13FDCC2D00465943 /* DWProfileImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 267669DB13FDCC2B00465943 /* DWProfileImage.m */; };
+		267669DF13FDD0CB00465943 /* DWProfileImagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267669DE13FDD0C900465943 /* DWProfileImagePresenter.m */; };
 		267690B813D4DFB500D328A6 /* DWJoinTeamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */; };
 		267690BD13D4F3DB00D328A6 /* DWMembershipsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267690BC13D4F3DB00D328A6 /* DWMembershipsController.m */; };
 		26802E1613EE11EE003F7EF6 /* button_cancel_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 26802E1213EE11EE003F7EF6 /* button_cancel_left.png */; };
@@ -628,6 +632,12 @@
 		267669BC13FC5CAF00465943 /* share_facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_facebook@2x.png"; path = "resources/share_facebook@2x.png"; sourceTree = "<group>"; };
 		267669BD13FC5CAF00465943 /* share_twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share_twitter.png; path = resources/share_twitter.png; sourceTree = "<group>"; };
 		267669BE13FC5CAF00465943 /* share_twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "share_twitter@2x.png"; path = "resources/share_twitter@2x.png"; sourceTree = "<group>"; };
+		267669D513FDB98300465943 /* slice_button_user_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = slice_button_user_white.png; path = resources/slice_button_user_white.png; sourceTree = "<group>"; };
+		267669D613FDB98300465943 /* slice_button_user_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "slice_button_user_white@2x.png"; path = "resources/slice_button_user_white@2x.png"; sourceTree = "<group>"; };
+		267669DA13FDCC2A00465943 /* DWProfileImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileImage.h; sourceTree = "<group>"; };
+		267669DB13FDCC2B00465943 /* DWProfileImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileImage.m; sourceTree = "<group>"; };
+		267669DD13FDD0C800465943 /* DWProfileImagePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileImagePresenter.h; sourceTree = "<group>"; };
+		267669DE13FDD0C900465943 /* DWProfileImagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileImagePresenter.m; sourceTree = "<group>"; };
 		267690B513D4DFB200D328A6 /* DWJoinTeamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWJoinTeamViewController.h; path = Classes/Onboarding/DWJoinTeamViewController.h; sourceTree = "<group>"; };
 		267690B613D4DFB300D328A6 /* DWJoinTeamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWJoinTeamViewController.m; path = Classes/Onboarding/DWJoinTeamViewController.m; sourceTree = "<group>"; };
 		267690BB13D4F3DA00D328A6 /* DWMembershipsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMembershipsController.h; sourceTree = "<group>"; };
@@ -1273,6 +1283,8 @@
 		267A0DA112E818AC001B0604 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				267669D513FDB98300465943 /* slice_button_user_white.png */,
+				267669D613FDB98300465943 /* slice_button_user_white@2x.png */,
 				267669BB13FC5CAF00465943 /* share_facebook.png */,
 				267669BC13FC5CAF00465943 /* share_facebook@2x.png */,
 				267669BD13FC5CAF00465943 /* share_twitter.png */,
@@ -2072,6 +2084,8 @@
 				269FC6FF13D5EB68004892D0 /* DWContact.m */,
 				BBC3964813E0897300A2A8F6 /* DWInteraction.h */,
 				BBC3964913E0897300A2A8F6 /* DWInteraction.m */,
+				267669DA13FDCC2A00465943 /* DWProfileImage.h */,
+				267669DB13FDCC2B00465943 /* DWProfileImage.m */,
 			);
 			name = Models;
 			path = Classes/Models;
@@ -2244,6 +2258,8 @@
 				BBD113BF13D7D9B8002D7352 /* DWNotificationPresenter.m */,
 				BB7E1E3D13F35AE900294A23 /* DWTouchPresenter.h */,
 				BB7E1E3E13F35AE900294A23 /* DWTouchPresenter.m */,
+				267669DD13FDD0C800465943 /* DWProfileImagePresenter.h */,
+				267669DE13FDD0C900465943 /* DWProfileImagePresenter.m */,
 			);
 			name = ModelPresenters;
 			path = Classes/ModelPresenters;
@@ -2785,6 +2801,8 @@
 				267669C113FC5CAF00465943 /* share_twitter.png in Resources */,
 				267669C213FC5CAF00465943 /* share_twitter@2x.png in Resources */,
 				BB4654A113FD8E72006EBC16 /* sound.wav in Resources */,
+				267669D713FDB98300465943 /* slice_button_user_white.png in Resources */,
+				267669D813FDB98300465943 /* slice_button_user_white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2988,6 +3006,8 @@
 				BB7E1E1813F321A000294A23 /* DWNotificationsHelper.m in Sources */,
 				BB7E1E3F13F35AE900294A23 /* DWTouchPresenter.m in Sources */,
 				BB7E1E4213F35CFF00294A23 /* DWTouchesHelper.m in Sources */,
+				267669DC13FDCC2D00465943 /* DWProfileImage.m in Sources */,
+				267669DF13FDD0CB00465943 /* DWProfileImagePresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

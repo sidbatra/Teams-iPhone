@@ -11,7 +11,7 @@
 
 @class DWUser;
 @class DWResource;
-@class DWMessage;
+@class DWProfileImage;
 @protocol DWUserViewDataSourceDelegate;
 
 /**
@@ -22,10 +22,10 @@
     DWUsersController   *_usersController;
     DWTeamsController   *_teamsController;
     
-    DWMessage           *_teamMessage;
-    DWMessage           *_watchingMessage;
+    DWResource          *_teamResource;
+    DWResource          *_followingResource;
     
-    DWResource          *_imageResource;
+    DWProfileImage      *_profileImage;
     
     NSInteger           _userID;
 }
@@ -41,19 +41,19 @@
 @property (nonatomic,retain) DWTeamsController *teamsController;
 
 /**
- * Message displaying the current team
+ * Resource displaying the current team
  */
-@property (nonatomic,retain) DWMessage *teamMessage;
+@property (nonatomic,retain) DWResource *teamResource;
 
 /**
- * Message displaying the total teams being watched
+ * Resource displaying the total teams being followed
  */
-@property (nonatomic,retain) DWMessage *watchingMessage;
+@property (nonatomic,retain) DWResource *followingResource;
 
 /**
- * Image + byline for the profile pic cell
+ * Image for the profile pic cell
  */
-@property (nonatomic,retain) DWResource *imageResource;
+@property (nonatomic,retain) DWProfileImage *profileImage;
 
 
 /**

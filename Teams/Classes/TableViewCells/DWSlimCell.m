@@ -13,15 +13,17 @@ static NSString* const kImgChevron		= @"chevron.png";
 #define kAnimationDuration          0.05
 #define kNoAnimationDuration		0.0
 #define kFadeDelay                  0.3
-#define kColorNormalBg              [UIColor clearColor].CGColor
+#define kColorNormalBg              [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.05].CGColor
 #define kColorHighlightBg           [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.2].CGColor
 #define kColorOverlayBg             [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4].CGColor
 #define kColorTextBold              [UIColor whiteColor].CGColor
 #define kColorTextPlain             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
 #define kColorTextExtra             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5].CGColor
+#define kColorTextLarge             [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0].CGColor
 #define kFontBoldText               [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontPlainText              [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontExtraText              [UIFont fontWithName:@"HelveticaNeue" size:10]
+#define kFontLargeText              [UIFont fontWithName:@"HelveticaNeue-Bold" size:32]
 #define kTextX                      78
 #define kBoldTextTopY               5
 #define kPlainTextTopY              25
@@ -67,6 +69,13 @@ static NSString* const kImgChevron		= @"chevron.png";
                      lineBreakMode:UILineBreakModeTailTruncation];
     
     
+    CGContextSetFillColorWithColor(context,kColorTextLarge);
+    
+    [slimCell.largeText drawInRect:slimCell.largeTextRect
+                          withFont:kFontLargeText
+                     lineBreakMode:UILineBreakModeTailTruncation 
+                         alignment:UITextAlignmentCenter];
+    
 	UIGraphicsPopContext();
 }
 
@@ -82,9 +91,12 @@ static NSString* const kImgChevron		= @"chevron.png";
 @synthesize boldText			= _boldText;
 @synthesize plainText           = _plainText;
 @synthesize extraText           = _extraText;
+@synthesize largeText           = _largeText;
 @synthesize boldTextRect        = _boldTextRect;
 @synthesize plainTextRect       = _plainTextRect;
 @synthesize extraTextRect       = _extraTextRect;
+@synthesize largeTextRect       = _largeTextRect;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style
@@ -152,6 +164,7 @@ static NSString* const kImgChevron		= @"chevron.png";
     self.boldText       = nil;
 	self.plainText		= nil;
     self.extraText      = nil;
+    self.largeText      = nil;
 	
     [super dealloc];
 }
@@ -193,6 +206,8 @@ static NSString* const kImgChevron		= @"chevron.png";
                                          extraTextSize.width,
                                          extraTextSize.height);
     
+    _largeTextRect          = CGRectMake(7,13,60,38);
+                                         
     
     [CATransaction begin];
 	[CATransaction setValue:[NSNumber numberWithFloat:kNoAnimationDuration]

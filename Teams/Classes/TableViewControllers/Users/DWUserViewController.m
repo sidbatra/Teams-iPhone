@@ -53,10 +53,6 @@
         self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
         self.userViewDataSource.userID  = userID;
         
-        [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kResourcePresenterStyleFat]
-                                        forKey:[[DWResource class] className]];
-        
-        
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(largeImageLoaded:) 
                                                      name:kNImgLargeUserLoaded
@@ -98,7 +94,7 @@
 	[super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
-    
+        
     [self loadNavTitleView];
     
     [self.userViewDataSource loadUser];
@@ -165,11 +161,11 @@
 #pragma mark DWResourcePresenterDelegate (via selectors)
 
 //----------------------------------------------------------------------------------------------------
-- (void)messageClicked:(id)message {
+- (void)resourceClicked:(id)resource {
     
     DWUser *user = [DWUser fetch:self.userViewDataSource.userID];
     
-    if(message == self.userViewDataSource.teamMessage) {
+    if(resource == self.userViewDataSource.teamResource) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"team_selected"
@@ -177,7 +173,7 @@
         
         [self.delegate userViewShowTeam:user.team];
     }
-    else if(message == self.userViewDataSource.watchingMessage) {
+    else if(resource == self.userViewDataSource.followingResource) {
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"following_selected"

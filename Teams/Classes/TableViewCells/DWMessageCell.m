@@ -83,7 +83,7 @@ static CGFloat   const kFadeDelay       = 0.3;
                                                                                  self.contentView.frame.size.width-40,
                                                                                  kMessageCellHeight)] autorelease];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
     messageLabel.backgroundColor	= [UIColor clearColor];
     messageLabel.textAlignment		= UITextAlignmentCenter;
     

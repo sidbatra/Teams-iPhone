@@ -421,8 +421,8 @@ NSInteger const kURLTagMultipler				= 100;
 NSInteger const kPaginationCellHeight			= 60;
 
 NSInteger const kSlimCellHeight                 = 68;
-NSInteger const kMessageCellHeight              = 67;
-NSInteger const kImageCellHeight                = 282;
+NSInteger const kMessageCellHeight              = 44;
+NSInteger const kImageCellHeight                = 236;
 
 NSString* const kEmptyString					= @"";
 

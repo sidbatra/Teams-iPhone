@@ -11,13 +11,13 @@
  */
 @interface DWImageCell : UITableViewCell {
     UIImageView     *imageView;
-    UILabel         *bylineLabel;
+    //UILabel         *bylineLabel;
 }
 
 /**
  * Apply a byline
  */
-- (void)setByline:(NSString*)byline;
+//- (void)setByline:(NSString*)byline;
 
 /**
  * Apply an image

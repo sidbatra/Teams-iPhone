@@ -6,10 +6,15 @@
 #import "DWUserViewDataSource.h"
 #import "DWUser.h"
 #import "DWResource.h"
-#import "DWMessage.h"
+#import "DWProfileImage.h"
 #import "DWUsersHelper.h"
 #import "DWAnalyticsManager.h"
+#import "DWMessage.h"
 #import "DWConstants.h"
+
+static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
+
+
 
 /**
  * Private method and property declarations
@@ -17,19 +22,20 @@
 @interface DWUserViewDataSource()
 
 /**
- * Add a resource object to display the user image
+ * Add a profile image object to display the user's image
  */
-- (void)addImageResource:(DWUser*)user;
+- (void)addProfileImage:(DWUser*)user;
 
 /**
- * Adds an object with a line about the user's current team
+ * Adds a resource object to display the user's team
  */
-- (void)addCurrentTeamMessage:(DWUser*)user;
+- (void)addCurrentTeamResource:(DWUser*)user;
 
 /**
- * Adds an object with a line about the teams the user is watching
+ * Adds a resource object to display the number of teams
+ * the user is following
  */
-- (void)addWatchingTeamsMessage:(DWUser*)user;
+- (void)addFollowingTeamsResource:(DWUser*)user;
 
 
 @end
@@ -43,9 +49,9 @@
 
 @synthesize usersController     = _usersController;
 @synthesize teamsController     = _teamsController;
-@synthesize teamMessage         = _teamMessage;
-@synthesize watchingMessage     = _watchingMessage;
-@synthesize imageResource       = _imageResource;
+@synthesize teamResource        = _teamResource;
+@synthesize followingResource   = _followingResource;
+@synthesize profileImage        = _profileImage;
 @synthesize userID              = _userID;
 
 @dynamic delegate;
@@ -69,9 +75,9 @@
 - (void)dealloc {
     self.usersController    = nil;
     self.teamsController    = nil;
-    self.teamMessage        = nil;
-    self.watchingMessage    = nil;
-    self.imageResource      = nil;
+    self.teamResource       = nil;
+    self.followingResource  = nil;
+    self.profileImage       = nil;
     
     DWUser *user = [DWUser fetch:_userID];
     [user destroy];
@@ -80,39 +86,39 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)addImageResource:(DWUser*)user {
+- (void)addProfileImage:(DWUser*)user {
     
-    self.imageResource                        = [[[DWResource alloc] init] autorelease];
-    self.imageResource.text                   = user.byline;
-    self.imageResource.image                  = user.largeImage;
-    self.imageResource.imageResourceType      = kResourceTypeLargeUserImage;
-    self.imageResource.imageResourceID        = user.databaseID;
+    self.profileImage                   = [[[DWProfileImage alloc] init] autorelease];
+    self.profileImage.image             = user.largeImage;
+    self.profileImage.imageID           = user.databaseID;
     
-    [self.objects addObject:self.imageResource];
+    [self.objects addObject:self.profileImage];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)addCurrentTeamMessage:(DWUser*)user {
+- (void)addCurrentTeamResource:(DWUser*)user {
     
-    self.teamMessage                = [[[DWMessage alloc] init] autorelease];
-    self.teamMessage.interactive    = YES;
-    self.teamMessage.content        = [DWUsersHelper currentTeamLine:user];
+    self.teamResource                   = [[[DWResource alloc] init] autorelease];
+    self.teamResource.text              = [DWUsersHelper currentTeamLine:user];
+    self.teamResource.subText           = user.team.byline;
+    self.teamResource.image             = [UIImage imageNamed:kImgUsersTeam];    
     
-    [self.objects addObject:self.teamMessage];
+    [self.objects addObject:self.teamResource];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)addWatchingTeamsMessage:(DWUser*)user {
+- (void)addFollowingTeamsResource:(DWUser*)user {
     
     if (user.followingCount < 2)
         return;
         
     
-    self.watchingMessage                = [[[DWMessage alloc] init] autorelease];
-    self.watchingMessage.interactive    = YES;
-    self.watchingMessage.content        = [DWUsersHelper watchingTeamsLine:user];
+    self.followingResource              = [[[DWResource alloc] init] autorelease];
+    self.followingResource.text         = [DWUsersHelper watchingTeamsLine:user];
+    self.followingResource.subText      = @"across the network";
+    self.followingResource.statText     = [NSString stringWithFormat:@"%d",user.followingCount-1];
     
-    [self.objects addObject:self.watchingMessage];
+    [self.objects addObject:self.followingResource];
 }
 
 
@@ -149,9 +155,13 @@
     
     [user startLargeImageDownload];
     
-    [self addImageResource:user];
-    [self addCurrentTeamMessage:user];
-    [self addWatchingTeamsMessage:user];
+    [self addProfileImage:user];
+    [self addCurrentTeamResource:user];
+    [self addFollowingTeamsResource:user];
+    
+    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    message.content     = [DWUsersHelper createdAtLine:[DWUser fetch:self.userID]];
+    [self.objects addObject:message];
       
     [self.delegate userLoaded:user];
     [self.delegate reloadTableView];
@@ -170,9 +180,7 @@
         
         [user startLargeImageDownload];
         
-        self.imageResource.text     = user.byline;
-        self.imageResource.image    = user.largeImage;
-        
+        self.profileImage.image = user.largeImage;
         
         [self.delegate userLoaded:user];
         [self.delegate reloadTableView];
@@ -196,10 +204,10 @@
         
         [user startLargeImageDownload];
         
-        self.imageResource.text     = user.byline;
-        self.imageResource.image    = user.largeImage;
+        self.profileImage.image     = user.largeImage;
         
-        self.teamMessage.content  = [DWUsersHelper currentTeamLine:user];
+        self.teamResource.text      = [DWUsersHelper currentTeamLine:user];
+        self.teamResource.subText   = user.team.byline;
         
         [self.delegate userLoaded:user];
         [self.delegate reloadTableView];
@@ -209,5 +217,3 @@
 }
 
 @end
-
-
