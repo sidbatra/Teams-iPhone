@@ -44,8 +44,8 @@
 #define kUnderlineYOffset                   17
 #define kUnderlineHeight                    0.75
 #define kAtXOffset                          0
-#define kAtWidth                            6
-#define kByLineXOffset                      6
+#define kAtWidth                            2
+#define kByLineXOffset                      5
 #define kTeamNameXOffset                    2
 #define kMaxTeamNameWidth                   305
 #define kItemDataX                          30
