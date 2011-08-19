@@ -18,6 +18,7 @@ static NSInteger const kTableViewWidth						= 320;
 static NSInteger const kTableViewHeight						= 200;
 static NSInteger const kMaxPlaceNameLength					= 32;
 static NSInteger const kMaxPostLength						= 140;
+static NSInteger const kMaxTeamLabelWidth                   = 200;
 static NSString* const kImgTransBackground                  = @"trans55.png";
 static NSString* const kImgLightBackgroundButton			= @"button_gray_light.png";
 static NSString* const kImgDarkBackgroundCancelButton		= @"button_gray_dark_cancel.png";
@@ -42,7 +43,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 @synthesize doneButton			= _doneButton;
 @synthesize cameraButton		= _cameraButton;
 @synthesize coverLabel			= _coverLabel;
-@synthesize bylineLabel         = _bylineLabel;
+@synthesize teamNameLabel       = _teamNameLabel;
+@synthesize userNameLabel       = _userNameLabel;
 
 @synthesize data                = _data;
 @synthesize placeholder         = _placeholder;
@@ -80,7 +82,8 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	self.doneButton				= nil;
 	self.cameraButton			= nil;
 	self.coverLabel				= nil;
-    self.bylineLabel            = nil;
+    self.teamNameLabel          = nil;
+    self.userNameLabel          = nil;
 	
     self.data                   = nil;
     self.placeholder            = nil;
@@ -102,7 +105,9 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
                                                  animated:YES];
     
     
-    self.bylineLabel.text               = [DWUsersHelper signatureWithTeamName:[DWSession sharedDWSession].currentUser];
+    self.teamNameLabel.text             = [DWSession sharedDWSession].currentUser.team.name;
+    self.userNameLabel.text             = [DWSession sharedDWSession].currentUser.firstName;
+    
     self.dataTextView.text              = self.data;
     self.dataTextView.placeholderColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
 	self.dataTextView.placeholderText	= self.placeholder;
@@ -112,8 +117,15 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     self.previewImageView.image         = self.cameraImage;
     self.transImageView.image           = [UIImage imageNamed:kImgTransBackground];
     self.transImageView.hidden			= !_inMediaMode;
-
     
+    CGSize teamNameSize = [self.teamNameLabel.text sizeWithFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:17] 
+                                              constrainedToSize:CGSizeMake(kMaxTeamLabelWidth,20) 
+                                                  lineBreakMode:UILineBreakModeTailTruncation]; 
+    
+
+    self.teamNameLabel.frame            = CGRectMake(7, 0, teamNameSize.width, 44);
+    self.userNameLabel.frame            = CGRectMake(teamNameSize.width + 13, 0, 306 - 13 - teamNameSize.width, 44);
+
     [[DWLocationManager sharedDWLocationManager] startLocationTracking];
     
     

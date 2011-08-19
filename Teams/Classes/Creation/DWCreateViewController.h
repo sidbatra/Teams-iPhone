@@ -24,7 +24,8 @@
 	UIButton			*_doneButton;
 	UIButton			*_cameraButton;
 	UILabel				*_coverLabel;
-    UILabel             *_bylineLabel;
+    UILabel             *_teamNameLabel;
+    UILabel             *_userNameLabel;    
 	
     BOOL                _inMediaMode;
     NSString            *_data;
@@ -80,7 +81,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
 @property (nonatomic, retain) IBOutlet UIButton *cameraButton;
 @property (nonatomic, retain) IBOutlet UILabel *coverLabel;
-@property (nonatomic, retain) IBOutlet UILabel *bylineLabel;
+@property (nonatomic, retain) IBOutlet UILabel *teamNameLabel;
+@property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
 
 
 /**

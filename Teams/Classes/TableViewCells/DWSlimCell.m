@@ -206,7 +206,7 @@ static NSString* const kImgChevron		= @"chevron.png";
                                          extraTextSize.width,
                                          extraTextSize.height);
     
-    _largeTextRect          = CGRectMake(7,13,60,38);
+    _largeTextRect          = CGRectMake(7,12,60,38);
                                          
     
     [CATransaction begin];
