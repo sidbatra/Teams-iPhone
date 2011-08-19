@@ -24,7 +24,7 @@ static NSString* const kMsgDefault                  = @"Sharing...";
 static NSString* const kMsgLoggingIn                = @"Logging in...";
 static NSString* const kNavBarRightButtonText       = @"Share";
 static NSString* const kTitle                       = @"Share this Team";
-static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
+static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %@";
 
 
 
