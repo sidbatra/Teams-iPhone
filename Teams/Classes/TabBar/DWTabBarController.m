@@ -77,7 +77,7 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
                                             [UIImage imageNamed:kImgTopShadow]] autorelease];
         self.topShadowView.frame        = CGRectMake(0,44,320,5);
         
-        self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kApplicationFrame];
+        self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
 	}
 	
 	return self;
