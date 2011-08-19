@@ -139,6 +139,9 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
                                             andSubTitle:kMsgFollowAction
                                        withEnabledState:YES];
     }
+    
+    if([DWSession sharedDWSession].currentUser.team == team)
+        [[DWSession sharedDWSession] update];
 }
 
 

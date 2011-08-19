@@ -152,6 +152,9 @@
 - (void)userLoaded:(DWUser*)user {
     [self.navTitleView displayTitle:[DWUsersHelper displayName:user] 
                         andSubTitle:user.byline];
+    
+    if(user.isCurrentUser)
+        [[DWSession sharedDWSession] update];
 }
 
 
