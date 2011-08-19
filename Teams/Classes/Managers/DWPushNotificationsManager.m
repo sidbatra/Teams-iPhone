@@ -180,7 +180,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)resetNotifications {    
-    _showNotifications          = NO;
+    _showNotifications = NO;
+    
+    if(!_unreadNotificationsCount)
+        return;
+    
+    
+    _unreadNotificationsCount = 0;
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = _unreadNotificationsCount;
+    
+    [self broadcastNewBadgeNumber];
+    
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
+                      withNotificationsCount:_unreadNotificationsCount];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -270,9 +283,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)notificationRead:(DWNotification*)notification {
-    
-    [self updateUnreadNotificationsBy:-1];
-    
     [notification destroy];
 }
 
