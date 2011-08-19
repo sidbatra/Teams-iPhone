@@ -124,7 +124,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     
 
     self.teamNameLabel.frame            = CGRectMake(7, 0, teamNameSize.width, 44);
-    self.userNameLabel.frame            = CGRectMake(teamNameSize.width + 13, 0, 306 - 13 - teamNameSize.width, 44);
+    self.userNameLabel.frame            = CGRectMake(teamNameSize.width + 13, 0, 313 - 13 - teamNameSize.width, 44);
 
     [[DWLocationManager sharedDWLocationManager] startLocationTracking];
     
