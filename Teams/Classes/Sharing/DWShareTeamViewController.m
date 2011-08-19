@@ -16,7 +16,7 @@
 
 static NSInteger const kMaxTwitterDataLength        = 104;
 static NSString* const kMsgIncompleteTitle          = @"Incomplete";
-static NSString* const kMsgIncomplete               = @"Please choose a network to share to";
+static NSString* const kMsgIncomplete               = @"Please choose a network";
 static NSString* const kMsgErrorAlertTitle          = @"Low connectivity";
 static NSString* const kMsgTwitterError             = @"Can't connect to Twitter";
 static NSString* const kMsgCancelTitle              = @"OK";
