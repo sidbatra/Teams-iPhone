@@ -24,7 +24,7 @@ static NSString* const kMsgDefault                  = @"Sharing...";
 static NSString* const kMsgLoggingIn                = @"Logging in...";
 static NSString* const kNavBarRightButtonText       = @"Share";
 static NSString* const kTitle                       = @"Share this Team";
-static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
+static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %@";
 
 
 
@@ -37,6 +37,7 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
 @synthesize twitterConnect              = _twitterConnect;
 
 @synthesize team                        = _team;
+@synthesize usersController             = _usersController;
 
 @synthesize dataTextView                = _dataTextView;
 @synthesize facebookSwitch              = _facebookSwitch;
@@ -60,6 +61,9 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
         self.twitterConnect                 = [[[DWTwitterConnect alloc] init] autorelease];
         self.twitterConnect.delegate        = self;        
         self.twitterConnect.xAuthToken      = [DWSession sharedDWSession].currentUser.twitterXAuthToken;
+        
+        self.usersController                = [[[DWUsersController alloc] init] autorelease];    
+        self.usersController.delegate       = self;
     }
     
     return self;
@@ -72,6 +76,7 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
     self.twitterConnect         = nil;
     
     self.team                   = nil;
+    self.usersController        = nil;
     
     self.dataTextView           = nil;
     self.facebookSwitch         = nil;
@@ -250,10 +255,9 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
 - (void)fbAuthenticated {
     
     [self.dataTextView becomeFirstResponder];    
-    
-    /**
-     * TODO Update facebook token on the server
-     */
+
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
+                           withFacebookToken:self.facebookConnect.accessToken];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -295,13 +299,13 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
 #pragma mark DWTwitterConnectDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)twAuthenticated {    
+- (void)twAuthenticatedWithToken:(NSString*)token andSecret:(NSString*)secret {    
     self.twitterSwitch.on = YES;    
     [self unfreezeUI];
     
-    /**
-     * TODO Update twitter token on the server
-     */
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
+                            withTwitterToken:token 
+                            andTwitterSecret:secret];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -339,6 +343,22 @@ static NSString* const kMsgShareTeam                = @"Checkout %@: %@";
         self.facebookSwitch.enabled = NO;
 
 	[self unfreezeUI];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UsersController Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser*)user {
+    [user destroy];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString*)error {
+    //Analytics
 }
 
 

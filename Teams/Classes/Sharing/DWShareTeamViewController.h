@@ -7,6 +7,7 @@
 
 #import "DWFacebookConnect.h"
 #import "DWTwitterConnect.h"
+#import "DWUsersController.h"
 
 @class DWTeam;
 @class DWNavBarRightButtonView;
@@ -15,12 +16,13 @@
 /**
  * View for sharing items to Facebook and Twitter
  */
-@interface DWShareTeamViewController : UIViewController<DWFacebookConnectDelegate,DWTwitterConnectDelegate> {
+@interface DWShareTeamViewController : UIViewController<DWFacebookConnectDelegate,DWTwitterConnectDelegate,DWUsersControllerDelegate> {
     
     DWFacebookConnect           *_facebookConnect;
     DWTwitterConnect            *_twitterConnect;
     
     DWTeam                      *_team;
+    DWUsersController           *_usersController;
     
     BOOL                        _sharedToFacebook;
     BOOL                        _sharedToTwitter;
@@ -48,6 +50,11 @@
  * The team being shared
  */
 @property (nonatomic,retain) DWTeam *team;
+
+/**
+ * Controller for handling user requests
+ */
+@property (nonatomic,retain) DWUsersController *usersController;
 
 /**
  * IBOutlet properties

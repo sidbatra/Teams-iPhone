@@ -74,9 +74,10 @@
  * and sharing lifecycle
  */
 @protocol DWTwitterConnectDelegate
-- (void)twAuthenticated;
 - (void)twAuthenticating;
 - (void)twAuthenticationFailed;
 - (void)twSharingDone;
 - (void)twSharingFailed;
+- (void)twAuthenticatedWithToken:(NSString*)token 
+                       andSecret:(NSString*)secret;
 @end

@@ -226,10 +226,12 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     [DWSession sharedDWSession].currentUser.twitterXAuthToken   = self.xAuthToken;
     [[DWSession sharedDWSession] update];
         
-    SEL sel = @selector(twAuthenticated);
+    SEL sel = @selector(twAuthenticatedWithToken:andSecret:);
     
     if([_delegate respondsToSelector:sel])
-        [_delegate performSelector:sel];
+        [_delegate performSelector:sel 
+                        withObject:token.token 
+                        withObject:token.secret];
 }
 
 
