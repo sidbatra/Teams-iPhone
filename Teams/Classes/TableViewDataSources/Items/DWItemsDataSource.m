@@ -83,7 +83,7 @@
     [self.itemsController deleteItemWithID:item.databaseID];
     
     [self removeObject:item 
-         withAnimation:UITableViewScrollPositionBottom];
+         withAnimation:UITableViewRowAnimationBottom];
 }
 
 
