@@ -44,7 +44,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayCreateProfileView:(DWTeam*)team {
+- (void)displayCreateProfileView {
     
     DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
     createProfileViewController.delegate                        = self;
@@ -196,11 +196,27 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
     team.membersCount = 1;
-    
+
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];
+        
+    DWTeamWebURIViewController *teamWebURIViewController    = [[[DWTeamWebURIViewController alloc] init] autorelease];
+    teamWebURIViewController.delegate                       = self;
+    teamWebURIViewController.team                           = team;
     
-    [self displayCreateProfileView:team];
+    [self.navigationController pushViewController:teamWebURIViewController 
+                                         animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTeamWebURIViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamHandleSelected {
+    [self displayCreateProfileView];
 }
 
 
@@ -216,7 +232,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     [DWSession sharedDWSession].currentUser.team = team;
     [[DWSession sharedDWSession] update];    
     
-    [self displayCreateProfileView:team];
+    [self displayCreateProfileView];
 }
 
 

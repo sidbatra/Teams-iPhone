@@ -68,6 +68,10 @@
                   withName:(NSString*)name 
                  andByline:(NSString*)byline;
 
+- (void)updateTeamHavingID:(NSInteger)teamID 
+                withHandle:(NSString*)handle;   
+                    
+
 @end
 
 

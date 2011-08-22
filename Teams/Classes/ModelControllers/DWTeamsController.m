@@ -18,6 +18,7 @@ static NSString* const kRecentTeamsURI      = @"/recent/teams.json?";
 static NSString* const kUserTeamsURI        = @"/users/%d/teams.json?";
 static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
 static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
+static NSString* const kUpdateTeamHandleURI = @"/teams/@%d.json?team[handle]=%@";
 
 
 /**
@@ -258,6 +259,20 @@ static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&te
                     withName:name 
                       byline:byline 
                    andDomain:kEmptyString];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateTeamHavingID:(NSInteger)teamID 
+                withHandle:(NSString*)handle {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateTeamHandleURI,
+                          teamID,
+                          [handle stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:localURL
+                                                 successNotification:kNTeamUpdated
+                                                   errorNotification:kNTeamUpdateError
+                                                       requestMethod:kPut];
 }
 
 //----------------------------------------------------------------------------------------------------

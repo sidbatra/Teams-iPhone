@@ -242,7 +242,7 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createOrUdateUser {
+- (void)createOrUpdateUser {
     if (!_hasCreatedUser)
         [self createUser];
     else
@@ -257,14 +257,14 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapNavBarRightButton:(id)sender event:(id)event {
-    [self createOrUdateUser];
+    [self createOrUpdateUser];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
 	if(textField == self.emailTextField)
-		[self createOrUdateUser];
+		[self createOrUpdateUser];
 
 	return YES;
 }

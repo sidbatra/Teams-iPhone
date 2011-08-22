@@ -54,18 +54,10 @@ static NSInteger const kSpinnerSize = 20;
         [self disable];
         [self createSpinnerWithOrigin:origin andStyle:spinnerStyle];
         
+        [self createLabelWithOrigin:CGPointMake(origin.x + 25, origin.y) 
+                            andText:text 
+                    forSpinnerStyle:spinnerStyle];
         
-        if (spinnerStyle == UIActivityIndicatorViewStyleGray) 
-            [self createLabelWithOrigin:CGPointMake(origin.x + 25, origin.y) 
-                                andText:text 
-                        forSpinnerStyle:spinnerStyle];
-        
-        else 
-            [self createLabelWithOrigin:CGPointMake(origin.x + 25, origin.y) 
-                                andText:text 
-                        forSpinnerStyle:spinnerStyle];
-        
-            
     }
     return self;
 }
