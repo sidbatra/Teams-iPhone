@@ -7,7 +7,6 @@
 
 #import "DWConstants.h"
 #import "DWUsersLogicController.h"
-#import "DWTeamViewDataSource.h"
 #import "DWTeam.h"
 #import "DWSession.h"
 #import "DWUpdateTeamDetailsViewController.h"
@@ -124,11 +123,6 @@
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     [self.teamViewDataSource loadData];
-    
-    if (_isUsersTeam)
-        self.navigationItem.rightBarButtonItem   = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
-                                                                                    target:self 
-                                                                               andSelector:@selector(didTapEditButton:)];        
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -227,6 +221,15 @@
 //----------------------------------------------------------------------------------------------------
 - (void)teamUpdated {
     [self setupTitleView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)teamMembersLoaded {
+    
+    if (_isUsersTeam)
+        self.navigationItem.rightBarButtonItem = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
+                                                                                  target:self 
+                                                                             andSelector:@selector(didTapEditButton:)];        
 }
 
 

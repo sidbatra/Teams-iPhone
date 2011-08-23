@@ -75,4 +75,9 @@
  */
 - (void)teamUpdated;
 
+/**
+ * Fired when the team members are loaded
+ */
+- (void)teamMembersLoaded;
+
 @end

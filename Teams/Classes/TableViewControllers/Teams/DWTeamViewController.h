@@ -6,10 +6,10 @@
 #import <Foundation/Foundation.h>
 
 #import "DWTableViewController.h"
+#import "DWTeamViewDataSource.h"
 
 @class DWTeam;
 @class DWNavTitleView;
-@class DWTeamViewDataSource;
 @class DWTeamsLogicController;
 @class DWUsersLogicController;
 @protocol DWUsersLogicControllerDelegate;
@@ -18,7 +18,7 @@
 /**
  * Table view for displaying details about a team
  */
-@interface DWTeamViewController : DWTableViewController {
+@interface DWTeamViewController : DWTableViewController<DWTeamViewDataSourceDelegate> {
     BOOL                        _isUsersTeam;
     
     DWTeamViewDataSource        *_teamViewDataSource;
