@@ -17,8 +17,8 @@ static NSString* const kPopularTeamsURI     = @"/popular/teams.json?";
 static NSString* const kRecentTeamsURI      = @"/recent/teams.json?";
 static NSString* const kUserTeamsURI        = @"/users/%d/teams.json?";
 static NSString* const kNewTeamURI			= @"/teams.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
-static NSString* const kUpdateTeamURI       = @"/teams/@%d.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
-static NSString* const kUpdateTeamHandleURI = @"/teams/@%d.json?team[handle]=%@";
+static NSString* const kUpdateTeamURI       = @"/teams/%d.json?team[name]=%@&team[byline]=%@&team[domain]=%@";
+static NSString* const kUpdateTeamHandleURI = @"/teams/%d.json?team[handle]=%@";
 
 
 /**
