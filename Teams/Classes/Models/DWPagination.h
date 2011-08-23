@@ -9,14 +9,14 @@
  * Pagination model used to inject a pagination cell into table views
  */
 @interface DWPagination : NSObject {
-    BOOL    _isDisabled;
+    BOOL    _isTriggered;
     id      _owner;
 }
 
 /**
- * Indicates if pagination has been disabled
+ * Indicates if pagination has been triggered
  */
-@property (nonatomic,assign) BOOL isDisabled;
+@property (nonatomic,assign) BOOL isTriggered;
 
 /**
  * Owner of the pagination model

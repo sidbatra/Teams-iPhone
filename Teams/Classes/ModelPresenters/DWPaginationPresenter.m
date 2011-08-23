@@ -26,16 +26,16 @@
     DWPaginationCell *cell      = base;
     
     if(!cell)
-        cell = [[[DWPaginationCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[[DWPaginationCell alloc] initWithStyle:UITableViewStylePlain 
                                        reuseIdentifier:identifier] autorelease];
     
-    if(!pagination.isDisabled) {
+    if(!pagination.isTriggered) {
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kNPaginationCellReached
                                                             object:pagination.owner
                                                           userInfo:nil];
         
-        pagination.isDisabled  = YES;
+        pagination.isTriggered  = YES;
     }
     
     return cell;
