@@ -98,10 +98,7 @@
     [self loadNavTitleView];
     
     [self.userViewDataSource loadUser];
-    
-    if (_isCurrentUser)
-        [self loadNavBarRightButtonView];
-    
+        
     [self disableScrolling];
 }
 
@@ -119,9 +116,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadNavBarRightButtonView {
-    self.navigationItem.rightBarButtonItem   = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
-                                                                                target:self 
-                                                                           andSelector:@selector(didTapEditButton:)];
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarButtonWithImageName:@"button_edit.png" 
+                                                                               target:self 
+                                                                          andSelector:@selector(didTapEditButton:)];
 }
 
 
@@ -153,8 +150,11 @@
     [self.navTitleView displayTitle:[DWUsersHelper displayName:user] 
                         andSubTitle:user.byline];
     
-    if(user.isCurrentUser)
+    if(user.isCurrentUser) {
         [[DWSession sharedDWSession] update];
+        
+        [self loadNavBarRightButtonView];
+    }
 }
 
 
