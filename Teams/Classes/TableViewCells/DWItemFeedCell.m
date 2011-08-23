@@ -24,7 +24,7 @@
 #define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.6000 green:0.6000 blue:0.6000 alpha:1.0].CGColor
 #define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
-#define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
+#define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
 #define kColorSubTextNoAttachment           [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
 #define kColorByLineWithAttachment          [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
 #define kColorByLineNoAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
@@ -108,7 +108,7 @@
     CGColorRef subTextColor = isTextOnly ? kColorSubTextNoAttachment : textColor;
     
 	
-	if(![itemCell isHighlighted]) {
+	if(![itemCell isHighlighted] || isTextOnly) {
 		
         
         if(!itemCell.bylineMode) {
@@ -195,7 +195,7 @@
     
     
     //----------------------------------
-    if(![itemCell isHighlighted] || itemCell.isTouching) {
+    if(![itemCell isHighlighted] || itemCell.isTouching || isTextOnly) {
         
         CGContextSetFillColorWithColor(context,subTextColor);
         
@@ -729,14 +729,15 @@
 //----------------------------------------------------------------------------------------------------
 - (void)finishTouchCell {
     _isTouching = NO;
-    
+    BOOL isTextOnly = _attachmentType == kAttachmentNone;
+
    // if(_attachmentType != kAttachmentNone) {
         [CATransaction begin];
         [CATransaction setValue:[NSNumber numberWithFloat:0.5f] 
                          forKey:kCATransactionAnimationDuration];
         
         [self redisplay];
-        touchIconImageLayer.hidden = _highlighted;
+        touchIconImageLayer.hidden = !isTextOnly && _highlighted;
         
         [CATransaction commit];	
    // }
@@ -759,7 +760,7 @@
 	[CATransaction setValue:[NSNumber numberWithFloat:kCellAnimationDuration] 
 					 forKey:kCATransactionAnimationDuration];
 	
-	touchIconImageLayer.hidden      = !_isTouching;
+	touchIconImageLayer.hidden      = !isTextOnly && !_isTouching;
 	itemImageLayer.opacity          = isTextOnly ? kNoAttachmentAlpha : kHighlightAlpha;
     itemImageLayer.backgroundColor  = isTextOnly ? kColorNoAttachmentHighlightBg : kColorAttachmentBg;
 	
