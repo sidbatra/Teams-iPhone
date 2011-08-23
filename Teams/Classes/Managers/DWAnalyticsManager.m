@@ -187,6 +187,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                     withActionName:@"session_ended"];
     
     [self.interactionsController postInteractions:[self toJSON]
+                                   withIdentifier:[UIDevice currentDevice].uniqueIdentifier
                                         withCount:[self.interactions count]];
 }
 
