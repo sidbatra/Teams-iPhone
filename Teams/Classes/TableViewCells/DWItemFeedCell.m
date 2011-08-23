@@ -36,7 +36,7 @@
 #define kFontItemTeamNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontByline                         [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemData                       [UIFont fontWithName:@"HelveticaNeue" size:23]
-#define kFontItemDataTextOnly               [UIFont fontWithName:@"HelveticaNeue-Italic" size:23]
+#define kFontItemDataTextOnly               [UIFont fontWithName:@"Georgia-Italic" size:23]
 #define kFontItemCreatedAt                  [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTouchesCount               [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kItemUserNameX                      20

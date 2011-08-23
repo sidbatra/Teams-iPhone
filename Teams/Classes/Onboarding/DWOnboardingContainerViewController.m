@@ -284,7 +284,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     
     invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
     
-    NSLog(@"%d",[DWSession sharedDWSession].currentUser.team.membersCount);
+    
     if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
         invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 
     else
