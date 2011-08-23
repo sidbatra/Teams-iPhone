@@ -16,8 +16,7 @@
  * Display the user profile
  */
 @interface DWUserViewController : DWTableViewController<DWUserViewDataSourceDelegate> {
-    BOOL                        _isCurrentUser;
-    
+
     DWUserViewDataSource        *_userViewDataSource;
     
     DWNavTitleView              *_navTitleView;

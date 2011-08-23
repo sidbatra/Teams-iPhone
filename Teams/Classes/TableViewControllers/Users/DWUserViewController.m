@@ -49,7 +49,6 @@
     self = [super init];
     
     if(self) {
-        _isCurrentUser                  = [DWSession sharedDWSession].currentUser.databaseID == userID;
         self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
         self.userViewDataSource.userID  = userID;
         
@@ -143,17 +142,26 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWTeamsControllerDelegate
+#pragma mark DWUserViewDataSourceDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
     [self.navTitleView displayTitle:[DWUsersHelper displayName:user] 
                         andSubTitle:user.byline];
     
-    if(user.isCurrentUser) {
+    if(user.databaseID == [DWSession sharedDWSession].currentUser.databaseID) {
         [[DWSession sharedDWSession] update];
         
         [self loadNavBarRightButtonView];
+    }
+
+    NSLog(@"in user loaded");
+    
+    if(user.isCurrentUser) {
+        NSLog(@"current user");
+    }
+    if (user.databaseID == [DWSession sharedDWSession].currentUser.databaseID) {
+        NSLog(@"if condition");
     }
 }
 
