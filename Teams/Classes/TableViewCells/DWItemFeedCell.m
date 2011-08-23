@@ -63,7 +63,7 @@
 #define kTouchesIconWidth                   14
 #define kTouchesIconHeight                  16
 #define kDefaultTextHeight                  20
-#define kNormalAlpha                        0.60
+#define kNormalAlpha                        0.50
 #define kHighlightAlpha                     1.0
 #define kNoAttachmentAlpha                  1.0
 #define kSelectionDelay                     0.45
