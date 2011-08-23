@@ -10,6 +10,7 @@
 
 static NSString* const kCreateInteractionsURI   = @"/interactions.json?";
 static NSString* const kDataParamName           = @"data";
+static NSString* const kIdentifierParamName     = @"identifier";
 static NSString* const kCountParamName          = @"count";
 
 
@@ -52,11 +53,13 @@ static NSString* const kCountParamName          = @"count";
 
 //----------------------------------------------------------------------------------------------------
 - (void)postInteractions:(NSString*)interactionsJSON
+          withIdentifier:(NSString*)identifier
                withCount:(NSInteger)count {
     
     [[DWRequestsManager sharedDWRequestsManager] createPostBodyBasedDenwenRequest:kCreateInteractionsURI
                                                                        withParams:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                                    interactionsJSON,kDataParamName,
+                                                                                   identifier,kIdentifierParamName,
                                                                                    [NSNumber numberWithInteger:count],kCountParamName,
                                                                                    nil]
                                                               successNotification:kNInteractionsCreated

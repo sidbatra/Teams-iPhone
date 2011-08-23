@@ -26,6 +26,7 @@
  * of interactions. Count is the total interactions in the JSON.
  */
 - (void)postInteractions:(NSString*)interactionsJSON
+          withIdentifier:(NSString*)identifier
                withCount:(NSInteger)count;
 
 @end
