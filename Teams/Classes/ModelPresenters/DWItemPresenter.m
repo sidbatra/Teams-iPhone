@@ -9,7 +9,6 @@
 #import "DWItemsHelper.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight            = 320;
 static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
 
 
@@ -82,7 +81,10 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    DWItem *item = object;
+
+    return [DWItemFeedCell heightForCellWithText:item.data
+                                      isTextOnly:item.attachment ? NO : YES];
 }
 
 //----------------------------------------------------------------------------------------------------

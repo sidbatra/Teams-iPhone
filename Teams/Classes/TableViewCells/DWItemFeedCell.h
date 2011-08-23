@@ -35,6 +35,7 @@
 	CALayer							*itemImageLayer;
 	CALayer							*touchIconImageLayer;
 	CALayer							*playImageLayer;
+    CALayer                         *separatorLayer;
 	//CALayer						*shareImageLayer;
     
 
@@ -52,6 +53,7 @@
 	NSInteger						_itemID;
 	NSInteger						_itemTouchesCount;
 	NSInteger						_attachmentType;
+    NSInteger                       _cellHeight;
 	
 	NSString						*_itemData;
 	NSString						*_itemTeamName;
@@ -114,6 +116,12 @@
 
 @property (nonatomic,assign) id<DWItemFeedCellDelegate> delegate;
 
+
+/**
+ * Compute the height of the cell with the given data
+ */
++ (NSInteger)heightForCellWithText:(NSString*)text
+                        isTextOnly:(BOOL)textOnly;
 
 /**
  * Reset any variables that may not be refreshed 

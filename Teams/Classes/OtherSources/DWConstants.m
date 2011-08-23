@@ -423,6 +423,8 @@ NSInteger const kPaginationCellHeight			= 60;
 NSInteger const kSlimCellHeight                 = 68;
 NSInteger const kMessageCellHeight              = 44;
 NSInteger const kImageCellHeight                = 236;
+NSInteger const kItemCellHeight                 = 320;
+
 
 NSString* const kEmptyString					= @"";
 

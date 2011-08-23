@@ -50,16 +50,18 @@
 #define kMaxTeamNameWidth                   305
 #define kItemDataX                          30
 #define kItemDataXSubTitleOffset            10
-#define kItemDataY                          40
+#define kItemDataY                          38
 #define kItemDataYOffset                    2
 #define kItemDataYSubtitleOffset            55
 #define kItemDataWidth                      270
-#define kItemDataHeight                     240
+#define kItemDataHeight                     320
 #define kItemDataSubtitleHeightThreshold    56
 #define kDetailsX                           20
 #define kDetailsY                           285
+#define kDetailsYOffset                     35
 #define kTouchesIconXOffset                 4
 #define kTouchesIconY                       287
+#define kTouchesIconYOffset                 33
 #define kTouchesIconWidth                   14
 #define kTouchesIconHeight                  16
 #define kDefaultTextHeight                  20
@@ -251,7 +253,7 @@
         self.contentView.clipsToBounds      = YES;
         self.contentView.backgroundColor    = [UIColor blackColor];
         
-		CGRect frame = CGRectMake(0,0,320,320);
+		CGRect frame = CGRectMake(0,0,kItemCellHeight,kItemCellHeight);
         
         
         UITapGestureRecognizer *singleTap   = [[[UITapGestureRecognizer alloc] initWithTarget:self 
@@ -326,8 +328,7 @@
 		[[self.contentView layer] addSublayer:drawingLayer];
 		
 		
-		CALayer *separatorLayer			= [CALayer layer];
-		separatorLayer.frame			= CGRectMake(0,319,320,1);
+		separatorLayer                  = [CALayer layer];
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
 		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
 		[[self.contentView layer] addSublayer:separatorLayer];
@@ -490,7 +491,7 @@
     CGSize touchesCountSize         = [self.itemTouchesCountString sizeWithFont:kFontItemTouchesCount];
     
     _touchesCountRect               = CGRectMake(kDetailsX,
-                                                 kDetailsY,
+                                                 _cellHeight - kDetailsYOffset,
                                                  touchesCountSize.width,
                                                  touchesCountSize.height);
 }
@@ -498,7 +499,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)resetTouchImageIconPosition {
     touchIconImageLayer.frame	= CGRectMake(_touchesCountRect.origin.x+_touchesCountRect.size.width+kTouchesIconXOffset,
-											 kTouchesIconY,
+											 _cellHeight - kTouchesIconYOffset,
 											 touchIconImageLayer.frame.size.width, 
 											 touchIconImageLayer.frame.size.height);
 }
@@ -508,7 +509,7 @@
     CGSize createdAtSize            = [self.itemCreatedAt sizeWithFont:kFontItemCreatedAt];
     
     _createdAtRect                  = CGRectMake(touchIconImageLayer.frame.origin.x+touchIconImageLayer.frame.size.width,
-                                                 kDetailsY,
+                                                 _cellHeight - kDetailsYOffset,
                                                  createdAtSize.width,
                                                  createdAtSize.height);
 }
@@ -532,6 +533,11 @@
     _userButtonDisabled         = NO;
     _bylineMode                 = NO;
     
+    _cellHeight = [DWItemFeedCell heightForCellWithText:self.itemData
+                                             isTextOnly:_attachmentType == kAttachmentNone];
+    
+    separatorLayer.frame			= CGRectMake(0,_cellHeight-1,_cellHeight,1);
+    
 		
 	[self resetItemNavigation];	
 	
@@ -542,13 +548,13 @@
 	
     if(dataSize.height <= kItemDataSubtitleHeightThreshold  && _attachmentType != kAttachmentNone) {
         _dataRect                   = CGRectMake(kItemDataX-kItemDataXSubTitleOffset,
-                                                 320 - kItemDataYSubtitleOffset - dataSize.height,
+                                                 kItemCellHeight - kItemDataYSubtitleOffset - dataSize.height,
                                                  dataSize.width,
                                                  dataSize.height);
     }
     else {
         _dataRect					= CGRectMake(kItemDataX,
-                                                 kItemDataY + (kItemDataHeight - dataSize.height) / 2 - kItemDataYOffset,
+                                                (_cellHeight - dataSize.height) / 2 - kItemDataYOffset,
                                                  dataSize.width,
                                                  dataSize.height);
     }
@@ -599,6 +605,22 @@
 	[CATransaction commit];
 	
 	[videoView stopPlayingVideo];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSInteger)heightForCellWithText:(NSString*)text
+                        isTextOnly:(BOOL)textOnly {
+    
+    NSInteger height = kItemCellHeight;
+    
+    if(textOnly) {
+        CGSize dataSize	= [text sizeWithFont:kFontItemData
+                           constrainedToSize:CGSizeMake(kItemDataWidth,kItemDataHeight)
+                               lineBreakMode:UILineBreakModeWordWrap];
+        height = dataSize.height + 120;
+    }
+        
+    return height;
 }
 
 //----------------------------------------------------------------------------------------------------

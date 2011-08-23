@@ -506,6 +506,7 @@ extern NSInteger const kPaginationCellHeight;
 extern NSInteger const kSlimCellHeight;
 extern NSInteger const kMessageCellHeight;
 extern NSInteger const kImageCellHeight;
+extern NSInteger const kItemCellHeight;
 extern NSString* const kEmptyString;
 
 
