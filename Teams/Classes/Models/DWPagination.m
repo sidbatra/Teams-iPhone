@@ -13,6 +13,7 @@
 @implementation DWPagination
 
 @synthesize isTriggered = _isTriggered;
+@synthesize isDisabled  = _isDisabled;
 @synthesize owner       = _owner;
 
 //----------------------------------------------------------------------------------------------------

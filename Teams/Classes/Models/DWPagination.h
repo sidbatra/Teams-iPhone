@@ -10,6 +10,7 @@
  */
 @interface DWPagination : NSObject {
     BOOL    _isTriggered;
+    BOOL    _isDisabled;
     id      _owner;
 }
 
@@ -17,6 +18,11 @@
  * Indicates if pagination has been triggered
  */
 @property (nonatomic,assign) BOOL isTriggered;
+
+/**
+ * Indicates if pagination has been disabled
+ */
+@property (nonatomic,assign) BOOL isDisabled;
 
 /**
  * Owner of the pagination model

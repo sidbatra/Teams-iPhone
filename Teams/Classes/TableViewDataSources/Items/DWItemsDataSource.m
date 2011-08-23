@@ -42,7 +42,7 @@
     BOOL paginate   = NO;
     
     if([lastObject isKindOfClass:[DWPagination class]]) {
-        paginate = YES;
+        paginate = !((DWPagination*)lastObject).isDisabled;
     }
     
     if(!paginate) {
@@ -103,7 +103,7 @@
     id lastObject   = [self.objects lastObject];
     
     if([lastObject isKindOfClass:[DWPagination class]]) {
-        [self.objects removeLastObject];
+        ((DWPagination*)lastObject).isDisabled = YES;
     }
     
     [self loadItems];
