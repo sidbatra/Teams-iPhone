@@ -11,6 +11,7 @@
 #import "DWNavBarRightButtonView.h"
 #import "DWSpinnerOverlayView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 
 
 static NSString* const kTeamOnWebText                   = @"On the Web";
@@ -20,6 +21,7 @@ static NSString* const kMsgIncomplete                   = @"Your address should 
 static NSString* const kMsgErrorTitle                   = @"Error";
 static NSString* const kMsgCancelTitle                  = @"OK";
 static NSString* const kMsgProcesssing                  = @"Creating Team page...";
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -110,6 +112,11 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
     
     self.teamHandleTextField.text = self.team.handle;
     [self.teamHandleTextField becomeFirstResponder];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:kActionNameForLoad
+                                                                 withViewID:self.team.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -156,6 +163,13 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
         [self.teamsController updateTeamHavingID:self.team.databaseID 
                                       withHandle:self.teamHandleTextField.text];
     }
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
+                                                             withActionName:@"team_updated"
+                                                                 withViewID:self.team.databaseID
+                                                               andExtraInfo:[NSString stringWithFormat:@"handle=%@",
+                                                                             self.teamHandleTextField.text]];
 }
 
 
