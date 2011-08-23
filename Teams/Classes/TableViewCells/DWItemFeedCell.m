@@ -36,6 +36,7 @@
 #define kFontItemTeamNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontByline                         [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemData                       [UIFont fontWithName:@"HelveticaNeue" size:23]
+#define kFontItemDataTextOnly               [UIFont fontWithName:@"HelveticaNeue-Italic" size:23]
 #define kFontItemCreatedAt                  [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontItemTouchesCount               [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kItemUserNameX                      20
@@ -188,7 +189,7 @@
         CGContextSetFillColorWithColor(context,dataColor);
         
         [itemCell.itemData drawInRect:itemCell.dataRect 
-                             withFont:kFontItemData
+                             withFont:isTextOnly ? kFontItemDataTextOnly : kFontItemData
                         lineBreakMode:UILineBreakModeWordWrap
                             alignment:UITextAlignmentLeft];
     }
@@ -533,6 +534,9 @@
     _userButtonDisabled         = NO;
     _bylineMode                 = NO;
     
+    BOOL isTextOnly =  _attachmentType == kAttachmentNone;
+
+    
     _cellHeight = [DWItemFeedCell heightForCellWithText:self.itemData
                                              isTextOnly:_attachmentType == kAttachmentNone];
     
@@ -542,7 +546,7 @@
 	[self resetItemNavigation];	
 	
 	
-	CGSize dataSize				= [self.itemData sizeWithFont:kFontItemData
+	CGSize dataSize				= [self.itemData sizeWithFont:isTextOnly ? kFontItemDataTextOnly : kFontItemData
 											constrainedToSize:CGSizeMake(kItemDataWidth,kItemDataHeight)
 												lineBreakMode:UILineBreakModeWordWrap];
 	
@@ -614,7 +618,7 @@
     NSInteger height = kItemCellHeight;
     
     if(textOnly) {
-        CGSize dataSize	= [text sizeWithFont:kFontItemData
+        CGSize dataSize	= [text sizeWithFont:textOnly ? kFontItemDataTextOnly : kFontItemData
                            constrainedToSize:CGSizeMake(kItemDataWidth,kItemDataHeight)
                                lineBreakMode:UILineBreakModeWordWrap];
         height = dataSize.height + 120;
