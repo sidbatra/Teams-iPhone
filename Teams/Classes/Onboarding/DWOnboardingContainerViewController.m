@@ -195,11 +195,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
-    team.membersCount = 1;
-
-    [DWSession sharedDWSession].currentUser.team = team;
-    [[DWSession sharedDWSession] update];
-        
+    
     DWTeamWebURIViewController *teamWebURIViewController    = [[[DWTeamWebURIViewController alloc] init] autorelease];
     teamWebURIViewController.delegate                       = self;
     teamWebURIViewController.team                           = team;
@@ -215,7 +211,12 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 #pragma mark DWTeamWebURIViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)teamHandleSelected {
+- (void)teamHandleSelected:(DWTeam*)team {
+    team.membersCount = 1;
+    
+    [DWSession sharedDWSession].currentUser.team = team;
+    [[DWSession sharedDWSession] update];
+    
     [self displayCreateProfileView];
 }
 
@@ -283,7 +284,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     
     invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
     
-    
+    NSLog(@"%d",[DWSession sharedDWSession].currentUser.team.membersCount);
     if ([DWSession sharedDWSession].currentUser.team.membersCount == 1) 
         invitePeopleViewController.inviteAlertText = kMsgInviteAlertText; 
     else

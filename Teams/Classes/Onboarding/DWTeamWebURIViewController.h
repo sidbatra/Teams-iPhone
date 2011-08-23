@@ -78,6 +78,6 @@
 /*
  * Fired when the user selects his team handle
  */
-- (void)teamHandleSelected;
+- (void)teamHandleSelected:(DWTeam*)team;
 
 @end

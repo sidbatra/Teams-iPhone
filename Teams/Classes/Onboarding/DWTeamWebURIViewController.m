@@ -200,10 +200,10 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
 
 //----------------------------------------------------------------------------------------------------
 - (void)teamUpdated:(DWTeam*)team { 
-    [self unfreezeUI];
-    [team destroy];
+    [self unfreezeUI];    
+	[self.delegate teamHandleSelected:team];    
     
-	[self.delegate teamHandleSelected];    
+    [team destroy];
 }
 
 //----------------------------------------------------------------------------------------------------
