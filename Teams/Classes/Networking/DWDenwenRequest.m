@@ -10,6 +10,9 @@
 
 
 static NSString* const kDWErrorDomain		= @"DWError";
+static NSString* const kMsgNoConnectivity   = @"No internet connection.";
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -22,7 +25,14 @@ static NSString* const kDWErrorDomain		= @"DWError";
     NSDictionary *response      = [responseString JSONValue];
     NSDictionary *errorInfo     = [response objectForKey:kKeyError];
     
-    if(errorInfo) {
+    
+    if(!response) {
+        [self processError:[NSError errorWithDomain:kDWErrorDomain
+                                               code:-1
+                                           userInfo:[NSDictionary dictionaryWithObject:kMsgNoConnectivity
+                                                                                forKey:NSLocalizedDescriptionKey]]];
+    }
+    else if(errorInfo) {
         [self processError:[NSError errorWithDomain:kDWErrorDomain
                                                code:-1
                                            userInfo:[NSDictionary dictionaryWithObject:[errorInfo objectForKey:kKeyMessage] 
