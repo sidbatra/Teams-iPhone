@@ -542,16 +542,15 @@
     
     
     if (isTextOnly) {
-        separatorLayer.frame = CGRectMake(0,_cellHeight-2,320,2);
-        separatorLayer.contents	= (id)[UIImage imageNamed:kTextOnlyImgSeparator].CGImage;                
+        separatorLayer.frame                = CGRectMake(0,_cellHeight-2,320,2);
+        separatorLayer.contents             = (id)[UIImage imageNamed:kTextOnlyImgSeparator].CGImage;                
+        self.contentView.backgroundColor    = [UIColor clearColor];
     }
     else {
-        separatorLayer.frame    = CGRectMake(0,_cellHeight-1,320,1);        
-        separatorLayer.contents	= (id)[UIImage imageNamed:kImgSeparator].CGImage;        
+        separatorLayer.frame                = CGRectMake(0,_cellHeight-1,320,1);        
+        separatorLayer.contents             = (id)[UIImage imageNamed:kImgSeparator].CGImage;        
+        self.contentView.backgroundColor    = [UIColor blackColor];        
     }
-    
-    self.contentView.backgroundColor = isTextOnly ? [UIColor clearColor] : [UIColor blackColor];
-    
     
 		
 	[self resetItemNavigation];	
