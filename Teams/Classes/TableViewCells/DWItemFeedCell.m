@@ -15,6 +15,7 @@
 #define kImgShare230                        @"share.png"
 #define kImgHalo                            @"halo.png"
 #define kImgSeparator                       @"hr_dark.png"
+#define kTextOnlyImgSeparator               @"hr_text_only.png"
 #define kOpacityImagesWithAttachment        1.0
 #define kOpacityImagesNoAttachment          0.5
 #define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
@@ -330,7 +331,7 @@
 		
 		separatorLayer                  = [CALayer layer];
 		separatorLayer.contentsScale	= [[UIScreen mainScreen] scale];
-		separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
+		//separatorLayer.contents			= (id)[UIImage imageNamed:kImgSeparator].CGImage;
 		[[self.contentView layer] addSublayer:separatorLayer];
 		
 		
@@ -539,7 +540,15 @@
     _cellHeight = [DWItemFeedCell heightForCellWithText:self.itemData
                                              isTextOnly:_attachmentType == kAttachmentNone];
     
-    separatorLayer.frame = CGRectMake(0,_cellHeight-1,320,1);
+    
+    if (isTextOnly) {
+        separatorLayer.frame = CGRectMake(0,_cellHeight-2,320,2);
+        separatorLayer.contents	= (id)[UIImage imageNamed:kTextOnlyImgSeparator].CGImage;                
+    }
+    else {
+        separatorLayer.frame    = CGRectMake(0,_cellHeight-1,320,1);        
+        separatorLayer.contents	= (id)[UIImage imageNamed:kImgSeparator].CGImage;        
+    }
     
     self.contentView.backgroundColor = isTextOnly ? [UIColor clearColor] : [UIColor blackColor];
     
