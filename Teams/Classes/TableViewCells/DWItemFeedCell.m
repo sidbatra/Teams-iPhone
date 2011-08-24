@@ -18,8 +18,8 @@
 #define kOpacityImagesWithAttachment        1.0
 #define kOpacityImagesNoAttachment          0.5
 #define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
-#define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
-#define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
+#define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:0.0].CGColor
+#define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.0].CGColor
 #define kColorLinkPressedWithAttachment     [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
 #define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.6000 green:0.6000 blue:0.6000 alpha:1.0].CGColor
 #define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
@@ -252,7 +252,6 @@
         
         self.clipsToBounds                  = YES;
         self.contentView.clipsToBounds      = YES;
-        self.contentView.backgroundColor    = [UIColor blackColor];
         
 		CGRect frame = CGRectMake(0,0,kItemCellHeight,kItemCellHeight);
         
@@ -540,7 +539,10 @@
     _cellHeight = [DWItemFeedCell heightForCellWithText:self.itemData
                                              isTextOnly:_attachmentType == kAttachmentNone];
     
-    separatorLayer.frame			= CGRectMake(0,_cellHeight-1,_cellHeight,1);
+    separatorLayer.frame = CGRectMake(0,_cellHeight-1,320,1);
+    
+    self.contentView.backgroundColor = isTextOnly ? [UIColor clearColor] : [UIColor blackColor];
+    
     
 		
 	[self resetItemNavigation];	

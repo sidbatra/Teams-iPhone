@@ -53,7 +53,7 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
             cell.attachmentType = kAttachmentImage;
     }
     else {
-        [cell setItemImage:[UIImage imageNamed:kImgTextBackground]];
+        [cell setItemImage:nil];
         
         cell.attachmentType = kAttachmentNone;
     }
