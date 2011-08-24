@@ -9,7 +9,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kMsgInviteAlertText      = @"There is no I in Team";
+static NSString* const kMsgInviteAlertText      = @"There’s no 'I' in Team. Please bring other people on board to get started.";
 static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 
 
