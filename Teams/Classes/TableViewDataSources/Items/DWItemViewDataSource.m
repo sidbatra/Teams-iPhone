@@ -101,7 +101,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)itemError:(NSString *)message {
     NSLog(@"Item error - %@",message);
-    [self.delegate displayError:message];
+    
+    BOOL refreshUI = [message rangeOfString:@"delete"].location == NSNotFound;
+    [self.delegate displayError:message 
+                  withRefreshUI:refreshUI];
 }
 
 
