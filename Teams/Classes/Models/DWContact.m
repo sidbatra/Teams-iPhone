@@ -14,6 +14,7 @@
 
 @synthesize firstName       = _firstName;
 @synthesize lastName        = _lastName;
+@synthesize fullName        = _fullName;
 @synthesize email           = _email;
 
 //----------------------------------------------------------------------------------------------------
@@ -32,14 +33,10 @@
 
     self.firstName      = nil;
     self.lastName       = nil;
+    self.fullName       = nil;
     self.email          = nil;
     
     [super dealloc];
-}
-
-//---------------------------------------------------------------------------------------------------
-- (NSString*)fullName {
-    return [NSString stringWithFormat:@"%@ %@",self.firstName,self.lastName];
 }
 
 //---------------------------------------------------------------------------------------------------

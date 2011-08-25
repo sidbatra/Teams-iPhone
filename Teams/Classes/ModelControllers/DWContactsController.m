@@ -9,7 +9,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName contains[cd] %@ OR firstName contains[cd] %@";
+static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName contains[cd] %@";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -57,6 +57,8 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
             
             dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
             dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 
+            
+            dWContact.fullName      = [NSString stringWithFormat:@"%@ %@",dWContact.firstName,dWContact.lastName];
             dWContact.email         = email;
 
             [dWContacts addObject:dWContact];
@@ -76,7 +78,7 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR lastName co
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    NSPredicate *pred       = [NSPredicate predicateWithFormat:kContactsQuery,query,query,query];
+    NSPredicate *pred       = [NSPredicate predicateWithFormat:kContactsQuery,query,query];
 	NSMutableArray *results = [NSMutableArray arrayWithArray:[contacts filteredArrayUsingPredicate:pred]];
 
     [self.delegate performSelector:sel
