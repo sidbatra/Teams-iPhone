@@ -389,12 +389,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     [self dismissModalViewControllerAnimated:NO];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)photoLibraryModeSelected {
-    [self dismissModalViewControllerAnimated:NO];
-    [self presentMediaPickerControllerForPickerMode:kMediaPickerLibraryMode];
-}
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
