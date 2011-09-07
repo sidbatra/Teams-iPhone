@@ -9,7 +9,10 @@
 #import "DWContact.h"
 
 
-static NSString* const kNewInvitesURI           = @"/invites.json?%@";
+static NSString* const kNewInvitesURI           = @"/invites.json?";
+static NSString* const kTeamIDParamName         = @"team_id";
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -53,19 +56,22 @@ static NSString* const kNewInvitesURI           = @"/invites.json?%@";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (NSString*)inviteURIFrom:(NSArray*)contacts {
-    NSMutableString *invites = [[[NSMutableString alloc] initWithString:kEmptyString] autorelease];
-    NSInteger counter = 0;
+- (NSMutableDictionary*)inviteParamFrom:(NSArray*)contacts {
+    
+    NSMutableDictionary *dict   = [NSMutableDictionary dictionary];
+    NSInteger counter           = 0;
     
     for(id contact in contacts) {
-        [invites appendString:[NSString stringWithFormat:@"&invites[%d][email]=%@",counter,[(DWContact*)contact email]]];
-        [invites appendString:[NSString stringWithFormat:@"&invites[%d][first_name]=%@",counter,[(DWContact*)contact firstName]]];
-        [invites appendString:[NSString stringWithFormat:@"&invites[%d][last_name]=%@",counter,[(DWContact*)contact lastName]]];        
+        [dict setObject:[(DWContact*)contact email]     forKey:[NSString stringWithFormat:@"invites[%d][email]",counter]];
+        [dict setObject:[(DWContact*)contact firstName] forKey:[NSString stringWithFormat:@"invites[%d][first_name]",counter]];
+        [dict setObject:[(DWContact*)contact lastName]  forKey:[NSString stringWithFormat:@"invites[%d][last_name]",counter]];
+        
         counter++;
     }
     
-    return [NSString stringWithFormat:kNewInvitesURI,invites];
+    return dict;
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -73,11 +79,18 @@ static NSString* const kNewInvitesURI           = @"/invites.json?%@";
 #pragma mark Create
 
 //----------------------------------------------------------------------------------------------------
-- (void)createInvitesFrom:(NSArray*)array {
-    [[DWRequestsManager sharedDWRequestsManager] createDenwenRequest:[self inviteURIFrom:array]
-                                                 successNotification:kNNewInvitesCreated
-                                                   errorNotification:kNNewInvitesError
-                                                       requestMethod:kPost];
+- (void)createInvitesFrom:(NSArray*)contacts 
+                andTeamID:(NSInteger)teamID {
+    
+    NSMutableDictionary *params = [self inviteParamFrom:contacts];
+    
+    [params setObject:[NSNumber numberWithInteger:teamID]
+               forKey:kTeamIDParamName];
+    
+    [[DWRequestsManager sharedDWRequestsManager] createPostBodyBasedDenwenRequest:kNewInvitesURI
+                                                                       withParams:params
+                                                              successNotification:kNNewInvitesCreated
+                                                                errorNotification:kNNewInvitesError];
 }
 
 

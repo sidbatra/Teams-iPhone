@@ -21,10 +21,10 @@
 @property (nonatomic,assign) id<DWInvitesControllerDelegate,NSObject> delegate;
 
 /**
- * Create invites from the contacts user has selected
+ * Create invites from the contacts user has selected and an optional teamID
  */
-- (void)createInvitesFrom:(NSArray*)contacts;
-
+- (void)createInvitesFrom:(NSArray*)contacts 
+                andTeamID:(NSInteger)teamID;
 @end
 
 

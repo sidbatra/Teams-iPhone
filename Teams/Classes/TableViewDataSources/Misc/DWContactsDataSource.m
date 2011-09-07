@@ -92,7 +92,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)triggerInvites {
-    [self.invitesController createInvitesFrom:self.objects];
+    [self.invitesController createInvitesFrom:self.objects
+                                    andTeamID:0];
 }
 
 
