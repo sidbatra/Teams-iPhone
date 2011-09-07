@@ -542,7 +542,7 @@
     
     
     if (isTextOnly) {
-        separatorLayer.frame                = CGRectMake(0,_cellHeight-2,320,2);
+        separatorLayer.frame                = CGRectMake(0,_cellHeight-1,320,1);
         separatorLayer.contents             = (id)[UIImage imageNamed:kTextOnlyImgSeparator].CGImage;                
         self.contentView.backgroundColor    = [UIColor clearColor];
     }
