@@ -268,9 +268,6 @@
 		BB3BE1E2133AB65F0055FED0 /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE1AF133AB65F0055FED0 /* ASIS3Request.m */; };
 		BB3BE1E3133AB65F0055FED0 /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE1B1133AB65F0055FED0 /* ASIS3ServiceRequest.m */; };
 		BB3BE20E133AB6E30055FED0 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3BE20D133AB6E30055FED0 /* Reachability.m */; };
-		BB4051C612F2377500916688 /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = BB40519E12F2377500916688 /* DDAnnotation.m */; };
-		BB4051C712F2377500916688 /* DDAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051A012F2377500916688 /* DDAnnotationView.m */; };
-		BB4051C812F2377500916688 /* InteractiveLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051A312F2377500916688 /* InteractiveLabel.m */; };
 		BB4051C912F2377500916688 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051A712F2377500916688 /* NSObject+SBJSON.m */; };
 		BB4051CA12F2377500916688 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051A912F2377500916688 /* NSString+SBJSON.m */; };
 		BB4051CB12F2377500916688 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4051AB12F2377500916688 /* SBJSON.m */; };
@@ -840,12 +837,6 @@
 		BB3BE1B1133AB65F0055FED0 /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
 		BB3BE20C133AB6E30055FED0 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = External/Reachability/Reachability.h; sourceTree = "<group>"; };
 		BB3BE20D133AB6E30055FED0 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = External/Reachability/Reachability.m; sourceTree = "<group>"; };
-		BB40519D12F2377500916688 /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
-		BB40519E12F2377500916688 /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
-		BB40519F12F2377500916688 /* DDAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotationView.h; sourceTree = "<group>"; };
-		BB4051A012F2377500916688 /* DDAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotationView.m; sourceTree = "<group>"; };
-		BB4051A212F2377500916688 /* InteractiveLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractiveLabel.h; sourceTree = "<group>"; };
-		BB4051A312F2377500916688 /* InteractiveLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractiveLabel.m; sourceTree = "<group>"; };
 		BB4051A512F2377500916688 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		BB4051A612F2377500916688 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		BB4051A712F2377500916688 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -1817,35 +1808,11 @@
 				BB3BE17E133AB65F0055FED0 /* ASI */,
 				26000216130DFB0100366CE3 /* KTTEXTVIEW */,
 				BBC0C6E812F4C57800291C33 /* EGO */,
-				BB40519C12F2377500916688 /* DD */,
-				BB4051A112F2377500916688 /* INTERACTIVELABEL */,
 				BB4051A412F2377500916688 /* JSON */,
 				BB4051B212F2377500916688 /* MUD */,
 				BB4051B812F2377500916688 /* REGEXKIT */,
 			);
 			name = External;
-			sourceTree = "<group>";
-		};
-		BB40519C12F2377500916688 /* DD */ = {
-			isa = PBXGroup;
-			children = (
-				BB40519D12F2377500916688 /* DDAnnotation.h */,
-				BB40519E12F2377500916688 /* DDAnnotation.m */,
-				BB40519F12F2377500916688 /* DDAnnotationView.h */,
-				BB4051A012F2377500916688 /* DDAnnotationView.m */,
-			);
-			name = DD;
-			path = External/DD;
-			sourceTree = "<group>";
-		};
-		BB4051A112F2377500916688 /* INTERACTIVELABEL */ = {
-			isa = PBXGroup;
-			children = (
-				BB4051A212F2377500916688 /* InteractiveLabel.h */,
-				BB4051A312F2377500916688 /* InteractiveLabel.m */,
-			);
-			name = INTERACTIVELABEL;
-			path = External/INTERACTIVELABEL;
 			sourceTree = "<group>";
 		};
 		BB4051A412F2377500916688 /* JSON */ = {
@@ -2759,9 +2726,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				BB4051C612F2377500916688 /* DDAnnotation.m in Sources */,
-				BB4051C712F2377500916688 /* DDAnnotationView.m in Sources */,
-				BB4051C812F2377500916688 /* InteractiveLabel.m in Sources */,
 				BB4051C912F2377500916688 /* NSObject+SBJSON.m in Sources */,
 				BB4051CA12F2377500916688 /* NSString+SBJSON.m in Sources */,
 				BB4051CB12F2377500916688 /* SBJSON.m in Sources */,
