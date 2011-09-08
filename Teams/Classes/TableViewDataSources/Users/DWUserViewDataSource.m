@@ -52,6 +52,7 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
 @synthesize teamResource        = _teamResource;
 @synthesize followingResource   = _followingResource;
 @synthesize profileImage        = _profileImage;
+@synthesize user                = _user;
 @synthesize userID              = _userID;
 
 @dynamic delegate;
@@ -79,8 +80,8 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
     self.followingResource  = nil;
     self.profileImage       = nil;
     
-    DWUser *user = [DWUser fetch:_userID];
-    [user destroy];
+    [self.user destroy];
+    self.user               = nil;
     
     [super dealloc];
 }
@@ -154,6 +155,8 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
+    
+    self.user = user;
     
     [self clean];
     self.objects = [NSMutableArray array];
