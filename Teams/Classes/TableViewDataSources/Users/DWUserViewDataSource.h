@@ -26,6 +26,7 @@
     DWResource          *_followingResource;
     
     DWProfileImage      *_profileImage;
+    DWUser              *_user;
     
     NSInteger           _userID;
 }
@@ -54,6 +55,11 @@
  * Image for the profile pic cell
  */
 @property (nonatomic,retain) DWProfileImage *profileImage;
+
+/**
+ * User being displayed
+ */
+@property (nonatomic,retain) DWUser *user;
 
 
 /**

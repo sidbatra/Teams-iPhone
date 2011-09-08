@@ -14,6 +14,7 @@
 @implementation DWUserItemsDataSource
 
 @synthesize usersController = _usersController;
+@synthesize user            = _user;
 @synthesize userID          = _userID;
 
 @dynamic delegate;
@@ -33,9 +34,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     self.usersController    = nil;
-
-    DWUser *user = [DWUser fetch:_userID];
-    [user destroy];
+    
+    [self.user destroy]; 
+    self.user = nil;
     
     [super dealloc];
 }
@@ -93,6 +94,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(DWUser*)user {
+    
+    self.user = user;
     
     [self.delegate userLoaded:user];
     
