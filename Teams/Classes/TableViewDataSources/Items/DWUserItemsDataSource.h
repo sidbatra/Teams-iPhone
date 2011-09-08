@@ -15,6 +15,7 @@
  */
 @interface DWUserItemsDataSource : DWItemsDataSource<DWUsersControllerDelegate> {
     DWUsersController   *_usersController;
+    DWUser              *_user;
     
     NSInteger           _userID;
 }
@@ -23,6 +24,11 @@
  * Interface to the users service
  */
 @property (nonatomic,retain) DWUsersController *usersController;
+
+/**
+ * User whose objects are being displayed
+ */
+@property (nonatomic,retain) DWUser *user;
 
 /**
  * The userID whose items are being displayed
