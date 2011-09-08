@@ -91,9 +91,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)triggerInvites {
+- (void)triggerInvitesForTeamID:(NSInteger)teamID {
     [self.invitesController createInvitesFrom:self.objects
-                                    andTeamID:0];
+                                    andTeamID:teamID];
 }
 
 

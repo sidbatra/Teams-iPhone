@@ -27,6 +27,7 @@
     NSString                    *_navBarSubTitle;    
     NSString                    *_inviteAlertText;  
     NSString                    *_messageLabelText;
+    NSInteger                   _teamID;    
     BOOL                        _enforceInvite;
     BOOL                        _teamSpecificInvite;      
     BOOL                        _showTopShadow;
@@ -67,6 +68,11 @@
  * Text to show in the message label
  */
 @property (nonatomic,copy) NSString *messageLabelText;
+
+/**
+ * ID for the team which the user is inviting. 0 by default
+ */
+@property (nonatomic,assign) NSInteger teamID;
 
 /**
  * Property to enforce invite. YES by default.

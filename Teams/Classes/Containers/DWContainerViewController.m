@@ -298,6 +298,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
     invitePeopleViewController.navBarSubTitle                   = [NSString stringWithFormat:kAddPeopleSubText,team.name];
     
     invitePeopleViewController.messageLabelText                 = kMsgInviteMessageText;
+    invitePeopleViewController.teamID                           = team.databaseID;
     
     [self.navigationController pushViewController:invitePeopleViewController 
                                          animated:YES];

@@ -84,7 +84,7 @@
 /**
  * Send invite information to server
  */
-- (void)triggerInvites;
+- (void)triggerInvitesForTeamID:(NSInteger)teamID;
 
 @end
 

@@ -42,6 +42,7 @@ static NSInteger const kTableViewHeight						= 200;
 @synthesize navBarSubTitle                  = _navBarSubTitle;
 @synthesize inviteAlertText                 = _inviteAlertText;
 @synthesize messageLabelText                = _messageLabelText;
+@synthesize teamID                          = _teamID;
 @synthesize enforceInvite                   = _enforceInvite;
 @synthesize teamSpecificInvite              = _teamSpecificInvite;
 @synthesize showTopShadow                   = _showTopShadow;
@@ -63,6 +64,7 @@ static NSInteger const kTableViewHeight						= 200;
     self = [super init];
     
     if (self) {
+        self.teamID                     = 0;
         self.enforceInvite              = YES;
         self.teamSpecificInvite         = YES;
         self.inviteAlertText            = kMsgDefaultInviteAlertText;
@@ -165,7 +167,7 @@ static NSInteger const kTableViewHeight						= 200;
     if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
         
         [self freezeUI];
-        [self.addedContactsViewController triggerInvites];            
+        [self.addedContactsViewController triggerInvitesForTeamID:self.teamID];            
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self
                                                                  withActionName:@"invite_selected"];

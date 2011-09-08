@@ -116,9 +116,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)triggerInvites {
+- (void)triggerInvitesForTeamID:(NSInteger)teamID {
     self.errorView.hidden = YES;
-    [self.contactsDataSource triggerInvites];
+    [self.contactsDataSource triggerInvitesForTeamID:teamID];
 }
 
 
