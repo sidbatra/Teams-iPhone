@@ -16,14 +16,14 @@
     
     UIImageView     *refreshImageView;
     
-    id<NSObject>    _delegate;
+    id<NSObject>    __unsafe_unretained _delegate;
 }
 
 /**
  * Protocol less delegate allowing error view to
  * be easily interchaged throughout the app
  */
-@property (nonatomic,assign) id<NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<NSObject> delegate;
 
 /**
  * Apply a custom error message

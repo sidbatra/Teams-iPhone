@@ -31,13 +31,13 @@
     self = [super init];
     
     if(self) {
-        self.itemViewDataSource             = [[[DWItemViewDataSource alloc] init] autorelease];
+        self.itemViewDataSource             = [[DWItemViewDataSource alloc] init];
         self.itemViewDataSource.itemID      = itemID;
         
-        self.itemsLogicController           = [[[DWItemsLogicController alloc] init] autorelease];
+        self.itemsLogicController           = [[DWItemsLogicController alloc] init];
         self.itemsLogicController.tableViewController = self;
         
-        self.usersLogicController           = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController           = [[DWUsersLogicController alloc] init];
         self.usersLogicController.tableViewController = self;
     }
     
@@ -49,20 +49,13 @@
     self = [super init];
     
     if(self) {
-        self.itemViewDataSource             = [[[DWItemViewDataSource alloc] init] autorelease];
+        self.itemViewDataSource             = [[DWItemViewDataSource alloc] init];
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.itemsLogicController       = nil;
-    self.usersLogicController       = nil;
-    self.itemViewDataSource         = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setItemsDelegate:(id<DWItemsLogicControllerDelegate,NSObject>)delegate {

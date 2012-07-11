@@ -35,31 +35,31 @@
 /**
  * Table view for the items followed by the current user
  */
-@property (nonatomic,retain) DWFollowedItemsViewController *followedViewController;
+@property (nonatomic) DWFollowedItemsViewController *followedViewController;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Progress bar view for displaying the progress of the creation queue
  */
-@property (nonatomic,retain) DWPostProgressView *postProgressView;
+@property (nonatomic) DWPostProgressView *postProgressView;
 
 /**
  * Subview for displaying small profile picture
  */
-@property (nonatomic,retain) DWSmallProfilePicView *smallProfilePicView;
+@property (nonatomic) DWSmallProfilePicView *smallProfilePicView;
 
 /**
  * Notifications view displaying the number of unread notifications
  */
-@property (nonatomic,retain) DWNavBarCountView *navBarNotificationsView;
+@property (nonatomic) DWNavBarCountView *navBarNotificationsView;
 
 /**
  * Nav bar title view for displaying user name and byline
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 @end

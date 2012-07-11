@@ -44,16 +44,12 @@ static NSInteger const kSpinnerSize             = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void) createSpinner {
 
-    UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] 
-                                           autorelease];
+    UIActivityIndicatorView *spinner	= [[UIActivityIndicatorView alloc]
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     spinner.alpha   = 0.5;
 	spinner.frame	= CGRectMake((self.contentView.frame.size.width - kSpinnerSize)/2,
                                  (kPaginationCellHeight - kSpinnerSize)/2,

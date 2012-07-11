@@ -46,7 +46,6 @@ static NSString* const kTeamIDParamName         = @"team_id";
     
     NSLog(@"Invites controller released");    
     
-    [super dealloc];
 }
 
 

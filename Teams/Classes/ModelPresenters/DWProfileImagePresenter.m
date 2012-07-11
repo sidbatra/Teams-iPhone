@@ -25,8 +25,8 @@
     DWImageCell *cell               = base;
     
     if(!cell)
-        cell = [[[DWImageCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                   reuseIdentifier:identifier] autorelease];
+        cell = [[DWImageCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                   reuseIdentifier:identifier];
     
     [cell setImage:profileImage.image];
     

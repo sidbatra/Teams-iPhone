@@ -49,7 +49,6 @@
     self.tableViewController    = nil;
     self.delegate               = nil;
     
-    [super dealloc];
 }
 
 

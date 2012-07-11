@@ -90,14 +90,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.followedViewController     = nil;
-    self.usersController            = nil;
-    self.postProgressView           = nil;
-    self.smallProfilePicView        = nil;
-    self.navTitleView               = nil;
-    self.navBarNotificationsView    = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -122,7 +115,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
     
     
     if(!self.usersController) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
     }
 }
@@ -138,11 +131,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadNotificationsButton {
     
     if(!self.navBarNotificationsView) {
-        self.navBarNotificationsView = [[[DWNavBarCountView alloc] initWithFrame:CGRectMake(0,0,55,44)] autorelease];
+        self.navBarNotificationsView = [[DWNavBarCountView alloc] initWithFrame:CGRectMake(0,0,55,44)];
         self.navBarNotificationsView.delegate = self;
     }
     
-    UIBarButtonItem *barButtonitem          = [[[UIBarButtonItem alloc] initWithCustomView:self.navBarNotificationsView] autorelease];
+    UIBarButtonItem *barButtonitem          = [[UIBarButtonItem alloc] initWithCustomView:self.navBarNotificationsView];
     self.navigationItem.leftBarButtonItem   = barButtonitem;
 }
 
@@ -150,7 +143,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadProgressView {
     
     if(!self.postProgressView) {    
-        self.postProgressView			= [[[DWPostProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)] autorelease];
+        self.postProgressView			= [[DWPostProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
         self.postProgressView.delegate	= self;
     }
 }
@@ -159,7 +152,7 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadFollowedView {
     
     if(!self.followedViewController) {
-        self.followedViewController                     = [[[DWFollowedItemsViewController alloc] init] autorelease];
+        self.followedViewController                     = [[DWFollowedItemsViewController alloc] init];
         self.followedViewController.shellViewController = (UIViewController*)self.customTabBarController;
         [self.followedViewController setItemsDelegate:self];
     }
@@ -171,11 +164,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadProfilePicView {
     
     if (!self.smallProfilePicView) {
-        self.smallProfilePicView = [[[DWSmallProfilePicView alloc] 
+        self.smallProfilePicView = [[DWSmallProfilePicView alloc] 
                                      initWithFrame:CGRectMake(kNavRightButtonX,
                                                               kNavRightButtonY, 
                                                               kNavRightButtonWidth,
-                                                              kNavRightButtonHeight)] autorelease];
+                                                              kNavRightButtonHeight)];
         self.smallProfilePicView.delegate = self;
     }
     
@@ -194,11 +187,11 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:nil] autorelease];
+                                                      andDelegate:nil];
     }
 
     [self updateNavTitleView];
@@ -213,8 +206,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
 //----------------------------------------------------------------------------------------------------
 - (void)displayNotifications {
     
-    DWNotificationsViewController *notificationsViewController = [[[DWNotificationsViewController alloc] 
-                                                                   init] autorelease];
+    DWNotificationsViewController *notificationsViewController = [[DWNotificationsViewController alloc] 
+                                                                   init];
     
     notificationsViewController.delegate = self;
     
@@ -317,9 +310,8 @@ static NSString* const kMsgUnload               = @"Unload called on items conta
                                                              withActionName:@"profile_photo_clicked"];
     
     
-    DWUserViewController *userViewController = [[[DWUserViewController alloc] 
-                                                 initWithUserID:[DWSession sharedDWSession].currentUser.databaseID]
-                                                autorelease];
+    DWUserViewController *userViewController = [[DWUserViewController alloc] 
+                                                 initWithUserID:[DWSession sharedDWSession].currentUser.databaseID];
     
     userViewController.delegate =  self;
     

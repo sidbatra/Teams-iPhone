@@ -49,7 +49,7 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
     self =  [super init];
     
     if(self) {
-        self.teamItemsDataSource        = [[[DWTeamItemsDataSource alloc] init] autorelease];
+        self.teamItemsDataSource        = [[DWTeamItemsDataSource alloc] init];
         self.teamItemsDataSource.teamID = teamID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
@@ -64,7 +64,7 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
     self = [super init];
     
     if(self) {
-        self.teamItemsDataSource = [[[DWTeamItemsDataSource alloc] init] autorelease];
+        self.teamItemsDataSource = [[DWTeamItemsDataSource alloc] init];
     }
     
     return self;
@@ -72,11 +72,8 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
-    self.teamItemsDataSource    = nil;
-    self.navTitleView           = nil;
     self.delegate               = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -104,11 +101,11 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:self] autorelease];       
+                                                      andDelegate:self];       
         
         //[self.navTitleView displaySpinnerWithUnderlay:NO];
     }
@@ -174,7 +171,6 @@ static NSInteger const kTagUnfollowActionSheet      = -1;
         actionSheet.tag             = kTagUnfollowActionSheet;
     
         [actionSheet showInView:self.view];
-        [actionSheet release];  
     }
     else
         [self invertFollowingState];

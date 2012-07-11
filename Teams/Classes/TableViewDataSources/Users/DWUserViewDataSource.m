@@ -62,10 +62,10 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
     self = [super init];
     
     if(self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
         
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController            = [[DWTeamsController alloc] init];
         self.teamsController.delegate   = self;
     }
     
@@ -74,22 +74,15 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.usersController    = nil;
-    self.teamsController    = nil;
-    self.teamResource       = nil;
-    self.followingResource  = nil;
-    self.profileImage       = nil;
     
     [self.user destroy];
-    self.user               = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)addProfileImage:(DWUser*)user {
     
-    self.profileImage                   = [[[DWProfileImage alloc] init] autorelease];
+    self.profileImage                   = [[DWProfileImage alloc] init];
     self.profileImage.image             = user.largeImage;
     self.profileImage.imageID           = user.databaseID;
     
@@ -99,7 +92,7 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
 //----------------------------------------------------------------------------------------------------
 - (void)addCurrentTeamResource:(DWUser*)user {
     
-    self.teamResource                   = [[[DWResource alloc] init] autorelease];
+    self.teamResource                   = [[DWResource alloc] init];
     self.teamResource.text              = [DWUsersHelper currentTeamLine:user];
     self.teamResource.subText           = user.team.byline;
     self.teamResource.image             = [UIImage imageNamed:kImgUsersTeam];    
@@ -114,7 +107,7 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
         return;
         
     
-    self.followingResource              = [[[DWResource alloc] init] autorelease];
+    self.followingResource              = [[DWResource alloc] init];
     self.followingResource.text         = [DWUsersHelper watchingTeamsLine:user];
     self.followingResource.subText      = @"across the network";
     self.followingResource.statText     = [NSString stringWithFormat:@"%d",user.followingCount-1];
@@ -167,7 +160,7 @@ static NSString* const kImgUsersTeam		= @"slice_button_user_white.png";
     [self addCurrentTeamResource:user];
     [self addFollowingTeamsResource:user];
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    DWMessage *message  = [[DWMessage alloc] init];
     message.content     = [DWUsersHelper createdAtLine:[DWUser fetch:self.userID]];
     [self.objects addObject:message];
       

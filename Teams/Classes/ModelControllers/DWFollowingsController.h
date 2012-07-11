@@ -13,13 +13,13 @@
  */
 @interface DWFollowingsController : NSObject {
     
-    id<DWFollowingsControllerDelegate,NSObject>  _delegate;
+    id<DWFollowingsControllerDelegate,NSObject>  __unsafe_unretained _delegate;
 }
 
 /**
  * Received events based on the DWFollowingsControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWFollowingsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWFollowingsControllerDelegate,NSObject> delegate;
 
 
 

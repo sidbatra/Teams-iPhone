@@ -46,7 +46,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 	if(self) {
         self.interactions                       = [NSMutableArray array];
         
-        self.interactionsController             = [[[DWInteractionsController alloc] init] autorelease];
+        self.interactionsController             = [[DWInteractionsController alloc] init];
         self.interactionsController.delegate    = self;
         
         
@@ -68,10 +68,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-	self.interactions           = nil;
-    self.interactionsController = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -104,7 +101,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                       withViewID:(NSInteger)viewID
                     andExtraInfo:(NSString*)extra {
     
-    DWInteraction *interaction = [[[DWInteraction alloc] init] autorelease];
+    DWInteraction *interaction = [[DWInteraction alloc] init];
     
     [interaction createInteractionForViewNamed:[view className]
                                     withViewID:viewID

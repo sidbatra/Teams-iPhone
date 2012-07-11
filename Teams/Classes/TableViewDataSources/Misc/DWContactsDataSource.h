@@ -27,13 +27,13 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,assign) id<DWContactsDataSourceDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWContactsDataSourceDelegate> delegate;
 
 
 /**
  * All Address Book Contacts
  */
-@property (nonatomic,retain) NSMutableArray *allContacts;
+@property (nonatomic) NSMutableArray *allContacts;
 
 /**
  * Latest query for retrieving contacts
@@ -43,12 +43,12 @@
 /**
  * Controller for address book contacts requests
  */
-@property (nonatomic,retain) DWContactsController *contactsController;
+@property (nonatomic) DWContactsController *contactsController;
 
 /**
  * Interface to invite service
  */
-@property (nonatomic,retain) DWInvitesController *invitesController;
+@property (nonatomic) DWInvitesController *invitesController;
 
 
 /*

@@ -20,23 +20,23 @@
     DWContact                       *_contactToRemove;
     DWContactsDataSource            *_contactsDataSource;
     
-    id<DWContactsViewControllerDelegate>    _delegate;
+    id<DWContactsViewControllerDelegate>    __unsafe_unretained _delegate;
 }
 
 /**
  * Contact selected to be removed by the user
  */
-@property (nonatomic,retain) DWContact *contactToRemove;
+@property (nonatomic) DWContact *contactToRemove;
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWContactsDataSource *contactsDataSource;
+@property (nonatomic) DWContactsDataSource *contactsDataSource;
 
 /**
  * Delegate based on the DWContactsViewControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWContactsViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWContactsViewControllerDelegate> delegate;
 
 /**
  * Custom init with style

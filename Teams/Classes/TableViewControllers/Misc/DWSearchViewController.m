@@ -31,13 +31,13 @@
     self = [super init];
     
     if(self) {        
-        self.usersLogicController       = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController       = [[DWUsersLogicController alloc] init];
         self.usersLogicController.tableViewController = self;
         
-        self.teamsLogicController       = [[[DWTeamsLogicController alloc] init] autorelease];
+        self.teamsLogicController       = [[DWTeamsLogicController alloc] init];
         self.teamsLogicController.tableViewController = self;
         
-        self.searchDataSource           = [[[DWSearchDataSource alloc] init] autorelease];
+        self.searchDataSource           = [[DWSearchDataSource alloc] init];
         
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleFullNameWithTeam]
@@ -48,13 +48,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.usersLogicController       = nil;
-    self.teamsLogicController       = nil;
-    self.searchDataSource           = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate {
@@ -108,9 +101,8 @@
     
     [self disablePullToRefresh];
     
-    UITapGestureRecognizer *tapRecognizer     = [[[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                         action:@selector(handleTapGesture:)] 
-                                                 autorelease];
+    UITapGestureRecognizer *tapRecognizer     = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                         action:@selector(handleTapGesture:)];
     tapRecognizer.cancelsTouchesInView        = NO;
     
     [(UITapGestureRecognizer*)tapRecognizer setNumberOfTouchesRequired:1];

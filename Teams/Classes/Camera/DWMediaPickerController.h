@@ -24,7 +24,7 @@
 /**
  * Overlay for the default iPhone Camera
  */
-@property (nonatomic,retain) DWCameraOverlayViewController *cameraOverlayViewController;
+@property (nonatomic) DWCameraOverlayViewController *cameraOverlayViewController;
 
 
 /**

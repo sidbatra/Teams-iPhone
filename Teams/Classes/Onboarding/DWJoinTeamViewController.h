@@ -30,40 +30,40 @@
     DWJoinTeamDataSource        *_joinTeamDataSource;
     DWUsersLogicController      *_usersLogicController;
         
-    id<DWJoinTeamViewControllerDelegate>   _delegate;
+    id<DWJoinTeamViewControllerDelegate>   __unsafe_unretained _delegate;
 }
 
 /**
  * Team which the user will join
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Image view with a shadow just below the navigation bar
  */
-@property (nonatomic,retain) UIImageView *topShadowView;
+@property (nonatomic) UIImageView *topShadowView;
 
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWJoinTeamDataSource *joinTeamDataSource;
+@property (nonatomic) DWJoinTeamDataSource *joinTeamDataSource;
 
 /**
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
+@property (nonatomic) DWUsersLogicController *usersLogicController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWJoinTeamViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWJoinTeamViewControllerDelegate> delegate;
 
 
 /**

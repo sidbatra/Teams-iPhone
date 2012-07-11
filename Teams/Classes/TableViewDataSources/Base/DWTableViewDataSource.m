@@ -52,7 +52,6 @@ static NSInteger const kDefaultSections = 1;
 
     [self clean];
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

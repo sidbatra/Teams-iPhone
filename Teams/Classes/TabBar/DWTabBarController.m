@@ -24,22 +24,22 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 /**
  * Image view with a shadow just below the navigation bar
  */
-@property (nonatomic,retain) UIImageView *topShadowView;
+@property (nonatomic) UIImageView *topShadowView;
 
 /**
  * Image view for background used throughout the logged in mode
  */
-@property (nonatomic,retain) UIImageView *backgroundView;
+@property (nonatomic) UIImageView *backgroundView;
 
 /**
  * Tab bar object for managing for the buttons and their states
  */
-@property (nonatomic,retain) DWTabBar *tabBar;
+@property (nonatomic) DWTabBar *tabBar;
 
 /**
  * Controllers added to the tab bar 
  */
-@property (nonatomic,retain) NSArray *subControllers;
+@property (nonatomic) NSArray *subControllers;
 
 /**
  * Adds the view for the tabBarControllers
@@ -69,12 +69,12 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 	
 	if(self) {
 		
-		self.tabBar                     = [[[DWTabBar alloc] initWithFrame:tabBarFrame
-                                                                  withInfo:tabBarInfo] autorelease];
+		self.tabBar                     = [[DWTabBar alloc] initWithFrame:tabBarFrame
+                                                                  withInfo:tabBarInfo];
         self.tabBar.delegate            = self;
         
-        self.topShadowView              = [[[UIImageView alloc] initWithImage:
-                                            [UIImage imageNamed:kImgTopShadow]] autorelease];
+        self.topShadowView              = [[UIImageView alloc] initWithImage:
+                                            [UIImage imageNamed:kImgTopShadow]];
         self.topShadowView.frame        = CGRectMake(0,44,320,5);
         
         self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
@@ -87,13 +87,8 @@ static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.tabBar             = nil;
-    self.topShadowView      = nil;
-    self.backgroundView     = nil;
-	self.subControllers     = nil;
     self.delegate           = nil;
 	
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

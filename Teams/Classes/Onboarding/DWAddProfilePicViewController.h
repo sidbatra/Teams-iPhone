@@ -46,16 +46,16 @@
     
     DWFacebookConnect           *_facebookConnect;
     
-    id <DWAddProfilePicViewControllerDelegate>  _delegate;
+    id <DWAddProfilePicViewControllerDelegate>  __unsafe_unretained _delegate;
 }
 
 /**
  * IBOutlet properties
  */
-@property (nonatomic, retain) IBOutlet UIButton *addProfilePicButton;
-@property (nonatomic, retain) IBOutlet UIImageView *underlayImageView;
-@property (nonatomic, retain) IBOutlet UIButton *useFacebookPhotoButton;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UIButton *addProfilePicButton;
+@property (nonatomic) IBOutlet UIImageView *underlayImageView;
+@property (nonatomic) IBOutlet UIButton *useFacebookPhotoButton;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * IBActions
@@ -71,7 +71,7 @@
 /**
  * User image
  */
-@property (nonatomic,retain) UIImage *userImage;
+@property (nonatomic) UIImage *userImage;
 
 /**
  * Database ID for the user
@@ -86,38 +86,38 @@
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling user requests
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Controller for handling media uploading request
  */
-@property (nonatomic,retain) DWMediaController *mediaController;
+@property (nonatomic) DWMediaController *mediaController;
 
 /**
  * Controller for handling memberships requests
  */
-@property (nonatomic,retain) DWMembershipsController *membershipsController;
+@property (nonatomic) DWMembershipsController *membershipsController;
 
 /**
  * Instance of the facebook connect wrapper
  */
-@property (nonatomic,retain) DWFacebookConnect *facebookConnect;
+@property (nonatomic) DWFacebookConnect *facebookConnect;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWAddProfilePicViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWAddProfilePicViewControllerDelegate> delegate;
 
 @end
 

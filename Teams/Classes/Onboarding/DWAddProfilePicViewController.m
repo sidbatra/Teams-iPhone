@@ -54,44 +54,22 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 	self = [super init];
 	
 	if(self) {
-        self.usersController                = [[[DWUsersController alloc] init] autorelease];        
+        self.usersController                = [[DWUsersController alloc] init];        
         self.usersController.delegate       = self;
         
-        self.mediaController                = [[[DWMediaController alloc] init] autorelease];
+        self.mediaController                = [[DWMediaController alloc] init];
         self.mediaController.delegate       = self;
         
-        self.membershipsController          = [[[DWMembershipsController alloc] init] autorelease];
+        self.membershipsController          = [[DWMembershipsController alloc] init];
         self.membershipsController.delegate = self;
         
-        self.facebookConnect                = [[[DWFacebookConnect alloc] init] autorelease];
+        self.facebookConnect                = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate       = self;
 	}
 	return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	
-    self.addProfilePicButton            = nil;
-    self.underlayImageView              = nil;
-    self.useFacebookPhotoButton         = nil;
-    self.spinnerContainerView           = nil;
-    
-    self.userImage                      = nil;
-    self.userFBToken                    = nil;
-    
-    self.navTitleView                   = nil;
-	self.navBarRightButtonView          = nil;
-    self.spinnerOverlayView             = nil;
-    
-    self.usersController                = nil;
-    self.mediaController                = nil;
-    self.membershipsController          = nil;
-    
-    self.facebookConnect                = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
@@ -108,25 +86,25 @@ static NSString* const kNavBarRightButtonText   = @"Next";
     self.underlayImageView.clipsToBounds = YES;
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kAddProfilePicText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(150,180) 
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(150,180) 
                                                                           spinnerStyle:UIActivityIndicatorViewStyleWhite 
-                                                                        andMessageText:kEmptyString] autorelease];
+                                                                        andMessageText:kEmptyString];
     
     
     
@@ -172,7 +150,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 											  cancelButtonTitle:kMsgCancelTitle
 											  otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	else {		
         [self freezeUI];   
@@ -190,8 +167,7 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 //----------------------------------------------------------------------------------------------------
 - (void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
     
-    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] 
-                                       autorelease];
+    DWMediaPickerController *picker = [[DWMediaPickerController alloc] initWithDelegate:self];
     
     [picker prepareForImageWithPickerMode:pickerMode 
                               withPreview:pickerMode == kMediaPickerLibraryMode];
@@ -220,7 +196,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
                                                      otherButtonTitles:kMsgActionSheetCamera,kMsgActionSheetLibrary,nil];
     
     [actionSheet showInView:self.view];
-    [actionSheet release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -297,7 +272,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }
@@ -329,7 +303,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }
@@ -354,7 +327,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     [self unfreezeUI];    
 }
 
@@ -435,7 +407,6 @@ static NSString* const kNavBarRightButtonText   = @"Next";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles: nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }

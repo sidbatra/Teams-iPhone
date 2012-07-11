@@ -30,22 +30,22 @@
 /**
  * Interface to the teams service
  */
-@property (nonatomic,retain) DWTeamsController  *teamsController;
+@property (nonatomic) DWTeamsController  *teamsController;
 
 /**
  * Interface to the follow service
  */
-@property (nonatomic,retain) DWFollowingsController *followingsController;
+@property (nonatomic) DWFollowingsController *followingsController;
 
 /**
  * Team whose items are being displayed
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Following between the current user and the team
  */
-@property (nonatomic,retain) DWFollowing *following;
+@property (nonatomic) DWFollowing *following;
 
 /**
  * teamID for the team whose items are being displayed
@@ -55,7 +55,7 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,assign) id<DWTeamItemsDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamItemsDataSourceDelegate,NSObject> delegate;
 
 
 /**

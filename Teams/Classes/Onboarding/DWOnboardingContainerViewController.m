@@ -26,11 +26,6 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.splashScreenViewController = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -46,7 +41,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)displayCreateProfileView {
     
-    DWCreateProfileViewController *createProfileViewController  = [[[DWCreateProfileViewController alloc] init] autorelease];
+    DWCreateProfileViewController *createProfileViewController  = [[DWCreateProfileViewController alloc] init];
     createProfileViewController.delegate                        = self;
     createProfileViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID;
     createProfileViewController.teamName                        = [DWSession sharedDWSession].currentUser.team.name;
@@ -86,7 +81,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
     self.navigationController.navigationBarHidden           = YES;
     self.navigationController.navigationBar.clipsToBounds   = NO;
         
-    self.splashScreenViewController                         = [[[DWSplashScreenViewController alloc] init] autorelease];
+    self.splashScreenViewController                         = [[DWSplashScreenViewController alloc] init];
     self.splashScreenViewController.delegate                = self;
     
     [self.view addSubview:self.splashScreenViewController.view];
@@ -106,7 +101,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)loginInitiated {
     
-    DWLoginViewController *loginViewController  = [[[DWLoginViewController alloc] init] autorelease];
+    DWLoginViewController *loginViewController  = [[DWLoginViewController alloc] init];
     loginViewController.delegate                = self;
     
     [self.navigationController pushViewController:loginViewController 
@@ -116,7 +111,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)signupInitiated {
     
-    DWSignupViewController *signupViewController    = [[[DWSignupViewController alloc] init] autorelease];
+    DWSignupViewController *signupViewController    = [[DWSignupViewController alloc] init];
     signupViewController.delegate                   = self;
     
     [self.navigationController pushViewController:signupViewController 
@@ -168,7 +163,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 - (void)teamLoaded:(DWTeam*)team {
     
     if (team) {        
-        DWJoinTeamViewController *joinTeamViewController        = [[[DWJoinTeamViewController alloc] init] autorelease];
+        DWJoinTeamViewController *joinTeamViewController        = [[DWJoinTeamViewController alloc] init];
         joinTeamViewController.delegate                         = self;
         joinTeamViewController.team                             = team;
         
@@ -178,7 +173,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
                                              animated:YES];
     }
     else {
-        DWCreateTeamViewController *createTeamViewController    = [[[DWCreateTeamViewController alloc] init] autorelease];
+        DWCreateTeamViewController *createTeamViewController    = [[DWCreateTeamViewController alloc] init];
         createTeamViewController.delegate                       = self;
         createTeamViewController.domain                         = [[DWSession sharedDWSession].currentUser getDomainFromEmail];
         
@@ -196,7 +191,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 //----------------------------------------------------------------------------------------------------
 - (void)teamCreated:(DWTeam*)team {
     
-    DWTeamWebURIViewController *teamWebURIViewController    = [[[DWTeamWebURIViewController alloc] init] autorelease];
+    DWTeamWebURIViewController *teamWebURIViewController    = [[DWTeamWebURIViewController alloc] init];
     teamWebURIViewController.delegate                       = self;
     teamWebURIViewController.team                           = team;
     
@@ -246,7 +241,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 - (void)userDetailsUpdated {
     [[DWSession sharedDWSession] update];     
     
-    DWAddProfilePicViewController *addProfilePicViewController  = [[[DWAddProfilePicViewController alloc] init] autorelease];
+    DWAddProfilePicViewController *addProfilePicViewController  = [[DWAddProfilePicViewController alloc] init];
     addProfilePicViewController.delegate                        = self;
     addProfilePicViewController.userID                          = [DWSession sharedDWSession].currentUser.databaseID; 
     addProfilePicViewController.userFBToken                     = [DWSession sharedDWSession].currentUser.facebookAccessToken;    
@@ -271,7 +266,7 @@ static NSString* const kMsgInviteMessageText    = @"Grow your Team.";
 - (void)membershipCreated {
     [[DWSession sharedDWSession] update]; 
     
-    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    DWInvitePeopleViewController *invitePeopleViewController    = [[DWInvitePeopleViewController alloc] init];
     invitePeopleViewController.delegate                         = self;
     
     invitePeopleViewController.showTopShadow                    = YES;

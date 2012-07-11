@@ -19,13 +19,13 @@
     UIImageView         *_backgroundView;
 	NSArray				*_subControllers;
     	
-	id<DWTabBarControllerDelegate> _delegate;
+	id<DWTabBarControllerDelegate> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate receives updates about tab bar selection changes
  */
-@property (nonatomic,assign) id<DWTabBarControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTabBarControllerDelegate> delegate;
 
 
 /**

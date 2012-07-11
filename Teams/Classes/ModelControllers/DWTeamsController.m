@@ -119,7 +119,6 @@ static NSString* const kUpdateTeamHandleURI = @"/teams/%d.json?team[handle]=%@";
     
     NSLog(@"Teams controller released");
     
-    [super dealloc];
 }
 
 

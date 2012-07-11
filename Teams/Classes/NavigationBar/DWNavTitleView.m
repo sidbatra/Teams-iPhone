@@ -72,9 +72,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUnderlayButton {    
@@ -123,7 +120,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
                                                               size:15];
     
     [self addSubview:titleLabel];
-    [titleLabel release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -144,7 +140,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
                                                               size:13];
     
     [self addSubview:subtitleLabel];
-    [subtitleLabel release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -161,7 +156,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
                                                                           size:17];
     
     [self addSubview:standaloneTitleLabel];
-    [standaloneTitleLabel release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -172,7 +166,6 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
     spinner.hidden  = YES;    
 	
 	[self addSubview:spinner];	
-    [spinner release];
 }
 
 //----------------------------------------------------------------------------------------------------

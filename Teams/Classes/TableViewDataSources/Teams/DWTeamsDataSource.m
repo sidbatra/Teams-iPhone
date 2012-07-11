@@ -19,7 +19,7 @@
     self = [super init];
     
     if(self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController            = [[DWTeamsController alloc] init];
         self.teamsController.delegate   = self;
     }
     
@@ -27,11 +27,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.teamsController    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)populateTeams:(NSMutableArray*)teams {

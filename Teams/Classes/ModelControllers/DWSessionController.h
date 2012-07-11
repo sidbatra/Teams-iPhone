@@ -14,14 +14,14 @@
  */
 @interface DWSessionController : NSObject {
     
-    id<DWSessionControllerDelegate,NSObject>     _delegate;
+    id<DWSessionControllerDelegate,NSObject>     __unsafe_unretained _delegate;
 }
 
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWSessionControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSessionControllerDelegate,NSObject> delegate;
 
 /**
  * Create a new session

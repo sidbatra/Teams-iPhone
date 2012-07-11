@@ -30,12 +30,12 @@ static NSString* const kActionNameForLoad   = @"load";
  * Array of interaction model objects performed by the current user that haven't
  * yet been successfully uploaded to the server
  */
-@property (nonatomic,retain) NSMutableArray *interactions;
+@property (nonatomic) NSMutableArray *interactions;
 
 /**
  * Interface to the interactions service
  */
-@property (nonatomic,retain) DWInteractionsController  *interactionsController;
+@property (nonatomic) DWInteractionsController  *interactionsController;
 
 
 /**

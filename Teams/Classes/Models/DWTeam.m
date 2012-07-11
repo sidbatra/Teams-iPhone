@@ -81,14 +81,9 @@ static NSString* const kDiskKeyMembersCount = @"DWTeam_members_count";
 	
 	NSLog(@"team released %d",self.databaseID);
 	
-	self.name			= nil;
-    self.handle         = nil;
-    self.byline         = nil;
-    self.eventText      = nil;
     
     [self freeAttachment];
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -15,13 +15,13 @@
     UIImageView                 *profilePicOverlay;
     UIActivityIndicatorView     *spinner;
     
-    id<DWSmallProfilePicViewDelegate> _delegate;
+    id<DWSmallProfilePicViewDelegate> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to receive events about user interactions
  */
-@property (nonatomic,assign) id<DWSmallProfilePicViewDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSmallProfilePicViewDelegate> delegate;
 
 
 /**

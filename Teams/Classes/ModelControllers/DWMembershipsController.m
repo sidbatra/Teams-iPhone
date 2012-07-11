@@ -44,7 +44,6 @@ static NSString* const kNewMembershipURI    = @"/memberships/teams/%d.json?";
     
     NSLog(@"Memberships controller released");
     
-    [super dealloc];
 }
 
 

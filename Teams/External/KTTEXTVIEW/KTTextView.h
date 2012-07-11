@@ -36,6 +36,6 @@
 }
 
 @property (nonatomic, copy) NSString *placeholderText;
-@property (nonatomic, retain) UIColor *placeholderColor;
+@property (nonatomic) UIColor *placeholderColor;
 
 @end

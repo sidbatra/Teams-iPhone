@@ -24,7 +24,7 @@
     self = [super init];
     
     if(self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
     }
     
@@ -33,12 +33,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.usersController    = nil;
     
     [self.user destroy]; 
-    self.user = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

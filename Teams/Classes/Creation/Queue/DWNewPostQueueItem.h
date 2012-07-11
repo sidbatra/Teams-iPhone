@@ -35,7 +35,7 @@
 /**
  * URL on disk of the video attachment
  */
-@property (nonatomic,retain) NSURL *videoURL;
+@property (nonatomic) NSURL *videoURL;
 
 /**
  * Orientation at which the video was recorded
@@ -45,23 +45,23 @@
 /**
  * Geo location from which the item is being posted
  */
-@property (nonatomic,retain) CLLocation *location;
+@property (nonatomic) CLLocation *location;
 
 /**
  * UIImage for an image attachment
  */
-@property (nonatomic,retain) UIImage *image;
+@property (nonatomic) UIImage *image;
 
 /**
  * Preview image to be hooked to the attachment of
  * the final parsed DWItem object
  */
-@property (nonatomic,retain) UIImage *previewImage;
+@property (nonatomic) UIImage *previewImage;
 
 /**
  * Interface to the items service on the app server
  */
-@property (nonatomic,retain) DWItemsController *itemsController;
+@property (nonatomic) DWItemsController *itemsController;
 
 
 /**

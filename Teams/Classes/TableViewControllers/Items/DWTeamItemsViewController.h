@@ -21,23 +21,23 @@
     
     DWNavTitleView              *_navTitleView;
     
-    id<DWTeamItemsViewControllerDelegate>    _delegate;
+    id<DWTeamItemsViewControllerDelegate>    __unsafe_unretained _delegate;
 }
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWTeamItemsDataSource *teamItemsDataSource;
+@property (nonatomic) DWTeamItemsDataSource *teamItemsDataSource;
 
 /**
  * Title view for the nav bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 /**
  * Delegate that receives messages based on the DWTeamViewControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWTeamItemsViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamItemsViewControllerDelegate> delegate;
 
 
 /**

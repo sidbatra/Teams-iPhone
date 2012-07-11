@@ -27,8 +27,8 @@
     DWSlimCell *cell	= base;
     
     if(!cell) 
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                  reuseIdentifier:identifier] autorelease];
+        cell = [[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                  reuseIdentifier:identifier];
     
     
     if(style == KUserPresenterStyleFullSignature)

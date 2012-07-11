@@ -24,12 +24,12 @@
 /**
  * Interface to the search service
  */ 
-@property (nonatomic,retain) DWSearchController *searchController;
+@property (nonatomic) DWSearchController *searchController;
 
 /**
  * Resource object representing the invite people cell
  */
-@property (nonatomic,retain) DWResource *invite;
+@property (nonatomic) DWResource *invite;
 
 /**
  * The query for which search results are being fetched

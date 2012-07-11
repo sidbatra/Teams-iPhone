@@ -26,10 +26,10 @@
     self = [super init];
     
     if(self) {
-        self.contactsController             = [[[DWContactsController alloc] init] autorelease];
+        self.contactsController             = [[DWContactsController alloc] init];
         self.contactsController.delegate    = self;
         
-        self.invitesController              = [[[DWInvitesController alloc] init] autorelease];
+        self.invitesController              = [[DWInvitesController alloc] init];
         self.invitesController.delegate     = self; 
     }
     
@@ -37,15 +37,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.allContacts            = nil;
-    self.latestQuery            = nil;
-    
-    self.contactsController     = nil;
-    self.invitesController      = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------

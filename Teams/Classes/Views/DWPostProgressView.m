@@ -42,7 +42,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
         [self.layer addSublayer:progressLayer];            
         
         
-		statusLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width,20)] autorelease];
+		statusLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width,20)];
         statusLabel.text            = @"Posting...";
 		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue" size:15];
 		statusLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
@@ -89,9 +89,6 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateProgressBar:(float)progress 

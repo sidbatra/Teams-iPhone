@@ -31,17 +31,17 @@
  * Dictionary with the remote notification info obtained while the
  * app was closed
  */
-@property (nonatomic,retain) NSDictionary *backgroundNotificationInfo;
+@property (nonatomic) NSDictionary *backgroundNotificationInfo;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Interface to the notifications service
  */
-@property (nonatomic,retain) DWNotificationsController *notificationsController;
+@property (nonatomic) DWNotificationsController *notificationsController;
 
 /**
  * Flag for unread notifications

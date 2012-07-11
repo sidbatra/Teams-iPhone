@@ -51,10 +51,7 @@ static float	 const kMediaProgressFactor		= 0.9;
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.filename		= nil;
-	self.errorMessage	= nil;
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

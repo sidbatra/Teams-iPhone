@@ -18,18 +18,18 @@
 @interface DWTableViewDataSource : NSObject {
     NSMutableArray  *_objects;
     
-    id<DWTableViewDataSourceDelegate,NSObject> _delegate;
+    id<DWTableViewDataSourceDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * Holds objects that correspond to the rows of a table view controller
  */
-@property (nonatomic,retain) NSMutableArray *objects;
+@property (nonatomic) NSMutableArray *objects;
 
 /**
  * Delegate for communicating with the table view
  */
-@property (nonatomic,assign) id<DWTableViewDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTableViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

@@ -18,7 +18,7 @@
 /**
  * Interface to the users service on the app server
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 
 /**

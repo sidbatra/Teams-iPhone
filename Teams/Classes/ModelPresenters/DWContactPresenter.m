@@ -28,8 +28,8 @@ static CGFloat const kCellHeight  = 44;
     DWDoubleLineCell *cell              = base;
     
     if(!cell)
-        cell = [[[DWDoubleLineCell alloc] initWithStyle:UITableViewStylePlain
-                                               reuseIdentifier:identifier] autorelease];
+        cell = [[DWDoubleLineCell alloc] initWithStyle:UITableViewStylePlain
+                                               reuseIdentifier:identifier];
     
     [cell setFirstLine:contact.fullName];
     [cell setSecondLine:contact.email];

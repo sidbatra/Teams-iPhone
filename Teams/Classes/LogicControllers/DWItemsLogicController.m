@@ -30,12 +30,12 @@
     
     if(self) {        
         
-        self.touchesController          = [[[DWTouchesController alloc] init] autorelease];
+        self.touchesController          = [[DWTouchesController alloc] init];
         
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
         
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController            = [[DWTeamsController alloc] init];
         self.teamsController.delegate   = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -51,13 +51,9 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    self.touchesController      = nil;
-    self.usersController        = nil;
-    self.teamsController        = nil;
     self.tableViewController    = nil;
     self.delegate               = nil;
         
-    [super dealloc];
 }
 
 

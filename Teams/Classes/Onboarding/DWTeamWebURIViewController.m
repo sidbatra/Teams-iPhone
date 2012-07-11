@@ -48,28 +48,13 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
     self = [super init];
     
     if (self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
+        self.teamsController            = [[DWTeamsController alloc] init];        
         self.teamsController.delegate   = self;
     }
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    self.teamHandleTextField        = nil;
-    self.spinnerContainerView       = nil;
-    
-    self.team                       = nil;
-    
-    self.navTitleView               = nil;
-    self.navBarRightButtonView      = nil;
-    self.spinnerOverlayView         = nil;
-    
-    self.teamsController            = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -89,25 +74,25 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
     self.navigationItem.hidesBackButton = YES;
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc]
+        self.navTitleView = [[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                              andDelegate:self];
     
     [self.navTitleView displayTitle:kTeamOnWebText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                        title:kNavBarRightButtonText 
-                                       andTarget:self] autorelease];
+                                       andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,134)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,134)
+                                                                        andMessageText:kMsgProcesssing];
     
     
     self.teamHandleTextField.text = self.team.handle;
@@ -150,7 +135,6 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -214,7 +198,6 @@ static NSString* const kMsgProcesssing                  = @"Creating Team page..
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }

@@ -42,16 +42,16 @@
     DWContactsViewController    *_queryContactsViewController;
     DWContactsViewController    *_addedContactsViewController;    
         
-    id <DWInvitePeopleViewControllerDelegate>  _delegate;
+    id <DWInvitePeopleViewControllerDelegate>  __unsafe_unretained _delegate;
 }
 
 /**
  * IBOutlet properties
  */
-@property (nonatomic, retain) IBOutlet UITextField *searchContactsTextField;
-@property (nonatomic, retain) IBOutlet UIImageView *topShadowView;
-@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
-@property (nonatomic, retain) UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *searchContactsTextField;
+@property (nonatomic) IBOutlet UIImageView *topShadowView;
+@property (nonatomic) IBOutlet UILabel *messageLabel;
+@property (nonatomic) UIView *spinnerContainerView;
 
 /**
  * Titles for navigation bar
@@ -108,24 +108,24 @@
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controllers for quering and added contacts from the address book
  */
-@property (nonatomic,retain) DWContactsViewController *queryContactsViewController;
-@property (nonatomic,retain) DWContactsViewController *addedContactsViewController;
+@property (nonatomic) DWContactsViewController *queryContactsViewController;
+@property (nonatomic) DWContactsViewController *addedContactsViewController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWInvitePeopleViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWInvitePeopleViewControllerDelegate> delegate;
 
 
 /**

@@ -36,18 +36,13 @@
 	
 	NSLog(@"item released - %d",self.databaseID);
 	
-	self.data = nil;
     
     [self.attachment destroy];
-    self.attachment = nil;
     
     [self.team destroy];
-    self.team = nil;
     
     [self.user destroy];
-    self.user = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

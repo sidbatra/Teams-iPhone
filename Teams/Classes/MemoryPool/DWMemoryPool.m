@@ -19,7 +19,7 @@
  * that holds objects of a particular class indexed by their
  * primary ids
  */
-@property (nonatomic,retain) NSMutableDictionary *memoryPool;
+@property (nonatomic) NSMutableDictionary *memoryPool;
 
 @end
 
@@ -55,7 +55,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
 - (void)dealloc {	
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

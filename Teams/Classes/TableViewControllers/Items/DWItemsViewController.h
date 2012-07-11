@@ -15,7 +15,7 @@
  */
 @interface DWItemsViewController : DWTableViewController<UIActionSheetDelegate> {
     DWItemsLogicController      *_itemsLogicController;
-    UIViewController            *_shellViewController;
+    UIViewController            *__unsafe_unretained _shellViewController;
 }
 
 
@@ -23,12 +23,12 @@
  * Items logic controller encapsulates all the functionality for display and interaction
  * of a list of items
  */
-@property (nonatomic,retain) DWItemsLogicController *itemsLogicController;
+@property (nonatomic) DWItemsLogicController *itemsLogicController;
 
 /**
  * Shell view controller for displaying modal UI elements
  */
-@property (nonatomic,assign) UIViewController *shellViewController;
+@property (nonatomic,unsafe_unretained) UIViewController *shellViewController;
 
 
 /**

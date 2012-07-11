@@ -20,7 +20,7 @@
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWUserTeamsDataSource *userTeamsDataSource;
+@property (nonatomic) DWUserTeamsDataSource *userTeamsDataSource;
 
 
 /**

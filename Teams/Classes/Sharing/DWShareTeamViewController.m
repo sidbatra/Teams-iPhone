@@ -54,15 +54,15 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
     self = [super init];
     
     if (self) {
-        self.facebookConnect                = [[[DWFacebookConnect alloc] init] autorelease];
+        self.facebookConnect                = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate       = self;
         self.facebookConnect.accessToken    = [DWSession sharedDWSession].currentUser.facebookAccessToken;
         
-        self.twitterConnect                 = [[[DWTwitterConnect alloc] init] autorelease];
+        self.twitterConnect                 = [[DWTwitterConnect alloc] init];
         self.twitterConnect.delegate        = self;        
         self.twitterConnect.xAuthToken      = [DWSession sharedDWSession].currentUser.twitterXAuthToken;
         
-        self.usersController                = [[[DWUsersController alloc] init] autorelease];    
+        self.usersController                = [[DWUsersController alloc] init];    
         self.usersController.delegate       = self;
     }
     
@@ -70,24 +70,6 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	    
-    self.facebookConnect        = nil;
-    self.twitterConnect         = nil;
-    
-    self.team                   = nil;
-    self.usersController        = nil;
-    
-    self.dataTextView           = nil;
-    self.facebookSwitch         = nil;
-    self.twitterSwitch          = nil;
-    self.spinnerContainerView   = nil;
-    
-    self.navBarRightButtonView  = nil;
-    self.spinnerOverlayView     = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -107,16 +89,16 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewForText:kTitle];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                        title:kNavBarRightButtonText 
-                                       andTarget:self] autorelease];
+                                       andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(112,134)
-                                                                        andMessageText:kMsgDefault] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(112,134)
+                                                                        andMessageText:kMsgDefault];
     
     self.dataTextView.text = [NSString stringWithFormat:kMsgShareTeam,
                                                         self.team.name,
@@ -182,7 +164,6 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
                                               cancelButtonTitle:kMsgCancelTitle
                                               otherButtonTitles:nil];
         [alert show];
-        [alert release];
         
         return;
     }
@@ -284,7 +265,6 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles: nil];
 	[alert show];
-	[alert release];
 	
     if (_sharedToTwitter) 
         self.twitterSwitch.enabled = NO;
@@ -337,7 +317,6 @@ static NSString* const kMsgShareTeam                = @"Check out the %@ Team: %
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles: nil];
 	[alert show];
-	[alert release];
 	
     if (_sharedToFacebook) 
         self.facebookSwitch.enabled = NO;

@@ -22,7 +22,7 @@
 /**
  * User object representing the current user
  */
-@property (nonatomic,retain) DWUser* currentUser;
+@property (nonatomic) DWUser* currentUser;
 
 
 /**

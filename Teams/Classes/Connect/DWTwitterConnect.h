@@ -22,38 +22,38 @@
     NSData                  *_xAuthToken;
     UIAlertView             *_xAuthAlertView;
 
-    id<DWTwitterConnectDelegate,NSObject>   _delegate;
+    id<DWTwitterConnectDelegate,NSObject>   __unsafe_unretained _delegate;
 }
 
 /**
  * Represents the API client
  */
-@property (nonatomic,retain) TwitterConsumer *consumer;
+@property (nonatomic) TwitterConsumer *consumer;
 
 /**
  * Performs authentications of behalf of the user
  */
-@property (nonatomic,retain) TwitterAuthenticator *authenticator;
+@property (nonatomic) TwitterAuthenticator *authenticator;
 
 /**
  * Tweet posting wrapper
  */
-@property (nonatomic,retain) TwitterTweetPoster *poster;
+@property (nonatomic) TwitterTweetPoster *poster;
 
 /**
  * Access token to make requests on behalf of the user
  */
-@property (nonatomic,retain) NSData *xAuthToken;
+@property (nonatomic) NSData *xAuthToken;
 
 /**
  * Customized alert view for getting the user's xauth info
  */
-@property (nonatomic,retain) UIAlertView *xAuthAlertView;
+@property (nonatomic) UIAlertView *xAuthAlertView;
 
 /**
  * DWTwitterConnectDelegate
  */
-@property (nonatomic,assign) id<DWTwitterConnectDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTwitterConnectDelegate,NSObject> delegate;
 
 
 /**

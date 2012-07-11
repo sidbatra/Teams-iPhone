@@ -21,23 +21,23 @@
     
     DWNavTitleView              *_navTitleView;
     
-    id<DWUserViewControllerDelegate>    _delegate;
+    id<DWUserViewControllerDelegate>    __unsafe_unretained _delegate;
 }
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWUserViewDataSource *userViewDataSource;
+@property (nonatomic) DWUserViewDataSource *userViewDataSource;
 
 /**
  * Custom nav bar items
  */ 
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 /**
  * Delegate receives events based on DWUserViewControllerDelegate
  */
-@property (nonatomic,assign) id<DWUserViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWUserViewControllerDelegate> delegate;
 
 
 /**

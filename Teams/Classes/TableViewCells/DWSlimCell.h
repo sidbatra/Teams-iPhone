@@ -13,13 +13,13 @@
  * via core graphics, mostly used for text
  */
 @interface DWSlimCellDrawingLayer : CALayer {
-	DWSlimCell *slimCell;
+	DWSlimCell *__unsafe_unretained slimCell;
 }
 
 /**
  * Non retained reference to the slim cell
  */
-@property (nonatomic,assign) DWSlimCell *slimCell;
+@property (nonatomic,unsafe_unretained) DWSlimCell *slimCell;
 
 @end
 

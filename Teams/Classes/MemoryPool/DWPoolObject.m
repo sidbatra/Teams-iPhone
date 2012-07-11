@@ -49,7 +49,7 @@ static NSString* const kMsgOverride = @"WARNING - Override method in child class
                                                                         forClass:[self className]];
     
     if(!object) {
-        object = [[[self alloc] init] autorelease];
+        object = [[self alloc] init];
         [[DWMemoryPool sharedDWMemoryPool] setObject:object
                                               withID:objectID 
                                             forClass:[self className]];
@@ -93,9 +93,6 @@ static NSString* const kMsgOverride = @"WARNING - Override method in child class
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)mount {

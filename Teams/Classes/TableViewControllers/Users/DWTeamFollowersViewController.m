@@ -25,7 +25,7 @@
     self =  [super init];
     
     if(self) {
-        self.teamFollowersDataSource            = [[[DWTeamFollowersDataSource alloc] init] autorelease];
+        self.teamFollowersDataSource            = [[DWTeamFollowersDataSource alloc] init];
         self.teamFollowersDataSource.teamID     = team.databaseID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:KUserPresenterStyleFullSignature]
@@ -40,18 +40,13 @@
     self = [super init];
     
     if(self) {
-        self.teamFollowersDataSource            = [[[DWTeamFollowersDataSource alloc] init] autorelease];
+        self.teamFollowersDataSource            = [[DWTeamFollowersDataSource alloc] init];
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.teamFollowersDataSource    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {

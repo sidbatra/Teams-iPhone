@@ -11,13 +11,13 @@
  * automatic popping
  */
 @interface DWNavBarBackButton : UIView {
-    UINavigationController  *_navController;
+    UINavigationController  *__unsafe_unretained _navController;
 }
 
 /**
  * Non-retained reference to the navigation controller which will be
  * popped when the back button is clicked
  */
-@property (nonatomic,assign) UINavigationController *navController;
+@property (nonatomic,unsafe_unretained) UINavigationController *navController;
 
 @end

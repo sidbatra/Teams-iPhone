@@ -46,9 +46,9 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     self = [super init];
     
     if (self) {
-        self.joinTeamDataSource                         = [[[DWJoinTeamDataSource alloc] init] autorelease];
+        self.joinTeamDataSource                         = [[DWJoinTeamDataSource alloc] init];
 
-        self.usersLogicController                       = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController                       = [[DWUsersLogicController alloc] init];
         self.usersLogicController.tableViewController   = self;
                 
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kUserPresenterStyleNavigationDisabled]
@@ -58,18 +58,6 @@ static NSString* const kMsgCancelTitle                  = @"OK";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.team                   = nil;
-    
-    self.topShadowView          = nil;
-    self.navTitleView           = nil;
-    self.navBarRightButtonView  = nil;
-    
-    self.joinTeamDataSource     = nil;
-    self.usersLogicController   = nil;
-        
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -93,29 +81,29 @@ static NSString* const kMsgCancelTitle                  = @"OK";
     [self disablePullToRefresh];
     
     if(!self.topShadowView)
-        self.topShadowView      = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]] autorelease];
+        self.topShadowView      = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]];
     
     self.topShadowView.frame    = CGRectMake(0,0,320,5);
     [self.view addSubview:self.topShadowView];
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc]
+        self.navTitleView = [[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:[NSString stringWithFormat:kJoinTeamText,self.team.name] 
                         andSubTitle:[NSString stringWithFormat:kJoinTeamSubText,
                                      [DWApplicationHelper generateOrdinalFrom:(self.team.membersCount+1)]]];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     self.joinTeamDataSource.teamID  = self.team.databaseID;
     [self.joinTeamDataSource loadData];

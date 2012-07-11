@@ -38,12 +38,7 @@
     
     NSLog(@"resource released");
     
-    self.image      = nil;
-    self.text       = nil;
-    self.subText    = nil;
-    self.statText   = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

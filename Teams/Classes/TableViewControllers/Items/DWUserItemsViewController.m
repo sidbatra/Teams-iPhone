@@ -58,7 +58,7 @@
     self = [super init];
     
     if(self) {
-        self.userItemsDataSource        = [[[DWUserItemsDataSource alloc] init] autorelease];
+        self.userItemsDataSource        = [[DWUserItemsDataSource alloc] init];
         self.userItemsDataSource.userID = userID;
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleUserItems]
@@ -78,7 +78,7 @@
     self = [super init];
     
     if(self) {
-        self.userItemsDataSource  = [[[DWUserItemsDataSource alloc] init] autorelease];
+        self.userItemsDataSource  = [[DWUserItemsDataSource alloc] init];
     }
     
     return self;
@@ -88,11 +88,7 @@
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.userItemsDataSource    = nil;
-    self.navTitleView           = nil;
-    self.smallProfilePicView    = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -128,11 +124,11 @@
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:nil] autorelease];
+                                                      andDelegate:nil];
     }
     
     DWUser *user = [DWUser fetch:self.userItemsDataSource.userID];
@@ -143,11 +139,11 @@
 - (void)loadSmallProfilePicView {
     
     if(!self.smallProfilePicView) {
-        self.smallProfilePicView = [[[DWSmallProfilePicView alloc] 
+        self.smallProfilePicView = [[DWSmallProfilePicView alloc] 
                                      initWithFrame:CGRectMake(kNavRightButtonX,
                                                               kNavRightButtonY, 
                                                               kNavRightButtonWidth,
-                                                              kNavRightButtonHeight)] autorelease];
+                                                              kNavRightButtonHeight)];
     }
     
     DWUser *user = [DWUser fetch:self.userItemsDataSource.userID];

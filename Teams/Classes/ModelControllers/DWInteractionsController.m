@@ -48,7 +48,6 @@ static NSString* const kCountParamName          = @"count";
     
     NSLog(@"interactions controller released");
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

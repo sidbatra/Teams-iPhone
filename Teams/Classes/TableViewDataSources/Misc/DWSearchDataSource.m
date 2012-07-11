@@ -29,7 +29,7 @@ static NSString* const kImgInvite		= @"slice_button_addpeople.png";
     self = [super init];
     
     if(self) {
-        self.searchController            = [[[DWSearchController alloc] init] autorelease];
+        self.searchController            = [[DWSearchController alloc] init];
         self.searchController.delegate   = self;
     }
     
@@ -37,18 +37,11 @@ static NSString* const kImgInvite		= @"slice_button_addpeople.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.searchController   = nil;
-    self.invite             = nil;
-    self.query              = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (DWResource*)resourceForTeam:(DWTeam*)team {
     
-    DWResource *resource    = [[[DWResource alloc] init] autorelease];
+    DWResource *resource    = [[DWResource alloc] init];
     resource.text           = team.name;
     resource.subText        = team.byline;
     resource.ownerID        = team.databaseID;
@@ -90,7 +83,7 @@ static NSString* const kImgInvite		= @"slice_button_addpeople.png";
 - (void)addInviteResource {
     
     if(!self.invite)
-        self.invite                 = [[[DWResource alloc] init] autorelease];
+        self.invite                 = [[DWResource alloc] init];
     
     self.invite.text                = @"Team or person not here?";
     self.invite.subText             = @"Invite them";

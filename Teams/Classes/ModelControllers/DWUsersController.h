@@ -14,13 +14,13 @@
  */
 @interface DWUsersController : NSObject {
     
-    id<DWUsersControllerDelegate,NSObject>     _delegate;
+    id<DWUsersControllerDelegate,NSObject>     __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWUsersControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWUsersControllerDelegate,NSObject> delegate;
 
 /**
  * Create a new user

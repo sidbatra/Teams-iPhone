@@ -58,7 +58,6 @@ static NSString* const kItemTouchesURI       = @"/items/%d/touches.json?";
     
     NSLog(@"Touches controller released");
     
-    [super dealloc];
 }
 
 

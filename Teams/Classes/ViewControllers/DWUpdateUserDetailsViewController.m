@@ -56,10 +56,10 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 	self = [super init];
 	
 	if(self) {        
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
+        self.usersController            = [[DWUsersController alloc] init];        
         self.usersController.delegate   = self;
         
-        self.mediaController            = [[[DWMediaController alloc] init] autorelease];
+        self.mediaController            = [[DWMediaController alloc] init];
         self.mediaController.delegate   = self;
         
         _userID                         = user.databaseID;        
@@ -81,28 +81,11 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 - (void)dealloc {	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
     	
-	self.firstNameTextField             = nil;
-    self.lastNameTextField              = nil;
-	self.byLineTextField                = nil;
-    self.userImageView                  = nil;
-    self.changeUserImageButton          = nil;
-    self.spinnerContainerView           = nil;
     
-    self.firstName                      = nil;
-    self.lastName                       = nil;
-    self.byline                         = nil;
-    self.userImage                      = nil;
     
-    self.displayMediaPickerController   = nil;
     
-    self.navTitleView                   = nil;
-	self.navBarRightButtonView          = nil;
-    self.spinnerOverlayView             = nil;
     
-    self.usersController                = nil;
-    self.mediaController                = nil;
 	
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -125,25 +108,25 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
     
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kUpdateUserDetailsText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(70,134)
-                                                                            andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView     = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(70,134)
+                                                                            andMessageText:kMsgProcesssing];
     
     [self.firstNameTextField becomeFirstResponder];
     
@@ -199,7 +182,6 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 											  cancelButtonTitle:kMsgCancelTitle
 											  otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	else {		
         [self freezeUI];
@@ -229,8 +211,7 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 //----------------------------------------------------------------------------------------------------
 - (void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
     
-    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] 
-                                       autorelease];
+    DWMediaPickerController *picker = [[DWMediaPickerController alloc] initWithDelegate:self];
     
     [picker prepareForImageWithPickerMode:pickerMode 
                               withPreview:pickerMode == kMediaPickerLibraryMode];
@@ -316,7 +297,6 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
                                                      otherButtonTitles:kMsgActionSheetCamera,kMsgActionSheetLibrary,nil];
     
     [actionSheet showInView:self.view];
-    [actionSheet release];
 }
 
 
@@ -382,7 +362,6 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }
@@ -416,7 +395,6 @@ static NSString* const kMsgProcesssing          = @"Updating your details...";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
     

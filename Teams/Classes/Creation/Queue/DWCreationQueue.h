@@ -24,7 +24,7 @@
 /**
  * Queue of items being created simultaneously
  */
-@property (nonatomic,retain) NSMutableArray *queue;
+@property (nonatomic) NSMutableArray *queue;
 
 
 /**

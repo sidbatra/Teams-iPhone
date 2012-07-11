@@ -26,8 +26,8 @@
     DWMessageCell *cell         = base;
     
     if(!cell)
-        cell = [[[DWMessageCell alloc] initWithStyle:UITableViewStylePlain 
-                                        reuseIdentifier:identifier] autorelease];
+        cell = [[DWMessageCell alloc] initWithStyle:UITableViewStylePlain 
+                                        reuseIdentifier:identifier];
     
     [cell setMessage:message.content];
     

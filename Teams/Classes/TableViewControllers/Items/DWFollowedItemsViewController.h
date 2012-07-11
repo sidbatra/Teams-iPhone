@@ -19,6 +19,6 @@
 /**
  * Data source for populating items into the table view
  */
-@property (nonatomic,retain) DWFollowedItemsDataSource *itemsDataSource;
+@property (nonatomic) DWFollowedItemsDataSource *itemsDataSource;
 
 @end

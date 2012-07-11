@@ -18,7 +18,7 @@
 /**
  * Filename of uploaded file
  */
-@property (nonatomic,retain) NSString *filename;
+@property (nonatomic) NSString *filename;
 
 
 /**

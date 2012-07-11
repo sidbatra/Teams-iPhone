@@ -26,38 +26,38 @@
     DWUsersController       *_usersController;
     DWTeamsController       *_teamsController;
     
-    DWTableViewController   *_tableViewController;
+    DWTableViewController   *__unsafe_unretained _tableViewController;
     
 
     
-    id<DWItemsLogicControllerDelegate,NSObject> _delegate;
+    id<DWItemsLogicControllerDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * The table view controller which contains the items view controller object
  */
-@property (nonatomic,assign) DWTableViewController *tableViewController;
+@property (nonatomic,unsafe_unretained) DWTableViewController *tableViewController;
 
 /**
  * Record the touches made on items by the current user
  */
-@property (nonatomic,retain) DWTouchesController *touchesController;
+@property (nonatomic) DWTouchesController *touchesController;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Interface to the teams service
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 
 /**
  * Delegate fires events about the ItemsLogicController lifecycle
  */
-@property (nonatomic,assign) id<DWItemsLogicControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWItemsLogicControllerDelegate,NSObject> delegate;
 
 @end
 

@@ -64,7 +64,7 @@
 /**
  * Optional attachment of the last item posted by the team
  */
-@property (nonatomic,retain) DWAttachment *attachment;
+@property (nonatomic) DWAttachment *attachment;
 
  
 /**

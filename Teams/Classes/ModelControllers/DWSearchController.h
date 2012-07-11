@@ -12,13 +12,13 @@
  */
 @interface DWSearchController : NSObject {
     
-    id<DWSearchControllerDelegate,NSObject>  _delegate;
+    id<DWSearchControllerDelegate,NSObject>  __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate recieves events based on the DWSearchControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWSearchControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSearchControllerDelegate,NSObject> delegate;
 
 
 /**

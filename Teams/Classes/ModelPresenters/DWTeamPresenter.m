@@ -30,8 +30,8 @@ static CGFloat const kTeamFatCellHeight     = 275;
     DWTeamFeedCell *cell	= base;
     
     if(!cell) 
-        cell = [[[DWTeamFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                      reuseIdentifier:identifier] autorelease];
+        cell = [[DWTeamFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                      reuseIdentifier:identifier];
     
     
     cell.teamName       = team.name;
@@ -65,8 +65,8 @@ static CGFloat const kTeamFatCellHeight     = 275;
     DWFatCell *cell             = base;
     
     if(!cell)
-        cell = [[[DWFatCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                 reuseIdentifier:identifier] autorelease];
+        cell = [[DWFatCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                 reuseIdentifier:identifier];
     
     
     [team startLargeImageDownload];

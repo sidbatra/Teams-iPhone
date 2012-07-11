@@ -41,7 +41,6 @@
     
     NSLog(@"Media controller released");    
     
-    [super dealloc];
 }
 
 

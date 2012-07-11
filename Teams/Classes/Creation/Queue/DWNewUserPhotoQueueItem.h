@@ -23,18 +23,18 @@
 /**
  * The profile picture
  */
-@property (nonatomic,retain) UIImage *image;
+@property (nonatomic) UIImage *image;
 
 /**
  * The profile picture clone for passing with
  * the notifications
  */
-@property (nonatomic,retain) UIImage *imageClone;
+@property (nonatomic) UIImage *imageClone;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 
 /**

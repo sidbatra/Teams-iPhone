@@ -44,7 +44,6 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
         profilePicOverlay.hidden                    = NO;
         
         [self addSubview:profilePicOverlay];
-        [profilePicOverlay release];
         
         
         spinner			= [[UIActivityIndicatorView alloc] 
@@ -53,7 +52,6 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
         spinner.hidden  = YES;    
         
         [self addSubview:spinner];	
-        [spinner release];
     }
     
     return self;
@@ -63,7 +61,6 @@ static CGFloat   const kProfileButtonAlpha      = 0.98;
 - (void)dealloc {
     self.delegate = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

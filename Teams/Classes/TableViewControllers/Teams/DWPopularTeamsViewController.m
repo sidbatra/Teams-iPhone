@@ -22,7 +22,7 @@
     self = [super init];
     
     if(self) {
-        self.popularTeamsDataSource = [[[DWPopularTeamsDataSource alloc] init] autorelease];
+        self.popularTeamsDataSource = [[DWPopularTeamsDataSource alloc] init];
         
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:kTeamPresenterStyleEventBased]
@@ -44,10 +44,8 @@
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.popularTeamsDataSource     = nil;
 
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

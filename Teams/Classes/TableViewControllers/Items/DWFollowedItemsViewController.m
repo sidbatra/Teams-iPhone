@@ -21,7 +21,7 @@
     self = [super init];
     
     if(self) {
-        self.itemsDataSource = [[[DWFollowedItemsDataSource alloc] init] autorelease];
+        self.itemsDataSource = [[DWFollowedItemsDataSource alloc] init];
         
         
         if(&UIApplicationWillEnterForegroundNotification != NULL) {
@@ -40,9 +40,7 @@
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.itemsDataSource        = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -55,13 +55,11 @@
 		_backgroundImageView.contentMode = UIViewContentModeScaleToFill;
 		_backgroundImageView.clipsToBounds = YES;
 		[self addSubview:_backgroundImageView];
-		[_backgroundImageView release];
 		
 		_transparentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,frame.size.height-60-10,frame.size.width,60+10+1)];
 		_transparentImageView.hidden = YES;
 		_transparentImageView.contentMode = UIViewContentModeScaleToFill;
 		[self addSubview:_transparentImageView];
-		[_transparentImageView release];
 
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 45.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -73,7 +71,6 @@
 		label.textAlignment = UITextAlignmentCenter;
 		[self addSubview:label];
 		_lastUpdatedLabel=label;
-		[label release];
 		
 		label = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, frame.size.height - 39.0f, self.frame.size.width, 20.0f)];
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -86,7 +83,6 @@
         label.alpha = 0.5;
 		[self addSubview:label];
 		_statusLabel=label;
-		[label release];
 		
 		//CALayer *layer = [CALayer layer];
 		//layer.frame = CGRectMake(25.0f, frame.size.height - 65.0f, 30.0f, 55.0f);
@@ -107,7 +103,6 @@
 		[self addSubview:view];
 		_activityView = view;
         _activityView.alpha = 0.5;
-		[view release];
 		
 		
 		[self setState:EGOOPullRefreshNormal];
@@ -329,7 +324,6 @@
 	_statusLabel = nil;
 	//_arrowImage = nil;
 	_lastUpdatedLabel = nil;
-    [super dealloc];
 }
 
 

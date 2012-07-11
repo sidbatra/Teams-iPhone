@@ -82,7 +82,7 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createCountLabel {
-    countLabel                        = [[[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)] autorelease];
+    countLabel                        = [[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)];
     countLabel.userInteractionEnabled = NO;
     countLabel.layer.cornerRadius     = 2.5;
     countLabel.text                   = kDefaultText;  
@@ -98,7 +98,6 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 - (void)dealloc {
     self.delegate = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

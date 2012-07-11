@@ -15,13 +15,13 @@
     UIButton    *backgroundButton;
     UILabel     *countLabel;
     
-    id<DWNavBarCountViewDelegate>   _delegate;
+    id<DWNavBarCountViewDelegate>   __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate receives events based on the DWNavBarCountViewDelegate
  */
-@property (nonatomic,assign) id<DWNavBarCountViewDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWNavBarCountViewDelegate> delegate;
 
 
 /**

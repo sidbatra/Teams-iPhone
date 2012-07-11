@@ -38,12 +38,6 @@
   return(NULL);
 }
 
-- (void) dealloc
-{
-  [string release];
-  [regex release];
-  [super dealloc];
-}
 
 @end
 
@@ -51,7 +45,7 @@
 
 - (NSEnumerator *)matchEnumeratorWithRegex:(NSString *)regex
 {
-  return([[[RKLMatchEnumerator alloc] initWithString:self regex:regex] autorelease]);
+  return([[RKLMatchEnumerator alloc] initWithString:self regex:regex]);
 }
 
 @end

@@ -26,15 +26,15 @@
  * UI Properties
  */
 
-@property (nonatomic,retain) DWTabBarController *tabBarController;
+@property (nonatomic) DWTabBarController *tabBarController;
 
 /**
  * IBOutlet properties
  */
-@property (nonatomic,retain) IBOutlet UIWindow *window;
-@property (nonatomic,retain) IBOutlet UINavigationController *teamsNavController;
-@property (nonatomic,retain) IBOutlet UINavigationController *itemsNavController;
-@property (nonatomic,retain) IBOutlet UINavigationController *onboardingNavController;
+@property (nonatomic) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet UINavigationController *teamsNavController;
+@property (nonatomic) IBOutlet UINavigationController *itemsNavController;
+@property (nonatomic) IBOutlet UINavigationController *onboardingNavController;
 
 @end
 

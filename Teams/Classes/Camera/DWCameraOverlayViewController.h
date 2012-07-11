@@ -54,20 +54,20 @@
 /**
  * Properties
  */
-@property (nonatomic, retain) IBOutlet NSTimer *timer;
+@property (nonatomic) IBOutlet NSTimer *timer;
 
 /**
  * IBOutlet properties
  */
-@property (nonatomic, retain) IBOutlet UIButton *cameraButton;
-@property (nonatomic, retain) IBOutlet UIButton *cancelButton;
-@property (nonatomic, retain) IBOutlet UIButton *flashButton;
-@property (nonatomic, retain) IBOutlet UIButton *toggleCameraButton;
-@property (nonatomic, retain) IBOutlet UIButton *photoLibraryButton;
-@property (nonatomic, retain) IBOutlet UIButton *recordButton;
-@property (nonatomic, retain) IBOutlet UIButton *cameraCaptureModeButton;
-@property (nonatomic, retain) IBOutlet UIButton *timerButton;
-@property (nonatomic, retain) IBOutlet UIImageView *letterBoxImage;
+@property (nonatomic) IBOutlet UIButton *cameraButton;
+@property (nonatomic) IBOutlet UIButton *cancelButton;
+@property (nonatomic) IBOutlet UIButton *flashButton;
+@property (nonatomic) IBOutlet UIButton *toggleCameraButton;
+@property (nonatomic) IBOutlet UIButton *photoLibraryButton;
+@property (nonatomic) IBOutlet UIButton *recordButton;
+@property (nonatomic) IBOutlet UIButton *cameraCaptureModeButton;
+@property (nonatomic) IBOutlet UIButton *timerButton;
+@property (nonatomic) IBOutlet UIImageView *letterBoxImage;
 
 
 /**

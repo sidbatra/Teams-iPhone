@@ -20,6 +20,6 @@
 /**
  * Image view for the splash screen image
  */
-@property (nonatomic,retain) UIImageView *imageView;
+@property (nonatomic) UIImageView *imageView;
 
 @end

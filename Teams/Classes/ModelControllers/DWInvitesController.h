@@ -12,13 +12,13 @@
  */
 @interface DWInvitesController : NSObject {
     
-    id <DWInvitesControllerDelegate,NSObject>  _delegate;
+    id <DWInvitesControllerDelegate,NSObject>  __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate recieves events based on the DWInvitesControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWInvitesControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWInvitesControllerDelegate,NSObject> delegate;
 
 /**
  * Create invites from the contacts user has selected and an optional teamID

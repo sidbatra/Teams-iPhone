@@ -171,23 +171,10 @@ static NSString* const kDiskKeyTeam                     = @"DWUser_Team";
 	
 	NSLog(@"user released %d",_databaseID);
 		
-	self.firstName				= nil;
-	self.lastName				= nil;
-    self.byline                 = nil;
-	self.email					= nil;
-	self.encryptedPassword		= nil;
-	self.twitterXAuthToken		= nil;
-	self.facebookAccessToken	= nil;
     
-    self.smallURL               = nil;
-    self.largeURL               = nil;
-    self.smallImage             = nil;
-    self.largeImage             = nil;
     
     [self.team destroy];
-    self.team                   = nil;
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

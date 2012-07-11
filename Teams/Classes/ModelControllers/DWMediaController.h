@@ -12,13 +12,13 @@
  */
 @interface DWMediaController : NSObject {
     
-    id <DWMediaControllerDelegate,NSObject>  _delegate;    
+    id <DWMediaControllerDelegate,NSObject>  __unsafe_unretained _delegate;    
 }
 
 /**
  * Delegate recieves events based on the DWInvitesControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWMediaControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWMediaControllerDelegate,NSObject> delegate;
 
 
 /**

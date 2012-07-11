@@ -29,7 +29,7 @@
         
         _navigationEnabled  = YES;
         
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -46,10 +46,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     self.tableViewController    = nil;
-    self.usersController        = nil;
     self.delegate               = nil;
     
-    [super dealloc];
 }
 
 

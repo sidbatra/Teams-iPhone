@@ -55,11 +55,7 @@
     
     NSLog(@"interaction released");
     
-    self.viewName   = nil;
-    self.actionName = nil;
-    self.extra      = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

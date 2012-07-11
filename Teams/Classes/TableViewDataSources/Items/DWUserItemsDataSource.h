@@ -23,12 +23,12 @@
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * User whose objects are being displayed
  */
-@property (nonatomic,retain) DWUser *user;
+@property (nonatomic) DWUser *user;
 
 /**
  * The userID whose items are being displayed
@@ -38,7 +38,7 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,assign) id<DWUserItemsDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWUserItemsDataSourceDelegate,NSObject> delegate;
 
 
 /**

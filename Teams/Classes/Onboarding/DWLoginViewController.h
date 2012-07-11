@@ -32,16 +32,16 @@
     
     DWSessionController         *_sessionController;
     
-    id <DWLoginViewControllerDelegate>      _delegate;
+    id <DWLoginViewControllerDelegate>      __unsafe_unretained _delegate;
 }
 
 
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UITextField *emailTextField;
-@property (nonatomic, retain) IBOutlet UITextField *passwordTextField;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *emailTextField;
+@property (nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Encrypted user password
@@ -51,23 +51,23 @@
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling session requests
  */
-@property (nonatomic,retain) DWSessionController *sessionController;
+@property (nonatomic) DWSessionController *sessionController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWLoginViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWLoginViewControllerDelegate> delegate;
 
 
 @end

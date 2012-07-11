@@ -14,13 +14,13 @@
 	NSMutableArray		*_buttons;
 	NSInteger			_selectedIndex;
 	
-	id<DWSegmentedControlDelegate> _delegate;
+	id<DWSegmentedControlDelegate> __unsafe_unretained _delegate;
 }
 
 /**
  * Array for UIButton's acting as segments
  */
-@property (nonatomic,retain) NSMutableArray *buttons;
+@property (nonatomic) NSMutableArray *buttons;
 
 /**
  * Selected segment index
@@ -30,7 +30,7 @@
 /**
  * Delegate received events about changes in segment selection
  */
-@property (nonatomic,assign) id<DWSegmentedControlDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSegmentedControlDelegate> delegate;
 
 
 /**

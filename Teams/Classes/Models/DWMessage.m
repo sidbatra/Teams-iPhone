@@ -30,9 +30,7 @@
     
     NSLog(@"message released");
     
-    self.content = nil;
     
-    [super dealloc];
 }
 
 @end

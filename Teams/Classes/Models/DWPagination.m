@@ -31,7 +31,6 @@
     
     NSLog(@"pagination released");
     
-    [super dealloc];
 }
 
 @end

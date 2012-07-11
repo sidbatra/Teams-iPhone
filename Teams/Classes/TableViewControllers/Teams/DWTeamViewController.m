@@ -49,10 +49,10 @@
     if(self) {
         _isUsersTeam                        = [DWSession sharedDWSession].currentUser.team == team;
         
-        self.teamViewDataSource             = [[[DWTeamViewDataSource alloc] init] autorelease];
+        self.teamViewDataSource             = [[DWTeamViewDataSource alloc] init];
         self.teamViewDataSource.teamID      = team.databaseID;
         
-        self.usersLogicController    = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController    = [[DWUsersLogicController alloc] init];
         self.usersLogicController.tableViewController = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -69,7 +69,7 @@
     self = [super init];
     
     if(self) {
-        self.teamViewDataSource        = [[[DWTeamViewDataSource alloc] init] autorelease];
+        self.teamViewDataSource        = [[DWTeamViewDataSource alloc] init];
     }
     
     return self;
@@ -79,14 +79,10 @@
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.teamViewDataSource         = nil;
-    self.usersLogicController       = nil;
     
-    self.navTitleView               = nil;
         
     self.delegate                   = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -130,11 +126,11 @@
     DWTeam *team = [DWTeam fetch:self.teamViewDataSource.teamID];
 
     if(!self.navTitleView) 
-        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                               kNavTitleViewY,
                                                                               kNavTitleViewWidth,
                                                                               kNavTitleViewHeight) 
-                                                       andDelegate:nil] autorelease];    
+                                                       andDelegate:nil];    
     
     [self.navTitleView displayTitle:team.name 
                         andSubTitle:team.byline];
@@ -157,9 +153,8 @@
                                                                  withViewID:team.databaseID];
     
     
-    DWUpdateTeamDetailsViewController *updateTeamDetailsViewController  = [[[DWUpdateTeamDetailsViewController alloc] 
-                                                                            initWithTeam:team] 
-                                                                           autorelease];
+    DWUpdateTeamDetailsViewController *updateTeamDetailsViewController  = [[DWUpdateTeamDetailsViewController alloc] 
+                                                                            initWithTeam:team];
     
     [self.navigationController pushViewController:updateTeamDetailsViewController 
                                          animated:YES];

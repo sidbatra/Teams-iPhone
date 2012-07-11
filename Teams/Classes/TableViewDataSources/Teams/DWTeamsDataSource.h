@@ -18,7 +18,7 @@
 /**
  * Interface to the teams service on the app server
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 
 /**

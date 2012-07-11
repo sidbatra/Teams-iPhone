@@ -27,7 +27,7 @@
     self = [super init];
     
     if(self) {        
-        self.contactsDataSource     = [[[DWContactsDataSource alloc] init] autorelease];
+        self.contactsDataSource     = [[DWContactsDataSource alloc] init];
         
         [self.modelPresentationStyle setObject:[NSNumber numberWithInt:style]
                                         forKey:[[DWContact class] className]];
@@ -37,12 +37,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.contactToRemove    = nil;
-    self.contactsDataSource = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -61,12 +55,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:CGRectMake(0,-44,320,339)] autorelease];
+    return [[DWLoadingView alloc] initWithFrame:CGRectMake(0,-44,320,339)];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,273)] autorelease];
+    DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,273)];
     errorView.delegate      = self;
     
     return errorView;
@@ -138,7 +132,6 @@
                                                      otherButtonTitles:nil];
     
     [actionSheet showInView:view];
-    [actionSheet release];
 }
 
 //----------------------------------------------------------------------------------------------------

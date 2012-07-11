@@ -33,9 +33,7 @@
 	NSLog(@"membership released - %d",self.databaseID);
 	
     [self.team destroy];
-    self.team = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

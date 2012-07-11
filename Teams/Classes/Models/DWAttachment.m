@@ -68,15 +68,9 @@ static float	 const kSliceHeight						= 92;
 -(void)dealloc{
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
         
-	self.actualURL		= nil;
-	self.largeURL		= nil;
-	self.sliceURL		= nil;
-	self.largeImage     = nil;
-	self.sliceImage		= nil;
     
     NSLog(@"attachment released - %d",self.databaseID);
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

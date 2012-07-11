@@ -32,9 +32,7 @@
 	NSLog(@"touch released - %d",self.databaseID);
     
     [self.user destroy];
-    self.user = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -72,9 +72,6 @@ static NSString* const kMsgRefreshText  = @"Try again";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setErrorMessage:(NSString *)message {
@@ -84,10 +81,10 @@ static NSString* const kMsgRefreshText  = @"Try again";
 //----------------------------------------------------------------------------------------------------
 - (void)createText {
     
-    messageLabel                   = [[[UILabel alloc] initWithFrame:CGRectMake(0,
+    messageLabel                   = [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                                  self.frame.size.height / 2 - 35 - 49,
                                                                                  self.frame.size.width,
-                                                                                 20)] autorelease];	
+                                                                                 20)];	
 	messageLabel.backgroundColor	= [UIColor clearColor];
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
 	messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
@@ -103,10 +100,10 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshImage {
-    refreshImageView                    = [[[UIImageView alloc] initWithFrame:CGRectMake(112,
+    refreshImageView                    = [[UIImageView alloc] initWithFrame:CGRectMake(112,
                                                                                          self.frame.size.height / 2 - 9 - 49,
                                                                                          13,
-                                                                                         15)] autorelease];	
+                                                                                         15)];	
 	refreshImageView.image              = [UIImage imageNamed:kImgRefresh];
 	
 	[self addSubview:refreshImageView];
@@ -114,10 +111,10 @@ static NSString* const kMsgRefreshText  = @"Try again";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createRefreshText {
-    refreshLabel                    = [[[UILabel alloc] initWithFrame:CGRectMake(8,
+    refreshLabel                    = [[UILabel alloc] initWithFrame:CGRectMake(8,
                                                                                  self.frame.size.height / 2 - 10 - 49,
                                                                                  self.frame.size.width,
-                                                                                 20)] autorelease];	
+                                                                                 20)];	
 	refreshLabel.backgroundColor	= [UIColor clearColor];
 	refreshLabel.font				= [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];	
 	refreshLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];

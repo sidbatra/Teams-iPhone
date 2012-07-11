@@ -16,13 +16,13 @@
  * via core graphics, mostly used for text
  */
 @interface DWItemFeedCellDrawingLayer : CALayer {
-	DWItemFeedCell	*itemCell;
+	DWItemFeedCell	*__unsafe_unretained itemCell;
 }
 
 /**
  * Non retained reference to the item feed cell
  */
-@property (nonatomic,assign) DWItemFeedCell *itemCell;
+@property (nonatomic,unsafe_unretained) DWItemFeedCell *itemCell;
 
 @end
 
@@ -80,7 +80,7 @@
     
     DWVideoView                     *videoView;
 	
-	id<DWItemFeedCellDelegate>		_delegate;
+	id<DWItemFeedCellDelegate>		__unsafe_unretained _delegate;
 }
 
 
@@ -102,7 +102,7 @@
 @property (nonatomic,copy) NSString* itemTouchesCountString;
 @property (nonatomic,copy) NSString* byline;
 
-@property (nonatomic,retain) NSDate* highlightedAt;
+@property (nonatomic) NSDate* highlightedAt;
 
 @property (nonatomic,readonly) CGRect userNameRect;
 @property (nonatomic,readonly) CGRect atRect;
@@ -114,7 +114,7 @@
 
 
 
-@property (nonatomic,assign) id<DWItemFeedCellDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWItemFeedCellDelegate> delegate;
 
 
 /**

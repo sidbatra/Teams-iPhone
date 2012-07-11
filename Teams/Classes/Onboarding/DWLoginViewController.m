@@ -50,7 +50,7 @@ static NSString* const kMsgProcesssing          = @"Logging in...";
 	self = [super init];
 	
 	if(self) {
-        self.sessionController          = [[[DWSessionController alloc] init] autorelease];
+        self.sessionController          = [[DWSessionController alloc] init];
         self.sessionController.delegate = self;
 	}
     
@@ -58,22 +58,6 @@ static NSString* const kMsgProcesssing          = @"Logging in...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	
-	self.emailTextField             = nil;
-	self.passwordTextField          = nil;
-    self.spinnerContainerView       = nil; 
-    
-	self.password                   = nil;
-    
-    self.navTitleView               = nil;
-	self.navBarRightButtonView      = nil;
-    self.spinnerOverlayView         = nil;
-    
-    self.sessionController          = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
@@ -84,25 +68,25 @@ static NSString* const kMsgProcesssing          = @"Logging in...";
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
 
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kLoginText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(100,134)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(100,134)
+                                                                        andMessageText:kMsgProcesssing];
 
     [self.emailTextField becomeFirstResponder];
     
@@ -142,7 +126,6 @@ static NSString* const kMsgProcesssing          = @"Logging in...";
 											  cancelButtonTitle:kMsgCancelTitle
 											  otherButtonTitles: nil];
 		[alert show];
-		[alert release];
 	}
 	else {
 		[self freezeUI];
@@ -204,7 +187,6 @@ static NSString* const kMsgProcesssing          = @"Logging in...";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles: nil];
 	[alert show];
-	[alert release];
 	
 	[self unfreezeUI];
     

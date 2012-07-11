@@ -29,7 +29,7 @@ static NSString* const kQueueErrorDomain		= @"DWQueueError";
         
         _isSilent = YES;
         
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -47,13 +47,6 @@ static NSString* const kQueueErrorDomain		= @"DWQueueError";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.image              = nil;
-    self.imageClone         = nil;
-    self.usersController    = nil;
-        
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

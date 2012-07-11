@@ -39,40 +39,40 @@
 /**
  * Instance of the facebook connect wrapper
  */
-@property (nonatomic,retain) DWFacebookConnect *facebookConnect;
+@property (nonatomic) DWFacebookConnect *facebookConnect;
 
 /**
  * Instance of the twitter connect wrapper
  */
-@property (nonatomic,retain) DWTwitterConnect *twitterConnect;
+@property (nonatomic) DWTwitterConnect *twitterConnect;
 
 /**
  * The team being shared
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Controller for handling user requests
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * IBOutlet properties
  */
-@property (nonatomic,retain) IBOutlet UITextView *dataTextView;
-@property (nonatomic,retain) IBOutlet UISwitch *facebookSwitch;
-@property (nonatomic,retain) IBOutlet UISwitch *twitterSwitch;
-@property (nonatomic,retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextView *dataTextView;
+@property (nonatomic) IBOutlet UISwitch *facebookSwitch;
+@property (nonatomic) IBOutlet UISwitch *twitterSwitch;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 
 /**

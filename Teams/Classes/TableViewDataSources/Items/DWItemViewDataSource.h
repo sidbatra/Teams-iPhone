@@ -27,12 +27,12 @@
 /**
  * Interface to the items service
  */
-@property (nonatomic,retain) DWItemsController *itemsController;
+@property (nonatomic) DWItemsController *itemsController;
 
 /**
  * Interface to the touches service
  */
-@property (nonatomic,retain) DWTouchesController *touchesController;
+@property (nonatomic) DWTouchesController *touchesController;
 
 /**
  * ItemID for the item whose touchers are being displayed
@@ -42,7 +42,7 @@
 /**
  * Extend the original delegate
  */
-@property (nonatomic,assign) id<DWItemViewDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWItemViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

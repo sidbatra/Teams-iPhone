@@ -22,7 +22,7 @@
     self = [super init];
     
     if(self) {        
-        self.itemsLogicController    = [[[DWItemsLogicController alloc] init] autorelease];
+        self.itemsLogicController    = [[DWItemsLogicController alloc] init];
         self.itemsLogicController.tableViewController = self;
     }
     
@@ -30,11 +30,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.itemsLogicController    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
@@ -43,16 +38,14 @@
     /**
      * Add gesture recognizers to catch swipes on table view cells
      */
-    UISwipeGestureRecognizer *swipeRight    = [[[UISwipeGestureRecognizer alloc] initWithTarget:self 
-                                                                                         action:@selector(handleSwipeGesture:)] 
-                                               autorelease];
+    UISwipeGestureRecognizer *swipeRight    = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                         action:@selector(handleSwipeGesture:)];
     swipeRight.direction                    = UISwipeGestureRecognizerDirectionRight;
     [self.tableView addGestureRecognizer:swipeRight];
     
     
-    UISwipeGestureRecognizer *swipeLeft     = [[[UISwipeGestureRecognizer alloc] initWithTarget:self 
-                                                                                         action:@selector(handleSwipeGesture:)] 
-                                               autorelease];
+    UISwipeGestureRecognizer *swipeLeft     = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                         action:@selector(handleSwipeGesture:)];
     swipeLeft.direction                     = UISwipeGestureRecognizerDirectionLeft;
     [self.tableView addGestureRecognizer:swipeLeft];
 }
@@ -104,7 +97,6 @@
             
             
             [actionSheet showInView:self.shellViewController.view];
-            [actionSheet release];
         }
     }
 }

@@ -30,19 +30,18 @@ static NSString* const kImgBackButton               = @"button_back.png";
 	
     [button setFrame:CGRectMake(0, 0, 55, 44)];
 	
-	return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+	return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 //----------------------------------------------------------------------------------------------------
 + (UIBarButtonItem*)navBarBackButtonForNavController:(UINavigationController*)navControler {
     
-    DWNavBarBackButton *backButton  = [[[DWNavBarBackButton alloc] 
-                                        initWithFrame:CGRectMake(0,0,55,44)] 
-                                       autorelease];
+    DWNavBarBackButton *backButton  = [[DWNavBarBackButton alloc] 
+                                        initWithFrame:CGRectMake(0,0,55,44)];
     
     backButton.navController        = navControler;
 	
-	return [[[UIBarButtonItem alloc] initWithCustomView:backButton] autorelease];
+	return [[UIBarButtonItem alloc] initWithCustomView:backButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -62,13 +61,13 @@ static NSString* const kImgBackButton               = @"button_back.png";
 	[button setFrame:CGRectMake(0,0,55,44)];
     
     
-    return [[[UIBarButtonItem alloc] initWithCustomView:button] autorelease];
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 //----------------------------------------------------------------------------------------------------
 + (UILabel*)navBarTitleViewForText:(NSString*)text {
     
-    UILabel *titleLabel            = [[[UILabel alloc] initWithFrame:CGRectMake(10,4,180,18)] autorelease];
+    UILabel *titleLabel            = [[UILabel alloc] initWithFrame:CGRectMake(10,4,180,18)];
     titleLabel.textColor           = [UIColor whiteColor];
     titleLabel.textAlignment       = UITextAlignmentCenter;
     titleLabel.backgroundColor     = [UIColor clearColor];
@@ -82,7 +81,7 @@ static NSString* const kImgBackButton               = @"button_back.png";
 //----------------------------------------------------------------------------------------------------
 + (UIImageView*)backgroundImageViewWithFrame:(CGRect)frame {
     
-    UIImageView *backgroundImageView    = [[[UIImageView alloc] initWithFrame:frame] autorelease];
+    UIImageView *backgroundImageView    = [[UIImageView alloc] initWithFrame:frame];
     backgroundImageView.image           = [UIImage imageNamed:kImgTableViewBackground];
     backgroundImageView.contentMode     = UIViewContentModeTop;
     

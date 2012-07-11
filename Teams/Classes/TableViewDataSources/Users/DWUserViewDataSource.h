@@ -34,32 +34,32 @@
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Interface to the teams service
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 /**
  * Resource displaying the current team
  */
-@property (nonatomic,retain) DWResource *teamResource;
+@property (nonatomic) DWResource *teamResource;
 
 /**
  * Resource displaying the total teams being followed
  */
-@property (nonatomic,retain) DWResource *followingResource;
+@property (nonatomic) DWResource *followingResource;
 
 /**
  * Image for the profile pic cell
  */
-@property (nonatomic,retain) DWProfileImage *profileImage;
+@property (nonatomic) DWProfileImage *profileImage;
 
 /**
  * User being displayed
  */
-@property (nonatomic,retain) DWUser *user;
+@property (nonatomic) DWUser *user;
 
 
 /**
@@ -70,7 +70,7 @@
 /**
  * Overriding the base class delegate
  */
-@property (nonatomic,assign) id<DWUserViewDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWUserViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

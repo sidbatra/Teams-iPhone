@@ -14,7 +14,7 @@
 	NSMutableArray	*_buttons;
 	NSInteger		_selectedIndex;
 	
-	id<DWTabBarDelegate> _delegate;
+	id<DWTabBarDelegate> __unsafe_unretained _delegate;
 }
 
 /**
@@ -25,7 +25,7 @@
 /**
  * Delegate receives updates about changes in tab selection
  */
-@property (nonatomic,assign) id<DWTabBarDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTabBarDelegate> delegate;
 
 
 /**

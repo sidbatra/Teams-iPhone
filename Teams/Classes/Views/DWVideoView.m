@@ -49,10 +49,10 @@ static MPMoviePlayerController* sharedMoviePlayerController = nil;
             
         
         
-        self.spinner = [[[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((frame.size.width  - kSpinnerSide) / 2,
+        self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake((frame.size.width  - kSpinnerSide) / 2,
                                                                                   (frame.size.height - kSpinnerSide) / 2,
                                                                                   kSpinnerSide,
-                                                                                  kSpinnerSide)] autorelease];
+                                                                                  kSpinnerSide)];
 		[self addSubview:self.spinner];
         
         
@@ -74,10 +74,7 @@ static MPMoviePlayerController* sharedMoviePlayerController = nil;
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-    self.movieController    = nil;
-	self.spinner            = nil;
 	
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

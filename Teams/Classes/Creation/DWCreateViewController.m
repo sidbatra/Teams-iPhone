@@ -60,7 +60,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 	
 	if (self) {
 		_attachmentType         = kAttachmentNone;
-        self.itemsController    = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController    = [[DWItemsController alloc] init];
             
         self.placeholder        = kMsgDataTextViewPlaceholder;
 	}
@@ -75,25 +75,9 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
     
     [[DWLocationManager sharedDWLocationManager] stopLocationTracking];
 	
-	self.previewImageView		= nil;
-	self.transImageView			= nil;
-	self.dataTextView			= nil;
-	self.cancelButton			= nil;
-	self.doneButton				= nil;
-	self.cameraButton			= nil;
-	self.coverLabel				= nil;
-    self.teamNameLabel          = nil;
-    self.userNameLabel          = nil;
 	
-    self.data                   = nil;
-    self.placeholder            = nil;
-	self.cameraImage			= nil;
-	self.videoURL				= nil;
-	self.videoOrientation		= nil;
     
-    self.itemsController        = nil;
 	
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -198,7 +182,6 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 											  cancelButtonTitle:@"OK" 
 											  otherButtonTitles: nil];
 		[alert show];
-		[alert release];
 		
 		status = NO;
 	}
@@ -208,7 +191,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
 
 //----------------------------------------------------------------------------------------------------
 -(void)presentMediaPickerControllerForPickerMode:(NSInteger)pickerMode {    
-    DWMediaPickerController *picker = [[[DWMediaPickerController alloc] initWithDelegate:self] autorelease];
+    DWMediaPickerController *picker = [[DWMediaPickerController alloc] initWithDelegate:self];
     [picker prepareForMediaWithPickerMode:pickerMode];
     [self presentModalViewController:picker animated:NO];   
 }

@@ -27,20 +27,20 @@
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWItemViewDataSource *itemViewDataSource;
+@property (nonatomic) DWItemViewDataSource *itemViewDataSource;
 
 
 /**
  * Items logic controller encapsulates all the functionality for display and interaction
  * of a list of items
  */
-@property (nonatomic,retain) DWItemsLogicController *itemsLogicController;
+@property (nonatomic) DWItemsLogicController *itemsLogicController;
 
 /**
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
+@property (nonatomic) DWUsersLogicController *usersLogicController;
 
 
 /**

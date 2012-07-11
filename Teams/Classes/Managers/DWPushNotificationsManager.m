@@ -62,10 +62,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 	self = [super init];
 	
 	if(self) {
-        self.usersController                    = [[[DWUsersController alloc] init] autorelease];
+        self.usersController                    = [[DWUsersController alloc] init];
         self.usersController.delegate           = self;
         
-        self.notificationsController            = [[[DWNotificationsController alloc] init] autorelease];
+        self.notificationsController            = [[DWNotificationsController alloc] init];
         self.notificationsController.delegate   = self;
 	}
 	
@@ -73,13 +73,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.backgroundNotificationInfo     = nil;
-    self.usersController                = nil;
-    self.notificationsController        = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)handleLiveNotificationWithInfo:(NSDictionary*)info {
@@ -103,7 +96,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWPushNotificationsManager);
                                                       cancelButtonTitle:kCancelTitle
                                                       otherButtonTitles:kActionTitle,nil];
             [alertView show];
-            [alertView release];
             
             
             [[DWAnalyticsManager sharedDWAnalyticsManager] createInteractionForView:self

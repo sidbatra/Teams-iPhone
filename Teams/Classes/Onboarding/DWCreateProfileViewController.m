@@ -52,7 +52,7 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 	self = [super init];
 	
 	if(self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];        
+        self.usersController            = [[DWUsersController alloc] init];        
         self.usersController.delegate   = self;
         
         _hasPasswordChanged             = NO;
@@ -61,25 +61,6 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	
-	self.firstNameTextField             = nil;
-    self.lastNameTextField              = nil;
-	self.byLineTextField                = nil;
-	self.passwordTextField              = nil;
-    self.spinnerContainerView           = nil;
-    
-    self.password                       = nil;    
-    self.teamName                       = nil;
-    
-    self.navTitleView                   = nil;
-	self.navBarRightButtonView          = nil;
-    self.spinnerOverlayView             = nil;
-    
-    self.usersController                = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
@@ -88,25 +69,25 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
     self.navigationItem.hidesBackButton = YES;
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kCreateProfileText 
                         andSubTitle:[NSString stringWithFormat:kCreateProfileSubText,self.teamName]];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,134)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,134)
+                                                                        andMessageText:kMsgProcesssing];
     
     
 	[self.firstNameTextField becomeFirstResponder];
@@ -168,7 +149,6 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 											  cancelButtonTitle:kMsgCancelTitle
 											  otherButtonTitles:nil];
 		[alert show];
-		[alert release];
 	}
 	else {			
         [self freezeUI];
@@ -283,7 +263,6 @@ static NSString* const kMsgProcesssing          = @"Creating your profile...";
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
     

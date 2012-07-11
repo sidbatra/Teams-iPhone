@@ -16,7 +16,7 @@
     
 	NSArray				*_subControllers;
     
-    UIViewController    *_parentForSubControllers;
+    UIViewController    *__unsafe_unretained _parentForSubControllers;
     
     CGRect              _controllerFrame;
 }
@@ -25,19 +25,19 @@
  * Segmented control contains the UI for displaying the segments
  * and handling their user interaction
  */
-@property (nonatomic,retain) DWSegmentedControl *segmentedControl;
+@property (nonatomic) DWSegmentedControl *segmentedControl;
 
 /**
  * The sub controllers corresponding to the segmentedControl. They
  * are added and removed from the parentForSubController
  * as the user interacts with the segmentedControl
  */
-@property (nonatomic,retain) NSArray *subControllers;
+@property (nonatomic) NSArray *subControllers;
 
 /**
  * Parent view controller where the sub controllers are added and removed from
  */
-@property (nonatomic,assign) UIViewController *parentForSubControllers;
+@property (nonatomic,unsafe_unretained) UIViewController *parentForSubControllers;
 
 
 /**

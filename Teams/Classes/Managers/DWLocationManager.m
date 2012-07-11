@@ -29,7 +29,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWLocationManager);
 	self = [super init];
 	
 	if(self) {
-        self.locationManager					= [[[CLLocationManager alloc] init] autorelease];
+        self.locationManager					= [[CLLocationManager alloc] init];
         self.locationManager.delegate			= self;
         self.locationManager.desiredAccuracy	= kCLLocationAccuracyBest;
         self.locationManager.distanceFilter		= kLocRefreshDistance;
@@ -39,11 +39,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWLocationManager);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.locationManager    = nil;
-    
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)startLocationTracking {

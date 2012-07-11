@@ -67,7 +67,7 @@
 /**
  * Image location at imageURL
  */
-@property (nonatomic,retain) UIImage* image;
+@property (nonatomic) UIImage* image;
 
 /**
  * Timestamp of the date of creation of the notification

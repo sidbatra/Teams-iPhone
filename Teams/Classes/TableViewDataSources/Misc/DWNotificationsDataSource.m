@@ -21,7 +21,7 @@
     self = [super init];
     
     if(self) {
-        self.notificationsController            = [[[DWNotificationsController alloc] init] autorelease];
+        self.notificationsController            = [[DWNotificationsController alloc] init];
         self.notificationsController.delegate   = self;
     }
     
@@ -29,12 +29,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    self.notificationsController    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)populateNotifications:(NSMutableArray*)notifications {
@@ -59,7 +53,7 @@
         
         _oldestTimestamp            = ((DWNotification*)[notifications lastObject]).createdAtTimestamp;
         
-        DWPagination *pagination    = [[[DWPagination alloc] init] autorelease];
+        DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }

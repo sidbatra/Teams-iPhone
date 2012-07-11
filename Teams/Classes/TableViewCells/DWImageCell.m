@@ -51,13 +51,10 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createImageView {
-    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(60,18,200,200)] autorelease];
+    imageView    = [[UIImageView alloc] initWithFrame:CGRectMake(60,18,200,200)];
 
     imageView.contentMode   = UIViewContentModeScaleAspectFit;
     imageView.clipsToBounds = YES;

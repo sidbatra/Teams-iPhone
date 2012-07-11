@@ -34,17 +34,17 @@
 /**
  * Attachment associated with the item
  */
-@property (nonatomic,retain) DWAttachment *attachment;
+@property (nonatomic) DWAttachment *attachment;
 
 /**
  * Team to which the item belongs
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /** 
  * The user who created the item
  */ 
-@property (nonatomic,retain) DWUser *user;
+@property (nonatomic) DWUser *user;
 
 /**
  * Total touches on the item

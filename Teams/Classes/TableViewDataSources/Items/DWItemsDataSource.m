@@ -21,7 +21,7 @@
     self = [super init];
     
     if(self) {
-        self.itemsController            = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController            = [[DWItemsController alloc] init];
         self.itemsController.delegate   = self;
     }
     
@@ -29,11 +29,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.itemsController    = nil;
-        
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)populateItems:(NSMutableArray*)items {
@@ -58,7 +53,7 @@
         
         _oldestTimestamp            = ((DWItem*)[items lastObject]).createdAtTimestamp;
         
-        DWPagination *pagination    = [[[DWPagination alloc] init] autorelease];
+        DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }

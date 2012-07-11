@@ -21,7 +21,7 @@
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
+@property (nonatomic) DWUsersLogicController *usersLogicController;
 
 
 /**

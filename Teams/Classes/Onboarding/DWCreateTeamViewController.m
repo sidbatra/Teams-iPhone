@@ -49,30 +49,13 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
     self = [super init];
     
     if (self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
+        self.teamsController            = [[DWTeamsController alloc] init];        
         self.teamsController.delegate   = self;
     }
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    self.teamNameTextField          = nil;
-    self.teamBylineTextField        = nil;
-    self.messageLabel               = nil;
-    self.spinnerContainerView       = nil;
-    
-    self.domain                     = nil;
-    
-    self.navTitleView               = nil;
-    self.navBarRightButtonView      = nil;
-    self.spinnerOverlayView         = nil;
-    
-    self.teamsController            = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -92,25 +75,25 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
     self.navigationItem.leftBarButtonItem   = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc]
+        self.navTitleView = [[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kCreateTeamText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,156)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,156)
+                                                                        andMessageText:kMsgProcesssing];
 
     
     self.messageLabel.text = [NSString stringWithFormat:kMessageLabelText,self.domain];
@@ -152,7 +135,6 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -235,7 +217,6 @@ static NSString* const kMsgProcesssing                  = @"Creating new Team...
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
     

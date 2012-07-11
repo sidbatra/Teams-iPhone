@@ -90,7 +90,6 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -117,7 +116,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)itemSelected:(NSInteger)itemID {
     
-    DWItemViewController *itemViewController = [[[DWItemViewController alloc] initWithItemID:itemID] autorelease];
+    DWItemViewController *itemViewController = [[DWItemViewController alloc] initWithItemID:itemID];
     
     [itemViewController setItemsDelegate:self];
     [itemViewController setUsersDelegate:self];
@@ -129,9 +128,8 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)teamSelected:(NSInteger)teamID {
     
-    DWTeamItemsViewController *teamItemsController = [[[DWTeamItemsViewController alloc] 
-                                                       initWithTeamID:teamID]
-                                                      autorelease];
+    DWTeamItemsViewController *teamItemsController = [[DWTeamItemsViewController alloc] 
+                                                       initWithTeamID:teamID];
     teamItemsController.shellViewController = (UIViewController*)self.customTabBarController;
     teamItemsController.delegate = self;
     [teamItemsController setItemsDelegate:self];
@@ -143,8 +141,8 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)userSelected:(NSInteger)userID {
     
-    DWUserViewController *userViewController = [[[DWUserViewController alloc] 
-                                                 initWithUserID:userID] autorelease];
+    DWUserViewController *userViewController = [[DWUserViewController alloc] 
+                                                 initWithUserID:userID];
     
     userViewController.delegate =  self;
     
@@ -155,8 +153,8 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)createItemSelected:(NSString *)text {
     
-    DWCreateViewController *createViewController = [[[DWCreateViewController alloc] 
-                                                     init] autorelease];
+    DWCreateViewController *createViewController = [[DWCreateViewController alloc] 
+                                                     init];
     
     createViewController.placeholder = text;
     
@@ -269,7 +267,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)teamDetailsSelected:(DWTeam *)team {
     
-    DWTeamViewController *teamViewController    = [[[DWTeamViewController alloc] initWithTeam:team] autorelease];
+    DWTeamViewController *teamViewController    = [[DWTeamViewController alloc] initWithTeam:team];
     teamViewController.delegate                 = self;              
 
     [teamViewController setUsersDelegate:self];
@@ -289,7 +287,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
     
     self.navigationController.navigationBar.clipsToBounds       = NO;
     
-    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    DWInvitePeopleViewController *invitePeopleViewController    = [[DWInvitePeopleViewController alloc] init];
     invitePeopleViewController.delegate                         = self;
     
     invitePeopleViewController.showBackButton                   = YES;
@@ -308,7 +306,7 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 - (void)shareTeam:(DWTeam*)team {
     self.navigationController.navigationBar.clipsToBounds       = NO;
     
-    DWShareTeamViewController *shareTeamViewController          = [[[DWShareTeamViewController alloc] init] autorelease];
+    DWShareTeamViewController *shareTeamViewController          = [[DWShareTeamViewController alloc] init];
     shareTeamViewController.team                                = team;
     
     [self.navigationController pushViewController:shareTeamViewController 
@@ -328,9 +326,9 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 
 //----------------------------------------------------------------------------------------------------
 - (void)userViewShowTeamsWatchedBy:(DWUser*)user {
-    DWUserTeamsViewController *userTeamsViewController = [[[DWUserTeamsViewController alloc] 
+    DWUserTeamsViewController *userTeamsViewController = [[DWUserTeamsViewController alloc] 
                                                            initWithUser:user
-                                                           andIgnore:YES] autorelease];
+                                                           andIgnore:YES];
     
     [userTeamsViewController setTeamsDelegate:self];
     
@@ -341,8 +339,8 @@ static NSString* const kMsgInviteMessageText        = @"Invite people to join th
 //----------------------------------------------------------------------------------------------------
 - (void)showEditUserDetailsView:(DWUser*)user {
     
-    DWUpdateUserDetailsViewController *updateUserDetailsViewController  = [[[DWUpdateUserDetailsViewController alloc]
-                                                                            initWithUserToEdit:user] autorelease];
+    DWUpdateUserDetailsViewController *updateUserDetailsViewController  = [[DWUpdateUserDetailsViewController alloc]
+                                                                            initWithUserToEdit:user];
     
     updateUserDetailsViewController.displayMediaPickerController        = self.customTabBarController;
 

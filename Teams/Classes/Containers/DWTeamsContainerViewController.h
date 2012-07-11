@@ -27,21 +27,21 @@
 /**
  * Displays the currently "popular" teams
  */
-@property (nonatomic,retain) DWPopularTeamsViewController *popularTeamsViewController;
+@property (nonatomic) DWPopularTeamsViewController *popularTeamsViewController;
 
 /**
  * Show results from search queries
  */
-@property (nonatomic,retain) DWSearchViewController *searchViewController;
+@property (nonatomic) DWSearchViewController *searchViewController;
 
 /**
  * Custom search bar
  */
-@property (nonatomic,retain) DWSearchBar *searchBar;
+@property (nonatomic) DWSearchBar *searchBar;
 
 /**
  * Title view for the navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 @end

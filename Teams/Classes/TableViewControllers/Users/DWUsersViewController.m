@@ -22,7 +22,7 @@
     self = [super init];
     
     if(self) {        
-        self.usersLogicController    = [[[DWUsersLogicController alloc] init] autorelease];
+        self.usersLogicController    = [[DWUsersLogicController alloc] init];
         self.usersLogicController.tableViewController = self;
     }
     
@@ -30,11 +30,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.usersLogicController        = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUsersDelegate:(id<DWUsersLogicControllerDelegate>)delegate {

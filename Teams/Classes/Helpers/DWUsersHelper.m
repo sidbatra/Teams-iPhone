@@ -52,7 +52,7 @@
 //----------------------------------------------------------------------------------------------------
 + (NSString*)createdAtLine:(DWUser*)user {
     NSDate *userCreatedAt       = [NSDate dateWithTimeIntervalSince1970:user.createdAtTimestamp];
-    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     
     [dateFormat setDateFormat:@"MMM d, yyyy"];
     

@@ -18,7 +18,7 @@ static NSInteger const kHighlightViewTag    = 3;
 /**
  * Array of tab bar buttons
  */
-@property (nonatomic,retain) NSMutableArray *buttons;
+@property (nonatomic) NSMutableArray *buttons;
 
 @end
 
@@ -109,10 +109,8 @@ static NSInteger const kHighlightViewTag    = 3;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.buttons    = nil;
     self.delegate   = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -123,7 +121,7 @@ static NSInteger const kHighlightViewTag    = 3;
 		if (view.tag == kHighlightViewTag)
             return;
     
-    UIImageView *imageView              = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgHighlight]] autorelease];
+    UIImageView *imageView              = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgHighlight]];
     imageView.tag                       = kHighlightViewTag;
     imageView.frame                     = CGRectMake(50,40,15,9);
     imageView.userInteractionEnabled    = NO;

@@ -63,9 +63,6 @@ static NSInteger const kSpinnerSize = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)enable {
@@ -82,7 +79,7 @@ static NSInteger const kSpinnerSize = 20;
 //----------------------------------------------------------------------------------------------------
 - (void)createSpinnerWithOrigin:(CGPoint)origin andStyle:(NSInteger)spinnerStyle {
 	
-    spinner                         = [[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:spinnerStyle] autorelease];
+    spinner                         = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:spinnerStyle];
 	spinner.frame                   = CGRectMake(origin.x,origin.y,kSpinnerSize,kSpinnerSize);
     [spinner startAnimating];
     
@@ -92,9 +89,8 @@ static NSInteger const kSpinnerSize = 20;
 //----------------------------------------------------------------------------------------------------
 - (void)createLabelWithOrigin:(CGPoint)origin andText:(NSString *)text forSpinnerStyle:(NSInteger)spinnerStyle {
     
-    messageLabel                    = [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(origin.x,origin.y,270,20)] 
-                                       autorelease];	
+    messageLabel                    = [[UILabel alloc] 
+                                        initWithFrame:CGRectMake(origin.x,origin.y,270,20)];	
     
 	messageLabel.backgroundColor	= [UIColor clearColor];
     

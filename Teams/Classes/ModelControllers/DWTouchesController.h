@@ -12,13 +12,13 @@
  * Interface to the touches service on the app server
  */
 @interface DWTouchesController : NSObject {
-    id<DWTouchesControllerDelegate,NSObject> _delegate;
+    id<DWTouchesControllerDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to receive updates about requested operations
  */
-@property (nonatomic,assign) id<DWTouchesControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTouchesControllerDelegate,NSObject> delegate;
 
 
 /**

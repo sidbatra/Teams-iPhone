@@ -14,14 +14,14 @@
  */
 @interface DWMembershipsController : NSObject {
     
-    id<DWMembershipsControllerDelegate,NSObject>     _delegate;
+    id<DWMembershipsControllerDelegate,NSObject>     __unsafe_unretained _delegate;
 }
 
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWMembershipsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWMembershipsControllerDelegate,NSObject> delegate;
 
 /**
  * Create membership for teamID

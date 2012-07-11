@@ -20,7 +20,7 @@
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWTeamFollowersDataSource *teamFollowersDataSource;
+@property (nonatomic) DWTeamFollowersDataSource *teamFollowersDataSource;
 
 
 /**

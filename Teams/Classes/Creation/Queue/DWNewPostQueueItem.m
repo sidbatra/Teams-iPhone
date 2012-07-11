@@ -28,7 +28,7 @@
 	self = [super init];
 	
 	if(self) {
-        self.itemsController            = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController            = [[DWItemsController alloc] init];
         self.itemsController.delegate   = self;
 	}
 	
@@ -36,17 +36,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.data               = nil;
-    self.videoURL           = nil;
-    self.videoOrietation    = nil;
-    self.location           = nil;
-    self.image              = nil;
-    self.previewImage       = nil;
-    self.itemsController    = nil;
-        
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)postWithItemWithData:(NSString*)data

@@ -19,7 +19,7 @@
     self = [super init];
     
     if(self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
     }
     
@@ -27,11 +27,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.usersController    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)populateUsers:(NSMutableArray*)users {

@@ -53,10 +53,10 @@ static NSString* const kImgShare		= @"slice_button_share.png";
     self = [super init];
     
     if(self) {
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController            = [[DWTeamsController alloc] init];
         self.teamsController.delegate   = self;
         
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
     }
     
@@ -64,15 +64,6 @@ static NSString* const kImgShare		= @"slice_button_share.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    self.teamsController    = nil;
-    self.usersController    = nil;
-    self.invite             = nil;
-    self.share              = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -84,7 +75,7 @@ static NSString* const kImgShare		= @"slice_button_share.png";
 - (void)addInviteResource {
 
     if(!self.invite)
-        self.invite                 = [[[DWResource alloc] init] autorelease];
+        self.invite                 = [[DWResource alloc] init];
     
     self.invite.text                = @"Add People";
     self.invite.subText             = @"To this Team";
@@ -97,7 +88,7 @@ static NSString* const kImgShare		= @"slice_button_share.png";
 - (void)addShareResource {
     
     if(!self.share)
-        self.share                  = [[[DWResource alloc] init] autorelease];
+        self.share                  = [[DWResource alloc] init];
     
     self.share.text                 = @"Share this Team";
     self.share.subText              = [DWTeamsHelper webURIForTeam:[DWTeam fetch:self.teamID]];

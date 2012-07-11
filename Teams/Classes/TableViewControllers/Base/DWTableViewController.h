@@ -28,22 +28,22 @@
  * Holds a mapping of preesntation styles for the model objects that the table view
  * renders. It starts of empty, which means the default style for all models.
  */
-@property (nonatomic,retain) NSMutableDictionary *modelPresentationStyle;
+@property (nonatomic) NSMutableDictionary *modelPresentationStyle;
 
 /**
  * View for pull to refresh added above the table view
  */
-@property (nonatomic,retain) EGORefreshTableHeaderView *refreshHeaderView;
+@property (nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 /**
  * View displayed when results are being fetched from the server
  */
-@property (nonatomic,retain) UIView *loadingView;
+@property (nonatomic) UIView *loadingView;
 
 /**
  * View displayed when an error occurs
  */
-@property (nonatomic,retain) UIView *errorView;
+@property (nonatomic) UIView *errorView;
 
 
 /**

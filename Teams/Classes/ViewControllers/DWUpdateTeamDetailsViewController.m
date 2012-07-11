@@ -50,7 +50,7 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
     self = [super init];
     
     if (self) {
-        self.teamsController                = [[[DWTeamsController alloc] init] autorelease];        
+        self.teamsController                = [[DWTeamsController alloc] init];        
         self.teamsController.delegate       = self;    
         self.team                           = team;
     }
@@ -58,23 +58,6 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    
-    self.teamNameTextField          = nil;
-    self.teamBylineTextField        = nil;
-    self.messageLabel               = nil;
-    self.spinnerContainerView       = nil;
-    
-    self.team                       = nil;
-        
-    self.navTitleView               = nil;
-    self.navBarRightButtonView      = nil;
-    self.spinnerOverlayView         = nil;
-    
-    self.teamsController            = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -95,28 +78,28 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
     self.navigationController.navigationBar.clipsToBounds   = NO;
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc]
+        self.navTitleView = [[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kUpdateTeamDetailsText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView  = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView  = [[DWNavBarRightButtonView alloc]
                                         initWithFrame:CGRectMake(260,0,
                                                                  kNavRightButtonWidth,
                                                                  kNavRightButtonHeight) 
                                                 title:kNavBarRightButtonText 
-                                            andTarget:self] autorelease];
+                                            andTarget:self];
     
     self.teamNameTextField.text     = self.team.name;
     self.teamBylineTextField.text   = self.team.byline;
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView     = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,178)
-                                                                            andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView     = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(67,178)
+                                                                            andMessageText:kMsgProcesssing];
     
     
     self.messageLabel.text          = [NSString stringWithFormat:kMessageLabelText,
@@ -161,7 +144,6 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -256,7 +238,6 @@ static NSString* const kMsgProcesssing                  = @"Updating team detail
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }

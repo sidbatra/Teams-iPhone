@@ -32,32 +32,32 @@
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UITextField *teamNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
-@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *teamNameTextField;
+@property (nonatomic) IBOutlet UITextField *teamBylineTextField;
+@property (nonatomic) IBOutlet UILabel *messageLabel;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 
 /**
  * Team which the user is a part of
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling teams requests
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 
 /**

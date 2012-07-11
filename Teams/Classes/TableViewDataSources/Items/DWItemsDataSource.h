@@ -20,7 +20,7 @@
 /**
  * Interface to the items service on the app server
  */
-@property (nonatomic,retain) DWItemsController *itemsController;
+@property (nonatomic) DWItemsController *itemsController;
 
 
 /**

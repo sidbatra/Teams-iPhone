@@ -45,10 +45,10 @@
         
         _controllerFrame                = controllerFrame;
         
-        self.segmentedControl           = [[[DWSegmentedControl alloc] initWithFrame:CGRectMake(0,0,
+        self.segmentedControl           = [[DWSegmentedControl alloc] initWithFrame:CGRectMake(0,0,
                                                                                                 controllerFrame.size.width,
                                                                                                 controllerFrame.size.height)
-                                                                    withSegmentsInfo:segmentsInfo] autorelease];
+                                                                    withSegmentsInfo:segmentsInfo];
 	}
 	
 	return self;
@@ -56,11 +56,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    self.segmentedControl           = nil;
-    self.subControllers             = nil;
     self.parentForSubControllers    = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

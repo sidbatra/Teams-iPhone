@@ -20,7 +20,7 @@
 /**
  * User object of the user who created the touch
  */
-@property (nonatomic,retain) DWUser *user;
+@property (nonatomic) DWUser *user;
 
 /**
  * Timestamp of the creation of the touch 

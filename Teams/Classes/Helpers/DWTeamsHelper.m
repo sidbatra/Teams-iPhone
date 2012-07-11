@@ -16,7 +16,7 @@
 //----------------------------------------------------------------------------------------------------
 + (NSString*)createdAtLineForTeam:(DWTeam*)team {
     NSDate *teamCreatedAt       = [NSDate dateWithTimeIntervalSince1970:team.createdAtTimestamp];
-    NSDateFormatter *dateFormat = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     
     [dateFormat setDateFormat:@"MMM d, yyyy"];
     

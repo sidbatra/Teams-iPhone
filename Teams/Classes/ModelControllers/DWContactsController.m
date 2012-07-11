@@ -31,7 +31,6 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName co
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
     NSLog(@"Contacts controller released");    
-    [super dealloc];
 }
 
 
@@ -53,7 +52,7 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName co
     
     for(id contact in contacts) {
         for(id email in [contact emailArray]) {
-            DWContact *dWContact    = [[[DWContact alloc] init] autorelease];
+            DWContact *dWContact    = [[DWContact alloc] init];
             
             dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
             dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 

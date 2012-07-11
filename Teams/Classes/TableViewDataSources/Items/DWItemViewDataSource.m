@@ -24,10 +24,10 @@
     self = [super init];
     
     if(self) {
-        self.itemsController                = [[[DWItemsController alloc] init] autorelease];
+        self.itemsController                = [[DWItemsController alloc] init];
         self.itemsController.delegate       = self;
         
-        self.touchesController              = [[[DWTouchesController alloc] init] autorelease];
+        self.touchesController              = [[DWTouchesController alloc] init];
         self.touchesController.delegate     = self;
     }
     
@@ -35,12 +35,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.itemsController        = nil;
-    self.touchesController      = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------

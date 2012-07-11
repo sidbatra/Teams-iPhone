@@ -22,17 +22,17 @@
 /**
  * Apple's movie player controller
  */
-@property (nonatomic,retain) MPMoviePlayerController *movieController;
+@property (nonatomic) MPMoviePlayerController *movieController;
 
 /**
  * Spinner to show progress while the move is loading
  */
-@property (nonatomic,retain) UIActivityIndicatorView *spinner;
+@property (nonatomic) UIActivityIndicatorView *spinner;
 
 /**
  * Reference to the delegate
  */
-@property (nonatomic,assign) id<DWVideoViewDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWVideoViewDelegate> delegate;
 
 
 /**

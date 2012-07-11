@@ -71,11 +71,6 @@ static NSString* const kS3SuccessResponse	= @"";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	self.filename = nil;
-	
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {	

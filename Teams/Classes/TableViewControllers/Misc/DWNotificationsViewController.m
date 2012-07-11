@@ -36,7 +36,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
     
     if(self) {        
         
-        self.notificationsDataSource    = [[[DWNotificationsDataSource alloc] init] autorelease];
+        self.notificationsDataSource    = [[DWNotificationsDataSource alloc] init];
 
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -52,9 +52,7 @@ static NSString* const kNewItemName         = @"DWNewItem";
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.notificationsDataSource    = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

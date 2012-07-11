@@ -257,8 +257,8 @@
 		CGRect frame = CGRectMake(0,0,kItemCellHeight,kItemCellHeight);
         
         
-        UITapGestureRecognizer *singleTap   = [[[UITapGestureRecognizer alloc] initWithTarget:self 
-                                                                                       action:@selector(handleTapGesture:)] autorelease];
+        UITapGestureRecognizer *singleTap   = [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                                                                       action:@selector(handleTapGesture:)];
         singleTap.numberOfTapsRequired      = 1;
         singleTap.delegate                  = self;
         [self addGestureRecognizer:singleTap];
@@ -337,7 +337,7 @@
 		
 		
 		
-		teamButton						= [[[UIButton alloc] init] autorelease];
+		teamButton						= [[UIButton alloc] init];
         //teamButton.layer.opacity        = 0.2;
         //teamButton.backgroundColor		= [UIColor greenColor];
 		
@@ -361,7 +361,7 @@
 		
 		
 		
-		userButton						= [[[UIButton alloc] init] autorelease];
+		userButton						= [[UIButton alloc] init];
         //userButton.layer.opacity        = 0.2;
 		//userButton.backgroundColor		= [UIColor redColor];
 		
@@ -398,7 +398,7 @@
 		[self.contentView addSubview:shareButton];*/
 		
         
-        videoView           = [[[DWVideoView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)] autorelease];
+        videoView           = [[DWVideoView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
         videoView.delegate  = self;
         [self.contentView addSubview:videoView];
 										   
@@ -411,18 +411,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	self.itemData               = nil;
-	self.itemTeamName           = nil;
-	self.itemUserName           = nil;
-	self.itemCreatedAt          = nil;
-	self.itemDetails            = nil;
-	self.highlightedAt          = nil;
-    self.byline                 = nil;
-    self.itemTouchesCountString = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)resetItemNavigation {

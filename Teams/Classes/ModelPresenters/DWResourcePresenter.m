@@ -26,8 +26,8 @@
     DWSlimCell *cell            = base;
     
     if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                  reuseIdentifier:identifier] autorelease];
+        cell = [[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                  reuseIdentifier:identifier];
     
     cell.boldText   = resource.text;
     cell.plainText  = resource.subText;

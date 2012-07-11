@@ -30,40 +30,40 @@
     
     DWTeamsController           *_teamsController;
     
-    id<DWTeamWebURIViewControllerDelegate>   _delegate;    
+    id<DWTeamWebURIViewControllerDelegate>   __unsafe_unretained _delegate;    
 }
 
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UITextField *teamHandleTextField;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *teamHandleTextField;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * User's team
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling teams requests
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWTeamWebURIViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamWebURIViewControllerDelegate> delegate;
 
 
 @end

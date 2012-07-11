@@ -30,8 +30,8 @@
     DWSlimCell *cell    = base;
     
     if(!cell)
-        cell = [[[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                  reuseIdentifier:identifier] autorelease];
+        cell = [[DWSlimCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                  reuseIdentifier:identifier];
     
     cell.boldText   = [DWUsersHelper displayName:touch.user];
     cell.plainText  = [DWTouchesHelper subtitleForTouch:touch];

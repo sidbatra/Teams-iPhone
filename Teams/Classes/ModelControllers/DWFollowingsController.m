@@ -67,7 +67,6 @@ static NSString* const kDestroyFollowingURI     = @"/followings/%d.json?";
     
     NSLog(@"followings controller released");
     
-    [super dealloc];
 }
 
 

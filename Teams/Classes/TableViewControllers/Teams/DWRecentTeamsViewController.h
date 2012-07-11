@@ -19,6 +19,6 @@
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWRecentTeamsDataSource *recentTeamsDataSource;
+@property (nonatomic) DWRecentTeamsDataSource *recentTeamsDataSource;
 
 @end

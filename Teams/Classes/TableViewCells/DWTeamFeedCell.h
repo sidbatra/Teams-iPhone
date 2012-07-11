@@ -13,13 +13,13 @@
  * via core graphics, mostly used for text
  */
 @interface DWTeamFeedCellDrawingLayer : CALayer {
-	DWTeamFeedCell *teamCell;
+	DWTeamFeedCell *__unsafe_unretained teamCell;
 }
 
 /**
  * Non retained reference to the team feed cell
  */
-@property (nonatomic,assign) DWTeamFeedCell *teamCell;
+@property (nonatomic,unsafe_unretained) DWTeamFeedCell *teamCell;
 
 @end
 

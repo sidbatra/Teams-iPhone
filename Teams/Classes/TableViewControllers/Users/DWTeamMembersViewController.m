@@ -25,7 +25,7 @@
     self =  [super init];
     
     if(self) {
-        self.teamMembersDataSource              = [[[DWTeamMembersDataSource alloc] init] autorelease];
+        self.teamMembersDataSource              = [[DWTeamMembersDataSource alloc] init];
         self.teamMembersDataSource.teamID       = team.databaseID;
         
         //[self.modelPresentationStyle setObject:[NSNumber numberWithInt:kItemPresenterStyleTeamItems]
@@ -40,18 +40,13 @@
     self = [super init];
     
     if(self) {
-        self.teamMembersDataSource              = [[[DWTeamMembersDataSource alloc] init] autorelease];
+        self.teamMembersDataSource              = [[DWTeamMembersDataSource alloc] init];
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.teamMembersDataSource    = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {

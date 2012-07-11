@@ -12,13 +12,13 @@
  */
 @interface DWInteractionsController : NSObject {
     
-    id<DWInteractionsControllerDelegate,NSObject> _delegate;
+    id<DWInteractionsControllerDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate receives events based on the DWInteractionsControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWInteractionsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWInteractionsControllerDelegate,NSObject> delegate;
 
 
 /**

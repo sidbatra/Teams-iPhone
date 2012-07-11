@@ -59,20 +59,12 @@ static NSInteger const kMinimumQueryLength			= 1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.popularTeamsViewController = nil;
-    self.searchViewController       = nil;
-    self.navTitleView               = nil;
-    self.searchBar                  = nil;
-    
-	[super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadPopularTeamsViewController {
     
     if(!self.popularTeamsViewController) {
-        self.popularTeamsViewController = [[[DWPopularTeamsViewController alloc] init] autorelease];
+        self.popularTeamsViewController = [[DWPopularTeamsViewController alloc] init];
         [self.popularTeamsViewController setTeamsDelegate:self];
     }
     
@@ -83,7 +75,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadSearchBar {
     
     if(!self.searchBar) {
-        self.searchBar                      = [[[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)] autorelease];
+        self.searchBar                      = [[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)];
         self.searchBar.minimumQueryLength   = 1;
         self.searchBar.delegate             = self;
         self.searchBar.hidden               = YES;
@@ -94,7 +86,7 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadSearchViewController {
     
     if(!self.searchViewController) {
-        self.searchViewController           = [[[DWSearchViewController alloc] init] autorelease];
+        self.searchViewController           = [[DWSearchViewController alloc] init];
         self.searchViewController.delegate  = self;
         
         [self.searchViewController setUsersDelegate:self];
@@ -126,11 +118,11 @@ static NSInteger const kMinimumQueryLength			= 1;
 - (void)loadTitleView {
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc]
+        self.navTitleView = [[DWNavTitleView alloc]
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                              andDelegate:self] autorelease];
+                              andDelegate:self];
     
     [self.navTitleView displayTitle:kMsgTitle];       
 }
@@ -143,7 +135,7 @@ static NSInteger const kMinimumQueryLength			= 1;
     
     self.navigationController.navigationBar.clipsToBounds       = NO;
     
-    DWInvitePeopleViewController *invitePeopleViewController    = [[[DWInvitePeopleViewController alloc] init] autorelease];
+    DWInvitePeopleViewController *invitePeopleViewController    = [[DWInvitePeopleViewController alloc] init];
     invitePeopleViewController.delegate                         = self;
     
     invitePeopleViewController.teamSpecificInvite               = NO;

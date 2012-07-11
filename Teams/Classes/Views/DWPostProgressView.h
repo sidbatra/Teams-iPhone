@@ -18,13 +18,13 @@
 	UIButton		*retryButton;
     CALayer         *progressLayer;
 	
-	id<DWPostProgressViewDelegate> _delegate;
+	id<DWPostProgressViewDelegate> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to receive events about button touches
  */
-@property (nonatomic,assign) id<DWPostProgressViewDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWPostProgressViewDelegate> delegate;
 
 /**
  * Update the progress view with new creation queue info

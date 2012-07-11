@@ -25,7 +25,7 @@
     self = [super init];
     
     if(self) {        
-        self.userTeamsDataSource            = [[[DWUserTeamsDataSource alloc] init] autorelease];
+        self.userTeamsDataSource            = [[DWUserTeamsDataSource alloc] init];
         self.userTeamsDataSource.userID     = user.databaseID;
     }
     
@@ -37,7 +37,7 @@
     self = [super init];
     
     if(self) {        
-        self.userTeamsDataSource            = [[[DWUserTeamsDataSource alloc] init] autorelease];
+        self.userTeamsDataSource            = [[DWUserTeamsDataSource alloc] init];
     }
     
     return self;
@@ -45,11 +45,6 @@
 
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.userTeamsDataSource        = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {

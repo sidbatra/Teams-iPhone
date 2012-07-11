@@ -73,26 +73,6 @@ static NSInteger const kTableViewHeight						= 200;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.searchContactsTextField        = nil;
-    self.topShadowView                  = nil;
-    self.messageLabel                   = nil;
-    self.spinnerContainerView           = nil;
-    
-    self.navBarTitle                    = nil;
-    self.navBarSubTitle                 = nil;
-    self.inviteAlertText                = nil;
-    self.messageLabelText               = nil;
-    
-    self.navTitleView                   = nil;
-    self.navBarRightButtonView          = nil;
-    self.spinnerOverlayView             = nil;
-    
-    self.queryContactsViewController    = nil;
-    self.addedContactsViewController    = nil;    
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -132,21 +112,21 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)loadAllContacts {
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];    
+    @autoreleasepool {    
     
-    [self.queryContactsViewController loadAllContacts];
+        [self.queryContactsViewController loadAllContacts];
     
-    [pool release];    
+    }    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadContacts:(NSString*)query {
     
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     
-    [self.queryContactsViewController loadContactsMatching:[query stringByTrimmingCharactersInSet:
-                                                            [NSCharacterSet whitespaceAndNewlineCharacterSet]]];    
-    [pool release];
+        [self.queryContactsViewController loadContactsMatching:[query stringByTrimmingCharactersInSet:
+                                                                [NSCharacterSet whitespaceAndNewlineCharacterSet]]];    
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -158,7 +138,6 @@ static NSInteger const kTableViewHeight						= 200;
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles:nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -216,11 +195,11 @@ static NSInteger const kTableViewHeight						= 200;
         self.topShadowView.hidden = NO;
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     if (self.navBarSubTitle)
         [self.navTitleView displayTitle:self.navBarTitle 
@@ -230,25 +209,25 @@ static NSInteger const kTableViewHeight						= 200;
     
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(109,154) 
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(109,154) 
                                                                           spinnerStyle:UIActivityIndicatorViewStyleWhite 
-                                                                        andMessageText:kMsgProcessingText] autorelease];
+                                                                        andMessageText:kMsgProcessingText];
         
     if (!self.queryContactsViewController) 
-        self.queryContactsViewController = [[[DWContactsViewController alloc]
-                                             initWithPresentationStyle:kPresentationStyleDefault] autorelease];
+        self.queryContactsViewController = [[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kPresentationStyleDefault];
     
     if (!self.addedContactsViewController) 
-        self.addedContactsViewController = [[[DWContactsViewController alloc]
-                                             initWithPresentationStyle:kContactPresenterStyleSelected] autorelease];
+        self.addedContactsViewController = [[DWContactsViewController alloc]
+                                             initWithPresentationStyle:kContactPresenterStyleSelected];
 
 
     self.queryContactsViewController.delegate       = self;
@@ -263,7 +242,7 @@ static NSInteger const kTableViewHeight						= 200;
     
     
     if (!self.spinnerContainerView) 
-        self.spinnerContainerView = [[[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 480)] autorelease];
+        self.spinnerContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 44, 320, 480)];
     
     self.spinnerContainerView.hidden            = YES;
     self.spinnerContainerView.backgroundColor   = [UIColor colorWithRed:0.0 

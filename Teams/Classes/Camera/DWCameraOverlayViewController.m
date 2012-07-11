@@ -58,20 +58,6 @@ static NSString* const kImgSelectPhoto          = @"select_photo.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.cameraButton               = nil;
-    self.cancelButton               = nil;
-    self.flashButton                = nil;
-    self.toggleCameraButton         = nil;
-    self.photoLibraryButton         = nil;
-    self.recordButton               = nil;
-    self.cameraCaptureModeButton    = nil;
-    self.letterBoxImage             = nil;
-    self.timerButton                = nil;
-    self.timer                      = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {

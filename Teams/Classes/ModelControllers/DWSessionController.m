@@ -59,7 +59,6 @@ static NSString* const kNewSessionURI			= @"/session.json?email=%@&password=%@";
     
     NSLog(@"Session controller released");
     
-    [super dealloc];
 }
 
 

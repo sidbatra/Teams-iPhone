@@ -19,9 +19,8 @@ static NSString* const kImgSplashScreenPrefix = @"intro_pane";
     self = [super init];
     
     if (self) {
-        self.imageView = [[[UIImageView alloc] initWithImage:
-                           [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d.png",kImgSplashScreenPrefix,pageNumber+1]]] 
-                          autorelease];
+        self.imageView = [[UIImageView alloc] initWithImage:
+                           [UIImage imageNamed:[NSString stringWithFormat:@"%@_%d.png",kImgSplashScreenPrefix,pageNumber+1]]];
         
         self.imageView.frame = CGRectMake(0, 0, 320, 296);
     }
@@ -29,11 +28,6 @@ static NSString* const kImgSplashScreenPrefix = @"intro_pane";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.imageView  = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {

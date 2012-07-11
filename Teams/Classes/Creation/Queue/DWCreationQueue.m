@@ -48,9 +48,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWCreationQueue);
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.queue = nil;
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

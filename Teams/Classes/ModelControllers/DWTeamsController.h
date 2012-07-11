@@ -14,13 +14,13 @@
  */
 @interface DWTeamsController : NSObject {
     
-    id<DWTeamsControllerDelegate,NSObject>     _delegate;
+    id<DWTeamsControllerDelegate,NSObject>     __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWTeamsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamsControllerDelegate,NSObject> delegate;
 
 
 /**

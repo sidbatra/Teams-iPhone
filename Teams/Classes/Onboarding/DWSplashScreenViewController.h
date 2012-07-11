@@ -18,25 +18,25 @@
     
     BOOL            _pageControlUsed;
     
-    id<DWSplashScreenViewControllerDelegate>    _delegate;
+    id<DWSplashScreenViewControllerDelegate>    __unsafe_unretained _delegate;
 }
 
 
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UIScrollView *scrollView;
-@property (nonatomic, retain) IBOutlet UIPageControl *pageControl;
+@property (nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) IBOutlet UIPageControl *pageControl;
 
 /**
  * Mutable array for view controllers having the splash screen images
  */
-@property (nonatomic, retain) NSMutableArray *viewControllers;
+@property (nonatomic) NSMutableArray *viewControllers;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWSplashScreenViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSplashScreenViewControllerDelegate> delegate;
 
 
 /**

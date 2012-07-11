@@ -50,12 +50,6 @@ static NSInteger const kRandomStringBase    = 100000000;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	self.successNotification	= nil;
-	self.errorNotification		= nil;
-	
-	[super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -80,10 +74,9 @@ static NSInteger const kRandomStringBase    = 100000000;
 		successNotification:(NSString*)theSuccessNotification
 		  errorNotification:(NSString*)theErrorNotification {
 	
-	DWRequest *request =  [[[self alloc] initWithRequestURL:requestURL
+	DWRequest *request =  [[self alloc] initWithRequestURL:requestURL
                                         successNotification:theSuccessNotification
-                                          errorNotification:theErrorNotification] 
-                           autorelease];
+                                          errorNotification:theErrorNotification];
     
     [request generateResourceID];
     

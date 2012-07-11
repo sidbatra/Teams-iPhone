@@ -13,13 +13,13 @@
  */
 @interface DWNotificationsController : NSObject {
     
-    id<DWNotificationsControllerDelegate,NSObject>   _delegate;
+    id<DWNotificationsControllerDelegate,NSObject>   __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate receives events based on the DWNotificationsControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWNotificationsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWNotificationsControllerDelegate,NSObject> delegate;
 
 
 /**

@@ -56,7 +56,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UILabel *label                  = [[[UILabel alloc] initWithFrame:CGRectMake(7,6,253,32)] autorelease];
+    UILabel *label                  = [[UILabel alloc] initWithFrame:CGRectMake(7,6,253,32)];
     label.backgroundColor           = [UIColor whiteColor];
     label.layer.cornerRadius        = 1.5;
     label.userInteractionEnabled    = NO;
@@ -67,7 +67,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[[UITextField alloc] initWithFrame:CGRectMake(12,11,246,22)] autorelease];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(12,11,246,22)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;
@@ -99,9 +99,6 @@ static NSString* const kMsgSearchPlaceholder    = @"Search Teams and people";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)becomeActive {

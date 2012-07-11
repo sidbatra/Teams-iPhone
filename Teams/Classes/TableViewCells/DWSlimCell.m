@@ -160,14 +160,6 @@ static NSString* const kImgChevron		= @"chevron.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.boldText       = nil;
-	self.plainText		= nil;
-    self.extraText      = nil;
-    self.largeText      = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)reset {

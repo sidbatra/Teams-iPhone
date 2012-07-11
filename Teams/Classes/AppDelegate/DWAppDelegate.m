@@ -109,14 +109,8 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	self.window                     = nil;
-	self.teamsNavController         = nil;
-	self.itemsNavController         = nil;
-    self.onboardingNavController    = nil; 
 	
-	self.tabBarController           = nil;
 		
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -155,14 +149,14 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
 							nil],
 						   nil];
 	
-	self.tabBarController	= [[[DWTabBarController alloc] initWithTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
-                                                                 andTabBarInfo:tabBarInfo] autorelease];
+	self.tabBarController	= [[DWTabBarController alloc] initWithTabBarFrame:CGRectMake(0,411,kTabBarWidth,kTabBarHeight)
+                                                                 andTabBarInfo:tabBarInfo];
     
     self.tabBarController.delegate = self;
 	
     [self.tabBarController setupSubControllers:[NSArray arrayWithObjects:
                                                self.teamsNavController,
-                                               [[[UIViewController alloc] init] autorelease],
+                                               [[UIViewController alloc] init],
                                                self.itemsNavController,
                                                nil]];
     
@@ -241,7 +235,7 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     
     
     if(newSelectedIndex == kTabBarCreateIndex) {
-		DWCreateViewController *createView	= [[[DWCreateViewController alloc] init] autorelease];
+		DWCreateViewController *createView	= [[DWCreateViewController alloc] init];
 		[self.tabBarController presentModalViewController:createView 
                                                  animated:NO];
 	}

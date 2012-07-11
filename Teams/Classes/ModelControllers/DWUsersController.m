@@ -135,7 +135,6 @@ static NSString* const kItemTouchersURI                     = @"/items/%d/touche
     
     NSLog(@"Users controller released");
     
-    [super dealloc];
 }
 
 

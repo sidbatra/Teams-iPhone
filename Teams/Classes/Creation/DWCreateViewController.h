@@ -52,12 +52,12 @@
 /**
  * Image selected using mediaPicker
  */
-@property (nonatomic,retain) UIImage *cameraImage;
+@property (nonatomic) UIImage *cameraImage;
 
 /**
  * URL of the video seleced using mediaPicker
  */
-@property (nonatomic,retain) NSURL *videoURL;
+@property (nonatomic) NSURL *videoURL;
 
 /**
  * Orientation of the video selected using mediaPicker
@@ -67,22 +67,22 @@
 /**
  * Interface to the items service on the app server
  */
-@property (nonatomic,retain) DWItemsController *itemsController;
+@property (nonatomic) DWItemsController *itemsController;
 
 
 /**
  * IBOutlet properties
  */
 
-@property (nonatomic, retain) IBOutlet UIImageView *previewImageView;
-@property (nonatomic, retain) IBOutlet UIImageView *transImageView;
-@property (nonatomic, retain) IBOutlet KTTextView *dataTextView;
-@property (nonatomic, retain) IBOutlet UIButton *cancelButton;
-@property (nonatomic, retain) IBOutlet UIButton *doneButton;
-@property (nonatomic, retain) IBOutlet UIButton *cameraButton;
-@property (nonatomic, retain) IBOutlet UILabel *coverLabel;
-@property (nonatomic, retain) IBOutlet UILabel *teamNameLabel;
-@property (nonatomic, retain) IBOutlet UILabel *userNameLabel;
+@property (nonatomic) IBOutlet UIImageView *previewImageView;
+@property (nonatomic) IBOutlet UIImageView *transImageView;
+@property (nonatomic) IBOutlet KTTextView *dataTextView;
+@property (nonatomic) IBOutlet UIButton *cancelButton;
+@property (nonatomic) IBOutlet UIButton *doneButton;
+@property (nonatomic) IBOutlet UIButton *cameraButton;
+@property (nonatomic) IBOutlet UILabel *coverLabel;
+@property (nonatomic) IBOutlet UILabel *teamNameLabel;
+@property (nonatomic) IBOutlet UILabel *userNameLabel;
 
 
 /**

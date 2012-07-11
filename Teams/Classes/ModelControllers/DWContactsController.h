@@ -12,13 +12,13 @@
  */
 @interface DWContactsController : NSObject {
     
-    id<DWContactsControllerDelegate,NSObject>  _delegate;
+    id<DWContactsControllerDelegate,NSObject>  __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate recieves events based on the DWSearchControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWContactsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWContactsControllerDelegate,NSObject> delegate;
 
 
 /**

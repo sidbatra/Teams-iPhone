@@ -49,12 +49,12 @@
 /**
  * Image downloaded from largeURL
  */
-@property (nonatomic,retain) UIImage *largeImage;
+@property (nonatomic) UIImage *largeImage;
 
 /**
  * Image downloaded from sliceURL
  */
-@property (nonatomic,retain) UIImage *sliceImage;
+@property (nonatomic) UIImage *sliceImage;
 
 
 

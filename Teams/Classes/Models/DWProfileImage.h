@@ -17,7 +17,7 @@
 /**
  * Image
  */
-@property (nonatomic,retain) UIImage *image;
+@property (nonatomic) UIImage *image;
 
 
 /**

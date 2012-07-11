@@ -49,7 +49,7 @@
     self = [super init];
     
     if(self) {
-        self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
+        self.userViewDataSource         = [[DWUserViewDataSource alloc] init];
         self.userViewDataSource.userID  = userID;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -66,7 +66,7 @@
     self = [super init];
     
     if(self) {
-        self.userViewDataSource         = [[[DWUserViewDataSource alloc] init] autorelease];
+        self.userViewDataSource         = [[DWUserViewDataSource alloc] init];
     }
     
     return self;
@@ -76,11 +76,8 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.userViewDataSource     = nil;
     
-    self.navTitleView           = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -105,11 +102,11 @@
 - (void)loadNavTitleView {
     
     if(!self.navTitleView) {
-        self.navTitleView = [[[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
+        self.navTitleView = [[DWNavTitleView alloc] initWithFrame:CGRectMake(kNavTitleViewX,
                                                                              kNavTitleViewY,
                                                                              kNavTitleViewWidth,
                                                                              kNavTitleViewHeight) 
-                                                      andDelegate:nil] autorelease];
+                                                      andDelegate:nil];
     }
 }
 

@@ -49,7 +49,6 @@ static NSString* const kSearchURI           = @"/search/%@.json?";
     
     NSLog(@"Search controller released");
     
-    [super dealloc];
 }
 
 

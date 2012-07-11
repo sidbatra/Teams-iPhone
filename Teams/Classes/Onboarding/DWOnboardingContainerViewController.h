@@ -27,6 +27,6 @@
 /**
  * SplashScreenViewController object to retain the splash screen
  */
-@property (nonatomic,retain) DWSplashScreenViewController *splashScreenViewController;
+@property (nonatomic) DWSplashScreenViewController *splashScreenViewController;
 
 @end

@@ -21,7 +21,7 @@
  * Teams view controller encapsulates the common display and interaction 
  * functionality needed to display one or more teams
  */
-@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
+@property (nonatomic) DWTeamsLogicController *teamsLogicController;
 
 
 /**

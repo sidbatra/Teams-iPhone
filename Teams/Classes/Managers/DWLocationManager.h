@@ -22,7 +22,7 @@
 /**
  * iOS location services interface
  */
-@property (nonatomic,retain) CLLocationManager *locationManager;
+@property (nonatomic) CLLocationManager *locationManager;
 
 
 /**

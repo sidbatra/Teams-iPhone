@@ -14,7 +14,6 @@
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
-	[super dealloc];
     
     NSLog(@"following released - %d",self.databaseID);
 }

@@ -26,8 +26,8 @@
     DWPaginationCell *cell      = base;
     
     if(!cell)
-        cell = [[[DWPaginationCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:identifier] autorelease];
+        cell = [[DWPaginationCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:identifier];
     
     if(!pagination.isTriggered && !pagination.isDisabled) {
         

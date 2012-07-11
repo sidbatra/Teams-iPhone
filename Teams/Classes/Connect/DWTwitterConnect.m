@@ -34,28 +34,19 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     self = [super init];
     
     if(self) {
-        self.consumer = [[[TwitterConsumer alloc] initWithKey:kTwitterOAuthConsumerKey 
-                                                       secret:kTwitterOAuthConsumerSecret] autorelease];
+        self.consumer = [[TwitterConsumer alloc] initWithKey:kTwitterOAuthConsumerKey 
+                                                       secret:kTwitterOAuthConsumerSecret];
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.consumer           = nil;
-    self.authenticator      = nil;
-    self.poster             = nil;
-    self.xAuthToken         = nil;
-    self.xAuthAlertView     = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayAuthenticationUI {
     
-    self.xAuthAlertView               = [[[UIAlertView alloc] init] autorelease];
+    self.xAuthAlertView               = [[UIAlertView alloc] init];
     self.xAuthAlertView.delegate      = self;
     self.xAuthAlertView.title         = @"Log in to Twitter";
     self.xAuthAlertView.message       = @"\n\n\n";
@@ -65,10 +56,10 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     
     
     
-    UITextField *userNameField              = [[[UITextField alloc] initWithFrame:CGRectMake(11,
+    UITextField *userNameField              = [[UITextField alloc] initWithFrame:CGRectMake(11,
                                                                                              43.0,
                                                                                              262,
-                                                                                             32)] autorelease];
+                                                                                             32)];
     userNameField.placeholder               = @"Twitter username";
     userNameField.delegate                  = self;
     userNameField.returnKeyType             = UIReturnKeyNext;
@@ -82,10 +73,10 @@ static NSUInteger const kTwitterAlertOKIndex    = 1;
     [self.xAuthAlertView addSubview:userNameField];    
     
     
-    UITextField *passwordField              = [[[UITextField alloc] initWithFrame:CGRectMake(11,
+    UITextField *passwordField              = [[UITextField alloc] initWithFrame:CGRectMake(11,
                                                                                              81,
                                                                                              262,
-                                                                                             32)] autorelease];
+                                                                                             32)];
     passwordField.placeholder               = @"Twitter password";
     passwordField.delegate                  = self;
     passwordField.returnKeyType             = UIReturnKeyDone;

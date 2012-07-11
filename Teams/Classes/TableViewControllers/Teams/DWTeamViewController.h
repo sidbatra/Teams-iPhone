@@ -26,29 +26,29 @@
     
     DWNavTitleView              *_navTitleView;
         
-    id<DWTeamViewControllerDelegate>    _delegate;
+    id<DWTeamViewControllerDelegate>    __unsafe_unretained _delegate;
 }
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWTeamViewDataSource *teamViewDataSource;
+@property (nonatomic) DWTeamViewDataSource *teamViewDataSource;
 
 /**
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
+@property (nonatomic) DWUsersLogicController *usersLogicController;
 
 /**
  * Custom nav bar title
  */ 
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 /**
  * Delegate based on the DWTeamViewControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWTeamViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamViewControllerDelegate> delegate;
 
 
 

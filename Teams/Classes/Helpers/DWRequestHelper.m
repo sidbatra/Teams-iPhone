@@ -14,7 +14,7 @@
 //----------------------------------------------------------------------------------------------------
 + (NSString*)generateErrorMessageFrom:(NSArray*)errors {
 
-    NSMutableString *errorMsg = [[[NSMutableString alloc] initWithString:kEmptyString] autorelease];
+    NSMutableString *errorMsg = [[NSMutableString alloc] initWithString:kEmptyString];
     
     for(id error in errors) {
         for (id e in error) {

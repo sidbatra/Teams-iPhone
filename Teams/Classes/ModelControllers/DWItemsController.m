@@ -120,7 +120,6 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
     
     NSLog(@"Items controller released");
 
-    [super dealloc];
 }
 
 
@@ -159,7 +158,7 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
 - (void)queueWithData:(NSString*)data
           atLocation:(CLLocation*)location {
     
-    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    DWNewPostQueueItem *queueItem = [[DWNewPostQueueItem alloc] init];
     
     [queueItem postWithItemWithData:data
                          atLocation:location];
@@ -172,7 +171,7 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
           atLocation:(CLLocation*)location
            withImage:(UIImage*)image {    
     
-    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    DWNewPostQueueItem *queueItem = [[DWNewPostQueueItem alloc] init];
     
     [queueItem postWithItemWithData:data
                          atLocation:location
@@ -188,7 +187,7 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
   andVideoOrientation:(NSString*)videoOrientation
      withPreviewImage:(UIImage*)image {
     
-    DWNewPostQueueItem *queueItem = [[[DWNewPostQueueItem alloc] init] autorelease];
+    DWNewPostQueueItem *queueItem = [[DWNewPostQueueItem alloc] init];
     
     [queueItem postWithItemWithData:data
                          atLocation:location

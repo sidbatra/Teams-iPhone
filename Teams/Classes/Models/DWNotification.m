@@ -50,14 +50,7 @@
 
 	NSLog(@"notification released - %d",self.databaseID);
     
-    self.entityData     = nil;
-    self.eventData      = nil;
-    self.resourceType   = nil;
-    self.imageURL       = nil;
-    self.details        = nil;
-    self.image          = nil;
     
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

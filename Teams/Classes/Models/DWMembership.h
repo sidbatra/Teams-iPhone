@@ -25,6 +25,6 @@
 /**
  * The team to which the membership belongs
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 @end

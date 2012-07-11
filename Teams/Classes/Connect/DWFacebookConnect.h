@@ -16,13 +16,13 @@
     Facebook    *_facebook;
     NSString    *_accessToken;
     
-    id<DWFacebookConnectDelegate,NSObject> _delegate;
+    id<DWFacebookConnectDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * Facebook iOS SDK interface instance
  */
-@property (nonatomic,retain) Facebook *facebook;
+@property (nonatomic) Facebook *facebook;
 
 /**
  * Access token to make requests on behalf of the user
@@ -32,7 +32,7 @@
 /**
  * DWFacebookConnectDelegate
  */
-@property (nonatomic,assign) id<DWFacebookConnectDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWFacebookConnectDelegate,NSObject> delegate;
 
 
 /**

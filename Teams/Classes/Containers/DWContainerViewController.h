@@ -26,12 +26,12 @@
 DWTeamsLogicControllerDelegate,DWUsersLogicControllerDelegate,DWTeamItemsViewControllerDelegate,
 DWTeamViewControllerDelegate,DWUserViewControllerDelegate,DWNotificationsViewControllerDelegate,DWInvitePeopleViewControllerDelegate> {
     
-	DWTabBarController    *_customTabBarController;
+	DWTabBarController    *__unsafe_unretained _customTabBarController;
 }
 
 /**
  * Non-retained reference to the custom tab bar controller
  */
-@property (nonatomic,assign) DWTabBarController *customTabBarController;
+@property (nonatomic,unsafe_unretained) DWTabBarController *customTabBarController;
 
 @end

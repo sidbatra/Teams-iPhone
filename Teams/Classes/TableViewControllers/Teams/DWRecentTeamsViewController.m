@@ -22,18 +22,13 @@
     self = [super init];
     
     if(self) {
-        self.recentTeamsDataSource = [[[DWRecentTeamsDataSource alloc] init] autorelease];
+        self.recentTeamsDataSource = [[DWRecentTeamsDataSource alloc] init];
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.recentTeamsDataSource      = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (DWTableViewDataSource*)getDataSource {

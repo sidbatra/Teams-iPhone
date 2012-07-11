@@ -46,12 +46,12 @@
 /**
  * IBOutlet properties
  */
-@property (nonatomic, retain) IBOutlet UITextField *firstNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *lastNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *byLineTextField;
-@property (nonatomic, retain) IBOutlet UIImageView *userImageView;
-@property (nonatomic, retain) IBOutlet UIButton *changeUserImageButton;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (nonatomic) IBOutlet UITextField *byLineTextField;
+@property (nonatomic) IBOutlet UIImageView *userImageView;
+@property (nonatomic) IBOutlet UIButton *changeUserImageButton;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * IBActions
@@ -64,33 +64,33 @@
 @property (nonatomic,copy) NSString *firstName;
 @property (nonatomic,copy) NSString *lastName;
 @property (nonatomic,copy) NSString *byline;
-@property (nonatomic,retain) UIImage *userImage;
+@property (nonatomic) UIImage *userImage;
 
 /**
  * Controller for presenting the media picker
  */ 
-@property (nonatomic,retain) UIViewController *displayMediaPickerController;
+@property (nonatomic) UIViewController *displayMediaPickerController;
 
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling user requests
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Controller for handling media uploading request
  */
-@property (nonatomic,retain) DWMediaController *mediaController;
+@property (nonatomic) DWMediaController *mediaController;
 
 /**
  * Custom init with user

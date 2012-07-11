@@ -53,7 +53,7 @@
 /**
  * Byline for the user's team
  */
-@property (nonatomic,retain) NSString *byline;
+@property (nonatomic) NSString *byline;
 
 /**
  * Email used to register the account with
@@ -80,7 +80,7 @@
  * Its saved using NSUserDefaults and read in every session
  * for future usage
  */
-@property (nonatomic,retain) NSData *twitterXAuthToken;
+@property (nonatomic) NSData *twitterXAuthToken;
 
 /**
  * Facebook access token obtained after facebook connect.
@@ -92,17 +92,17 @@
 /**
  * The team to which the user currently belongs
  */
-@property (nonatomic,retain) DWTeam *team;
+@property (nonatomic) DWTeam *team;
 
 /**
  * Image obtained from smallURL
  */
-@property (nonatomic,retain) UIImage *smallImage;
+@property (nonatomic) UIImage *smallImage;
 
 /**
  * Image obtained from largeURL
  */
-@property (nonatomic,retain) UIImage *largeImage;
+@property (nonatomic) UIImage *largeImage;
 
 /**
  * Whether the user has uploaded a photo or not

@@ -33,17 +33,17 @@
     
     DWTeamsController           *_teamsController;
     
-    id<DWCreateTeamViewControllerDelegate>   _delegate;
+    id<DWCreateTeamViewControllerDelegate>   __unsafe_unretained _delegate;
 }
 
 
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UITextField *teamNameTextField;
-@property (nonatomic, retain) IBOutlet UITextField *teamBylineTextField;
-@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *teamNameTextField;
+@property (nonatomic) IBOutlet UITextField *teamBylineTextField;
+@property (nonatomic) IBOutlet UILabel *messageLabel;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Team domain from the user email
@@ -53,23 +53,23 @@
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Controller for handling teams requests
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWCreateTeamViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWCreateTeamViewControllerDelegate> delegate;
 
 
 @end

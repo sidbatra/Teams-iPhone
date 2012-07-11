@@ -22,7 +22,7 @@
     self = [super init];
     
     if(self) {        
-        self.teamsLogicController    = [[[DWTeamsLogicController alloc] init] autorelease];
+        self.teamsLogicController    = [[DWTeamsLogicController alloc] init];
         self.teamsLogicController.tableViewController = self;
     }
     
@@ -30,11 +30,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.teamsLogicController        = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setTeamsDelegate:(id<DWTeamsLogicControllerDelegate>)delegate {

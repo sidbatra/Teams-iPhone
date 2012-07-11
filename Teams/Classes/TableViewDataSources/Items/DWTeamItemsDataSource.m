@@ -50,10 +50,10 @@
     self = [super init];
     
     if(self) {
-        self.teamsController                = [[[DWTeamsController alloc] init] autorelease];
+        self.teamsController                = [[DWTeamsController alloc] init];
         self.teamsController.delegate       = self;
         
-        self.followingsController           = [[[DWFollowingsController alloc] init] autorelease];
+        self.followingsController           = [[DWFollowingsController alloc] init];
         self.followingsController.delegate  = self;
     }
     
@@ -66,12 +66,7 @@
     [self.following destroy];
     [self.team destroy];
     
-    self.teamsController        = nil;
-    self.followingsController   = nil;
-    self.team                   = nil;
-    self.following              = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -26,17 +26,17 @@
 /**
  * Datasource for the table view
  */
-@property (nonatomic,retain) DWUserItemsDataSource *userItemsDataSource;
+@property (nonatomic) DWUserItemsDataSource *userItemsDataSource;
 
 /**
  * Title view for the controller
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavTitleView *navTitleView;
 
 /**
  * View to display the user's profile picture on the nav bar
  */
-@property (nonatomic,retain) DWSmallProfilePicView *smallProfilePicView;
+@property (nonatomic) DWSmallProfilePicView *smallProfilePicView;
 
 
 /**

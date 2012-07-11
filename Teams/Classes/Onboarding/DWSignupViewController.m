@@ -52,10 +52,10 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     self = [super init];
     
     if (self) {
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];    
+        self.usersController            = [[DWUsersController alloc] init];    
         self.usersController.delegate   = self;
         
-        self.teamsController            = [[[DWTeamsController alloc] init] autorelease];        
+        self.teamsController            = [[DWTeamsController alloc] init];        
         self.teamsController.delegate   = self;
         
         _hasCreatedUser                 = NO;
@@ -66,21 +66,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    self.emailTextField             = nil;
-    self.spinnerContainerView       = nil;
-    
-    self.password                   = nil;
-    
-    self.navTitleView               = nil;
-    self.navBarRightButtonView      = nil;
-    self.spinnerOverlayView         = nil;
-    
-    self.usersController            = nil;
-    self.teamsController            = nil;
-    
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
@@ -96,25 +81,25 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
     self.navigationItem.leftBarButtonItem  = [DWGUIManager navBarBackButtonForNavController:self.navigationController];
     
     if (!self.navTitleView)
-        self.navTitleView = [[[DWNavTitleView alloc] 
+        self.navTitleView = [[DWNavTitleView alloc] 
                               initWithFrame:CGRectMake(kNavTitleViewX,0,
                                                        kNavTitleViewWidth,
                                                        kNavTitleViewHeight) 
-                                andDelegate:self] autorelease];
+                                andDelegate:self];
     
     [self.navTitleView displayTitle:kSignupText];
     
     if (!self.navBarRightButtonView)
-        self.navBarRightButtonView = [[[DWNavBarRightButtonView alloc]
+        self.navBarRightButtonView = [[DWNavBarRightButtonView alloc]
                                        initWithFrame:CGRectMake(260,0,
                                                                 kNavRightButtonWidth,
                                                                 kNavRightButtonHeight)
                                                title:kNavBarRightButtonText 
-                                           andTarget:self] autorelease];
+                                           andTarget:self];
     
     if (!self.spinnerOverlayView)
-        self.spinnerOverlayView = [[[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(52,134)
-                                                                        andMessageText:kMsgProcesssing] autorelease];
+        self.spinnerOverlayView = [[DWSpinnerOverlayView alloc] initWithSpinnerOrigin:CGPointMake(52,134)
+                                                                        andMessageText:kMsgProcesssing];
     
     [self.emailTextField becomeFirstResponder];
     
@@ -176,7 +161,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -187,7 +171,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles: nil];
     [alert show];
-    [alert release];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -298,7 +281,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
     
@@ -328,7 +310,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
     
@@ -362,7 +343,6 @@ static NSString* const kMsgEmailError                   = @"Please enter the ema
 										  cancelButtonTitle:kMsgCancelTitle
 										  otherButtonTitles:nil];
 	[alert show];
-	[alert release];
     
     [self unfreezeUI];
 }

@@ -65,7 +65,7 @@
 /**
  * Primary view for drawing content
  */
-@property (nonatomic,retain) DWDoubleLineView *doubleLineView;
+@property (nonatomic) DWDoubleLineView *doubleLineView;
 
 
 /**

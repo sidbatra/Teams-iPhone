@@ -13,13 +13,13 @@
  * Interface to the Items service on the app server
  */
 @interface DWItemsController : NSObject {    
-    id<DWItemsControllerDelegate,NSObject> _delegate;
+    id<DWItemsControllerDelegate,NSObject> __unsafe_unretained _delegate;
 }
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWItemsControllerDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWItemsControllerDelegate,NSObject> delegate;
 
 
 /**

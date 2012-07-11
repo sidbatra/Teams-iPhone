@@ -16,18 +16,18 @@
 @interface DWNotificationsViewController : DWTableViewController {
     DWNotificationsDataSource   *_notificationsDataSource;
     
-    id<DWNotificationsViewControllerDelegate>   _delegate;
+    id<DWNotificationsViewControllerDelegate>   __unsafe_unretained _delegate;
 }
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWNotificationsDataSource *notificationsDataSource;
+@property (nonatomic) DWNotificationsDataSource *notificationsDataSource;
 
 /**
  * Delegates receives events based on the DWNotificationsViewControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWNotificationsViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWNotificationsViewControllerDelegate> delegate;
 
 
 /**

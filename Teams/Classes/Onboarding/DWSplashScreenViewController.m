@@ -42,7 +42,6 @@ static NSInteger kNumberOfPages = 1;
             [controllers addObject:[NSNull null]];
         
         self.viewControllers = controllers;
-        [controllers release];
     }
     
     return self;
@@ -52,12 +51,8 @@ static NSInteger kNumberOfPages = 1;
 - (void)dealloc {
     [[UIApplication sharedApplication] setStatusBarStyle:kStatusBarStyle];
     
-    self.scrollView         = nil;
-    self.pageControl        = nil;
     
-    self.viewControllers    = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -111,7 +106,6 @@ static NSInteger kNumberOfPages = 1;
     if ((NSNull *)controller == [NSNull null]) {
         controller = [[DWIntroPaneViewController alloc] initWithPageNumber:page];
         [self.viewControllers replaceObjectAtIndex:page withObject:controller];
-        [controller release];
     }
     
     if (controller.view.superview == nil) {        

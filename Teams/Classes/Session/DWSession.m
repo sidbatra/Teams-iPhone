@@ -54,7 +54,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -30,9 +30,7 @@
     
     NSLog(@"profile image released");
     
-    self.image = nil;
     
-    [super dealloc];
 }
 
 @end

@@ -73,15 +73,12 @@ static CGFloat   const kFadeDelay       = 0.3;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel					= [[[UILabel alloc] initWithFrame:CGRectMake(20,-1,
+    messageLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,-1,
                                                                                  self.contentView.frame.size.width-40,
-                                                                                 kMessageCellHeight)] autorelease];
+                                                                                 kMessageCellHeight)];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
     messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
     messageLabel.backgroundColor	= [UIColor clearColor];
@@ -92,7 +89,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createChevron {
-    chevronView             = [[[UIImageView alloc] initWithFrame:CGRectMake(307,28,6,11)] autorelease];
+    chevronView             = [[UIImageView alloc] initWithFrame:CGRectMake(307,28,6,11)];
     chevronView.image       = [UIImage imageNamed:kImgChevron];
     chevronView.hidden      = YES;
     
@@ -101,7 +98,7 @@ static CGFloat   const kFadeDelay       = 0.3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSeparator {
-    separatorView           = [[[UIImageView alloc] initWithFrame:CGRectMake(0,66,320,1)] autorelease];
+    separatorView           = [[UIImageView alloc] initWithFrame:CGRectMake(0,66,320,1)];
     separatorView.image     = [UIImage imageNamed:kImgSeparator];
     separatorView.hidden    = YES;
     

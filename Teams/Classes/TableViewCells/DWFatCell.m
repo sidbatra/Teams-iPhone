@@ -56,20 +56,17 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createImageView {
-    imageView    = [[[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,275)] autorelease];
+    imageView    = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,275)];
     
     [self.contentView addSubview:imageView];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createFirstLine {
-    firstLineLabel                      = [[[UILabel alloc] initWithFrame:CGRectMake(22,225,280,28)] autorelease];
+    firstLineLabel                      = [[UILabel alloc] initWithFrame:CGRectMake(22,225,280,28)];
     firstLineLabel.backgroundColor      = [UIColor clearColor];
     firstLineLabel.font                 = [UIFont fontWithName:@"HelveticaNeue" size:22];	
     firstLineLabel.textColor			= [UIColor whiteColor];
@@ -81,7 +78,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSecondLine {
-    secondLineLabel                     = [[[UILabel alloc] initWithFrame:CGRectMake(22,250,280,28)] autorelease];
+    secondLineLabel                     = [[UILabel alloc] initWithFrame:CGRectMake(22,250,280,28)];
     secondLineLabel.backgroundColor     = [UIColor clearColor];
     secondLineLabel.font                = [UIFont fontWithName:@"HelveticaNeue" size:15];	
     secondLineLabel.textColor			= [UIColor whiteColor];

@@ -63,7 +63,7 @@
         result  = (diff == 1)   ? @"Yesterday"      : [NSString stringWithFormat:@"%d days ago", diff];
     }
 	else {
-		NSDateFormatter *outputFormatter = [[[NSDateFormatter alloc] init] autorelease];
+		NSDateFormatter *outputFormatter = [[NSDateFormatter alloc] init];
 		[outputFormatter setDateFormat:@"d MMM"];
 		
 		result = [NSString stringWithString:[outputFormatter stringFromDate:createdAtDate]];		

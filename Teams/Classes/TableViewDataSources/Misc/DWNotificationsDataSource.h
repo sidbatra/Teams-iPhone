@@ -21,7 +21,7 @@
 /**
  * Interface to the notifications service
  */
-@property (nonatomic,retain) DWNotificationsController *notificationsController;
+@property (nonatomic) DWNotificationsController *notificationsController;
 
 
 /**

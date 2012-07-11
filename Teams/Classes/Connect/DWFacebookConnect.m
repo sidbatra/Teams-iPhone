@@ -23,7 +23,7 @@
     self = [super init];
     
     if(self) {
-        self.facebook	= [[[Facebook alloc] initWithAppId:kFacebookAppID] autorelease];
+        self.facebook	= [[Facebook alloc] initWithAppId:kFacebookAppID];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(facebookURLOpened:) 
@@ -38,10 +38,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    self.facebook       = nil;
-    self.accessToken    = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------

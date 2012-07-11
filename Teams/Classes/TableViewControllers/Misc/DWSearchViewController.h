@@ -23,30 +23,30 @@
     DWTeamsLogicController      *_teamsLogicController;
     DWSearchDataSource          *_searchDataSource;
     
-    id<DWSearchViewControllerDelegate>   _delegate;    
+    id<DWSearchViewControllerDelegate>   __unsafe_unretained _delegate;    
 }
 
 /**
  * Users view controller encapsulates the common display and interaction 
  * functionality needed to display one or more users
  */
-@property (nonatomic,retain) DWUsersLogicController *usersLogicController;
+@property (nonatomic) DWUsersLogicController *usersLogicController;
 
 /**
  * Teams view controller encapsulates the common display and interaction 
  * functionality needed to display one or more teams
  */
-@property (nonatomic,retain) DWTeamsLogicController *teamsLogicController;
+@property (nonatomic) DWTeamsLogicController *teamsLogicController;
 
 /**
  * Data source for the table view
  */
-@property (nonatomic,retain) DWSearchDataSource *searchDataSource;
+@property (nonatomic) DWSearchDataSource *searchDataSource;
 
 /**
  * Delegates receives events based on the DWSearchViewControllerDelegate protocol
  */
-@property (nonatomic,assign) id<DWSearchViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSearchViewControllerDelegate> delegate;
 
 
 /**

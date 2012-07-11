@@ -37,11 +37,10 @@
 {
    [[NSNotificationCenter defaultCenter] removeObserver:self];
    
-   [_placeholderText release], _placeholderText = nil;
-   [_placeholderColor release], _placeholderColor = nil;
-   [_placeholder release], _placeholder = nil;
+   _placeholderText = nil;
+   _placeholderColor = nil;
+   _placeholder = nil;
    
-   [super dealloc];
 }
 
 - (void)setup

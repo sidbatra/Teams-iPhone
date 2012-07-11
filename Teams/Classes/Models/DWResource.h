@@ -22,7 +22,7 @@
 /**
  * Image of the resource
  */
-@property (nonatomic,retain) UIImage *image;
+@property (nonatomic) UIImage *image;
 
 /**
  * Text of the resource

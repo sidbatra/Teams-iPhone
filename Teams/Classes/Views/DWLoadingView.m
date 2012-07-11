@@ -53,16 +53,12 @@ static NSInteger const kSpinnerSize     = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSpinner {
 	
-    UIActivityIndicatorView *spinner	= [[[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite] 
-                                           autorelease];
+    UIActivityIndicatorView *spinner	= [[UIActivityIndicatorView alloc]
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     spinner.alpha   = 0.5;
 	spinner.frame	= CGRectMake(109,(self.frame.size.height - kSpinnerSize) / 2 - 49,kSpinnerSize,kSpinnerSize);
     
@@ -74,9 +70,8 @@ static NSInteger const kSpinnerSize     = 20;
 //----------------------------------------------------------------------------------------------------
 - (void)createText {
     
-    UILabel *messageLabel			= [[[UILabel alloc] 
-                                        initWithFrame:CGRectMake(135,self.frame.size.height/ 2 - 10 - 49,90,20)] 
-                                       autorelease];	
+    UILabel *messageLabel			= [[UILabel alloc] 
+                                        initWithFrame:CGRectMake(135,self.frame.size.height/ 2 - 10 - 49,90,20)];	
 	messageLabel.backgroundColor	= [UIColor clearColor];
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
 	messageLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];

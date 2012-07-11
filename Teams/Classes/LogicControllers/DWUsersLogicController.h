@@ -17,24 +17,24 @@
  */
 @interface DWUsersLogicController : NSObject<DWUsersControllerDelegate> {
     
-    DWTableViewController   *_tableViewController;
+    DWTableViewController   *__unsafe_unretained _tableViewController;
     DWUsersController       *_usersController;
 
     BOOL                    _navigationEnabled;
 
-    id <DWUsersLogicControllerDelegate> _delegate;
+    id <DWUsersLogicControllerDelegate> __unsafe_unretained _delegate;
 
 }
 
 /**
  * The table view controller which contains the teams view controller object
  */
-@property (nonatomic,assign) DWTableViewController *tableViewController;
+@property (nonatomic,unsafe_unretained) DWTableViewController *tableViewController;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 
 /**
@@ -45,7 +45,7 @@
 /**
  * Delegate receives events based on the DWTeamsLogicControllerDelegate
  */
-@property (nonatomic,assign) id<DWUsersLogicControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWUsersLogicControllerDelegate> delegate;
 
 @end
 

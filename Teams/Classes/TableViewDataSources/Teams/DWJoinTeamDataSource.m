@@ -24,7 +24,7 @@
     self = [super init];
     
     if(self) {        
-        self.usersController            = [[[DWUsersController alloc] init] autorelease];
+        self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
     }
     
@@ -32,11 +32,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-    self.usersController    = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -70,7 +65,7 @@
     
     [self.objects addObjectsFromArray:users];
     
-    DWMessage *message  = [[[DWMessage alloc] init] autorelease];
+    DWMessage *message  = [[DWMessage alloc] init];
     message.content     = [DWTeamsHelper createdAtLineForTeam:[DWTeam fetch:_teamID]];
     [self.objects addObject:message];
 

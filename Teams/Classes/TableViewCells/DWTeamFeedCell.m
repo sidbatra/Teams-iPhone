@@ -117,13 +117,6 @@ static NSString* const kImgChevron		= @"chevron.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {
-	self.teamName		= nil;
-	self.teamDetails	= nil;
-	self.teamData		= nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)reset {

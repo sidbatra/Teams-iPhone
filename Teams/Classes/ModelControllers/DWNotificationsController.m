@@ -56,7 +56,6 @@ static NSString* const kNotificationReadURI                     = @"/notificatio
     
     NSLog(@"notifications controller released");
     
-    [super dealloc];
 }
 
 

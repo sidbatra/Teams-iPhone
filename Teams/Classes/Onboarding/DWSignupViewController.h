@@ -36,15 +36,15 @@
     DWUsersController           *_usersController;
     DWTeamsController           *_teamsController;
     
-    id <DWSignupViewControllerDelegate>     _delegate;
+    id <DWSignupViewControllerDelegate>     __unsafe_unretained _delegate;
 }
 
 
 /**
  * IBOutlets
  */
-@property (nonatomic, retain) IBOutlet UITextField *emailTextField;
-@property (nonatomic, retain) IBOutlet UIView *spinnerContainerView;
+@property (nonatomic) IBOutlet UITextField *emailTextField;
+@property (nonatomic) IBOutlet UIView *spinnerContainerView;
 
 /**
  * Encrypted user password
@@ -54,24 +54,24 @@
 /**
  * Custom subviews for navigation bar
  */
-@property (nonatomic,retain) DWNavTitleView *navTitleView;
-@property (nonatomic,retain) DWNavBarRightButtonView *navBarRightButtonView;
+@property (nonatomic) DWNavTitleView *navTitleView;
+@property (nonatomic) DWNavBarRightButtonView *navBarRightButtonView;
 
 /**
  * Custom overlay spinner view
  */
-@property (nonatomic,retain) DWSpinnerOverlayView *spinnerOverlayView; 
+@property (nonatomic) DWSpinnerOverlayView *spinnerOverlayView; 
 
 /**
  * Model Controllers
  */
-@property (nonatomic,retain) DWUsersController *usersController;
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWUsersController *usersController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 /**
  * Delegate to send updates to
  */
-@property (nonatomic,assign) id<DWSignupViewControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSignupViewControllerDelegate> delegate;
 
 
 /**

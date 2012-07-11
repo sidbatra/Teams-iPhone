@@ -29,8 +29,8 @@ static NSString* const kImgTextBackground   = @"bg_dark_gradient_square.png";
     DWItemFeedCell *cell	= base;
     
     if(!cell) 
-        cell = [[[DWItemFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
-                                      reuseIdentifier:identifier] autorelease];
+        cell = [[DWItemFeedCell alloc] initWithStyle:UITableViewCellStyleDefault 
+                                      reuseIdentifier:identifier];
     
 	
     cell.delegate			= delegate;

@@ -29,22 +29,22 @@
 /**
  * Interface to the teams service
  */
-@property (nonatomic,retain) DWTeamsController *teamsController;
+@property (nonatomic) DWTeamsController *teamsController;
 
 /**
  * Interface to the users service
  */
-@property (nonatomic,retain) DWUsersController *usersController;
+@property (nonatomic) DWUsersController *usersController;
 
 /**
  * Resource object representing the invite people cell
  */
-@property (nonatomic,retain) DWResource *invite;
+@property (nonatomic) DWResource *invite;
 
 /**
  * Resource object representing the share team cell
  */
-@property (nonatomic,retain) DWResource *share;
+@property (nonatomic) DWResource *share;
 
 /**
  * TeamID for the team being displayed
@@ -54,7 +54,7 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,assign) id<DWTeamViewDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamViewDataSourceDelegate,NSObject> delegate;
 
 
 /**

@@ -11,7 +11,7 @@
 @interface DWPagination : NSObject {
     BOOL    _isTriggered;
     BOOL    _isDisabled;
-    id      _owner;
+    id      __unsafe_unretained _owner;
 }
 
 /**
@@ -27,6 +27,6 @@
 /**
  * Owner of the pagination model
  */
-@property (nonatomic,assign) id owner;
+@property (nonatomic,unsafe_unretained) id owner;
 
 @end

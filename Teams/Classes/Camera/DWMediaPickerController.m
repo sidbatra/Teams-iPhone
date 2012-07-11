@@ -30,8 +30,8 @@ static float     const kCroppedImageDimension   = 640.0;
     
     if(self) {
         _mediaDelegate = theDelegate;
-        self.cameraOverlayViewController = [[[DWCameraOverlayViewController alloc] 
-                                             initWithDelegate:self] autorelease];
+        self.cameraOverlayViewController = [[DWCameraOverlayViewController alloc] 
+                                             initWithDelegate:self];
     }
     
 	return self;  
@@ -46,7 +46,6 @@ static float     const kCroppedImageDimension   = 640.0;
 	AVURLAsset *avAsset			= [[AVURLAsset alloc] initWithURL:videoURL options:nil];
 	AVAssetTrack* videoTrack	= [[avAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
 	CGAffineTransform txf		= [videoTrack preferredTransform];
-	[avAsset release];
 	
 	if(txf.a == 0 && txf.b == 1 && txf.c == -1 && txf.d == 0)
 		orientation = kRot90;
@@ -73,7 +72,6 @@ static float     const kCroppedImageDimension   = 640.0;
 
 	AVAssetImageGenerator *generate = [[AVAssetImageGenerator alloc] initWithAsset:asset];
 	
-	[asset release];
     
 	
 	NSError *err		= nil;
@@ -83,7 +81,6 @@ static float     const kCroppedImageDimension   = 640.0;
 										   actualTime:NULL
 												error:&err];
 	
-	[generate release];
 	
 	
 	UIImage				*result				= nil;
@@ -145,11 +142,6 @@ static float     const kCroppedImageDimension   = 640.0;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void) dealloc {	
-	self.cameraOverlayViewController = nil;
-    
-    [super dealloc];
-}
 
 
 //----------------------------------------------------------------------------------------------------

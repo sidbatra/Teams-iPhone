@@ -58,7 +58,6 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 	self.firstLine		= nil;
 	self.secondLine     = nil;
 	
-	[super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -148,7 +147,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 		
 		CGRect frame = CGRectMake(0.0,0.0,self.contentView.bounds.size.width,self.contentView.bounds.size.height);
 		
-		self.doubleLineView = [[[DWDoubleLineView alloc] initWithFrame:frame] autorelease];
+		self.doubleLineView = [[DWDoubleLineView alloc] initWithFrame:frame];
         self.doubleLineView.autoresizingMask	= UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.doubleLineView.contentMode         = UIViewContentModeRedraw;
 		
@@ -163,11 +162,6 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
-	self.doubleLineView = nil;
-	
-    [super dealloc];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)reset {

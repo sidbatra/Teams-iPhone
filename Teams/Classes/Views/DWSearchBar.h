@@ -16,7 +16,7 @@
     
     NSInteger       _minimumQueryLength;
     
-    id<DWSearchBarDelegate> _delegate;
+    id<DWSearchBarDelegate> __unsafe_unretained _delegate;
 }
 
 /**
@@ -27,7 +27,7 @@
 /**
  * Delegate property
  */
-@property (nonatomic,assign) id<DWSearchBarDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWSearchBarDelegate> delegate;
 
 
 /**

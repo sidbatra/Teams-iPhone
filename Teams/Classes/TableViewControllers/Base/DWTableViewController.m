@@ -72,12 +72,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)dealloc {
     self.tableView                  = nil;
     
-    self.modelPresentationStyle     = nil;
-	self.refreshHeaderView          = nil;
-    self.loadingView                = nil;
-    self.errorView                  = nil;
     
-    [super dealloc];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -94,10 +89,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;
 
     
-    self.refreshHeaderView = [[[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
+    self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
 																						  0.0f - self.tableView.bounds.size.height,
 																						  self.view.frame.size.width,
-																						  self.tableView.bounds.size.height)] autorelease];
+																						  self.tableView.bounds.size.height)];
 	self.refreshHeaderView.delegate = self;
     
 	[self.refreshHeaderView applyBackgroundImage:nil
@@ -188,12 +183,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableLoadingView {
-    return [[[DWLoadingView alloc] initWithFrame:self.tableView.frame] autorelease];
+    return [[DWLoadingView alloc] initWithFrame:self.tableView.frame];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[[DWErrorView alloc] initWithFrame:self.tableView.frame] autorelease];
+    DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.tableView.frame];
     errorView.delegate      = self;
     
     return errorView;

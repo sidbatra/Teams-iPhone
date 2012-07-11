@@ -13,17 +13,17 @@
  * Base table views that display a list of teams
  */
 @interface DWTeamsLogicController : NSObject {
-    DWTableViewController   *_tableViewController;
+    DWTableViewController   *__unsafe_unretained _tableViewController;
     
     BOOL                    _navigationEnabled;
     
-    id <DWTeamsLogicControllerDelegate> _delegate;
+    id <DWTeamsLogicControllerDelegate> __unsafe_unretained _delegate;
 }
 
 /**
  * The table view controller which contains the teams view controller object
  */
-@property (nonatomic,assign) DWTableViewController *tableViewController;
+@property (nonatomic,unsafe_unretained) DWTableViewController *tableViewController;
 
 /**
  * Controls the navigation from team cells
@@ -33,7 +33,7 @@
 /**
  * Delegate receives events based on the DWTeamsLogicControllerDelegate
  */
-@property (nonatomic,assign) id<DWTeamsLogicControllerDelegate> delegate;
+@property (nonatomic,unsafe_unretained) id<DWTeamsLogicControllerDelegate> delegate;
 
 @end
 
