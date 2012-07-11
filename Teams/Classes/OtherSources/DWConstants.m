@@ -7,7 +7,7 @@
 #define STAGING     1
 #define PRODUCTION  2
 
-#define ENVIRONMENT STAGING
+#define ENVIRONMENT DEVELOPMENT
 
 
 
@@ -23,10 +23,10 @@ NSString* const kDelete				= @"DELETE";
 
 
 #if ENVIRONMENT == DEVELOPMENT
-	NSString* const kDenwenServer	= @"drao.tea.ms";
+	NSString* const kDenwenServer	= @"ec2-23-22-9-195.compute-1.amazonaws.com";
     NSString* const kEnvPrefix      = @"d";
 #elif ENVIRONMENT == STAGING
-    NSString* const kDenwenServer	= @"staging.tea.ms";
+    NSString* const kDenwenServer	= @"ec2-23-22-9-195.compute-1.amazonaws.com";
     NSString* const kEnvPrefix      = @"s";
 #elif ENVIRONMENT == PRODUCTION
     NSString* const kDenwenServer	= @"tea.ms";

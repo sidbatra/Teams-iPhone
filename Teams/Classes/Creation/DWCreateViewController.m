@@ -203,7 +203,7 @@ static NSString* const kMsgDataMissing						= @"Add an update using text, photo 
         [self.navigationController popViewControllerAnimated:YES];
     }
     else {
-        [self.parentViewController dismissModalViewControllerAnimated:NO];
+        [self dismissModalViewControllerAnimated:NO];
     }
 }
 

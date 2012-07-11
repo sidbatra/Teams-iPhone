@@ -350,6 +350,7 @@ static NSString* const kItemDeleteURI       = @"/items/%d.json?";
     NSArray *data           = [[notification userInfo] objectForKey:kKeyData];
     NSMutableArray *items   = [self populateItemsArrayFromJSON:data];
     
+    
     [self.delegate performSelector:sel 
                         withObject:items];
 }

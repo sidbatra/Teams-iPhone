@@ -18,17 +18,17 @@
 #define kTextOnlyImgSeparator               @"hr_text_only.png"
 #define kOpacityImagesWithAttachment        1.0
 #define kOpacityImagesNoAttachment          0.5
-#define kColorAttachmentBg                  [UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor
-#define kColorNoAttachmentBg                [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:0.0].CGColor
-#define kColorNoAttachmentHighlightBg       [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.0].CGColor
-#define kColorLinkPressedWithAttachment     [UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor
-#define kColorLinkPressedNoAttachment       [UIColor colorWithRed:0.6000 green:0.6000 blue:0.6000 alpha:1.0].CGColor
-#define kColorTextWithAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
-#define kColorTextNoAttachment              [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
-#define kColorTextHighlightedNoAttachment   [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor
-#define kColorSubTextNoAttachment           [UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor
-#define kColorByLineWithAttachment          [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor
-#define kColorByLineNoAttachment            [UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor
+#define kColorAttachmentBg                  CGColorRetain([UIColor colorWithRed:0.2627 green:0.2627 blue:0.2627 alpha:1.0].CGColor)
+#define kColorNoAttachmentBg                CGColorRetain([UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:0.0].CGColor)
+#define kColorNoAttachmentHighlightBg       CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.0].CGColor)
+#define kColorLinkPressedWithAttachment     CGColorRetain([UIColor colorWithRed:0.8000 green:0.8000 blue:0.8000 alpha:1.0].CGColor)
+#define kColorLinkPressedNoAttachment       CGColorRetain([UIColor colorWithRed:0.6000 green:0.6000 blue:0.6000 alpha:1.0].CGColor)
+#define kColorTextWithAttachment            CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor)
+#define kColorTextNoAttachment              CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor)
+#define kColorTextHighlightedNoAttachment   CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.75].CGColor)
+#define kColorSubTextNoAttachment           CGColorRetain([UIColor colorWithRed:0.4980 green:0.4980 blue:0.4980 alpha:1.0].CGColor)
+#define kColorByLineWithAttachment          CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:1.0].CGColor)
+#define kColorByLineNoAttachment            CGColorRetain([UIColor colorWithRed:1.0000 green:1.0000 blue:1.0000 alpha:0.5].CGColor)
 #define kFontItemUserName                   [UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
 #define kFontItemUserNameDisabled           [UIFont fontWithName:@"HelveticaNeue" size:15]
 #define kFontAt                             [UIFont fontWithName:@"HelveticaNeue" size:15]
@@ -102,6 +102,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)drawInContext:(CGContextRef)context {
 	
+    
 	UIGraphicsPushContext(context);
     
     BOOL isTextOnly = [itemCell attachmentType] == kAttachmentNone;
@@ -175,6 +176,7 @@
         
 		[itemCell.itemCreatedAt drawInRect:itemCell.createdAtRect 
                                   withFont:kFontItemCreatedAt];
+     
 	}
     
     
@@ -193,19 +195,24 @@
                              withFont:isTextOnly ? kFontItemDataTextOnly : kFontItemData
                         lineBreakMode:UILineBreakModeWordWrap
                             alignment:UITextAlignmentLeft];
+         
     }
     
     
     //----------------------------------
     if(![itemCell isHighlighted] || itemCell.isTouching || isTextOnly) {
         
+        
         CGContextSetFillColorWithColor(context,subTextColor);
         
         [itemCell.itemTouchesCountString drawInRect:itemCell.touchesCountRect
                                            withFont:kFontItemTouchesCount];
+        
     }
-	
+     
+
 	UIGraphicsPopContext();
+    
 }
 
 @end
